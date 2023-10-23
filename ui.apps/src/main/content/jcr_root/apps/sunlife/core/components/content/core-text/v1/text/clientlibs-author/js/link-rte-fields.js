@@ -43,7 +43,7 @@
 			var dataTargetVal = dataTargetField.val();
 			var dataToggleVal = dataToggleField.val();
             var dataDeepLinkVal = dataDeepLinkField.val();
-            var dataClassVal = dataClassField.val();
+            var dataClassVal = dataClassField[0].selectedItem.value;;
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
 			this.objToEdit.attributes["data-title"] = dataTitleVal;
@@ -51,7 +51,6 @@
 			this.objToEdit.attributes["data-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
-			
         },
         
         dlgFromModel: function() {
@@ -62,7 +61,7 @@
 			var dataTargetValue = this.objToEdit.attributes['data-target'];
 			var dataToggleValue = this.objToEdit.attributes['data-toggle'];
             var dataDeepLinkValue = this.objToEdit.attributes['data-deeplink'];
-            var classValue = this.objToEdit.attributes['class'];
+            var classValue = this.objToEdit.attributes['data-class'];
 
             var ariaSelect = this.$rteDialog.find("[data-type='aria-label']")[0];
 			var dataSelect = this.$rteDialog.find("[data-type='data-title']")[0];
@@ -104,33 +103,58 @@
     });
 
     function getDataHtml(){
-        var html =  "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='aria-label' placeholder='aria label' aria-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''></label> </div></div>"+
-                    "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-deeplink' placeholder='deep link name' deeplink-invalid='false' value=''></label> </div></div>"+
-                    "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-class' placeholder='class name' data-invalid='false' value='sl-link'></label></div></div>";
+        var html =  `
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <coral-select name="classtype" data-type='data-class' placeholder="Choose Link Type">
+                        <coral-select-item value="sl-link sl-link-md">
+                        Link Medium
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-sm"> 
+                        Link Small
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-xs">
+                        Link XS
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-external">
+                        Link External
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-internal">
+                        Link Internal
+                        </coral-select-item>
+                    </coral-select>
+                </div>
+            </div>
+            <div class='rte-dialog-columnContainer'>
+            <div class='rte-dialog-column'>
+                <label> 
+                    <input is='coral-textfield' class='coral3-Textfield' data-type='aria-label' placeholder='aria label' aria-invalid='false' value=''>
+                </label></div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''>
+                    </label> </div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''>
+                    </label> </div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''>
+                    </label></div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-deeplink' placeholder='deep link name' deeplink-invalid='false' value=''>
+                    </label> </div></div> 
+            `;
 
       	return html;
     }
 
     CUI.rte.ui.cui.CuiDialogHelper.eaemExtended = true;
 })(jQuery);
+

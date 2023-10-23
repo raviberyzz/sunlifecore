@@ -3,7 +3,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Text"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[sunlife.core.author.text]">
+    extraClientlibs="[sunlife.core-author.text]">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -100,14 +100,19 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="body-medium-italic"
                                                                 text="Body Medium Italic"/>
+                                                            <label-small
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="label-small"
+                                                                text="Label Small"/>
+                                                            <body-navigation
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="body-navigation"
+                                                                text="Navigation"/>
                                                             <text-accessibility
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="sr-only"
                                                                 text="Screen Reader Only Text"/>
-                                                            <tool-tip
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="tool-tip-box"
-                                                                text="Tool Tip"/>
+                                                            
                                                         </styles>
                                                     </styles>
                                                     <format
@@ -170,6 +175,26 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 description="Heading 5"
                                                                 tag="h5"/>
+                                                            <default_h6
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Heading 6"
+                                                                sling:hideResource="true"
+                                                                tag="h6"/>
+                                                            <default_blockquote
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Quote"
+                                                                sling:hideResource="true"
+                                                                tag="blockquote"/>
+                                                            <default_hr
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Horizontal Rule (visual line break)"
+                                                                sling:hideResource="true"
+                                                                tag="hr"/>
+                                                            <default_pre
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Preformatted"
+                                                                sling:hideResource="true"
+                                                                tag="pre"/>
                                                         </formats>
                                                     </paraformat>
                                                     <keys
@@ -194,7 +219,10 @@
                                                     <sunlife
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
-                                                    <cusattibute
+                                                    <info
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <sun
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
                                                 </rtePlugins>
@@ -202,7 +230,7 @@
                                                     <cui jcr:primaryType="nt:unstructured">
                                                         <dialogFullScreen
                                                             jcr:primaryType="nt:unstructured"
-                                                            toolbar="[format#bold,format#italic,format#underline,subsuperscript#subscript,subsuperscript#superscript,edit#cut,edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,links#modifylink,links#unlink,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,undo#undo,undo#redo,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,table#createoredit,image#imageProps,spellcheck#checktext,generichtml#generichtml,misctools#specialchars,misctools#sourceedit,#styles,#paraformat,sunlife#fontAwesome,attribute#addattribute,attribute#removeattribute]">
+                                                            toolbar="[format#bold,format#italic,format#underline,subsuperscript#subscript,subsuperscript#superscript,edit#cut,edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,links#modifylink,links#unlink,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,undo#undo,undo#redo,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,table#createoredit,image#imageProps,spellcheck#checktext,generichtml#generichtml,misctools#specialchars,misctools#sourceedit,#styles,#paraformat,sunlife#fontAwesome,info#popover,sun#language]">
                                                             <popovers jcr:primaryType="nt:unstructured">
                                                                 <paraformat
                                                                     jcr:primaryType="nt:unstructured"
@@ -219,7 +247,7 @@
                                                             toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
                                                         <inline
                                                             jcr:primaryType="nt:unstructured"
-                                                            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,spellcheck#checktext,misctools#specialchars,misctools#sourceedit,#styles,#paraformat,table#table,sunlife#fontAwesome]">
+                                                            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,spellcheck#checktext,misctools#specialchars,misctools#sourceedit,#styles,#paraformat,table#table,sunlife#fontAwesome,info#popover,sun#language]">
                                                             <popovers jcr:primaryType="nt:unstructured">
                                                                 <justify
                                                                     jcr:primaryType="nt:unstructured"
