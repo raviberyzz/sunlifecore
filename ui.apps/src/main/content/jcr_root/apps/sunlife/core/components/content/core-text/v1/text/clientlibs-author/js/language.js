@@ -89,10 +89,10 @@
             }
             var saveData = function(ln) {
                 CUI.rte.Selection.selectBookmark(context, bookmark);
-               ln = ln != "" ? ' lang="'+ln+'"' : ln;
-              var selectedText = ln != "" ? window.getSelection().toString() : "";
-               var iHtml = '<span ' + ln +'>'+selectedText+'</span>';
-               ek.execCmd('InsertHTML', iHtml, context);
+                ln = ln != "" ? ` lang="${ln}"` : ln;
+                var selectedText = ln != "" ? window.getSelection().toString() : "";
+                var iHtml = `<span ${ln}>${selectedText}</span>`;
+                ek.execCmd('InsertHTML', iHtml, context);
             };
             var dialog, dm = ek.getDialogManager(),
                 $container = CUI.rte.UIUtils.getUIContainer($(context.root)),

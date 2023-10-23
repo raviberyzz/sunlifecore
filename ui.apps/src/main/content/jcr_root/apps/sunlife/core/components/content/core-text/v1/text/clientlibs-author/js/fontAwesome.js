@@ -16,12 +16,12 @@
     toolbar.splice(3, 0, GROUP + "#" + FEATURE);
     
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data){
-        var i,fontSizes='';
-        for(i=14;i<=36;i=i+2) {
-            if(i!=22 && i!=26 && i!=30 && i!=34) {
-                fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
-            }
-        }
+        // var i,fontSizes='';
+        // for(i=14;i<=36;i=i+2) {
+        //     if(i!=22 && i!=26 && i!=30 && i!=34) {
+        //         fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
+        //     }
+        // }
         return `<div class="rte-dialog-columnContainer">   
             	    <div class="rte-dialog-column">
                         <label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">
@@ -41,13 +41,7 @@
                             <coral-select-item value="fad">
                                 Duotone</coral-select-item>                 
                             <coral-select-item value="fak">
-                                Brand</coral-select-item>
-                        </coral-select>
-                    </div>
-                    <div class=" rte-dialog-column">
-                        <label id="label-vertical-1" class="coral-Form-fieldlabel">Size :</label>
-                        <coral-select class="coral-Form-field" placeholder="Select Size" name="awesomeIconSize" labelledby="label-vertical-1">
-                            ${fontSizes}
+                                Brand/Custom</coral-select-item>
                         </coral-select>
                     </div>
                     <div class=" rte-dialog-column">
@@ -81,11 +75,11 @@
             this.$saveBtn.on('click',function() {
                 var fClass = dialog.find('[name="awesomeIcon"]').val();
 
-                var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
+                // var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
 
                 var iconClass = dialog.find('[name="awesomeIconType"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconType"] > coral-select-item:selected').val():'';
 
-                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} fa-${fClass} ${iconSize}` : fClass;
+                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} fa-${fClass}` : fClass;
 
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
@@ -133,7 +127,7 @@
             
             var saveData = function(fa) {
                 CUI.rte.Selection.selectBookmark(context, bookmark);
-                var iHtml = `<i class="${fa}"></i>`;
+                var iHtml = `<span class="${fa}"></span> `;
                
                 ek.execCmd('InsertHTML', iHtml, context);
             };
@@ -158,7 +152,7 @@
             
             dialog.$dialog.find('[name="awesomeIconType"] > coral-select-item:selected').removeAttr('selected');
             
-            dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
+            // dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
             
             dm.show(dialog);
         },
@@ -172,5 +166,3 @@
     });
     CUI.rte.plugins.PluginRegistry.register(GROUP, TouchUIFontAwesomePlugin);
 }(jQuery, window.CUI, jQuery(document)));
-
-// <i class="far fa-wifi"></i>

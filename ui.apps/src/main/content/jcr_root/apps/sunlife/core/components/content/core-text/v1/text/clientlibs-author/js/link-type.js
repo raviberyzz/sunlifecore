@@ -21,16 +21,16 @@
         const origAddLinkToDomFn = _linkCmd.addLinkToDom;
 
         _linkCmd.addLinkToDom = function(execDef){
-            execDef.value.css = execDef.value.attributes['data-class'];
+            execDef.value.css = [execDef.value.attributes['data-class-icon'] || '', execDef.value.attributes['data-class']].join(' ');
             
             origAddLinkToDomFn.call(this, execDef);
 
             const context = execDef.editContext,
             path = execDef.value.url;
 
-            if(path.endsWith(".pdf")){
-                addIconHTML(context, getPDFIconHTML());
-            } 
+            // if(path.endsWith(".pdf")){
+            //     addIconHTML(context, getPDFIconHTML());
+            // } 
            
         }
 
