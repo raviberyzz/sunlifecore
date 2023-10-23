@@ -52,26 +52,6 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
-                                                            <heading-1
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h1"
-                                                                text="Heading 1"/>
-                                                            <heading-2
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h2"
-                                                                text="Heading 2"/>
-                                                            <heading-3
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h3"
-                                                                text="Heading 3"/>
-                                                            <heading-4
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h4"
-                                                                text="Heading 4"/>
-                                                            <heading-5
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h5"
-                                                                text="Heading 5"/>
                                                             <body-medium
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="body-medium"
@@ -112,7 +92,26 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="sr-only"
                                                                 text="Screen Reader Only Text"/>
-                                                            
+                                                            <heading-1
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="h1"
+                                                                text="Heading 1"/>
+                                                            <heading-2
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="h2"
+                                                                text="Heading 2"/>
+                                                            <heading-3
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="h3"
+                                                                text="Heading 3"/>
+                                                            <heading-4
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="h4"
+                                                                text="Heading 4"/>
+                                                            <heading-5
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="h5"
+                                                                text="Heading 5"/>
                                                         </styles>
                                                     </styles>
                                                     <format
