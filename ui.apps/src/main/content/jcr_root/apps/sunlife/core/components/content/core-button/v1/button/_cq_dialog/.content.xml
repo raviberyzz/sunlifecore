@@ -2,7 +2,9 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Button"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_button_v1"
+    trackingFeature="core-components:button:v1">
     <content
         granite:class="cmp-button__editor"
         jcr:primaryType="nt:unstructured"
@@ -19,9 +21,14 @@
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
-                            <columns jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <column jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <buttonType
                                                 jcr:primaryType="nt:unstructured"
@@ -44,21 +51,21 @@
                                                         value="btn-tertiary"/>
                                                 </items>
                                             </buttonType>
-                                            <icon jcr:primaryType="nt:unstructured"/>
                                             <iconPosition
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="Check if the icon needs to be placed after the button label"
                                                 name="./iconPosition"
-                                                text="Icon Position"
+                                                text="Trailing Icon Position"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
-                                            <id
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:hideResource="{Boolean}true"/>
                                             <link
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:hideResource="{Boolean}true"/>
+                                                sling:hideResource="{Boolean}true"
+                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                fieldDescription="Link to a content page, external URL or page anchor."
+                                                fieldLabel="Link"
+                                                name="./link"/>
                                         </items>
                                     </column>
                                 </items>
@@ -67,8 +74,32 @@
                     </properties>
                     <accessibility
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/apps/sunlife/core/components/common/editor/dialog/accessibility"/>
+                        jcr:title="Accessibility"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <accessibilityLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Value of an aria-label attribute for the button. Useful if the visual button text is not very descriptive."
+                                                fieldLabel="Label"
+                                                name="./accessibilityLabel"
+                                                value=""/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </accessibility>
                     <analytics
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
