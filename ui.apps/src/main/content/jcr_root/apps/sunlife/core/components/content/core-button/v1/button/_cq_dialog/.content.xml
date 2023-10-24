@@ -66,6 +66,14 @@
                                                 fieldDescription="Link to a content page, external URL or page anchor."
                                                 fieldLabel="Link"
                                                 name="./link"/>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="{Boolean}true"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"
+                                                validation="html-unique-id-validator"/>
                                         </items>
                                     </column>
                                 </items>
