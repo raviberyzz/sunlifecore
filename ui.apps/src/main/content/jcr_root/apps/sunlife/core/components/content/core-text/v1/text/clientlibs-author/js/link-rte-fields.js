@@ -10,6 +10,7 @@
 		DATA_TOGGLE_FIELD = "data-toggle",
         DATA_DEEPLINK_FIELD = "data-deeplink",
         DATA_CLASS_FIELD = "data-class",
+        DATA_CLASS_ICN_FIELD = "data-class-icon",
         RTE_LINK_DIALOG = "rtelinkdialog";
     if(CUI.rte.ui.cui.CuiDialogHelper.eaemExtended){
         return;
@@ -37,13 +38,15 @@
 			var dataToggleField = this.getFieldByType(DATA_TOGGLE_FIELD);
             var dataDeepLinkField = this.getFieldByType(DATA_DEEPLINK_FIELD);
             var dataClassField = this.getFieldByType(DATA_CLASS_FIELD);
+            var dataClassIcnField = this.getFieldByType(DATA_CLASS_ICN_FIELD);
 
             var ariaLabelVal = ariaLabelField.val();
 			var dataTitleVal = dataTitleField.val();
 			var dataTargetVal = dataTargetField.val();
 			var dataToggleVal = dataToggleField.val();
             var dataDeepLinkVal = dataDeepLinkField.val();
-            var dataClassVal = dataClassField.val();
+            var dataClassVal = dataClassField[0].selectedItem ? (dataClassField[0].selectedItem.value ? dataClassField[0].selectedItem.value :'sl-link') : 'sl-link';
+            var dataClassIcnVal = dataClassIcnField[0].selectedItem ? (dataClassIcnField[0].selectedItem.value ? dataClassIcnField[0].selectedItem.value : '') : '';
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
 			this.objToEdit.attributes["data-title"] = dataTitleVal;
@@ -51,7 +54,7 @@
 			this.objToEdit.attributes["data-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
-			
+            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal;
         },
         
         dlgFromModel: function() {
@@ -62,7 +65,8 @@
 			var dataTargetValue = this.objToEdit.attributes['data-target'];
 			var dataToggleValue = this.objToEdit.attributes['data-toggle'];
             var dataDeepLinkValue = this.objToEdit.attributes['data-deeplink'];
-            var classValue = this.objToEdit.attributes['class'];
+            var classValue = this.objToEdit.attributes['data-class'];
+            var classIcnValue = this.objToEdit.attributes['data-class-icon'];
 
             var ariaSelect = this.$rteDialog.find("[data-type='aria-label']")[0];
 			var dataSelect = this.$rteDialog.find("[data-type='data-title']")[0];
@@ -70,6 +74,7 @@
 			var dataToggleSelect = this.$rteDialog.find("[data-type='data-toggle']")[0];
             var dataDeepLinkSelect = this.$rteDialog.find("[data-type='data-deeplink']")[0];
             var classSelect = this.$rteDialog.find("[data-type='data-class']")[0];
+            var classIcnSelect = this.$rteDialog.find("[data-type='data-class-icon']")[0];
 			
 			ariaSelect.value=ariaValue?ariaValue:'';
 			dataSelect.value=dataValue?dataValue:'';
@@ -77,6 +82,7 @@
 			dataToggleSelect.value=dataToggleValue?dataToggleValue:'';
 			dataDeepLinkSelect.value=dataDeepLinkValue?dataDeepLinkValue:'';
             classSelect.value=classValue?classValue:'';
+            classIcnSelect.value=classIcnValue?classIcnValue:'';
         }
     });
 
@@ -104,33 +110,67 @@
     });
 
     function getDataHtml(){
-        var html =  "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='aria-label' placeholder='aria label' aria-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''></label> </div></div>"+
-					"<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''></label> </div></div>"+
-                    "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-deeplink' placeholder='deep link name' deeplink-invalid='false' value=''></label> </div></div>"+
-                    "<div class='rte-dialog-columnContainer'>"+
-            		"<div class='rte-dialog-column'>"+
-                    "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-class' placeholder='class name' data-invalid='false' value='sl-link'></label></div></div>";
+        var html =  `
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <coral-select name="classtype" data-type='data-class' placeholder="Choose Link Type">
+                        <coral-select-item value="sl-link sl-link-sm"> 
+                        Link Small
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-md">
+                        Link Medium
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-lg">
+                        Link Large
+                        </coral-select-item>
+                    </coral-select>
+                </div>
+            </div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <coral-select name="classtypeicon" data-type='data-class-icon' placeholder="Choose Link Icon">
+                        <coral-select-item value="sl-link-pdf">
+                        Link PDF
+                        </coral-select-item>
+                        <coral-select-item value="sl-link-external">
+                        Link External
+                        </coral-select-item>
+                        <coral-select-item value="sl-link-internal">
+                        Link Internal
+                        </coral-select-item>
+                    </coral-select>
+                </div>
+            </div>
+            <div class='rte-dialog-columnContainer'>
+            <div class='rte-dialog-column'>
+                <label> 
+                    <input is='coral-textfield' class='coral3-Textfield' data-type='aria-label' placeholder='aria label' aria-invalid='false' value=''>
+                </label></div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''>
+                    </label> </div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''>
+                    </label> </div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''>
+                    </label></div></div>
+            <div class='rte-dialog-columnContainer'>
+                <div class='rte-dialog-column'>
+                    <label> 
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-deeplink' placeholder='deep link name' deeplink-invalid='false' value=''>
+                    </label> </div></div> 
+            `;
 
       	return html;
     }
 
     CUI.rte.ui.cui.CuiDialogHelper.eaemExtended = true;
 })(jQuery);
+

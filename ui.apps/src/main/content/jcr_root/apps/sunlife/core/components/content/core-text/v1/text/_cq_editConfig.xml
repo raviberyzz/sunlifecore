@@ -54,22 +54,6 @@
                             jcr:primaryType="nt:unstructured"
                             description="Heading 5"
                             tag="h5"/>
-                        <default_h6
-                            jcr:primaryType="nt:unstructured"
-                            description="Heading 6"
-                            tag="h6"/>
-                        <default_blockquote
-                            jcr:primaryType="nt:unstructured"
-                            description="Quote"
-                            tag="blockquote"/>
-                        <default_hr
-                            jcr:primaryType="nt:unstructured"
-                            description="Horizontal Rule (visual line break)"
-                            tag="hr"/>
-                        <default_pre
-                            jcr:primaryType="nt:unstructured"
-                            description="Preformatted"
-                            tag="pre"/>
                     </formats>
                 </paraformat>
                 <misctools jcr:primaryType="nt:unstructured">

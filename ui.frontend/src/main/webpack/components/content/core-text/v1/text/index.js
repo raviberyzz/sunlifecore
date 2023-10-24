@@ -1,14 +1,20 @@
+const CONST = {
+	SELECTOR: {
+		externalLink: '.cmp-text .sl-link-external',
+		internalLink: '.cmp-text .sl-link-internal',
+		pdfLink: '.cmp-text .sl-link-pdf'
+	}
+}
+
 const TextComp = {
 	init: function () {
 		TextComp.onDOMready();
-		TextComp.eventHandlers();
 	},
 	onDOMready: function () {
-		console.log('TextComp onDOMReady');
-	},
-	eventHandlers: function () {
-		console.log('TextComp eventHandlers');
-	},
+		$(CONST.SELECTOR.externalLink).append('<i class="far fa-external-link"></i>');
+		$(CONST.SELECTOR.internalLink).append('<i class="far fa-arrow-circle-right"></i>');
+		$(CONST.SELECTOR.pdfLink).append('<i class="far fa-file-pdf"></i>');
+	}
 };
 
 $(function () {

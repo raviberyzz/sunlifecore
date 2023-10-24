@@ -39,4 +39,24 @@
         }
     }
 
+    .sl-link {
+        .fa-external-link,
+        .fa-arrow-circle-right,
+        .fa-file-pdf {
+            margin-left: 4px;
+            height: 17px;
+            width: 17px;
+        }
+
+        &.sl-link-sm {
+            .fa-external-link,
+            .fa-arrow-circle-right,
+            .fa-file-pdf {
+                margin-left: 3px;
+                height: 15px;
+                width: 15px;
+            } 
+        }
+
+    }
 }
