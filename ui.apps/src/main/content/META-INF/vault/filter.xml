@@ -2,11 +2,11 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/sunlife/core" />
     <filter root="/apps/foundation" mode="merge"/>
-    <filter root="/apps/cq" mode="merge"/>
+    <filter root="/apps/cq" mode="update"/>
     <filter root="/apps/sunlife" mode="merge"/>
     <filter root="/apps/sling/servlet" mode="merge" />
     <filter root="/apps/foundation/components/form" mode="merge"/>
-    <filter root="/apps/cq/xssprotection" mode="merge"/>
+    <filter root="/apps/cq/xssprotection" mode="update"/>
     <filter root="/apps/cq/personalization" mode="merge"/>
     <filter root="/apps/cq/gui/components/authoring/editors/clientlibs/core/js/edit/ToolbarActions" mode="merge"/>
     <filter root="/apps/sling/servlet/errorhandler" mode="merge" />
