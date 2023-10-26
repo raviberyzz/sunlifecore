@@ -139,7 +139,7 @@ public class DrugListServiceImplTest {
         subject.activate(config);
     }
 
-    //@Test
+    @Test
     public void testWriteJsonAssetToDamChess() throws Exception {
 
         Resource outResource = mock(Resource.class);
