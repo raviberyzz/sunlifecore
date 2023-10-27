@@ -158,7 +158,15 @@ Bundle-SymbolicName: sunlife.core
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.models.api</artifactId>
         </dependency>
-
+		<!-- Groovy dependencies -->
+		<dependency>
+			<groupId>com.icfolson.aem.groovy.console</groupId>
+			<artifactId>aem-groovy-console</artifactId>			
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>			
+		</dependency>	
 
         <!-- Testing -->
         <dependency>
