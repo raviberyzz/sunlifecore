@@ -114,14 +114,14 @@
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
                     <coral-select name="classtype" data-type='data-class' placeholder="Choose Link Type">
-                        <coral-select-item value="sl-link sl-link-sm"> 
+                        <coral-select-item value="sl-link sl-link-xs"> 
+                        Link XS
+                        </coral-select-item>
+                        <coral-select-item value="sl-link sl-link-sm">
                         Link Small
                         </coral-select-item>
                         <coral-select-item value="sl-link sl-link-md">
                         Link Medium
-                        </coral-select-item>
-                        <coral-select-item value="sl-link sl-link-lg">
-                        Link Large
                         </coral-select-item>
                     </coral-select>
                 </div>
