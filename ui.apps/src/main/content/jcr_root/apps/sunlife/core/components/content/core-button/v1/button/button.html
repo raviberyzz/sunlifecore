@@ -1,13 +1,24 @@
-<sly data-sly-use.buttonObj="ca.sunlife.web.cms.core.models.v1.ButtonModel" 
-	 data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html" 
-     data-sly-use.template="core/wcm/components/commons/v1/templates.html">
-    <sly data-sly-test.isAuthored="${buttonObj.text}">
-        <button  data-sly-element="${buttonObj.link ? 'a' : 'button'}"
-        href="${buttonObj.link}" data-title="${buttonObj.dataTitle}" type="button" class="${buttonObj.spacing} sl-btn btn ${buttonObj.buttonType}" aria-label="${buttonObj.accessibilityLabel}">
-            <sly data-sly-call="${iconTemplate.view @ buttonObj=buttonObj}" />
-        </button>
-    </sly>
-    <sly data-sly-test="${!isAuthored}">
-        <sly data-sly-call="${template.placeholder @ isEmpty=!text, classAppend='cmp-button'}"></sly>
-    </sly>
+<sly
+  data-sly-use.buttonObj="ca.sunlife.web.cms.core.models.v1.ButtonModel"
+  data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html"
+  data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+>
+  <sly data-sly-test.isAuthored="${buttonObj.text}">
+    <button
+      data-sly-element="${buttonObj.link ? 'a' : 'button'}"
+      type="${buttonObj.link ? '' : 'button'}"
+      href="${buttonObj.link}" 
+      target="${buttonObj.target}"
+      data-title="${buttonObj.dataTitle}"
+      class="${buttonObj.spacing} sl-btn btn ${buttonObj.buttonType}"
+      aria-label="${buttonObj.accessibilityLabel}"
+    >
+      <sly data-sly-call="${iconTemplate.view @ buttonObj=buttonObj}" />
+    </button>
+  </sly>
+  <sly data-sly-test="${!isAuthored}">
+    <sly
+      data-sly-call="${template.placeholder @ isEmpty=!text, classAppend='cmp-button'}"
+    ></sly>
+  </sly>
 </sly>

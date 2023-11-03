@@ -1,0 +1,12 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+ 
+ 
+@include media-breakpoint-up(md) {
+ 
+    .sl-btn.btn {
+        max-width: 275px;
+        height: auto;
+    }
+   
+}

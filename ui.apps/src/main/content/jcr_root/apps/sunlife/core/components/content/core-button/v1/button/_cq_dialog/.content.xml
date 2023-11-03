@@ -53,66 +53,28 @@
                                             </buttonType>
                                             <link
                                                 jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="icon"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
                                                 fieldDescription="Link to a content page, external URL or page anchor."
                                                 fieldLabel="Link"
                                                 name="./link"/>
-                                            <linkSize
+                                            <target
                                                 jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="icon"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Link Size"
-                                                name="./linkSize">
+                                                fieldLabel="Target"
+                                                name="./target">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <link-small
+                                                    <sametab
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Link Small"
-                                                        value="sl-link sl-link-sm"/>
-                                                    <link-medium
+                                                        text="Same Tab"
+                                                        value="_self"/>
+                                                    <newtab
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Link Medium"
-                                                        value="sl-link sl-link-md"/>
-                                                    <link-large
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Link Large"
-                                                        value="sl-link sl-link-lg"/>
+                                                        text="New Tab"
+                                                        value="_blank"/>
                                                 </items>
-                                            </linkSize>
-                                            <linkType
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                class="cq-dialog-dropdown-showhide"
-                                                cq-dialog-dropdown-showhide-target=".test-options-showhide-target"
-                                                fieldLabel="Link Type"
-                                                name="./linkType">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <internal
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Link Internal"
-                                                        value="sl-link-internal"/>
-                                                    <external
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Link External"
-                                                        value="sl-link-external"/>
-                                                    <pdf-link
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Link PDF"
-                                                        value="sl-link-pdf"/>
-                                                </items>
-                                            </linkType>
-                                            <internal
-                                             jcr:primaryType="nt:unstructured"
-                                             sling:resourceType="granite/ui/components/foundation/container"
-                                             class="hide test-options-showhide-target"
-                                             showhidetargetvalue="internal">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <checkbox
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    name="./internal"
-                                                    text="Add Icon"
-                                                    uncheckedValue="false"
-                                                    required="{Boolean}true"/>
-                                                </items>
-                                            </internal>
+                                            </target>
                                             <iconPosition
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
