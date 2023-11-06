@@ -29,8 +29,8 @@ public class ButtonModelTest {
         button.getText();
         button.getIcon();
         button.isIconPosition();
-        button.getLink();
-        button.getTarget();
+        button.getLinkUrl();
+        button.getLinkTarget();
         button.getButtonType();
         button.getDataTitle();
         button.getAccessibilityLabel();
