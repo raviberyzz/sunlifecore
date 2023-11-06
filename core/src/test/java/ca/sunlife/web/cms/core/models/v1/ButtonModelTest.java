@@ -29,7 +29,7 @@ public class ButtonModelTest {
         button.getText();
         button.getIcon();
         button.isIconPosition();
-        button.getLinkUrl();
+        button.getLinkURL();
         button.getLinkTarget();
         button.getButtonType();
         button.getDataTitle();

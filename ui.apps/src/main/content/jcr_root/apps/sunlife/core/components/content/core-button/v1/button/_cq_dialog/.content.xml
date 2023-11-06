@@ -51,7 +51,7 @@
                                                         value="btn-tertiary"/>
                                                 </items>
                                             </buttonType>
-                                            <linkUrl
+                                            <linkURL
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="icon"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"

@@ -36,7 +36,7 @@ public class ButtonModel implements Button {
     private boolean iconPosition;
 
     @ValueMapValue
-    private String linkUrl;
+    private String linkURL;
 
     @ValueMapValue
     private String linkTarget;
