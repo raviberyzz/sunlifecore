@@ -1,9 +1,7 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import com.adobe.cq.wcm.core.components.models.Button;
 import com.day.cq.commons.jcr.JcrConstants;
-import lombok.Getter;
-import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -16,41 +14,39 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  *
  * @author Sunlife
  */
-@Getter
-@Model(adaptables = {
-        SlingHttpServletRequest.class},
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
-        resourceType = ButtonModel.RESOURCE_TYPE)
-public class ButtonModel implements Button {
 
-    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-button/v1/button";
+ @Model(adaptables = {
+    Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ButtonModel.RESOURCE_TYPE)
+public interface ButtonModel {
+
+    String RESOURCE_TYPE = "sunlife/core/components/content/core-button";
 
     @ValueMapValue(name = JcrConstants.JCR_TITLE)
-    private String text;
+    String getText();
 
     @ValueMapValue
-    private String icon;
+    String getIcon();
 
     @ValueMapValue
     @Default(booleanValues = {false})
-    private boolean iconPosition;
+    boolean isIconPosition();
 
     @ValueMapValue
-    private String linkURL;
+    String getLinkURL();
 
     @ValueMapValue
-    private String linkTarget;
+    String getLinkTarget();
 
     @ValueMapValue
-    private String buttonType;
+    String getButtonType();
 
     @ValueMapValue
-    private String dataTitle;
+    String getDataTitle();
 
     @ValueMapValue
-    private String accessibilityLabel;
+    String getAccessibilityLabel();
 
     @ValueMapValue
-    private String spacing;
+    String getSpacing();
 
 }
