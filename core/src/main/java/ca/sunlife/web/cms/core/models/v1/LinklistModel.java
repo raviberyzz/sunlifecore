@@ -4,8 +4,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -20,13 +20,13 @@ public interface LinklistModel {
 
     String RESOURCE_TYPE = "sunlife/core/components/content/core-link-list";
 
-    @Inject
+    @ValueMapValue
     String getTitle();
 
-    @Inject
+    @ValueMapValue
     Boolean getIsEditorial();
 
     @ChildResource
-    List<Links> getLinks();
+    List<Link> getLinks();
 
 }

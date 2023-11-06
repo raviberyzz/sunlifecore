@@ -3,11 +3,10 @@ package ca.sunlife.web.cms.core.models.v1;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-
-import javax.inject.Inject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 /**
- * The @Links interface represents the model for the List of Links which are used in ListList component.
+ * The @Link interface represents the model for the List of Links which are used in ListList component.
  *
  * @author Sunlife
  */
@@ -15,27 +14,27 @@ import javax.inject.Inject;
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
-public interface Links {
+public interface Link {
 
-    @Inject
+    @ValueMapValue
     String getLinkTitle();
 
-    @Inject
+    @ValueMapValue
     String getLinkSize();
 
-    @Inject
+    @ValueMapValue
     String getLinkType();
 
-    @Inject
+    @ValueMapValue
     String getLinkURL();
 
-    @Inject
+    @ValueMapValue
     String getLangCode();
 
-    @Inject
-    String getTarget();
+    @ValueMapValue
+    String getLinkTarget();
 
-    @Inject
+    @ValueMapValue
     String getDataTitle();
 
 }

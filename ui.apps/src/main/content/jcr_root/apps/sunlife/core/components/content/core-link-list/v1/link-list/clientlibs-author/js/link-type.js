@@ -2,19 +2,18 @@
     "use strict"
 
  $document.on('dialog-ready', function() {
-
-       checkEditorialView();
-
+     /* Calling method to hide/show linkType and linkSize dropdown on dialog load */
+		checkEditorialView();
+     // Click event for Editorial Checkbox
         $('.cmp-linklist--editor coral-checkbox[name="./isEditorial"]').click(function() {
             checkEditorialView();
         });
-
+     // Click function for Add button in multifield
         $('.cmp-linklist--editor button[coral-multifield-add]').click(function() {
             setTimeout(function() {
 				checkEditorialView();
             }, 500);
         });
-
     });
  
 
