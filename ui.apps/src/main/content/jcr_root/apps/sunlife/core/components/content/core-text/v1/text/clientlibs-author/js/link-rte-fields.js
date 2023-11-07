@@ -101,8 +101,6 @@
             dataTargetSelect.value = dataTargetValue ? dataTargetValue : '';
             dataToggleSelect.value = dataToggleValue ? dataToggleValue : '';
             dataDeepLinkSelect.value = dataDeepLinkValue ? dataDeepLinkValue : '';
-            //classSelect.value=classValue?classValue:'';
-            //classIcnSelect.value=classIcnValue?classIcnValue:'';
         }
     });
 
