@@ -5,9 +5,9 @@
 >
   <sly data-sly-test.isAuthored="${buttonObj.text}">
     <button
-      data-sly-element="${buttonObj.link ? 'a' : 'button'}"
-      type="${buttonObj.link ? '' : 'button'}"
-      href="${buttonObj.link}" 
+      data-sly-element="${buttonObj.linkURL ? 'a' : 'button'}"
+      type="${buttonObj.linkURL ? '' : 'button'}"
+      href="${buttonObj.linkURL}" 
       target="${buttonObj.target}"
       data-title="${buttonObj.dataTitle}"
       class="${buttonObj.spacing} sl-btn btn ${buttonObj.buttonType}"
