@@ -51,15 +51,39 @@
                                                         value="btn-tertiary"/>
                                                 </items>
                                             </buttonType>
+                                            <linkURL
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="icon"
+                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page.html'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
+                                                fieldLabel="Link URL"
+                                                name="./linkURL"/>
+                                            <linkTarget
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="icon"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Link Target"
+                                                name="./linkTarget">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <sameTab
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Same Tab"
+                                                        value="_self"/>
+                                                    <newTab
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="New Tab"
+                                                        value="_blank"/>
+                                                </items>
+                                            </linkTarget>
                                             <iconPosition
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check if the icon needs to be placed after the button label"
+                                                fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
                                                 name="./iconPosition"
                                                 text="Trailing Icon Position"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
-                                            <link
+                                          <link
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
