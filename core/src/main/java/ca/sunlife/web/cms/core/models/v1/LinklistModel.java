@@ -27,6 +27,6 @@ public interface LinklistModel {
     Boolean getIsEditorial();
 
     @ChildResource
-    List<Link> getLinks();
+    List<LinkModel> getLinks();
 
 }

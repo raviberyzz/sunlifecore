@@ -6,7 +6,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 /**
- * The @Link interface represents the model for the List of Links which are used in ListList component.
+ * The @LinkModel interface represents the model for the List of Links which are used in ListList component.
  *
  * @author Sunlife
  */
@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
-public interface Link {
+public interface LinkModel {
 
     @ValueMapValue
     String getLinkTitle();
