@@ -41,25 +41,50 @@
 
 .sl-link {
   .fa-external-link,
-  .fa-arrow-circle-right,
-  .fa-file-pdf {
+  .fa-arrow-circle-right {
     margin-left: 4px;
     height: 17px;
     width: 17px;
   }
+  .fa-file-pdf {
+    margin-right: 4px;
+    height: 17px;
+    width: 17px;
+	float: left;
+  }
 
   &.sl-link-sm {
     .fa-external-link,
-    .fa-arrow-circle-right,
-    .fa-file-pdf {
-      margin-left: 3px;
+    .fa-arrow-circle-right {
+      margin-left: 4px;
       height: 15px;
       width: 15px;
     }
+	.fa-file-pdf {
+      margin-right: 4px;
+      height: 15px;
+      width: 15px;
+	  float: left;
+    }
   }
-
+  
   &.sl-link-xs {
     font-size: 0.75rem;
     line-height: 16px;
+  }
+  
+  &.sl-link-xs {
+   .fa-external-link,
+    .fa-arrow-circle-right {
+      margin-left: 4px;
+      height: 15px;
+      width: 15px;
+    }
+	.fa-file-pdf {
+      margin-right: 4px;
+      height: 15px;
+      width: 15px;
+	  float: left;
+    }
   }
 }
