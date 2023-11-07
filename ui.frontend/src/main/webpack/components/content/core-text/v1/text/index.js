@@ -13,7 +13,7 @@ const TextComp = {
 	onDOMready: function () {
 		$(CONST.SELECTOR.externalLink).append('<i class="far fa-external-link"></i>');
 		$(CONST.SELECTOR.internalLink).append('<i class="far fa-arrow-circle-right"></i>');
-		$(CONST.SELECTOR.pdfLink).append('<i class="far fa-file-pdf"></i>');
+		$(CONST.SELECTOR.pdfLink).prepend('<i class="far fa-file-pdf"></i>');
 	}
 };
 

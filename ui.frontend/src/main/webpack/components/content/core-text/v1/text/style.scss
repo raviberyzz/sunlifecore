@@ -41,30 +41,29 @@
 
 .sl-link {
   .fa-external-link,
-  .fa-arrow-circle-right {
+  .fa-arrow-circle-right,
+  .fa-file-pdf  {
     margin-left: 4px;
-    height: 17px;
-    width: 17px;
-  }
-  .fa-file-pdf {
-    margin-right: 4px;
-    height: 17px;
-    width: 17px;
-	float: left;
+    height: 16px;
+    width: 16px;
+	}
+	.fa-file-pdf {
+	margin-right: 4px;
+	margin-left: 0px;
+
   }
 
   &.sl-link-sm {
     .fa-external-link,
-    .fa-arrow-circle-right {
+    .fa-arrow-circle-right,
+	.fa-file-pdf {
       margin-left: 4px;
-      height: 15px;
-      width: 15px;
+      height: 14px;
+      width: 14px;
     }
 	.fa-file-pdf {
-      margin-right: 4px;
-      height: 15px;
-      width: 15px;
-	  float: left;
+     margin-right: 4px;
+	 margin-left: 0px;
     }
   }
   
@@ -74,17 +73,16 @@
   }
   
   &.sl-link-xs {
-   .fa-external-link,
-    .fa-arrow-circle-right {
+    .fa-external-link,
+    .fa-arrow-circle-right, 
+	.fa-file-pdf {
       margin-left: 4px;
-      height: 15px;
-      width: 15px;
+      height: 12px;
+      width: 12px;
     }
 	.fa-file-pdf {
       margin-right: 4px;
-      height: 15px;
-      width: 15px;
-	  float: left;
+	  margin-left: 0px;
     }
   }
 }
