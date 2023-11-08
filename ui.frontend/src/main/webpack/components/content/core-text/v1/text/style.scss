@@ -18,30 +18,69 @@
         vertical-align: middle;
         background-color: #fff; // $table-bg
         border-bottom-width: 0.125rem; // $table-border-width
+        border-color: var(--bs-border-color);
 
-                td,th {
-            font-weight: 400;
-            line-height: 21px;
-            font-size: 0.875rem;
-            padding: 1rem; // $table-cell-padding-x $table-cell-padding-y
-        }
+            td,th {
+                font-weight: 400;
+                line-height: 21px;
+                font-size: 0.875rem;
+                padding: 1rem; // $table-cell-padding-x $table-cell-padding-y
+            }
 
-        &:first-child td {
-            color: var(--grey-900);
-            font-size: 1rem;
-            font-family: "Sun Life New Text Regular", "Helvetica Neue", "Calibri", sans-serif;
-            font-weight: 400;
-            line-height: 1.5rem;
-            background-color: var(--brand-secondary-100);
-            border-style: hidden;
-        }
+            &:first-child td, th {
+                color: var(--grey-900);
+                font-size: 1rem;
+                font-family: "Sun Life New Text Regular", "Helvetica Neue", "Calibri", sans-serif;
+                font-weight: 400;
+                line-height: 1.5rem;
+                background-color: var(--brand-secondary-100);
+                border-style: hidden;
+                border-bottom: 2px solid var(--brand-secondary-100);
+            }
         }
     }
 
+    // Responsive image in text component
     img {
         max-width: 100%;
         height: auto;
-    }   
+    }
+    
+    /*
+    * Heading and Padding coexistance rules as per Helio's DS 
+    * https://www.figma.com/file/M1mZZos42Mmiuo2KhlGFJ2/1.0-Helios-Web-Foundations?type=design&node-id=5323-9222&mode=design&t=igK17wNBQb2Y2uAP-4
+    * https://intranet.sunnet.ca.sunlife:444/helios/docs/design/padding#padding-rules
+    */
+    // heading + heading
+    h1 + h2, p:has(.h1) + p:has(.h2), h1 + p:has(.h2), p:has(.h1) + h2 {
+        margin-top: var(--L);
+    }
+
+    h2 + h3, h3 + h4, h4 + h5, p:has(.h2,.h3,.h4) + p:has(.h3, .h4, .h5) {
+        margin-top: var(--M);
+    }
+    
+    // heading + para
+    h1 + p, p:has(.h1) + p {
+        margin-top: var(--M);
+    }
+
+    h2 + p, h3 + p, h4 + p, h5 + p, p:has(.h2, .h3, .h4, .h5) + p {
+        margin-top: var(--S); 
+    }
+
+    // para + heading
+    p + h2, p + p:has(.h2) {
+        margin-top: var(--2XL);
+    }
+
+    p + h3,p + p:has(.h3) {
+        margin-top: var(--XL);
+    }
+
+    p + h4, p + h5, p + p:has(.h4,.h5) {
+        margin-top: var(--L);
+    }
 }
 
 .sl-link {
