@@ -39,6 +39,13 @@
         <sly data-sly-call="${clientLib.js @ categories='sunlife.core.contexthub'}"></sly>
 		<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
 	</sly>
+    
+    <!-- Include Author specific clientlib -->
+    <sly data-sly-test="${wcmmode.edit}" 
+        data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+        data-sly-call="${clientlib.all @ categories=['sunlife.core-author']}"/>
+
+
 	<!-- Include Extra Clientlibs -->
 	<sly data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
         <sly data-sly-call="${clientLib.css @ categories=extraClientlibs}"></sly>

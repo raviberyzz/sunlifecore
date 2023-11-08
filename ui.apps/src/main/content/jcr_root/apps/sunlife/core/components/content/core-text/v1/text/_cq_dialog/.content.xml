@@ -90,7 +90,7 @@
                                                                 text="Navigation"/>
                                                             <text-accessibility
                                                                 jcr:primaryType="nt:unstructured"
-                                                                cssName="sr-only"
+                                                                cssName="visually-hidden"
                                                                 text="Screen Reader Only Text"/>
                                                             <heading-1
                                                                 jcr:primaryType="nt:unstructured"
