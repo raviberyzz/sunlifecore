@@ -59,11 +59,6 @@
      return fragmentPath;
    }
  
-  
-   public void setFragmentPath(final String fragmentPath) {
-     this.fragmentPath = fragmentPath;
-   }
- 
    /**
     * Gets the modified fragment path.
     *
@@ -72,11 +67,7 @@
    public String getModifiedFragmentPath() {
      return modifiedFragmentPath;
    }
- 
 
-   public void setModifiedFragmentPath(final String modifiedFragmentPath) {
-     this.modifiedFragmentPath = modifiedFragmentPath;
-   }
  
    /**
     * Inits the.
