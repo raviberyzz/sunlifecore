@@ -13,10 +13,10 @@
         CUI.rte.templates = {};
     }
 
-    var toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.inline.toolbar;
-    toolbar.splice(3, 0, GROUP + "#" + FEATURE);
+    //var toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.inline.toolbar;
+    //toolbar.splice(3, 0, GROUP + "#" + FEATURE);
 
-    toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.fullscreen.toolbar;
+    var toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.fullscreen.toolbar;
     toolbar.splice(3, 0, GROUP + "#" + FEATURE);
 
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data) {
