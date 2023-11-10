@@ -1,0 +1,15 @@
+<sly data-sly-use.fragmentText="ca.sunlife.web.cms.core.models.v1.ExperienceFragmentModel"></sly>
+<sly data-sly-use.data = "${'experiencefragment.js' @ path=fragmentText.modifiedFragmentPath}" data-sly-unwrap>
+    <sly data-sly-test="${!data.fragmentPath}">
+        <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
+             class="cq-dd-experiencefragment cq-placeholder "
+             data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
+        </div>
+    </sly>
+    <sly data-sly-test=${data.fragmentPath}
+         data-sly-resource="${@path=data.fragmentPath, selectors='content', wcmmode='disabled'}"></sly>
+</sly>
+
+<sly data-sly-template.icon="${@ icon}">
+  <span data-sly-test="${icon}" class="cmp-button__icon cmp-button__icon--${icon}" aria-hidden="true"></span>
+</sly>
