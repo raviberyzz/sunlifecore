@@ -32,7 +32,7 @@ const TextComp = {
 		});
 	},
 	initPopover: function(){
-		const closeBtnHtml = `<span class="popover-close-container"><button type="button" class="btn-close-popover btn-close"><span class="visually-hidden">closeAria</span><i role="presentation" class="fal fa-times"></i></button></span>`;
+		const closeBtnHtml = `<span class="popover-close-container"><button type="button" class="btn-close-popover btn-close"><span class="visually-hidden">close</span><i role="presentation" class="fal fa-times"></i></button></span>`;
 
 		var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
 
