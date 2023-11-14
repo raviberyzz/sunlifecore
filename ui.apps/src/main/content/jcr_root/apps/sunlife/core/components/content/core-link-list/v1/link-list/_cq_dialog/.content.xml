@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Linklist"
+    jcr:title="Link List"
     sling:resourceType="cq/gui/components/authoring/dialog"
     extraClientlibs="[sunlife.core-author.link-list]">
     <content
@@ -26,11 +26,24 @@
                         sling:resourceType="granite/ui/components/foundation/form/hidden"
                         name="./isEditorial@TypeHint"
                         value="Boolean"/>
-                    <title
+                    <heading
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Heading"
-                        name="./title"/>
+                        fieldLabel="Heading Text"
+                        fieldDescription="This text will appear as heading text on normal list of links."
+                        name="./heading"/>
+                    <label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="This text will appear as dropdown label text when editorial link-list will converted into list of links dropdown in mobile."
+                        fieldLabel="Link-list Dropdown Label"
+                        name="./label"/>
+                    <dropdownBtnLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Select Category Button Label"
+                        fieldDescription="This text will appear as button text when editorial link-list will converted into dropdown in mobile and below that selected category botton is visible."
+                        name="./dropdownBtnLabel"/>    
                     <links
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -58,13 +71,9 @@
                                             fieldLabel="Link Type "
                                             name="./linkType">
                                             <items jcr:primaryType="nt:unstructured">
-                                                <internaIWithoutIcon
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Internal Link without Icon"
-                                                    value="sl-link-internal-no-icon"/>
                                                 <internalLink
                                                     jcr:primaryType="nt:unstructured"
-                                                    text="Internal Link with Icon"
+                                                    text="Internal Link"
                                                     value="sl-link-internal"/>
                                                 <externalLink
                                                     jcr:primaryType="nt:unstructured"

@@ -1,0 +1,18 @@
+<!--/*  
+Template to render normal view of link-list.
+Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=27359-158386&mode=design&t=tcQ8V2aRzAyvacUe-4
+*/-->
+<template data-sly-template.details="${ @ listModel }">
+    <h5 data-sly-test="${listModel.heading}">${listModel.heading}</h5>
+    <ul class="link-list" data-sly-list.links="${listModel.links}">
+        <li class="link-list-item">
+            <sly data-sly-use.linkListParsing="${'linklist-parsing.js' @ path=links.linkURL}">
+                <a class="sl-link ${links.linkSize}" lang="${links.langCode}" target="${links.target}" data-title="${links.dataTitle}" href="${links.linkURL}">${links.linkTitle @ context='html'}
+                    <sly data-sly-test="${links.linkType == 'sl-link-external'}">
+                        <i class="far fa-external-link" aria-hidden="true" role="img" title="Visit External Page ${links.linkTitle @ context='html'}"></i>
+                    </sly>
+                </a>
+            </sly>
+        </li>
+    </ul>
+</template>

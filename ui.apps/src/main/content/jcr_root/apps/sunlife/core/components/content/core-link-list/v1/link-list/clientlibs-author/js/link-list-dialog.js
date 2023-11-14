@@ -8,12 +8,6 @@
         $('.cmp-linklist--editor coral-checkbox[name="./isEditorial"]').click(function() {
             checkEditorialView();
         });
-     // Click function for Add button in multifield
-        $('.cmp-linklist--editor button[coral-multifield-add]').click(function() {
-            setTimeout(function() {
-				checkEditorialView();
-            }, 500);
-        });
     });
  
 
@@ -30,6 +24,9 @@
                 $(this).val('');
                 $(this).parent().hide();
             });
+            $('.cmp-linklist--editor input[name="./label"]').parent().show();
+            $('.cmp-linklist--editor input[name="./dropdownBtnLabel"]').parent().show();
+
         } else {
              $('.cmp-linklist--editor input[name="./title"]').parent().show();
             $('.cmp-linklist--editor coral-select[name*="./linkSize"]').each(function() {
@@ -38,6 +35,10 @@
             $('.cmp-linklist--editor coral-select[name*="./linkType"]').each(function() {
                 $(this).parent().show();
             });
+            $('.cmp-linklist--editor input[name="./label"]').val('');
+            $('.cmp-linklist--editor input[name="./dropdownBtnLabel"]').val('');
+            $('.cmp-linklist--editor input[name="./label"]').parent().hide();
+            $('.cmp-linklist--editor input[name="./dropdownBtnLabel"]').parent().hide();
         }
     }
 

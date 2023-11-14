@@ -21,7 +21,13 @@ public interface LinklistModel {
     String RESOURCE_TYPE = "sunlife/core/components/content/core-link-list";
 
     @ValueMapValue
-    String getTitle();
+    String getHeading();
+
+    @ValueMapValue
+    String getLabel();
+
+    @ValueMapValue
+    String getDropdownBtnLabel();
 
     @ValueMapValue
     Boolean getIsEditorial();
