@@ -172,7 +172,7 @@
                 CUI.rte.Selection.selectBookmark(context, bookmark);
                 CUI.rte.Selection.restoreNativeSelection(context, this.savedRange);
 
-                var htmlToInsert = `&nbsp;<button type="button" class="coral3-Icon coral3-Icon--sizeS coral3-Icon--info popover-button" data-bs-toggle="popover" data-bs-title="${poHeading}" data-bs-content="${poContent}" data-bs-placement="auto" data-bs-custom-class="sl-popover"><i class="fal fa-info-circle"></i></button>&nbsp;`;
+                var htmlToInsert = `&nbsp;<button type="button" class="coral3-Icon coral3-Icon--sizeS coral3-Icon--info popover-button" data-bs-toggle="popover" data-bs-title="${poHeading}" data-bs-content="${poContent}" data-bs-placement="auto" data-bs-custom-class="sl-popover"><i class="fal fa-info-circle" role="presentation"></i></button>&nbsp;`;
 
 				        let range = CUI.rte.Selection.getLeadRange(context);
                 let tempDiv = context.doc.createElement("div");

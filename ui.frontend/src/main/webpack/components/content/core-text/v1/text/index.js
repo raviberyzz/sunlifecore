@@ -22,13 +22,28 @@ const TextComp = {
 
 		$(CONST.SELECTOR.pdfLink).prepend('<i class="far fa-file-pdf"></i>');
 		
-		$('.cmp-text .popover-button').html('<i class="fal fa-info-circle"></i>');
+		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle" role="presentation"></i>');
 
 		$(document).on("click", ".popover .btn-close-popover" , function(){
 			let popoverElem = $(this).closest(".popover");
 			let id = popoverElem.attr('id');
 			popoverElem.hide();
-			$('[aria-describedby='+id+']').click();
+			$('[aria-describedby='+id+']').click().focus();
+		});
+		$(document).on("keydown", '.popover .btn-close-popover', function(event){
+			if (event.key === 'Escape') {
+				event.preventDefault();
+				let popoverElem = $(this).closest(".popover");
+				let id = popoverElem.attr('id');
+				popoverElem.hide();
+				$('[aria-describedby='+id+']').click().focus();
+			}
+		});
+		$(document).on("keydown", '.popover-button' , function(event){
+			if (event.key == 'Escape') {
+				event.preventDefault();
+				$(this).click().focus();
+			}
 		});
 	},
 	initPopover: function(){
