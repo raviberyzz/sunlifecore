@@ -29,8 +29,21 @@
                     <title
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Heading"
+                        fieldLabel="Heading Text"
+                        fieldDescription="This text will appear as heading text on normal list of links."
                         name="./title"/>
+                    <label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="This text will appear as dropdown label text when editorial link-list will converted into list of links dropdown in mobile."
+                        fieldLabel="Link-list Dropdown Label"
+                        name="./label"/>
+                    <dropdownBtnLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Select Category Button Label"
+                        fieldDescription="This text will appear as button text when editorial link-list will converted into dropdown in mobile and below that selected category botton is visible."
+                        name="./dropdownBtnLabel"/>    
                     <links
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -58,10 +71,6 @@
                                             fieldLabel="Link Type "
                                             name="./linkType">
                                             <items jcr:primaryType="nt:unstructured">
-                                                <internaIWithoutIcon
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Internal Link without Icon"
-                                                    value="sl-link-internal-no-icon"/>
                                                 <internalLink
                                                     jcr:primaryType="nt:unstructured"
                                                     text="Internal Link with Icon"
@@ -139,6 +148,8 @@
                             </items>
                         </field>
                     </links>
+
+                    
                 </items>
             </column>
         </items>

@@ -1,2 +1,2 @@
 #base=js
-link-type.js
+link-list-dialog.js

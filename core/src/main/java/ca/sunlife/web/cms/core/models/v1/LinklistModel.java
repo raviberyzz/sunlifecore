@@ -24,6 +24,12 @@ public interface LinklistModel {
     String getTitle();
 
     @ValueMapValue
+    String getLabel();
+
+    @ValueMapValue
+    String getDropdownBtnLabel();
+
+    @ValueMapValue
     Boolean getIsEditorial();
 
     @ChildResource

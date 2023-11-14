@@ -1,0 +1,34 @@
+<!--/*  
+Template to render editorial view of link-list which has dropdown in mobile & tablet.
+Reference Figma - https://www.figma.com/file/56aGlOv0OtmNCkVH8seIya/AEM-Component-Mapping?type=design&node-id=53-4215&mode=design&t=H74EyF77kafDEEC9-4
+*/-->
+<template data-sly-template.details="${ @ listModel }">
+    <div class="sl-dropdown">
+        <div class="dropdown">
+            <div class="dropdown-input dropdown-toggle" 
+                role="combobox" 
+                data-bs-toggle="dropdown"
+                tabindex="0"
+                aria-controls="default-listbox" 
+                aria-expanded="false" 
+                aria-haspopup="listbox" 
+                aria-invalid="false" 
+                aria-labelledby="default-label">
+                    <label class="dropdown-input-label" for="default" id="default-label">
+                        ${listModel.label || 'Select Option'}</label>
+                    <div class="dropdown-input-selected"></div>
+                    <div class="icon-container">
+                        <i class="far fa-chevron-down" aria-hidden="true" role="img"></i>
+                    </div>
+            </div>
+            <ul class="dropdown-menu" data-sly-list.links="${listModel.links}">
+                <li class="dropdown-option">
+                    <sly data-sly-use.linkListParsing="${'linklist-parsing.js' @ path=links.linkURL}">
+                        <a class="dropdown-menu-link" lang="${links.langCode}" target="${links.target}" data-title="${links.dataTitle}" href="${links.linkURL}">${links.linkTitle @ context='html'}</a>
+                    </sly>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" target="_self" class="sl-btn  btn btn-primary mt-sl8 sl-dropdown-btn">${listModel.dropdownBtnLabel || 'Visit Selection'}</a>
+    </div>  
+</template>
