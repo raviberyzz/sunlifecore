@@ -35,4 +35,7 @@ public interface LinklistModel {
     @ChildResource
     List<LinkModel> getLinks();
 
+    @ValueMapValue
+    String getSpacing();
+
 }

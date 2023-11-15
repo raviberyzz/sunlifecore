@@ -131,30 +131,30 @@
         var html = `
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
-                    <coral-select name="classtype" data-type='data-class' placeholder="Choose Link Type">
+                    <coral-select name="classtype" data-type='data-class' placeholder="Choose Link Size">
                         <coral-select-item value="sl-link sl-link-xs"> 
-                        Link XS
+                            XS
                         </coral-select-item>
                         <coral-select-item value="sl-link sl-link-sm">
-                        Link Small
+                            Small
                         </coral-select-item>
                         <coral-select-item value="sl-link sl-link-md">
-                        Link Medium
+                            Medium
                         </coral-select-item>
                     </coral-select>
                 </div>
             </div>
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
-                    <coral-select name="classtypeicon" data-type='data-class-icon' placeholder="Choose Link Icon">
-                        <coral-select-item value="sl-link-pdf">
-                        Link PDF
+                    <coral-select name="classtypeicon" data-type='data-class-icon' placeholder="Choose Link Type">
+                        <coral-select-item value="sl-link-internal">
+                            Internal Link 
                         </coral-select-item>
                         <coral-select-item value="sl-link-external">
-                        Link External
+                            External Link 
                         </coral-select-item>
-                        <coral-select-item value="sl-link-internal">
-                        Link Internal
+                        <coral-select-item value="sl-link-pdf">
+                            PDF Link
                         </coral-select-item>
                     </coral-select>
                 </div>
