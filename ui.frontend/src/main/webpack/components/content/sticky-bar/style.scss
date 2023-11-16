@@ -1,0 +1,53 @@
+@import '../../../prerequisite/base/styles/core.scss';
+
+.sticky-bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $white-shade;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid #dcdedf;
+    padding: 0px 20px;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+#stickyBarLinks {
+    li {
+        display: inline-flex;
+        padding-right: 30px;
+        align-items: center;
+
+        a {
+            color: $dark-grey-shade;
+            font-weight: 400;
+        }
+
+        a.active {
+            color: $grey-900;
+            font-weight: 700;
+        }
+    }
+}
+
+.sticky-bar-button-wrapper {
+    display: flex;
+}
+
+.stickyBarButtons {
+    padding-left: 30px;
+}
+
+@media (max-width: 1024px) {
+    .sticky-bar {
+        overflow-x: auto;
+        -webkit-user-select: none;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+        top: 50px;
+    }
+}
