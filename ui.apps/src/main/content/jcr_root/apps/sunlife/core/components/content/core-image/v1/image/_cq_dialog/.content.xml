@@ -36,10 +36,10 @@
 												sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
 												granite:class="cq-dialog-checkbox-showhide"												
 												checked="{Boolean}false"
-												fieldDescription="When checked, displays Avatar image size options."
+												fieldDescription="Enabling this option will allow you to customize the avatar image type. Avatar images are small proflle pictures of users, often used in user profiles and comments."
 												name="./isAvatar"
-												text="Is this image an Avatar?"												
-												uncheckedValue="false"
+												text="Enable Avatar Image"												
+												uncheckedValue="false" 
 												value="true">
 												 <granite:data
 													jcr:primaryType="nt:unstructured"

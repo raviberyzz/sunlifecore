@@ -1,86 +1,77 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import java.util.List;
-import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.wcm.core.components.models.Image;
-import com.adobe.cq.wcm.core.components.models.ImageArea;
+
 import com.day.cq.commons.jcr.JcrConstants;
 
-import lombok.Getter;
+@Model(adaptables = {
+        Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ImageModel.RESOURCE_TYPE)	
+public interface ImageModel {
 
-@Getter
-@Model(adaptables = {SlingHttpServletRequest.class},
-	adapters = {Image.class},
-	defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
-	resourceType = ImageModel.RESOURCE_TYPE)
-public class ImageModel implements Image {
-
-	protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-image/v1/image";	
+	String RESOURCE_TYPE = "sunlife/core/components/content/core-image";	
 	 
 	 @ValueMapValue
-	 private String fileReference;
+	 String getFileReference();	
 	 
 	 @ValueMapValue
-	 private String src;
+	 String getSrc();
 	 
 	 @ValueMapValue
-	 private String alt;
+	 String getAlt();
 	 
 	 @ValueMapValue(name = JcrConstants.JCR_TITLE)
-	 private String title;
+	 String getTitle();
+	 
 	 
 	 @ValueMapValue
-	 private String uuid;
+	 String getUuid();
 	 
 	 @ValueMapValue
-	 private String link;
+	 String getLink();
 	 
 	 @ValueMapValue
 	 @Default(booleanValues = {false})
-     boolean displayPopupTitle;	
+     boolean getDisplayPopupTitle();	
 	 
 	 @ValueMapValue
 	 @Default(intValues = {0})
-	 private int[] widths;
+	 int[] getWidths();
 		 
 	 @ValueMapValue
-	 private String srcUriTemplate;
+	 String getSrcUriTemplate();
 	 
 	 @ValueMapValue
 	 @Default(booleanValues = {false})
-     boolean lazyEnabled;
+     boolean getLazyEnabled();
 	
 	 @ValueMapValue
 	 @Default(booleanValues = {false})
-     boolean decorative;	 
+     boolean getDecorative();	 
 	 
 	 @ValueMapValue(name = "isAvatar")
-	 private String avatar;
+	 String getAvatar();
 	 	
 	 @ValueMapValue
-	 private String avatarType;
+	 String getAvatarType();
 	 
 	 @ValueMapValue
-	 private String avatarSize;
+	 String getAvatarSize();
 	 
 	 @ValueMapValue
-	 private String imageAlignment;
+	 String getImageAlignment();
 		 
 	 @ValueMapValue
-	 private String fileReferenceMobile;
+	 String getFileReferenceMobile();
 	 
 	 @ValueMapValue
-	 private String hideImageMobile; 
-	 
+	 String getHideImageMobile(); 	 
+	
 	 @ValueMapValue
-	 private List<ImageArea> areas; 
-	 
-	 @ValueMapValue
-	 private String spacing;	 
+	 String getSpacing();	 
 	
 	 
 }
