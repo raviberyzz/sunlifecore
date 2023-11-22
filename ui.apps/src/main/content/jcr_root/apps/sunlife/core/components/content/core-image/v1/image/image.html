@@ -1,40 +1,25 @@
+
 <div data-sly-use.image="ca.sunlife.web.cms.core.models.v1.ImageModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-sly-test="${image.fileReference}"
+     data-sly-test="${image.fileReference || image.fileReferenceMobile || image.avatar}"
      data-cmp-is="image"
      data-cmp-lazy="${image.lazyEnabled}"
      data-asset="${image.fileReference}"
      data-asset-id="${image.uuid}"
      data-title="${image.title || image.alt}"
-     class="cmp-image${!wcmmode.disabled ? ' cq-dd-image' : ''}"
+     class="cmp-image image-container ${image.spacing} ${image.imageAlignment} ${!wcmmode.disabled ? ' cq-dd-image' : ''}"
      itemscope itemtype="http://schema.org/ImageObject">
-     <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" /> 
 
-        <!-- TEMP DEV: All fields:	 	
-		fileReference: ${image.fileReference}
-		fileReferenceMobile: ${image.fileReferenceMobile}
-		title: ${image.title}
-		isLazyLoaded: ${properties.isLazyLoaded}
-		srcUriTemplate: ${image.srcUriTemplate}
-		spacing: ${image.spacing}
-		hideImageMobile: ${properties.hideImageMobile}
-		isAvatar: ${image.avatar}
-		avatarType: ${image.avatarType}
-		avatarSize: ${image.avatarSize}
-		imageAlignment: ${image.imageAlignment}
-		-->	 
-	 
-    <a data-sly-unwrap="${!image.link}"
-       class="cmp-image__link" href="${image.link}"
-       data-cmp-hook-image="link">
-        <noscript data-sly-unwrap="${!image.lazyEnabled}" data-cmp-hook-image="noscript">
-			
-            <img src="${image.fileReference}" data-sly-attribute.loading="${imgLazyLoaded}" class='cmp-image__image ${properties.hideImageMobile ? "hidden-xs" : "" }'itemprop="contentUrl" data-cmp-hook-image="image" alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}"/>				 
+        <!--/* Include generic image view if isAvatar is unchecked  */-->
+        <sly 
+            data-sly-test="${!image.avatar}"
+            data-sly-use.genericImageTpl="templates/generic-image.html"
+            data-sly-call="${genericImageTpl.details @ image=image}"></sly>
 
-			
-        </noscript>
-    </a>
-    <span class="cmp-image__title" itemprop="caption" data-sly-test="${!image.displayPopupTitle && image.title}">${image.title}</span>
-    <meta itemprop="caption" content="${image.title}" data-sly-test="${image.displayPopupTitle && image.title}">
+        <!--/* Include avatar view if isAvatar is selected */-->
+        <sly 
+            data-sly-test="${image.avatar}"
+            data-sly-use.avatarTpl="templates/avatar.html"
+            data-sly-call="${avatarTpl.details @ image=image}"></sly>
 </div>
-<sly data-sly-call="${templates.placeholder @ isEmpty = !image.src, classAppend = 'cmp-image cq-dd-image'}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !image.fileReference, classAppend = 'cmp-image cq-dd-image'}"></sly>

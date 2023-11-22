@@ -4,7 +4,7 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
 */-->
 <template data-sly-template.details="${ @ listModel }">
     <div class="${listModel.spacing}">
-        <h5 data-sly-test="${listModel.heading}">${listModel.heading}</h5>
+        <div class="h5" data-sly-test="${listModel.heading}">${listModel.heading}</div>
         <ul class="link-list" data-sly-list.links="${listModel.links}">
             <li class="link-list-item">
                 <sly data-sly-use.linkListParsing="${'linklist-parsing.js' @ path=links.linkURL}">
