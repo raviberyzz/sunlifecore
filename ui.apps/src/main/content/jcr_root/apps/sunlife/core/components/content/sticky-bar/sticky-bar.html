@@ -6,11 +6,11 @@
   </li>
 </ul>
 <div class="sticky-bar-button-wrapper">
-  <div class="stickyBarButtons"> <a href="${stickyBarText.buttonLink}" target="${stickyBarText.buttonTarget}"><span
-        class="button-class primary-blue-button-rte">${stickyBarText.ButtonLabel}</span></a></div>
   <sly data-sly-test="${stickyBarText.additionalButton == 'true'}">
-    <div class="stickyBarButtons"> <a href="${stickyBarText.secButtonLink}" target="${stickyBarText.secButtonTarget}"><span
-          class="button-class primary-blue-button-rte">${stickyBarText.secButtonLabel}</span></a></div>
-
+    <div class="stickyBarButtons"> <a href="${stickyBarText.secButtonLink}"
+        target="${stickyBarText.secButtonTarget}"><span
+          class="button-class secondary-button-rte">${stickyBarText.secButtonLabel}</span></a></div>
   </sly>
+  <div class="stickyBarButtons"> <a href="${stickyBarText.buttonLink}" target="${stickyBarText.buttonTarget}"><span
+        class="button-class primary-yellow-button-rte">${stickyBarText.ButtonLabel}</span></a></div>
 </div>
