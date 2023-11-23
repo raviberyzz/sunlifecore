@@ -2,6 +2,8 @@
 @import '@sunlife/ui-styles/design-system.scss';
 
 .sl-dropdown {
+    min-height: 45px;
+    
     .dropdown {
       display: block;
       width: 100%;

@@ -4,14 +4,16 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
 */-->
 <template data-sly-template.details="${ @ listModel }">
     <div class="${listModel.spacing}">
-        <div class="h5" data-sly-test="${listModel.heading}">${listModel.heading}</div>
+        <h5 class="h5" 
+            data-sly-test="${listModel.heading}" 
+            data-sly-element="${listModel.headingTypes}">
+            ${listModel.heading}
+        </h5>
         <ul class="link-list" data-sly-list.links="${listModel.links}">
             <li class="link-list-item">
                 <sly data-sly-use.linkListParsing="${'linklist-parsing.js' @ path=links.linkURL}">
-                    <a class="sl-link ${links.linkSize}" lang="${links.langCode}" target="${links.target}" data-title="${links.dataTitle}" href="${links.linkURL}">${links.linkTitle @ context='html'}
-                        <sly data-sly-test="${links.linkType == 'sl-link-external'}">
-                            <i class="far fa-external-link" aria-hidden="true" role="img" title="Visit External Page ${links.linkTitle @ context='html'}"></i>
-                        </sly>
+                    <a class="sl-link ${links.linkSize}" lang="${links.langCode}" target="${links.linkTarget}" data-title="${links.dataTitle}" href="${links.linkURL}">
+                        <sly data-sly-test="${links.linkType == 'sl-link-pdf'}"><i class="far fa-file-pdf" aria-hidden="true" role="presentation" title="Open PDF ${links.linkTitle}"></i></sly>${links.linkTitle}<sly data-sly-test="${links.linkType == 'sl-link-external'}"><i class="far fa-external-link" aria-hidden="true" role="presentation" title="Visit External Page ${links.linkTitle}"></i></sly>
                     </a>
                 </sly>
             </li>

@@ -1,7 +1,11 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/base/variables.scss';
  
- 
+.sl-btn.btn {
+    min-height: 3rem;
+    height: auto;
+}
+
 @include media-breakpoint-up(md) {
  
     .sl-btn.btn {

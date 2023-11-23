@@ -38,4 +38,7 @@ public interface LinklistModel {
     @ValueMapValue
     String getSpacing();
 
+    @ValueMapValue
+    String getHeadingTypes();
+    
 }
