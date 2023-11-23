@@ -13,6 +13,7 @@
 
         if ($('.cmp-linklist--editor input[name="./isEditorial"]').is(':checked')) {
              $('.cmp-linklist--editor input[name="./heading"]').parent().hide();
+             $('.cmp-linklist--editor [name="./headingTypes"]').parent().hide();
              $('.cmp-linklist--editor coral-select[name*="./linkSize"]').each(function() {
                 $(this).parent().hide();
             });
@@ -23,7 +24,8 @@
             $('.cmp-linklist--editor input[name="./dropdownBtnLabel"]').parent().show();
 
         } else {
-             $('.cmp-linklist--editor input[name="./heading"]').parent().show();
+            $('.cmp-linklist--editor input[name="./heading"]').parent().show();
+            $('.cmp-linklist--editor [name="./headingTypes"]').parent().show();
             $('.cmp-linklist--editor coral-select[name*="./linkSize"]').each(function() {
                 $(this).parent().show();
             });
