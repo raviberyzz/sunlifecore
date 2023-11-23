@@ -22,7 +22,7 @@
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>web-cms-aem-core</artifactId>
-        <version>1.174.0-SNAPSHOT</version>
+        <version>1.175.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -80,6 +80,19 @@
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
                              <target>/apps/sunlife-vendor-packages/core/install</target>
                         </embedded>
+                        <!-- Email Core component -->
+                        <embedded>
+                             <groupId>com.adobe.cq</groupId>
+                             <artifactId>core.email.components.core</artifactId>
+                             <target>/apps/sunlife-email/application/install</target>
+                         </embedded>
+                         <embedded>
+                             <groupId>com.adobe.cq</groupId>
+                             <artifactId>core.email.components.content</artifactId>
+                             <type>zip</type>
+                             <target>/apps/sunlife-email/application/install</target>
+                         </embedded>
+                         <!-- Email Core component -->
                     </embeddeds>
                     <subPackages>
 						<subPackage>
@@ -216,5 +229,14 @@
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+             <groupId>com.adobe.cq</groupId>
+             <artifactId>core.email.components.core</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>com.adobe.cq</groupId>
+             <artifactId>core.email.components.content</artifactId>
+             <type>zip</type>
+         </dependency>
     </dependencies>
 </project>
