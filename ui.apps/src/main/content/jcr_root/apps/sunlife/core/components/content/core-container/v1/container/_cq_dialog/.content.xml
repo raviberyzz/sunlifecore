@@ -18,6 +18,7 @@
                                                 sling:hideResource="{Boolean}true"/>
                                             <type
                                                 jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="id"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Please configure the container type"
                                                 fieldDescription="Please configure the container type which also adds a role"
