@@ -19,7 +19,7 @@ public interface ContainerModel {
     String getDataSection();
 
     @ValueMapValue
-    String getType();
+    String getRole();
 
     @ValueMapValue
     String getAccessibilityLabel();

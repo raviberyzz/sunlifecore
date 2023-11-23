@@ -16,14 +16,6 @@
                                             <layout
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"/>
-                                            <type
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="id"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Please configure the container type"
-                                                fieldDescription="Please configure the container type which also adds a role"
-                                                fieldLabel="Container Type"
-                                                name="./type"/>
                                         </items>
                                     </column>
                                 </items>
@@ -45,6 +37,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <role
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please configure the role attribute"
+                                                fieldDescription="Please configure the container attribute"
+                                                fieldLabel="Role"
+                                                name="./role"/>
                                             <accessibilityLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
