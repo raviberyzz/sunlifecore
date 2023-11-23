@@ -1,0 +1,20 @@
+<template data-sly-template.simple="${ @ container}">
+    <sly  data-sly-test="${wcmmode.edit}" data-sly-use.allowed="com.day.cq.wcm.foundation.AllowedComponentList" ></sly>
+    <div data-sly-use.containerCustom="ca.sunlife.web.cms.core.models.v1.ContainerModel"
+    	 role="${containerCustom.role}" 
+    	 data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+         id="${containerCustom.id}"
+		class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]} ${containerCustom.spacing}"
+         style="${container.backgroundStyle @ context='styleString'}" 
+		 data-section="${containerCustom.analyticsDataSection}"
+         aria-label="${containerCustom.accessibilityLabel}">
+        <sly data-sly-test.isAllowedApplicable="${allowed.isApplicable}"
+             data-sly-test="${isAllowedApplicable}"
+             data-sly-use.allowedTemplate="allowedcomponents.html"
+             data-sly-call="${allowedTemplate.allowedcomponents @ title=allowed.title, components=allowed.components}"></sly>
+        <sly data-sly-test="${!isAllowedApplicable}"
+             data-sly-repeat="${container.items}" data-sly-resource="${item.path @ decoration=true}"></sly>
+        <sly data-sly-test="${!isAllowedApplicable && !wcmmode.disabled}"
+             data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+    </div>
+</template>
