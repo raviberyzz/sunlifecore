@@ -6,7 +6,7 @@
          id="${containerCustom.id}"
 		class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]} ${containerCustom.spacing}"
          style="${container.backgroundStyle @ context='styleString'}" 
-		 data-section="${containerCustom.dataSection}"
+		 data-section="${containerCustom.analyticsDataSection}"
          aria-label="${containerCustom.accessibilityLabel}">
         <sly data-sly-test.isAllowedApplicable="${allowed.isApplicable}"
              data-sly-test="${isAllowedApplicable}"

@@ -76,7 +76,7 @@
                                                 emptyText="Please configure the data-section for Analytics."
                                                 fieldDescription="Please configure the data-section for Analytics tracking."
                                                 fieldLabel="Data section"
-                                                name="./dataSection"/>
+                                                name="./analyticsDataSection"/>
                                         </items>
                                     </column>
                                 </items>

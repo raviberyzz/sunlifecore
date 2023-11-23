@@ -16,7 +16,7 @@ public interface ContainerModel {
     String getId();
 
     @ValueMapValue
-    String getDataSection();
+    String getAnalyticsDataSection();
 
     @ValueMapValue
     String getRole();
