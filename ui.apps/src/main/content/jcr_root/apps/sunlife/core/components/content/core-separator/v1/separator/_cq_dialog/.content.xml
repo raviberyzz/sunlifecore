@@ -33,6 +33,7 @@
                                             <separatorType
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select the height that will be applied to the Separator."
                                                 fieldLabel="Styles"
                                                 name="./separatorType">
                                                 <items jcr:primaryType="nt:unstructured">
