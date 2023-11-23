@@ -17,7 +17,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <properties
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Styles"
+                        jcr:title="Properties"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -30,22 +30,15 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <separatorType
+                                           <separatorType
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Select the height that will be applied to the Separator."
-                                                fieldLabel="Styles"
-                                                name="./separatorType">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <sm
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="1px"/>
-                                                    <md
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="2px"
-                                                        value="th-2"/>
-                                                </items>
-                                            </separatorType>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Selecting this will apply a height of 2px to the Separator."
+                                                name="./separatorType"
+                                                text="Medium Separator"
+                                                checked="false"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"
