@@ -45,7 +45,7 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
-Import-Package: javax.annotation;version=0.0.0,com.adobe.cq.wcm.core.components.commons.link,*
+Import-Package: javax.annotation;version=0.0.0,com.adobe.cq.wcm.core.components.commons.link,com.adobe.cq.wcm.core.components.models;version="[12.0,13)",*
 Export-Package: ca.sunlife.web.cms.core.*
 -conditionalpackage: com.github.mustachejava.*,org.jsoup.*, com.akamai.edgegrid.signer.*, com.adobe.cq.wcm.core.*
 Sling-Initial-Content: SLING-INF/content;path:=/libs/system/config;overwrite:=true
