@@ -31,93 +31,30 @@
         var numberOfColumns = $('[name="./numberOfColumn"]').val();
         var numberOfCustomColumns = $('[name="./numberOfCustomColumns"]').val();
 
-        if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '1') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").addClass("hide");
-            $(".showhidethree").addClass("hide");
-            $(".showhidefour").addClass("hide");
-            $(".showhidefive").addClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
-        } else if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '2') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").removeClass("hide");
-            $(".showhidethree").addClass("hide");
-            $(".showhidefour").addClass("hide");
-            $(".showhidefive").addClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
-        } else if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '3') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").removeClass("hide");
-            $(".showhidethree").removeClass("hide");
-            $(".showhidefour").addClass("hide");
-            $(".showhidefive").addClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
-        } else if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '4') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").removeClass("hide");
-            $(".showhidethree").removeClass("hide");
-            $(".showhidefour").removeClass("hide");
-            $(".showhidefive").addClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
-        } else if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '5') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").removeClass("hide");
-            $(".showhidethree").removeClass("hide");
-            $(".showhidefour").removeClass("hide");
-            $(".showhidefive").removeClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
-        } else if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom' && numberOfCustomColumns == '6') {
-
-            $(".showhideone").removeClass("hide");
-            $(".showhidetwo").removeClass("hide");
-            $(".showhidethree").removeClass("hide");
-            $(".showhidefour").removeClass("hide");
-            $(".showhidefive").removeClass("hide");
-            $(".showhidesix").removeClass("hide");
-
-        } else {
-
-            $(".showhideone").addClass("hide");
-            $(".showhidetwo").addClass("hide");
-            $(".showhidethree").addClass("hide");
-            $(".showhidefour").addClass("hide");
-            $(".showhidefive").addClass("hide");
-            $(".showhidesix").addClass("hide");
-
-
+        var listOfNumber = ['one', 'two', 'three', 'four', 'five', 'six'];
+        if (numberOfCustomColumns != null && numberOfCustomColumns != '' && numberOfColumns == 'custom') {
+            for (var i = 0; i < numberOfCustomColumns; i++) {
+                var className = ".showhide" + listOfNumber[i];
+                $(className).removeClass("hide");
+            }
+            for (var i = numberOfCustomColumns; i < listOfNumber.length; i++) {
+                var className = ".showhide" + listOfNumber[i];
+                $(className).addClass("hide");
+            }
         }
     }
 
     function resetColumn() {
 
-        $('.showhideone coral-numberinput').val('0');
-        $('.showhidetwo coral-numberinput').val('0');
-        $('.showhidethree coral-numberinput').val('0');
-        $('.showhidefour coral-numberinput').val('0');
-        $('.showhidefive coral-numberinput').val('0');
-        $('.showhidesix coral-numberinput').val('0');
-        $('.showhideone coral-checkbox').attr('checked', false);
-        $('.showhidetwo coral-checkbox').attr('checked', false);
-        $('.showhidethree coral-checkbox').attr('checked', false);
-        $('.showhidefour coral-checkbox').attr('checked', false);
-        $('.showhidetfive coral-checkbox').attr('checked', false);
-        $('.showhidesix coral-checkbox').attr('checked', false);
+        var listOfNumber = ['one', 'two', 'three', 'four', 'five', 'six'];
+
+        for (var i = 0; i < 6; i++) {
+            var className = ".showhide" + listOfNumber[i] + " coral-numberinput";
+            $(className).val('0');
+            var classNameTwo = ".showhide" + listOfNumber[i] + " coral-checkbox";
+            $(classNameTwo).attr('checked', false);
+        }
         $('.togglecolumnfield').addClass("hide");
 
-    }	
+    }
 })(document, Granite.$);
