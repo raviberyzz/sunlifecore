@@ -235,7 +235,7 @@ public class LayoutContainerModel {
 		}
 	}
 
-	private void addCustomGridInfo(List<LinkedHashMap<String, List<String>>> customGrid2, String desktop, String offsetDesktop, String tablet, String offsetTablet, String mobile, String offsetMobile) {
+	private void addCustomGridInfo(List<LinkedHashMap<String, List<String>>> customGrid, String desktop, String offsetDesktop, String tablet, String offsetTablet, String mobile, String offsetMobile) {
 		LinkedHashMap<String, List<String>> customViewPort = new LinkedHashMap<>();
 		customViewPort.put("desktop", new ArrayList<>(Arrays.asList(desktop, offsetDesktop)));
 		customViewPort.put("tablet", new ArrayList<>(Arrays.asList(tablet, offsetTablet)));
