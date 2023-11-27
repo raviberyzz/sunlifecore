@@ -101,24 +101,25 @@
        } else if (currentPage.getPath().contains("/content/experience-fragments")) {
          modifiedFragmentPath = fragmentPath;
        } else {
-         if (fragmentPath.contains("header") || fragmentPath.contains("footer")) {
- 
-           headerPath = configService.getConfigValues("experienceFragmentPath",
-               currentPage.getPath());
-           LOGGER.info("Header path is : {}", headerPath);
-           if (null != headerPath && headerPath.length() > 0) {
-             final String [ ] pathSplit = fragmentPath.split("/");
-             for (final String element : pathSplit) {
-               if (element.contains("header") || element.contains("footer")) {
-                 fragmentSplit = "/" + element + "/";
-                 break;
-               }
-             }
-             final String [ ] finalSplit = fragmentPath.split(fragmentSplit);
-             modifiedFragmentPath = headerPath + fragmentSplit + finalSplit [ 1 ];
-           } else {
-             modifiedFragmentPath = fragmentPath;
-           }
+         if (configService != null && (fragmentPath.contains("header") || fragmentPath.contains("footer"))) { 			
+					
+			   headerPath = configService.getConfigValues("experienceFragmentPath",
+				   currentPage.getPath());
+			   LOGGER.info("Header path is : {}", headerPath);
+			   if (null != headerPath && headerPath.length() > 0) {					
+				 final String [ ] pathSplit = fragmentPath.split("/");
+				 for (final String element : pathSplit) {
+				   if (element.contains("header") || element.contains("footer")) {
+					 fragmentSplit = "/" + element + "/";
+					 break;
+				   }
+				 }
+				 final String [ ] finalSplit = fragmentPath.split(fragmentSplit);
+				 modifiedFragmentPath = headerPath + fragmentSplit + finalSplit [ 1 ];
+			   } else {
+				 modifiedFragmentPath = fragmentPath;
+			   }		   
+			
          } else {
            modifiedFragmentPath = fragmentPath;
          }
