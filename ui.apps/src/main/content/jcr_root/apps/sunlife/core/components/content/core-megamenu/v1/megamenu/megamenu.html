@@ -1,0 +1,33 @@
+<sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.MegaMenuModel">
+    <!-- Static Navigation -->
+    <sly data-sly-test="${megaMenu.navigationType == 'static'}">
+        <div>type:${megaMenu.navigationType}</div>
+        <div>heading:${megaMenu.heading}</div>
+        <div>spacing:${megaMenu.spacing}</div>
+        <div>size:${megaMenu.menuSections.size}</div>
+
+        <div data-sly-list.menuSections="${megaMenu.menuSections}">
+            <ul>
+                <li>subheadingLinkName:${menuSections.subheadingLinkName}</li>
+                <li>subheadingLinkName:${menuSections.subheadingLinkURL}</li>
+                <li>subheadingLinkName:${menuSections.subheadingDataTitle}</li>
+                <li>subheadingLinkName:${menuSections.subheadingTarget}</li>
+            </ul>
+            <div data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
+                 data-sly-list.menuItems="${menuSections.menuItems}">
+                <ul>
+                    <li>menuItemLinkName:${menuItems.menuItemLinkName}</li>
+                    <li>menuItemLinkURL:${menuItems.menuItemLinkURL}</li>
+                    <li>menuItemDataTitle:${menuItems.menuItemDataTitle}</li>
+                    <li>menuItemTarget:${menuItems.menuItemTarget}</li>
+                </ul>
+            </div>
+
+        </div>
+    </sly>
+
+    <!-- Dynamic Navigation -->
+    <sly data-sly-test="${megaMenu.navigationType == 'dynamic'}">
+        <sly data-sly-include="/apps/core/wcm/components/navigation/v2/navigation/navigation.html"></sly>
+    </sly>
+</sly>
