@@ -24,17 +24,19 @@ const TextComp = {
 
 		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle" role="presentation"></i>');
 
+		// function used to get the popover element and id
 		function getPopoverId(element) {
 			let popoverElem = $(element).closest(".popover");
 			let id = popoverElem.attr('id');
 			return [popoverElem, id];
 		}
-
+		
 		$(document).on("click", ".popover .btn-close-popover", function () {
 			let [popoverElem, id] = getPopoverId($(this));
 			popoverElem.hide();
 			$('[aria-describedby=' + id + ']').click().focus();
 		});
+		//handle keyboard accessibility in the popover close button
 		$(document).on("keydown", '.popover .btn-close-popover', function (event) {
 			if (event.key === 'Escape') {
 				event.preventDefault();
@@ -42,12 +44,12 @@ const TextComp = {
 				popoverElem.hide();
 				$('[aria-describedby=' + id + ']').click().focus();
 			}
-			else if (event.key == 'Tab' && event.shiftKey) {
+			else if (event.key === 'Tab' && event.shiftKey) {
 				event.preventDefault();
 				let [popoverElem, id] = getPopoverId($(this));
 				$('[aria-describedby=' + id + ']').focus();
 			}
-			else if (event.key == 'Tab') {
+			else if (event.key === 'Tab') {
 				let [popoverElem, id] = getPopoverId($(this));
 				let selectableElements = [].slice.call(document.querySelectorAll('select, input, textarea, button, a'));
 				selectableElements.find((value, index) => {
@@ -58,15 +60,17 @@ const TextComp = {
 				})
 			}
 		});
+		//handle keyboard accessibility in the popover info button
 		$(document).on("keydown", '.popover-button', function (event) {
 			let popOverId = $(this).attr('aria-describedby');
-			if (event.key == 'Escape') {
+			if (event.key === 'Escape') {
 				event.preventDefault();
 				$(this).click().focus();
 			}
-			else if (event.key == 'Tab' && popOverId !== undefined && !event.shiftKey) {
+			else if (event.key === 'Tab' && popOverId !== undefined && !event.shiftKey) {
 				event.preventDefault();
-				$('#' + popOverId + ' .btn-close-popover').focus();
+				let popoverCloseButton = `#${popOverId} .btn-close-popover`;
+				$(popoverCloseButton).focus();
 			}
 		});
 	},
