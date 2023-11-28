@@ -10,7 +10,7 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
         <img 
             src="${ imgURL}" 
             alt="${image.alt}" 
-            class="${image.avatarSize}"
+            class="${image.avatarSize || 'medium'}"
             data-sly-attribute.loading="${imgLazyLoaded}">
     </div>
 </template>
