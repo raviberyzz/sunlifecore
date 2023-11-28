@@ -11,7 +11,7 @@ const TextComp = {
 		TextComp.onDOMready();
 
 		var popoverTriggerList = [].slice.call(document.querySelectorAll('.cmp-text [data-bs-toggle="popover"'))
-			var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+		var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 			return new bootstrap.Popover(popoverTriggerEl)
 		})
 		TextComp.initPopover();
@@ -21,28 +21,56 @@ const TextComp = {
 		$(CONST.SELECTOR.internalLink).append('<i class="far fa-arrow-circle-right"></i>');
 
 		$(CONST.SELECTOR.pdfLink).prepend('<i class="far fa-file-pdf"></i>');
-		
+
 		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle" role="presentation"></i>');
 
-		$(document).on("click", ".popover .btn-close-popover" , function(){
-			let popoverElem = $(this).closest(".popover");
+		// function used to get the popover element and id
+		function getPopoverId(element) {
+			let popoverElem = $(element).closest(".popover");
 			let id = popoverElem.attr('id');
+			return [popoverElem, id];
+		}
+		
+		$(document).on("click", ".popover .btn-close-popover", function () {
+			let [popoverElem, id] = getPopoverId($(this));
 			popoverElem.hide();
-			$('[aria-describedby='+id+']').click().focus();
+			$('[aria-describedby=' + id + ']').click().focus();
 		});
-		$(document).on("keydown", '.popover .btn-close-popover', function(event){
+		//handle keyboard accessibility in the popover close button
+		$(document).on("keydown", '.popover .btn-close-popover', function (event) {
 			if (event.key === 'Escape') {
 				event.preventDefault();
-				let popoverElem = $(this).closest(".popover");
-				let id = popoverElem.attr('id');
+				let [popoverElem, id] = getPopoverId($(this));
 				popoverElem.hide();
-				$('[aria-describedby='+id+']').click().focus();
+				$('[aria-describedby=' + id + ']').click().focus();
+			}
+			else if (event.key === 'Tab' && event.shiftKey) {
+				event.preventDefault();
+				let [popoverElem, id] = getPopoverId($(this));
+				$('[aria-describedby=' + id + ']').focus();
+			}
+			else if (event.key === 'Tab') {
+				let [popoverElem, id] = getPopoverId($(this));
+				let selectableElements = [].slice.call(document.querySelectorAll('select, input, textarea, button, a'));
+				selectableElements.find((value, index) => {
+					if(value.getAttribute("aria-describedby") === id){
+						event.preventDefault();
+						selectableElements[index + 1].focus();
+					}
+				})
 			}
 		});
-		$(document).on("keydown", '.popover-button' , function(event){
-			if (event.key == 'Escape') {
+		//handle keyboard accessibility in the popover info button
+		$(document).on("keydown", '.popover-button', function (event) {
+			let popOverId = $(this).attr('aria-describedby');
+			if (event.key === 'Escape') {
 				event.preventDefault();
 				$(this).click().focus();
+			}
+			else if (event.key === 'Tab' && popOverId !== undefined && !event.shiftKey) {
+				event.preventDefault();
+				let popoverCloseButton = `#${popOverId} .btn-close-popover`;
+				$(popoverCloseButton).focus();
 			}
 		});
 	},
@@ -57,7 +85,7 @@ const TextComp = {
 		});
 
 		function getCustomClass(popoverTriggerElem){
-			return getDataAttrContent(popoverTriggerElem, 'bs-title') ? 'sl-popover' : 'sl-popover sl-popover-headless' 
+			return getDataAttrContent(popoverTriggerElem, 'bs-title') ? 'sl-popover' : 'sl-popover sl-popover-headless'
 		}
 
 		function getPopoverConfig(popoverTriggerEl){
