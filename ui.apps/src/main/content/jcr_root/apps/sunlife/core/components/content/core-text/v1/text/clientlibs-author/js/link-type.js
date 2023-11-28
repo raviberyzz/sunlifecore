@@ -21,8 +21,11 @@
         const origAddLinkToDomFn = _linkCmd.addLinkToDom;
 
         _linkCmd.addLinkToDom = function(execDef){
-            execDef.value.css = [execDef.value.attributes['data-class-icon'] || '', execDef.value.attributes['data-class']].join(' ');
-            
+
+            const linkTypeSize = [execDef.value.attributes['data-class-icon'] || '', execDef.value.attributes['data-class']].join(' ');
+            execDef.value.css = linkTypeSize;            
+            execDef.value.attributes.class = linkTypeSize;
+
             origAddLinkToDomFn.call(this, execDef);
 
             const context = execDef.editContext,
