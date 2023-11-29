@@ -1,23 +1,19 @@
 @import './base.scss';
 
-@import '@sunlife/ui-styles/components/link.scss';
+@import '@sunlife/ui-styles/components/avatar';
 @import '@sunlife/ui-styles/components/button';
-@import '@sunlife/ui-styles/components/dropdown';
-@import '@sunlife/ui-styles/components/helperText';
-@import '@sunlife/ui-styles/components/textArea';
-@import '@sunlife/ui-styles/components/forms';
-
-@import '@sunlife/ui-styles/components/menuDropdown';
-@import '@sunlife/ui-styles/components/socialMedia';
-@import '@sunlife/ui-styles/components/popover';
-
-
+@import '@sunlife/ui-styles/components/card';
 @import '@sunlife/ui-styles/components/divider';
+@import '@sunlife/ui-styles/components/dropdown';
+@import '@sunlife/ui-styles/components/forms';
+@import '@sunlife/ui-styles/components/helperText';
+@import '@sunlife/ui-styles/components/link.scss';
+@import '@sunlife/ui-styles/components/menuDropdown';
+@import '@sunlife/ui-styles/components/modal';
+@import '@sunlife/ui-styles/components/notification';
+@import '@sunlife/ui-styles/components/progress';
+@import '@sunlife/ui-styles/components/popover';
+@import '@sunlife/ui-styles/components/socialMedia';
 @import '@sunlife/ui-styles/components/table';
 @import '@sunlife/ui-styles/components/tabs';
-@import '@sunlife/ui-styles/components/notification';
-
-@import '@sunlife/ui-styles/components/modal';
-@import '@sunlife/ui-styles/components/progress';
-@import '@sunlife/ui-styles/components/card';
-@import '@sunlife/ui-styles/components/avatar';
+@import '@sunlife/ui-styles/components/textArea';
