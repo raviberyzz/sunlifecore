@@ -8,7 +8,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.Resource;
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class},
+@Model(adaptables = {SlingHttpServletRequest.class},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface MenuItems {
     @ValueMapValue

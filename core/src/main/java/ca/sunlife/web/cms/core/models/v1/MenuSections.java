@@ -6,11 +6,10 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class},
+@Model(adaptables = {SlingHttpServletRequest.class},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface MenuSections {
     @ValueMapValue
