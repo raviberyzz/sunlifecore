@@ -1,0 +1,16 @@
+<template data-sly-template.navList="${ @ headerModel }">
+    <div class="utility-nav-wrapper" data-section="header-utility-nav">
+        <div data-sly-test="${headerModel.listFromNav == 'true'}" class="utility-nav-links" role="navigation"
+             aria-label="Helpful links">
+            <ul>
+                <sly data-sly-list.links="${headerModel.navlinks}">
+                    <li data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=links.linkURL}">
+                        <a href="${utilityListParsing.navPath}" target="${links.linkTarget}"
+                           data-title="${links.dataTitle}">${links.linkName}
+                            <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i>
+                        </a>
+                    </li>
+                </sly>
+            </ul>
+        </div>
+</template>
