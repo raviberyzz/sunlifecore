@@ -71,7 +71,13 @@ public interface ImageModel {
 	 String getHideImageMobile(); 	 
 	
 	 @ValueMapValue
-	 String getSpacing();	 
+	 String getSpacing();
+
+	 @ValueMapValue
+	 String getDataTitle(); 
+
+	 @ValueMapValue
+	 String getDataSection(); 	 
 	
 	 
 }

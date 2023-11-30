@@ -6,6 +6,7 @@ Template to render Generic Image.
         data-sly-unwrap="${!properties.linkURL}"
         class="cmp-image__link image__link" 
         href="${properties.linkURL}" 
+        data-title="${image.dataTitle || image.alt}"
         alt="${image.title || 'image link alternative text'}"
         data-cmp-hook-image="link">
             <noscript data-sly-unwrap="${!image.lazyEnabled}" data-cmp-hook-image="noscript">
