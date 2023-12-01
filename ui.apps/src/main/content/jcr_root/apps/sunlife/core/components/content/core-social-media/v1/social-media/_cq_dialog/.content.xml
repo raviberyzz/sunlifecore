@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Social Media"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container"
+        margin="{Boolean}true">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <social
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Choose 'Social Links' to provide specific URLs for each platform or 'Share Options' to configure sharing features for the current page"
+                                                fieldLabel="Select Type"
+                                                name="./type">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <social-links
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Social Links"
+                                                        value="sociallinks"/>
+                                                    <share-options
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Share Options"
+                                                        value="shareoptions"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".list-option-showhide-target"/>
+                                            </social>
+                                            <sociallinks
+                                                granite:class="hide list-option-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <link
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Social Links">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./socialLinks">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <column
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <icon
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldDescription="Enter the font awesome icon name. e.g : 'facebook'"
+                                                                            fieldLabel="Icon Name"
+                                                                            name="./iconName"/>
+                                                                        <link
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                            fieldDescription="The full URL to the social media page"
+                                                                            fieldLabel="Icon Link"
+                                                                            name="./iconLink"
+                                                                            rootPath="/content"/>
+                                                                        <screen-text
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldDescription="Descriptive text for screen reader, eg 'Follow us on Facebook'"
+                                                                            fieldLabel="Screen Reader Text"
+                                                                            name="./stringReaderText"/>
+                                                                        <target
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldDescription="Select where the social media page should open"
+                                                                            fieldLabel="Target"
+                                                                            name="./target">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <sameTab
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Same Tab"
+                                                                                    value="_self"/>
+                                                                                <newTab
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="New Tab"
+                                                                                    value="_blank"/>
+                                                                            </items>
+                                                                        </target>
+                                                                    </items>
+                                                                </column>
+                                                            </items>
+                                                        </field>
+                                                    </link>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="sociallinks"/>
+                                            </sociallinks>
+                                            <shareoptions
+                                                granite:class="hide list-option-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <title
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Select the social media platform for sharing"
+                                                        fieldLabel="Share Text"
+                                                        name="./shareText"/>
+                                                    <share
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldDescription="Click add to add links"
+                                                        fieldLabel="Share Option">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./socialOptions">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <column
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <titleLevel
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldDescription="Select size/label "
+                                                                            fieldLabel="Select Platforms"
+                                                                            name="./plateforms">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <facebook
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Facebook"
+                                                                                    value="facebook"/>
+                                                                                <x
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="X"
+                                                                                    value="x"/>
+                                                                                <linkedin
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="LinkedIn"
+                                                                                    value="linkedin"/>
+                                                                                <instagram
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Instagram"
+                                                                                    value="instagram"/>
+                                                                                <wechat
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="WeChat"
+                                                                                    value="wechat"/>
+                                                                                <youtube
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Youtube"
+                                                                                    value="youtube"/>
+                                                                            </items>
+                                                                        </titleLevel>
+                                                                        <screen-text
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldDescription="Descriptive text for screen reader, eg 'Share on [platform]'"
+                                                                            fieldLabel="Screen Reader Text"
+                                                                            name="./stringReaderText"/>
+                                                                    </items>
+                                                                </column>
+                                                            </items>
+                                                        </field>
+                                                    </share>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="shareoptions"/>
+                                            </shareoptions>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                    <spacing
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
