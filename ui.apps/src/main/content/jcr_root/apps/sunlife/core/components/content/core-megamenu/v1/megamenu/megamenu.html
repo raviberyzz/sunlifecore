@@ -1,4 +1,7 @@
 <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.MegaMenuModel">
+<!-- <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.header.MegaMenuModel"> -->
+    <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+
     <!-- Static Navigation -->
     <sly data-sly-test="${megaMenu.navigationType == 'static'}">
         <!-- <div>type:${megaMenu.navigationType}</div>
@@ -26,7 +29,7 @@
 
 
 
-        <div style="height: 500px;">
+        <div>
             <div class="container">
                 <div id="skip-links"><a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to content</a><a
                         href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to footer</a></div>
@@ -71,7 +74,23 @@
                                 <ul class="sl-main-nav flex-grow-1 navbar-nav">
                                     <li class="nav-item">
                                         <div class=" sl-mega-menu">
-                                            <div id="sl-mega-menu-dashboard" class="show dropdown"><button type="button"
+                                            <!-- <div id="sl-mega-menu-dashboard" class="dropdown">
+                                                <button type="button"
+                                                    id="sl-mega-menu-toggle-dashboard" aria-expanded="false"
+                                                    class="main-nav-item-container nav-link active dropdown-toggle btn btn-primary"><span>Dashboard</span><svg
+                                                        class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
+                                                        aria-hidden="true" focusable="false" data-prefix="fal"
+                                                        data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 448 512" data-fa-i2svg="">
+                                                        <path fill="currentColor"
+                                                            d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                                <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
+                                                    class="extensive dropdown-menu"> -->
+                                            <div id="sl-mega-menu-dashboard" class="show dropdown">
+                                                <button type="button"
                                                     id="sl-mega-menu-toggle-dashboard" aria-expanded="true"
                                                     class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>Dashboard</span><svg
                                                         class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
@@ -81,7 +100,8 @@
                                                         <path fill="currentColor"
                                                             d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
                                                         </path>
-                                                    </svg><!-- <i class="fal fa-chevron-down sl-dropdown-icon" aria-hidden="true"></i> Font Awesome fontawesome.com --></button>
+                                                    </svg>
+                                                </button>
                                                 <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
                                                     class="extensive dropdown-menu show">
                                                     <div class="extensive-menu">
