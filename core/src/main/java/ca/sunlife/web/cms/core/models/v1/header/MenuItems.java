@@ -1,4 +1,4 @@
-package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1.header;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;

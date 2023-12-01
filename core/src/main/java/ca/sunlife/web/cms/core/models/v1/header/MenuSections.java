@@ -1,5 +1,6 @@
-package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1.header;
 
+import ca.sunlife.web.cms.core.models.v1.header.MenuItems;
 import com.adobe.acs.commons.models.injectors.annotation.ChildResourceFromRequest;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;

@@ -1,4 +1,4 @@
-package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1.header;
 
 import com.adobe.acs.commons.models.injectors.annotation.ChildResourceFromRequest;
 import org.apache.sling.api.SlingHttpServletRequest;
