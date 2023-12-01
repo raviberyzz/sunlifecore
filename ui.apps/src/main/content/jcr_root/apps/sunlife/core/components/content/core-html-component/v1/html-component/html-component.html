@@ -1,6 +1,6 @@
 <div data-sly-use.htmlComponent="ca.sunlife.web.cms.core.models.v1.HtmlComponentModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.text="${htmlComponent.text}">
-    ${text @ context = 'unsafe'}
+     data-sly-test.text="${htmlComponent.spacing} ${htmlComponent.text}">
+    ${text @ context = 'html'}
 </div>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>

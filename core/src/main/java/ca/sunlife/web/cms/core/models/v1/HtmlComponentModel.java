@@ -20,4 +20,7 @@ public interface HtmlComponentModel {
     @ValueMapValue
     String getText();
 
+    @ValueMapValue
+    String getSpacing();
+
 }
