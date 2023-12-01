@@ -1,18 +1,15 @@
 package ca.sunlife.web.cms.core.models.v1.header;
 
-import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
 /**
  * Interface for MegaMenuLinks
  */
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface MegaMenuLinks {
-
     /**
      * Gets the mega menu link name
      *
