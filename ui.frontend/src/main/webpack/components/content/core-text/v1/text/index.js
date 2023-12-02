@@ -5,7 +5,6 @@ const CONST = {
 		pdfLink: '.cmp-text .sl-link-pdf'
 	}
 }
-
 const TextComp = {
 	init: function () {
 		TextComp.onDOMready();
@@ -112,7 +111,6 @@ const TextComp = {
 	}
 
 };
-
 $(function () {
 	TextComp.init();
 });
