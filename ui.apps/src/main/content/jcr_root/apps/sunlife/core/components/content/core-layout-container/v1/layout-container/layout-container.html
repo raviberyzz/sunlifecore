@@ -3,8 +3,9 @@
 <sly data-sly-test="${!empty}" 
     data-sly-use.grid="${'layoutUse.js' @ column=layout.numberOfColumn, grid=layout.customGrid}">
         <div 
-            class="row ${layout.spacing} ${properties.debug ? 'debug': ''}"
+            class="row ${layout.containerAlignment} ${layout.spacing} ${properties.debug ? 'debug': ''} ${layout.centerAlign ? 'justify-content-center':''}"
             data-sly-list.col="${grid.columns}">
+            
                 <div 
                     class="${col}"
                     data-sly-set.gridName="${['grid', colList.index] @ join = '-'}">
