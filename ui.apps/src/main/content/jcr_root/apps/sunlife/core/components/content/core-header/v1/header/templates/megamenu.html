@@ -1,0 +1,26 @@
+<template data-sly-template.megaMenu="${ @ headerModel }">
+<div class="desktop-navigation no-gutter">
+<div class="desktop-mega-menu clearfix">
+    <div class="desktop-primary-navigation" data-section="nav-main" role="navigation"
+         aria-label="main navigation">
+        <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
+
+            <sly data-sly-list.links="${headerModel.megaMenuLinks}">
+                <li class="dropdown nav-item navigation ${links.megaMenuLinkStyle}"
+                    data-sly-use.megaMenuListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.megaMenuLinkURL}">
+                    <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
+                       href="${megaMenuListParsing.navPath}">
+                <span class="nav-item-heading ">${links.megaMenuLinkName}</span></a>
+                    <div data-sly-test="${links.megaMenuFragmentPath}" role="menu"
+                         class="dropdown-menu menu-content">
+                        <div class="mega-menu-wrapper-desk">
+                            <sly data-sly-resource="${links.megaMenuFragmentPath @resourceType='sunlife/core/components/content/experiencefragment'}"/>
+                        </div>
+                    </div>
+                </li>
+            </sly>
+            </ul>
+        </div>
+    </div>
+</div>
+</template>

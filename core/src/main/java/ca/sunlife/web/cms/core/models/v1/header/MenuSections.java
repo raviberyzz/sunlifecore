@@ -1,22 +1,26 @@
-package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1.header;
 
+import com.adobe.acs.commons.models.injectors.annotation.ChildResourceFromRequest;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
+import java.util.List;
 @Model(adaptables = {SlingHttpServletRequest.class},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface MenuItems {
+public interface MenuSections {
     @ValueMapValue
-    String getMenuItemLinkName();
+    String getSubheadingLinkName();
 
     @ValueMapValue
-    String getMenuItemLinkURL();
+    String getSubheadingLinkURL();
 
     @ValueMapValue
-    String getMenuItemDataTitle();
+    String getSubheadingDataTitle();
 
     @ValueMapValue
-    String getMenuItemTarget();
+    String getSubheadingTarget();
+
+    @ChildResourceFromRequest
+    List<MenuItems> getMenuItems();
 }
