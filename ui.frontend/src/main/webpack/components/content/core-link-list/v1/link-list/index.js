@@ -1,4 +1,3 @@
-
 /**
 * Link List Component specific JS 
 */
@@ -6,9 +5,12 @@
 (function () {
 
   /**
-  * Bind click event on dropdown.
+  * Bind event on module.
   */
-  $('.sl-dropdown').on('click', '.dropdown-option', linkListInteractionHandler);
+ function bindEvent(){
+    // Bind click event on dropdown.
+    $('.sl-dropdown').on('click', '.dropdown-option', linkListInteractionHandler);
+ }
 
   /**
   * Checks if the media width is above 905 pixels.
@@ -101,5 +103,14 @@
     $(optionElem).closest('.dropdown-menu').find('.option-selected').removeClass('option-selected');
     $(optionElem).addClass('option-selected');
   }
+
+  /**
+  * Initialize the module.
+  */
+  function init() {
+    bindEvent();
+  }
+
+  init();
 
 })()
