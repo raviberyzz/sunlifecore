@@ -4,70 +4,56 @@
 
     <!-- Static Navigation -->
     <sly data-sly-test="${megaMenu.navigationType == 'static'}">
-        <!-- <div>type:${megaMenu.navigationType}</div>
-        <div>heading:${megaMenu.heading}</div>
-        <div>spacing:${megaMenu.spacing}</div>
-        <div>size:${megaMenu.menuSections.size}</div>
-
-        <div data-sly-list.menuSections="${megaMenu.menuSections}">
-            <ul>
-                <li>subheadingLinkName:${menuSections.subheadingLinkName}</li>
-                <li>subheadingLinkName:${menuSections.subheadingLinkURL}</li>
-                <li>subheadingLinkName:${menuSections.subheadingDataTitle}</li>
-                <li>subheadingLinkName:${menuSections.subheadingTarget}</li>
-            </ul>
-            <div data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
-                 data-sly-list.menuItems="${menuSections.menuItems}">
-                <ul>
-                    <li>menuItemLinkName:${menuItems.menuItemLinkName}</li>
-                    <li>menuItemLinkURL:${menuItems.menuItemLinkURL}</li>
-                    <li>menuItemDataTitle:${menuItems.menuItemDataTitle}</li>
-                    <li>menuItemTarget:${menuItems.menuItemTarget}</li>
-                </ul>
-            </div>
-        </div> -->
-
-
-
         <div>
             <div class="container">
-                <div id="skip-links"><a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to content</a><a
-                        href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to footer</a></div>
+                <div id="skip-links">
+                    <a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to content</a>
+                    <a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to footer</a>
+                </div>
             </div>
-            <header id="nav-header" class="sl-header ">
+            <header id="nav-header" class="sl-header">
                 <div class="nav-bar container">
-                    <nav class="sl-nav navbar navbar-expand-lg navbar-light"><button aria-controls="sl-header-offcanvas"
-                            type="button" aria-label="Open menu" class="navbar-toggler collapsed"><span
-                                class="navbar-toggler-icon"></span></button>
+                    <nav class="sl-nav navbar navbar-expand-lg navbar-light">
+                        <button aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu" class="navbar-toggler collapsed">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <div id="sl-logo-container" class="sl-logo-container inline-logo ">
-                            <div class="sl-logo utility-nav-item-container left-logo navbar-brand"><a href="www.sunlife.ca"><img
+                            <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
+                                <a href="www.sunlife.ca">
+                                    <img
                                         alt="Sun Life logo"
-                                        src="https://sit-www.sunnet.sunlife.com/content/dam/sunlife/global/logos/sun-life/current/Sun_Life_weblogo_127x31.svg"></a>
+                                        src="https://sit-www.sunnet.sunlife.com/content/dam/sunlife/global/logos/sun-life/current/Sun_Life_weblogo_127x31.svg">
+                                </a>
                             </div>
                         </div>
-                            <button class="search-btn d-block d-md-block d-lg-none d-xl-none d-xxl-none"><svg
+                        <button class="search-btn d-block d-md-block d-lg-none d-xl-none d-xxl-none">
+                            <svg
                                 role="presentation" class="svg-inline--fa fa-search fa-w-16 fa-lg" aria-hidden="true"
                                 focusable="false" data-prefix="fal" data-icon="search" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 512 512" data-fa-i2svg="">
                                 <path fill="currentColor"
                                     d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z">
                                 </path>
-                            </svg><!-- <i role="presentation" class="fal fa-search fa-lg"></i> Font Awesome fontawesome.com --><span
-                                class="visually-hidden">Search</span>
-                            </button>
+                            </svg>
+                            <span class="visually-hidden">Search</span>
+                        </button>
                         <div id="sl-header-offcanvas" class="sl-header-offcanvas offcanvas offcanvas-start"
                             aria-labelledby="offcanvas-label">
-                            <div class="offcanvas-header"><button class="canvas-close" aria-label="Close menu"><svg
+                            <div class="offcanvas-header">
+                                <button class="canvas-close" aria-label="Close menu">
+                                    <svg
                                         role="presentation" class="svg-inline--fa fa-times fa-w-10 fa-lg" aria-hidden="true"
                                         focusable="false" data-prefix="fal" data-icon="times" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 320 512" data-fa-i2svg="">
                                         <path fill="currentColor"
                                             d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z">
                                         </path>
-                                    </svg><!-- <i role="presentation" class="fal fa-times fa-lg"></i> Font Awesome fontawesome.com --></button>
-                                <div class="offcanvas-logo-container offcanvas-title h5" id="offcanvas-label"><a
-                                        href="www.sunlife.ca" class="sl-logo utility-nav-item-container"><img
-                                            alt="Sun Life logo" src="assets/images/SunLifeWebLogo.png"></a>
+                                    </svg>
+                                </button>
+                                <div class="offcanvas-logo-container offcanvas-title h5" id="offcanvas-label">
+                                    <a href="www.sunlife.ca" class="sl-logo utility-nav-item-container">
+                                        <img alt="Sun Life logo" src="assets/images/SunLifeWebLogo.png">
+                                    </a>
                                 </div>
                             </div>
                             <div class="offcanvas-body">
@@ -92,7 +78,8 @@
                                             <div id="sl-mega-menu-dashboard" class="dropdown">
                                                 <button type="button"
                                                     id="sl-mega-menu-toggle-dashboard" aria-expanded="false" data-bs-toggle="dropdown"
-                                                    class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>Dashboard</span><svg
+                                                    class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>Dashboard</span>
+                                                    <svg
                                                         class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
                                                         aria-hidden="true" focusable="false" data-prefix="fal"
                                                         data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -106,18 +93,25 @@
                                                     class="extensive dropdown-menu">
                                                     <div class="extensive-menu">
                                                         <div class="menu-header-container">
-                                                            <h3 class="h3 menu-header"><a href="heading/">${megaMenu.heading}</a></h3>
+                                                            <h3 class="h3 menu-header">
+                                                            <a href="heading/">${megaMenu.heading}</a></h3>
+                                                            <svg class="svg-inline--fa fa-chevron-right fa-w-8 sl-dropdown-icon" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""><path fill="currentColor" d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z"></path>
+                                                            </svg>
                                                         </div>
                                                         <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
                                                             <div class="extensive-sub-menu">
-                                                                <h4 class="h4 sub-header-container"><a href="${menuSections.subheadingLinkURL}" data-title="${menuSections.subheadingDataTitle}" data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
+                                                                <h4 class="h4 sub-header-container">
+                                                                    <a href="${menuSections.subheadingLinkURL}" data-title="${menuSections.subheadingDataTitle}" data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
                                                                 </h4>
                                                                 <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
                                                                 data-sly-list.menuItems="${menuSections.menuItems}">
-                                                                    <li><a href="${menuItems.menuItemLinkURL}" data-rr-ui-dropdown-item=""
-                                                                            class="active dropdown-item" data-title="${menuItems.menuItemDataTitle}" data-target="${menuItems.menuItemTarget}">
+                                                                    <li>
+                                                                        <!-- class="dropdown-item active" -->
+                                                                        <a href="${menuItems.menuItemLinkURL}" data-rr-ui-dropdown-item=""
+                                                                            class="dropdown-item" data-title="${menuItems.menuItemDataTitle}" data-target="${menuItems.menuItemTarget}">
                                                                             <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
-                                                                        </a></li>
+                                                                        </a>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -140,7 +134,8 @@
                                         class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block nav-item">
                                         <div class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block"><a
                                                 href="#" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link">
-                                                <div class="label-container"><span
+                                                <div class="label-container">
+                                                    <span
                                                         class="px-sl8 d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block dropdown-label-icon"><svg
                                                             role="presentation" class="svg-inline--fa fa-search fa-w-16"
                                                             aria-hidden="true" focusable="false" data-prefix="fal"
@@ -149,8 +144,9 @@
                                                             <path fill="currentColor"
                                                                 d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z">
                                                             </path>
-                                                        </svg><!-- <i role="presentation" class="fal fa-search "></i> Font Awesome fontawesome.com --></span><span
-                                                        class="d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">Search</span>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">Search</span>
                                                 </div>
                                             </a>
                                         </div>
@@ -160,7 +156,8 @@
                                             <div id="sl-dropdown-account" data-testid="test-menu-dropdown" class="dropdown">
                                                 <button type="button" id="sl-dropdown-toggle-account" aria-expanded="false"
                                                     class="utility-nav-item-container nav-link dropdown-toggle btn btn-primary">
-                                                    <div class="item-content-container"><span
+                                                    <div class="item-content-container">
+                                                        <span
                                                             class="px-sl8 d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><svg
                                                                 role="presentation" class="svg-inline--fa fa-user fa-w-14"
                                                                 aria-hidden="true" focusable="false" data-prefix="fal"
@@ -169,17 +166,20 @@
                                                                 <path fill="currentColor"
                                                                     d="M313.6 288c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4zM416 464c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 56.5 0 102.4 45.9 102.4 102.4V464zM224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z">
                                                                 </path>
-                                                            </svg><!-- <i role="presentation" class="fal fa-user "></i> Font Awesome fontawesome.com --></span><span
-                                                            class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">Account</span><svg
-                                                            class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
-                                                            aria-hidden="true" focusable="false" data-prefix="fal"
-                                                            data-icon="chevron-down" role="img"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                                            data-fa-i2svg="">
-                                                            <path fill="currentColor"
-                                                                d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
-                                                            </path>
-                                                        </svg><!-- <i class="fal fa-chevron-down sl-dropdown-icon" aria-hidden="true"></i> Font Awesome fontawesome.com -->
+                                                            </svg>
+                                                        </span>
+                                                        <span
+                                                            class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">Account</span>
+                                                        <svg
+                                                        class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
+                                                        aria-hidden="true" focusable="false" data-prefix="fal"
+                                                        data-icon="chevron-down" role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                                        data-fa-i2svg="">
+                                                        <path fill="currentColor"
+                                                            d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
+                                                        </path>
+                                                        </svg>
                                                     </div>
                                                 </button>
                                             </div>
@@ -188,11 +188,14 @@
                                     <li class="nav-item">
                                         <div class=" sl-menu-dropdown">
                                             <div id="sl-dropdown-notification" data-testid="test-menu-dropdown"
-                                                class="dropdown"><button type="button" id="sl-dropdown-toggle-notification"
+                                                class="dropdown">
+                                                    <button type="button" id="sl-dropdown-toggle-notification"
                                                     aria-expanded="false"
                                                     class="utility-nav-item-container nav-link dropdown-toggle btn btn-primary">
-                                                    <div class="item-content-container"><span
-                                                            class="px-sl8 d-inline-block d-md-inline-block d-lg-inline-block d-xl-inline-block d-xxl-inline-block dropdown-label-icon"><svg
+                                                    <div class="item-content-container">
+                                                        <span
+                                                            class="px-sl8 d-inline-block d-md-inline-block d-lg-inline-block d-xl-inline-block d-xxl-inline-block dropdown-label-icon">
+                                                            <svg
                                                                 role="presentation" class="svg-inline--fa fa-bell fa-w-14"
                                                                 aria-hidden="true" focusable="false" data-prefix="fal"
                                                                 data-icon="bell" xmlns="http://www.w3.org/2000/svg"
@@ -200,9 +203,13 @@
                                                                 <path fill="currentColor"
                                                                     d="M224 480c-17.66 0-32-14.38-32-32.03h-32c0 35.31 28.72 64.03 64 64.03s64-28.72 64-64.03h-32c0 17.65-14.34 32.03-32 32.03zm209.38-145.19c-27.96-26.62-49.34-54.48-49.34-148.91 0-79.59-63.39-144.5-144.04-152.35V16c0-8.84-7.16-16-16-16s-16 7.16-16 16v17.56C127.35 41.41 63.96 106.31 63.96 185.9c0 94.42-21.39 122.29-49.35 148.91-13.97 13.3-18.38 33.41-11.25 51.23C10.64 404.24 28.16 416 48 416h352c19.84 0 37.36-11.77 44.64-29.97 7.13-17.82 2.71-37.92-11.26-51.22zM400 384H48c-14.23 0-21.34-16.47-11.32-26.01 34.86-33.19 59.28-70.34 59.28-172.08C95.96 118.53 153.23 64 224 64c70.76 0 128.04 54.52 128.04 121.9 0 101.35 24.21 138.7 59.28 172.08C421.38 367.57 414.17 384 400 384z">
                                                                 </path>
-                                                            </svg><!-- <i role="presentation" class="fal fa-bell "></i> Font Awesome fontawesome.com --><span
-                                                                class="visually-hidden">Notification</span></span><span
-                                                            class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">Notification</span><svg
+                                                            </svg>
+                                                            <span
+                                                                class="visually-hidden">Notification</span>
+                                                        </span>
+                                                        <span
+                                                            class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">Notification</span>
+                                                        <svg
                                                             class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
                                                             aria-hidden="true" focusable="false" data-prefix="fal"
                                                             data-icon="chevron-down" role="img"
@@ -211,7 +218,7 @@
                                                             <path fill="currentColor"
                                                                 d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
                                                             </path>
-                                                        </svg><!-- <i class="fal fa-chevron-down sl-dropdown-icon" aria-hidden="true"></i> Font Awesome fontawesome.com -->
+                                                        </svg>
                                                     </div>
                                                 </button>
                                             </div>
@@ -237,15 +244,6 @@
 
 
     </sly>
-
-
-
-
-
-
-
-
-
 
 
 
