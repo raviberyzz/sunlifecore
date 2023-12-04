@@ -1,5 +1,5 @@
 <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.MegaMenuModel">
-<!-- <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.header.MegaMenuModel"> -->
+<!-- <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.header.MegaMenuModel"></sly> -->
     <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 
     <!-- Static Navigation -->
@@ -89,9 +89,9 @@
                                                 </button>
                                                 <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
                                                     class="extensive dropdown-menu"> -->
-                                            <div id="sl-mega-menu-dashboard" class="show dropdown">
+                                            <div id="sl-mega-menu-dashboard" class="dropdown">
                                                 <button type="button"
-                                                    id="sl-mega-menu-toggle-dashboard" aria-expanded="true"
+                                                    id="sl-mega-menu-toggle-dashboard" aria-expanded="false" data-bs-toggle="dropdown"
                                                     class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>Dashboard</span><svg
                                                         class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
                                                         aria-hidden="true" focusable="false" data-prefix="fal"
@@ -102,8 +102,8 @@
                                                         </path>
                                                     </svg>
                                                 </button>
-                                                <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
-                                                    class="extensive dropdown-menu show">
+                                                <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static" data-bs-toggle="dropdown"
+                                                    class="extensive dropdown-menu">
                                                     <div class="extensive-menu">
                                                         <div class="menu-header-container">
                                                             <h3 class="h3 menu-header"><a href="heading/">${megaMenu.heading}</a></h3>
