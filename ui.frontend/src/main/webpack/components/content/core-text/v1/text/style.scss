@@ -187,6 +187,10 @@
     width: calc(100% - 20px);
     --bs-popover-border-color: transparent;
 }
+.popover-button .popover-icon {
+    color: var(--brand-tertiary-800);
+	}
+
 
 .sl-popover-headless .popover-header{
     position: absolute;

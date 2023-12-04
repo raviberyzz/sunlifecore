@@ -22,10 +22,10 @@
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data) {
         return '<div class=" rte-dialog-columnContainer">'
                 +'<div class=" rte-dialog-columnContainer">'   
-            	+'<div class=" rte-dialog-column">'
+                +'<div class=" rte-dialog-column">'
                 +'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Header Text : </label>'
                 +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter heading text" name="infoHead" value="" labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0">'
-           		+'</div>'
+                +'</div>'
                 +'<div class=" rte-dialog-column">'
                 +'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Popover Content : </label>'
                 +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter popover content text" name="infoDetail" value="" labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0">'
@@ -47,7 +47,7 @@
         initialize: function(config) {
             this.config = config;
             this.context = this.editorKernel.getEditContext();
-   
+          
             this.exec = config.execute;
             this.$saveBtn = this.$dialog.find('[data-type="execSaveInfo"]');
             this.$closeBtn = this.$dialog.find('[data-type="execCloseInfo"]');
@@ -124,9 +124,9 @@
             console.log('InfoPopoverBaseDialog onShow is called');
           },
 
-         onHide: function() {
+          onHide: function() {
             console.log('InfoPopoverBaseDialog onHide is called');
-         },
+          },
 
         getDataType: function () {
             return TCP_DIALOG;
@@ -144,7 +144,7 @@
         },
         initializeUI: function (tbGenerator, options) {
             var plg = CUI.rte.plugins;
-           
+
             if (!this.isFeatureEnabled(FEATURE)) {
                 return;
             }
@@ -156,7 +156,7 @@
         },
         execute: function (id, value, envOptions) {
             this.editorKernel.relayCmd(id);
-           
+
             var context = envOptions.editContext,
                 selection = CUI.rte.Selection.createProcessingSelection(context),
                 ek = this.editorKernel,
@@ -172,9 +172,9 @@
                 CUI.rte.Selection.selectBookmark(context, bookmark);
                 CUI.rte.Selection.restoreNativeSelection(context, this.savedRange);
 
-                var htmlToInsert = `&nbsp;<button type="button" class="coral3-Icon coral3-Icon--sizeS coral3-Icon--info popover-button" data-bs-toggle="popover" data-bs-title="${poHeading}" data-bs-content="${poContent}" data-bs-placement="auto" data-bs-custom-class="sl-popover"><i class="fal fa-info-circle" role="presentation"></i></button>&nbsp;`;
+                var htmlToInsert = `&nbsp;<button type="button" class="coral3-Icon coral3-Icon--sizeS coral3-Icon--info popover-button" data-bs-toggle="popover" data-bs-title="${poHeading}" data-bs-content="${poContent}" data-bs-placement="auto" data-bs-custom-class="sl-popover"><i class="fal fa-info-circle popover-icon" role="presentation"></i></button>&nbsp;`;
 
-				        let range = CUI.rte.Selection.getLeadRange(context);
+                        let range = CUI.rte.Selection.getLeadRange(context);
                 let tempDiv = context.doc.createElement("div");
                 tempDiv.innerHTML = htmlToInsert;
                 let textFrag = context.doc.createDocumentFragment();
@@ -212,7 +212,7 @@
                 content = '';
 
             if(this.isSelection && (selection.startNode && selection.startNode.nextElementSibling && selection.startNode.nextElementSibling.classList.contains("popover-button"))) {
-				        heading = selection.startNode.nextElementSibling.getAttribute('data-bs-title');
+                        heading = selection.startNode.nextElementSibling.getAttribute('data-bs-title');
                 content = selection.startNode.nextElementSibling.getAttribute('data-bs-content');
                 this.isEdit = true;
             }
@@ -224,7 +224,7 @@
         },
         //to mark the icon selected/deselected
         updateState: function (selDef) {
-			      this.isSelection = selDef.isSelection;
+                  this.isSelection = selDef.isSelection;
             let selectedDom  =selDef.nodeList.commonAncestor;
         }
     });
