@@ -122,14 +122,12 @@
                                                     <title
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Select the social media platform for sharing"
                                                         fieldLabel="Share Text"
                                                         name="./shareText"/>
                                                     <share
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                         composite="{Boolean}true"
-                                                        fieldDescription="Click add to add links"
                                                         fieldLabel="Share Option">
                                                         <field
                                                             jcr:primaryType="nt:unstructured"
@@ -143,7 +141,7 @@
                                                                         <titleLevel
                                                                             jcr:primaryType="nt:unstructured"
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                            fieldDescription="Select size/label "
+                                                                            fieldDescription="Select the social media platforms for sharing"
                                                                             fieldLabel="Select Platforms"
                                                                             name="./plateforms">
                                                                             <items jcr:primaryType="nt:unstructured">

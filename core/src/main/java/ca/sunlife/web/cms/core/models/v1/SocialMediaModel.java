@@ -5,7 +5,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
 import java.util.List;
 
 /**
@@ -24,11 +23,13 @@ public interface SocialMediaModel {
 
     @ChildResource
     List<SocialLinksModel> getSocialLinks();
+	
+	@ValueMapValue
+	String getShareText();
     
     @ChildResource
     List<SocialOptionsModel> getSocialOptions();
 
     @ValueMapValue
     String getSpacing();
-
 }
