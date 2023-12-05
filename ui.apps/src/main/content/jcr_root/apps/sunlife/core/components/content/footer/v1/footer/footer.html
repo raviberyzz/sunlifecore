@@ -1,6 +1,5 @@
 <footer class="sl-footer" data-sly-use.footer="ca.sunlife.web.cms.core.models.v1.Footer"/>
 <div class="container">
-    Chris ${footer.showSections}
     <sly data-sly-use.template="${'templates/top-footer.html'}" data-sly-call="${template.topFooter @topFooter = footer}" data-sly-test="${footer.showSections == 'showTop' || footer.showSections == 'showBoth'}"></sly>
     <sly data-sly-use.template="${'templates/middle-footer.html'}" data-sly-call="${template.middleFooter @middleFooter = footer}"></sly>
     <sly data-sly-use.template="${'templates/bottom-footer.html'}" data-sly-call="${template.bottomFooter @bottomFooter = footer}" data-sly-test="${footer.showSections == 'showBottom' || footer.showSections == 'showBoth'}"></sly>
