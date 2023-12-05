@@ -1,4 +1,4 @@
-package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1.header;
 
 import com.adobe.acs.commons.models.injectors.annotation.ChildResourceFromRequest;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -7,7 +7,6 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.List;
-
 @Model(adaptables = {SlingHttpServletRequest.class},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
         resourceType = MegaMenuModel.RESOURCE_TYPE)

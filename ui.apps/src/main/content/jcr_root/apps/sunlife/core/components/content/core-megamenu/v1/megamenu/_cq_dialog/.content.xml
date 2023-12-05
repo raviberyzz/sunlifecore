@@ -218,67 +218,8 @@
                     </properties>
                     <spacing
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Spacing"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[*]">
-                                            <spacing
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Select Spacing"
-                                                name="./spacing">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <_x0033_xs
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="3XS"
-                                                        value="3xs"/>
-                                                    <_x0032_xs
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="2XS"
-                                                        value="2xs"/>
-                                                    <xs
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="XS"
-                                                        value="xs"/>
-                                                    <s
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="s"
-                                                        value="S"/>
-                                                    <m
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="M"
-                                                        value="m"/>
-                                                    <l
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="L"
-                                                        value="l"/>
-                                                    <xl
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="XL"
-                                                        value="xl"/>
-                                                    <_x0033_xl
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="3XL"
-                                                        value="3xl"/>
-                                                </items>
-                                            </spacing>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </spacing>
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
                 </items>
             </tabs>
         </items>

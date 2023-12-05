@@ -1,9 +1,16 @@
-<sly data-sly-use.headerModel="ca.sunlife.web.cms.core.models.v1.Header.HeaderModel" /> 
-<!-- <header>
+<sly data-sly-use.headerModel="ca.sunlife.web.cms.core.models.v1.header.HeaderModel" />
+<header>
 Header-placeholder
-<sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
+<!--/* Including Mega Menu */-->
+	<sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
+		<sly data-sly-use.megaMenu="templates/megamenu.html"
+			 data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>
+	</sly>
+
+<!--/* Including Utility Bar */-->
+<!-- <sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
 	 data-sly-call="${utilityBarNavList.navList @ headerModel=headerModel}"></sly>
-</header> -->
+</header>  -->
 
 
 
