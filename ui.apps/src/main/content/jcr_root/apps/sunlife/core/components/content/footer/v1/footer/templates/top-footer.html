@@ -1,0 +1,17 @@
+<template data-sly-template.topFooter="${@topFooter}">
+    <div class="footer-menus-container">
+        <hr class="sl-divider hr" aria-hidden="true" />
+        <div class="footer-menus row" data-sly-list="${topFooter.topLinks}">
+            <div class="footer-menu col">
+                <h3 class="footer-menu-header">
+                    <span class="menu-content">${item.heading}</span>
+                </h3>
+                <ul id="footer-title-1-dropdown" data-sly-list.link="${item.links}">
+                    <li class="footer-menu-items">
+                        <a href="${link.linkUrl @ extension = 'html'}" data-sly-attribute.target="${link.target == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
