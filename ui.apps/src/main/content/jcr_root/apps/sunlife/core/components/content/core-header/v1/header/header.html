@@ -1,13 +1,28 @@
-<sly data-sly-use.headerModel="ca.sunlife.web.cms.core.models.v1.header.HeaderModel" />
+<sly data-sly-use.headerModel="ca.sunlife.web.cms.core.models.v1.header.HeaderModel"/>
 <header>
-Header-placeholder
-<!--/* Including Mega Menu */-->
-	<sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
-		<sly data-sly-use.megaMenu="templates/megamenu.html"
-			 data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>
-	</sly>
+    Header-placeholder
+    <!--/* Including Utility Bar */-->
+    <sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
+         data-sly-call="${utilityBarNavList.navList @ headerModel=headerModel}"></sly>
+    <!--/* Including Navigation Bar */-->
+    <!--/* Including Logo */-->
+    <sly data-sly-use.logo="templates/logo.html"
+         data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
+    <!--/* Including Mega Menu */-->
+    <sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
+        <sly data-sly-use.megaMenu="templates/megamenu.html"
+             data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>
+    </sly>
+	<sly data-sly-use.mobileMenu="templates/mobileMenu.html"
+		 data-sly-call="${mobileMenu.mobile @ headerModel=headerModel}"></sly>
+    <!--/* Including Search */-->
+    <sly data-sly-use.search="templates/search.html"
+         data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
-<!--/* Including Utility Bar */-->
-<sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
-	 data-sly-call="${utilityBarNavList.navList @ headerModel=headerModel}"></sly>
+    <!--/* Including Signin */-->
+    <sly data-sly-use.signin="templates/signin.html"
+         data-sly-call="${signin.signin @ headerModel=headerModel}"></sly>
+
+    <!--/* End Navigation Bar */-->
 </header>
+```
