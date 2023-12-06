@@ -53,13 +53,30 @@ use(function () {
         var lg = getMediaSpecificGrid('lg', col.desktop);
         var md = getMediaSpecificGrid('sm', col.tablet);
         var xs = getMediaSpecificGrid('xs', col.mobile);
-        return  lg + md + xs;
+        var mediaConfigArray = [lg,md,xs];
+        return  mediaConfigArray.filter(function(item,index) { 
+            return mediaConfigArray.indexOf(item) === index;
+        }).join(' ');
     }
     
     function getMediaSpecificGrid(media, config) {
-        var col = config[0] > 0 ? 'col-'+media+'-'+config[0] : '';
-        var offset = config[1] > 0 ? 'offset-'+media+'-'+config[1] : '';
-        return [col,offset,''].join(' ');
+        var col = '';
+        var offset = '';
+        var colsAndOffsetClassesArray=[];
+        if(config[0] > 0) {
+            col = media != 'xs' ? 'col-'+media+'-'+config[0] : 'col-'+config[0];
+        }
+        if(config[1] > 0) {
+            offset = media != 'xs' ? 'offset-'+media+'-'+config[1] : 'offset-'+config[1];
+        }
+        if(col=='' && offset =='') {
+            col = 'col';
+        }
+        colsAndOffsetClassesArray.push(col);
+        if(offset != '') {
+            colsAndOffsetClassesArray.push(offset); 
+        } 
+        return colsAndOffsetClassesArray.join(' ');
     }
 
     return {
