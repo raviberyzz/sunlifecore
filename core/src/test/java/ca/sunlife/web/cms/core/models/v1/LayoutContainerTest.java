@@ -79,6 +79,7 @@ class LayoutContainerTest {
     	assertEquals("6", layoutContainer.getOffsetTabletSix());
     	assertEquals("6", layoutContainer.getOffsetMobileSix());
     	
+		assertEquals("align-items-start", layoutContainer.getContainerAlignment());
     	assertEquals("data-section", layoutContainer.getDataSection());
     	assertEquals("mb-sl16", layoutContainer.getSpacing());
 	}

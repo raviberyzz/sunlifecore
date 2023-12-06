@@ -785,7 +785,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 name="./debug"
-                                                text="Enable Debug Mode"
+                                                text="Enable Visualize Mode"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true" />
                                         </items>

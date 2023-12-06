@@ -48,6 +48,7 @@
     "offsetMobileSix": "6",
     "heightAuto": "true",
     "dataSection": "data-section",
+    "containerAlignment": "align-items-start",
     "spacing": "mb-sl16"
   }
 }
