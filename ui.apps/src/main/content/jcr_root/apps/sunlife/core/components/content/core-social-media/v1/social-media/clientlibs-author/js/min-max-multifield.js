@@ -17,10 +17,10 @@
 
                 max = parseInt(max);
                 if (el.items.length < min) {
-                    return "Min needed items is " + min
+                    return "Minimum items allowed is " + min
                 }
                 if (el.items.length > max) {
-                    return "Max allowed items is " + max
+                    return "Maximum items allowed are " + max
                 }
             }
         }
