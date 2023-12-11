@@ -198,7 +198,7 @@ public class LayoutContainerModel {
 	private String offsetMobileSix;
 	
 	@ValueMapValue
-	private String heightAuto;
+	private String containerAlignment;
 	
 	@ValueMapValue
 	private String dataSection;

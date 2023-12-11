@@ -1,0 +1,25 @@
+.layout-container .row.debug {
+    div[class*="col-"] {
+       background-color: rgb(63 81 181 / 4%);
+        min-height: 300px;
+        border: 1px dashed #d1d4e2;
+
+        &::before {
+            content: attr(class);
+            display: block;
+            margin-top: -8px;
+            font-size: 11px;
+            background: #fff;
+            width: fit-content;
+            padding: 0 5px;
+            border: 1px dashed #d1d4e2;
+            line-height: normal;
+            font-style: italic;
+            position: absolute;
+            max-width: 160px;
+            z-index: 0;
+            height: 16px;
+            overflow: auto;
+        }
+    }
+}

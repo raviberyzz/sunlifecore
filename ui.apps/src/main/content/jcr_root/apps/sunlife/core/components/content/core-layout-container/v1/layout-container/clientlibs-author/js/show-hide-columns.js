@@ -39,7 +39,7 @@
 
         } else {
             $findelement.nextAll(".togglecolumnfield").first().addClass("hide");
-
+			$findelement.nextAll(".togglecolumnfield").first().find("input").val('0');
         }
     }
 })(document, Granite.$);
