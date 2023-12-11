@@ -199,6 +199,9 @@ public class LayoutContainerModel {
 	
 	@ValueMapValue
 	private String containerAlignment;
+
+	@ValueMapValue
+	private String centerAlign;
 	
 	@ValueMapValue
 	private String dataSection;
