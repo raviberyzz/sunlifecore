@@ -66,12 +66,12 @@ use(function () {
         if(config[0] > 0) {
             col = media != 'xs' ? 'col-'+media+'-'+config[0] : 'col-'+config[0];
         }
-        if(config[1] > 0) {
-            offset = media != 'xs' ? 'offset-'+media+'-'+config[1] : 'offset-'+config[1];
-        }
-        if(col=='' && offset =='') {
+        offset = media != 'xs' ? 'offset-'+media+'-'+config[1] : 'offset-'+config[1];
+        
+        if(col=='') {
             col = 'col';
         }
+        
         colsAndOffsetClassesArray.push(col);
         if(offset != '') {
             colsAndOffsetClassesArray.push(offset); 
