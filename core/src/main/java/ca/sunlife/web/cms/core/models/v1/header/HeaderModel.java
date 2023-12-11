@@ -16,6 +16,72 @@ public interface HeaderModel {
     public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
     /**
+     * Gets the logo
+     *
+     * @return the logo
+     */
+    @ValueMapValue
+    String getListFrom();
+
+    /**
+     * Gets the logo image.
+     *
+     * @return the logo image
+     */
+    @ValueMapValue
+    String getLogoImage();
+
+    /**
+     * Gets the mobile logo image.
+     *
+     * @return the mobile logo image
+     */
+    @ValueMapValue
+    String getMobileLogoImage();
+
+
+    /**
+     * Gets the link url.
+     *
+     * @return the link url
+     */
+    @ValueMapValue
+    String getLinkUrl();
+
+
+    /**
+     * Gets the alt text.
+     *
+     * @return the alt text
+     */
+    @ValueMapValue
+    String getAltText();
+
+    /**
+     * Gets the target.
+     *
+     * @return the target
+     */
+    @ValueMapValue
+    String getTarget();
+
+    /**
+     * Gets the separator.
+     *
+     * @return the separator
+     */
+    @ValueMapValue
+    String getSeparator();
+
+    /**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ValueMapValue
+    String getHideLogo();
+
+    /**
      * Gets true or false for displaying the mega menu
      *
      * @return the display mega menu
