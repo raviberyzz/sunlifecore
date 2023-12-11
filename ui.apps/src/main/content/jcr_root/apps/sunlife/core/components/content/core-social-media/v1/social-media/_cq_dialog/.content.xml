@@ -2,7 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Social Media"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    sling:resourceType="cq/gui/components/authoring/dialog"
+	    extraClientlibs="[sunlife.core-author.social-media]">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -128,7 +129,8 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                         composite="{Boolean}true"
-                                                        fieldLabel="Share Option">
+                                                        fieldLabel="Share Option"
+														validation="multifield-social-max-3,multifield-social-min-1">
                                                         <field
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -157,18 +159,6 @@
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="LinkedIn"
                                                                                     value="linkedin"/>
-                                                                                <instagram
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    text="Instagram"
-                                                                                    value="instagram"/>
-                                                                                <wechat
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    text="WeChat"
-                                                                                    value="wechat"/>
-                                                                                <youtube
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    text="YouTube"
-                                                                                    value="youtube"/>
                                                                             </items>
                                                                         </titleLevel>
                                                                         <screenText
