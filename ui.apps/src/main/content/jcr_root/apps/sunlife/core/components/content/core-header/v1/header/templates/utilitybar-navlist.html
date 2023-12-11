@@ -1,27 +1,12 @@
 <template data-sly-template.navList="${ @ headerModel }">
-    <!-- <div class="utility-nav-wrapper" data-section="header-utility-nav">
-        <div data-sly-test="${headerModel.listFromNav == 'true'}" class="utility-nav-links" role="navigation"
-             aria-label="Helpful links">
-            <ul>
-                <sly data-sly-list.links="${headerModel.navlinks}">
-                    <li data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=links.linkURL}">
-                        <a href="${utilityListParsing.navPath}" target="${links.linkTarget}"
-                           data-title="${links.dataTitle}">${links.linkName}
-                            <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i>
-                        </a>
-                    </li>
-                </sly>
-            </ul>
-        </div> -->
-
         <div class="sl-utility-bar">
             <div class="container">
                <ul class="content-container">
                   <li>
                      <div class="sl-region-menu" id="">
-                        <div id="sl-region-menu" class="region-menu-container show dropdown">
+                        <div id="sl-region-menu" class="region-menu-container dropdown">
                            <div class="label-container"><button type="button" id="sl-region-menu-dd" aria-expanded="false"
-                                 data-bs-toggle="dropdown" class="nav-link dropdown-toggle show btn btn-primary"><span
+                                 data-bs-toggle="dropdown" class="nav-link dropdown-toggle btn"><span
                                     class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
                                        class="sl-icon sl-icon-location"></span></span><span
                                     class="d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">Region</span>
