@@ -1,0 +1,69 @@
+@import "bootstrap/scss/mixins";
+@import "@sunlife/ui-styles/base/variables.scss";
+@import "@sunlife/ui-styles/base/tokens.scss";
+@import "@sunlife/ui-styles/base/typography.scss";
+@import "@sunlife/ui-styles/base/container.scss";
+@import "@sunlife/ui-styles/base/functions.scss";
+
+.sl-article-video-container {
+  .sl-article-video-component {
+    @include media-breakpoint-only(lg) {
+      width: 760px;
+    }
+
+    @include media-breakpoint-only(xl) {
+      width: 760px;
+    }
+
+    .sl-article-video,
+    .sl-article-video-playlist {
+      iframe {
+        height: 11.5rem;
+        @include media-breakpoint-only(sm) {
+          height: 18.875rem;
+        }
+        @include media-breakpoint-only(md) {
+          height: 27.625rem;
+        }
+        @include media-breakpoint-up(lg) {
+          height: 26.75rem;
+        }
+      }
+    }
+
+    .sl-article-video-block {
+      .article-video-block-lightbox {
+        @include media-breakpoint-up(md) {
+          align-items: flex-start;
+        }
+        .video-container {
+          @include media-breakpoint-only(md) {
+            flex: 0 40%;
+          }
+          @include media-breakpoint-up(lg) {
+            flex: 0 36%;
+            height: 9.5rem;
+          }
+          iframe {
+            @include media-breakpoint-up(lg) {
+              height: 9.5rem;
+            }
+          }
+        }
+        .card-body {
+          @include media-breakpoint-only(md) {
+            flex: 0 60%;
+          }
+          @include media-breakpoint-up(lg) {
+            flex: 0 64%;
+          }
+        }
+      }
+    }
+
+    .sl-article-video-caption {
+      @include sl-body-small();
+      margin-top: 0.25rem;
+    }
+  }
+}
