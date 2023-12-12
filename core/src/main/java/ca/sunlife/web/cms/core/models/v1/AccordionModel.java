@@ -20,8 +20,6 @@ import com.adobe.cq.wcm.core.components.internal.models.v1.PanelContainerListIte
 import com.adobe.cq.wcm.core.components.models.Accordion;
 import com.adobe.cq.wcm.core.components.models.Component;
 import com.adobe.cq.wcm.core.components.models.ListItem;
-import com.adobe.cq.wcm.core.components.models.PanelContainer;
-import com.adobe.cq.wcm.core.components.models.PanelContainerItem;
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
 import com.day.cq.wcm.api.Page;
 import com.adobe.cq.wcm.core.components.commons.link.LinkManager;
