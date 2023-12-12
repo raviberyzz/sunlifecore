@@ -117,10 +117,10 @@ public class FooterImpl implements Footer {
                         linkMap = new HashMap<>();
 
                         linkMap.put("linkName", linkItem.getValueMap().get("linkName", String.class));
-                        linkMap.put("linkUrl", linkItem.getValueMap().get("linkUrl", String.class));
+                        linkMap.put("linkURL", linkItem.getValueMap().get("linkURL", String.class));
                         linkMap.put("langAttribute", linkItem.getValueMap().get("langAttribute", String.class));
                         linkMap.put("dataTitle", linkItem.getValueMap().get("dataTitle", String.class));
-                        linkMap.put("target", linkItem.getValueMap().get("target", String.class));
+                        linkMap.put("linkTarget", linkItem.getValueMap().get("linkTarget", String.class));
 
                         linksList.add(linkMap);
                     }
@@ -145,10 +145,10 @@ public class FooterImpl implements Footer {
                 bottomLinkMap = new HashMap<>();
 
                 bottomLinkMap.put("linkName", bottomLinkItem.getValueMap().get("linkName", String.class));
-                bottomLinkMap.put("linkUrl", bottomLinkItem.getValueMap().get("linkUrl", String.class));
+                bottomLinkMap.put("linkURL", bottomLinkItem.getValueMap().get("linkURL", String.class));
                 bottomLinkMap.put("langAttribute", bottomLinkItem.getValueMap().get("langAttribute", String.class));
                 bottomLinkMap.put("dataTitle", bottomLinkItem.getValueMap().get("dataTitle", String.class));
-                bottomLinkMap.put("target", bottomLinkItem.getValueMap().get("target", String.class));
+                bottomLinkMap.put("linkTarget", bottomLinkItem.getValueMap().get("linkTarget", String.class));
 
                 bottomLinksList.add(bottomLinkMap);
             }

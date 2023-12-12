@@ -8,7 +8,7 @@
                 </h3>
                 <ul id="footer-title-1-dropdown" data-sly-list.link="${item.links}">
                     <li class="footer-menu-items">
-                        <a href="${link.linkUrl @ extension = 'html'}" data-sly-attribute.target="${link.target == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
+                        <a href="${link.linkURL @ extension = 'html'}" data-sly-attribute.target="${link.linkTarget == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
                     </li>
                 </ul>
             </div>

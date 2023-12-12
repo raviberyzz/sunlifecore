@@ -1,36 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-        xmlns:cq="http://www.day.com/jcr/cq/1.0"
-        xmlns:jcr="http://www.jcp.org/jcr/1.0"
-        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
-        jcr:primaryType="nt:unstructured"
-        jcr:title="Footer"
-        sling:resourceType="cq/gui/components/authoring/dialog">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Footer"
+          sling:resourceType="cq/gui/components/authoring/dialog">
     <content
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/container">
-        <items
-                jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
             <tabs
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/tabs"
                     maximized="true">
-                <items
-                        jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <showSections
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Show Sections"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                            margin="true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <showSections
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Target"
+                                            name="./showSections">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <option1
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Show Top"
+                                                    value="showTop"/>
+                                            <option2
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Show Bottom"
+                                                    value="showBottom"/>
+                                            <option3
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Show Both"
+                                                    value="showBoth"/>
+                                        </items>
+                                    </showSections>
+                                </items>
+                            </column>
+                        </items>
+                    </showSections>
                     <topSection
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Top Section"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                             margin="true">
-                        <items
-                                jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
                             <column
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items
-                                        jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
                                     <accordion
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -40,13 +65,11 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
                                                 name="./topLinks">
-                                            <items
-                                                    jcr:primaryType="nt:unstructured">
+                                            <items jcr:primaryType="nt:unstructured">
                                                 <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                    <items
-                                                            jcr:primaryType="nt:unstructured">
+                                                    <items jcr:primaryType="nt:unstructured">
                                                         <title
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -61,23 +84,21 @@
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
                                                                     name="./links">
-                                                                <items
-                                                                        jcr:primaryType="nt:unstructured">
+                                                                <items jcr:primaryType="nt:unstructured">
                                                                     <column
                                                                             jcr:primaryType="nt:unstructured"
                                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                        <items
-                                                                                jcr:primaryType="nt:unstructured">
+                                                                        <items jcr:primaryType="nt:unstructured">
                                                                             <linkName
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                     fieldLabel="Link Name"
                                                                                     name="./linkName"/>
-                                                                            <linkUrl
+                                                                            <linkURL
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                                     fieldLabel="Link Url"
-                                                                                    name="./linkUrl"/>
+                                                                                    name="./linkURL"/>
                                                                             <langAttribute
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -88,11 +109,11 @@
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                     fieldLabel="Data Title"
                                                                                     name="./dataTitle"/>
-                                                                            <target
+                                                                            <linkTarget
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                                     fieldLabel="Target"
-                                                                                    name="./target">
+                                                                                    name="./linkTarget">
                                                                                 <items jcr:primaryType="nt:unstructured">
                                                                                     <option1
                                                                                             jcr:primaryType="nt:unstructured"
@@ -103,7 +124,7 @@
                                                                                             text="New Tab"
                                                                                             value="newTab"/>
                                                                                 </items>
-                                                                            </target>
+                                                                            </linkTarget>
                                                                         </items>
                                                                     </column>
                                                                 </items>
@@ -123,13 +144,11 @@
                             jcr:title="Middle Section"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                             margin="true">
-                        <items
-                                jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
                             <column
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items
-                                        jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
                                     <title
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -251,8 +270,7 @@
                                                 </inline>
                                                 <tableEditOptions
                                                         jcr:primaryType="nt:unstructured"
-                                                        toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]">
-                                                </tableEditOptions>
+                                                        toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
                                             </cui>
                                         </uiSettings>
                                     </richText>
@@ -265,13 +283,11 @@
                             jcr:title="Bottom Section"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                             margin="true">
-                        <items
-                                jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
                             <column
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items
-                                        jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
                                     <bottomLinks
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -281,23 +297,21 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
                                                 name="./bottomLinks">
-                                            <items
-                                                    jcr:primaryType="nt:unstructured">
+                                            <items jcr:primaryType="nt:unstructured">
                                                 <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                    <items
-                                                            jcr:primaryType="nt:unstructured">
+                                                    <items jcr:primaryType="nt:unstructured">
                                                         <linkName
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                 fieldLabel="Link Name"
                                                                 name="./linkName"/>
-                                                        <linkUrl
+                                                        <linkURL
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                 fieldLabel="Link Url"
-                                                                name="./linkUrl"/>
+                                                                name="./linkURL"/>
                                                         <langAttribute
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -338,13 +352,11 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
                                                 name="./socialMedia">
-                                            <items
-                                                    jcr:primaryType="nt:unstructured">
+                                            <items jcr:primaryType="nt:unstructured">
                                                 <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                    <items
-                                                            jcr:primaryType="nt:unstructured">
+                                                    <items jcr:primaryType="nt:unstructured">
                                                         <icon
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -374,9 +386,9 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                             checked="{Boolean}false"
-                                            uncheckedValue="{Boolean}false"
                                             name="./feedback"
                                             text="Do you want to remove Feedback Section ?"
+                                            uncheckedValue="{Boolean}false"
                                             value="{Boolean}true"/>
                                 </items>
                             </column>
@@ -387,13 +399,11 @@
                             jcr:title="Analytics"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                             margin="true">
-                        <items
-                                jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
                             <column
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items
-                                        jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
                                     <dataSection
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -408,57 +418,15 @@
                             jcr:title="Spacing"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                             margin="true">
-                        <items
-                                jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
                             <column
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items
-                                        jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
                                     <spacing
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Select Spacing"
-                                            name="./spacing">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <option1
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="3XS"
-                                                    value="3XS"/>
-                                            <option2
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="2XS"
-                                                    value="2XS"/>
-                                            <option3
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="XS"
-                                                    value="XS"/>
-                                            <option4
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="S"
-                                                    value="S"/>
-                                            <option5
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="M"
-                                                    value="M"/>
-                                            <option6
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="L"
-                                                    value="L"/>
-                                            <option7
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="XL"
-                                                    value="XL"/>
-                                            <option8
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="2XL"
-                                                    value="2XL"/>
-                                            <option9
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="3XL"
-                                                    value="3XL"/>
-                                        </items>
-                                    </spacing>
+                                            sling:resourceType="granite/ui/components/coral/foundation/include"
+                                            path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
                                 </items>
                             </column>
                         </items>
@@ -468,4 +436,3 @@
         </items>
     </content>
 </jcr:root>
-
