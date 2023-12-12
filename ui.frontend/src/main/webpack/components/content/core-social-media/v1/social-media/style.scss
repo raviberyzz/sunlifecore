@@ -1,0 +1,55 @@
+.sl-social-media {
+  display: flex;
+  align-items: center;
+  .social-icon {
+    cursor: pointer;
+    color: #000;
+    font-size: 28px;
+    &:focus {
+      outline: auto;
+      outline-color: #2867b1;
+    }
+  }
+  .fa-facebook:hover {
+    color: #1877f2;
+  }
+  .fa-linkedin:hover {
+    color: #2867b1;
+  }
+  .fa-instagram:hover {
+    color: #e9348f;
+    //background-clip: text;
+    //-webkit-text-fill-color: transparent;
+    //-webkit-background-clip: text;
+    //background: linear-gradient(144deg, #621FF5 10.14%, #CB2BD5 26.18%, #E33192 37.07%, #EF8733 51.25%, #F7B147 64.66%, #EC6938 77.23%, #E9348F 86.9%);
+  }
+  .fa-youtube {
+    font-size: 40px;
+    margin-top: -3px;
+    &:hover {
+      color: #ff0000;
+    }
+  }
+  .fa-weixin {
+    background: #000;
+    color: #fff;
+    padding: 3px;
+    width: 28px;
+    height: 28px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    &:hover {
+      background: #00d30b;
+    }
+  }
+
+  .fa-twitter:hover {
+    color: #1d9bf0;
+  }
+  .share-heading {
+    margin-right: 20px;
+  }
+}
+
+//linkedin hover - #2867b1
+//instagram background: linear-gradient(144deg, #621FF5 10.14%, #CB2BD5 26.18%, #E33192 37.07%, #EF8733 51.25%, #F7B147 64.66%, #EC6938 77.23%, #E9348F 86.9%);
