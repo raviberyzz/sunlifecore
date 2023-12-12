@@ -22,7 +22,7 @@ import com.day.cq.wcm.api.Page;
 @Model(adaptables = { SlingHttpServletRequest.class }, adapters = { Footer.class }, resourceType = {
         FooterImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterImpl implements Footer {
-    protected static final String RESOURCE_TYPE = "wknd/components/footer";
+    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/footer/v1/footer";
 
     @Self
     private SlingHttpServletRequest request;
