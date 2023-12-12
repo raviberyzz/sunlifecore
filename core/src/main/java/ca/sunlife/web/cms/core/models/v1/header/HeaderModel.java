@@ -13,7 +13,7 @@ import java.util.List;
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
         resourceType = HeaderModel.RESOURCE_TYPE)
 public interface HeaderModel {
-    public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
+    String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
     /**
      * Gets true or false for displaying the mega menu
@@ -38,6 +38,18 @@ public interface HeaderModel {
      */
     @ValueMapValue
     String getListFromNav();
+
+    @ValueMapValue
+    String getListFromRegion();
+
+    @ValueMapValue
+    String getRegionTitle();
+
+    @ValueMapValue
+    String getLanguage();
+
+    @ChildResource
+    List<LanguageLink> getLanguageLinks();
 
     /**
      * Gets the navlinks which is multifield
