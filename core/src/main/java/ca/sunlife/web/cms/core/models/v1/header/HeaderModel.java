@@ -5,7 +5,9 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import java.util.List;
+
 /**
  * Interface for HeaderModel
  */
@@ -14,6 +16,49 @@ import java.util.List;
         resourceType = HeaderModel.RESOURCE_TYPE)
 public interface HeaderModel {
     public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
+
+    /** Search */
+    /**
+     * Gets the search
+     *
+     * @return the search
+     */
+    @ValueMapValue
+    String getListFromSearch();
+
+    /**
+     * Gets the searchTitle
+     *
+     * @return the searchTitle
+     */
+    @ValueMapValue
+    String getSearchTitle();
+
+    /**
+     * Gets the searchPlaceholder
+     *
+     * @return the searchPlaceholder
+     */
+    @ValueMapValue
+    String getSearchPlaceholder();
+
+    /**
+     * Gets the searchButton
+     *
+     * @return the searchButton
+     */
+    @ValueMapValue
+    String getSearchButton();
+
+    /**
+     * Gets the searchUrl
+     *
+     * @return the searchUrl
+     */
+    @ValueMapValue
+    String getSearchURL();
+
+    /** Logo */
 
     /**
      * Gets the logo
@@ -80,6 +125,8 @@ public interface HeaderModel {
      */
     @ValueMapValue
     String getHideLogo();
+
+    /** Mega Menu */
 
     /**
      * Gets true or false for displaying the mega menu

@@ -97,13 +97,13 @@
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Desktop Logo Image"
                                                                                         name="./logoImage"
-                                                                                        rootPath="/content/"/>
+                                                                                        rootPath="/content/dam"/>
                                                                                 <mobileLogoImage
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="MobileLogo Image"
                                                                                         name="./mobileLogoImage"
-                                                                                        rootPath="/content/"/>
+                                                                                        rootPath="/content/dam"/>
                                                                                 <linkUrl
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -269,7 +269,6 @@
                                                                 </field>
                                                             </links>
                                                             -->
-
                     <utilitynav
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Utility Nav"
@@ -458,7 +457,7 @@
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldLabel="Search Action"
-                                                                    name="./searchUrl"
+                                                                    name="./searchURL"
                                                                     rootPath="/content/"
                                                                     suffix=".html"/>
                                                         </items>
