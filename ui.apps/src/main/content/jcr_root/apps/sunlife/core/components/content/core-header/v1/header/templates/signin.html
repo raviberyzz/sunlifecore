@@ -1,2 +1,12 @@
 <template data-sly-template.signin="${ @ headerModel }">
+    <sly data-sly-test="${headerModel.listFromSignin == 'signintrue'}">
+        <sly data-sly-list.signinLinks="${headerModel.signinlinks}">
+            getDesktopLinkTitle: ${signinLinks.getDesktopLinkTitle}
+            getMobileLinkTitle: ${signinLinks.getMobileLinkTitle}
+            getLinkIcon: ${signinLinks.getLinkIcon}
+            getLinkURL: ${signinLinks.getLinkURL}
+            getLinkTarget: ${signinLinks.getLinkTarget}
+            getLinkType: ${signinLinks.getLinkType}
+        </sly>
+    </sly>
 </template>

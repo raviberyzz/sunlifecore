@@ -22,10 +22,20 @@
      data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
 <!--/* Including Signin */-->
-<!-- <sly data-sly-use.signin="templates/signin.html"
-     data-sly-call="${signin.signin @ headerModel=headerModel}"></sly> -->
+ <sly data-sly-use.signin="templates/signin.html"
+     data-sly-call="${signin.signin @ headerModel=headerModel}"></sly>
 
 <!--/* End Navigation Bar */-->
+
+<!--/* Accessiblity */-->
+skipToSignInLabel: ${headerModel.skipToSignInLabel}
+skipToMainContentLabel: ${headerModel.skipToMainContentLabel}
+skipToFooterLabel: ${headerModel.skipToFooterLabel}
+<!--/* End Accessiblity */-->
+
+<!--/* Spacing */-->
+spacing: ${headerModel.spacing}
+
 <!-- </header> -->
 
 	<div class="container">

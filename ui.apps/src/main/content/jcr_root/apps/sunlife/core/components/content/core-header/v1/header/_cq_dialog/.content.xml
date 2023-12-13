@@ -470,6 +470,7 @@
                             </columns>
                         </items>
                     </search>
+
                     <signin
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sign In"
@@ -601,6 +602,8 @@
                             </columns>
                         </items>
                     </signin>
+
+
                     <megamenu
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Mega Menu"
@@ -745,7 +748,7 @@
                                                     fieldDescription="Choose the variant to be displayed by this experience fragment"
                                                     fieldLabel="Variation"
                                                     filter="folderOrVariant"
-                                                    name="./mobilenav/fragmentPath"
+                                                    name="./mobileNavFragmentPath"
                                                     propertyFilter="cq:xfShowInEditor"
                                                     variant="web"/>
                                         </items>

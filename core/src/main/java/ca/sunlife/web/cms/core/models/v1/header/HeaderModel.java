@@ -17,6 +17,68 @@ import java.util.List;
 public interface HeaderModel {
     public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
+    /** Spacing Variables */
+    /**
+     * Gets the spacing
+     *
+     * @return the spacing
+     */
+    @ValueMapValue
+    String getSpacing();
+
+    /** Accessibility Variables */
+
+    /**
+     * Gets the skip to signin label
+     *
+     * @return skip to signin label
+     */
+    @ValueMapValue
+    String getSkipToSignInLabel();
+
+    /**
+     * Gets the skip to main content label
+     *
+     * @return skip to  main content label
+     */
+    @ValueMapValue
+    String getSkipToMainContentLabel();
+
+    /**
+     * Gets the skip to footer label
+     *
+     * @return skip to footer label
+     */
+    @ValueMapValue
+    String getSkipToFooterLabel();
+
+    /** Mobile Menu */
+    /**
+     * Gets the mobile menu fragment Path
+     *
+     * @return the mobile menu fragment Path
+     */
+    @ValueMapValue
+    String getMobileNavFragmentPath();
+
+
+    /** Sign in */
+    /**
+     * Gets the sign in
+     *
+     * @return the sign in
+     */
+    @ValueMapValue
+    String getListFromSignin();
+
+    /**
+     * Gets the sign in title
+     *
+     * @return the sign in title
+     */
+    @ChildResource
+    List<SigninLinks> getSigninlinks();
+
     /** Search */
     /**
      * Gets the search
