@@ -1,0 +1,9 @@
+{
+    "embed": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "sunlife/core/components/content/embed",
+      "type": "html",
+      "html": "<div>html</div>",
+      "spacing": "mb-s18"
+    }
+  }
