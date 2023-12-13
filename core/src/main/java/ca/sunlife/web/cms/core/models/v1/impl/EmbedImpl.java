@@ -25,30 +25,31 @@ import com.drew.lang.annotations.Nullable;
 @Model(
     adaptables = SlingHttpServletRequest.class,
     adapters = { Embed.class, ComponentExporter.class },
-    resourceType = {EmbedImpl.RESOURCE_TYPE}
+    resourceType = {EmbedImpl.RESOURCE_TYPE},
+    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 
 public class EmbedImpl implements Embed {
 
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-embed/v1/embed";
 
-    @ValueMapValue(name = PN_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
+    @ValueMapValue(name = PN_TYPE)
     @Nullable
     private String type;
 
-    @ValueMapValue(name = PN_URL, injectionStrategy = InjectionStrategy.OPTIONAL)
+    @ValueMapValue(name = PN_URL)
     @Nullable
     private String url;
 
-    @ValueMapValue(name = PN_HTML, injectionStrategy = InjectionStrategy.OPTIONAL)
+    @ValueMapValue(name = PN_HTML)
     @Nullable
     private String html;
 
-    @ValueMapValue(name = PN_EMBEDDABLE_RESOURCE_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
+    @ValueMapValue(name = PN_EMBEDDABLE_RESOURCE_TYPE)
     @Nullable
     private String embeddableResourceType;
 
-    @ScriptVariable(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @ScriptVariable
     @Nullable
     private Style currentStyle;
 

@@ -34,6 +34,7 @@ public class EmbedImplTest {
         assertNull(embed.getEmbeddableResourceType());
         assertEquals(Embed.Type.HTML, embed.getType());
         assertEquals("<div>html</div>", embed.getHtml());
+        assertEquals("mb-s18", embed.getSpacing()); 
 
     }
 }
