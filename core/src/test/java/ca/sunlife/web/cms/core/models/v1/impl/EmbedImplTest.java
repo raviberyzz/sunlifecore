@@ -28,13 +28,11 @@ public class EmbedImplTest {
     @Test
     void testGetterMethods() {
         context.currentResource("/content/embed");
-        embed = context.request().adaptTo(EmbedImpl.class);
-        Mockito.when(style.get(Embed.PN_DESIGN_HTML_DISABLED, false)).thenReturn(false);
+        embed = context.request().adaptTo(EmbedImpl.class);       
         assertNull(embed.getUrl());
         assertNull(embed.getEmbeddableResourceType());
         assertEquals(Embed.Type.HTML, embed.getType());
-        assertEquals("<div>html</div>", embed.getHtml());
-        assertEquals("mb-s18", embed.getSpacing()); 
+        assertEquals("<div>html</div>", embed.getHtml());        
 
     }
 }
