@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -19,8 +18,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.wcm.core.components.internal.models.v1.PanelContainerItemImpl;
 import com.adobe.cq.wcm.core.components.internal.models.v1.PanelContainerListItemImpl;
 import com.adobe.cq.wcm.core.components.models.Accordion;
+import com.adobe.cq.wcm.core.components.models.Component;
 import com.adobe.cq.wcm.core.components.models.ListItem;
-
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
 import com.day.cq.wcm.api.Page;
 import com.adobe.cq.wcm.core.components.commons.link.LinkManager;
@@ -59,32 +58,37 @@ public class AccordionModel implements Accordion {
 	private String spacing; 
 	 
 	@ValueMapValue
-	private String singleExpansion;	
+	private String singleExpansion;	 
 	 
 	@ValueMapValue
 	private String[] expandedItems;	 	
 	
 	private List<ListItem> items; 
 	
-	private List<PanelContainerItemImpl> panelItems;
+	private List<PanelContainerItemImpl> panelItems;	
+	
 	
 	@PostConstruct
 	public void init() {	
 		items = readItems();		
 	}		
-	 
+	
+	@Override 
 	public final List<PanelContainerItemImpl> getChildren() {		
         if (this.panelItems == null) {   
             this.panelItems = ComponentUtils.getChildComponents(request.getResource(), this.request).stream()
-                .map(item -> new PanelContainerItemImpl(item, this))
-                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+            		.map(item -> new PanelContainerItemImpl(item, (Component)this))
+            		.collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
         }	        
         return this.panelItems;
 	}
-
-	protected final List<ListItem> readItems() {
+	
+	
+	protected final List<ListItem> readItems() {	
         return getChildren().stream()
             .map(res -> new PanelContainerListItemImpl(this.linkManager, res.getResource(), getId(), null, currentPage))
             .collect(Collectors.toList());
-	}		
+	}
+	
+	
 }
