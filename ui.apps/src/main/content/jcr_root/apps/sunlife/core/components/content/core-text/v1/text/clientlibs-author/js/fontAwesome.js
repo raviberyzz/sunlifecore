@@ -155,8 +155,7 @@
             if(selection.startNode && selection.startNode.classList !== undefined ) {
                 if (selection.startNode.classList.contains('font-awesome-icon')) {
                     selection.startNode.classList.forEach( className => {
-                    console.log('Checking ' + className);
-                    if(fontAwesomeClassPrefixes.includes(className)) {
+                   if(fontAwesomeClassPrefixes.includes(className)) {
                         fontAwesomeClassPrefix = className;
                     } 
                     if (className.startsWith('fa-')) {
@@ -172,8 +171,6 @@
             dialog.$dialog.find('[name="awesomeIcon"]').val(fontAwesomeClassIcon);
             dialog.$dialog.find('[name="awesomeIconType"] > coral-select-item:selected').removeAttr('selected');
             dialog.$dialog.find('[name="awesomeIconType"]').val(fontAwesomeClassPrefix).change();
-            
-            // dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
             
             dm.show(dialog);
         },
