@@ -1,33 +1,84 @@
-<sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.header.MegaMenuModel">
+<sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.MegaMenuModel">
+    <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="${component.title}"></div>
     <!-- Static Navigation -->
     <sly data-sly-test="${megaMenu.navigationType == 'static'}">
-        <div>type:${megaMenu.navigationType}</div>
-        <div>heading:${megaMenu.heading}</div>
-        <div>spacing:${megaMenu.spacing}</div>
-        <div>size:${megaMenu.menuSections.size}</div>
 
-        <div data-sly-list.menuSections="${megaMenu.menuSections}">
-            <ul>
-                <li>subheadingLinkName:${menuSections.subheadingLinkName}</li>
-                <li>subheadingLinkName:${menuSections.subheadingLinkURL}</li>
-                <li>subheadingLinkName:${menuSections.subheadingDataTitle}</li>
-                <li>subheadingLinkName:${menuSections.subheadingTarget}</li>
-            </ul>
-            <div data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
-                 data-sly-list.menuItems="${menuSections.menuItems}">
-                <ul>
-                    <li>menuItemLinkName:${menuItems.menuItemLinkName}</li>
-                    <li>menuItemLinkURL:${menuItems.menuItemLinkURL}</li>
-                    <li>menuItemDataTitle:${menuItems.menuItemDataTitle}</li>
-                    <li>menuItemTarget:${menuItems.menuItemTarget}</li>
-                </ul>
+        <li class="nav-item">
+            <div class=" sl-mega-menu">
+                <!-- <div id="sl-mega-menu-dashboard" class="dropdown">
+                    <button type="button"
+                        id="sl-mega-menu-toggle-dashboard" aria-expanded="false"
+                        class="main-nav-item-container nav-link active dropdown-toggle btn btn-primary"><span>Dashboard</span><svg
+                            class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
+                            aria-hidden="true" focusable="false" data-prefix="fal"
+                            data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
+                        class="extensive dropdown-menu"> -->
+                <div id="sl-mega-menu-dashboard" class="dropdown">
+                    <button type="button"
+                            id="sl-mega-menu-toggle-dashboard" aria-expanded="false" data-bs-toggle="dropdown"
+                            class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>Dashboard</span>
+                        <svg
+                                class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
+                                aria-hidden="true" focusable="false" data-prefix="fal"
+                                data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                  d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div aria-labelledby="sl-mega-menu-toggle-dashboard" data-bs-popper="static"
+                         data-bs-toggle="dropdown"
+                         class="extensive dropdown-menu show">
+                        <div class="extensive-menu">
+                            <div class="menu-header-container">
+                                <h3 class="h3 menu-header">
+                                    <a href="heading/">${megaMenu.heading}</a></h3>
+                                <svg class="svg-inline--fa fa-chevron-right fa-w-8 sl-dropdown-icon" aria-hidden="true"
+                                     focusable="false" data-prefix="fal" data-icon="chevron-right" role="img"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+                                    <path fill="currentColor"
+                                          d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
+                                <div class="extensive-sub-menu">
+                                    <h4 class="h4 sub-header-container">
+                                        <a href="${menuSections.subheadingLinkURL}"
+                                           data-title="${menuSections.subheadingDataTitle}"
+                                           data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
+                                    </h4>
+                                    <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
+                                        data-sly-list.menuItems="${menuSections.menuItems}">
+                                        <li>
+                                            <!-- class="dropdown-item active" -->
+                                            <a href="${menuItems.menuItemLinkURL}" data-rr-ui-dropdown-item=""
+                                               class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
+                                               data-target="${menuItems.menuItemTarget}">
+                                                <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
+        </li>
     </sly>
+
 
     <!-- Dynamic Navigation -->
     <sly data-sly-test="${megaMenu.navigationType == 'dynamic'}">
-        <sly data-sly-include="/apps/core/wcm/components/navigation/v2/navigation/navigation.html"></sly>
+        <sly data-sly-include="/apps/sunlife/core/components/content/core-megamenu/v1/megamenu/dynamicmenu.html"></sly>
     </sly>
+
 </sly>
