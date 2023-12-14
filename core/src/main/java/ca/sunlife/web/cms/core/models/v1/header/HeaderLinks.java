@@ -5,8 +5,10 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface LanguageLink {
+@Model(adaptables = {
+        Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public interface HeaderLinks {
+
     @ValueMapValue
     String getLinkName();
 
@@ -15,6 +17,9 @@ public interface LanguageLink {
 
     @ValueMapValue
     String getLinkURL();
+
+    @ValueMapValue
+    String getLinkIcon();
 
     @ValueMapValue
     String getDataTitle();

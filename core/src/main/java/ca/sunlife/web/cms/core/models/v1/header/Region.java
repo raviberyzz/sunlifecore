@@ -23,7 +23,7 @@ public interface Region {
     String getDataTitle();
 
     @ChildResource
-    List<Item> getItems();
+    List<HeaderLinks> getItems();
 
     @ValueMapValue
     Boolean getNextList();

@@ -1,6 +1,3 @@
-/**
- *
- */
 package ca.sunlife.web.cms.core.models.v1;
 
 import ca.sunlife.web.cms.core.models.v1.header.Region;
@@ -50,6 +47,11 @@ public interface RegionLanguageMenuModel {
     @ValueMapValue
     String getDataSection();
 
+    /**
+     * Gets the Spacing
+     *
+     * @return
+     */
     @ValueMapValue
     String getSpacing();
 
