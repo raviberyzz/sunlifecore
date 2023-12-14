@@ -5,7 +5,9 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import java.util.List;
+
 /**
  * Interface for HeaderModel
  */
@@ -13,7 +15,7 @@ import java.util.List;
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
         resourceType = HeaderModel.RESOURCE_TYPE)
 public interface HeaderModel {
-    public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
+    String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
     /**
      * Gets true or false for displaying the mega menu
@@ -40,10 +42,50 @@ public interface HeaderModel {
     String getListFromNav();
 
     /**
+     * Gets the list from region
+     *
+     * @return
+     */
+    @ValueMapValue
+    String getListFromRegion();
+
+    /**
+     * Gets the region title
+     *
+     * @return the region title
+     */
+    @ValueMapValue
+    String getRegionTitle();
+
+    /**
+     * Gets the Screen text for Region
+     *
+     * @return the Screen Text
+     */
+    @ValueMapValue
+    String getSrRegionText();
+
+    /**
+     * Gets the language
+     *
+     * @return the language
+     */
+    @ValueMapValue
+    String getLanguage();
+
+    /**
+     * Gets the language links which is multifield
+     *
+     * @return the language links
+     */
+    @ChildResource
+    List<HeaderLinks> getLanguageLinks();
+
+    /**
      * Gets the navlinks which is multifield
      *
      * @return the navlinks
      */
     @ChildResource
-    List<UtilityBarNavlinks> getNavlinks();
+    List<HeaderLinks> getNavlinks();
 }
