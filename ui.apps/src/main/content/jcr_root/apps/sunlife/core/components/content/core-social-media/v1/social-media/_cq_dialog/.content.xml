@@ -145,7 +145,7 @@
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                             fieldDescription="Select the social media platforms for sharing"
                                                                             fieldLabel="Select Platforms"
-                                                                            name="./plateforms">
+                                                                            name="./platforms">
                                                                             <items jcr:primaryType="nt:unstructured">
                                                                                 <facebook
                                                                                     jcr:primaryType="nt:unstructured"
