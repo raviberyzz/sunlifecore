@@ -151,10 +151,10 @@
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="Facebook"
                                                                                     value="facebook"/>
-                                                                                <x
+                                                                                <twitter
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="X (formerly: Twitter)"
-                                                                                    value="x"/>
+                                                                                    value="twitter"/>
                                                                                 <linkedin
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="LinkedIn"
