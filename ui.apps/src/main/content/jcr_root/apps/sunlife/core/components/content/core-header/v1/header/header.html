@@ -30,8 +30,8 @@
 	   <div id="skip-links"><a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to content</a><a
 			 href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to footer</a></div>
 	</div>
-	<sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
-	 data-sly-call="${utilityBarNavList.navList @ headerModel=headerModel}"></sly>
+	<sly data-sly-use.utilityBar="templates/utilitybar.html"
+	 data-sly-call="${utilityBar.navList @ headerModel=headerModel}"></sly>
 	<header id="nav-header" class="sl-header ">
 	   <div class="nav-bar container">
 		  <nav class="sl-nav navbar navbar-expand-lg navbar-light"><button aria-controls="sl-header-offcanvas"
