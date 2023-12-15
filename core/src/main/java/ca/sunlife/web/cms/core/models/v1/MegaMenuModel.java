@@ -16,9 +16,6 @@ public interface MegaMenuModel {
     public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-megamenu/v1/megamenu";
 
     @ValueMapValue
-    String getNavigationType();
-
-    @ValueMapValue
     String getHeading();
 
     @ChildResourceFromRequest
