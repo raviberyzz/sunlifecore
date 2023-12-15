@@ -3,23 +3,6 @@ const SocialMediaComp = {
     $(document).on("click", ".share-listitem_link", function () {
       const platform = $(this).data("platform");
       shareOptionEvent(platform);
-
-      var utag = $("body")
-        .find("u")
-        .filter(function () {
-          return $(this);
-        });
-
-      utag.each(function () {
-        if ($(this).attr("class")) {
-        } else {
-          $(this).replaceWith(function () {
-            return $("<ins>", {
-              html: this.innerHTML,
-            });
-          });
-        }
-      });
     });
 
     function shareOptionLinkedIn() {
@@ -45,6 +28,7 @@ const SocialMediaComp = {
         setTimeout(a, 0);
       } else {
         a();
+        utag.link({  ev_type: "other",    ev_action: "clk",    ev_title: "share_linkedin" });
       }	
     }
 
@@ -75,11 +59,10 @@ const SocialMediaComp = {
         if (/Firefox/.test(navigator.userAgent)) setTimeout(a, 0);
         else {
           a();
+          utag.link({  ev_type: "other",    ev_action: "clk",    ev_title: "share_facebook" });
         }
-      }console.log("test12");
-      utag.link({  ev_type: "other",   ev_action: "clk",   ev_title: "share_facebook" });
-       console.log("test");
-       return true;
+      }
+      return true;
     }
 
     function shareOptionTwitter() {
@@ -112,6 +95,7 @@ const SocialMediaComp = {
           A +
           ",personalbar=0,toolbar=0,scrollbars=1,resizable=1"
       );
+      utag.link({  ev_type: "other",    ev_action: "clk",    ev_title: "share_twitter" });
     }
     function shareOptionEvent(option) {
       switch (option) {
