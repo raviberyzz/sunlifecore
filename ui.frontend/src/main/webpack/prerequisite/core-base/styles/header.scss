@@ -33,7 +33,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   @include media-breakpoint-down(lg) {
-    height: 3.5rem;
+   height: 3.5rem;
   }
   &.nav-link {
     @include media-breakpoint-up(md) {
@@ -212,7 +212,7 @@
       transform-origin: 50% 50%
   }
 
-
+  
 
 
 
@@ -238,6 +238,15 @@
     margin: -0.125rem 0 0 0;
     display: block;
   }
+  
+}
+
+.sl-divider{
+.hr {
+  border-top: .063rem solid;
+  margin: .5rem 0;
+  width: 100%
+}
 }
 
 .sl-header {
@@ -312,9 +321,9 @@
         box-shadow: none;
       }
       .navbar-toggler-icon {
-        width: 2rem;
-        height: 2rem;
-        background-image: var(--sl-icon-bars);
+      width: 2rem;
+      height: 2rem;
+      background-image: var(--sl-icon-bars);
       }
     }
     .search-btn {
@@ -400,7 +409,7 @@
       background: transparent;
       border: none;
       padding: 0;
-      @include focus-visible();
+            @include focus-visible();
 
       .sl-icon-close {
         background: var(--grey-800);

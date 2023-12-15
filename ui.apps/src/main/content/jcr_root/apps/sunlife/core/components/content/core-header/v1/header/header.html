@@ -29,15 +29,16 @@
 <div class="container">
 	<div id="skip-links"><a href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to content</a><a
 			 href="#" class="sl-link sl-link-sm visually-hidden-focusable">skip to footer</a></div>
-</div>
-<sly data-sly-use.utilityBarNavList="templates/utilitybar-navlist.html"
-	data-sly-call="${utilityBarNavList.navList @ headerModel=headerModel}"></sly>
-<header id="nav-header" class="sl-header ">
-	<div class="nav-bar container">
-		<nav class="sl-nav navbar navbar-expand-lg navbar-light"><button aria-controls="sl-header-offcanvas"
+	</div>
+	<sly data-sly-use.utilityBar="templates/utilitybar.html"
+	 data-sly-call="${utilityBar.navList @ headerModel=headerModel}"></sly>
+	<header id="nav-header" class="sl-header ">
+	   <div class="nav-bar container">
+		  <nav class="sl-nav navbar navbar-expand-lg navbar-light"><button aria-controls="sl-header-offcanvas"
 				type="button" aria-label="Open menu" class="navbar-toggler collapsed" data-bs-toggle="offcanvas"
-				data-bs-target="#sl-header-offcanvas"><span class="navbar-toggler-icon"></span></button>
-			<div id="sl-logo-container" class="sl-logo-container inline-logo ">
+				data-bs-target="#sl-header-offcanvas"><span
+				   class="navbar-toggler-icon"></span></button>
+			 <div id="sl-logo-container" class="sl-logo-container inline-logo ">
 				<div class="sl-logo utility-nav-item-container left-logo navbar-brand"><a href="www.sunlife.ca"><img
 							alt="Sun Life logo"
 							src="https://sit-www.sunnet.sunlife.com/content/dam/sunlife/global/logos/sun-life/current/Sun_Life_weblogo_127x31.svg"></a>
