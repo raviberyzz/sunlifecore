@@ -9,6 +9,7 @@ package ca.sunlife.web.cms.core.models.v1.impl;
  
  import org.apache.sling.api.SlingHttpServletRequest;
  import org.apache.sling.api.resource.ValueMap;
+ import com.adobe.cq.wcm.core.components.util.AbstractComponentImpl;
  import org.apache.sling.models.annotations.Exporter;
  import org.apache.sling.models.annotations.Model;
  import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
@@ -30,7 +31,7 @@ package ca.sunlife.web.cms.core.models.v1.impl;
         resourceType = {BreadcrumbImpl.RESOURCE_TYPE})
  @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
  
- public class BreadcrumbImpl implements Breadcrumb {
+ public class BreadcrumbImpl extends AbstractComponentImpl implements Breadcrumb {
  
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-breadcrumb/v1/breadcrumb";
  
@@ -82,7 +83,6 @@ package ca.sunlife.web.cms.core.models.v1.impl;
      private List<NavigationItem> createItems() {
          List<NavigationItem> items = new ArrayList<>();
          int currentLevel = currentPage.getDepth();
-         Component component;
          while (startLevel < currentLevel) {
              Page page = currentPage.getAbsoluteParent(startLevel);
              if (page != null && page.getContentResource() != null) {
