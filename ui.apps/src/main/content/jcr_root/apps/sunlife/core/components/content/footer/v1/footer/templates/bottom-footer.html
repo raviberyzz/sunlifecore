@@ -1,0 +1,22 @@
+<template data-sly-template.bottomFooter="${@bottomFooter}">
+    <div class="footer-utility-menu-container">
+        <hr class="sl-divider hr" aria-hidden="true" />
+        <div class="footer-utility-menu">
+            <ul class="footer-utility-submenu" data-sly-list="${bottomFooter.bottomLinks}">
+                <li class="footer-menu-items">
+                    <a href="${item.linkURL}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}">${item.linkName}</a>
+                    <div class="sl-divider vr" aria-hidden="true"></div>
+                </li>
+            </ul>
+            <div class="footer-icons-container">
+                <div id="footer" class="sl-social-media">
+                    <ul data-sly-list="${footer.socialMedia}">
+                        <li>
+                            <a href="${item.link @ extension = 'html'}"><img src="${item.icon}" alt="${item.title}" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -147,12 +147,30 @@
                 dialog.attach(propConfig, $container, this.editorKernel);
                 this.fontAwesomeDialog = dialog;
             }
-            
-            dialog.$dialog.find('[name="awesomeIcon"]').val('');
-            
+
+            let fontAwesomeClassIcon = '';
+            let fontAwesomeClassPrefix = '';
+            const fontAwesomeClassPrefixes = ['fas', 'far', 'fal', 'fad', 'fak'];
+
+            if(selection.startNode && selection.startNode.classList !== undefined ) {
+                if (selection.startNode.classList.contains('font-awesome-icon')) {
+                    selection.startNode.classList.forEach( className => {
+                   if(fontAwesomeClassPrefixes.includes(className)) {
+                        fontAwesomeClassPrefix = className;
+                    } 
+                    if (className.startsWith('fa-')) {
+                        fontAwesomeClassIcon = className.replace('fa-', '');
+                    }
+                   });
+                }
+            }
+            if ( fontAwesomeClassIcon && fontAwesomeClassPrefix) {
+                startNode.outerHTML = ''; //Remove old icon
+              }
+
+            dialog.$dialog.find('[name="awesomeIcon"]').val(fontAwesomeClassIcon);
             dialog.$dialog.find('[name="awesomeIconType"] > coral-select-item:selected').removeAttr('selected');
-            
-            // dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
+            dialog.$dialog.find('[name="awesomeIconType"]').val(fontAwesomeClassPrefix).change();
             
             dm.show(dialog);
         },
