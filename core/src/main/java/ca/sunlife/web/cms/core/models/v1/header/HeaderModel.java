@@ -17,6 +17,179 @@ import java.util.List;
 public interface HeaderModel {
     String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
+    /** Spacing Variables */
+    /**
+     * Gets the spacing
+     *
+     * @return the spacing
+     */
+    @ValueMapValue
+    String getSpacing();
+
+    /** Accessibility Variables */
+
+    /**
+     * Gets the skip to signin label
+     *
+     * @return skip to signin label
+     */
+    @ValueMapValue
+    String getSkipToSignInLabel();
+
+    /**
+     * Gets the skip to main content label
+     *
+     * @return skip to  main content label
+     */
+    @ValueMapValue
+    String getSkipToMainContentLabel();
+
+    /**
+     * Gets the skip to footer label
+     *
+     * @return skip to footer label
+     */
+    @ValueMapValue
+    String getSkipToFooterLabel();
+
+    /** Mobile Menu */
+    /**
+     * Gets the mobile menu fragment Path
+     *
+     * @return the mobile menu fragment Path
+     */
+    @ValueMapValue
+    String getMobileNavFragmentPath();
+
+
+    /** Sign in */
+    /**
+     * Gets the sign in
+     *
+     * @return the sign in
+     */
+    @ValueMapValue
+    String getListFromSignin();
+
+    /**
+     * Gets the sign in title
+     *
+     * @return the sign in title
+     */
+    @ChildResource
+    List<SigninLinks> getSigninlinks();
+
+    /** Search */
+    /**
+     * Gets the search
+     *
+     * @return the search
+     */
+    @ValueMapValue
+    String getListFromSearch();
+
+    /**
+     * Gets the searchTitle
+     *
+     * @return the searchTitle
+     */
+    @ValueMapValue
+    String getSearchTitle();
+
+    /**
+     * Gets the searchPlaceholder
+     *
+     * @return the searchPlaceholder
+     */
+    @ValueMapValue
+    String getSearchPlaceholder();
+
+    /**
+     * Gets the searchButton
+     *
+     * @return the searchButton
+     */
+    @ValueMapValue
+    String getSearchButton();
+
+    /**
+     * Gets the searchUrl
+     *
+     * @return the searchUrl
+     */
+    @ValueMapValue
+    String getSearchURL();
+
+    /** Logo */
+
+    /**
+     * Gets the logo
+     *
+     * @return the logo
+     */
+    @ValueMapValue
+    String getListFrom();
+
+    /**
+     * Gets the logo image.
+     *
+     * @return the logo image
+     */
+    @ValueMapValue
+    String getLogoImage();
+
+    /**
+     * Gets the mobile logo image.
+     *
+     * @return the mobile logo image
+     */
+    @ValueMapValue
+    String getMobileLogoImage();
+
+
+    /**
+     * Gets the link url.
+     *
+     * @return the link url
+     */
+    @ValueMapValue
+    String getLinkUrl();
+
+
+    /**
+     * Gets the alt text.
+     *
+     * @return the alt text
+     */
+    @ValueMapValue
+    String getAltText();
+
+    /**
+     * Gets the target.
+     *
+     * @return the target
+     */
+    @ValueMapValue
+    String getTarget();
+
+    /**
+     * Gets the separator.
+     *
+     * @return the separator
+     */
+    @ValueMapValue
+    String getSeparator();
+
+    /**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ValueMapValue
+    String getHideLogo();
+
+    /** Mega Menu */
+
     /**
      * Gets true or false for displaying the mega menu
      *
