@@ -26,4 +26,8 @@ public interface HeaderLinks {
 
     @ValueMapValue
     String getLinkLanguageCode();
+
+    @ValueMapValue
+    String getLinkHighlight();
+
 }
