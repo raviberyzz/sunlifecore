@@ -10,6 +10,8 @@ public interface Footer {
     String getRichText();
 
     String getSlfText();
+	
+	String getScreenReaderText();
 
     Boolean getFeedback();
 
