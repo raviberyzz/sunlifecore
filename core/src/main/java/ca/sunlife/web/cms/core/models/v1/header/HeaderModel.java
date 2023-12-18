@@ -231,7 +231,7 @@ public interface HeaderModel {
     String getRegionTitle();
 
     /**
-     * Gets the Screen text for Region
+     * Gets the Screen Reader text for Region
      *
      * @return the Screen Text
      */

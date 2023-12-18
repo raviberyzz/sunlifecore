@@ -949,6 +949,13 @@
                                                                                                 value="_blank"/>
                                                                                     </items>
                                                                                 </linkTarget>
+																				<linkHighlight
+																						jcr:primaryType="nt:unstructured"
+																						sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+																						fieldLabel="Do you want to highlight the Language?"
+																						name="./linkHighlight"
+																						text="Do you want to highlight the Language?"
+																						value="yes"/>
                                                                             </items>
                                                                         </column>
                                                                     </items>
