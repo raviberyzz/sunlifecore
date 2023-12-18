@@ -25,7 +25,4 @@ public interface Region {
     @ChildResource
     List<HeaderLinks> getItems();
 
-    @ValueMapValue
-    Boolean getNewColumn();
-
 }
