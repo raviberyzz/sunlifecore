@@ -26,6 +26,6 @@ public interface Region {
     List<HeaderLinks> getItems();
 
     @ValueMapValue
-    Boolean getNextList();
+    Boolean getNewColumn();
 
 }

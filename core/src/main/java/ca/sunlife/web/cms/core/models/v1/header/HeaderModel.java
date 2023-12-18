@@ -247,6 +247,30 @@ public interface HeaderModel {
     String getLanguage();
 
     /**
+     * Gets the language title (Header
+     *
+     * @return the language title
+     */
+    @ValueMapValue
+    String getLanguageTitle();
+
+    /**
+     * Gets the language Menu title for Desktop
+     *
+     * @return the language Menu title
+     */
+    @ValueMapValue
+    String getDesktopMenuTitle();
+
+    /**
+     * Gets the language Menu title for Mobile and Tablet
+     *
+     * @return the language Menu title
+     */
+    @ValueMapValue
+    String getMobileAndTabletMenuTitle();
+
+    /**
      * Gets the language links which is multifield
      *
      * @return the language links
