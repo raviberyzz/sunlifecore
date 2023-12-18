@@ -8,11 +8,11 @@
 .sl-article-video-container {
   .sl-article-video-component {
     @include media-breakpoint-only(lg) {
-      width: 760px;
+      width: 768px;
     }
 
     @include media-breakpoint-only(xl) {
-      width: 760px;
+      width: 768px;
     }
 
     .sl-article-video,
