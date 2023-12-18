@@ -22,6 +22,9 @@ public interface Region {
     @ValueMapValue
     String getDataTitle();
 
+    @ValueMapValue
+    String getLinkHighlight();
+
     @ChildResource
     List<HeaderLinks> getItems();
 

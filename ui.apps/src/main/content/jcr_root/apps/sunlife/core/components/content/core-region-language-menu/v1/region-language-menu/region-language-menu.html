@@ -8,10 +8,10 @@
          <div class="region-content">
             <div class="country-header" data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=region.regionURL}">
                <span data-sly-test="${region.items}" data-title="${region.dataTitle}"> ${region.regionName}</span>
-               <a data-sly-test="${!region.items}" data-title="${region.dataTitle}" href="${utilityListParsing.navPath}" target="${region.regionTarget}">${region.regionName}</a>
+               <a data-sly-test="${!region.items}" class="${(region.linkHighlight =='yes') ? 'active' : ''}"data-title="${region.dataTitle}" href="${utilityListParsing.navPath}" target="${region.regionTarget}">${region.regionName}</a>
             </div>
             <ul data-sly-list.item="${region.items}">
-               <li data-sly-use.itemParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=item.linkURL}"><a href="${itemParsing.navPath}" data-title="${item.dataTitle}" target="${item.linkTarget}" class="dropdown-item"><div class="d-inline"><span>${item.linkName}</span></div></a></li>
+               <li data-sly-use.itemParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=item.linkURL}"><a href="${itemParsing.navPath}" data-title="${item.dataTitle}" target="${item.linkTarget}" class="dropdown-item ${(region.linkHighlight =='yes' && itemList.first) ? 'active' : ''}"><div class="d-inline"><span>${item.linkName}</span></div></a></li>
             </ul>
          </div>
       </sly>
