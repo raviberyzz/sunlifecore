@@ -1,0 +1,16 @@
+<template data-sly-template.item="${@ items='The navigation item', level='level of the first child'}"
+          data-sly-use.groupTemplate="groupitem.html"
+          data-sly-use.itemContentTemplate="itemContent.html">
+		<ul class="${level == 0 ? 'map-dotted' : '' }" data-sly-list="${items}">
+      <li>  
+      <sly data-sly-test.itemCount = "${level == 0}">
+     <h3> <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly> </h3>
+     </sly>
+     <sly data-sly-test = "${!itemCount}">
+       <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
+     </sly>
+      <sly data-sly-test="${item.children.size > 0}" data-sly-call="${groupTemplate.group @ items = item.children}"></sly>
+      </li>
+   		 </ul>
+
+</template>
