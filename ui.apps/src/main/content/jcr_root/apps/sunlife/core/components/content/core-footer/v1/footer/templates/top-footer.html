@@ -5,10 +5,11 @@
             <div class="footer-menu col">
                 <h3 class="footer-menu-header">
                     <span class="menu-content">${item.heading}</span>
+                    <span class="sl-icon fal fa-chevron-down d-lg-none"></span>
                 </h3>
-                <ul id="footer-title-1-dropdown" data-sly-list.link="${item.links}">
+                <ul id="footer-title-${itemList.index}-dropdown" class="footer-menu-list" data-sly-list.link="${item.links}">
                     <li class="footer-menu-items">
-                        <a href="${link.linkURL @ extension = 'html'}" data-sly-attribute.target="${link.linkTarget == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
+                        <a href="${link.linkURL @ extension = 'html'}" data-title="${item.dataTitle}" data-sly-attribute.target="${link.linkTarget == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
                     </li>
                 </ul>
             </div>

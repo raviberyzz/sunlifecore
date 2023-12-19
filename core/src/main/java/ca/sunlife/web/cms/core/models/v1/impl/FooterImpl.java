@@ -38,6 +38,9 @@ public class FooterImpl implements Footer {
 
     @ValueMapValue
     private String slfText;
+	
+	@ValueMapValue
+    private String screenReaderText;
 
     @ValueMapValue
     private Boolean feedback;
@@ -74,6 +77,11 @@ public class FooterImpl implements Footer {
     @Override
     public String getSlfText() {
         return slfText;
+    }
+	
+	@Override
+    public String getScreenReaderText() {
+        return screenReaderText;
     }
 
     @Override
