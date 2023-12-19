@@ -1,5 +1,6 @@
 <template data-sly-template.mobileMenu="${ @ headerModel }">
     <sly data-sly-test="${headerModel.mobileNavFragmentPath}">
-    <sly data-sly-resource="${headerModel.mobileNavFragmentPath, @resourceType='sunlife/core/components/content/experiencefragment'}" />
+            <sly data-sly-resource="${@path=headerModel.mobileNavFragmentPath, selectors='content', wcmmode='disabled'}">
+        </sly>
     </sly>
 </template>

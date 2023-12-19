@@ -4,7 +4,6 @@
     <div class="desktop-primary-navigation" data-section="nav-main" role="navigation"
          aria-label="main navigation">
         <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
-
             <sly data-sly-list.links="${headerModel.megaMenuLinks}">
                 <li class="dropdown nav-item navigation ${links.megaMenuLinkStyle}"
                     data-sly-use.megaMenuListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.megaMenuLinkURL}">
@@ -14,7 +13,8 @@
                     <div data-sly-test="${links.megaMenuFragmentPath}" role="menu"
                          class="dropdown-menu menu-content">
                         <div class="mega-menu-wrapper-desk">
-                            <sly data-sly-resource="${links.megaMenuFragmentPath @resourceType='sunlife/core/components/content/experiencefragment'}"/>
+                            <sly data-sly-resource="${@path=links.megaMenuFragmentPath, selectors='content', wcmmode='disabled'}">
+                            </sly>
                         </div>
                     </div>
                 </li>
