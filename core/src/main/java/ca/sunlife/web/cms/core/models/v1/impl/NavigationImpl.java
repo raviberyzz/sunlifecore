@@ -46,7 +46,7 @@ public class NavigationImpl implements Navigation {
      * The resource navigation component resource type.
      */
     protected static final String RESOURCE_TYPE_1 = "sunlife/core/components/content/core-site-map/v1/site-map";
-    protected static final String RESOURCE_TYPE_2 = "core/wcm/components/navigation/v1/core-navigation/v1/navigation";
+    protected static final String RESOURCE_TYPE_2 = "sunlife/core/components/content/core-navigation/v1/navigation";
 
     /**
      * Name of the resource / configuration policy property that defines the accessibility label.
