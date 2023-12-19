@@ -68,6 +68,13 @@
                                                                     value="_target"/>
                                                             </items>
                                                         </regionTarget>
+                                                        <linkHighlight
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select the Checkbox to set this region as highlight (active)"
+                                                            name="./linkHighlight"
+                                                            text="Highlight Region "
+                                                            value="yes"/>
                                                         <analytics
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
