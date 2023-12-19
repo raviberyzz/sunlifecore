@@ -94,7 +94,7 @@
       padding: 0;
       border: none;
       box-shadow: $box-shadow;
-      margin-top: 0.125rem;
+      margin-top: 0.125rem !important;
     }
     .dropdown-toggle {
       padding: 0.25rem 0.5rem;
@@ -116,6 +116,15 @@
           transform: rotate(180deg);
           transform-origin: 50% 50%;
         }
+      }
+      &[aria-expanded=true]{ .fa-chevron-down {
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform-origin: 50% 50%
+       }
+      }
+      .dropdown-label{
+        margin-right: 0.125rem;
       }
     }
     .region-menu {
@@ -146,6 +155,11 @@
                 text-decoration: underline;
                 background: none;
               }
+              &:active,
+              &.active {
+                @include sl-body-small-bold;
+                color: var(--brand-tertiary-900);
+                      }
               @include focus-visible();
             }
           }
@@ -200,29 +214,23 @@
       }
     }
 
-
-
-    .sl-menu-dropdown.sl-menu-dropdown .dropdown-toggle.nav-link.utility-nav-item-container .dropdown-label {
-      padding-right: 0.125rem; // aem customisation
-    }
-
-    .sl-region-menu .dropdown-toggle.nav-link[aria-expanded=true] .fa-chevron-down {
-      transform: rotate(180deg);
-      -webkit-transform: rotate(180deg);
-      transform-origin: 50% 50%
-  }
-
-  
-
-
-
-
+       @media(min-width: 1240px) {
+        .sl-menu-dropdown.sl-menu-dropdown .dropdown-menu {
+          box-shadow:0 4px 8px 3px rgba(0,0,0,.08);
+          padding: 1.5rem 0;
+          width: 16.875rem;
+        }
+      }
 
     .sl-menu-dropdown {
       .utility-nav-item-container {
         padding: 0.25rem 0.5rem !important;
         &:hover {
           text-decoration: none !important;
+        }
+        .dropdown-label {
+          padding-right: 0 !important;
+          margin-right: 0.125rem; // aem customisation
         }
       }
       .dropdown-menu {
@@ -571,6 +579,11 @@
                       &:hover {
                         text-decoration: underline;
                         background: none;
+                      }
+                      &:active,
+                      &.active {
+                        @include sl-body-small-bold;
+                        color: var(--brand-tertiary-900);
                       }
                       @include focus-visible();
                     }
