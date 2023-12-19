@@ -1,26 +1,9 @@
 <template data-sly-template.logo="${ @ headerModel }">
-        <!-- Multiple logo Changes
-        <sly data-sly-test="${isSignInHeader == 'yes'}">
-            <div class="col-md-6 col-lg-6">
-                <div data-sly-test="${logo.isLogoRequired == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo">
-                    <sly data-sly-list.links="${listModel.links}">
-                        <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js'@ path=links.linkUrl}">
-                            <a href="${utilityListParsing.navPath}"
-                               class="${links.separator == 'yes' ? 'logo-separator' : ''}">
-                                <img alt="${links.altText}" src="${links.logoImage}">
-                            </a>
-                        </sly>
-                    </sly>
-                </div>
-            </div>
-        </sly>
-        -->
-        <!-- Multiple logo Changes Ends -->
         <!-- Single Logo Changes -->
         <sly>
             <div class="col-md-3 col-lg-3">
-                <div data-sly-test="${headerModel.listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo">
-                        <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkUrl}">
+                <div data-sly-test="${headerModel.isLogoRequired == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo">
+                        <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
                             <a href="${utilityListParsing.navPath @ extension = 'html'}">
                                 <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
                             </a>

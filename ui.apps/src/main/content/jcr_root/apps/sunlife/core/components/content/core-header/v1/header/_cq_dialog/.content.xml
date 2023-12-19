@@ -35,7 +35,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                     fieldLabel="Do you need logo for the site"
-                                                    name="./listFrom">
+                                                    name="./isLogoRequired">
                                                 <granite:data
                                                         jcr:primaryType="nt:unstructured"
                                                         cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
@@ -52,30 +52,6 @@
                                                             value="yes"/>
                                                 </items>
                                             </logo>
-                                            <!-- This code is in place for multiple logos implementation
-                                            <signInHeader
-                                                    granite:class="cq-dialog-dropdown-showhide"
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                    fieldLabel="Add multiple logos"
-                                                    name="./isSignInHeader">
-                                                <granite:data
-                                                        jcr:primaryType="nt:unstructured"
-                                                        cq-dialog-dropdown-showhide-target=".list-option-issigninheader-showhide-target"/>
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <no
-                                                            granite:hide="${cqDesign.disableChildren}"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            text="No"
-                                                            value="no"/>
-                                                    <yes
-                                                            granite:hide="${cqDesign.disableStatic}"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            text="Yes"
-                                                            value="yes"/>
-                                                </items>
-                                            </signInHeader>
-                                            -->
                                             <yes
                                                     granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                                     jcr:primaryType="nt:unstructured"
@@ -104,11 +80,11 @@
                                                                                         fieldLabel="MobileLogo Image"
                                                                                         name="./mobileLogoImage"
                                                                                         rootPath="/content/dam"/>
-                                                                                <linkUrl
+                                                                                <linkURL
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Link Url"
-                                                                                        name="./linkUrl"
+                                                                                        name="./linkURL"
                                                                                         rootPath="/content/"
                                                                                         suffix=".html"/>
                                                                                 <altText
@@ -176,99 +152,6 @@
                             </columns>
                         </items>
                     </logo>
-                    <!-- This code is in place for multiple logos implementation
-                                                            <links
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                                    composite="{Boolean}true"
-                                                                    fieldLabel="Logo details">
-                                                                <field
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                        name="./links">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <column
-                                                                                jcr:primaryType="nt:unstructured"
-                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                            <items jcr:primaryType="nt:unstructured">
-                                                                                <logoImage
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                        fieldLabel="Desktop Logo Image"
-                                                                                        name="./logoImage"
-                                                                                        rootPath="/content/"/>
-                                                                                <mobileLogoImage
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                        fieldLabel="MobileLogo Image"
-                                                                                        name="./mobileLogoImage"
-                                                                                        rootPath="/content/"/>
-                                                                                <linkUrl
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                        fieldLabel="Link Url"
-                                                                                        name="./linkUrl"
-                                                                                        rootPath="/content/"
-                                                                                        suffix=".html"/>
-                                                                                <altText
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                        fieldLabel="Alternative Text"
-                                                                                        name="./altText"/>
-                                                                                <target
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                                        fieldLabel="Target"
-                                                                                        name="./target">
-                                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                                        <sametab
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="Same Tab"
-                                                                                                value="_self"/>
-                                                                                        <newtab
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="New Tab"
-                                                                                                value="_blank"/>
-                                                                                    </items>
-                                                                                </target>
-                                                                                <separator
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                                        fieldLabel="Separator"
-                                                                                        name="./separator">
-                                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                                        <no
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="No"
-                                                                                                value="no"/>
-                                                                                        <yes
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="Yes"
-                                                                                                value="yes"/>
-                                                                                    </items>
-                                                                                </separator>
-                                                                                <hideLogo
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                                        fieldLabel="Hide Logo"
-                                                                                        name="./hideLogo">
-                                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                                        <no
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="No"
-                                                                                                value="no"/>
-                                                                                        <yes
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                text="Yes"
-                                                                                                value="yes"/>
-                                                                                    </items>
-                                                                                </hideLogo>
-                                                                            </items>
-                                                                        </column>
-                                                                    </items>
-                                                                </field>
-                                                            </links>
-                                                            -->
                     <utilitynav
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Utility Nav"
@@ -470,7 +353,6 @@
                             </columns>
                         </items>
                     </search>
-
                     <signin
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sign In"
@@ -602,8 +484,6 @@
                             </columns>
                         </items>
                     </signin>
-
-
                     <megamenu
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Mega Menu"

@@ -17,67 +17,91 @@ import java.util.List;
 public interface HeaderModel {
     String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
-    /** Spacing Variables */
+    /** Logo */
+
     /**
-     * Gets the spacing
+     * Checks if the logo is required
      *
-     * @return the spacing
+     * @return the isLogoRequired
      */
     @ValueMapValue
-    String getSpacing();
-
-    /** Accessibility Variables */
+    String isLogoRequired();
 
     /**
-     * Gets the skip to signin label
+     * Gets the logo image.
      *
-     * @return skip to signin label
+     * @return the logo image
      */
     @ValueMapValue
-    String getSkipToSignInLabel();
+    String getLogoImage();
 
     /**
-     * Gets the skip to main content label
+     * Gets the mobile logo image.
      *
-     * @return skip to  main content label
+     * @return the mobile logo image
      */
     @ValueMapValue
-    String getSkipToMainContentLabel();
+    String getMobileLogoImage();
 
     /**
-     * Gets the skip to footer label
+     * Gets the link url for logo
      *
-     * @return skip to footer label
+     * @return the link url for logo
      */
     @ValueMapValue
-    String getSkipToFooterLabel();
+    String getLinkURL();
 
-    /** Mobile Menu */
+
     /**
-     * Gets the mobile menu fragment Path
+     * Gets the alt text for logo
      *
-     * @return the mobile menu fragment Path
+     * @return the alt text for logo
      */
     @ValueMapValue
-    String getMobileNavFragmentPath();
+    String getAltText();
 
-
-    /** Sign in */
     /**
-     * Gets the sign in
+     * Gets the opening mode for the logo
      *
-     * @return the sign in
+     * @return the target mode for logo
      */
     @ValueMapValue
-    String getListFromSignin();
+    String getTarget();
 
     /**
-     * Gets the sign in title
+     * Gets the separator for the logo
      *
-     * @return the sign in title
+     * @return the separator for logo
+     */
+    @ValueMapValue
+    String getSeparator();
+
+    /**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ValueMapValue
+    String getHideLogo();
+
+
+    /** Utility Nav */
+    /**
+     * Gets the list from nav which is multifield
+     *
+     * @return the list from nav
+     */
+    @ValueMapValue
+    String getListFromNav();
+
+    /**
+     * Gets the navlinks which is multifield
+     *
+     * @return the navlinks
      */
     @ChildResource
-    List<SigninLinks> getSigninlinks();
+    List<HeaderLinks> getNavlinks();
+
 
     /** Search */
     /**
@@ -120,73 +144,23 @@ public interface HeaderModel {
     @ValueMapValue
     String getSearchURL();
 
-    /** Logo */
 
+    /** Sign in */
     /**
-     * Gets the logo
+     * Gets the sign in
      *
-     * @return the logo
+     * @return the sign in
      */
     @ValueMapValue
-    String getListFrom();
+    String getListFromSignin();
 
     /**
-     * Gets the logo image.
+     * Gets the sign in title
      *
-     * @return the logo image
+     * @return the sign in title
      */
-    @ValueMapValue
-    String getLogoImage();
-
-    /**
-     * Gets the mobile logo image.
-     *
-     * @return the mobile logo image
-     */
-    @ValueMapValue
-    String getMobileLogoImage();
-
-
-    /**
-     * Gets the link url.
-     *
-     * @return the link url
-     */
-    @ValueMapValue
-    String getLinkUrl();
-
-
-    /**
-     * Gets the alt text.
-     *
-     * @return the alt text
-     */
-    @ValueMapValue
-    String getAltText();
-
-    /**
-     * Gets the target.
-     *
-     * @return the target
-     */
-    @ValueMapValue
-    String getTarget();
-
-    /**
-     * Gets the separator.
-     *
-     * @return the separator
-     */
-    @ValueMapValue
-    String getSeparator();
-
-    /**
-     * Gets the hide logo.
-     *
-     * @return the hide logo
-     */
-    @ValueMapValue
-    String getHideLogo();
+    @ChildResource
+    List<SigninLinks> getSigninlinks();
 
     /** Mega Menu */
 
@@ -206,14 +180,17 @@ public interface HeaderModel {
     @ChildResource
     List<MegaMenuLinks> getMegaMenuLinks();
 
+    /** Mobile Menu */
     /**
-     * Gets the list from nav which is multifield
+     * Gets the mobile menu fragment Path
      *
-     * @return the list from nav
+     * @return the mobile menu fragment Path
      */
     @ValueMapValue
-    String getListFromNav();
+    String getMobileNavFragmentPath();
 
+
+    /** Region */
     /**
      * Gets the list from region
      *
@@ -238,6 +215,7 @@ public interface HeaderModel {
     @ValueMapValue
     String getSrRegionText();
 
+    /** Language */
     /**
      * Gets the language
      *
@@ -278,11 +256,39 @@ public interface HeaderModel {
     @ChildResource
     List<HeaderLinks> getLanguageLinks();
 
+    /** Accessibility Variables */
+
     /**
-     * Gets the navlinks which is multifield
+     * Gets the skip to signin label
      *
-     * @return the navlinks
+     * @return skip to signin label
      */
-    @ChildResource
-    List<HeaderLinks> getNavlinks();
+    @ValueMapValue
+    String getSkipToSignInLabel();
+
+    /**
+     * Gets the skip to main content label
+     *
+     * @return skip to  main content label
+     */
+    @ValueMapValue
+    String getSkipToMainContentLabel();
+
+    /**
+     * Gets the skip to footer label
+     *
+     * @return skip to footer label
+     */
+    @ValueMapValue
+    String getSkipToFooterLabel();
+
+    /** Spacing Variables */
+    /**
+     * Gets the spacing
+     *
+     * @return the spacing
+     */
+    @ValueMapValue
+    String getSpacing();
+
 }
