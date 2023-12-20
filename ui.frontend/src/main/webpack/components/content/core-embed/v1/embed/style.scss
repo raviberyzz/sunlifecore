@@ -17,22 +17,6 @@
       width: 100%;
     }
 
-    .sl-article-video,
-    .sl-article-video-playlist {
-      iframe {
-        height: 11.5rem;
-        @include media-breakpoint-only(sm) {
-          height: 18.875rem;
-        }
-        @include media-breakpoint-only(md) {
-          height: 27.625rem;
-        }
-        @include media-breakpoint-up(lg) {
-          height: 26.75rem;
-        }
-      }
-    }
-
     .sl-article-video-block {
       .article-video-block-lightbox {
         @include media-breakpoint-up(md) {
