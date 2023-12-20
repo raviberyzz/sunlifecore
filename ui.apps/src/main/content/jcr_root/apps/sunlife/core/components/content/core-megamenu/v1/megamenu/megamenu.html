@@ -1,8 +1,7 @@
 <sly data-sly-use.megaMenu="ca.sunlife.web.cms.core.models.v1.MegaMenuModel">
+
     <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="${component.title}"></div>
     <!-- Static Navigation -->
-    <sly data-sly-test="${megaMenu.navigationType == 'static'}">
-
         <li class="nav-item">
             <div class=" sl-mega-menu">
                 <!-- <div id="sl-mega-menu-dashboard" class="dropdown">
@@ -51,7 +50,7 @@
                             <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
                                 <div class="extensive-sub-menu">
                                     <h4 class="h4 sub-header-container">
-                                        <a href="${menuSections.subheadingLinkURL}"
+                                        <a href="${menuSections.subheadingLinkURL @extension = 'html'}"
                                            data-title="${menuSections.subheadingDataTitle}"
                                            data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
                                     </h4>
@@ -59,7 +58,7 @@
                                         data-sly-list.menuItems="${menuSections.menuItems}">
                                         <li>
                                             <!-- class="dropdown-item active" -->
-                                            <a href="${menuItems.menuItemLinkURL}" data-rr-ui-dropdown-item=""
+                                            <a href="${menuItems.menuItemLinkURL @extension = 'html'}" data-rr-ui-dropdown-item=""
                                                class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
                                                data-target="${menuItems.menuItemTarget}">
                                                 <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
@@ -73,12 +72,4 @@
                 </div>
             </div>
         </li>
-    </sly>
-
-
-    <!-- Dynamic Navigation -->
-    <sly data-sly-test="${megaMenu.navigationType == 'dynamic'}">
-        <sly data-sly-include="/apps/sunlife/core/components/content/core-megamenu/v1/megamenu/dynamicmenu.html"></sly>
-    </sly>
-
 </sly>

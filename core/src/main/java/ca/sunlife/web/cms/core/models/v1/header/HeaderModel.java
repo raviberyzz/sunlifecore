@@ -17,6 +17,153 @@ import java.util.List;
 public interface HeaderModel {
     String RESOURCE_TYPE = "sunlife/core/components/content/core-header/v1/header";
 
+    /** Logo */
+
+    /**
+     * Checks if the logo is required
+     *
+     * @return the isLogoRequired
+     */
+    @ValueMapValue
+    String isLogoRequired();
+
+    /**
+     * Gets the logo image.
+     *
+     * @return the logo image
+     */
+    @ValueMapValue
+    String getLogoImage();
+
+    /**
+     * Gets the mobile logo image.
+     *
+     * @return the mobile logo image
+     */
+    @ValueMapValue
+    String getMobileLogoImage();
+
+    /**
+     * Gets the link url for logo
+     *
+     * @return the link url for logo
+     */
+    @ValueMapValue
+    String getLinkURL();
+
+
+    /**
+     * Gets the alt text for logo
+     *
+     * @return the alt text for logo
+     */
+    @ValueMapValue
+    String getAltText();
+
+    /**
+     * Gets the opening mode for the logo
+     *
+     * @return the target mode for logo
+     */
+    @ValueMapValue
+    String getTarget();
+
+    /**
+     * Gets the separator for the logo
+     *
+     * @return the separator for logo
+     */
+    @ValueMapValue
+    String getSeparator();
+
+    /**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ValueMapValue
+    String getHideLogo();
+
+
+    /** Utility Nav */
+    /**
+     * Gets the list from nav which is multifield
+     *
+     * @return the list from nav
+     */
+    @ValueMapValue
+    String getListFromNav();
+
+    /**
+     * Gets the navlinks which is multifield
+     *
+     * @return the navlinks
+     */
+    @ChildResource
+    List<HeaderLinks> getNavlinks();
+
+
+    /** Search */
+    /**
+     * Gets the search
+     *
+     * @return the search
+     */
+    @ValueMapValue
+    String getListFromSearch();
+
+    /**
+     * Gets the searchTitle
+     *
+     * @return the searchTitle
+     */
+    @ValueMapValue
+    String getSearchTitle();
+
+    /**
+     * Gets the searchPlaceholder
+     *
+     * @return the searchPlaceholder
+     */
+    @ValueMapValue
+    String getSearchPlaceholder();
+
+    /**
+     * Gets the searchButton
+     *
+     * @return the searchButton
+     */
+    @ValueMapValue
+    String getSearchButton();
+
+    /**
+     * Gets the searchUrl
+     *
+     * @return the searchUrl
+     */
+    @ValueMapValue
+    String getSearchURL();
+
+
+    /** Sign in */
+    /**
+     * Gets the sign in
+     *
+     * @return the sign in
+     */
+    @ValueMapValue
+    String getListFromSignin();
+
+    /**
+     * Gets the sign in title
+     *
+     * @return the sign in title
+     */
+    @ChildResource
+    List<SigninLinks> getSigninlinks();
+
+    /** Mega Menu */
+
     /**
      * Gets true or false for displaying the mega menu
      *
@@ -33,14 +180,17 @@ public interface HeaderModel {
     @ChildResource
     List<MegaMenuLinks> getMegaMenuLinks();
 
+    /** Mobile Menu */
     /**
-     * Gets the list from nav which is multifield
+     * Gets the mobile menu fragment Path
      *
-     * @return the list from nav
+     * @return the mobile menu fragment Path
      */
     @ValueMapValue
-    String getListFromNav();
+    String getMobileNavFragmentPath();
 
+
+    /** Region */
     /**
      * Gets the list from region
      *
@@ -58,13 +208,14 @@ public interface HeaderModel {
     String getRegionTitle();
 
     /**
-     * Gets the Screen text for Region
+     * Gets the Screen Reader text for Region
      *
      * @return the Screen Text
      */
     @ValueMapValue
     String getSrRegionText();
 
+    /** Language */
     /**
      * Gets the language
      *
@@ -74,6 +225,30 @@ public interface HeaderModel {
     String getLanguage();
 
     /**
+     * Gets the language title (Header
+     *
+     * @return the language title
+     */
+    @ValueMapValue
+    String getLanguageTitle();
+
+    /**
+     * Gets the language Menu title for Desktop
+     *
+     * @return the language Menu title
+     */
+    @ValueMapValue
+    String getDesktopMenuTitle();
+
+    /**
+     * Gets the language Menu title for Mobile and Tablet
+     *
+     * @return the language Menu title
+     */
+    @ValueMapValue
+    String getMobileAndTabletMenuTitle();
+
+    /**
      * Gets the language links which is multifield
      *
      * @return the language links
@@ -81,11 +256,39 @@ public interface HeaderModel {
     @ChildResource
     List<HeaderLinks> getLanguageLinks();
 
+    /** Accessibility Variables */
+
     /**
-     * Gets the navlinks which is multifield
+     * Gets the skip to signin label
      *
-     * @return the navlinks
+     * @return skip to signin label
      */
-    @ChildResource
-    List<HeaderLinks> getNavlinks();
+    @ValueMapValue
+    String getSkipToSignInLabel();
+
+    /**
+     * Gets the skip to main content label
+     *
+     * @return skip to  main content label
+     */
+    @ValueMapValue
+    String getSkipToMainContentLabel();
+
+    /**
+     * Gets the skip to footer label
+     *
+     * @return skip to footer label
+     */
+    @ValueMapValue
+    String getSkipToFooterLabel();
+
+    /** Spacing Variables */
+    /**
+     * Gets the spacing
+     *
+     * @return the spacing
+     */
+    @ValueMapValue
+    String getSpacing();
+
 }

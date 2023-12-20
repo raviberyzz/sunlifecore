@@ -35,7 +35,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                     fieldLabel="Do you need logo for the site"
-                                                    name="./listFrom">
+                                                    name="./isLogoRequired">
                                                 <granite:data
                                                         jcr:primaryType="nt:unstructured"
                                                         cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
@@ -52,28 +52,6 @@
                                                             value="yes"/>
                                                 </items>
                                             </logo>
-                                            <signInHeader
-                                                    granite:class="cq-dialog-dropdown-showhide"
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                    fieldLabel="Add multiple logos"
-                                                    name="./isSignInHeader">
-                                                <granite:data
-                                                        jcr:primaryType="nt:unstructured"
-                                                        cq-dialog-dropdown-showhide-target=".list-option-issigninheader-showhide-target"/>
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <no
-                                                            granite:hide="${cqDesign.disableChildren}"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            text="No"
-                                                            value="no"/>
-                                                    <yes
-                                                            granite:hide="${cqDesign.disableStatic}"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            text="Yes"
-                                                            value="yes"/>
-                                                </items>
-                                            </signInHeader>
                                             <yes
                                                     granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                                     jcr:primaryType="nt:unstructured"
@@ -85,16 +63,6 @@
                                                     <column
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <links
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                                    composite="{Boolean}true"
-                                                                    fieldLabel="Logo details">
-                                                                <field
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                        name="./links">
                                                                     <items jcr:primaryType="nt:unstructured">
                                                                         <column
                                                                                 jcr:primaryType="nt:unstructured"
@@ -105,18 +73,18 @@
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Desktop Logo Image"
                                                                                         name="./logoImage"
-                                                                                        rootPath="/content/"/>
+                                                                                        rootPath="/content/dam"/>
                                                                                 <mobileLogoImage
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="MobileLogo Image"
                                                                                         name="./mobileLogoImage"
-                                                                                        rootPath="/content/"/>
-                                                                                <linkUrl
+                                                                                        rootPath="/content/dam"/>
+                                                                                <linkURL
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Link Url"
-                                                                                        name="./linkUrl"
+                                                                                        name="./linkURL"
                                                                                         rootPath="/content/"
                                                                                         suffix=".html"/>
                                                                                 <altText
@@ -175,9 +143,6 @@
                                                                             </items>
                                                                         </column>
                                                                     </items>
-                                                                </field>
-                                                            </links>
-                                                        </items>
                                                     </column>
                                                 </items>
                                             </yes>
@@ -187,7 +152,6 @@
                             </columns>
                         </items>
                     </logo>
-
                     <utilitynav
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Utility Nav"
@@ -376,7 +340,7 @@
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldLabel="Search Action"
-                                                                    name="./searchUrl"
+                                                                    name="./searchURL"
                                                                     rootPath="/content/"
                                                                     suffix=".html"/>
                                                         </items>
@@ -664,7 +628,7 @@
                                                     fieldDescription="Choose the variant to be displayed by this experience fragment"
                                                     fieldLabel="Variation"
                                                     filter="folderOrVariant"
-                                                    name="./mobilenav/fragmentPath"
+                                                    name="./mobileNavFragmentPath"
                                                     propertyFilter="cq:xfShowInEditor"
                                                     variant="web"/>
                                         </items>
@@ -802,16 +766,21 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                                         <items jcr:primaryType="nt:unstructured">
+														     <languageTitle
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Language Title"
+                                                                    name="./languageTitle"/>
                                                             <desktopTitle
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldLabel="Desktop Title"
-                                                                    name="./desktopTitle"/>
+                                                                    fieldLabel="Menu Title (Desktop)"
+                                                                    name="./desktopMenuTitle"/>
                                                             <mobileAndTabletTitle
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldLabel="Mobile And Tablet Title"
-                                                                    name="./mobileAndTabletTitle"/>
+                                                                    fieldLabel="Menu Title (Mobile &amp; Tablet)"
+                                                                    name="./mobileAndTabletMenuTitle"/>
                                                             <languageLinks
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -836,11 +805,12 @@
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                         fieldLabel="Link Language Code"
                                                                                         name="./linkLanguageCode"/>
-                                                                                <linkUrl
+                                                                                <linkURL
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                        fieldLabel="Link Url"
-                                                                                        name="./linkUrl"
+																						fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
+                                                                                        fieldLabel="Link URL"
+                                                                                        name="./linkURL"
                                                                                         rootPath="/content/"
                                                                                         suffix=".html"/>
                                                                                 <linkTarget
@@ -859,6 +829,13 @@
                                                                                                 value="_blank"/>
                                                                                     </items>
                                                                                 </linkTarget>
+																				<linkHighlight
+																						jcr:primaryType="nt:unstructured"
+																						sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+																						fieldLabel="Do you want to highlight the Language?"
+																						name="./linkHighlight"
+																						text="Do you want to highlight the Language?"
+																						value="yes"/>
                                                                             </items>
                                                                         </column>
                                                                     </items>

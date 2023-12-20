@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.models.v1;
 
+import ca.sunlife.web.cms.core.models.v1.header.HeaderLinks;
 import ca.sunlife.web.cms.core.models.v1.header.Region;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -17,32 +18,13 @@ public interface RegionLanguageMenuModel {
     @ChildResource(name = "regions")
     List<Region> getRegions();
 
-    /**
-     * Gets the title from Worldwide Tab
-     */
-    @ValueMapValue
-    String getWorldwideName();
+    @ChildResource(name = "worldwide")
+    HeaderLinks getWorldwide();
+
+
 
     /**
-     * Gets the URL from Worldwide Tab
-     */
-    @ValueMapValue
-    String getWorldwideURL();
-
-    /**
-     * Gets the Target from Worldwide Tab
-     */
-    @ValueMapValue
-    String getWorldwideTarget();
-
-    /**
-     * Gets the Data Title from Worldwide Tab
-     */
-    @ValueMapValue
-    String getWorldwideDataTitle();
-
-    /**
-     * Gets the Analytics Data Section from Worldwide Tab
+     * Gets the Analytics Data Section
      */
     @ValueMapValue
     String getDataSection();

@@ -7,27 +7,42 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface HeaderLinks {
+public interface SigninLinks {
 
+    /**
+     * Gets the sign in link title
+     */
     @ValueMapValue
-    String getLinkName();
+    String getDesktopLinkTitle();
 
+    /**
+     * Gets the mobile link title
+     */
     @ValueMapValue
-    String getLinkTarget();
+    String getMobileLinkTitle();
 
-    @ValueMapValue
-    String getLinkURL();
-
+    /**
+     * Gets the Link Icon
+     */
     @ValueMapValue
     String getLinkIcon();
 
+    /**
+     * Gets the Link URL
+     */
     @ValueMapValue
-    String getDataTitle();
+    String getLinkURL();
 
+    /**
+     * Gets the Link Style
+     */
     @ValueMapValue
-    String getLinkLanguageCode();
+    String getLinkType();
 
+    /**
+     * Gets the Link target
+     */
     @ValueMapValue
-    String getLinkHighlight();
+    String getLinkTarget();
 
 }
