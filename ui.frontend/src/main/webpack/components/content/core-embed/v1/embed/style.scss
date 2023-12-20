@@ -8,27 +8,13 @@
 .sl-article-video-container {
   .sl-article-video-component {
     @include media-breakpoint-only(lg) {
-      width: 760px;
+      max-width: 768px;
+      width: 100%;
     }
 
     @include media-breakpoint-only(xl) {
-      width: 760px;
-    }
-
-    .sl-article-video,
-    .sl-article-video-playlist {
-      iframe {
-        height: 11.5rem;
-        @include media-breakpoint-only(sm) {
-          height: 18.875rem;
-        }
-        @include media-breakpoint-only(md) {
-          height: 27.625rem;
-        }
-        @include media-breakpoint-up(lg) {
-          height: 26.75rem;
-        }
-      }
+      max-width: 768px;
+      width: 100%;
     }
 
     .sl-article-video-block {
