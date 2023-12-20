@@ -1,4 +1,4 @@
-<footer id="footer" class="sl-footer" data-sly-use.footer="ca.sunlife.web.cms.core.models.v1.Footer"/>
+<footer id="footer" class="sl-footer ${footer.spacing}" data-sly-use.footer="ca.sunlife.web.cms.core.models.v1.Footer"/>
 <div class="container">
     <sly data-sly-use.template="${'templates/top-footer.html'}" data-sly-call="${template.topFooter @topFooter = footer}" data-sly-test="${footer.showSections == 'showTop' || footer.showSections == 'showBoth'}"></sly>
     <sly data-sly-use.template="${'templates/middle-footer.html'}" data-sly-call="${template.middleFooter @middleFooter = footer}"></sly>
