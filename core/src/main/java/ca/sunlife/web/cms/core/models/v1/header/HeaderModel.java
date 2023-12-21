@@ -25,7 +25,7 @@ public interface HeaderModel {
      * @return the isLogoRequired
      */
     @ValueMapValue
-    String isLogoRequired();
+    String listFrom();
 
     /**
      * Gets the logo image.
