@@ -9,7 +9,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.day.cq.commons.jcr.JcrConstants;
 
 /**
- * The FormDropDownModel is a sling model associated with Form dropdown component.
+ * The FormDropDownModel is a sling model associated with Form dropdown
+ * component.
  *
  * @author Sunlife
  */
@@ -55,49 +56,40 @@ public interface FormDropdownModel {
 	@ChildResource
 	List<ItemsGroup> getItemsGroup();
 
-	@ValueMapValue
-	String getSpacing();
-
-	@ValueMapValue
-	String getCustomActionGenerationRequired();
-
-	/**
-	 * The Interface ItemsGroup.
-	 *
-	 * @author Sunlife
-	 */
 	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	public interface ItemsGroup {
+	interface ItemsGroup {
 
 		@ValueMapValue
 		String getGroupText();
 
 		@ChildResource
 		List<Items> getItems();
+
+		@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		interface Items {
+
+			@ValueMapValue
+			String getText();
+
+			@ValueMapValue
+			String getValue();
+
+			@ValueMapValue
+			boolean isSelected();
+
+			@ValueMapValue
+			boolean isDisabled();
+
+			@ValueMapValue
+			String getShortName();
+
+		}
 	}
 
-	/**
-	 * The Interface Items.
-	 *
-	 * @author Sunlife
-	 */
-	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	public interface Items {
+	@ValueMapValue
+	String getSpacing();
 
-		@ValueMapValue
-		String getText();
+	@ValueMapValue
+	String getCustomActionGenerationRequired();
 
-		@ValueMapValue
-		String getValue();
-
-		@ValueMapValue
-		boolean isSelected();
-
-		@ValueMapValue
-		boolean isDisabled();
-
-		@ValueMapValue
-		String getShortName();
-
-	}
 }
