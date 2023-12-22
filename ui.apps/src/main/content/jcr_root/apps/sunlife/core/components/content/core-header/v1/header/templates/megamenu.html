@@ -1,26 +1,60 @@
 <template data-sly-template.megaMenu="${ @ headerModel }">
-<div class="desktop-navigation no-gutter">
-<div class="desktop-mega-menu clearfix">
-    <div class="desktop-primary-navigation" data-section="nav-main" role="navigation"
-         aria-label="main navigation">
-        <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
-            <sly data-sly-list.links="${headerModel.megaMenuLinks}">
-                <li class="dropdown nav-item navigation ${links.megaMenuLinkStyle}"
-                    data-sly-use.megaMenuListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.megaMenuLinkURL}">
-                    <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
-                       href="${megaMenuListParsing.navPath}">
-                <span class="nav-item-heading ">${links.megaMenuLinkName}</span></a>
+    <sly data-sly-list.links="${headerModel.megaMenuLinks}">
+        <li class="nav-item" >
+            <div class=" sl-mega-menu">
+                <div id="sl-mega-menu-dashboard" class="dropdown">
+                    <button type="button"
+                            id="sl-mega-menu-toggle-dashboard" aria-expanded="false" data-bs-toggle="dropdown"
+                            class="main-nav-item-container nav-link active dropdown-toggle show btn btn-primary"><span>${links.megaMenuLinkName}</span>
+                        <svg
+                                class="svg-inline--fa fa-chevron-down fa-w-14 sl-dropdown-icon"
+                                aria-hidden="true" focusable="false" data-prefix="fal"
+                                data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z">
+                            </path>
+                        </svg>
+                    </button>
                     <div data-sly-test="${links.megaMenuFragmentPath}" role="menu"
-                         class="dropdown-menu menu-content">
-                        <div class="mega-menu-wrapper-desk">
-                            <sly data-sly-resource="${@path=links.megaMenuFragmentPath, selectors='content', wcmmode='disabled'}">
-                            </sly>
-                        </div>
+                    class="dropdown-menu menu-content">
+                    <div class="mega-menu-wrapper-desk">
+                        <sly data-sly-resource="${@path=links.megaMenuFragmentPath, selectors='content', wcmmode='disabled'}">
+                        </sly>
                     </div>
-                </li>
-            </sly>
-            </ul>
+                </div>
+                </div>
+            </div>
+        </li>
+    </sly>
+</template>
+
+
+<!-- <template data-sly-template.megaMenu="${ @ headerModel }">
+    <div class="desktop-navigation no-gutter">
+        <div class="desktop-mega-menu clearfix">
+            <div class="desktop-primary-navigation" data-section="nav-main" role="navigation"
+                aria-label="main navigation">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
+                    <sly data-sly-list.links="${headerModel.megaMenuLinks}">
+                        <li class="dropdown nav-item navigation ${links.megaMenuLinkStyle}"
+                            data-sly-use.megaMenuListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.megaMenuLinkURL}">
+                            <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
+                            href="${megaMenuListParsing.navPath}">
+                                <span class="nav-item-heading ">${links.megaMenuLinkName}</span>
+                            </a>
+                       
+                            <div data-sly-test="${links.megaMenuFragmentPath}" role="menu"
+                                class="dropdown-menu menu-content">
+                                <div class="mega-menu-wrapper-desk">
+                                    <sly data-sly-resource="${@path=links.megaMenuFragmentPath, selectors='content', wcmmode='disabled'}">
+                                    </sly>
+                                </div>
+                            </div>
+                
+                    </sly>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-</template>
+</template> -->
