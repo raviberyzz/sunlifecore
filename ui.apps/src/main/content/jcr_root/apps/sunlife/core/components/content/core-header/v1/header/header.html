@@ -21,10 +21,11 @@
 </sly>
      
 
-<div id="nav-header" class="sl-header ">
+<div id="nav-header" class="sl-header ${headerModel.spacing}">
      <div class="nav-bar container">
        <div class="sl-nav navbar navbar-expand-lg navbar-light">
-         <button aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu" class="navbar-toggler collapsed">
+         <button id = "menuOpen" aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu" class="navbar-toggler collapsed" data-bs-toggle="offcanvas"
+		 data-bs-target="#sl-header-offcanvas">
            <span class="navbar-toggler-icon"></span>
          </button>
      
@@ -34,24 +35,25 @@
 
                     
          <!-- <button class="search-btn d-block d-md-block d-lg-none d-xl-none d-xxl-none">
-           <span class="sl-icon sl-icon-search sl-icon_size_xl sl-icon_non-interactive"></span>
+           <span class="fal fa-search sl-icon"></span>
            <span class="visually-hidden">Search</span>
          </button> -->
           
           
-         <div id="sl-header-offcanvas" class="sl-header-offcanvas offcanvas offcanvas-start">
+         <div id="sl-header-offcanvas" class="sl-header-offcanvas offcanvas offcanvas-start" aria-labelledby="offcanvas-label">
           
           <!-- mobile -->
           <div class="offcanvas-header">
-             <button class="canvas-close" aria-label="Close menu">
-               <span class="sl-icon sl-icon-close sl-icon_size_xl sl-icon_non-interactive"></span>
+             <button id="menuClose" class="canvas-close" aria-label="Close menu" data-bs-toggle="offcanvas"
+			 data-bs-target="#sl-header-offcanvas">
+               <span class="fal fa-times fa-lg sl-icon"></span>
              </button>
              <!-- template -->
              <sly data-sly-use.logo="templates/logo-mobile.html"
              data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
            </div>
 
-           <div class="offcanvas-body">
+           <div id="offcanvas-body" class="offcanvas-body">
              
              <!-- megamenu.html -->
              <ul class="sl-main-nav flex-grow-1 navbar-nav">

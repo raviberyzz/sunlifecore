@@ -4,25 +4,21 @@
             <ul class="content-container">
                 <li data-sly-test="${headerModel.listFromRegion == 'regiontrue'}">
                     <div class="sl-region-menu" id="">
-                        <div id="sl-region-menu" class="region-menu-container show dropdown">
-                            <div class="label-container">
-                                <button type="button" id="sl-region-menu-dd" aria-expanded="false"
-                                                                 data-bs-toggle="dropdown" class="nav-link dropdown-toggle show btn btn-primary"><span
-                                    class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
-                                    class="sl-icon sl-icon-location"></span></span><span
+                        <div id="sl-region-menu" class="region-menu-container dropdown">
+                           <button type="button" id="sl-region-menu-dd" aria-expanded="false"
+                                 data-bs-toggle="dropdown" class="nav-link dropdown-toggle btn btn-primary">
+                                 <div class="label-container">                       
+                                 <span class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
+                                    class="fal fa-location-arrow sl-icon"></span></span><span
                                     class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">${headerModel.regionTitle}
                                  <span class="visually-hidden">${headerModel.srRegionText}</span></span>
-                                <span class="fal fa-chevron-down" role="presentation"></span>
-                            </button>
-                                <div x-placement="bottom-end" aria-labelledby="sl-region-menu-dd"
-                                     class="dropdown-menu dropdown-menu-end" data-popper-reference-hidden="false"
-                                     data-popper-escaped="false" data-popper-placement="bottom-end"
-                                     style="position: absolute; inset: 0px 0px auto auto; transform: translate(0px, 34px);">
-                                    <!--/*  Including Regional Menu    */-->
+                                <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
+                              </div>
+                              </button>
+                                <div aria-labelledby="sl-region-menu-dd" class="dropdown-menu dropdown-menu-end">
+                                    <!-- /*  Including Regional Menu    */ -->
                                     <sly data-sly-resource="${ @resourceType='sunlife/core/components/content/experiencefragment'}" />
-
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -35,16 +31,14 @@
                                         class="utility-nav-item-container nav-link dropdown-toggle btn btn-primary">
                                     <div class="item-content-container"><span
                                             class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
-                                            class="sl-icon sl-icon-language"></span></span><span
+                                            class="fal fa-globe sl-icon"></span></span><span
                                             class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">${headerModel.languageTitle}</span><span
                                             class="visually-hidden">Change language</span>
-                                        <span class="fal fa-chevron-down" role="presentation"></span>
+                                        <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
                                     </div>
                                 </button>
-                                <ul x-placement="bottom-end" aria-labelledby="sl-dropdown-toggle-language-utility"
-                                    class="dropdown-menu dropdown-menu-end" data-popper-reference-hidden="false"
-                                    data-popper-escaped="false" data-popper-placement="bottom-end"
-                                    style="position: absolute; inset: 0px 0px auto auto; transform: translate(0px, 34px);">
+                                <ul aria-labelledby="sl-dropdown-toggle-language-utility"
+                                    class="dropdown-menu dropdown-menu-end">
                                     <div class="dropdown-menu-title dropdown-header" role="heading">${headerModel.desktopMenuTitle}</div>
                                     <ul data-sly-list.languageList="${headerModel.languageLinks}">
                                         <li aria-current="true" data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=languageList.linkURL}">
@@ -63,5 +57,8 @@
         </div>
         <hr class="sl-divider hr region-divider" aria-hidden="true">
     </div>
+
+
+    
 
 </template>

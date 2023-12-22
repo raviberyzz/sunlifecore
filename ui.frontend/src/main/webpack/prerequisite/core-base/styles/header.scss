@@ -214,7 +214,7 @@
       }
     }
 
-       @media(min-width: 1240px) {
+    @include media-breakpoint-up(lg) {
         .sl-menu-dropdown.sl-menu-dropdown .dropdown-menu {
           box-shadow:0 4px 8px 3px rgba(0,0,0,.08);
           padding: 1.5rem 0;
@@ -328,11 +328,11 @@
         outline: 0.125rem solid var(--brand-tertiary-500);
         box-shadow: none;
       }
-      .navbar-toggler-icon {
-      width: 2rem;
-      height: 2rem;
-      background-image: var(--sl-icon-bars);
-      }
+      // .navbar-toggler-icon {
+      // width: 2rem;
+      // height: 2rem;
+      // background-image: var(--sl-icon-bars);
+      // }
     }
     .search-btn {
       outline: none;
@@ -487,6 +487,12 @@
         &.dropdown-toggle.nav-link.utility-nav-item-container {
           padding: 0;
         }
+        .sl-icon{
+          @include media-breakpoint-down(lg) {
+            margin-left:auto;
+            margin-right: 0.5rem;
+          }
+        }
       }
       .sl-main-nav {
         .nav-link {
@@ -506,10 +512,16 @@
       }
 
       .sl-utility-bar-offcanvas {
+        .container{
+          padding: 0;
+        }
         ul {
           list-style: none;
           padding: 0;
           margin: 0;
+          position: static !important;
+          transform: none !important;
+          inset: unset !important;
         }
         .sl-region-menu {
           .region-menu-container {
@@ -517,6 +529,10 @@
               border-top: 0.063rem solid var(--grey-300);
               padding: 1rem 0;
               margin: 0 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
               @include media-breakpoint-only(md) {
                 margin: 0 3.75rem;
               }
@@ -556,13 +572,20 @@
                   transform-origin: 50% 50%;
                 }
               }
+              .sl-icon{
+                @include media-breakpoint-down(lg) {
+                margin-left:auto;
+                }
+              }
             }
             .dropdown-menu {
               padding: 0;
               margin: 0;
               border: none;
               width: 100%;
-              position: static;
+              position: static !important;
+              transform: none !important;
+              inset: unset !important;
               .region-menu {
                 margin-bottom: 1rem;
                 .region-content {
@@ -683,12 +706,6 @@
               justify-content: space-between;
               width: 100%;
               border-top: 0.063rem solid var(--grey-300);
-
-              .dropdown-label-icon {
-                svg {
-                  margin-right: 0.25rem;
-                }
-              }
             }
           }
           .dropdown-menu {
