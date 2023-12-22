@@ -1,15 +1,26 @@
 <template data-sly-template.logo="${ @ headerModel }">
-        <!-- Single Logo Changes -->
-        <sly>
-            <div class="col-md-3 col-lg-3">
-                <div data-sly-test="${headerModel.isLogoRequired == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo">
-                        <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
-                            <a href="${utilityListParsing.navPath @ extension = 'html'}">
-                                <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
-                            </a>
-                        </sly>
-                </div>
+    <!-- Single Logo Changes -->
+    <sly>
+
+         <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container inline-logo ">
+              <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
+                   <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
+                        <a href="${utilityListParsing.navPath @ extension = 'html'}">
+                             <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
+                        </a>
+                   </sly>
+              </div>
+         </div>
+
+        <!-- <div class="col-md-3 col-lg-3">
+            <div data-sly-test="${headerModel.listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo">
+                    <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
+                        <a href="${utilityListParsing.navPath @ extension = 'html'}">
+                            <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
+                        </a>
+                    </sly>
             </div>
-        </sly>
-        <!-- Single Logo Changes Ends -->
+        </div> -->
+    </sly>
+    <!-- Single Logo Changes Ends -->
 </template>
