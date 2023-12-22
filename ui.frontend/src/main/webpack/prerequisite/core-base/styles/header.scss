@@ -214,7 +214,7 @@
       }
     }
 
-       @media(min-width: 1240px) {
+    @include media-breakpoint-up(lg) {
         .sl-menu-dropdown.sl-menu-dropdown .dropdown-menu {
           box-shadow:0 4px 8px 3px rgba(0,0,0,.08);
           padding: 1.5rem 0;
@@ -488,7 +488,7 @@
           padding: 0;
         }
         .sl-icon{
-          @media(max-width: 1239.98px) {
+          @include media-breakpoint-down(lg) {
             margin-left:auto;
             margin-right: 0.5rem;
           }
@@ -573,7 +573,7 @@
                 }
               }
               .sl-icon{
-                @media(max-width: 1239.98px) {
+                @include media-breakpoint-down(lg) {
                 margin-left:auto;
                 }
               }
