@@ -7,6 +7,19 @@
 	<a href="#mainfooter" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
 </div>
 
+<!--/* Including Utility Bar */-->
+<sly data-sly-use.utilitybar="templates/utilitybar.html"
+     data-sly-call="${utilitybar.navList @ headerModel=headerModel}"></sly>
+<!--/* End Utility Bar */-->
+
+
+
+<!--/* Including Mobile Menu */-->
+<sly data-sly-test="${headerModel.mobileNavFragmentPath}">
+     <sly data-sly-use.mobileMenu="templates/mobilemenu.html"
+     data-sly-call="${mobileMenu.mobileMenu @ headerModel=headerModel}"></sly>
+</sly>
+     
 
 <div id="nav-header" class="sl-header ">
      <div class="nav-bar container">
@@ -49,7 +62,16 @@
              </ul>
                
                <!-- links.html -->
-             <!-- <ul class="sl-utility-nav justify-content-end flex-grow-1 navbar-nav">
+              <ul class="sl-utility-nav justify-content-end flex-grow-1 navbar-nav">
+               
+               <!-- /* Including Search */
+               <sly data-sly-use.search="templates/search.html"
+               data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+
+               /* Including Signin */
+               <sly data-sly-use.signin="templates/signin.html"
+               data-sly-call="${signin.signin @ headerModel=headerModel}"></sly> -->
+               
                <li class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block nav-item">
                  <div class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block">
                    <a href="#" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link">
@@ -93,7 +115,8 @@
                    </div>
                  </div>
                </li>
-             </ul> -->
+             </ul>
+
            </div>
          </div>
        </div>
