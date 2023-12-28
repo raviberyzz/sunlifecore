@@ -32,13 +32,11 @@
 
     /* Handles hamburger menu open clicks */
     function callMenuOpen() {
-        console.log('call menu open called')
         var headerNode = document.getElementById('nav-header');
         headerNode.insertAdjacentElement("afterend", offcanvasEl);
     }
     /* Handles hamburger menu close clicks */
     function callMenuClose() {
-        console.log('call menu close called')
         var slnavNode = document.getElementById('sl-nav');
         slnavNode.append(offcanvasEl);
     }
