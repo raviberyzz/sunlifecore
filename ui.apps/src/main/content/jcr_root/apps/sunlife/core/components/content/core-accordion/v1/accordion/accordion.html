@@ -5,7 +5,7 @@
   data-section="${accordion.analyticsId}"
 >
   <div class="container">
-    <div class="accordion" id="defaultAccordionExample0">
+    <div class="accordion">
       <div
         data-sly-test="${accordion.items.size > 0}"
         data-sly-repeat.item="${accordion.items}"
@@ -37,7 +37,7 @@
           </button>
         </h4>
         <div
-          class="accordion-collapse ${item.name in accordion.expandedItems ? 'expanded' : 'collapse'}"
+          class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
         >
           <div
             class="accordion-body"

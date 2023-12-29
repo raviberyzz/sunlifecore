@@ -12,9 +12,14 @@
             display: block;
         }
     }
+
+    .collapse:not(.show) {
+        display: none
+    }
     .accordion-collapse {
-        height: 100%;
+        overflow: hidden;
         transition: height 0.35s ease;
+        height: 0;
     }
     .accordion-item {
         .accordion-button {
