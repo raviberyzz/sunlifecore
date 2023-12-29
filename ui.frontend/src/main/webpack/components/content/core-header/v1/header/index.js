@@ -1,10 +1,10 @@
 (function () {
        
-    /* Retrieves the element based on a classname*/
+    /* Retrieves the element based on a classname/id */
     const utilityLists = document.getElementsByClassName("sl-utility-bar")[0];
-    const navLists = document.getElementsByClassName("sl-header-offcanvas")[0];
+    const offcanvasEl = document.getElementById('sl-header-offcanvas')
 
-    /* Handles the desktop and mobile view*/
+    /* Handles the desktop and mobile view */
     function offCanvas() {
         if (window.innerWidth <= 1239) {
             utilityLists.classList.remove("sl-utility-bar");
@@ -18,18 +18,27 @@
             utilityLists.classList.add("sl-utility-bar");
             var navNode = document.getElementById('nav-header');
             navNode.insertAdjacentElement("beforebegin", utilityLists);
+            /* Handles hamburger menu open on desktop view */
+            if ( offcanvasEl.classList.contains("show") && !offcanvasEl.classList.contains("hiding") ) {
+                const offCanvas = new bootstrap.Offcanvas(offcanvasEl);
+                offCanvas.hide();
+                offcanvasEl.classList.remove('show');
+                var test = document.getElementsByClassName("offcanvas-backdrop")[0];
+                test.remove();
+                callMenuClose();
+              }
         }
     }
 
-    /* Handles hamburger menu open clicks*/
+    /* Handles hamburger menu open clicks */
     function callMenuOpen() {
         var headerNode = document.getElementById('nav-header');
-        headerNode.insertAdjacentElement("afterend", navLists);
+        headerNode.insertAdjacentElement("afterend", offcanvasEl);
     }
-    /* Handles hamburger menu close clicks*/
+    /* Handles hamburger menu close clicks */
     function callMenuClose() {
         var slnavNode = document.getElementById('sl-nav');
-        slnavNode.append(navLists);
+        slnavNode.append(offcanvasEl);
     }
 
     window.addEventListener("load", offCanvas);
