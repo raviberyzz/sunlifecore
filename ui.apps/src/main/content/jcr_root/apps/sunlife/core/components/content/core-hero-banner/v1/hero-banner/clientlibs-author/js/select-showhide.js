@@ -17,7 +17,10 @@
     // when dialog gets injected
     $(document).on('foundation-contentloaded', function(e) {
         // if there is already an inital value make sure the according target element becomes visible
-        showHide($('.cq-dialog-select-showhide', e.target));
+        const $elem = $(e.target).find('.cq-dialog-select-showhide');
+        setTimeout(function(){
+            showHide($elem);
+        }, 500);
     });
   
     $(document).on('selected', '.cq-dialog-select-showhide', function() {
