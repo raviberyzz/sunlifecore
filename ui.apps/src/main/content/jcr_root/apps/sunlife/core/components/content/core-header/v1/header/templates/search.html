@@ -1,56 +1,17 @@
 <template data-sly-template.search="${ @ headerModel }">
-    <div class="desktop-header-wrapper">
-        <div data-sly-test="${headerModel.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
-            <div class="search-bar-wrapper collapse" data-section="header-search" id="sun-search">
-                <div class="search-box">
-                    <div class="close-div"><a data-toggle="collapse" aria-expanded="true" href="#sun-search"> <span
-                            class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
-                    </a></div>
-                    <div class="global-search">
-                        <sly data-sly-test="${headerModel.searchPlaceholder == 'coveoSearch'}">
-                            <div id="search-box-desktop" data-enable-history="true" data-auto-trigger-query='false'>
-                                <div class="CoveoAnalytics"></div>
-                                <div class="coveo-search-section">
-                                    <div class="CoveoSearchbox" data-placeholder="Search" data-enable-omnibox="true"></div>
-                                    <div class="input-wrapper coveo-desktop-error-hidden">
-                                        <ul role="alert" class="coveo-search-error">
-                                            <li class="error-required">${headerModel.searchButton}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </sly>
-                        <sly data-sly-test="${headerModel.searchPlaceholder != 'coveoSearch'}">
-                            <form name="searchform-bottom" class="slf-search" action="${headerModel.searchUrl @ extension = 'html'}"
-                                  method="get" data-parsley-validate="data-parsley-validate"><label class="sr-only" for="q-top">Search</label>
-                                <div class="form-wrapper">
-                                    <div class="input-wrapper">
-                                        <div class="input-wrapper form-group-wrapper">
-                                            <input data-parsley-required-message="! Please enter a search term" data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q"
-                                                   type="text" placeholder="${headerModel.searchPlaceholder}"
-                                                   data-parsley-id="8">
-                                        </div>
-                                        <div class="search-autocomplete">
-                                            <ul class="search-autocomplete-list">
-                                                <li>&nbsp;</li>
-                                            </ul>
-                                            <ul class="search-sayt-list" data-section="type-ahead-html-listing">
-                                                <div class="seperate horizontal-middle-align">
-                                                    <li>&nbsp;</li>
-                                                </div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="button-wrapper primary-blue-button-form">
-                                        <button class="cmp-form-button" type="submit" value="${searchButton}">${headerModel.searchButton}</button>
-                                    </div>
-                                </div>
-                                <input name="action" type="hidden" value="input" />
-                            </form>
-                        </sly>
+    <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
+        <li
+            class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block nav-item">
+            <div class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block">
+                <a href="#" data-rr-ui-event-key="#"
+                    class="utility-nav-item-container nav-link">
+                    <div class="label-container">
+                        <span class="fal fa-search sl-icon" role="presentation"></span>
+                        <span
+                                class="d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">Searchd</span>
                     </div>
-                </div>
+                </a>
             </div>
-        </div>
-    </div>
+        </li>
+    </sly>
 </template>
