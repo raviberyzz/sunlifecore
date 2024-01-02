@@ -1,0 +1,10 @@
+<template data-sly-template.group="${@ items='The navigation items for the current level'}"  data-sly-use.itemTemplate="item.html">
+
+<ul class="content" data-sly-list="${items}">
+<li>
+<a href="${item.URL}">${item.title}</a>
+<sly data-sly-test="${item.children.size > 0}" data-sly-call="${itemTemplate.item @ items = item.children, level= item.level}"></sly>
+</li>
+</ul>
+
+</template>

@@ -22,4 +22,7 @@ public interface SeparatorModel {
     @ValueMapValue
     String getSeparatorType();
 
+     @ValueMapValue
+    String getSpacing();
+
 }

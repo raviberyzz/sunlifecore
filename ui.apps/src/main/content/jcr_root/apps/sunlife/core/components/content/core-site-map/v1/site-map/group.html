@@ -1,0 +1,13 @@
+<template data-sly-template.group="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html"
+      data-sly-use.itemContentTemplate="itemContent.html">
+    <div class="site-map" data-sly-list="${items}">
+     <div>
+    <h2 data-sly-test.itemCheck = "${item.level == 0}">
+        <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
+    </h2>
+
+    <sly data-sly-test="${item.children.size > 0}" data-sly-call="${itemTemplate.item @ items = item.children, level= item.level}"></sly>
+    <div class="hard-separator"></div>
+    </div>
+    </div>
+</template>

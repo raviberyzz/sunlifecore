@@ -12,16 +12,16 @@
             <tabs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
-                maximized="{Boolean}true">
+                type="nav">
                 <items jcr:primaryType="nt:unstructured">
                     <properties
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Preset layout"
+                        jcr:title="Layout"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
-                                granite:class="testval"
+                                granite:class="layout-container-columns"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
@@ -34,36 +34,36 @@
                                                 granite:class="cq-dialog-custom-grid-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Number Of Columns"
+                                                fieldLabel="Layout Type"
                                                 name="./numberOfColumn">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <_x0031_-col
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="1 Column - 12 (Grids)"
-                                                        value="1"/>
+                                                        text="1 Container - 12 (Columns)"
+                                                        value="full"/>
                                                     <_x0032_-col
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="2 Columns - 6 by 6 (Grids)"
-                                                        value="2"/>
+                                                        text="2 Containers - 6 by 6 (Columns)"
+                                                        value="halves"/>
                                                     <_x0033_-col
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="3 Columns - 4 by 4 by 4 (Grids)"
-                                                        value="3"/>
+                                                        text="3 Containers - 4 by 4 by 4 (Columns)"
+                                                        value="thirds"/>
                                                     <_x0034_-col
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="4 Columns - 3 by 3 by 3 by 3 (Grids)"
-                                                        value="4"/>
+                                                        text="4 Containers - 3 by 3 by 3 by 3 (Columns)"
+                                                        value="fourths"/>
                                                     <text
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="8 Max"
-                                                        value="text"/>
+                                                        text="1 Container - 8 Columns Max"
+                                                        value="8GridOnly"/>
                                                     <article
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="8 by 1 Offset by 3"
+                                                        text="2 Containers - 8 by 3 and 1 Offset"
                                                         value="article"/>
                                                     <left-nav
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="3 by 1 Offset by 8"
+                                                        text="2 Containers - 3 by 8 and 1 Offset"
                                                         value="leftnav"/>
                                                     <custom
                                                         jcr:primaryType="nt:unstructured"
@@ -83,7 +83,7 @@
                                                         granite:class="cq-dialog-custom-offsetgrid-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Number Of Columns For Custom Layout"
+                                                        fieldLabel="Number Of Containers For Custom Layout"
                                                         name="./numberOfCustomColumns">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <select
@@ -122,99 +122,109 @@
                                                     showhidecustomgridtargetvalues="custom"/>
                                             </customcolumn-choice>
                                             <customcol-one
-                                                granite:class="showhideone hide showhidecustomgridtargetvalues"
+                                                granite:class="showhideone hide showhidecustomgridtargetvalues custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <custom-col
-                                                        granite:class="cmp-layout-container__editor-action"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items
+                                                        <field
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/well">
-                                                            <desktop
-                                                                granite:class="cmp-layout-container__editor-actionField"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
-                                                                max="{Long}12"
-                                                                min="{Long}0"
-                                                                name="./desktopOne"
-                                                                value="0"/>
-                                                            <tablet
-                                                                granite:class="cmp-layout-container__editor-actionField"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
-                                                                max="{Long}12"
-                                                                min="{Long}0"
-                                                                name="./tabletOne"
-                                                                value="0"/>
-                                                            <mobile
-                                                                granite:class="cmp-layout-container__editor-actionField"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
-                                                                max="{Long}12"
-                                                                min="{Long}0"
-                                                                name="./mobileOne"
-                                                                value="0"/>
-                                                        </items>
-                                                    </custom-col>
-                                                    <offset
-                                                        granite:class="cq-dialog-column-checkbox-showhide"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        name="./offsetOne"
-                                                        text="Offset"
-                                                        uncheckedValue="false"
-                                                        value="{Boolean}true">
-                                                        <granite:data
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                            fieldLabel="Container 1"
+                                                            fieldDescription="Add the column and offset config for Containers 1. Offset are empty columns on the left of associated container." />
+                                                        <custom-col
+                                                            granite:class="cmp-layout-container__editor-action"
                                                             jcr:primaryType="nt:unstructured"
-                                                            cq-dialog-column-checkbox-showhide-target=".togglecolumnfield "/>
-                                                    </offset>
-                                                    <offset-columns
-                                                        granite:class="togglecolumnfield hide cmp-layout-container__editor-action"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <desktop-offset
-                                                                granite:class="cmp-layout-container__editor-actionField"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items
                                                                 jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
-                                                                max="{Long}11"
-                                                                min="{Long}0"
-                                                                name="./offsetDesktopOne"
-                                                                value="0"/>
-                                                            <tablet-offset
-                                                                granite:class="cmp-layout-container__editor-actionField"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                <desktop
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column (Desktop)"
+                                                                    max="{Long}12"
+                                                                    min="{Long}0"
+                                                                    name="./desktopOne"
+                                                                    value="0"/>
+                                                                <tablet
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column (Tablet)"
+                                                                    max="{Long}12"
+                                                                    min="{Long}0"
+                                                                    name="./tabletOne"
+                                                                    value="0"/>
+                                                                <mobile
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column (Mobile)"
+                                                                    max="{Long}12"
+                                                                    min="{Long}0"
+                                                                    name="./mobileOne"
+                                                                    value="0"/>
+                                                            </items>
+                                                        </custom-col>
+                                                        <offset
+                                                            granite:class="cq-dialog-column-checkbox-showhide"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            name="./offsetOne"
+                                                            text="Enable Offset"
+                                                            uncheckedValue="false"
+                                                            value="{Boolean}true">
+                                                            <granite:data
                                                                 jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
-                                                                max="{Long}11"
-                                                                min="{Long}0"
-                                                                name="./offsetTabletOne"
-                                                                value="0"/>
-                                                            <mobile-offset
-                                                                granite:class="cmp-layout-container__editor-actionField"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
-                                                                max="{Long}11"
-                                                                min="{Long}0"
-                                                                name="./offsetMobileOne"
-                                                                value="0"/>
-                                                        </items>
-                                                    </offset-columns>
+                                                                cq-dialog-column-checkbox-showhide-target=".togglecolumnfield "/>
+                                                        </offset>
+                                                        <offset-columns
+                                                            granite:class="togglecolumnfield hide cmp-layout-container__editor-action"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <desktop-offset
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column Offset (Desktop)"
+                                                                    max="{Long}11"
+                                                                    min="{Long}0"
+                                                                    name="./offsetDesktopOne"
+                                                                    value="0"/>
+                                                                <tablet-offset
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column Offset (Tablet)"
+                                                                    max="{Long}11"
+                                                                    min="{Long}0"
+                                                                    name="./offsetTabletOne"
+                                                                    value="0"/>
+                                                                <mobile-offset
+                                                                    granite:class="cmp-layout-container__editor-actionField"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldLabel="Column Offset (Mobile)"
+                                                                    max="{Long}11"
+                                                                    min="{Long}0"
+                                                                    name="./offsetMobileOne"
+                                                                    value="0"/>
+                                                            </items>
+                                                        </offset-columns>
                                                 </items>
                                             </customcol-one>
                                             <customcol-two
-                                                granite:class="showhidetwo hide horizontal-line"
+                                                granite:class="showhidetwo hide custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Container 2"
+                                                        fieldDescription="Add the column and offset config for Containers 2. Offset are empty columns on the left of associated container." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -226,7 +236,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
+                                                                fieldLabel="Column (Desktop)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./desktopTwo"
@@ -235,7 +245,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
+                                                                fieldLabel="Column (Tablet)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./tabletTwo"
@@ -244,7 +254,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
+                                                                fieldLabel="Column (Mobile)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./mobileTwo"
@@ -256,7 +266,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         name="./offsetTwo"
-                                                        text="Offset"
+                                                        text="Enable Offset"
                                                         uncheckedValue="false"
                                                         value="{Boolean}true">
                                                         <granite:data
@@ -272,7 +282,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
+                                                                fieldLabel="Column Offset (Desktop)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetDesktopTwo"
@@ -281,7 +291,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
+                                                                fieldLabel="Column Offset (Tablet)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetTabletTwo"
@@ -290,7 +300,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
+                                                                fieldLabel="Column Offset (Mobile)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetMobileTwo"
@@ -300,10 +310,15 @@
                                                 </items>
                                             </customcol-two>
                                             <customcol-three
-                                                granite:class="showhidethree hide horizontal-line"
+                                                granite:class="showhidethree hide custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Column 3"
+                                                        fieldDescription="Add the column and offset config for Containers 3. Offset are empty columns on the left of associated container." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -313,7 +328,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
+                                                                fieldLabel="Column (Desktop)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./desktopThree"
@@ -322,7 +337,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
+                                                                fieldLabel="Column (Tablet)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./tabletThree"
@@ -331,7 +346,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
+                                                                fieldLabel="Column (Mobile)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./mobileThree"
@@ -343,7 +358,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         name="./offsetThree"
-                                                        text="Offset"
+                                                        text="Enable Offset"
                                                         uncheckedValue="false"
                                                         value="{Boolean}true">
                                                         <granite:data
@@ -359,7 +374,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
+                                                                fieldLabel="Column Offset (Desktop)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetDesktopThree"
@@ -368,7 +383,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
+                                                                fieldLabel="Column Offset (Tablet)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetTabletThree"
@@ -377,7 +392,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
+                                                                fieldLabel="Column Offset (Mobile)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetMobileThree"
@@ -387,10 +402,15 @@
                                                 </items>
                                             </customcol-three>
                                             <customcol-four
-                                                granite:class="showhidefour hide horizontal-line"
+                                                granite:class="showhidefour hide custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Column 4"
+                                                        fieldDescription="Add the column and offset config for Containers 4. Offset are empty columns on the left of associated container." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -400,7 +420,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
+                                                                fieldLabel="Column (Desktop)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./desktopFour"
@@ -409,7 +429,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
+                                                                fieldLabel="Column (Tablet)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./tabletFour"
@@ -418,7 +438,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
+                                                                fieldLabel="Column (Mobile)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./mobileFour"
@@ -430,7 +450,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         name="./offsetFour"
-                                                        text="Offset"
+                                                        text="Enable Offset"
                                                         uncheckedValue="false"
                                                         value="{Boolean}true">
                                                         <granite:data
@@ -446,7 +466,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
+                                                                fieldLabel="Column Offset (Desktop)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetDesktopFour"
@@ -455,7 +475,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
+                                                                fieldLabel="Column Offset (Tablet)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetTabletFour"
@@ -464,7 +484,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
+                                                                fieldLabel="Column Offset (Mobile)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetMobileFour"
@@ -474,10 +494,15 @@
                                                 </items>
                                             </customcol-four>
                                             <customcol-five
-                                                granite:class="showhidefive hide horizontal-line"
+                                                granite:class="showhidefive hide custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Column 5"
+                                                        fieldDescription="Add the column and offset config for Containers 5. Offset are empty columns on the left of associated container." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -487,7 +512,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
+                                                                fieldLabel="Column (Desktop)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./desktopFive"
@@ -496,7 +521,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
+                                                                fieldLabel="Column (Tablet)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./tabletFive"
@@ -505,7 +530,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
+                                                                fieldLabel="Column (Mobile)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./mobileFive"
@@ -517,7 +542,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         name="./offsetFive"
-                                                        text="Offset"
+                                                        text="Enable Offset"
                                                         uncheckedValue="false"
                                                         value="{Boolean}true">
                                                         <granite:data
@@ -533,7 +558,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
+                                                                fieldLabel="Column Offset (Desktop)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetDesktopFive"
@@ -542,7 +567,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
+                                                                fieldLabel="Column Offset (Tablet)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetTabletFive"
@@ -551,7 +576,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
+                                                                fieldLabel="Column Offset (Mobile)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetMobileFive"
@@ -561,10 +586,15 @@
                                                 </items>
                                             </customcol-five>
                                             <customcol-six
-                                                granite:class="showhidesix hide horizontal-line"
+                                                granite:class="showhidesix hide custom-col-container"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Column 6"
+                                                        fieldDescription="Add the column and offset config for Containers 6. Offset are empty columns on the left of associated container." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -574,7 +604,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Desktop)"
+                                                                fieldLabel="Column (Desktop)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./desktopSix"
@@ -583,7 +613,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Tablet)"
+                                                                fieldLabel="Column (Tablet)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./tabletSix"
@@ -592,7 +622,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grids (Mobile)"
+                                                                fieldLabel="Column (Mobile)"
                                                                 max="{Long}12"
                                                                 min="{Long}0"
                                                                 name="./mobileSix"
@@ -604,7 +634,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         name="./offsetSix"
-                                                        text="Offset"
+                                                        text="Enable Offset"
                                                         uncheckedValue="false"
                                                         value="{Boolean}true">
                                                         <granite:data
@@ -620,7 +650,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Desktop)"
+                                                                fieldLabel="Column Offset (Desktop)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetDesktopSix"
@@ -629,7 +659,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Tablet)"
+                                                                fieldLabel="Column Offset (Tablet)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetTabletSix"
@@ -638,7 +668,7 @@
                                                                 granite:class="cmp-layout-container__editor-actionField"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                                fieldLabel="Grid Offset (Mobile)"
+                                                                fieldLabel="Column Offset (Mobile)"
                                                                 max="{Long}11"
                                                                 min="{Long}0"
                                                                 name="./offsetMobileSix"
@@ -647,11 +677,54 @@
                                                     </offset-columns>
                                                 </items>
                                             </customcol-six>
-                                            <height-auto
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                    <style
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Style"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <alignment
+												granite:class="core-title-sizes"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldLabel="Container Alignment"
+												name="./containerAlignment">
+												<items jcr:primaryType="nt:unstructured">
+                                                    <top
+													    jcr:primaryType="nt:unstructured"
+														text="Vertical Top"
+														value="align-items-start" />
+                                                    <middle
+														jcr:primaryType="nt:unstructured"
+														text="Vertical Middle"
+														value="align-items-center"/>
+                                                    <bottom
+														jcr:primaryType="nt:unstructured"
+														text="Vertical Bottom"
+														value="align-items-end"/>
+												</items>
+											</alignment>
+                                            <centerAlign
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                name="./heightAuto"
-                                                text="Height Auto"
+                                                fieldDescription="Align container horizontally center."
+                                                name="./centerAlign"
+                                                text="Center container"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
                                         </items>
@@ -659,7 +732,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </properties>
+                    </style>
                     <analytics
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Analytics"
@@ -692,6 +765,35 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
                         path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
+                    <additional
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Additional"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <debug
+                                                granite:class="cq-dialog-column-checkbox-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./debug"
+                                                text="Enable Visualize Mode"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </additional>
                 </items>
             </tabs>
         </items>

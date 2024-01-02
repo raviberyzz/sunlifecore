@@ -5,7 +5,6 @@ const CONST = {
 		pdfLink: '.cmp-text .sl-link-pdf'
 	}
 }
-
 const TextComp = {
 	init: function () {
 		TextComp.onDOMready();
@@ -22,7 +21,7 @@ const TextComp = {
 
 		$(CONST.SELECTOR.pdfLink).prepend('<i class="far fa-file-pdf"></i>');
 
-		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle" role="presentation"></i>');
+		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle popover-icon" role="presentation"></i>');
 
 		// function used to get the popover element and id
 		function getPopoverId(element) {
@@ -112,7 +111,6 @@ const TextComp = {
 	}
 
 };
-
 $(function () {
 	TextComp.init();
 });

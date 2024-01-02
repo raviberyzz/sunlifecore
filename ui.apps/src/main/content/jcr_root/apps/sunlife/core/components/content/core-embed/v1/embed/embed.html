@@ -1,0 +1,19 @@
+<div data-sly-use.embed="ca.sunlife.web.cms.core.models.v1.EmbedModel"
+  data-sly-use.commonsTemplates="core/wcm/components/commons/v1/templates.html"
+  data-sly-test.hasContent="${(embed.result && embed.result.processor) || embed.html || embed.embeddableResourceType}">
+  <div class="sl-article-video-container container ${embed.spacing}">
+    <div class="sl-article-video-component">
+      <div class="sl-article-video" tabindex="0" aria-label="${embed.caption}">
+        <sly data-sly-test="${embed.result && embed.result.processor}"
+          data-sly-use.processorTemplate="processors/${embed.result.processor}.html"
+          data-sly-call="${processorTemplate.render @ options=embed.result.options}"></sly>
+        <sly data-sly-test="${embed.html}">
+          ${embed.html @context = 'html'}</sly>
+        <sly data-sly-test="${embed.embeddableResourceType}"
+          data-sly-resource="${resource.path @ resourceType=embed.embeddableResourceType, wcmmode='disabled'}"></sly>
+      </div>
+      <span class="sl-article-video-caption">${embed.caption}</span>
+    </div>
+  </div>
+</div>
+<sly data-sly-call="${commonsTemplates.placeholder @ isEmpty = !hasContent}"></sly>

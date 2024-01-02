@@ -1,0 +1,23 @@
+<sly data-sly-use.socialMedia="ca.sunlife.web.cms.core.models.v1.SocialMediaModel"/>
+<div class="sl-social-media">
+    <sly data-sly-test="${socialMedia.type == 'sociallinks'}">
+        <ul data-sly-test="${!empty}" data-sly-list.socialLinks="${socialMedia.socialLinks}">
+            <li>
+                <a href="${socialLinks.iconLink}" aria-label="${socialLinks.stringReaderText}" target="${socialLinks.target}">
+                    <i class="social-icon fab fa-lg fa-${socialLinks.iconName}"></i>
+                </a>
+            </li>
+        </ul>
+    </sly>
+    <sly data-sly-test="${socialMedia.type == 'shareoptions'}">
+        <span class="share-heading">${socialMedia.shareText}</span> 
+        <ul class="share-list" data-sly-test="${!empty}" data-sly-list.socialOptions="${socialMedia.socialOptions}">
+            <li class="share-listitem">
+                <a class="share-listitem_link" aria-label="${socialOptions.screenReaderText}" href="javascript:void(0);" data-platform='${socialOptions.plateforms}'>
+                    <i class="social-icon fab fa-lg fa-${socialOptions.plateforms}"></i>
+                </a>
+            </li>
+        </ul>
+    </sly>
+</div>
+
