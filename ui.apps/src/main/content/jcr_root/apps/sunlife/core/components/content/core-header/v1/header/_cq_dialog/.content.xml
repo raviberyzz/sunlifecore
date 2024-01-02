@@ -431,11 +431,11 @@
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                         fieldLabel="Link Icon"
                                                                                         name="./linkIcon"/>
-                                                                                <linkUrl
+                                                                                <linkURL
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Link Url"
-                                                                                        name="./linkUrl"
+                                                                                        name="./linkURL"
                                                                                         rootPath="/content"/>
                                                                                 <linkType
                                                                                         jcr:primaryType="nt:unstructured"
