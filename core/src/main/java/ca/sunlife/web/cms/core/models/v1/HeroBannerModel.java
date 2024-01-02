@@ -70,7 +70,13 @@ public interface HeroBannerModel {
 	 @ValueMapValue
 	 String getCtaType();
 
-	  @ValueMapValue
+	 @ValueMapValue
+	 String getBtnLabel();
+	 
+	 @ValueMapValue
+	 String getBtnURL();
+
+	 @ValueMapValue
 	 String getCtaLabel();
 	 
 	 @ValueMapValue
@@ -87,6 +93,4 @@ public interface HeroBannerModel {
 
 	 @ValueMapValue
 	 String getDataSection(); 	 
-	
-	 
 }
