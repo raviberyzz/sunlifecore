@@ -1,31 +1,30 @@
 $(document).ready(function () {
-    $(".sl-accordion .accordion-header").keydown(function(e) {
-        if(e.key === "Escape" && $(this).siblings(".accordion-collapse").hasClass("expanded")) {                
-          $(this).find(".sl-icon").removeClass("hide").removeClass('show');
-          $(this).find(".accordion-button").attr("aria-expanded", false);
-          $(this).siblings(".accordion-collapse").removeClass("expanded")
-          $(this).find(".fa-chevron-up").addClass("hide");
-          $(this).find(".fa-chevron-down").addClass("show");
-          $(this).siblings(".accordion-collapse").css('height', "");
-        }
-    });
+  function hideAccordion(scopeVar) {
+    $(scopeVar).find(".sl-icon").removeClass("hide").removeClass('show');
+    $(scopeVar).find(".accordion-button").attr("aria-expanded", false);
+    $(scopeVar).siblings(".accordion-collapse").removeClass("expanded")
+    $(scopeVar).find(".fa-chevron-up").addClass("hide");
+    $(scopeVar).find(".fa-chevron-down").addClass("show");
+    $(scopeVar).siblings(".accordion-collapse").css('height', "");
+  }
+  $(".sl-accordion .accordion-header").keydown(function(e) {
+      if(e.key === "Escape" && $(this).siblings(".accordion-collapse").hasClass("expanded")) {                
+        hideAccordion(this)
+      }
+  });
   $(".sl-accordion .accordion-header").click(function () {
     const singleExpansion = $(this).attr("data-single-expansion");
     if ($(this).siblings(".accordion-collapse").hasClass("expanded")) {
-      $(this).find(".sl-icon").removeClass("hide").removeClass('show');
-      $(this).find(".accordion-button").attr("aria-expanded", false);
-      $(this).siblings(".accordion-collapse").removeClass("expanded")
-      $(this).find(".fa-chevron-up").addClass("hide");
-      $(this).find(".fa-chevron-down").addClass("show");
-      $(this).siblings(".accordion-collapse").css('height', "");
+      hideAccordion(this);
     } else {
       if (singleExpansion == "true") {
-        $(this).parents('.accordion-item').find(".sl-accordion .accordion-collapse").removeClass("expanded") // closes all open accordians
-        $(this).parents('.accordion-item').find(".accordion-collapse").css('height', "");
-        $(this).parents('.accordion-item').find(".accordion-button").attr("aria-expanded", false);
-        $(this).parents('.accordion-item').find(".sl-icon").removeClass("show").removeClass("hide");
-        $(this).parents('.accordion-item').find(".fa-chevron-down").addClass("show");
-        $(this).parents('.accordion-item').find(".fa-chevron-up").addClass("hide");
+        const accordionItem =  $(this).parents('.accordion-item');
+        accordionItem.find(".sl-accordion .accordion-collapse").removeClass("expanded") // closes all open accordians
+        accordionItem.find(".accordion-collapse").css('height', "");
+        accordionItem.find(".accordion-button").attr("aria-expanded", false);
+        accordionItem.find(".sl-icon").removeClass("show").removeClass("hide");
+        accordionItem.find(".fa-chevron-down").addClass("show");
+        accordionItem.find(".fa-chevron-up").addClass("hide");
       }
       $(this).find(".sl-icon").removeClass("hide").removeClass('show');
       $(this)

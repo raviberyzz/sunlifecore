@@ -13,9 +13,9 @@
         data-cmp-hook-accordion="item"
         data-cmp-expanded="${item.name in accordion.expandedItems}"
       >
-        <h4
+        <div
           data-sly-element="${accordion.headingElement @ context='elementName'}"
-          class="h4 accordion-header"
+          class="${accordion.headingElement} accordion-header"
           data-toggle="collapse"          
           data-single-expansion="${accordion.singleExpansion}"
         >
@@ -35,7 +35,7 @@
             ></span>
             <span class="accordion-item-heading">${item.title}</span>
           </button>
-        </h4>
+        </div>
         <div
           class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
         >
@@ -49,7 +49,7 @@
     </div>
   </div>
   <sly
-    data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+    data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/responsivegrid', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
     data-sly-test="${(wcmmode.edit || wcmmode.preview) && accordion.items.size < 1}"
   ></sly>
 </div>
