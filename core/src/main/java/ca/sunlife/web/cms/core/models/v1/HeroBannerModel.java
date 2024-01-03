@@ -11,19 +11,19 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = HeroBannerModel.RESOURCE_TYPE)	
 public interface HeroBannerModel {
 
-	String RESOURCE_TYPE = "sunlife/core/components/content/core-herobanner";	
+	String RESOURCE_TYPE = "sunlife/core/components/content/core-hero-banner";	
 	 
 	 @ValueMapValue
 	 String getVariant();	
 	 
 	 @ValueMapValue
-	 String getFile();
+	 String getImgDesktopFileReference();
 	 
 	 @ValueMapValue
-	 String getImageTablet();
+	 String getImgTabletFileReference();
 	 
 	 @ValueMapValue
-	 String getImage();	 
+	 String getImgMobileFileReference();	 
 	 
 	 @ValueMapValue(name = "isLazyLoaded")
 	 @Default(booleanValues = {false})
@@ -45,7 +45,10 @@ public interface HeroBannerModel {
 	 
 	 @ValueMapValue
 	 String getAltText();	 
-	 	
+
+	 @ValueMapValue
+	 String getHeadingType();
+
 	 @ValueMapValue
 	 String getHeading();
 	 
@@ -66,6 +69,15 @@ public interface HeroBannerModel {
 	 
 	 @ValueMapValue
 	 String getCtaType();
+
+	 @ValueMapValue
+	 String getBtnLabel();
+	 
+	 @ValueMapValue
+	 String getBtnURL();
+
+	 @ValueMapValue
+	 String getCtaLabel();
 	 
 	 @ValueMapValue
 	 String getLinkURL();
@@ -81,6 +93,4 @@ public interface HeroBannerModel {
 
 	 @ValueMapValue
 	 String getDataSection(); 	 
-	
-	 
 }

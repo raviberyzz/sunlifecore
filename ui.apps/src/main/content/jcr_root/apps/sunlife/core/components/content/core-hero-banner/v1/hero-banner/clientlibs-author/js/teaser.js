@@ -1,7 +1,7 @@
 (function($) {
     "use strict";
 
-    var dialogContentSelector = ".cmp-teaser-custom__editor";
+    var dialogContentSelector = ".cmp-hero-banner__editor";
     var CheckboxTextfieldTuple = window.CQ.CoreComponents.CheckboxTextfieldTuple.v1;
     var isDecorative;
     var $altURLField;
@@ -14,7 +14,7 @@
         if (dialogContent) {
             isDecorative      = dialogContent.querySelector('coral-checkbox[name="./isDecorative"]');
 
-            $altURLField     = $dialogContent.find(".cmp-teaser-custom__editor-alt");
+            $altURLField     = $dialogContent.find(".cmp-hero-banner__editor-alt");
 			altURLField = dialogContent.querySelector('input[name="./altText"]');
 
             toggleAlternativeFieldsAndLink(isDecorative);

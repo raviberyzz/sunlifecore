@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0" 
+    xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+    xmlns:jcr="http://www.jcp.org/jcr/1.0" 
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Hero Banner"
 	sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[sunlife.core.author.text,sunlife.core.author.teaser]">
+    extraClientlibs="[sunlife.core.author.text, sunlife.core.author.hero-banner]">
     <content
-        granite:class="cmp-teaser-custom__editor"
+        granite:class="cmp-hero-banner__editor"
         jcr:primaryType="nt:unstructured"
 		sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -13,10 +17,10 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
-                <items jcr:primaryType="nt:unstructured">				
-					<variant 
+                <items jcr:primaryType="nt:unstructured">	
+                    <BannerType 
 						jcr:primaryType="nt:unstructured"
-						jcr:title="Variant"
+						jcr:title="Banner Properties"
 						sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -29,36 +33,133 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-											<target
+											<variant
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-												granite:class="cq-dialog-dropdown-showhide"
 												fieldDescription="Select 'Default' for a default hero banner or 'Login' for a hero banner with a sign-in component."
-                                                fieldLabel="Select Banner Variant"
-                                                name="./variant">
-												<granite:data
-													jcr:primaryType="nt:unstructured"
-													cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                                                fieldLabel="Select Banner Type"
+                                                name="./variant"
+                                                granite:class="cq-dialog-select-showhide"
+                                                cq-dialog-select-showhide-target=".banner-type-showhide-target">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <default
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Default"
-                                                        value="default"/>
+                                                        selected="{Boolean}true"
+                                                        value="defaultBanner"/>
                                                     <login
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Login"
-                                                        value="login"/>
+                                                        value="loginBanner"/>
                                                 </items>
-                                            </target>										
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-select-showhide-target=".banner-type-showhide-target"/>
+                                            </variant>
+                                            
+                                            <defaultBannerConfigContainer	 
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/well"
+                                                margin="{Boolean}true"
+												granite:class=" banner-type-showhide-target defaultBanner">
+												 <items jcr:primaryType="nt:unstructured">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Default Hero Banner Configurations"/>	
+											        <backgroundStyle    
+                                                        jcr:primaryType="nt:unstructured"
+                                                        name="./backgroundStyle"
+                                                        fieldLabel="Background Style"
+                                                        fieldDescription="Select the background style for the banner."
+                                                        selectionMode="single"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/buttongroup">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <bright jcr:primaryType="nt:unstructured"
+                                                                name="./bright"
+                                                                text="Bright"
+                                                                value="bright"
+                                                                cq-msm-lockable="bright"/>
+                                                            <dark jcr:primaryType="nt:unstructured"
+                                                                name="./dark"
+                                                                text="Dark"
+                                                                value="dark"
+                                                                cq-msm-lockable="dark"/>
+                                                            <neutral jcr:primaryType="nt:unstructured"
+                                                                name="./neutral"
+                                                                text="Neutral"
+                                                                value="neutral"
+                                                                cq-msm-lockable="neutral"/>
+                                                        </items>
+                                                    </backgroundStyle>
+                                                    <contentAlignment
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/buttongroup"
+                                                        fieldLabel="Content Alignment"
+                                                        fieldDescription="Select the alignment for the content within the banner."
+                                                        selectionMode="single"
+                                                        name="./contentAlignment">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <left
+                                                                jcr:primaryType="nt:unstructured"
+                                                                name="./left"
+                                                                text="Left"
+                                                                value="justify-content-start"
+                                                                cq-msm-lockable="left"/>
+                                                            <right
+                                                                jcr:primaryType="nt:unstructured"
+                                                                name="./right"
+                                                                text="Right"
+                                                                value="justify-content-end"
+                                                                cq-msm-lockable="right"/>                
+                                                        </items>
+                                                    </contentAlignment>
+                                                    <bannerSize	
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/buttongroup"
+                                                        selectionMode="single"
+                                                        fieldLabel="Banner Size"
+                                                        fieldDescription="Select the size of the banner."
+                                                        name="./bannerSize">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <large
+                                                                jcr:primaryType="nt:unstructured"
+                                                                name="./large"
+                                                                text="Large"
+                                                                value="lg"
+                                                                cq-msm-lockable="right"/>
+                                                            <small
+                                                                jcr:primaryType="nt:unstructured"
+                                                                name="./small"
+                                                                text="Small"
+                                                                value="sm"
+                                                                cq-msm-lockable="right" />
+                                                        </items>
+                                                    </bannerSize>	
+												</items>
+											</defaultBannerConfigContainer>
+                                            
+                                            <loginBannerConfigContainer	 
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/well"
+                                                margin="{Boolean}true"
+												granite:class="hide banner-type-showhide-target loginBanner">
+												 <items jcr:primaryType="nt:unstructured">	
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Login hero banner variation is not available as of now."/>
+												</items>
+											</loginBannerConfigContainer>	
 										</items>
 									</column>
 								</items>
 							</columns>
 						</items>
-					</variant>	
-                    <image jcr:primaryType="nt:unstructured"
-						jcr:title="Image"
-						sling:resourceType="granite/ui/components/coral/foundation/container"
+					</BannerType>
+                    <asset jcr:primaryType="nt:unstructured"
+                        jcr:title="Asset"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
@@ -66,14 +167,14 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
-                                   <column
+                                <column
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <imageAlignment
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/radiogroup"
-												sling:hideResource="true">
+                                                sling:hideResource="true">
                                                 <items jcr:primaryType="nt:unstructured">                                                   
                                                 </items>
                                             </imageAlignment>
@@ -81,24 +182,24 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 sling:hideResource="true"/>
-                                            <file
+                                            <imgDesktop
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
-												fieldDescription="Please provide the desktop image"
-                                                fileNameParameter="./fileName"
-                                                fileReferenceParameter="./fileReference"
-												fieldLabel="Desktop Image"
+                                                fieldDescription="Please provide the desktop image"
+                                                fileNameParameter="./fileNameDesktp"
+                                                fileReferenceParameter="./imgDesktopFileReference"
+                                                fieldLabel="Desktop Image"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
-                                                name="./file"
-												required="{Boolean}true"
-												allowUpload="{Boolean}false"
+                                                name="./imgDesktop"
+                                                required="{Boolean}true"
+                                                allowUpload="{Boolean}false"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>	
-											<imageTablet
+                                            <imgTablet
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 allowUpload="{Boolean}false"
@@ -106,15 +207,15 @@
                                                 class="cq-droptarget"
                                                 fieldDescription="Please provide the tablet image to be used in the banner."
                                                 fieldLabel="Tablet Image"
-                                                fileNameParameter="./fileName"
-                                                fileReferenceParameter="./fileReferenceTablet"
+                                                fileNameParameter="./fileNameTablet"
+                                                fileReferenceParameter="./imgTabletFileReference"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
-                                                name="./imageTablet"
+                                                name="./imgTablet"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>
-                                            <imageMobile
+                                            <imgMobile
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 allowUpload="{Boolean}false"
@@ -122,11 +223,11 @@
                                                 class="cq-droptarget"
                                                 fieldDescription="Please provide the mobile image to be used in the banner."
                                                 fieldLabel="Mobile Image"
-                                                fileNameParameter="./fileName"
-                                                fileReferenceParameter="./fileReferenceMobile"
+                                                fileNameParameter="./fileNameMobile"
+                                                fileReferenceParameter="./imgMobileFileReference"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
-                                                name="./image"
+                                                name="./imgMobile"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>
@@ -154,186 +255,16 @@
                                                 fieldDescription="Alternative Text for the image"
                                                 fieldLabel="Alternative Text"
                                                 name="./altText"
-                                                wrapperClass="cmp-teaser-custom__editor-alt"/>
+                                                wrapperClass="cmp-hero-banner__editor-alt"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </image>
-                    <text jcr:primaryType="nt:unstructured"
-						jcr:title="Text"
-						sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns jcr:primaryType="nt:unstructured">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column jcr:primaryType="nt:unstructured">
-                                        <items
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[titleGroup,pretitle]">
-                                            <descriptionGroup jcr:primaryType="nt:unstructured">
-                                                <items
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:hideChildren="[descriptionFromLinkedPage]">
-													<headingText														
-														jcr:primaryType="nt:unstructured"
-														sling:resourceType="granite/ui/components/coral/foundation/form/textfield"														
-														fieldLabel="Heading Text"
-														name="./heading"/>
-                                                    <description
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
-                                                        name="./description"
-														fieldDescription="A description to display as the subheadline for the banner."
-														fieldLabel="Description Text"
-                                                        required="{Boolean}false"
-                                                        useFixedInlineToolbar="{Boolean}true"/>
-                                                </items>
-                                            </descriptionGroup>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </text>
-					<defaultVariant jcr:primaryType="nt:unstructured"
-						jcr:title="Default Variant"
-						granite:class="hide list-option-listfrom-showhide-target"
-						sling:resourceType="granite/ui/components/coral/foundation/container"						
-                        margin="{Boolean}true">
-						<granite:data
-							jcr:primaryType="nt:unstructured"
-							isTab="{Boolean}true"
-						    tab-id="default"
-							showhidetargetvalue="default"/>
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-										
-                                            <backgroundStyle											
-												jcr:primaryType="nt:unstructured"
-												sling:resourceType="granite/ui/components/coral/foundation/form/select"
-												fieldLabel="Background Style"
-												fieldDescription="Select the background style for the banner."
-												name="./backgroundStyle">
-												<items jcr:primaryType="nt:unstructured">
-													<default
-														jcr:primaryType="nt:unstructured"
-														text="Select"
-														value=""/>
-													<bright
-														jcr:primaryType="nt:unstructured"
-														text="Bright"
-														value="bright"/>
-													<dark
-														jcr:primaryType="nt:unstructured"
-														text="Dark"
-														value="dark"/>   
-													<neutral
-														jcr:primaryType="nt:unstructured"
-														text="Neutral"
-														value="neutral"/>														
-												</items>
-                                            </backgroundStyle>
-											
-											<contentAlignment											
-												jcr:primaryType="nt:unstructured"
-												sling:resourceType="granite/ui/components/coral/foundation/form/select"
-												fieldLabel="Content Alignment"
-												fieldDescription="Select the alignment for the content within the banner."
-												name="./contentAlignment">
-												<items jcr:primaryType="nt:unstructured">
-													<default
-														jcr:primaryType="nt:unstructured"
-														text="Select"
-														value=""/>
-													<left
-														jcr:primaryType="nt:unstructured"
-														text="Left Align"
-														value="left"/>
-													<right
-														jcr:primaryType="nt:unstructured"
-														text="Right Align"
-														value="right"/>                                                            
-												</items>
-                                            </contentAlignment>
-											
-											<bannerSize											
-												jcr:primaryType="nt:unstructured"
-												sling:resourceType="granite/ui/components/coral/foundation/form/select"
-												fieldLabel="Banner Size"
-												fieldDescription="Select the size of the banner."
-												name="./bannerSize">
-												<items jcr:primaryType="nt:unstructured">
-													<default
-														jcr:primaryType="nt:unstructured"
-														text="Select"
-														value=""/>
-													<large
-														jcr:primaryType="nt:unstructured"
-														text="Large"
-														value="large"/>
-													<small
-														jcr:primaryType="nt:unstructured"
-														text="Small"
-														value="small"/>                                                            
-												</items>
-                                            </bannerSize>
-											
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </defaultVariant>
-					
-					
-					<loginVariant jcr:primaryType="nt:unstructured"
-						granite:class="hide list-option-listfrom-showhide-target"
-						jcr:title="Login Variant"
-						sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-						<granite:data
-							jcr:primaryType="nt:unstructured"
-							isTab="{Boolean}true"
-						    tab-id="login"
-							showhidetargetvalue="login"/>
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">										
-                                             <experienceFragmentPath
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Select the path for the experience fragment that includes the sign-in component."
-                                                fieldLabel="Experience Fragment Path"
-                                                name="./experienceFragmentPath"
-                                                nodeTypes="cq:Page"
-                                                rootPath="/content/experience-fragments/sunlife"
-                                                />
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </loginVariant>	
-					<actions
+                    </asset>
+                    <textContent 
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="CTA"
+                        jcr:title="Content"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -345,15 +276,61 @@
                                     <column
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                         <items
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[actionsEnabled,actionsDisabled,actions]">
-											<type
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <headingType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Heading Type"
+                                                name="./headingType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <h1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H1"
+                                                        value="h1"/>
+                                                    <h2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H2"
+                                                        value="h2"/>
+                                                    <h3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        selected="{Boolean}true"
+                                                        text="H3"
+                                                        value="h3"/>
+                                                    <h4
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H4"
+                                                        value="h4"/>
+                                                    <h5
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H5"
+                                                        value="h5"/>
+                                                </items>
+                                            </headingType>
+                                            <headingText		
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"		
+                                                fieldLabel="Heading Text"
+                                                name="./heading"/>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./description"
+                                                fieldDescription="A description to display as the subheadline for the banner."
+                                                fieldLabel="Description Text"
+                                                useFixedInlineToolbar="{Boolean}true"/>	
+                                            <ctaType
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldLabel="CTA Type"
+                                                fieldDescription="Select the type of CTA need to render. If don't want any CTA then select the default placeholder option."
                                                 name="./ctaType">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <static
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Select CTA Type"
+                                                        value=""/>
                                                     <button
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Button"
@@ -363,38 +340,76 @@
                                                         text="Link"
                                                         value="link"/>
                                                 </items>
-                                            </type>
-                                            <linkURL
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".cta-type-option-showhide-target"/>
+                                            </ctaType>
+                                            <buttonConfig
+                                                granite:class="hide cta-type-option-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                fieldDescription="Link applied to teaser elements. URL or path to a content page."
-                                                fieldLabel="Link URL"
-                                                name="./linkURL"
-                                                rootPath="/content"
-                                                wrapperClass="foundation-toggleable cmp-teaser__editor-link-url"/>
-                                            <target
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Link Target"
-                                                name="./target">
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <sametab
+                                                    <btnLabel		
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Same Tab"
-                                                        value="_self"/>
-                                                    <newtab
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"		
+                                                        fieldLabel="Button Label"
+                                                        name="./btnLabel"/>
+                                                    <btnURL
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="New Tab"
-                                                        value="_blank"/>
+                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                        fieldDescription="Select path of button url for content page."
+                                                        fieldLabel="Button URL"
+                                                        name="./btnURL"
+                                                        rootPath="/content" />
                                                 </items>
-                                            </target>
-                                           
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="button"/>
+                                            </buttonConfig>
+                                            <linkConfig
+                                                granite:class="hide cta-type-option-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <ctaLabel		
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"		
+                                                        fieldLabel="Link Label"
+                                                        name="./ctaLabel"/>
+                                                    <linkURL
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                        fieldDescription="Select path of link url for content page."
+                                                        fieldLabel="Link URL"
+                                                        name="./linkURL"
+                                                        rootPath="/content" />
+                                                    <target
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Link Target"
+                                                        name="./target">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <sametab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Same Tab"
+                                                                value="_self"/>
+                                                            <newtab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Tab"
+                                                                value="_blank"/>
+                                                        </items>
+                                                    </target>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="link"/>
+                                            </linkConfig>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </actions>	
+                    </textContent>
                     <analytics
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Analytics"

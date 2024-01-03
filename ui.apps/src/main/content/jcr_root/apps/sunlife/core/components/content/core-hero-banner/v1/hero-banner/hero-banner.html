@@ -1,80 +1,47 @@
-<sly data-sly-use.teaser="ca.sunlife.web.cms.core.models.v1.HeroBannerModel"></sly>
-<sly data-sly-test.empty="${!teaser.imageAlignment}"/>
-<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
-
-<sly data-sly-test.teaserAltText = "${teaser.isDecorative ? '' : teaser.altText}" />
-<sly data-sly-test.mobileImage = "${teaser.fileReferenceMobile ? teaser.fileReferenceMobile : teaser.fileReference}"/>
-<sly data-sly-test="${!empty}">
-<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
-   <div class="image-text-wrapper" data-section="${teaser.analyticsId}">
-   
-      <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position clearfix">
-         <div class="left-item text-section hide-in-editorial">
-            ${teaser.description @context ='html'}
-         </div>
-
-        <sly data-sly-test.backgroundImgTesting="${teaser.backgroundImageCheck}">
-         <div class="right-item">
-			<div class="hidden-xs desk-img" style="background:url('${teaser.fileReference @ context='styleString'}') no-repeat;"></div>	
-			<div class="hidden-sm hidden-md hidden-lg mobile-img" style="background:url('${mobileImage @ context='styleString'}') no-repeat; background-size:cover;"></div>	
-         </div>
-         </sly>
-
-         <sly data-sly-test="${!backgroundImgTesting}">
-         <div class="right-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
-            <sly data-sly-test.imageLink="${teaser.linkURL}">
-               <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
-                   <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
-               </a>               
-               <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">
-                   <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
-               </a>			   
-            </sly>
-            <sly data-sly-test="${!imageLink}">
-               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">               
-               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1">               
-            </sly>
-         </div>
-         </sly>
-         
-		 <div class="left-item text-section show-only-in-editorial">
-			${teaser.description @context ='html'}
-		 </div>
-		 </div>
-		 
-		 
-		 
-         <div data-sly-test="${!imageRight}" class="left-image-position clearfix">
-
-         <sly data-sly-test.backgroundImgTesting="${teaser.backgroundImageCheck}">
-			<div class="left-item">
-			<div class="hidden-xs desk-img" style="background:url('${teaser.fileReference @ context='styleString'}') no-repeat;"></div>	
-			<div class="hidden-sm hidden-md hidden-lg mobile-img" style="background:url('${mobileImage @ context='styleString'}') no-repeat; background-size:cover;"></div>	
+<div 
+   data-sly-use.heroBanner="ca.sunlife.web.cms.core.models.v1.HeroBannerModel"
+   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+   data-sly-test.hasContent="${heroBanner.imgDesktopFileReference}">
+   <div 
+      class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
+      data-section="${heroBanner.dataSection}"
+      role="banner">
+      <picture class="picture-container" style="width:var(--viewportWidth);">
+         <source srcset="${heroBanner.imgDesktopFileReference}" media="(min-width: 905px)">
+         <source srcset="${heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(max-width: 905px)">
+         <source srcset="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(max-width: 600px)">
+         <img 
+             data-sly-set.imgLazyLoaded="${heroBanner.lazyLoaded ? 'lazy' : ''}"
+             src="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" 
+             alt="${heroBanner.altText || true}" 
+             class="card-img"
+             itemprop="contentUrl" 
+             data-sly-attribute.loading="${imgLazyLoaded}" style="width: 100%;"/> 
+     </picture>
+      <div class="card-img-overlay container">
+         <div class="h-100 ${heroBanner.contentAlignment} lg row">
+            <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+               <div class="${heroBanner.backgroundStyle}">
+                  <h1 
+                     class="h1 card-title"
+                     data-sly-element="${heroBanner.headingType}">
+                     ${heroBanner.heading}
+                  </h1>
+                  <div class="card-text">${heroBanner.description @ context = 'html'}</div>
+                  <a 
+                     data-sly-test="${heroBanner.ctaType != ''}"
+                     target="${heroBanner.target}" 
+                     href="${heroBanner.linkURL}"
+                     data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
+                     class="${heroBanner.ctaType == 'button' ? 'sl-btn btn btn-primary' : linkStyle }"
+                     data-title="${heroBanner.dataTitle}">
+                     ${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }
+                  </a>
+               </div>
             </div>
-         </sly>
-
-         <sly data-sly-test="${!backgroundImgTesting}">
-
-          <div class="left-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
-            <sly data-sly-test="${teaser.linkURL}">
-               <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
-				<img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
-               </a>
-               <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">
-				 <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
-               </a>               
-            </sly>
-            <sly data-sly-test="${!teaser.linkURL}">
-               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}"/>               
-               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1"/>               
-            </sly>
-         </div>
-
-         </sly> 
-
-         <div class="right-item text-section">
-            ${teaser.description @context ='html'}
          </div>
       </div>
    </div>
-</sly>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent, classAppend='cmp-hero-banner'}"></sly>
+
