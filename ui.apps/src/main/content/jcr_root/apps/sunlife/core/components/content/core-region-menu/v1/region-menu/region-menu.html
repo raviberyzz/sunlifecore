@@ -2,7 +2,7 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
 <sly data-sly-call="${templates.placeholder @ isEmpty = !regionModel.regions}"></sly>
 
-<div class="region-menu ${regionModel.spacing}" data-section="${regionModel.dataSection}">
+<div class="${regionModel.spacing}" data-section="${regionModel.dataSection}">
    <div class="region-content-container">
       <sly data-sly-list.region="${regionModel.regions}">
          <div class="region-content">
