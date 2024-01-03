@@ -12,19 +12,25 @@ import java.util.List;
 
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface RegionLanguageMenuModel {
+public interface RegionMenuModel {
 
-
+    /**
+     * Gets the List of Region.
+     * @return List of Region
+     */
     @ChildResource(name = "regions")
     List<Region> getRegions();
 
+    /**
+     * Gets the Worldwide(HeaderLinks) object
+     * @return HeaderLinks object
+     */
     @ChildResource(name = "worldwide")
     HeaderLinks getWorldwide();
 
-
-
     /**
      * Gets the Analytics Data Section
+     * @return the analytics data section
      */
     @ValueMapValue
     String getDataSection();
@@ -32,7 +38,7 @@ public interface RegionLanguageMenuModel {
     /**
      * Gets the Spacing
      *
-     * @return
+     * @return the spacing
      */
     @ValueMapValue
     String getSpacing();

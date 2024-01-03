@@ -1,10 +1,10 @@
-<sly data-sly-use.languageRegionModel="ca.sunlife.web.cms.core.models.v1.RegionLanguageMenuModel" />
+<sly data-sly-use.regionModel="ca.sunlife.web.cms.core.models.v1.RegionMenuModel" />
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
-<sly data-sly-call="${templates.placeholder @ isEmpty = !languageRegionModel.regions}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !regionModel.regions}"></sly>
 
-<div class="region-menu ${languageRegionModel.spacing}" data-section="${languageRegionModel.dataSection}">
+<div class="region-menu ${regionModel.spacing}" data-section="${regionModel.dataSection}">
    <div class="region-content-container">
-      <sly data-sly-list.region="${languageRegionModel.regions}">
+      <sly data-sly-list.region="${regionModel.regions}">
          <div class="region-content">
             <div class="country-header" data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=region.regionURL}">
                <span data-sly-test="${region.items}" data-title="${region.dataTitle}"> ${region.regionName}</span>
@@ -17,9 +17,9 @@
       </sly>
    </div>
    <hr class="sl-divider hr" aria-hidden="true">
-   <sly data-sly-use.utilityWorldwideParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=languageRegionModel.worldwide.linkURL}"/>
-   <a href="${utilityWorldwideParsing.navPath}" target="${languageRegionModel.worldwide.linkTarget}" data-title="${languageRegionModel.worldwide.dataTitle}" data-rr-ui-dropdown-item=""
+   <sly data-sly-use.utilityWorldwideParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=regionModel.worldwide.linkURL}"/>
+   <a href="${utilityWorldwideParsing.navPath}" target="${regionModel.worldwide.linkTarget}" data-title="${regionModel.worldwide.dataTitle}" data-rr-ui-dropdown-item=""
       class="world-wide-content  dropdown-item">
-      <div class="d-inline"><span>${languageRegionModel.worldwide.linkName}</span></div>
+      <div class="d-inline"><span>${regionModel.worldwide.linkName}</span></div>
    </a>
 </div>

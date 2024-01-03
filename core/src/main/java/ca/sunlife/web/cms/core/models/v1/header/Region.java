@@ -10,21 +10,51 @@ import java.util.List;
 
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface Region {
+    /**
+     * Gets the Region Name
+     *
+     * @return the region name
+     */
     @ValueMapValue
     String getRegionName();
 
+    /**
+     * Gets the Region URL
+     *
+     * @return the region URL
+     */
     @ValueMapValue
     String getRegionURL();
 
+    /**
+     * Gets the Region Target
+     *
+     * @return the region target
+     */
     @ValueMapValue
     String getRegionTarget();
 
+    /**
+     * Gets the Region Data Title
+     *
+     * @return the region Data Title
+     */
     @ValueMapValue
     String getDataTitle();
 
+    /**
+     * Gets the Region Highlight
+     *
+     * @return the region highlight
+     */
     @ValueMapValue
     String getLinkHighlight();
 
+    /**
+     * Gets the list of HeaderLinks objects
+     *
+     * @return the link items list
+     */
     @ChildResource
     List<HeaderLinks> getItems();
 
