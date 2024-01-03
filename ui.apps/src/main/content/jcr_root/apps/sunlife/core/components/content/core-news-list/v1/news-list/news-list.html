@@ -1,24 +1,4 @@
 <sly data-sly-use.newsModel="ca.sunlife.web.cms.core.models.v1.CNWNewsModel" />
-newsType: ${newsModel.newsType}
-<sly data-sly-list.newsCategories="${newsModel.newsCategories}">
-    newsCategories: ${newsCategories.category}
-</sly>
-newsArticleUrl: ${newsModel.newsArticleUrl}
-numberOfNews: ${newsModel.numberOfNews}
-latestYear: ${newsModel.latestYear}
-numberOfTabs: ${newsModel.numberOfTabs}
-noNewsMessage: ${newsModel.noNewsMessage}
-previousText: ${newsModel.previousText}
-nextText: ${newsModel.nextText}
-pageText: ${newsModel.pageText}
-ofText: ${newsModel.ofText}
-pageSize: ${newsModel.pageSize}
-dataTitle: ${newsModel.dataTitle}
-spacing: ${newsModel.spacing}
-
-
-
-<!--
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
 <sly data-sly-use.newsModel="ca.sunlife.web.cms.core.models.CNWNewsModel" />
@@ -120,4 +100,3 @@ spacing: ${newsModel.spacing}
         </div>
     </div>
 </sly>
--->

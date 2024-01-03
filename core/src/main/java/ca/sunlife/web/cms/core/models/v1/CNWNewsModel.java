@@ -14,6 +14,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
@@ -134,7 +135,7 @@ public class CNWNewsModel {
      *
      * @return the configService
      */
-    @Inject
+    @OSGiService
     private SiteConfigService configService;
 
     /**
@@ -172,7 +173,7 @@ public class CNWNewsModel {
      *
      * @return the newsService
      */
-    @Inject
+    @OSGiService
     private CNWNewsService newsService;
 
     /**
@@ -229,7 +230,8 @@ public class CNWNewsModel {
             return;
         }
         try {
-            final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
+            //final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
+            final String pageLocale = "en";
             if (null != pageLocale && pageLocale.length() > 0) {
                 locale = pageLocale.split("_")[0];
             }
