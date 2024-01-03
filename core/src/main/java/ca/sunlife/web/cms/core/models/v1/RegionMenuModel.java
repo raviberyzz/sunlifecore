@@ -12,7 +12,7 @@ import java.util.List;
 
 @Model(adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface RegionLanguageMenuModel {
+public interface RegionMenuModel {
 
 
     @ChildResource(name = "regions")
