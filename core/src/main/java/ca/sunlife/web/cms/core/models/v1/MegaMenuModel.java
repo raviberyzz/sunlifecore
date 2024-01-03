@@ -15,12 +15,27 @@ public interface MegaMenuModel {
 
     public final static String RESOURCE_TYPE = "sunlife/core/components/content/core-megamenu/v1/megamenu";
 
+    /**
+     * Gets the Heading
+     *
+     * @return the heading
+     */
     @ValueMapValue
     String getHeading();
 
+    /**
+     * Gets the List of Menu Sections
+     *
+     * @return the list of Menu Sections
+     */
     @ChildResourceFromRequest
     List<MenuSections> getMenuSections();
 
+    /**
+     * Gets the Spacing
+     *
+     * @return the spacing
+     */
     @ValueMapValue
     String getSpacing();
 }
