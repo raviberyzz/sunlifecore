@@ -2,8 +2,8 @@ package ca.sunlife.web.cms.core.models.v1;
 
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
-import ca.sunlife.web.cms.core.services.CNWNewsService;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
+import ca.sunlife.web.cms.core.services.v1.CNWNewsService;
+import ca.sunlife.web.cms.core.services.v1.SiteConfigService;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
