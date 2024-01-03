@@ -8,15 +8,13 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Embed;
 import com.adobe.cq.wcm.core.components.services.embed.UrlProcessor;
 import com.day.cq.wcm.api.designer.Style;
@@ -29,7 +27,6 @@ import com.drew.lang.annotations.Nullable;
     resourceType = {EmbedImpl.RESOURCE_TYPE},
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
-
 public class EmbedImpl implements Embed {
 
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-embed/v1/embed";
@@ -54,10 +51,10 @@ public class EmbedImpl implements Embed {
     @Nullable
     private Style currentStyle;
 
-    @Inject @Optional
+    @OSGiService @Optional
     private List<UrlProcessor> urlProcessors;
 
-    @Inject
+    @ScriptVariable
     private Resource resource;
 
     private Type embedType;
