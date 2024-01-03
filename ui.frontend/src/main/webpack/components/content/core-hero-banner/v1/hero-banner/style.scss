@@ -1,6 +1,5 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
-@import '@sunlife/ui-styles/components/banner';
 
 .sl-banner {
 --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
@@ -18,5 +17,9 @@
 
     &.default .card-img-overlay .dark a {
         color: var(--brand-tertiary-900);
+
+        &.sl-link-secondary {
+         color: var(--brand-primary-400);
+        }
     }
 }

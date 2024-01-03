@@ -323,7 +323,7 @@
                                             <cui jcr:primaryType="nt:unstructured">
                                                 <inline
                                                         jcr:primaryType="nt:unstructured"
-                                                        toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#paraformat]">
+                                                        toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#styles,#paraformat]">
                                                     <popovers jcr:primaryType="nt:unstructured">
                                                         <justify
                                                                 jcr:primaryType="nt:unstructured"
@@ -333,6 +333,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
                                                                 ref="lists"/>
+														<styles
+                                                                jcr:primaryType="nt:unstructured"
+                                                                items="styles:getStyles:styles-pulldown"
+                                                                ref="styles"/>
                                                         <paraformat
                                                                 jcr:primaryType="nt:unstructured"
                                                                 items="paraformat:getFormats:paraformat-pulldown"
