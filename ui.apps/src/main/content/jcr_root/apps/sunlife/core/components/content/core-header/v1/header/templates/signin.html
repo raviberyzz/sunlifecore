@@ -2,7 +2,7 @@
     <sly data-sly-test="${headerModel.listFromSignin == 'signintrue'}">
         <sly data-sly-list.signinLinks="${headerModel.signinlinks}">
             <li class="nav-item">
-                <a href="${signinLinks.getLinkURL @ extension = 'html' }" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
+                <a id="signinbutton" href="${signinLinks.getLinkURL @ extension = 'html' }" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
                     <div class="label-container">              
                         <span class="fal ${signinLinks.getLinkIcon} sl-icon" role="presentation"></span>
                         <span
