@@ -1,3 +1,7 @@
+/**
+* Header Component specific JS 
+*/
+
 (function () {
        
     /* Retrieves the element based on a classname/id */
@@ -30,12 +34,12 @@
         }
     }
 
-    /* Handles hamburger menu open clicks */
+    /* Handles hamburger menu open click */
     function callMenuOpen() {
         var headerNode = document.getElementById('nav-header');
         headerNode.insertAdjacentElement("afterend", offcanvasEl);
     }
-    /* Handles hamburger menu close clicks */
+    /* Handles hamburger menu close click */
     function callMenuClose() {
         var slnavNode = document.getElementById('sl-nav');
         slnavNode.append(offcanvasEl);
