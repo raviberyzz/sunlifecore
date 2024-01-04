@@ -1,0 +1,19 @@
+<template data-sly-template.signin="${ @ headerModel }">
+    <sly data-sly-test="${headerModel.listFromSignin == 'signintrue'}">
+        <sly data-sly-list.signinLinks="${headerModel.signinlinks}">
+            <li class="nav-item">
+                <a id="signinbutton" href="${signinLinks.getLinkURL @ extension = 'html' }" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
+                    <div class="label-container">              
+                        <span class="fal ${signinLinks.getLinkIcon} sl-icon" role="presentation"></span>
+                        <span
+                            class="dropdown-label d-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block">${signinLinks.getDesktopLinkTitle}
+                        </span>  
+                        <span
+                        class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${signinLinks.getMobileLinkTitle}
+                        </span>  
+                    </div>
+                </a>
+           </li>
+        </sly>
+    </sly>
+</template>
