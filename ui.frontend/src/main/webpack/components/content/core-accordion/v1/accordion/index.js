@@ -1,55 +1,70 @@
 $(document).ready(function () {
-  function hideAccordion(scopeVar) {
-    $(scopeVar).find(".sl-icon").removeClass("hide").removeClass('show');
-    $(scopeVar).find(".accordion-button").attr("aria-expanded", false);
-    $(scopeVar).siblings(".accordion-collapse").removeClass("expanded")
-    $(scopeVar).find(".fa-chevron-up").addClass("hide");
-    $(scopeVar).find(".fa-chevron-down").addClass("show");
-    $(scopeVar).siblings(".accordion-collapse").css('height', "");
-  }
-  $(".sl-accordion .accordion-header").keydown(function(e) {
-      if(e.key === "Escape" && $(this).siblings(".accordion-collapse").hasClass("expanded")) {                
-        hideAccordion(this)
-      }
-  });
-  $(".sl-accordion .accordion-header").click(function () {
-    const singleExpansion = $(this).attr("data-single-expansion");
-    if ($(this).siblings(".accordion-collapse").hasClass("expanded")) {
-      hideAccordion(this);
+  function chevronHandler($elem, status) {
+    let $chevronUP = $elem.find(".fa-chevron-up"),
+      $chevronDown = $elem.find(".fa-chevron-down");
+    if (status) {
+      $chevronUP.removeClass("show").addClass("hide");
+      $chevronDown.removeClass("hide").addClass("show");
     } else {
-      if (singleExpansion == "true") {
-        const accordionItem =  $(this).parents('.accordion-item');
-        accordionItem.find(".sl-accordion .accordion-collapse").removeClass("expanded") // closes all open accordians
-        accordionItem.find(".accordion-collapse").css('height', "");
-        accordionItem.find(".accordion-button").attr("aria-expanded", false);
-        accordionItem.find(".sl-icon").removeClass("show").removeClass("hide");
-        accordionItem.find(".fa-chevron-down").addClass("show");
-        accordionItem.find(".fa-chevron-up").addClass("hide");
-      }
-      $(this).find(".sl-icon").removeClass("hide").removeClass('show');
-      $(this)
-        .siblings(".accordion-collapse")
-        .addClass("show expanded"); // opens clicked accordian
-      $(this).find(".accordion-button").attr("aria-expanded", true);
-      $(this).find(".fa-chevron-up").addClass("show");
-      $(this).find(".fa-chevron-down").addClass("hide");
-      $(this).siblings(".accordion-collapse").height(($(this).siblings(".accordion-collapse").find(".accordion-body").innerHeight()+24) + "px");
-    }
-  });
-  $(".accordion-item").each(function(){
-    $(this).find(".accordion-collapse").height(($(this).find(".accordion-body").innerHeight()+24) + "px");
-  })
-
-  /* For first open accordion */
-  var accLength = $(".sl-accordion .accordion-item").length;
-  var acc = $(".sl-accordion .accordion-item");
-  if ($(".sl-accordion").hasClass("first-open")) {
-    if (accLength > 1) {
-      var firstAcc = acc[0];
-      $(firstAcc).find(".accordion-collapse").addClass("show expanded");
-      $(firstAcc).find(".accordion-button").attr("aria-expanded", true);
-      $(this).find(".fa-chevron-up").addClass("show").removeClass("hide");
-      $(this).find(".fa-chevron-down").addClass("hide").removeClass("show");
+      $chevronUP.removeClass("hide").addClass("show");
+      $chevronDown.removeClass("show").addClass("hide");
     }
   }
+
+  function accordionHeaderKeyEventHandler(e) {
+    if (e.key === "Escape" && $(this).siblings(".accordion-collapse").hasClass("expanded")) {
+      toggleAccordionCollapse($(this));
+    }
+  }
+  function resetAccordionForSingleSelection($accordionItemHeader) {
+    const $singleExpansion = $accordionItemHeader.attr("data-single-expansion");
+    if ($singleExpansion == "true") {
+      const $accordionItem = $accordionItemHeader.parents(".accordion-item").parents('.accordion');
+      $accordionItem.find(".accordion-collapse").removeClass("expanded show");
+      $accordionItem.find(".accordion-collapse").css("height", "");
+      $accordionItem.find(".accordion-button").attr("aria-expanded", false);
+      $accordionItem.find(".sl-icon").removeClass("show").removeClass("hide");
+      chevronHandler($accordionItem, true);
+    }
+  }
+
+  function accordionHeaderClickEventHandler(e) {
+    const $accordionItemHeader = $(this);
+    const $accordionContentElement = $accordionItemHeader.siblings(".accordion-collapse")
+    
+    if ($accordionContentElement.hasClass("expanded")) {
+      toggleAccordionCollapse($accordionItemHeader);
+    } else {
+      resetAccordionForSingleSelection($accordionItemHeader);
+      $accordionItemHeader.find(".sl-icon").removeClass("hide").removeClass("show");
+      $accordionContentElement.addClass("show expanded");
+      $accordionItemHeader.find(".accordion-button").attr("aria-expanded", true);
+      chevronHandler($accordionItemHeader, false);
+      $accordionContentElement.height($accordionContentElement.find(".accordion-body").innerHeight() + 24 + "px");
+    }
+  }
+
+  function toggleAccordionCollapse($accordionHeader) {
+    $accordionHeader.find(".sl-icon").removeClass("hide").removeClass("show");
+    $accordionHeader.find(".accordion-button").attr("aria-expanded", false);
+    $accordionHeader.siblings(".accordion-collapse").removeClass("expanded");
+    $accordionHeader.siblings(".accordion-collapse").css("height", "");
+    chevronHandler($accordionHeader, true);
+  }
+  function accordionDefaultSelection() {    
+    let $accordionContainer = $(".sl-accordion")
+    $accordionContainer.each(function() {
+      const $accordion = $(this);
+      const $accordionExpandedItem = $accordion.find(".accordion-collapse.show.expanded");
+      $accordionExpandedItem.height($accordionExpandedItem.find(".accordion-body").innerHeight() + 24 + "px");
+    })
+  }
+  function init() {
+    let $accordionHeaderElem = $(".sl-accordion .accordion-header");
+    accordionDefaultSelection();
+    $accordionHeaderElem.keydown(accordionHeaderKeyEventHandler);
+    $accordionHeaderElem.click(accordionHeaderClickEventHandler);
+  }
+
+  init();
 });
