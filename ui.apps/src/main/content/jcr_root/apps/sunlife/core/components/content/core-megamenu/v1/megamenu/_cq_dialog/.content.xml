@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Mega Menu"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[core.wcm.components.navigation.v1.editor]"
+    helpPath="https://www.adobe.com/go/aem_cmp_navigation_v2"
+    trackingFeature="core-components:navigation:v2">
+    <content
+        granite:class="cmp-navigation__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[accessibility]">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[*]">
+                                            <static
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data jcr:primaryType="nt:unstructured"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <well
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <heading
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Heading"
+                                                                name="./heading"/>
+                                                            <menuSections
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                composite="{Boolean}true"
+                                                                fieldLabel="Menu Sections">
+                                                                <field
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                    name="./menuSections">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <subheadingLinkName
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldLabel="Subheading Link Name"
+                                                                            name="./subheadingLinkName"/>
+                                                                        <subheadingLinkURL
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                            fieldLabel="Subheading Link URL"
+                                                                            name="./subheadingLinkURL"
+                                                                            rootPath="/content"/>
+                                                                        <subheadingDataTitle
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldLabel="Subheading Data Title"
+                                                                            name="./subheadingDataTitle"/>
+                                                                        <subheadingTarget
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldLabel="Subheading Target"
+                                                                            name="./subheadingTarget">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <sameTab
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Same Tab"
+                                                                                    value="sameTab"/>
+                                                                                <newTab
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="New Tab"
+                                                                                    value="newTab"/>
+                                                                            </items>
+                                                                        </subheadingTarget>
+                                                                        <menuItems
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                            composite="{Boolean}true"
+                                                                            fieldLabel="Menu Items">
+                                                                            <field
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                name="./menuItems">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <menuItemLinkName
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Menu Item Link Name"
+                                                                                        name="./menuItemLinkName"/>
+                                                                                    <menuItemLinkURL
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                                        fieldLabel="Menu Item Link URL"
+                                                                                        name="./menuItemLinkURL"
+                                                                                        rootPath="/content"/>
+                                                                                    <menuItemDataTitle
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Menu Item Data Title"
+                                                                                        name="./menuItemDataTitle"/>
+                                                                                    <menuItemTarget
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                        fieldLabel="Menu Item Target"
+                                                                                        name="./menuItemTarget">
+                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                            <sameTab
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                text="Same Tab"
+                                                                                                value="sameTab"/>
+                                                                                            <newTab
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                text="New Tab"
+                                                                                                value="newTab"/>
+                                                                                        </items>
+                                                                                    </menuItemTarget>
+                                                                                </items>
+                                                                            </field>
+                                                                        </menuItems>
+                                                                    </items>
+                                                                </field>
+                                                            </menuSections>
+                                                        </items>
+                                                    </well>
+                                                </items>
+                                            </static>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                    <spacing
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

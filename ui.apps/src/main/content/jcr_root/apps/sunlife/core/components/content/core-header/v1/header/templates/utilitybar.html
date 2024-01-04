@@ -1,0 +1,60 @@
+<template data-sly-template.navList="${ @ headerModel }">
+    <div class="sl-utility-bar">
+        <div class="container">
+            <ul class="content-container">
+                <li data-sly-test="${headerModel.listFromRegion == 'regiontrue'}">
+                    <div class="sl-region-menu" id="">
+                        <div id="sl-region-menu" class="region-menu-container dropdown">
+                           <button type="button" id="sl-region-menu-dd" aria-expanded="false"
+                                 data-bs-toggle="dropdown" class="nav-link dropdown-toggle btn btn-primary">
+                                 <div class="label-container">                       
+                                 <span class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
+                                    class="fal fa-location-arrow sl-icon"></span></span><span
+                                    class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">${headerModel.regionTitle}
+                                 <span class="visually-hidden">${headerModel.srRegionText}</span></span>
+                                <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
+                              </div>
+                              </button>
+                                <div aria-labelledby="sl-region-menu-dd" class="dropdown-menu dropdown-menu-end">
+                                    <!-- /*  Including Regional Menu    */ -->
+                                    <sly class="region-menu" data-sly-resource="${ @resourceType='sunlife/core/components/content/core-experiencefragment/v1/experiencefragment'}" />
+                                </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-sly-test="${headerModel.language == 'languagetrue'}">
+                    <div>
+                        <div class="sl-menu-dropdown">
+                            <div id="sl-dropdown-language-utility" data-testid="test-menu-dropdown" class="dropdown">
+                                <button type="button" id="sl-dropdown-toggle-language-utility" aria-expanded="false"
+                                        data-bs-toggle="dropdown"
+                                        class="utility-nav-item-container nav-link dropdown-toggle btn btn-primary">
+                                    <div class="item-content-container"><span
+                                            class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
+                                            class="fal fa-globe sl-icon"></span></span><span
+                                            class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">${headerModel.languageTitle}</span><span
+                                            class="visually-hidden">Change language</span>
+                                        <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
+                                    </div>
+                                </button>
+                                <ul aria-labelledby="sl-dropdown-toggle-language-utility"
+                                    class="dropdown-menu dropdown-menu-end">
+                                    <div class="dropdown-menu-title dropdown-header" role="heading">${headerModel.desktopMenuTitle}</div>
+                                    <ul data-sly-list.languageList="${headerModel.languageLinks}">
+                                        <li aria-current="true" data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=languageList.linkURL}">
+
+                                            <a href="${utilityListParsing.navPath}" lang="" data-sly-attribute.lang="${languageList.linkLanguageCode}" class="${languageList.linkHighlight ? 'active' : ''} dropdown-item">
+                                                <div class="d-inline"><span>${languageList.linkName}</span></div>
+                                            </a></li>
+
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <hr class="sl-divider hr region-divider" aria-hidden="true">
+    </div>
+</template>
