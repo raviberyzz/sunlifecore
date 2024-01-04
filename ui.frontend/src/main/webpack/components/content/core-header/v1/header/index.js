@@ -10,6 +10,7 @@
 
     /* Handles the desktop and mobile view */
     function offCanvas() {
+
         if (window.innerWidth <= 1239) {
             utilityLists.classList.remove("sl-utility-bar");
             utilityLists.classList.add("sl-utility-bar-offcanvas");
@@ -45,7 +46,24 @@
         slnavNode.append(offcanvasEl);
     }
 
-    window.addEventListener("load", offCanvas);
+    /* Adds the 'main-content' ID to the main content Layout Container */
+    function setMainContentLandmark() {
+        if ($('.header').length > 0 && $('#main-content').length < 1) {
+            var layoutContainer = $('.header').next();    
+            if (layoutContainer.hasClass('breadcrumb')) {
+                layoutContainer.next().attr('id', 'main-content');
+                layoutContainer.next().attr('role', 'main');
+            } else {
+                layoutContainer.attr('id', 'main-content');
+                layoutContainer.attr('role', 'main');
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        offCanvas();
+        setMainContentLandmark();
+    });
     window.addEventListener("resize", offCanvas);
 
     document.getElementById("menuOpen").onclick = callMenuOpen;
