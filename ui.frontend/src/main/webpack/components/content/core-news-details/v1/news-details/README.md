@@ -1,1 +1,1 @@
-#News Detail Component
+#News Details Component
