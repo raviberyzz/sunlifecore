@@ -30,6 +30,10 @@
         border: none;
         padding: 0;
       }
+      
+      .footer-content-container .footer-content .footer-copy {
+        color: var(--grey-600)
+      }
     
     .footer-utility-menu-container .footer-utility-menu {
         &.col-gap {
