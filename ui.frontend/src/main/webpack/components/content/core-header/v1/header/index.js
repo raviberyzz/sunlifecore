@@ -47,49 +47,16 @@
     }
 
     /* Adds the 'main-content' ID to the main content Layout Container */
-    /* Code may need to be adjusted when left navigation is complete. Left the logic commented out */
     function setMainContentLandmark() {
         if ($('.header').length > 0 && $('#main-content').length < 1) {
-
-            if ($('.header').next().hasClass('breadcrumb')) {
-                $('.header').next().next().attr('id', 'main-content');
-                $('.header').next().next().attr('role', 'main');
+            var layoutContainer = $('.header').next();    
+            if (layoutContainer.hasClass('breadcrumb')) {
+                layoutContainer.next().attr('id', 'main-content');
+                layoutContainer.next().attr('role', 'main');
             } else {
-                $('.header').next().attr('id', 'main-content');
-                $('.header').next().attr('role', 'main');
+                layoutContainer.attr('id', 'main-content');
+                layoutContainer.attr('role', 'main');
             }
-
-            // if ($('#left-navigation').closest('.layout-container').prev().hasClass('titlebar') && ($('#left-navigation').closest('.layout-container').parents('.layout-container')).length>0) {
-            //     $('#left-navigation').closest('.layout-container').parents('.layout-container').attr('id', 'main-content');
-            //     $('#left-navigation').closest('.layout-container').parents('.layout-container').attr('role', 'main');
-            // }
-            // else if ($('#left-navigation-case-2').closest('.layout-container').prev().hasClass('titlebar') && ($('#left-navigation-case-2').closest('.layout-container').parents('.layout-container')).length>0) {
-            //     $('#left-navigation-case-2').closest('.layout-container').parents('.layout-container').attr('id', 'main-content');
-            //     $('#left-navigation-case-2').closest('.layout-container').parents('.layout-container').attr('role', 'main');
-            // }
-            // else if ($('#left-navigation').parents('.col-md-3').next().hasClass('left-nav-with-content-section')) {
-            //     $('#left-navigation').parents('.col-md-3').next().attr('id', 'main-content');
-            //     $('#left-navigation').parents('.col-md-3').next().attr('role', 'main');
-            // }
-            // else if ($('#left-navigation-case-2').prev().hasClass('left-nav-with-content-section')) {
-            //     $('#left-navigation-case-2').prev().attr('id', 'main-content');
-            //     $('#left-navigation-case-2').prev().attr('role', 'main');
-            // }
-            // else if ($('#left-navigation').parents('.col-sm-4').next().hasClass('col-sm-8')) {
-            //     $('#left-navigation').parents('.col-sm-4').next().attr('id', 'main-content');
-            //     $('#left-navigation').parents('.col-sm-4').next().attr('role', 'main');
-            // }
-            // else if ($('.header').next().hasClass('breadcrumb')) {
-            //     $('.header').next().next().attr('id', 'main-content');
-            //     $('.header').next().next().attr('role', 'main');
-            // } else {
-            //     $('.header').next().attr('id', 'main-content');
-            //     $('.header').next().attr('role', 'main');
-            // }
-            // if ($('.link-list').hasClass('editorial-nav-desktop-wrapper')) {
-            //     $('.link-list.editorial-nav-desktop-wrapper').attr('aria-label', 'Filter');
-            //     $('.link-list.editorial-nav-desktop-wrapper').attr('role', 'navigation');
-            // }
         }
     }
 
