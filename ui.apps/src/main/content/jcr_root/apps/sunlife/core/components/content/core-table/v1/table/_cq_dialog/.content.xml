@@ -19,6 +19,9 @@
                                                 editorType="table"
                                                 name="./tableData"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
