@@ -4,7 +4,7 @@
         let footerMenuRow = document.querySelectorAll(".sl-footer .footer-menus .footer-menu");
         let footerMenuHeader = document.querySelectorAll(".sl-footer .footer-menus .footer-menu-header");
         let footerMenuList = document.querySelectorAll(".sl-footer .footer-menus ul.footer-menu-list");
-        let footerMenuHeaderIsButton = document.querySelector(".sl-footer .footer-menus .footer-menu-header").nodeName === 'H3' ? false : true;
+        let footerMenuHeaderIsButton = document.querySelector(".sl-footer .footer-menus .footer-menu-header").nodeName === 'DIV' ? false : true;
         
         if (window.innerWidth <= 1239 && !footerMenuHeaderIsButton) { 
             //Transform Elements to Mobile Accordion
@@ -40,7 +40,7 @@
             }
 
             for (const menuHeader of footerMenuHeader) {
-                let desktopFooterMenuHeader = document.createElement('h3');
+                let desktopFooterMenuHeader = document.createElement('div');
                 desktopFooterMenuHeader.classList.add("footer-menu-header");
                 desktopFooterMenuHeader.innerHTML = menuHeader.innerHTML;
                 menuHeader.insertAdjacentElement("beforebegin", desktopFooterMenuHeader);

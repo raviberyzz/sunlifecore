@@ -1,6 +1,7 @@
-<sly 
+<div 
    data-sly-use.heroBanner="ca.sunlife.web.cms.core.models.v1.HeroBannerModel"
-   data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+   data-sly-test.hasContent="${heroBanner.imgDesktopFileReference}">
    <div 
       class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
       data-section="${heroBanner.dataSection}"
@@ -34,12 +35,13 @@
                      data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
                      class="${heroBanner.ctaType == 'button' ? 'sl-btn btn btn-primary' : linkStyle }"
                      data-title="${heroBanner.dataTitle}">
-                     ${heroBanner.ctaLabel}
+                     ${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }
                   </a>
                </div>
             </div>
          </div>
       </div>
    </div>
-</sly>
-<sly data-sly-call="${templates.placeholder @ isEmpty = !heroBanner.imgDesktopFileReference, classAppend='cmp-hero-banner'}"></sly>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent, classAppend='cmp-hero-banner'}"></sly>
+
