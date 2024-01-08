@@ -1,0 +1,16 @@
+<sly data-sly-use.stickyBarText="ca.sunlife.web.cms.core.models.StickyBarModel"></sly>
+<sly data-sly-test.maxLinks="${stickyBarText.additionalButton == 'true' ? 3 : 4}" />
+<ul class="list-unstyled" id="stickyBarLinks" data-sly-list.links="${stickyBarText.links @ begin = 0, end = maxLinks}">
+  <li>
+    <a href="${links.linkUrl @ extension = 'html'}" target="${links.linkTarget}" data-title="${links.dataTitle}">${links.linkName @ context='html'}</a>
+  </li>
+</ul>
+<div class="sticky-bar-button-wrapper">
+  <sly data-sly-test="${stickyBarText.additionalButton == 'true'}">
+    <div class="stickyBarButtons"> <a href="${stickyBarText.secButtonLink @ extension = 'html'}"
+        target="${stickyBarText.secButtonTarget}"><span
+          class="button-class secondary-button-rte">${stickyBarText.secButtonLabel @ context='html'}</span></a></div>
+  </sly>
+  <div class="stickyBarButtons"> <a href="${stickyBarText.buttonLink @ extension = 'html'}" target="${stickyBarText.buttonTarget}"><span
+        class="button-class primary-yellow-button-rte">${stickyBarText.ButtonLabel @ context='html'}</span></a></div>
+</div>
