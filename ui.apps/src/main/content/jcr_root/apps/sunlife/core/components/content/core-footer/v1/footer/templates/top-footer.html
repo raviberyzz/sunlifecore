@@ -9,7 +9,7 @@
                 </div>
                 <ul id="footer-title-${itemList.index}-dropdown" class="footer-menu-list" data-sly-list.link="${item.links}">
                     <li class="footer-menu-items">
-                        <a href="${link.linkURL @ extension = 'html'}" lang="${link.langAttribute}" data-title="${link.dataTitle}" data-sly-attribute.target="${link.linkTarget == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
+                        <a href="${link.linkURL}" lang="${link.langAttribute}" data-title="${link.dataTitle}" data-sly-attribute.target="${link.linkTarget == 'newTab' ? '_blank' : ''}">${link.linkName}</a>
                     </li>
                 </ul>
             </div>
