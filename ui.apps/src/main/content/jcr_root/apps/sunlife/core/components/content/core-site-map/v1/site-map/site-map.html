@@ -3,6 +3,7 @@
      data-sly-test.hasContent="${navigation.items.size > 0}"
      data-sly-use.groupTemplate="group.html"
      data-sly-call="${groupTemplate.group @ items=navigation.items}"
-    >
+     aria-label="${navigation.accessibilityLabel}"
+     class="${navigation.spacing}">
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-navigation'}"></sly>
