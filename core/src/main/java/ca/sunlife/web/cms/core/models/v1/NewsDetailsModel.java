@@ -19,54 +19,51 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.text.ParseException;
 
 @Getter
-@Model(adaptables = {SlingHttpServletRequest.class,
-        Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class NewsDetailsModel {
 
     /**
-     * The logger.
+     * The logger for this class.
      */
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * The request.
+     * The request object.
      */
     @Self
     private SlingHttpServletRequest request;
 
     /**
-     * The current page.
+     * The current page object.
      */
     @ScriptVariable
     private Page currentPage;
 
     /**
-     * The news service.
+     * The news service object.
      */
     @OSGiService
     private CNWNewsService newsService;
 
     /**
-     * The config service.
+     * The config service object.
      */
     @OSGiService
     private SiteConfigService configService;
 
     /**
-     * The news details.
+     * The news details object.
      */
     private NewsDetails newsDetails;
 
 
     /**
-     * Inits the.
-     * CNWNewsDetailsModel - init method for processing the data.
+     * CNWNewsDetailsModel - init method for processing the data from the CNW News service.
      */
     @PostConstruct
     public void init() {
@@ -74,18 +71,15 @@ public class NewsDetailsModel {
         String pageLocaleDefault = "en";
         try {
             final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-            String[] segments = request.getPathInfo().split("/");
-            String releaseId = segments[segments.length - 1];
-            // releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
+            String releaseId = request.getRequestPathInfo().getSelectors()[0];
             if (null != locale && locale.length() > 0) {
                 pageLocaleDefault = locale.split("_")[0];
             }
+            logger.debug("calling getCNWNewsDetails method with releaseID {} and pageLocaleDefault {}", releaseId, pageLocaleDefault);
             newsDetails = newsService.getCNWNewsDetails(releaseId, pageLocaleDefault);
-        } catch (IOException | ParseException | ApplicationException | SystemException | LoginException
-                 | RepositoryException e) {
-            logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
+        } catch (IOException | ParseException | ApplicationException | SystemException | LoginException |
+                 RepositoryException exception) {
+            logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", exception.getMessage());
         }
     }
-
-
 }
