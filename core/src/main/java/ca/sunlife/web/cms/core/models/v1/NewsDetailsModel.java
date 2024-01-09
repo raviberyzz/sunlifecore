@@ -63,10 +63,11 @@ public class NewsDetailsModel {
     private NewsDetails newsDetails;
 
     /**
-     * The Data Title in the component.
+     * The Accessibility Label in the component.
      */
     @ValueMapValue
-    private String dataTitle;
+    private String accessibilityLabel;
+    
     /**
      * The spacing in the component.
      */
