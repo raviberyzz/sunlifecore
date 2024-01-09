@@ -63,7 +63,7 @@ public class NewsDetailsModel {
 
 
     /**
-     * CNWNewsDetailsModel - init method for processing the data from the CNW News service.
+     * NewsDetailsModel - init method for processing the data from the CNW News service.
      */
     @PostConstruct
     public void init() {
@@ -79,7 +79,7 @@ public class NewsDetailsModel {
             newsDetails = newsService.getCNWNewsDetails(releaseId, pageLocaleDefault);
         } catch (IOException | ParseException | ApplicationException | SystemException | LoginException |
                  RepositoryException exception) {
-            logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", exception.getMessage());
+            logger.error("Error :: NewsDetailsModel :: init :: Exception :: {}", exception.getMessage());
         }
     }
 }
