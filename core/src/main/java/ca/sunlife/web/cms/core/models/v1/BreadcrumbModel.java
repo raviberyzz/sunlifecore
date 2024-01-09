@@ -29,11 +29,5 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
     private String langcode;
 
     @ValueMapValue
-    private String accessibilityLabel;
-
-    @ValueMapValue
-    private String dataTitle;
-
-    @ValueMapValue
     private String spacing;
 }

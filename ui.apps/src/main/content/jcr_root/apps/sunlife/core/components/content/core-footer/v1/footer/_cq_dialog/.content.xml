@@ -200,6 +200,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
+                                                            <footer-body
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    cssName="footer-body"
+                                                                    text="Footer Body"/>
 															 <footer-copy
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="footer-copy"
