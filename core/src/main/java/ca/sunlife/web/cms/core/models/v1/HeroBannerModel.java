@@ -47,9 +47,6 @@ public interface HeroBannerModel {
 	 String getAltText();	 
 
 	 @ValueMapValue
-	 String getHeadingType();
-
-	 @ValueMapValue
 	 String getHeading();
 	 
 	 @ValueMapValue
@@ -83,7 +80,10 @@ public interface HeroBannerModel {
 	 String getLinkURL();
 	 
 	 @ValueMapValue
-	 String getTarget();	 	 
+	 String getTarget();
+
+	 @ValueMapValue
+	 String getCtaIconType();	 	 
 	
 	 @ValueMapValue
 	 String getSpacing();

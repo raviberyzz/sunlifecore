@@ -15,11 +15,42 @@
         color: inherit;
     }
 
-    &.default .card-img-overlay .dark a {
-        color: var(--brand-tertiary-900);
+    &.default .card-img-overlay {
+        .dark a {
+            color: var(--brand-tertiary-900);
 
-        &.sl-link-secondary {
-         color: var(--brand-primary-400);
+            &.sl-link-secondary {
+                color: var(--brand-primary-400);
+            }
+        }
+        .sl-btn.btn {
+            width: fit-content;
+        }
+
+        a { 
+            .icn-hover-show {
+                display: none;
+            }
+
+            &:hover {
+                .icn-hover-hidden {
+                    display: none;
+                }
+
+                .icn-hover-show {
+                    display: inline-block;
+                }
+            }
         }
     }
+
+    @include media-breakpoint-only(xs) {
+        .card-content-overlay {
+            width: 100vw;
+            left: 50%;
+            margin-left: -50vw;
+            position: relative !important;
+        }
+    }
+    
 }
