@@ -15,6 +15,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,6 +62,16 @@ public class NewsDetailsModel {
      */
     private NewsDetails newsDetails;
 
+    /**
+     * The Data Title in the component.
+     */
+    @ValueMapValue
+    private String dataTitle;
+    /**
+     * The spacing in the component.
+     */
+    @ValueMapValue
+    private String spacing;
 
     /**
      * NewsDetailsModel - init method for processing the data from the CNW News service.
