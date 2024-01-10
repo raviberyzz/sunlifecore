@@ -12,15 +12,15 @@
     function offCanvas() {
 
         if (window.innerWidth <= 1239) {
-            utilityLists.classList.remove("sl-utility-bar");
-            utilityLists.classList.add("sl-utility-bar-offcanvas");
+            utilityLists?.classList.remove("sl-utility-bar");
+            utilityLists?.classList.add("sl-utility-bar-offcanvas");
             var bodyNode = document.getElementById('offcanvas-body');
             bodyNode.append(utilityLists);
         }
 
         else {
-            utilityLists.classList.remove("sl-utility-bar-offcanvas");
-            utilityLists.classList.add("sl-utility-bar");
+            utilityLists?.classList.remove("sl-utility-bar-offcanvas");
+            utilityLists?.classList.add("sl-utility-bar");
             var navNode = document.getElementById('nav-header');
             navNode.insertAdjacentElement("beforebegin", utilityLists);
             /* Handles hamburger menu open on desktop view */
@@ -66,6 +66,6 @@
     });
     window.addEventListener("resize", offCanvas);
 
-    document.getElementById("menuOpen").onclick = callMenuOpen;
-    document.getElementById("menuClose").onclick = callMenuClose;
+    $("#menuOpen").click(callMenuOpen);
+    $("#menuClose").click(callMenuClose);
 })()
