@@ -33,7 +33,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items
                                             jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[disableShadowing,id]">
+                                            sling:hideChildren="[disableShadowing,id,structureDepth]">
                                         </items>
                                     </column>
                                 </items>
