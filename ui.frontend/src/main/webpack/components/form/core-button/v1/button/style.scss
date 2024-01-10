@@ -1,0 +1,14 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+
+.form-container-component form .button-group {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
+}

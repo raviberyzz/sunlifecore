@@ -5,8 +5,11 @@
             <ul class="footer-utility-submenu" data-sly-list="${bottomFooter.bottomLinks}">
                 <li class="footer-menu-items">
                     <a href="${item.linkURL}" lang="${item.langAttribute}" data-title="${item.dataTitle}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}">${item.linkName}</a>
-                    <div class="sl-divider vr" aria-hidden="true"></div>
+                    <div data-sly-test="${!itemList.last || itemList.last && !bottomFooter.feedback}" class="sl-divider vr" aria-hidden="true"></div>
                 </li>
+                <sly data-sly-test="${itemList.last && !bottomFooter.feedback }">
+                    <li class="footer-menu-items" id="feedback-footer"></li>
+                </sly>
             </ul>
             <div class="footer-icon-tag-container">
             <div class="footer-icons-container">

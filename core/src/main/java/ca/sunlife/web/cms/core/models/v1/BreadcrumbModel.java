@@ -22,15 +22,11 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
   
      protected static final  String RESOURCE_TYPE = "sunlife/core/components/content/core-breadcrumb/v1/breadcrumb";
 
+    @ValueMapValue
+    private String startLevel;
 
     @ValueMapValue
     private String langcode;
-
-    @ValueMapValue
-    private String accessibilityLabel;
-
-    @ValueMapValue
-    private String dataTitle;
 
     @ValueMapValue
     private String spacing;
