@@ -33,14 +33,31 @@
     li:first-child {
       margin-right: 0.5rem;
     }
+    li:last-child {
+      margin-right: 40px;
+      order: -1;
+    }
+        .menu-list{
+          display: flex;
+          list-style: none;
+          padding: 0;
+         li:last-child {
+           margin-right: 0;
+           order: 1;
+         }
+         .menu-item{
+          margin-right: 1.5rem;
+         }
+        }
+         
     .dropdown-menu {
       padding: 0;
       border: none;
       box-shadow: $box-shadow;
       margin-top: 0.125rem !important;
     }
-    .dropdown-toggle {
-      padding: 0.25rem 0.5rem;
+    .dropdown-toggle, .menu-content {
+      padding: 0.5rem 0.5rem;
       background: none;
       border: none;
       @include sl-body-medium;
@@ -159,7 +176,7 @@
       }
     .sl-menu-dropdown {
       .utility-nav-item-container {
-        padding: 0.25rem 0.5rem !important;
+        padding: 0.5rem 0.5rem !important;
         &:hover {
           text-decoration: none !important;
         }
@@ -435,6 +452,15 @@
                   padding: 0.5rem 1rem 0.5rem 3.875rem;
                 }
               }
+            }
+          }
+        }
+        .menu-container{
+          margin-top: 32px;
+          .menu-item{
+            border: none;
+            .menu-content{
+              margin: 0.75rem 0;
             }
           }
         }
