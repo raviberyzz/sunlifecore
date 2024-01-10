@@ -2,7 +2,7 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-test.empty="${!socialMedia.type}"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
-<div class="sl-social-media">
+<div class="sl-social-media ${socialMedia.spacing}">
     <sly data-sly-test="${socialMedia.type == 'sociallinks'}">
         <ul data-sly-test="${!empty}" data-sly-list.socialLinks="${socialMedia.socialLinks}">
             <li>
@@ -17,7 +17,7 @@
         <ul class="share-list" data-sly-test="${!empty}" data-sly-list.socialOptions="${socialMedia.socialOptions}">
             <li class="share-listitem">
                 <a class="share-listitem_link" aria-label="${socialOptions.screenReaderText}" href="javascript:void(0);" data-platform='${socialOptions.plateforms}'>
-                    <i class="social-icon fab fa-lg fa-${socialOptions.plateforms}"></i>
+                    <i class="social-icon fab fa-lg fa-${socialOptions.platforms}"></i>
                 </a>
             </li>
         </ul>

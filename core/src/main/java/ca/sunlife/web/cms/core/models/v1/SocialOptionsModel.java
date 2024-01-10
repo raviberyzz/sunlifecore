@@ -16,7 +16,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 public interface SocialOptionsModel {
 
 	@ValueMapValue
-	String getPlateforms();
+	String getPlatforms();
 
 	@ValueMapValue
 	String getStringReaderText();

@@ -205,12 +205,24 @@
   width: 100%
 }
 }
-.sl-header{
-    z-index: $zindex-sticky;
-.sl-icon-search {
-    vertical-align: middle;
-    background: var(--grey-800);
+.header {
+  position: sticky;
+  z-index:  $zindex-sticky;
+  @include media-breakpoint-up(lg) {
+    top: -38.5px;
   }
+  @include media-breakpoint-down(lg) { 
+    top: 0;
+  }
+}
+.sl-header{
+  z-index: auto;
+  position: static;
+  top: auto;
+  .sl-icon-search {
+      vertical-align: middle;
+      background: var(--grey-800);
+    }
 }
 .sl-header-offcanvas {
   .offcanvas-header {
