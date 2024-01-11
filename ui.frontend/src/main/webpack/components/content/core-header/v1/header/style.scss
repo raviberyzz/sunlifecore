@@ -30,13 +30,11 @@
     justify-content: end;
     align-items: center;
     height: 2.5rem;
-        li:first-child {
+    li:first-child {
       margin-right: 0.5rem;
-}
-    li:last-child {
-      margin-right: 40px;
-      order: -1;
     }
+    .menu-container{
+      margin-right: 40px !important;
         .menu-list{
           display: flex;
           list-style: none;
@@ -49,6 +47,7 @@
           margin-right: 1.5rem;
          }
         }
+    }
     .dropdown-menu {
       padding: 0;
       border: none;
