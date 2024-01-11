@@ -1,8 +1,9 @@
 <div
   data-sly-use.accordion="ca.sunlife.web.cms.core.models.v1.AccordionModel"
-  class="sl-accordion"
+  class="sl-accordion ${accordion.spacing}"
   data-sl-component="accordion"
-  data-section="${accordion.analyticsId}"
+  aria-label="${accordion.accessibilityLabel}"
+  data-section="${accordion.dataTitle}"
 >
   <div class="container">
     <div class="accordion">

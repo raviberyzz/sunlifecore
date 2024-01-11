@@ -32,4 +32,7 @@ public interface SocialMediaModel {
 
     @ValueMapValue
     String getSpacing();
+	    
+    @ValueMapValue
+    String getDataTitle();
 }
