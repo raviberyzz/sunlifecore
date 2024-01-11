@@ -85,7 +85,7 @@
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                         fieldLabel="Link Url"
                                                                                         name="./linkURL"
-                                                                                        rootPath="/content/"
+                                                                                        rootPath="/content"
                                                                                         suffix=".html"/>
                                                                                 <altText
                                                                                         jcr:primaryType="nt:unstructured"
@@ -341,7 +341,7 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldLabel="Search Action"
                                                                     name="./searchURL"
-                                                                    rootPath="/content/"
+                                                                    rootPath="/content"
                                                                     suffix=".html"/>
                                                         </items>
                                                     </column>
@@ -811,7 +811,7 @@
 																						fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
                                                                                         fieldLabel="Link URL"
                                                                                         name="./linkURL"
-                                                                                        rootPath="/content/"
+                                                                                        rootPath="/content"
                                                                                         suffix=".html"/>
                                                                                 <linkTarget
                                                                                         jcr:primaryType="nt:unstructured"
