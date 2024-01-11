@@ -6,7 +6,9 @@
        
     /* Retrieves the element based on a classname/id */
     const utilityLists = document.getElementsByClassName("sl-utility-bar")[0];
-    const offcanvasEl = document.getElementById('sl-header-offcanvas')
+    const offcanvasEl = document.getElementById('sl-header-offcanvas');
+    const additionalLinks = document.querySelector(".menu-container");
+    const additionalLinksParent = document.querySelector(".content-container");
 
     /* Handles the desktop and mobile view */
     function offCanvas() {
@@ -16,6 +18,9 @@
             utilityLists?.classList.add("sl-utility-bar-offcanvas");
             var bodyNode = document.getElementById('offcanvas-body');
             bodyNode.append(utilityLists);
+            /* Handles utility additional links view in mobile */
+            additionalLinks?.remove();
+            additionalLinksParent.appendChild(additionalLinks);
         }
 
         else {
@@ -23,13 +28,16 @@
             utilityLists?.classList.add("sl-utility-bar");
             var navNode = document.getElementById('nav-header');
             navNode.insertAdjacentElement("beforebegin", utilityLists);
+            /* Handles utility additional links view in desktop */
+            additionalLinks?.remove();
+            additionalLinksParent.insertAdjacentElement("afterbegin", additionalLinks);
             /* Handles hamburger menu open on desktop view */
             if ( offcanvasEl.classList.contains("show") && !offcanvasEl.classList.contains("hiding") ) {
                 const offCanvas = new bootstrap.Offcanvas(offcanvasEl);
                 offCanvas.hide();
                 offcanvasEl.classList.remove('show');
-                var test = document.getElementsByClassName("offcanvas-backdrop")[0];
-                test.remove();
+                var offcanvasBackdrop = document.getElementsByClassName("offcanvas-backdrop")[0];
+                offcanvasBackdrop.remove();
                 callMenuClose();
               }
         }
