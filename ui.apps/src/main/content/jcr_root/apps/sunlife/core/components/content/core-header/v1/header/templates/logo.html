@@ -3,7 +3,7 @@
          <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container inline-logo ">
               <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
                    <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
-                        <a href="${utilityListParsing.navPath @ extension = 'html'}">
+                        <a href="${utilityListParsing.navPath @ extension = 'html'}" target="${headerModel.target}" >
                              <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
                         </a>
                    </sly>
