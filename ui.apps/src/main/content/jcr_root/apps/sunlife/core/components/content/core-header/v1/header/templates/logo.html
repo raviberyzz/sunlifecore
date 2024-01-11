@@ -1,13 +1,29 @@
 <template data-sly-template.logo="${ @ headerModel }">
-    <sly>
-         <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container inline-logo ">
-              <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
-                   <sly data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
-                        <a href="${utilityListParsing.navPath @ extension = 'html'}" target="${headerModel.target}" >
-                             <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
-                        </a>
-                   </sly>
-              </div>
-         </div>
-    </sly>
+     <sly>
+          <!-- desktop logo -->
+          <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container"
+               class="sl-logo-container inline-logo d-none d-lg-block d-xl-block d-xxl-block">
+               <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
+                    <sly
+                         data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
+                         <a href="${utilityListParsing.navPath @ extension = 'html'}" target="${headerModel.target}">
+                              <img alt="${headerModel.altText}" src="${headerModel.logoImage}">
+                         </a>
+                    </sly>
+               </div>
+          </div>
+
+
+          <!-- mobile logo hamburger closed -->
+          <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container flex-grow-1 d-xxl-none d-xl-none d-lg-none">
+               <div class="sl-logo utility-nav-item-container mobile-logo navbar-brand">
+                    <sly
+                    data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
+                    <a href="${utilityListParsing.navPath @ extension = 'html'}" class="sl-logo utility-nav-item-container" target="${headerModel.target}">
+                         <img alt="${headerModel.altText}" src="${headerModel.mobileLogoImage}">
+                     </a>
+                    </sly>
+               </div>
+          </div>
+     </sly>
 </template>

@@ -448,3 +448,7 @@
     }
   }
 }
+
+#nav-header .mobile-logo a img {
+  max-height: -webkit-fill-available;
+}
