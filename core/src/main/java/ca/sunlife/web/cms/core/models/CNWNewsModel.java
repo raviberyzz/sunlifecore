@@ -525,7 +525,8 @@ public class CNWNewsModel {
       return;
     }
     try {
-      final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
+      //final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
+      final String pageLocale = "en";
       if (null != pageLocale && pageLocale.length() > 0) {
         locale = pageLocale.split("_") [ 0 ];
       }
