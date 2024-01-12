@@ -138,16 +138,6 @@ addMegaMenuAriaLabels();
           }
         }
     });
-      $('.desktop-primary-navigation .navbar-new').children('li:first-child').keydown(function(e){
-          if (e.which == 9 ) {
-              if(e.shiftKey) {
-                  $(".srch-btn").focus();
-                  e.preventDefault();
-                  $(".desktop-primary-navigation li").removeClass("open");
-                  $(".desktop-primary-navigation li a").removeClass("box-class");
-              }
-          }
-      });
 
 
       $('.signIn-button').children('a').on("focus", function(){
