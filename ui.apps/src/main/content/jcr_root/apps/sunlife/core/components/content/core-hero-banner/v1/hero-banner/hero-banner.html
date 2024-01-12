@@ -1,56 +1,30 @@
+<!--/*  
+Hero Banner Component
+
+Hero banner is a type of component that helps identify/advertise a particular page of the website. The banner component should always come on the top of the page as a main component below the main navigation. Hero banners are only required on the home pages. On secondary pages the hero banner is optional.
+
+Hero Banner component has 2 variations - Login and Default.
+- Image (required)
+- Content block colour background (required)
+- Heading (required)
+- Body (optional)
+- Button or link (optional)
+- For Login variation
+   - Login content block: for more information about login please check login template specification (required)
+
+Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=2158-7258&mode=design&t=oKgv6HCyIh2ZJ7pj-4
+*/-->
 <div 
    data-sly-use.heroBanner="ca.sunlife.web.cms.core.models.v1.HeroBannerModel"
    data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    data-sly-test.hasContent="${heroBanner.imgDesktopFileReference}">
-   <div 
-      class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
-      data-section="${heroBanner.dataSection}"
-      role="banner">
-      <picture class="picture-container" style="width:var(--viewportWidth);">
-         <source srcset="${heroBanner.imgDesktopFileReference}" media="(min-width: 905px)">
-         <source srcset="${heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(max-width: 905px)">
-         <source srcset="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(max-width: 600px)">
-         <img 
-             data-sly-set.imgLazyLoaded="${heroBanner.lazyLoaded ? 'lazy' : ''}"
-             src="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" 
-             alt="${heroBanner.altText || true}" 
-             class="card-img"
-             itemprop="contentUrl" 
-             data-sly-attribute.loading="${imgLazyLoaded}" style="width: 100%;"/> 
-     </picture>
-      <div class="card-img-overlay container">
-         <div class="h-100 ${heroBanner.contentAlignment} lg row">
-            <div class="col-lg-4 col-md-5 col-sm-12 col-12">
-               <div class="${heroBanner.backgroundStyle} card-content-overlay">
-                  <h1 
-                     class="h1 card-title">
-                     ${heroBanner.heading}
-                  </h1>
-                  <div class="card-text">${heroBanner.description @ context = 'html'}</div>
-                  <a 
-                     data-sly-test="${heroBanner.ctaType != 'noCTA'}"
-                     target="${heroBanner.target}" 
-                     href="${heroBanner.linkURL}"
-                     data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
-                     class="${heroBanner.ctaType == 'button' ? 'sl-btn btn btn-primary' : linkStyle }"
-                     data-title="${heroBanner.dataTitle}">
-                     <sly data-sly-test="${heroBanner.ctaIconType =='file-pdf'}">
-                        <i class="far fa-${heroBanner.ctaIconType}"></i>
-                     </sly>
-                     ${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }
-                     <sly data-sly-test="${heroBanner.ctaIconType !='file-pdf' && heroBanner.ctaIconType != 'noIcn'}">
-                        <i class="far fa-${heroBanner.ctaIconType} ${heroBanner.ctaIconType == 'arrow-circle-right' ? 'icn-hover-hidden' : ''}"></i>
-                        <sly data-sly-test="${heroBanner.ctaIconType == 'arrow-circle-right'}">
-                           <i class="fas fa-arrow-circle-right icn-hover-show"></i>
-                        </sly>
 
-                     </sly>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+   <!--/* Include Default hero banner component variation  */-->
+   <sly 
+   data-sly-test="${!image.avatar}"
+   data-sly-use.defaultTpl="templates/default.html"
+   data-sly-call="${defaultTpl.details @ heroBanner=heroBanner}"></sly>
+
 </div>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent, classAppend='cmp-hero-banner'}"></sly>
 
