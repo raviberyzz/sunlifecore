@@ -28,10 +28,11 @@
                     <span class="fak fa-bars sl-icon_size_xl sl-icon"></span>
                </button>
 
-               <!-- template -->
-               <sly data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
+               <!-- logo desktop and mobile -->
+               <sly data-sly-set.isLogoHidden="${headerModel.hideLogo == 'no' ? false : true}">
+                    <sly data-sly-test="${!isLogoHidden}" data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
+                    </sly>
                </sly>
-
                <!-- mobile search icon -->
                <sly data-sly-use.search="templates/search-mobile.html"
                data-sly-call="${search.search @ headerModel=headerModel}"></sly>
@@ -45,8 +46,8 @@
                          <button id="menuClose" class="canvas-close" aria-label="Close menu" data-bs-dismiss="offcanvas">
                               <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                          </button>
-                         <!-- logo -->
-                         <sly data-sly-use.logo="templates/logo-mobile.html"
+                         <!-- mobile logo in expanded hamburger menu -->
+                         <sly data-sly-test="${!isLogoHidden}" data-sly-use.logo="templates/logo-mobile.html"
                               data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
                     </div>
 
