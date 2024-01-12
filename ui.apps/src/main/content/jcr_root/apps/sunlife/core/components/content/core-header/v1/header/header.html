@@ -28,7 +28,7 @@
                     <span class="fak fa-bars sl-icon_size_xl sl-icon"></span>
                </button>
 
-               <!-- template -->
+               <!-- logo desktop and mobile -->
                <sly data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
                </sly>
 
@@ -45,7 +45,7 @@
                          <button id="menuClose" class="canvas-close" aria-label="Close menu" data-bs-dismiss="offcanvas">
                               <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                          </button>
-                         <!-- logo -->
+                         <!-- mobile logo in expanded hamburger menu -->
                          <sly data-sly-use.logo="templates/logo-mobile.html"
                               data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
                     </div>
