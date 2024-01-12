@@ -29,7 +29,7 @@
                </button>
 
                <!-- logo desktop and mobile -->
-               <sly data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
+               <sly data-sly-test="${headerModel.hideLogo == 'no'}" data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
                </sly>
 
                <!-- mobile search icon -->
@@ -46,7 +46,7 @@
                               <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                          </button>
                          <!-- mobile logo in expanded hamburger menu -->
-                         <sly data-sly-use.logo="templates/logo-mobile.html"
+                         <sly data-sly-test="${headerModel.hideLogo == 'no'}" data-sly-use.logo="templates/logo-mobile.html"
                               data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
                     </div>
 
