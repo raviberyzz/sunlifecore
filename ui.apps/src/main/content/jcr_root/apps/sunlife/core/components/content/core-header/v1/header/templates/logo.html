@@ -2,7 +2,7 @@
      <sly>
           <!-- desktop logo -->
           <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container"
-               class="sl-logo-container inline-logo d-none d-lg-block d-xl-block d-xxl-block">
+               class="sl-logo-container inline-logo d-none d-lg-block d-xl-block d-xxl-block" data-section="header-logo">
                <div class="sl-logo utility-nav-item-container left-logo navbar-brand">
                     <sly
                          data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
@@ -15,7 +15,7 @@
 
 
           <!-- mobile logo hamburger closed -->
-          <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container flex-grow-1 d-xxl-none d-xl-none d-lg-none">
+          <div data-sly-test="${headerModel.listFrom == 'yes'}" id="sl-logo-container" class="sl-logo-container flex-grow-1 d-xxl-none d-xl-none d-lg-none" data-section="header-logo">
                <div class="sl-logo utility-nav-item-container mobile-logo navbar-brand">
                     <sly
                     data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=headerModel.linkURL}">
