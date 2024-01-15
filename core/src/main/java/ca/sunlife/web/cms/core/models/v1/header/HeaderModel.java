@@ -69,14 +69,6 @@ public interface HeaderModel {
     String getTarget();
 
     /**
-     * Gets the separator for the logo
-     *
-     * @return the separator for logo
-     */
-    @ValueMapValue
-    String getSeparator();
-
-    /**
      * Gets the hide logo.
      *
      * @return the hide logo
