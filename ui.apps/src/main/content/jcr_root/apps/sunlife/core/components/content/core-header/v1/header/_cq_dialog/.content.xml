@@ -534,7 +534,7 @@
                                                                                 <megaMenuLinkName
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                        fieldLabel="Megamenu Link Name"
+                                                                                        fieldLabel="Megamenu Link Title"
                                                                                         name="./megaMenuLinkName"/>
                                                                                 <megaMenuLinkURL
                                                                                         jcr:primaryType="nt:unstructured"
