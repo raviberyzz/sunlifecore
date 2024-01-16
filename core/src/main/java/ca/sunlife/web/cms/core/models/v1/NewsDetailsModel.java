@@ -25,7 +25,6 @@ import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.text.ParseException;
 
-@Getter
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class NewsDetailsModel {
 
@@ -61,17 +60,20 @@ public class NewsDetailsModel {
     /**
      * The news details object.
      */
+    @Getter
     private NewsDetails newsDetails;
 
     /**
      * The Accessibility Label in the component.
      */
+    @Getter
     @ValueMapValue
     private String accessibilityLabel;
-    
+
     /**
      * The spacing in the component.
      */
+    @Getter
     @ValueMapValue
     private String spacing;
 
@@ -85,7 +87,7 @@ public class NewsDetailsModel {
         String releaseId = StringUtils.EMPTY;
         try {
             final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-            String[]  selectors = request.getRequestPathInfo().getSelectors();
+            String[] selectors = request.getRequestPathInfo().getSelectors();
             if (selectors.length > 0) {
                 releaseId = selectors[0];
             }
