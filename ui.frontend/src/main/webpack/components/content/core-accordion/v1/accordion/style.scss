@@ -1,36 +1,71 @@
 .aem-AuthorLayer-Edit {
-    .accordion-collapse {
-        display: block !important;
-        height: auto !important;
-    }
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+  }
 }
-.sl-accordion{
-    .sl-icon {  
-        &.hide {
-            display: none;
-        }
-        &.show {
-            display: block;
-        }
+.sl-accordion {
+  .sl-icon {
+    &.hide {
+      display: none;
     }
+    &.show {
+      display: block;
+    }
+  }
 
-    .collapse:not(.show) {
-        display: none
+  .collapse:not(.show) {
+    display: none;
+  }
+  .accordion-collapse {
+    overflow: hidden;
+    transition: height 0.35s ease;
+    height: 0;
+  }
+  .accordion-item {
+    .accordion-button {
+      background: transparent;
     }
-    .accordion-collapse {
-        overflow: hidden;
-        transition: height 0.35s ease;
-        height: 0;
-    }
-    .accordion-item {
-        .accordion-button {
-            background: transparent;
-        }
-    }
-    .accordion-item-heading {
+  }
+
+  .accordion-header {
+    .accordion-button {
+      .accordion-item-heading {
         margin-left: 1rem;
-    }
-    .accordion-header {
         margin-bottom: 0;
+
+        &.h2 {
+          font-size: calc(1.325rem + 0.9vw);
+          @media (min-width: 1200px) {
+            font-size: 2rem;
+          }
+        }
+
+        &.h3 {
+          font-size: calc(1.3rem + 0.6vw);
+          @media (min-width: 1200px) {
+            font-size: 1.75rem;
+          }
+        }
+
+        &.h4 {
+          font-size: calc(1.275rem + 0.3vw);
+          @media (min-width: 1200px) {
+            font-size: 1.5rem;
+          }
+        }
+
+        &.h5 {
+          font-size: 1.25rem;
+        }
+        &.h6 {
+          font-size: 1rem;
+        }
+      }
     }
+  }
+
+  .accordion-header {
+    margin-bottom: 0;
+  }
 }
