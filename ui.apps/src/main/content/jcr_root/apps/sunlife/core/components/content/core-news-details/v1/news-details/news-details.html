@@ -6,8 +6,8 @@ Template to render News Detail component.
 <sly data-sly-use.newsDetailsModel = "ca.sunlife.web.cms.core.models.v1.NewsDetailsModel" />
 <sly data-sly-call="${templates.placeholder @ isEmpty = !newsDetailsModel.newsDetails}"></sly>
 <sly data-sly-test.releaseObj = "${newsDetailsModel.newsDetails.release}" />
-<div data-sly-test = "${releaseObj}" class="cnw-article">
-	<p>${releaseObj.releaseDate @context='html'}</p>
-	<h3>${releaseObj.headline @context='html'}</h3>
-	<div>${releaseObj.body @context='unsafe'}</div>
+<div data-sly-test="${releaseObj}" class="news-details-container cnw-article ${newsDetailsModel.spacing}">
+	<div class="news-release-date">${releaseObj.releaseDate @context='html'}</div>
+	<h1 class="h1">${releaseObj.headline @context='html'}</h1>
+	<div class="news-details-wrapper">${releaseObj.body @context='unsafe'}</div>
 </div>
