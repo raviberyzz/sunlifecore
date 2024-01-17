@@ -33,34 +33,6 @@
       .accordion-item-heading {
         margin-left: 1rem;
         margin-bottom: 0;
-
-        &.h2 {
-          font-size: calc(1.325rem + 0.9vw);
-          @media (min-width: 1200px) {
-            font-size: 2rem;
-          }
-        }
-
-        &.h3 {
-          font-size: calc(1.3rem + 0.6vw);
-          @media (min-width: 1200px) {
-            font-size: 1.75rem;
-          }
-        }
-
-        &.h4 {
-          font-size: calc(1.275rem + 0.3vw);
-          @media (min-width: 1200px) {
-            font-size: 1.5rem;
-          }
-        }
-
-        &.h5 {
-          font-size: 1.25rem;
-        }
-        &.h6 {
-          font-size: 1rem;
-        }
       }
     }
   }
