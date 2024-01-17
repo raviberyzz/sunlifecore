@@ -91,7 +91,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/foundation/form/textfield"
                                         fieldLabel="Button Text"
-                                        maxlength="{Long}15"
+                                        maxlength="{Long}25"
                                         name="./buttonLabel"
                                         required="{Boolean}true"/>
                                     <buttonLink
@@ -131,7 +131,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/foundation/form/textfield"
                                         fieldLabel="Button Text"
-                                        maxlength="{Long}15"
+                                        maxlength="{Long}25"
                                         name="./secButtonLabel"/>
                                     <secButtonLink
                                         jcr:primaryType="nt:unstructured"
