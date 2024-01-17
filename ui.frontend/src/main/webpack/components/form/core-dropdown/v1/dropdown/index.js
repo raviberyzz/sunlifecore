@@ -21,7 +21,7 @@
     e.preventDefault();
     let currentComboInput = e.currentTarget;
     $(currentComboInput).closest('.combo').removeClass("open");
-    console.log('dropDownOnBlur');
+    currentComboInput.setAttribute("aria-expanded", "false");
   }
 
   /**
@@ -29,36 +29,56 @@
   * @param {Event} e - The event object.
   */
   function dropdownComboHandler(e) {
-    console.log('dropdownComboHandler');
-    //console.log(e);
-    //console.log(e.type);
+    e.preventDefault();
+    let currentComboInput = e.currentTarget;
+    let combo = $(currentComboInput).closest('.combo');
+    let currentOptionSelected = $(currentComboInput).next().find(".option-current");
 
-    if (e.keyCode == '40') {
-      //arrow down
-      e.preventDefault();
-      let currentComboInput = e.currentTarget;
+    if (e.keyCode == '40') { // down arrow
 
-      $(currentComboInput).closest('.combo').addClass("open");
+      $(combo).addClass("open");
       currentComboInput.setAttribute("aria-expanded", "true");
       raiseLabel(currentComboInput);
-      let currentOptionSelected = $(currentComboInput).next().find(".option-current")
-      //console.log(currentOptionSelected);
-      //console.log(currentOptionSelected.next());
 
-      if (currentOptionSelected.length && currentOptionSelected.next()) {
-        //console.log('next');
-        $(currentOptionSelected).toggleClass("option-current");
-        $(currentOptionSelected).next().toggleClass("option-current");
-      } else {
-        //console.log('First');
+      if (currentOptionSelected.length) {
+        
+        if (currentOptionSelected.next().length) { // not last option
+          $(currentOptionSelected).toggleClass("option-current");
+          $(currentOptionSelected).next().toggleClass("option-current");
+        }
+      } else { // first option
+
         $(currentComboInput).next().children(":first").toggleClass("option-current");
       }
+    } else if (e.keyCode == '38') { // up arrow
 
-    } else if (e.type == 'mousedown') {
-      e.preventDefault();
-      let currentComboInput = e.currentTarget;
-      $(currentComboInput).closest('.combo').toggleClass("open");
+      $(combo).addClass("open");
       currentComboInput.setAttribute("aria-expanded", "true");
+      raiseLabel(currentComboInput);
+
+      if (currentOptionSelected.length) { // not first option
+
+        if (currentOptionSelected.prev().length) {
+          $(currentOptionSelected).toggleClass("option-current");
+          $(currentOptionSelected).prev().toggleClass("option-current");
+        }
+      } else { // first option
+        $(currentComboInput).next().children(":first").toggleClass("option-current");
+      }
+    } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key
+
+      let currOpt = $(currentComboInput).next().find(".option-current");
+      currOpt.mousedown();
+    } else if (e.type == 'mousedown') { // mousedown event
+
+      $(combo).toggleClass("open");
+      let ariaExpanded = "";
+      if ($(combo).hasClass("open")) {
+        ariaExpanded = "true";
+      } else {
+        ariaExpanded = "false";
+      }
+      currentComboInput.setAttribute("aria-expanded", ariaExpanded);
       raiseLabel(currentComboInput);
     }
   }
@@ -68,20 +88,18 @@
   * @param {Event} e - The event object.
   */
   function dropDownOptionHandler(e) {
-    console.log('dropDownOptionHandler');
-    //console.log(e);
-    //console.log(e.type)
-
     e.preventDefault();
     let currentElement = e.currentTarget;
     let currentDropdownElement = $(currentElement);
     let linkText = $(currentElement).text();
-    //console.log('linkText: ' + linkText);
+    let dropdownCombo = $(currentDropdownElement).closest('.combo');
+    let comboInput =  $(dropdownCombo).find('.combo-input')[0];
 
     appendSelectedText(currentDropdownElement, linkText);
     selectOption(currentDropdownElement);
     raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));
-    $(currentDropdownElement).closest('.combo').toggleClass("open");
+    $(dropdownCombo).toggleClass("open");
+    comboInput.setAttribute("aria-expanded", "false");
   }
 
   /**
@@ -101,10 +119,8 @@
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function raiseLabel(dropDown) {
-    console.log('raiseLabel');
     if ($('.combo').find('.combo-input-selected')[0].innerText != "") {
       if (!(document.getElementById('default-selected-label').matches(".raised.active"))) {
-        //console.log('raised');
         $(dropDown).find('label').addClass('raised active');
         $(dropDown).find('.combo-input-selected').removeClass("d-none");
       }
