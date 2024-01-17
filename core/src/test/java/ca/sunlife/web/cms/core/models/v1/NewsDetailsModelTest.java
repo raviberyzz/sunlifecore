@@ -65,7 +65,6 @@ public class NewsDetailsModelTest {
 
         cnwNewsDetailsModel.init();
         assertNull(cnwNewsDetailsModel.getNewsDetails());
-        assertNull(cnwNewsDetailsModel.getAccessibilityLabel());
         assertNull(cnwNewsDetailsModel.getSpacing());
 
         when(newsService.getCNWNewsDetails(releaseID, CANADA_LOCALE.getLanguage())).thenReturn(new NewsDetails());

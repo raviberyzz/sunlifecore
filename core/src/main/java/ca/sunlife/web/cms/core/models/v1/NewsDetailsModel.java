@@ -64,13 +64,6 @@ public class NewsDetailsModel {
     private NewsDetails newsDetails;
 
     /**
-     * The Accessibility Label in the component.
-     */
-    @Getter
-    @ValueMapValue
-    private String accessibilityLabel;
-
-    /**
      * The spacing in the component.
      */
     @Getter
