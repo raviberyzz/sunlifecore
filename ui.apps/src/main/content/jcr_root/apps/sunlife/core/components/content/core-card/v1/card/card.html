@@ -1,0 +1,15 @@
+<div
+  class="sl-card card"
+  data-component="card"
+  data-sly-use.model="ca.sunlife.web.cms.core.models.v1.Card"
+>
+  <sly data-sly-test="${model.cardContainer.cardType == 'horizontal'}"
+    data-sly-use.template ="${'templates/horizontal.html'}"
+    data-sly-call="${template.horizontal @ options=model.cardContainer}"
+  ></sly>
+
+  <sly data-sly-test="${model.cardContainer.cardType == 'vertical'}"
+    data-sly-use.template ="${'templates/vertical.html'}"
+    data-sly-call="${template.vertical @ options=model.cardContainer}"
+  ></sly>
+</div>
