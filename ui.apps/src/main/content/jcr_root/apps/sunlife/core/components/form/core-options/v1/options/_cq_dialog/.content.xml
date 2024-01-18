@@ -11,61 +11,28 @@
                                 <items jcr:primaryType="nt:unstructured">
                                     <column jcr:primaryType="nt:unstructured">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <buttonStyle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="type"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Button Style"
-                                                name="./buttonStyle">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <primary
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Primary"
-                                                        value="btn-primary"/>
-                                                    <secondary
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Secondary"
-                                                        value="btn-secondary"/>
-                                                    <tertiary
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Tertiary"
-                                                        value="btn-tertiary"/>
-                                                    <danger
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Danger"
-                                                        value="btn-danger"/>
-                                                </items>
-                                            </buttonStyle>
-                                            <icon
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Icon identifier for displaying an icon in the button."
-                                                fieldLabel="Icon"
-                                                name="./icon"/>
-                                            <iconPosition
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
-                                                name="./iconPosition"
-                                                text="Trailing Icon Position"
-                                                uncheckedValue="false"
-                                                value="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Please configure the id."
-                                                fieldDescription="Please configure the id"
-                                                fieldLabel="Button Id"
+                                                fieldDescription="Please specify the id."
+                                                fieldLabel="Id"
                                                 name="./id"/>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Legend to describe the role of the field."
+                                                fieldLabel="Title"
+                                                name="./jcr:title"
+                                                required="false"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </properties>
-                    <accessibility
+                    <constraints
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Accessibility"
+                        jcr:title="Constraints"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -78,19 +45,26 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <accessibilityLabel
+                                            <constraintMessage
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Value of an aria-label attribute for the button. Useful if the visual button text is not very descriptive."
-                                                fieldLabel="Label"
-                                                name="./accessibilityLabel"
-                                                value=""/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Message displayed as tooltip when submitting the form if the value does not validate the Type chosen"
+                                                fieldLabel="Required Message"
+                                                name="./constraintMessage"
+                                                wrapperClass="cmp-form-options__constraintmessage"/>
+                                            <required
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Whether the user must fill in a value before submitting the form"
+                                                name="./required"
+                                                text="Required"
+                                                value="true"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </accessibility>
+                    </constraints>
                     <analytics
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Analytics"
@@ -106,13 +80,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <dataTitle
+                                            <analytics
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-												emptyText="Please configure the data Title for Analytics."
-												fieldDescription="Please configure the data Title for Analytics tracking."
-                                                fieldLabel="Data Title"
-                                                name="./dataTitle"/>
+                                                emptyText="Please configure the data Section for Analytics."
+                                                fieldDescription="Please configure the data Section for Analytics tracking."
+                                                fieldLabel="Data Section"
+                                                name="./dataSection"/>
                                         </items>
                                     </column>
                                 </items>

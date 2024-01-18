@@ -47,7 +47,7 @@ public interface FormButtonModel {
 	String getAccessibilityLabel();
 
 	@ValueMapValue
-	String getDataSection();
+	String getDataTitle();
 
 	@ValueMapValue
 	String getSpacing();

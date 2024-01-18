@@ -7,6 +7,7 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import com.day.cq.wcm.api.Page;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -24,7 +25,6 @@ import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.text.ParseException;
 
-@Getter
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class NewsDetailsModel {
 
@@ -60,17 +60,13 @@ public class NewsDetailsModel {
     /**
      * The news details object.
      */
+    @Getter
     private NewsDetails newsDetails;
 
     /**
-     * The Accessibility Label in the component.
-     */
-    @ValueMapValue
-    private String accessibilityLabel;
-    
-    /**
      * The spacing in the component.
      */
+    @Getter
     @ValueMapValue
     private String spacing;
 
@@ -81,9 +77,13 @@ public class NewsDetailsModel {
     public void init() {
         logger.debug("Entry :: CNWNewsDetailsModel :: init ");
         String pageLocaleDefault = "en";
+        String releaseId = StringUtils.EMPTY;
         try {
             final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-            String releaseId = request.getRequestPathInfo().getSelectors()[0];
+            String[] selectors = request.getRequestPathInfo().getSelectors();
+            if (selectors.length > 0) {
+                releaseId = selectors[0];
+            }
             if (null != locale && locale.length() > 0) {
                 pageLocaleDefault = locale.split("_")[0];
             }

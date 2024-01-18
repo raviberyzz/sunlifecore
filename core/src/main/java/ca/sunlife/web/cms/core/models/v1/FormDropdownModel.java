@@ -54,36 +54,26 @@ public interface FormDropdownModel {
 	String getAriaLabel();
 
 	@ChildResource
-	List<ItemsGroup> getItemsGroup();
+	List<Items> getItems();
 
 	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	interface ItemsGroup {
+	interface Items {
 
 		@ValueMapValue
-		String getGroupText();
+		String getText();
 
-		@ChildResource
-		List<Items> getItems();
+		@ValueMapValue
+		String getValue();
 
-		@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-		interface Items {
+		@ValueMapValue
+		boolean isSelected();
 
-			@ValueMapValue
-			String getText();
+		@ValueMapValue
+		boolean isDisabled();
 
-			@ValueMapValue
-			String getValue();
+		@ValueMapValue
+		String getShortName();
 
-			@ValueMapValue
-			boolean isSelected();
-
-			@ValueMapValue
-			boolean isDisabled();
-
-			@ValueMapValue
-			String getShortName();
-
-		}
 	}
 
 	@ValueMapValue
