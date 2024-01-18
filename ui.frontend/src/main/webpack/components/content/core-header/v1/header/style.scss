@@ -14,7 +14,11 @@
     padding: 0.5rem 1rem 0.5rem 4rem;
   }
 }
-
+.sl-utility-bar, .sl-header{
+  width: 100vw;
+  left: 50%;
+  margin-left: calc(100vw/-2);
+}
 .sl-utility-bar {
   position: relative;
   z-index: $zindex-fixed;
@@ -204,7 +208,7 @@
 }
 .sl-header{
   z-index: auto;
-  position: static;
+  position: relative;
   top: auto;
 }
 .sl-header-offcanvas {
