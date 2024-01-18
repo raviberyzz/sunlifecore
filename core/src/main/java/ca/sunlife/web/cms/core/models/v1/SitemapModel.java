@@ -1,6 +1,6 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import ca.sunlife.web.cms.core.models.v1.impl.NavigationImpl;
+import com.adobe.cq.wcm.core.components.internal.models.v1.NavigationImpl;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
