@@ -27,6 +27,9 @@
                     @include sl-body-medium;
                     color: var(--grey-900);
                     text-decoration: none;
+                    &:hover {
+                        text-decoration-line: underline;
+                    }
                     &:focus-visible {
                         outline: solid 0.125rem var(--brand-tertiary-500);
                     }
