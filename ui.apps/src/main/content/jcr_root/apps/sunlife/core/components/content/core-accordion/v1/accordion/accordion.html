@@ -24,7 +24,7 @@
             data-cmp-hook-accordion="button"
             aria-label="${item.title}"
             aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
-            class="accordion-button collapsed"
+            class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
             data-bs-toggle="collapse"
             type="button"
           >
@@ -34,7 +34,7 @@
             <span
               class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
             ></span>
-            <span class="accordion-item-heading">${item.title}</span>
+            <span class="accordion-item-heading ${accordion.headingElement}">${item.title}</span>
           </button>
         </div>
         <div
