@@ -16,6 +16,9 @@
 }
 
 .sl-utility-bar {
+  width: 100vw;
+  left: 50%;
+  margin-left: calc(100vw/-2);
   position: relative;
   z-index: $zindex-fixed;
   @include media-breakpoint-down(lg) {
@@ -203,8 +206,11 @@
   }
 }
 .sl-header{
+  width: 100vw;
+  left: 50%;
+  margin-left: calc(100vw/-2);
   z-index: auto;
-  position: static;
+  position: relative;
   top: auto;
 }
 .sl-header-offcanvas {
