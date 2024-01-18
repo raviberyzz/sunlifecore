@@ -1,59 +1,51 @@
 /**
-* Header Component specific JS 
+* Header Component specific JS
 */
-
+ 
 (function () {
        
-    /* Retrieves the element based on a classname/id */
-    const utilityLists = document.getElementsByClassName("sl-utility-bar")[0];
-    const offcanvasEl = document.getElementById('sl-header-offcanvas');
-    const additionalLinks = document.querySelector(".menu-container");
-    const additionalLinksParent = document.querySelector(".content-container");
-
+    let $comp = null;
+    const HEADERSELECTOR = {};
+   
     /* Handles the desktop and mobile view */
-    function offCanvas() {
-
+    function offCanvas() { 
         if (window.innerWidth <= 1239) {
-            utilityLists?.classList.remove("sl-utility-bar");
-            utilityLists?.classList.add("sl-utility-bar-offcanvas");
-            var bodyNode = document.getElementById('offcanvas-body');
-            bodyNode.append(utilityLists);
+            HEADERSELECTOR.$utilityLists.removeClass("sl-utility-bar");
+            HEADERSELECTOR.$utilityLists.addClass("sl-utility-bar-offcanvas");
+            HEADERSELECTOR.$bodyNode.append(HEADERSELECTOR.$utilityLists);
             /* Handles utility additional links view in mobile */
-            additionalLinks?.remove();
-            additionalLinksParent.appendChild(additionalLinks);
+            HEADERSELECTOR.$additionalLinks.remove();
+            HEADERSELECTOR.$additionalLinksParent.append(HEADERSELECTOR.$additionalLinks);
         }
-
         else {
-            utilityLists?.classList.remove("sl-utility-bar-offcanvas");
-            utilityLists?.classList.add("sl-utility-bar");
-            var navNode = document.getElementById('nav-header');
-            navNode.insertAdjacentElement("beforebegin", utilityLists);
+            HEADERSELECTOR.$utilityListsOffCanvas.removeClass("sl-utility-bar-offcanvas");
+            HEADERSELECTOR.$utilityListsOffCanvas.addClass("sl-utility-bar");
+            HEADERSELECTOR.$utilityListsOffCanvas.insertBefore(HEADERSELECTOR.$navNode);
             /* Handles utility additional links view in desktop */
-            additionalLinks?.remove();
-            additionalLinksParent.insertAdjacentElement("afterbegin", additionalLinks);
+            HEADERSELECTOR.$additionalLinks.remove();
+            HEADERSELECTOR.$additionalLinksParent.prepend(HEADERSELECTOR.$additionalLinks);
             /* Handles hamburger menu open on desktop view */
-            if ( offcanvasEl.classList.contains("show") && !offcanvasEl.classList.contains("hiding") ) {
-                const offCanvas = new bootstrap.Offcanvas(offcanvasEl);
+            if ( HEADERSELECTOR.$offcanvasEl.hasClass("show") && !HEADERSELECTOR.$offcanvasEl.hasClass("hiding") ) {
+                let offCanvas = new bootstrap.Offcanvas(HEADERSELECTOR.$offcanvasEl);
                 offCanvas.hide();
-                offcanvasEl.classList.remove('show');
-                var offcanvasBackdrop = document.getElementsByClassName("offcanvas-backdrop")[0];
+                HEADERSELECTOR.$offcanvasEl.removeClass('show');
+                let offcanvasBackdrop = document.getElementsByClassName("offcanvas-backdrop")[0];
                 offcanvasBackdrop.remove();
                 callMenuClose();
               }
         }
     }
-
+ 
     /* Handles hamburger menu open click */
     function callMenuOpen() {
-        var headerNode = document.getElementById('nav-header');
-        headerNode.insertAdjacentElement("afterend", offcanvasEl);
-    }
-    /* Handles hamburger menu close click */
-    function callMenuClose() {
-        var slnavNode = document.getElementById('sl-nav');
-        slnavNode.append(offcanvasEl);
+        $comp.append(HEADERSELECTOR.$offcanvasEl)
     }
 
+    /* Handles hamburger menu close click */
+    function callMenuClose() {
+        HEADERSELECTOR.$slnavNode.append(HEADERSELECTOR.$offcanvasEl);
+    }
+ 
     /* Adds the 'main-content' ID to the main content Layout Container */
     function setMainContentLandmark() {
         if ($('.header').length > 0 && $('#main-content').length < 1) {
@@ -67,13 +59,46 @@
             }
         }
     }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        offCanvas();
-        setMainContentLandmark();
-    });
-    window.addEventListener("resize", offCanvas);
-
-    $("#menuOpen").click(callMenuOpen);
-    $("#menuClose").click(callMenuClose);
+ 
+    function initliazeSelector() {
+        HEADERSELECTOR.$utilityLists = $comp.find(".sl-utility-bar");
+        HEADERSELECTOR.$utilityListsOffCanvas = $comp.find(".sl-utility-bar-offcanvas");
+        HEADERSELECTOR.$offcanvasEl = $comp.find('#sl-header-offcanvas');
+        HEADERSELECTOR.$slnavNode = $comp.find('#sl-nav');
+        HEADERSELECTOR.$bodyNode = $comp.find('#offcanvas-body');
+        HEADERSELECTOR.$navNode = $comp.find('#nav-header');
+        HEADERSELECTOR.$additionalLinks = $comp.find(".menu-container");
+        HEADERSELECTOR.$additionalLinksParent = $comp.find(".content-container");
+        HEADERSELECTOR.$menuOpen = $comp.find("#menuOpen");
+        HEADERSELECTOR.$menuClose = $comp.find("#menuClose");
+    }
+ 
+    function bindEvent() {
+        window.addEventListener("resize", function(){
+            initliazeSelector();
+            offCanvas(); 
+        });
+        HEADERSELECTOR.$menuOpen.click(callMenuOpen);
+        HEADERSELECTOR.$menuClose.click(callMenuClose);
+    }
+ 
+    function isModuleExist() {
+        if($('.header').length <= 0) {
+            return false;
+        }
+        $comp = $('.header');
+        return true;
+    }
+ 
+    function init() {
+        if(isModuleExist()) {
+            initliazeSelector();
+            bindEvent();
+            offCanvas();
+            setMainContentLandmark();      
+        }
+    }
+ 
+    document.addEventListener("DOMContentLoaded", init);
+ 
 })()
