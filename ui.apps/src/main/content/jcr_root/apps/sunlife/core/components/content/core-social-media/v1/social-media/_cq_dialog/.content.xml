@@ -39,11 +39,11 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <socialLinks
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Social Links (For Footer)"
+                                                        text="Social Links"
                                                         value="sociallinks"/>
                                                     <shareOptions
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Share Options (For Article Pages)"
+                                                        text="Share Options"
                                                         value="shareoptions"/>
                                                 </items>
                                                 <granite:data
