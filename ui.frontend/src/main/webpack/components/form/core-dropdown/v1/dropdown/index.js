@@ -19,8 +19,9 @@
   */
   function dropDownOnBlur(e) {
     e.preventDefault();
-    let currentComboInput = e.currentTarget;
+    let currentComboInput = e.currentTarget; // .combo-input
     $(currentComboInput).closest('.combo').removeClass("open");
+    lowerLabel(currentComboInput);
     currentComboInput.setAttribute("aria-expanded", "false");
   }
 
@@ -29,6 +30,7 @@
   * @param {Event} e - The event object.
   */
   function dropdownComboHandler(e) {
+    $(this).focus();
     e.preventDefault();
     let currentComboInput = e.currentTarget;
     let combo = $(currentComboInput).closest('.combo');
@@ -41,7 +43,7 @@
       raiseLabel(currentComboInput);
 
       if (currentOptionSelected.length) {
-        
+
         if (currentOptionSelected.next().length) { // not last option
           $(currentOptionSelected).toggleClass("option-current");
           $(currentOptionSelected).next().toggleClass("option-current");
@@ -75,11 +77,12 @@
       let ariaExpanded = "";
       if ($(combo).hasClass("open")) {
         ariaExpanded = "true";
+        raiseLabel(currentComboInput);
       } else {
         ariaExpanded = "false";
+        lowerLabel(currentComboInput);
       }
-      currentComboInput.setAttribute("aria-expanded", ariaExpanded);
-      raiseLabel(currentComboInput);
+      currentComboInput.setAttribute("aria-expanded", ariaExpanded);      
     }
   }
 
@@ -115,15 +118,33 @@
   }
 
   /**
-  * Adds 'raised active' classes to the dropdown input label.
+  * Adds 'raised' class to the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function raiseLabel(dropDown) {
     if ($('.combo').find('.combo-input-selected')[0].innerText != "") {
       if (!(document.getElementById('default-selected-label').matches(".raised.active"))) {
-        $(dropDown).find('label').addClass('raised active');
+        $(dropDown).find('label').addClass('raised');
         $(dropDown).find('.combo-input-selected').removeClass("d-none");
       }
+    }
+    if ($(dropDown).closest('.combo').hasClass("open")) {
+      $(dropDown).find('label').addClass("active");
+    } else {
+      $(dropDown).find('label').removeClass("active");
+    }
+  }
+
+  /**
+  * Removes 'raised active' classes from the dropdown input label.
+  * Hides the select text.
+  * @param {HTMLElement} dropDown - The dropdown element.
+  */
+  function lowerLabel(dropDown) {
+    let optionSelected = $(dropDown).next().find(".option-selected").length;
+    if (!optionSelected) {
+      $(dropDown).find('.combo-input-selected').addClass("d-none");
+      $(dropDown).find('label').removeClass("raised active");
     }
   }
 
