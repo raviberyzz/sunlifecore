@@ -14,11 +14,12 @@
     padding: 0.5rem 1rem 0.5rem 4rem;
   }
 }
-
-.sl-utility-bar {
+.sl-utility-bar, .sl-header{
   width: 100vw;
   left: 50%;
   margin-left: calc(100vw/-2);
+}
+.sl-utility-bar {
   position: relative;
   z-index: $zindex-fixed;
   @include media-breakpoint-down(lg) {
@@ -206,9 +207,6 @@
   }
 }
 .sl-header{
-  width: 100vw;
-  left: 50%;
-  margin-left: calc(100vw/-2);
   z-index: auto;
   position: relative;
   top: auto;
