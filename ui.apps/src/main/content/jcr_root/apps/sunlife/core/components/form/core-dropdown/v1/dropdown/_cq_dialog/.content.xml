@@ -184,18 +184,20 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <dataTitle
+                                             <dataTitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Data Title"
-                                                name="./dataTitle"
-                                                value=""/>
+                                               emptyText="Please configure the data title for Analytics."
+												fieldDescription="Please configure the data title for Analytics tracking."
+												fieldLabel="Data Title"
+												name="./dataTitle"/>
                                             <dataSection
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please configure the data Section for Analytics."
+                                                fieldDescription="Please configure the data Section for Analytics tracking."
                                                 fieldLabel="Data Section"
-                                                name="./dataSection"
-                                                value=""/>
+                                                name="./dataSection"/>
                                         </items>
                                     </column>
                                 </items>
