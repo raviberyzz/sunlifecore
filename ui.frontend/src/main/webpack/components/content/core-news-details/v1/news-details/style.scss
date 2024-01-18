@@ -1,4 +1,9 @@
-.news-details {
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/design-system.scss';
+@import '@sunlife/ui-styles/base/typography.scss';
+
+
+.news-details-container {
     ul {
         padding: 0;
         list-style: none;
@@ -8,5 +13,18 @@
         font-size: 16px;
         background-image: none;
         background-repeat: no-repeat;
+    }
+
+    .news-release-date {
+        @include sl-body-small;
+    }
+
+    .news-release-date, 
+    .h1 {
+        margin-bottom: var(--S);
+    }
+
+    p {
+        @include sl-body-medium;
     }
 }

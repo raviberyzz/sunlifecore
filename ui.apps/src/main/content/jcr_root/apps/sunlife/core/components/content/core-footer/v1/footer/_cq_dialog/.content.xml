@@ -207,7 +207,7 @@
 															 <footer-copy
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="footer-copy"
-                                                                text="Footer Copy"/>
+                                                                text="Footer Copyright"/>
                                                             <body-medium
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="body-medium"

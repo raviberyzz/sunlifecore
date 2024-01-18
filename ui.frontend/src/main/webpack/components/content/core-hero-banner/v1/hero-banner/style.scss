@@ -3,6 +3,10 @@
 
 .sl-banner {
 --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    
+    &.card {
+        border: none;
+    }
 
     .picture-container {
         left: 50%;
@@ -16,6 +20,10 @@
     }
 
     &.default .card-img-overlay {
+        @include media-breakpoint-between(md, lg) {
+            padding: 0;
+        }
+
         .dark a {
             color: var(--brand-tertiary-900);
 
@@ -25,9 +33,15 @@
         }
         .sl-btn.btn {
             width: fit-content;
+            @include media-breakpoint-only(xs) {
+                width: auto;
+            }
         }
 
-        a { 
+        a {
+            .svg-inline--fa {
+                margin: 0 4px;
+            } 
             .icn-hover-show {
                 display: none;
             }
@@ -44,7 +58,7 @@
         }
     }
 
-    @include media-breakpoint-only(xs) {
+    @include media-breakpoint-down(md) {
         .card-content-overlay {
             width: 100vw;
             left: 50%;
@@ -53,4 +67,5 @@
         }
     }
     
+   
 }
