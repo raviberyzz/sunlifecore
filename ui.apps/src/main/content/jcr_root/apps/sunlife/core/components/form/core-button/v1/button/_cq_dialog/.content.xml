@@ -106,13 +106,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <analytics
+                                            <dataTitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Please configure the data Section for Analytics."
-                                                fieldDescription="Please configure the data Section for Analytics tracking."
-                                                fieldLabel="Data Section"
-                                                name="./dataSection"/>
+												emptyText="Please configure the data Title for Analytics."
+												fieldDescription="Please configure the data Title for Analytics tracking."
+                                                fieldLabel="Data Title"
+                                                name="./dataTitle"/>
                                         </items>
                                     </column>
                                 </items>

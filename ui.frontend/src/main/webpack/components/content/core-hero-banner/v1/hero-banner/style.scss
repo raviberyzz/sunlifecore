@@ -3,6 +3,10 @@
 
 .sl-banner {
 --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    
+    &.card {
+        border: none;
+    }
 
     .picture-container {
         left: 50%;
@@ -29,6 +33,9 @@
         }
         .sl-btn.btn {
             width: fit-content;
+            @include media-breakpoint-only(xs) {
+                width: auto;
+            }
         }
 
         a {

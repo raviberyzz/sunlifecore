@@ -39,11 +39,11 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <socialLinks
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Social Links (For Footer)"
+                                                        text="Social Links"
                                                         value="sociallinks"/>
                                                     <shareOptions
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Share Options (For Article Pages)"
+                                                        text="Share Options"
                                                         value="shareoptions"/>
                                                 </items>
                                                 <granite:data
@@ -89,7 +89,7 @@
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                             fieldDescription="Descriptive text for screen reader, eg 'Follow us on Facebook'"
                                                                             fieldLabel="Screen Reader Text"
-                                                                            name="./stringReaderText"/>
+                                                                            name="./screenReaderText"/>
                                                                         <target
                                                                             jcr:primaryType="nt:unstructured"
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -168,7 +168,7 @@
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                             fieldDescription="Descriptive text for screen reader, eg 'Share on [platform]'"
                                                                             fieldLabel="Screen Reader Text"
-                                                                            name="./stringReaderText"/>
+                                                                            name="./screenReaderText"/>
                                                                     </items>
                                                                 </column>
                                                             </items>

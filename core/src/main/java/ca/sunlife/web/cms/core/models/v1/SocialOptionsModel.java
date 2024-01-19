@@ -19,5 +19,5 @@ public interface SocialOptionsModel {
 	String getPlatforms();
 
 	@ValueMapValue
-	String getStringReaderText();
+	String getScreenReaderText();
 }

@@ -5,8 +5,9 @@
             <div class="row  ${level == 0 ? 'map-dotted' : '' }" data-sly-list="${items}">
               <div class="col-lg-4 col-md-6 col-sm-12 col-12 list">
                 <div>
-                <sly data-sly-test.itemCount = "${level == 0}"></sly>
+                <sly data-sly-test.itemCount = "${level == 0}">
                 <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
+                </sly>
                 <sly data-sly-test = "${!itemCount}">
                   <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
                 </sly>

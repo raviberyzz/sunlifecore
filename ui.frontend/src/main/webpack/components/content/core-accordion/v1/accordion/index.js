@@ -19,7 +19,7 @@ $(document).ready(function () {
   }
   //Function used to update the height of accordion item to apply smooth csss animation. 
   function updateAccordionItemHeight($accordionContentElement){
-    $accordionContentElement.height($accordionContentElement.find(".accordion-body").innerHeight() + 24 + "px");
+    $accordionContentElement.height(($accordionContentElement.find(".accordion-body").outerHeight()) + 24 + "px");
   }
   //Function used to reset the accordion if the single Selection is true in authoring
   function resetAccordionForSingleSelection($accordionItemHeader) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
     if ($singleExpansion == "true") {
       const $accordionItem = $accordionItemHeader.parents(".accordion-item").parents('.accordion');
       $accordionItem.find(".accordion-collapse").removeClass("expanded show").css("height", "");
-      $accordionItem.find(".accordion-button").attr("aria-expanded", false);
+      $accordionItem.find(".accordion-button").attr("aria-expanded", false).addClass("collapsed");
       $accordionItem.find(".sl-icon").removeClass("show").removeClass("hide");
       chevronHandler($accordionItem, true);
     }
@@ -42,7 +42,7 @@ $(document).ready(function () {
       resetAccordionForSingleSelection($accordionItemHeader);
       $accordionItemHeader.find(".sl-icon").removeClass("hide").removeClass("show");
       $accordionContentElement.addClass("show expanded");
-      $accordionItemHeader.find(".accordion-button").attr("aria-expanded", true);
+      $accordionItemHeader.find(".accordion-button").attr("aria-expanded", true).removeClass("collapsed");
       chevronHandler($accordionItemHeader, false);
       updateAccordionItemHeight($accordionContentElement);
     }
@@ -51,7 +51,7 @@ $(document).ready(function () {
   //Function used to handle the collapse accordion functionality
   function toggleAccordionCollapse($accordionHeader) {
     $accordionHeader.find(".sl-icon").removeClass("hide").removeClass("show");
-    $accordionHeader.find(".accordion-button").attr("aria-expanded", false);
+    $accordionHeader.find(".accordion-button").attr("aria-expanded", false).addClass("collapsed");
     $accordionHeader.siblings(".accordion-collapse").removeClass("expanded").css("height", "");
     chevronHandler($accordionHeader, true);
   }
@@ -61,12 +61,16 @@ $(document).ready(function () {
     $accordionContainer.each(function() {
       const $accordion = $(this);
       const $accordionExpandedItem = $accordion.find(".accordion-collapse.show.expanded");
-      updateAccordionItemHeight($accordionExpandedItem);
+      $accordionExpandedItem.each((function(index) {
+        updateAccordionItemHeight($accordionExpandedItem.eq(index));
+      }))      
     })
   }
   function init() {
     let $accordionHeaderElem = $(".sl-accordion .accordion-header");
-    accordionDefaultSelection();
+    if($accordionHeaderElem.length > 0) {
+      accordionDefaultSelection();
+    }
     $accordionHeaderElem.keydown(accordionHeaderKeyEventHandler);
     $accordionHeaderElem.click(accordionHeaderClickEventHandler);
   }
