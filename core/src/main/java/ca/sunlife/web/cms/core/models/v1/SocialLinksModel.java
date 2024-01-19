@@ -26,6 +26,6 @@ public interface SocialLinksModel {
 	String getTarget();
 
 	@ValueMapValue
-	String getStringReaderText();
+	String getScreenReaderText();
 
 }
