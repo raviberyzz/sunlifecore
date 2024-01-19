@@ -68,7 +68,9 @@ $(document).ready(function () {
   }
   function init() {
     let $accordionHeaderElem = $(".sl-accordion .accordion-header");
-    accordionDefaultSelection();
+    if($accordionHeaderElem.length > 0) {
+      accordionDefaultSelection();
+    }
     $accordionHeaderElem.keydown(accordionHeaderKeyEventHandler);
     $accordionHeaderElem.click(accordionHeaderClickEventHandler);
   }
