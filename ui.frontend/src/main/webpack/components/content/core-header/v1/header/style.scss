@@ -49,6 +49,11 @@
          }
          .menu-item{
           margin-right: 1.5rem;
+          .menu-content{
+            &:hover{
+              text-decoration: underline;
+            }
+          }
          }
         }
     }
@@ -76,6 +81,9 @@
       }
       .dropdown-label{
         margin-right: 0.125rem;
+        &:hover{
+          text-decoration: underline;
+        }
       }
     }
     .region-menu {
@@ -218,6 +226,13 @@
     }
   }
   .offcanvas-body {  
+    .sl-mega-menu{
+      .dropdown-menu{
+        position: static !important;
+        transform: none !important;
+        inset: unset !important;
+      }
+    }
     @include media-breakpoint-down(lg) {
       .nav-link {
         padding: 0;
@@ -225,6 +240,9 @@
         @include focus-visible(offcanvas);
         &.dropdown-toggle.nav-link.utility-nav-item-container {
           padding: 0;
+          &:hover{
+            text-decoration: none !important;
+          }
         }
         .sl-icon{
           @include media-breakpoint-down(lg) {
