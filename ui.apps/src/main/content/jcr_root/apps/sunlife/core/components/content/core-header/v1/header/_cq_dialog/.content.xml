@@ -748,16 +748,19 @@
 														     <languageTitle
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Enter the language title. Example 'EN' for English, this will be shown as 'EN' in the language selector."
                                                                     fieldLabel="Language Title"
                                                                     name="./languageTitle"/>
                                                             <desktopTitle
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Enter the Menu title for Language Menu popup for Desktop."
                                                                     fieldLabel="Menu Title (Desktop)"
                                                                     name="./desktopMenuTitle"/>
                                                             <mobileAndTabletTitle
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Enter the Menu title for Language Menu popup for Mobile/Tablet."
                                                                     fieldLabel="Menu Title (Mobile &amp; Tablet)"
                                                                     name="./mobileAndTabletMenuTitle"/>
                                                             <languageLinks
