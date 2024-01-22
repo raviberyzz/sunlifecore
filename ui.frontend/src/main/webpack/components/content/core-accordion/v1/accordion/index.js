@@ -26,7 +26,7 @@ $(document).ready(function () {
     const $singleExpansion = $accordionItemHeader.attr("data-single-expansion");
     if ($singleExpansion == "true") {
       const $accordionItem = $accordionItemHeader.parents(".accordion-item").parents('.accordion');
-      $accordionItem.find(".accordion-collapse").removeClass("expanded show").css("height", "");
+      $accordionItem.find(".accordion-collapse").removeClass("expanded show").css("height", "").attr("aria-hidden", true);
       $accordionItem.find(".accordion-button").attr("aria-expanded", false).addClass("collapsed");
       $accordionItem.find(".sl-icon").removeClass("show").removeClass("hide");
       chevronHandler($accordionItem, true);
@@ -41,7 +41,7 @@ $(document).ready(function () {
     } else {
       resetAccordionForSingleSelection($accordionItemHeader);
       $accordionItemHeader.find(".sl-icon").removeClass("hide").removeClass("show");
-      $accordionContentElement.addClass("show expanded");
+      $accordionContentElement.addClass("show expanded").attr("aria-hidden", false);
       $accordionItemHeader.find(".accordion-button").attr("aria-expanded", true).removeClass("collapsed");
       chevronHandler($accordionItemHeader, false);
       updateAccordionItemHeight($accordionContentElement);
@@ -52,7 +52,7 @@ $(document).ready(function () {
   function toggleAccordionCollapse($accordionHeader) {
     $accordionHeader.find(".sl-icon").removeClass("hide").removeClass("show");
     $accordionHeader.find(".accordion-button").attr("aria-expanded", false).addClass("collapsed");
-    $accordionHeader.siblings(".accordion-collapse").removeClass("expanded").css("height", "");
+    $accordionHeader.siblings(".accordion-collapse").removeClass("expanded").css("height", "").attr("aria-hidden", true);
     chevronHandler($accordionHeader, true);
   }
   //Functions used to select/toggle the default selected accordion items in authoring.
