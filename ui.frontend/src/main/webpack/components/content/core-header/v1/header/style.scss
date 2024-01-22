@@ -227,11 +227,13 @@
   }
   .offcanvas-body {  
     .sl-mega-menu{
+      @include media-breakpoint-down(lg) {
       .dropdown-menu{
         position: static !important;
         transform: none !important;
         inset: unset !important;
       }
+    }
     }
     @include media-breakpoint-down(lg) {
       .nav-link {
