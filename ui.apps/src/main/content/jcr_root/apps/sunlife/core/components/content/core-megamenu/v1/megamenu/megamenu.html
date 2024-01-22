@@ -8,17 +8,17 @@
             class="extensive dropdown-menu show">
         <div class="extensive-menu">
             <div class="menu-header-container">
-                <h3 class="h3 menu-header">
+                <h4 class="h3 menu-header">
                     <a href="heading/">${megaMenu.heading}</a>
-                </h3>
+                </h4>
             </div>
             <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
-                <div class="extensive-sub-menu">
-                    <h4 class="h4 sub-header-container">
+                <div class="extensive-sub-menu"> 
+                    <h5 class="sub-header-container">
                         <a href="${menuSections.subheadingLinkURL @extension = 'html'}"
                             data-title="${menuSections.subheadingDataTitle}"
                             data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
-                    </h4>
+                    </h5>
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
                         data-sly-list.menuItems="${menuSections.menuItems}">
                         <li>
