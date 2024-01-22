@@ -43,7 +43,7 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
                   <div class="card-text">${heroBanner.description @ context = 'html'}</div>
                   <a 
                      data-sly-test="${heroBanner.ctaType != 'noCTA'}"
-                     target="${heroBanner.target}" 
+                     target="${ isBtn ? heroBanner.ctaTarget : heroBanner.target }" 
                      href="${isBtn ? heroBanner.btnURL : heroBanner.linkURL}"
                      data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
                      class="${isBtn ? 'sl-btn btn btn-primary' : linkStyle }"

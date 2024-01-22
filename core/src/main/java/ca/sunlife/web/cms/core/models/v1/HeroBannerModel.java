@@ -86,7 +86,10 @@ public interface HeroBannerModel {
 	 String getCtaIconType();	 	
 
 	 @ValueMapValue
-	 String getLinkIconType();  
+	 String getLinkIconType();
+	
+	 @ValueMapValue
+	 String getCtaTarget();
 	
 	 @ValueMapValue
 	 String getSpacing();
