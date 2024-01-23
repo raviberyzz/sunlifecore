@@ -52,6 +52,9 @@ public interface FormDropdownModel {
 
 	@ValueMapValue
 	String getAriaLabel();
+	
+	@ValueMapValue
+	String getPlaceholderText();
 
 	@ChildResource
 	List<Items> getItems();
