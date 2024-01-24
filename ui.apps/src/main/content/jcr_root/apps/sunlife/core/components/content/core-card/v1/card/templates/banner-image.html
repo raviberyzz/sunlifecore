@@ -1,0 +1,71 @@
+<template data-sly-template.bannerImage="${@options}">
+  <div
+    class="sl-banner-image-block banner-image-block-right card"
+    data-sly-test="${options.bannerImagePosition == 'imageBlockLeft'}"
+  >
+    <div class="banner-image-block-row no-gutters h-100 row">
+      <div class="col-md-6 col-sm-12 col-12">
+        <img
+          data-sly-test="${properties.imageFileReference}"
+          src="${properties.imageFileReference}"
+          alt="UX image"
+        />
+      </div>
+      <div class="body-container col">
+        <div class="card-body">
+          <div class="h3 card-title">${properties.title}</div>
+          <div class="card-text">
+            ${properties.description @ context ='html'}
+            <p class="caption-text">${properties.caption}</p>
+          </div>
+          <button type="button" class="sl-btn btn btn-secondary">
+            ${properties.buttonLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="story--components-react-content-blocks-banner-image--image-block-right"
+    class="sb-story sb-unstyled"
+    data-story-block="true"
+    data-sly-test="${options.bannerImagePosition == 'imageBlockRight'}"
+  >
+    <div
+      id="story--components-react-content-blocks-banner-image--image-block-right-inner"
+      data-name="Image Block Right"
+    >
+      <div class="sl-banner-image-block banner-image-block-right card">
+        <div class="banner-image-block-row no-gutters h-100 row">
+          <div class="body-container col">
+            <div class="card-body">
+              <div class="h3 card-title">${properties.title}</div>
+              <div class="card-text">
+                ${properties.description @ context ='html'}
+                <p class="caption-text">
+                  ${properties.description @ context ='html'}
+                </p>
+              </div>
+              <a
+                target="_self"
+                href="${properties.buttonLink}"
+                class="sl-link"
+                >${properties.buttonLabel}<span class="sl-icon-after"
+                  ><span
+                    class="sl-icon sl-icon-chevron-circle-right"
+                  ></span></span
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-12">
+            <img
+              data-sly-test="${properties.imageFileReference}"
+              src="${properties.imageFileReference}"
+              alt="UX image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

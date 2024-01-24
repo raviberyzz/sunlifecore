@@ -1,84 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Card Container"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Card Container"
+          sling:resourceType="cq/gui/components/authoring/dialog">
     <content
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
         <items jcr:primaryType="nt:unstructured">
             <column
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
                     <tabs
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
-                        maximized="{Boolean}false">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                            maximized="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
                             <general
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="General"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="General"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <name
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldLabel="Name"
-                                                        fieldDescription="The contributor's name to display."
-                                                        emptyText="Enter the contributor's name to display."
-                                                        name="./name"
-                                                        required="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Name"
+                                                            fieldDescription="The contributor's name to display."
+                                                            emptyText="Enter the contributor's name to display."
+                                                            name="./name"
+                                                            required="{Boolean}true"/>
                                                     <cardType
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Card Type"
-                                                        fieldDescription="Select the type of card. Different types provide various customization options."
-                                                        name="./cardType"
-                                                        text="Card Type">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Card Type"
+                                                            fieldDescription="Select the type of card. Different types provide various customization options."
+                                                            name="./cardType"
+                                                            text="Card Type">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <horizontal
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Horizontal"
-                                                                value="horizontal"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Horizontal"
+                                                                    value="horizontal"/>
                                                             <vertical
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Vertical"
-                                                                value="vertical"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Vertical"
+                                                                    value="vertical"/>
                                                             <avatar
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Avatar"
-                                                                value="avatar"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Avatar"
+                                                                    value="avatar"/>
                                                             <banner
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Banner"
-                                                                value="banner"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Banner"
+                                                                    value="banner"/>
                                                             <banner-image
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Banner Image"
-                                                                value="banner-image"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Banner Image"
+                                                                    value="banner-image"/>
                                                             <media
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Media"
-                                                                value="media"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Media"
+                                                                    value="media"/>
                                                             <segmented
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Segmented"
-                                                                value="segmented"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Segmented"
+                                                                    value="segmented"/>
                                                             <statistic
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Statistic"
-                                                                value="statistic"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Statistic"
+                                                                    value="statistic"/>
                                                         </items>
                                                     </cardType>
                                                 </items>
@@ -88,56 +88,56 @@
                                 </items>
                             </general>
                             <horizontal
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Horizontal"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Horizontal"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <heightControl
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Height Control"
-                                                        fieldDescription="Choose 'Manual' to set a specific height or 'Auto' for automatic height adjustment."
-                                                        name="./horizontalHeightControl"
-                                                        text="Horizontal Control">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Height Control"
+                                                            fieldDescription="Choose 'Manual' to set a specific height or 'Auto' for automatic height adjustment."
+                                                            name="./horizontalHeightControl"
+                                                            text="Horizontal Control">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <manual
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Manual"
-                                                                value="manual"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Manual"
+                                                                    value="manual"/>
                                                             <auto
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Auto"
-                                                                value="auto"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Auto"
+                                                                    value="auto"/>
                                                         </items>
                                                     </heightControl>
                                                     <multipleClickable
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        uncheckedValue="{Boolean}false"
-                                                        name="./horizontalMultipleClickable"
-                                                        fieldDescription="Enable if multiple cards will be added."
-                                                        text="Multiple Clickable"
-                                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./horizontalMultipleClickable"
+                                                            fieldDescription="Enable if multiple cards will be added."
+                                                            text="Multiple Clickable"
+                                                            value="{Boolean}true"/>
                                                     <multipleWithIcon
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        uncheckedValue="{Boolean}false"
-                                                        name="./horizontalMultipleWithIcon"
-                                                        fieldDescription="Select to include icon within the card."
-                                                        text="Multiple with Icon"
-                                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./horizontalMultipleWithIcon"
+                                                            fieldDescription="Select to include icon within the card."
+                                                            text="Multiple with Icon"
+                                                            value="{Boolean}true"/>
                                                 </items>
                                             </column>
                                         </items>
@@ -145,56 +145,56 @@
                                 </items>
                             </horizontal>
                             <vertical
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Vertical"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Vertical"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <heightControl
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Height Control"
-                                                        fieldDescription="Choose 'Manual' to set a specific height or 'Auto' for automatic height adjustment."
-                                                        name="./verticalHeightControl"
-                                                        text="Vertical Control">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Height Control"
+                                                            fieldDescription="Choose 'Manual' to set a specific height or 'Auto' for automatic height adjustment."
+                                                            name="./verticalHeightControl"
+                                                            text="Vertical Control">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <manual
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Manual"
-                                                                value="manual"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Manual"
+                                                                    value="manual"/>
                                                             <auto
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Auto"
-                                                                value="auto"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Auto"
+                                                                    value="auto"/>
                                                         </items>
                                                     </heightControl>
                                                     <multipleClickable
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        uncheckedValue="{Boolean}false"
-                                                        name="./verticalMultipleClickable"
-                                                        fieldDescription="Enable if multiple cards will be added."
-                                                        text="Multiple Clickable"
-                                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./verticalMultipleClickable"
+                                                            fieldDescription="Enable if multiple cards will be added."
+                                                            text="Multiple Clickable"
+                                                            value="{Boolean}true"/>
                                                     <multipleWithIcon
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        uncheckedValue="{Boolean}false"
-                                                        name="./verticalMultipleWithIcon"
-                                                        fieldDescription="Select to include icon within the card."
-                                                        text="Multiple with Icon"
-                                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./verticalMultipleWithIcon"
+                                                            fieldDescription="Select to include icon within the card."
+                                                            text="Multiple with Icon"
+                                                            value="{Boolean}true"/>
                                                 </items>
                                             </column>
                                         </items>
@@ -202,36 +202,36 @@
                                 </items>
                             </vertical>
                             <avatar
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Avatar"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Avatar"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <avatarSize
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Avatar Size"
-                                                        fieldDescription="Choose 'Large' for a bigger avatar or 'With Body' to include additional content."
-                                                        name="./avatarSize"
-                                                        text="Avatar Size">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Avatar Size"
+                                                            fieldDescription="Choose 'Large' for a bigger avatar or 'With Body' to include additional content."
+                                                            name="./avatarSize"
+                                                            text="Avatar Size">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <large
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Large"
-                                                                value="large"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Large"
+                                                                    value="large"/>
                                                             <withBody
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Body"
-                                                                value="withBody"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Body"
+                                                                    value="withBody"/>
                                                         </items>
                                                     </avatarSize>
                                                 </items>
@@ -241,29 +241,29 @@
                                 </items>
                             </avatar>
                             <banner
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Banner"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Banner"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <withLink
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        uncheckedValue="{Boolean}false"
-                                                        name="./withLink"
-                                                        fieldDescription="Check to add a hyperlink to the banner."
-                                                        text="With Link"
-                                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./withLink"
+                                                            fieldDescription="Check to add a hyperlink to the banner."
+                                                            text="With Link"
+                                                            value="{Boolean}true"/>
                                                 </items>
                                             </column>
                                         </items>
@@ -271,36 +271,36 @@
                                 </items>
                             </banner>
                             <bannerWithImage
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Banner With Image"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Banner With Image"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <imagePosition
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Image Position"
-                                                        fieldDescription="Select the position of the image in the banner."
-                                                        name="./bannerImagePosition"
-                                                        text="Image Position">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Image Position"
+                                                            fieldDescription="Select the position of the image in the banner."
+                                                            name="./bannerImagePosition"
+                                                            text="Image Position">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <imageBlockLeft
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Image Block Left"
-                                                                value="imageBlockLeft"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Image Block Left"
+                                                                    value="imageBlockLeft"/>
                                                             <imageBlockRight
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Image Block Right"
-                                                                value="imageBlockRight"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Image Block Right"
+                                                                    value="imageBlockRight"/>
                                                         </items>
                                                     </imagePosition>
                                                 </items>
@@ -310,40 +310,40 @@
                                 </items>
                             </bannerWithImage>
                             <media
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Media"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Media"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <mediaType
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Media Type"
-                                                        fieldDescription="Choose the type and position of media content."
-                                                        name="./mediaType"
-                                                        text="Media Type">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Media Type"
+                                                            fieldDescription="Choose the type and position of media content."
+                                                            name="./mediaType"
+                                                            text="Media Type">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <imageBlockLeft
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Image Block Left"
-                                                                value="imageBlockLeft"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Image Block Left"
+                                                                    value="imageBlockLeft"/>
                                                             <imageBlockRight
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Image Block Right"
-                                                                value="imageBlockRight"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Image Block Right"
+                                                                    value="imageBlockRight"/>
                                                             <videoBlock
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Video Block"
-                                                                value="videoBlock"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Video Block"
+                                                                    value="videoBlock"/>
                                                         </items>
                                                     </mediaType>
                                                 </items>
@@ -353,40 +353,40 @@
                                 </items>
                             </media>
                             <segmented
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Segmented"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Segmented"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <additionalFeatures
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Additional Features"
-                                                        fieldDescription="Select additional features for the segmented card."
-                                                        name="./additionalFeatures"
-                                                        text="Additional Features">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Additional Features"
+                                                            fieldDescription="Select additional features for the segmented card."
+                                                            name="./additionalFeatures"
+                                                            text="Additional Features">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <withLink
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Link"
-                                                                value="withLink"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Link"
+                                                                    value="withLink"/>
                                                             <withButton
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Button"
-                                                                value="withButton"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Button"
+                                                                    value="withButton"/>
                                                             <withDropdown
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Dropdown"
-                                                                value="withDropdown"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Dropdown"
+                                                                    value="withDropdown"/>
                                                         </items>
                                                     </additionalFeatures>
                                                 </items>
@@ -396,36 +396,36 @@
                                 </items>
                             </segmented>
                             <statistics
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Statistic Enhancements"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Statistic Enhancements"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <imagePosition
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Statistic Enhancements"
-                                                        fieldDescription="Select to add a rating or gain indicator to the statistic card."
-                                                        name="./statisticEnhancements"
-                                                        text="Statistic Enhancements">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Statistic Enhancements"
+                                                            fieldDescription="Select to add a rating or gain indicator to the statistic card."
+                                                            name="./statisticEnhancements"
+                                                            text="Statistic Enhancements">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <withRating
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Rating"
-                                                                value="withRating"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Rating"
+                                                                    value="withRating"/>
                                                             <withGainIndicator
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="With Gain Indicator"
-                                                                value="withGainIndicator"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="With Gain Indicator"
+                                                                    value="withGainIndicator"/>
                                                         </items>
                                                     </imagePosition>
                                                 </items>
@@ -435,25 +435,25 @@
                                 </items>
                             </statistics>
                             <analytics
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Analytics"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Analytics"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <analyticsDataSection
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldLabel="Analytics Data Section"
-                                                        name="./analyticsDataSection"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Analytics Data Section"
+                                                            name="./analyticsDataSection"/>
                                                 </items>
                                             </column>
                                         </items>
@@ -461,59 +461,59 @@
                                 </items>
                             </analytics>
                             <spacing
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Spacing"
-                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Spacing"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <columns
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                        margin="{Boolean}true">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                            margin="{Boolean}true">
                                         <items jcr:primaryType="nt:unstructured">
                                             <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <spacing
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Spacing"
-                                                        name="./spacing"
-                                                        text="Spacing">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Spacing"
+                                                            name="./spacing"
+                                                            text="Spacing">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <threexs
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="3XS"
-                                                                value="3xs"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="3XS"
+                                                                    value="3xs"/>
                                                             <twoxs
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="2XS"
-                                                                value="2xs"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="2XS"
+                                                                    value="2xs"/>
                                                             <xs
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="XS"
-                                                                value="xs"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="XS"
+                                                                    value="xs"/>
                                                             <s
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="S"
-                                                                value="s"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="S"
+                                                                    value="s"/>
                                                             <m
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="M"
-                                                                value="m"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="M"
+                                                                    value="m"/>
                                                             <l
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="L"
-                                                                value="l"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="L"
+                                                                    value="l"/>
                                                             <xl
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="XL"
-                                                                value="xl"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="XL"
+                                                                    value="xl"/>
                                                             <threexl
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="3XL"
-                                                                value="3xl"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="3XL"
+                                                                    value="3xl"/>
                                                         </items>
                                                     </spacing>
                                                 </items>

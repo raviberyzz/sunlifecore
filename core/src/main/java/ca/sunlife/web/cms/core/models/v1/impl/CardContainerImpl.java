@@ -36,6 +36,24 @@ public class CardContainerImpl implements CardContainer {
     @ValueMapValue
     private Boolean verticalMultipleWithIcon;
 
+    @ValueMapValue
+    private Boolean withLink;
+
+    @ValueMapValue
+    private String avatarSize;
+
+    @ValueMapValue
+    private String bannerImagePosition;
+
+    @ValueMapValue
+    private String mediaType;
+
+    @ValueMapValue
+    private String additionalFeatures;
+
+    @ValueMapValue
+    private String statisticEnhancements;
+
     public String getName() {
         return name;
     }
@@ -56,6 +74,10 @@ public class CardContainerImpl implements CardContainer {
         return horizontalMultipleWithIcon;
     }
 
+    public Boolean getWithLink() {
+        return withLink;
+    }
+
     public String getVerticalHeightControl() {
         return verticalHeightControl;
     }
@@ -67,4 +89,25 @@ public class CardContainerImpl implements CardContainer {
     public Boolean getVerticalMultipleWithIcon() {
         return verticalMultipleWithIcon;
     }
+
+    public String getAvatarSize() {
+        return avatarSize;
+    }
+
+    public String getBannerImagePosition() {
+        return bannerImagePosition;
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public String getAdditionalFeatures() {
+        return additionalFeatures;
+    }
+
+    public String getStatisticEnhancements() {
+        return statisticEnhancements;
+    }
+
 }
