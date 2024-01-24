@@ -1,89 +1,19 @@
+<!--/*  
+Card Container Component
+*/-->
 <div
-        data-sly-test="${ wcmmode.edit || wcmmode.preview}"
-        style="border: 1px solid #ddd"
->
-  Card Container Component
-</div>
-<div
-        class="container ${properties.cardContainerLayout}"
-        data-component="cardContainer"
-        data-sly-use.model="ca.sunlife.web.cms.core.models.v1.CardContainer"
->
-  <div
-          class="g-4 row row-cols-md-3 row-cols-1"
-          data-sly-test="${properties.containerTitle}"
-  >
-    <div class="d-flex text-center col">
-      <h3>${ properties.containerTitle }</h3>
-    </div>
-  </div>
+  data-component="cardContainer"
+  data-sly-use.model="ca.sunlife.web.cms.core.models.v1.CardContainer"
+  data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+  data-sly-use.container="${'cardContainerUse.js' @ containerModel=model, cardType=model.cardType}">
 
-  <div
-          data-sly-test="${model.cardType == 'horizontal'}"
-          class="sl-cards horizontal ${model.horizontalHeightControl == 'auto'? 'auto' : ''}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'vertical'}"
-          class="sl-cards vertical ${model.verticalHeightControl == 'auto'? 'auto' : ''}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'avatar'}"
-          class="sl-avatar-blocks"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'banner'}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'banner-image'}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'segmented'}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
-  </div>
-
-  <div
-          data-sly-test="${model.cardType == 'statistic'}"
-          data-sly-list.item="${ resource.listChildren }"
-  >
-    <div data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-      ${ item.path }
-    </div>
+  <div 
+    class="${container.wrapperClass}"
+    data-sly-list.item="${ resource.listChildren }">
+      <sly data-sly-resource="${ item.path @ resourceType=item.resourceType }">
+          ${ item.path }
+      </sly>
   </div>
 </div>
 
-
-
+<sly data-sly-call="${templates.placeholder @ isEmpty = model.cardType != '', classAppend='cmp-card-container'}"></sly>
