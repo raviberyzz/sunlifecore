@@ -15,8 +15,8 @@
             <div class="footer-icons-container">
                 <div class="sl-social-media">
                     <ul data-sly-list="${bottomFooter.socialMedia}">
-                        <li> 
-                            <a href="${item.link @ extension = 'html'}" data-title="${item.dataTitle}" aria-label="${item.title}">
+                        <li data-sly-use.utilityListParsing="${'sunlife/core/components/content/core-link-list/v1/link-list/linklist-parsing.js' @ path=item.link}">  
+                            <a href="${utilityListParsing.navPath}" data-title="${item.dataTitle}" aria-label="${item.title}">
                                 <span class="visually-hidden">${bottomFooter.screenReaderText}</span>
                                 <span class="sl-icon sl-icon_size_lg fab fa-${item.icon}"></span>
                             </a>
