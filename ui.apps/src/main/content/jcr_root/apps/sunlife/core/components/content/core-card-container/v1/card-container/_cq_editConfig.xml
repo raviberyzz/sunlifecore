@@ -11,12 +11,12 @@
     <cq:actionConfigs jcr:primaryType="nt:unstructured">
         <addLink
             jcr:primaryType="nt:unstructured"
-            handler="sunCA.auth.component.cardContainer.card.add"
+            handler="sunAuth.core.component.cardContainer.card.add"
             icon="coral-Icon--add"
             text="Add content card component"/>
         <toggle
             jcr:primaryType="nt:unstructured"
-            handler="sunCA.auth.component.common.toggle"
+            handler="sunAuth.core.component.common.toggle"
             icon="coral-Icon--viewOn"
             text="Toggle Component Visibility"/>
     </cq:actionConfigs>

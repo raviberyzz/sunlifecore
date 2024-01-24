@@ -10,12 +10,12 @@
     <cq:actionConfigs jcr:primaryType="nt:unstructured">
         <moveUp
             jcr:primaryType="nt:unstructured"
-            handler="sunCA.auth.component.common.moveUp"
+            handler="sunAuth.core.component.common.moveUp"
             icon="coral-Icon--arrowUp"
             text="Move Up"/>
         <moveDown
             jcr:primaryType="nt:unstructured"
-            handler="sunCA.auth.component.common.moveDown"
+            handler="sunAuth.core.component.common.moveDown"
             icon="coral-Icon--arrowDown"
             text="Move Down"/>
     </cq:actionConfigs>
