@@ -19,7 +19,7 @@ import ca.sunlife.web.cms.core.models.v1.CardContainer;
 @Model(adaptables = { Resource.class }, adapters = { Card.class }, resourceType = {
         CardImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CardImpl implements Card {
-    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/card/v1/card";
+    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-card/v1/card";
 
     @SlingObject
     private Resource card;

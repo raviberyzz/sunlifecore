@@ -10,7 +10,7 @@ import ca.sunlife.web.cms.core.models.v1.CardContainer;
 @Model(adaptables = { Resource.class }, adapters = { CardContainer.class }, resourceType = {
         CardContainerImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CardContainerImpl implements CardContainer {
-    protected static final String RESOURCE_TYPE = "sunlife/core/components/card-container/footer/v1/card-container";
+    protected static final String RESOURCE_TYPE = "sunlife/core/components/core-card-container/v1/card-container";
 
     @ValueMapValue
     private String name;
