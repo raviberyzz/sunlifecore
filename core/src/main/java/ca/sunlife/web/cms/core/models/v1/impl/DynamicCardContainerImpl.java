@@ -5,12 +5,12 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import ca.sunlife.web.cms.core.models.v1.CardContainer;
+import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
 
-@Model(adaptables = { Resource.class }, adapters = { CardContainer.class }, resourceType = {
-        CardContainerImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class CardContainerImpl implements CardContainer {
-    protected static final String RESOURCE_TYPE = "sunlife/core/components/core-card-container/v1/card-container";
+@Model(adaptables = { Resource.class }, adapters = { DynamicCardContainer.class }, resourceType = {
+        DynamicCardContainerImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class DynamicCardContainerImpl implements DynamicCardContainer {
+    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-dynamic-card-container/v1/dynamic-card-container";
 
     @ValueMapValue
     private String name;
@@ -19,7 +19,7 @@ public class CardContainerImpl implements CardContainer {
     private String cardType;
 
     @ValueMapValue
-    private String horizontalHeightControl;
+    private String heightControl;
 
     @ValueMapValue
     private Boolean horizontalMultipleClickable;
@@ -62,8 +62,8 @@ public class CardContainerImpl implements CardContainer {
         return cardType;
     }
 
-    public String getHorizontalHeightControl() {
-        return horizontalHeightControl;
+    public String getHeightControl () {
+        return heightControl;
     }
 
     public Boolean getHorizontalMultipleClickable() {

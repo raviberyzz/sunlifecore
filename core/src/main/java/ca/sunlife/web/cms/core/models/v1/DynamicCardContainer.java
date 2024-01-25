@@ -1,12 +1,12 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-public interface CardContainer {
+public interface DynamicCardContainer {
 
     public String getName();
 
     public String getCardType();
 
-    public String getHorizontalHeightControl();
+    public String getHeightControl();
 
     public Boolean getHorizontalMultipleClickable();
 

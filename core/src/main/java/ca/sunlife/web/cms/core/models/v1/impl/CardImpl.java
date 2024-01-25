@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import ca.sunlife.web.cms.core.models.v1.Card;
-import ca.sunlife.web.cms.core.models.v1.CardContainer;
+import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
 
 @Model(adaptables = { Resource.class }, adapters = { Card.class }, resourceType = {
         CardImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -27,18 +27,18 @@ public class CardImpl implements Card {
     @ChildResource
     private Resource comboList;
 
-    private CardContainer cardContainer;
+    private DynamicCardContainer dynamicCardContainer;
 
     @PostConstruct
     private void init() {
         if (card != null && card.getParent() != null) {
-            cardContainer = card.getParent().adaptTo(CardContainer.class);
+            dynamicCardContainer = card.getParent().adaptTo(DynamicCardContainer.class);
         }
     }
 
     @Override
-    public CardContainer getCardContainer() {
-        return cardContainer;
+    public DynamicCardContainer getCardContainer() {
+        return dynamicCardContainer;
     }
 
     @Override

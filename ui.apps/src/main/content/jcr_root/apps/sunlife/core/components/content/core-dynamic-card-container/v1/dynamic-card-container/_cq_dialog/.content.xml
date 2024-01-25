@@ -107,8 +107,8 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                             fieldLabel="Height Control"
                                                             fieldDescription="Choose 'Manual' to set a specific height or 'Auto' for automatic height adjustment."
-                                                            name="./horizontalHeightControl"
-                                                            text="Horizontal Control">
+                                                            name="./heightControl"
+                                                            text="Height Control">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <manual
                                                                     jcr:primaryType="nt:unstructured"
