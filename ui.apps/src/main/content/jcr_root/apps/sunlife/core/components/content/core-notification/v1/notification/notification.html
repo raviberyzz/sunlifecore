@@ -10,7 +10,7 @@
                     <div class="notification-buttons"> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span> </div>
                 </div>
                 <div class="multiline-notification-text">${notification.text @context ='html'}</div>
-                <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonURL}" href="${notification.buttonURL}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly>
+                <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonURL ? 'a' : 'button'}" type="${notification.buttonURL}" href="${notification.buttonURL}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly>
             </div>
         </div>
     </sly>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="notification-text">${notification.text @context ='html'}</div>
                     <div class="notification-buttons">
-                        <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonURL}" href="${notification.buttonURL}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span>
+                        <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonURL ? 'a' : 'button'}" type="${notification.buttonURL}" href="${notification.buttonURL}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span>
                     </div>
                 </div>
             </div>

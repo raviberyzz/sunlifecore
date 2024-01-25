@@ -58,16 +58,16 @@ public class NotificationImpl implements NotificationModel {
     private void initModel() {
         if(notificationType != null){
 			if (notificationType.equals("info") ) {
-				this.iconType = infoIcon;
+				this.iconType = NotificationConstants.INFO_ICON;
 			}    
 			if (notificationType.equals("success")) {
-				this.iconType = successIcon;
+				this.iconType = NotificationConstants.SUCCESS_ICON;
 			}			
 			if (notificationType.equals("warning")) {
-				this.iconType = warningIcon;
+				this.iconType = NotificationConstants.WARNING_ICON;
 			}			
 			if (notificationType.equals("danger")) {
-			  this.iconType = errorIcon;
+			  this.iconType = NotificationConstants.ERROR_ICON;
 			}  
 		}
     }

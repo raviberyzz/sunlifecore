@@ -15,16 +15,16 @@ public class NotificationConstants {
 	  throw new IllegalStateException("NotificationConstants class");
    }
 	  
-   /** The Constant Information Icon */
-   public static final String infoIcon = "fa-info sl-icon_color_information";
+   /** The Constant Notification Information Icon */
+    public static final String INFO_ICON = "fa-info sl-icon_color_information";
    
-   /** The Constant Success Icon */
-   public static final String successIcon = "fa-check-circle-yes sl-icon_color_success";
+   /** The Constant Notification Success Icon */
+    public static final String SUCCESS_ICON = "fa-check-circle-yes sl-icon_color_success";
 
-    /** The Constant Warning Icon */
-    public static final String warningIcon = "fa-exclamation-circle sl-icon_color_warning";
+    /** The Constant Notification Warning Icon */
+    public static final String WARNING_ICON = "fa-exclamation-circle sl-icon_color_warning";
    
-    /** The Constant Error Icon */
-    public static final String errorIcon = "fa-exclamation-triangle sl-icon_color_error";
+    /** The Constant Notification Error Icon */
+    public static final String ERROR_ICON = "fa-exclamation-triangle sl-icon_color_error";
 
 }
