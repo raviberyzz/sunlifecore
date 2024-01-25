@@ -27,9 +27,6 @@ public interface NotificationModel {
     String getText();
 
     @ValueMapValue
-    String getDisplayNotificationButton();
-
-    @ValueMapValue
     String getButtonTitle();
 
     @ValueMapValue
@@ -46,7 +43,5 @@ public interface NotificationModel {
 
     @ValueMapValue
     String getSpacing();
-
-    
 
 }

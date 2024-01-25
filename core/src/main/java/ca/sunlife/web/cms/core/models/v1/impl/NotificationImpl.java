@@ -33,9 +33,6 @@ public class NotificationImpl implements NotificationModel {
     private String text;
 
     @ValueMapValue
-    private String displayNotificationButton;
-
-    @ValueMapValue
     private String buttonTitle;
 
     @ValueMapValue
@@ -53,32 +50,30 @@ public class NotificationImpl implements NotificationModel {
     @ValueMapValue
     private String spacing;
 
-    String infoIcon = "sl-icon fak fa-info sl-icon_color_information sl-icon_size_md";
-    String successIcon = "sl-icon fak fa-check-circle-yes sl-icon_color_success sl-icon_size_md";
-    String warningIcon = "sl-icon fak fa-exclamation-circle sl-icon_color_warning sl-icon_size_md";
-    String dangerIcon = "sl-icon fak fa-exclamation-triangle sl-icon_size_md sl-icon_color_error";
+    protected static final String infoIcon = "fa-info sl-icon_color_information";
+    protected static final String successIcon = "fa-check-circle-yes sl-icon_color_success";
+    protected static final String warningIcon = "fa-exclamation-circle sl-icon_color_warning";
+    protected static final String dangerIcon = "fa-exclamation-triangle sl-icon_color_error";
 
    @Getter
    private String iconType;
 
     @PostConstruct
     private void initModel() {
-        iconType = "";
-        if (notificationType == "info") {
-            this.iconType = infoIcon;
-        }    
-        if (notificationType == "success") {
-            this.iconType = successIcon;
-        }
-        
-        if (notificationType == "warning") {
-            this.iconType = warningIcon;
-        }
-        
-        if (notificationType == "danger") {
-          this.iconType = dangerIcon;
-        }  
-
+        if(notificationType != null){
+			if (notificationType.equals("info") ) {
+				this.iconType = infoIcon;
+			}    
+			if (notificationType.equals("success")) {
+				this.iconType = successIcon;
+			}			
+			if (notificationType.equals("warning")) {
+				this.iconType = warningIcon;
+			}			
+			if (notificationType.equals("danger")) {
+			  this.iconType = dangerIcon;
+			}  
+		}
     }
 
     @Override
@@ -94,11 +89,6 @@ public class NotificationImpl implements NotificationModel {
     @Override
     public String getText() {
         return text;
-    }
-
-    @Override
-    public String getDisplayNotificationButton() {
-        return displayNotificationButton;
     }
 
     @Override

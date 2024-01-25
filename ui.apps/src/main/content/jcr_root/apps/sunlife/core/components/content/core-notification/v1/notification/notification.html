@@ -1,29 +1,29 @@
 <sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.impl.NotificationImpl" data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}">
     <sly data-sly-test.displayNotificationHeading="${notification.notificationHeading} ">
         <div role="alert" class="fade sl-notification alert alert-${notification.notificationType} show">
-            <div class="container">
-                <div class="notification-component ${notification.spacing}" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
+            <div class="container ${notification.spacing}">
+                <div class="notification-component" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
                     <div class="notification-icon">
-                       <span class=${notification.iconType}></span>
+                       <span class="sl-icon fak ${notification.iconType} sl-icon_size_md"></span>
                     </div>
                     <div class="h4 notification-heading">${notification.notificationHeading}</div>
                     <div class="notification-buttons"> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span> </div>
                 </div>
                 <div class="multiline-notification-text">${notification.text @context ='html'}</div>
-                <sly data-sly-test.notificationButton="${notification.displayNotificationButton ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonLink}" href="${notification.buttonLink}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly>
+                <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonLink}" href="${notification.buttonLink}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly>
             </div>
         </div>
     </sly>
     <sly data-sly-test.displayNotificationHeading="${!notification.notificationHeading} ">
         <div role="alert" class="fade sl-notification alert alert-${notification.notificationType} show">
-            <div class="container">
-                <div class="notification-component ${notification.spacing}" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
+            <div class="container ${notification.spacing}">
+                <div class="notification-component" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
                     <div class="notification-icon">
-                        <span class=${notification.iconType}></span>
+                        <span class="sl-icon fak ${notification.iconType} sl-icon_size_md"></span>
                     </div>
                     <div class="notification-text">${notification.text @context ='html'}</div>
                     <div class="notification-buttons">
-                        <sly data-sly-test.notificationButton="${notification.displayNotificationButton ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonLink}" href="${notification.buttonLink}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span>
+                        <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}"> <button class="sl-btn oneline-action-button btn btn-secondary-small" data-sly-attribute.loadButton="${notificationButton}" data-sly-element="${notification.buttonLink ? 'a' : 'button'}" type="${notification.buttonLink}" href="${notification.buttonLink}" data-sly-attribute.target="${notification.buttonTarget}"> ${notification.buttonTitle} </button> </sly> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span>
                     </div>
                 </div>
             </div>
