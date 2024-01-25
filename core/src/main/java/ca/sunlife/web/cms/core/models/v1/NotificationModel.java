@@ -30,7 +30,7 @@ public interface NotificationModel {
     String getButtonTitle();
 
     @ValueMapValue
-    String getButtonLink();
+    String getButtonURL();
 
     @ValueMapValue
     String getButtonTarget();

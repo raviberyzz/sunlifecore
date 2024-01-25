@@ -46,9 +46,9 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Warning"
                                                         value="warning"/>
-                                                    <danger
+                                                    <error
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Danger"
+                                                        text="Error"
                                                         value="danger"/>
                                                 </items>
                                             </notificationType>
@@ -88,13 +88,13 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Button Title"
                                                 name="./buttonTitle"/>  
-                                            <buttonLink
+                                            <buttonURL
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="icon"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
                                                 fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page.html'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
-                                                fieldLabel="Button Link"
-                                                name="./buttonLink"/>
+                                                fieldLabel="Button URL"
+                                                name="./buttonURL"/>
                                              <buttonTarget
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="icon"

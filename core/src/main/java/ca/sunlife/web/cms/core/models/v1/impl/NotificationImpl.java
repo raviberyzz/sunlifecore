@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import lombok.Getter;
 
+import ca.sunlife.web.cms.core.constants.NotificationConstants;
 import ca.sunlife.web.cms.core.models.v1.NotificationModel;
-import com.day.cq.wcm.api.Page;
 
 @Model(adaptables = { Resource.class }, adapters = { NotificationModel.class }, resourceType = {
         NotificationImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -36,7 +36,7 @@ public class NotificationImpl implements NotificationModel {
     private String buttonTitle;
 
     @ValueMapValue
-    private String buttonLink;
+    private String buttonURL;
 
     @ValueMapValue
     private String buttonTarget;
@@ -50,10 +50,6 @@ public class NotificationImpl implements NotificationModel {
     @ValueMapValue
     private String spacing;
 
-    protected static final String infoIcon = "fa-info sl-icon_color_information";
-    protected static final String successIcon = "fa-check-circle-yes sl-icon_color_success";
-    protected static final String warningIcon = "fa-exclamation-circle sl-icon_color_warning";
-    protected static final String dangerIcon = "fa-exclamation-triangle sl-icon_color_error";
 
    @Getter
    private String iconType;
@@ -71,7 +67,7 @@ public class NotificationImpl implements NotificationModel {
 				this.iconType = warningIcon;
 			}			
 			if (notificationType.equals("danger")) {
-			  this.iconType = dangerIcon;
+			  this.iconType = errorIcon;
 			}  
 		}
     }
@@ -97,8 +93,8 @@ public class NotificationImpl implements NotificationModel {
     }
 
     @Override
-    public String getButtonLink() {
-        return buttonLink;
+    public String getButtonURL() {
+        return buttonURL;
     }
 
     @Override
