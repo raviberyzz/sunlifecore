@@ -73,18 +73,17 @@
       let currOpt = $(currentComboInput).next().find(".option-current");
       currOpt.mousedown();
     } else if (e.type == 'mousedown') { // mousedown event
-
-      $(combo).toggleClass("open");
-      let ariaExpanded = "";
-      if ($(combo).hasClass("open")) {
-        ariaExpanded = "true";
-        raiseLabel(currentComboInput);
-      } else {
-        ariaExpanded = "false";
-        $(combo).find('label').removeClass("active");
-        lowerLabel(currentComboInput);
-      }
-      currentComboInput.setAttribute("aria-expanded", ariaExpanded);      
+        $(combo).toggleClass("open");
+        let ariaExpanded = "";
+        if ($(combo).hasClass("open")) {
+          ariaExpanded = "true";
+          raiseLabel(currentComboInput);
+        } else {
+          ariaExpanded = "false";
+          $(combo).find('label').removeClass("active");
+          lowerLabel(currentComboInput);
+        }
+        currentComboInput.setAttribute("aria-expanded", ariaExpanded);      
     }
   }
 
@@ -164,8 +163,13 @@
   * @param {HTMLElement} optionElem - The option element.
   */
   function selectOption(optionElem) {
-    $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
+    
+    if ($(optionElem).closest('.combo-menu').find('.option-selected').length != 0) {
+      $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'false');
+      $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
+    }       
     $(optionElem).addClass('option-selected');
+    $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');  
   }
 
   /**
@@ -173,8 +177,36 @@
   */
   function init() {
     bindEvent();
+    selectDefaultOption();
+  }
+
+  /**
+  * Select the default selected option on page load.
+  */
+  function selectDefaultOption() {
+    let options = document.getElementsByClassName("combo-option");
+    let currentElement = null;
+    let selectedOption = null;
+    for (var i = 0; i < options.length; i++) {
+      currentElement = options[i];
+      if ((currentElement).getAttribute("aria-selected") != null) {
+        selectedOption = currentElement;
+      }
+    }
+    if (selectedOption != null) {
+      let currentDropdownElement = $(currentElement);
+      let linkText = $(currentElement).text();
+      let dropdownCombo = $(currentDropdownElement).closest('.combo');
+      let comboInput =  $(dropdownCombo).find('.combo-input')[0];
+  
+      appendSelectedText(currentDropdownElement, linkText);
+      selectOption(currentDropdownElement);
+      raiseLabel(currentDropdownElement.parent().parent().find('.combo-input')); 
+    }
+
   }
 
   init();
+
 
 })()

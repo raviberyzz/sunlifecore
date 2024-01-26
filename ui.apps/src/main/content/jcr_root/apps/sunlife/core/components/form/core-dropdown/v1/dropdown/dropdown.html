@@ -16,9 +16,9 @@
                 <div class="combo-menu" role="listbox" id="default-listbox${options.id}" aria-labelledby="default-label${options.id}"
                     tabindex="-1">
                     <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
-                        <div class="combo-option" role="option" aria-selected="false" value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
+                        <div class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" adisabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
                     </sly>
-                </div> 
+                </div>
             </div>
             <div id="hint-helper-text${options.id}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
         </div>
