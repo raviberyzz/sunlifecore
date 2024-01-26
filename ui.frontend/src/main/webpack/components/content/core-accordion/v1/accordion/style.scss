@@ -1,7 +1,8 @@
 .aem-AuthorLayer-Edit {
-  .accordion-collapse {
-    display: block !important;
-    height: auto !important;
+  .sl-accordion .accordion-collapse {
+    display: block;
+    height: auto;
+    visibility: visible;
   }
 }
 .sl-accordion {
