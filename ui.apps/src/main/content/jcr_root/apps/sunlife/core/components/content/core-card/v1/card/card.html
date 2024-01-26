@@ -1,6 +1,18 @@
+<!--/*
+Card component 
+*/-->
+
 <sly
   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
   data-sly-use.model="ca.sunlife.web.cms.core.models.v1.Card">
+
+  <sly 
+     data-sly-test="${model.cardContainer.cardType != ''}"
+     data-sly-set.cardTemplate="${['templates/', model.cardContainer.cardType] @ join = ''}"
+     data-sly-use.template ="${cardTemplate}"
+     data-sly-call="${template.details @ options=model.cardContainer}"></sly>
+
+<!--/*
 
   <sly data-sly-test="${model.cardContainer.cardType == 'horizontal'}"
        data-sly-use.template ="${'templates/horizontal.html'}"
@@ -33,5 +45,7 @@
   <sly data-sly-test="${model.cardContainer.cardType == 'statistic'}"
        data-sly-use.template ="${'templates/statistic.html'}"
        data-sly-call="${template.statistic @ options=model.cardContainer}"></sly>
+*/-->
+
 </sly>
 <sly data-sly-call="${templates.placeholder @  classAppend='cmp-card'}"></sly>

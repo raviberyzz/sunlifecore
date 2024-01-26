@@ -1,4 +1,5 @@
-<template data-sly-template.avatar="${@options}">
+<template data-sly-template.details="${@options}">
+  
   <div class="card" data-sly-test="${options.avatarSize == 'large'}">
     <div class="sl-avatar">
       <img src="${properties.imageFileReference}" alt="" class="large" />
@@ -8,6 +9,7 @@
       <div class="card-text">${properties.description @ context ='html'}</div>
     </div>
   </div>
+  
   <div
     class="avatar-body card"
     data-sly-test="${options.avatarSize == 'withBody'}"
