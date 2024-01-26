@@ -26,3 +26,9 @@
         display: none;
     }
 }
+.cmp-tabs__tab { 
+	box-sizing: inherit;
+    border-bottom: 0; 
+    padding: 0; 
+    cursor: pointer;
+}
