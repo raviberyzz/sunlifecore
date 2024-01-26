@@ -1,0 +1,68 @@
+<template data-sly-template.banner="${@options}">
+  <div class="card" data-sly-test="${!options.withLink}">
+    <div class="card-body">
+      <span class="sl-icon sl-icon-info-email"></span>
+      <div class="h3 banner-header card-title">${properties.title}</div>
+      <div class="card-text">${properties.description @ context ='html'}</div>
+      <div class="caption-container">
+        <p>${properties.caption}</p>
+        <div class="popover-container">
+          <div class="sl-popover-container">
+            <button class="popover-button">
+              <span class="visually-hidden">iconAria</span
+              ><span class="sl-icon sl-icon-info"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a target="_self" href="${properties.buttonLink}" class="sl-link"
+          >${properties.buttonLabel}<span class="sl-icon-after"
+            ><span class="sl-icon sl-icon-chevron-circle-right"></span></span
+        ></a>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-sly-test="${options.withLink}">
+    <div class="card-body">
+      <span class="sl-icon sl-icon-info-email"></span>
+      <div class="h3 banner-header card-title">${properties.title}</div>
+      <div class="card-text">${properties.description @ context ='html'}</div>
+      <div class="grouped-form">
+        <div class="textfield-container">
+          <div class="">
+            <div class="sl-text-field form-floating">
+              <input
+                placeholder="text"
+                type="text"
+                id="text-field"
+                class="form-control"
+                value=""
+              /><label for="text-field">${properties.labelText}</label>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button
+            type="button"
+            href="${properties.buttonLink}"
+            class="sl-btn btn btn-secondary"
+          >
+            ${properties.buttonLabel}
+          </button>
+        </div>
+      </div>
+      <div class="caption-container">
+        <p>${properties.caption}</p>
+        <div class="popover-container">
+          <div class="sl-popover-container">
+            <button class="popover-button">
+              <span class="visually-hidden">iconAria</span
+              ><span class="sl-icon sl-icon-info"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

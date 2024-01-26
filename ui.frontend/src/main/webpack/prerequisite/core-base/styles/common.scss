@@ -1,23 +1,32 @@
+// Helios component specific styles.
+// NOTE :- include then in alphabetical order
 @import './base.scss';
 
+@import '@sunlife/ui-styles/components/accordion';
 @import '@sunlife/ui-styles/components/avatar';
+@import '@sunlife/ui-styles/components/avatarBlocks';
+@import '@sunlife/ui-styles/components/banner';
+@import '@sunlife/ui-styles/components/bannerBlock';
+@import '@sunlife/ui-styles/components/bannerImageBlock';
+@import '@sunlife/ui-styles/components/breadcrumbs';
 @import '@sunlife/ui-styles/components/button';
 @import '@sunlife/ui-styles/components/card';
+@import '@sunlife/ui-styles/components/cards';
 @import '@sunlife/ui-styles/components/divider';
 @import '@sunlife/ui-styles/components/dropdown';
 @import '@sunlife/ui-styles/components/forms';
 @import '@sunlife/ui-styles/components/helperText';
 @import '@sunlife/ui-styles/components/link.scss';
+@import '@sunlife/ui-styles/components/mediaBlock';
+@import '@sunlife/ui-styles/components/megaMenu';
 @import '@sunlife/ui-styles/components/menuDropdown';
 @import '@sunlife/ui-styles/components/modal';
 @import '@sunlife/ui-styles/components/notification';
 @import '@sunlife/ui-styles/components/progress';
 @import '@sunlife/ui-styles/components/popover';
+@import '@sunlife/ui-styles/components/segmentedBlocks';
 @import '@sunlife/ui-styles/components/socialMedia';
+@import '@sunlife/ui-styles/components/statisticBlocks';
 @import '@sunlife/ui-styles/components/table';
 @import '@sunlife/ui-styles/components/tabs';
-@import '@sunlife/ui-styles/components/accordion';
 @import '@sunlife/ui-styles/components/textArea';
-@import '@sunlife/ui-styles/components/megaMenu';
-@import '@sunlife/ui-styles/components/breadcrumbs';
-@import '@sunlife/ui-styles/components/banner';
