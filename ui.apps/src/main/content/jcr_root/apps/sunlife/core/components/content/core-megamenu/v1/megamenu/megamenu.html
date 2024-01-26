@@ -4,7 +4,6 @@
     </div>
     <!-- Static Navigation -->
     <div aria-labelledby="sl-mega-menu-toggle-dashboard"
-            data-bs-toggle="dropdown"
             class="extensive dropdown-menu show">
         <div class="extensive-menu">
             <div class="menu-header-container">
@@ -22,7 +21,7 @@
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
                         data-sly-list.menuItems="${menuSections.menuItems}">
                         <li>
-                            <a href="${menuItems.menuItemLinkURL @extension = 'html'}" data-rr-ui-dropdown-item=""
+                            <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
                                 class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
                                 data-target="${menuItems.menuItemTarget}">
                                 <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
