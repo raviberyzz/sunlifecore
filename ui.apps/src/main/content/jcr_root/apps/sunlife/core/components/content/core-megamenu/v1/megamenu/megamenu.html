@@ -16,14 +16,14 @@
                     <h5 class="sub-header-container">
                         <a href="${menuSections.subheadingLinkURL @extension = 'html'}"
                             data-title="${menuSections.subheadingDataTitle}"
-                            data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
+                            data-sly-attribute.target="${menuSections.subheadingTarget == 'newTab' ? '_blank' : ''}">${menuSections.subheadingLinkName}</a>
                     </h5>
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
                         data-sly-list.menuItems="${menuSections.menuItems}">
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
                                 class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
-                                data-target="${menuItems.menuItemTarget}">
+                                data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
                                 <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
                             </a>
                         </li>
