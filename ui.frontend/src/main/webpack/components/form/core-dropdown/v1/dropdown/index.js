@@ -23,6 +23,7 @@
     $(currentComboInput).closest('.combo').removeClass("open");
     lowerLabel(currentComboInput);
     currentComboInput.setAttribute("aria-expanded", "false");
+    $(currentComboInput).closest('.combo').find('label').removeClass("active");
   }
 
   /**
@@ -80,6 +81,7 @@
         raiseLabel(currentComboInput);
       } else {
         ariaExpanded = "false";
+        $(combo).find('label').removeClass("active");
         lowerLabel(currentComboInput);
       }
       currentComboInput.setAttribute("aria-expanded", ariaExpanded);      
@@ -100,9 +102,9 @@
 
     appendSelectedText(currentDropdownElement, linkText);
     selectOption(currentDropdownElement);
-    raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));
     $(dropdownCombo).toggleClass("open");
     comboInput.setAttribute("aria-expanded", "false");
+    raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));    
   }
 
   /**
@@ -111,19 +113,19 @@
   * @param {string} selector - The CSS selector.
   * @returns {string | undefined} - The inner text of the element, or undefined if not found.
   */
-  function getInnerText(elem, selector) {
-    if ($(elem).length && $(elem).find(selector).length) {
-      return $(elem).find(selector)[0].innerText;
-    }
-  }
+  // function getInnerText(elem, selector) {
+  //   if ($(elem).length && $(elem).find(selector).length) {
+  //     return $(elem).find(selector)[0].innerText;
+  //   }
+  // }
 
   /**
   * Adds 'raised' class to the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function raiseLabel(dropDown) {
-    if ($('.combo').find('.combo-input-selected')[0].innerText != "") {
-      if (!(document.getElementById('default-selected-label').matches(".raised.active"))) {
+    if ($(dropDown).closest('.combo').find('.combo-input-selected')[0].innerText != "") {
+      if (!($(dropDown).closest('.combo').find('label')[0].matches(".raised"))) {
         $(dropDown).find('label').addClass('raised');
         $(dropDown).find('.combo-input-selected').removeClass("d-none");
       }

@@ -5,21 +5,22 @@
     <sly data-sly-test="${options.type == 'drop-down'}">
         <div class="sl-dropdown" aria-disabled="false">
             <div class="combo">
-                <div name="customdropdown" aria-controls="default-selected-listbox" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
-                    aria-labelledby="${options.ariaLabel}" id="${options.id}" class="combo-input" role="combobox"
-                    tabindex="0"><label class="" for="default-selected" id="default-selected-label">${options.name}</label>
+                <div aria-controls="default-listbox${options.id}" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
+                    aria-labelledby="default-label${options.id}" id="${options.id}" class="combo-input" role="combobox"
+                    tabindex="0">
+                    <label for="${options.id}" id="default-label${options.id}">${options.name}</label>
                     <!-- replace with text from dialog -->
                     <div class="combo-input-selected d-none">${options.placeholderText}</div> 
                     <span class="sl-icon fal fa-chevron-down"></span>
                 </div>
-                <div class="combo-menu" role="listbox" id="default-selected-listbox" aria-labelledby="default-selected-label"
+                <div class="combo-menu" role="listbox" id="default-listbox${options.id}" aria-labelledby="default-label${options.id}"
                     tabindex="-1">
                     <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
-                        <div class="combo-option" role="option" aria-selected="false"  value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
+                        <div class="combo-option" role="option" aria-selected="false" value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
                     </sly>
                 </div> 
             </div>
-            <div id="hint-helper-text" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
+            <div id="hint-helper-text${options.id}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
         </div>
     </sly>
 </sly>
