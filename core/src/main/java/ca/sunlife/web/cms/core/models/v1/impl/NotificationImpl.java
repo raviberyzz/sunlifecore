@@ -13,7 +13,7 @@ import lombok.Getter;
 import ca.sunlife.web.cms.core.constants.NotificationConstants;
 import ca.sunlife.web.cms.core.models.v1.Notification;
 
-@Model(adaptables = { Resource.class }, adapters = { Notification.class }, resourceType = {
+@Model(adaptables = { SlingHttpServletRequest.class }, adapters = { Notification.class }, resourceType = {
         NotificationImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class NotificationImpl implements Notification {
 
