@@ -227,20 +227,20 @@
     }
   }
   .offcanvas-body {  
-    .sl-mega-menu{
-      .dropdown{
-        .dropdown-menu{
-          margin-top: 0.5px !important;
+    .sl-mega-menu {
+        .dropdown {
+          .dropdown-menu {
+            margin-top: 0.5px !important;
+          }
+        } 
+        @include media-breakpoint-down(lg) {
+          .dropdown-menu {
+            position: static !important;
+            transform: none !important;
+            inset: unset !important;
+          }
         }
       }
-      @include media-breakpoint-down(lg) {
-      .dropdown-menu{
-        position: static !important;
-        transform: none !important;
-        inset: unset !important;
-      }
-    }
-    }
     @include media-breakpoint-down(lg) {
       .nav-link {
         padding: 0;
