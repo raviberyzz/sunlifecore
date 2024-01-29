@@ -7,14 +7,15 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import lombok.Getter;
 
 import ca.sunlife.web.cms.core.constants.NotificationConstants;
-import ca.sunlife.web.cms.core.models.v1.NotificationModel;
+import ca.sunlife.web.cms.core.models.v1.Notification;
 
-@Model(adaptables = { Resource.class }, adapters = { NotificationModel.class }, resourceType = {
+@Model(adaptables = { Resource.class }, adapters = { Notification.class }, resourceType = {
         NotificationImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class NotificationImpl implements NotificationModel {
+public class NotificationImpl implements Notification {
 
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-notification/v1/notification";
 

@@ -1,4 +1,4 @@
-<sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.impl.NotificationImpl" data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}">
+<sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification" data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}">
     <sly data-sly-test.displayNotificationHeading="${notification.notificationHeading} ">
         <div role="alert" class="fade sl-notification alert alert-${notification.notificationType} show">
             <div class="container ${notification.spacing}">
