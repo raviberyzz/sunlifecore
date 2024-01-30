@@ -62,6 +62,7 @@
       border: none;
       box-shadow: $box-shadow;
       margin-top: 0.125rem !important;
+      transform: translate3d(0.5px, 38px, 0px) !important;
     }
     .dropdown-toggle, .menu-content {
       padding: 0.5rem 0.5rem;
@@ -226,13 +227,20 @@
     }
   }
   .offcanvas-body {  
-    .sl-mega-menu{
-      .dropdown-menu{
-        position: static !important;
-        transform: none !important;
-        inset: unset !important;
+    .sl-mega-menu {
+        .dropdown {
+          .dropdown-menu {
+            margin-top: 0.5px !important;
+          }
+        } 
+        @include media-breakpoint-down(lg) {
+          .dropdown-menu {
+            position: static !important;
+            transform: none !important;
+            inset: unset !important;
+          }
+        }
       }
-    }
     @include media-breakpoint-down(lg) {
       .nav-link {
         padding: 0;

@@ -38,7 +38,8 @@
           </button>
         </div>
         <div
-          class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
+          class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"          
+          aria-hidden="${item.name in accordion.expandedItems ? 'false' : 'true'}"
         >
           <div
             class="accordion-body"
