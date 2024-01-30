@@ -51,7 +51,7 @@
                             <coral-select-item value="">
                                 Please Select</coral-select-item>
                             <coral-select-item value="sl-icon_color_success">
-                                Success</coral-select-item>
+                                Success </coral-select-item>
                             <coral-select-item value="sl-icon_color_information">
                                 Information</coral-select-item>
                             <coral-select-item value="sl-icon_color_warning">
@@ -99,9 +99,11 @@
 
                 var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
 
+                var iconColor = dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'';
+
                 var iconClass = dialog.find('[name="awesomeIconType"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconType"] > coral-select-item:selected').val():'';
 
-                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} ${iconSize} fa-${fClass}` : fClass                        ;
+                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} ${iconSize} ${iconColor} fa-${fClass}` : fClass                        ;
 
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
