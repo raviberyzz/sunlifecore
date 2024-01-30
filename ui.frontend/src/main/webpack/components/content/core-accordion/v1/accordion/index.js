@@ -19,7 +19,9 @@ $(document).ready(function () {
   }
   //Function used to update the height of accordion item to apply smooth csss animation. 
   function updateAccordionItemHeight($accordionContentElement){
-    $accordionContentElement.height(($accordionContentElement.find(".accordion-body").outerHeight()) + 24 + "px");
+    setTimeout(function(){
+      $accordionContentElement.height(($accordionContentElement.find(".accordion-body").outerHeight()) + 24 + "px");
+    },10)
   }
   //Function used to reset the accordion if the single Selection is true in authoring
   function resetAccordionForSingleSelection($accordionItemHeader) {
