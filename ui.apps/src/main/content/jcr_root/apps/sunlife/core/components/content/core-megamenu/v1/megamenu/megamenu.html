@@ -20,6 +20,8 @@
                     </h5>
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
                         data-sly-list.menuItems="${menuSections.menuItems}">
+                        hideInMobile:: ${menuItems.hideInMobile}
+                        mobileMenuItemLinkName:: ${menuItems.mobileMenuItemLinkName}
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
                                 class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
