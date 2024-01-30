@@ -19,17 +19,31 @@
                             data-sly-attribute.target="${menuSections.subheadingTarget == 'newTab' ? '_blank' : ''}">${menuSections.subheadingLinkName}</a>
                     </h5>
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
-                        data-sly-list.menuItems="${menuSections.menuItems}">
-                        hideInMobile:: ${menuItems.hideInMobile}
-                        mobileMenuItemLinkName:: ${menuItems.mobileMenuItemLinkName}
+                        data-sly-list.menuItems="${menuSections.menuItems}" class="d-none d-lg-inline d-xl-inline d-xxl-inline">
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
                                 class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
                                 data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
-                                <div class="d-inline"><span>${menuItems.menuItemLinkName}</span></div>
+                                <div class="d-inline">
+                                    <span>${menuItems.menuItemLinkName}</span>
+                                </div>
                             </a>
                         </li>
                     </ul>
+                    <sly data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}" data-sly-list.menuItems="${menuSections.menuItems}">
+                        <ul data-sly-test.menuItemLinkName="${menuItems.hideInMobile ? '' : menuItems.mobileMenuItemLinkName}" 
+                            class="d-inline d-md-inline d-lg-none d-xl-none d-xxl-none">
+                            <li>
+                                <a href="${menuItems.menuItemLinkURL @extension = 'html'}" class="dropdown-item"
+                                    data-title="${menuItems.menuItemDataTitle}"
+                                    data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
+                                    <div class="d-inline">
+                                        <span>${menuItemLinkName}</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </sly>
                 </div>
             </div>
         </div>
