@@ -10,7 +10,6 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import lombok.Getter;
 
-import ca.sunlife.web.cms.core.constants.NotificationConstants;
 import ca.sunlife.web.cms.core.models.v1.Notification;
 
 @Model(adaptables = { SlingHttpServletRequest.class }, adapters = { Notification.class }, resourceType = {
@@ -50,20 +49,30 @@ public class NotificationImpl implements Notification {
    @Getter
    private String iconType;
 
+
+    protected static final String INFO_ICON = "fa-info sl-icon_color_information";
+
+    protected static final String SUCCESS_ICON = "fa-check-circle-yes sl-icon_color_success";
+
+    protected static final String WARNING_ICON = "fa-exclamation-circle sl-icon_color_warning";
+   
+    protected static final String ERROR_ICON = "fa-exclamation-triangle sl-icon_color_error";
+
+
     @PostConstruct
     private void initModel() {
         if(notificationType != null){
 			if (notificationType.equals("info") ) {
-				this.iconType = NotificationConstants.INFO_ICON;
+				this.iconType = INFO_ICON;
 			}    
 			if (notificationType.equals("success")) {
-				this.iconType = NotificationConstants.SUCCESS_ICON;
+				this.iconType = SUCCESS_ICON;
 			}			
 			if (notificationType.equals("warning")) {
-				this.iconType = NotificationConstants.WARNING_ICON;
+				this.iconType = WARNING_ICON;
 			}			
 			if (notificationType.equals("danger")) {
-			  this.iconType = NotificationConstants.ERROR_ICON;
+			  this.iconType = ERROR_ICON;
 			}  
 		}
     }
