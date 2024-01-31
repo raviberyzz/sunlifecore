@@ -6,12 +6,12 @@ use(function() {
             navPath: navPath
         };
     }
-    if (navPath.contains("/content/sunlife")) {
-        if (navPath.contains("/?")) {
+    if (navPath.includes("/content/sunlife")) {
+        if (navPath.includes("/?")) {
             navPath = navPath.replace("/?", ".html?");
-        } else if (navPath.contains("/#")) {
+        } else if (navPath.includes("/#")) {
             navPath = navPath.replace("/#", ".html#");
-        } else if (navPath.contains("#")) {
+        } else if (navPath.includes("#")) {
             navPath = navPath.replace("#", ".html#");
         } else {
             navPath = navPath + ".html";
