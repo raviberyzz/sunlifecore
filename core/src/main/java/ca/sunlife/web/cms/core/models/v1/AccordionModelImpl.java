@@ -5,6 +5,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -13,6 +14,7 @@ import com.adobe.cq.wcm.core.components.models.Accordion;
 import com.adobe.cq.wcm.core.components.internal.models.v1.AccordionImpl;
 
 import lombok.Getter;
+import org.apache.sling.models.annotations.via.ResourceSuperType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,7 @@ public class AccordionModelImpl implements AccordionModel {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Self
+    @Via(type = ResourceSuperType.class)
     Accordion accordion;
 
     @ValueMapValue
