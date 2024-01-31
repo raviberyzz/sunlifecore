@@ -6,24 +6,18 @@ use(function() {
             navPath: navPath
         };
     }
-
-    if (navPath.indexOf("/content/sunlife") != -1) {
-        if (navPath.indexOf("/?") != -1) {
-            var splitUrl = navPath.split("/?");
-            navPath = splitUrl[0] + ".html?" + splitUrl[1];
-        } else if (navPath.indexOf("/#") != -1) {
-            var splitUrl = navPath.split("/#");
-            navPath = splitUrl[0] + ".html#" + splitUrl[1];
-        } else if (navPath.indexOf("#") != -1) {
-            var splitUrl = navPath.split("#");
-            navPath = splitUrl[0] + ".html#" + splitUrl[1];
+    if (navPath.contains("/content/sunlife")) {
+        if (navPath.contains("/?")) {
+            navPath = navPath.replace("/?", ".html?");
+        } else if (navPath.contains("/#")) {
+            navPath = navPath.replace("/#", ".html#");
+        } else if (navPath.contains("#")) {
+            navPath = navPath.replace("#", ".html#");
         } else {
             navPath = navPath + ".html";
         }
     }
-
     return {
         navPath: navPath
     }
-
 });
