@@ -1,0 +1,46 @@
+<template data-sly-template.statistic="${@options}">
+  <div
+    class="card"
+    data-sly-test="${options.statisticEnhancements == 'withRating'}"
+  >
+    <div class="card-body">
+      <div class="caption">${properties.caption}</div>
+      <div class="h3 card-title">
+        <span class="visually-hidden">${properties.title}</span>
+        <div class="icon-container my-sl4">
+          <span
+            class="sl-icon sl-icon-star-full sl-icon_size_lg sl-icon_non-interactive"
+          ></span
+          ><span
+            class="sl-icon sl-icon-star-full sl-icon_size_lg sl-icon_non-interactive"
+          ></span
+          ><span
+            class="sl-icon sl-icon-star-full sl-icon_size_lg sl-icon_non-interactive"
+          ></span
+          ><span
+            class="sl-icon sl-icon-star-full sl-icon_size_lg sl-icon_non-interactive"
+          ></span
+          ><span
+            class="sl-icon sl-icon-star-empty sl-icon_size_lg sl-icon_non-interactive"
+          ></span>
+        </div>
+      </div>
+      <div class="card-text">${properties.description @ context ='html'}</div>
+    </div>
+  </div>
+  <div class="card" data-sly-test="${options.statisticEnhancements == 'withGainIndicator'}">
+    <div class="card-body">
+      <div class="caption">${properties.caption}</div>
+      <div class="h3 card-title">${properties.title}</div>
+      <div class="card-text">
+        <div style="color: var(--green-700)">
+          <span
+            class="sl-icon sl-icon-arrow-up sl-icon_non-interactive"
+            style="background: var(--green-700); vertical-align: bottom"
+          ></span
+          ><span>${properties.description @ context ='html'}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
