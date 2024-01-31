@@ -16,12 +16,6 @@
     toolbar.splice(3, 0, GROUP + "#" + FEATURE);
     
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data){
-        var i,fontSizes='';
-        for(i=14;i<=36;i=i+2) {
-             if(i!=22 && i!=26 && i!=30 && i!=34) {
-                 fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
-             }
-        }
         return `<div class="rte-dialog-columnContainer">   
             	    <div class="rte-dialog-column">
                         <label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">
@@ -48,8 +42,8 @@
                         <label id="label-vertical-color-0" class="coral-Form-fieldlabel">
                             Color :</label>
                         <coral-select class="coral-Form-field" placeholder="Select Color" name="awesomeIconColor" labelledby="label-vertical-color-0">
-                            <coral-select-item value="">
-                                Please Select</coral-select-item>
+                            <coral-select-item value="sl-icon_color_default">
+                                Default </coral-select-item>
                             <coral-select-item value="sl-icon_color_success">
                                 Success </coral-select-item>
                             <coral-select-item value="sl-icon_color_information">
@@ -63,7 +57,14 @@
                     <div class="rte-dialog-column">
                         <label id="label-vertical-font-1" class="coral-Form-fieldlabel">Size :</label>
                         <coral-select class="coral-Form-field" placeholder="Select Size" name="awesomeIconSize" labelledby="label-vertical-font-1">
-                            ${fontSizes}
+                            <coral-select-item value="sl-icon_size_sm">
+                                Font SM</coral-select-item>
+                            <coral-select-item value="sl-icon_size_md">
+                                Font MD</coral-select-item> 
+                            <coral-select-item value="sl-icon_size_lg">
+                                Font LG</coral-select-item>
+                            <coral-select-item value="sl-icon_size_xl">
+                                Font XL</coral-select-item> 
                         </coral-select>
                     </div>
                     <div class="rte-dialog-column">
