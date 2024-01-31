@@ -58,13 +58,13 @@
                         <label id="label-vertical-font-1" class="coral-Form-fieldlabel">Size :</label>
                         <coral-select class="coral-Form-field" placeholder="Select Size" name="awesomeIconSize" labelledby="label-vertical-font-1">
                             <coral-select-item value="sl-icon_size_sm">
-                                Font SM</coral-select-item>
+                                Icon SM</coral-select-item>
                             <coral-select-item value="sl-icon_size_md">
-                                Font MD</coral-select-item> 
+                                Icon MD</coral-select-item> 
                             <coral-select-item value="sl-icon_size_lg">
-                                Font LG</coral-select-item>
+                                Icon LG</coral-select-item>
                             <coral-select-item value="sl-icon_size_xl">
-                                Font XL</coral-select-item> 
+                                Icon XL</coral-select-item> 
                         </coral-select>
                     </div>
                     <div class="rte-dialog-column">
