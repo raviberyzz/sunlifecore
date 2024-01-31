@@ -72,8 +72,4 @@
 
     });
 
-    $(document).on("dialog-ready", function() {
-
-    });
-
 })($, $(document), Granite.author);

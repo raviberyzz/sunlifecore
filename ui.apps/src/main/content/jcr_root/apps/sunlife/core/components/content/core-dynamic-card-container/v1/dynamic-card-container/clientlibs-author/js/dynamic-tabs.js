@@ -15,12 +15,6 @@
         showHide();
     });
 
-    $(document).on("dialog-ready", function() {
-
-    });
-
-
-
     function showHide() {
         var list = $("#dynamic-card-tab-hide-show").find("coral-tab");
         let horizontal = $(".horizontal").prop("selected");
