@@ -66,7 +66,7 @@
                             sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                             name="./bodyDescription"
                             fieldDescription="A description to display as the subheadline for the banner. As per reccomendation this text wrap up to 3 lines."
-                            fieldLabel="Description Text"
+                            fieldLabel="Body Description Text"
                             useFixedInlineToolbar="{Boolean}true"
                             granite:class="card-bodyDescription"/>
                     <caption
