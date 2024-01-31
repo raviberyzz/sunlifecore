@@ -8,13 +8,13 @@
             class="extensive dropdown-menu show">
         <div class="extensive-menu">
             <div class="menu-header-container">
-                <h4 class="h3 menu-header">
+                <h3 class="menu-header">
                     <a href="heading/">${megaMenu.heading}</a>
                 </h4>
             </div>
             <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
                 <div class="extensive-sub-menu"> 
-                    <h5 class="sub-header-container">
+                    <h4 class="sub-header-container">
                         <a href="${menuSections.subheadingLinkURL @extension = 'html'}"
                             data-title="${menuSections.subheadingDataTitle}"
                             data-target="${menuSections.subheadingTarget}">${menuSections.subheadingLinkName}</a>
