@@ -107,18 +107,6 @@
   }
 
   /**
-  * Retrieves the inner text of an element based on a selector.
-  * @param {HTMLElement} elem - The HTML element.
-  * @param {string} selector - The CSS selector.
-  * @returns {string | undefined} - The inner text of the element, or undefined if not found.
-  */
-  // function getInnerText(elem, selector) {
-  //   if ($(elem).length && $(elem).find(selector).length) {
-  //     return $(elem).find(selector)[0].innerText;
-  //   }
-  // }
-
-  /**
   * Adds 'raised' class to the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
@@ -203,6 +191,43 @@
       selectOption(currentDropdownElement);
       raiseLabel(currentDropdownElement.parent().parent().find('.combo-input')); 
     }
+
+  }
+
+
+  /**
+  * Add dropdown error styling
+  */
+  function addErrorStyles() {
+
+    // after clicking form submit button
+    // if the dropdown does not have a selection
+      // add error classes to the dropdown, and hint message
+      // aria-control error-listbox?
+      // get rid of unneccesary ids in the dropdown.html?
+    // let dropdownCombo = $(currentDropdownElement).closest('.combo');
+    // let comboInput =  $(dropdownCombo).find('.combo-input')[0];
+    // comboInput.addClass("sl-input-error");
+
+
+    // hide hint-helper-text and show error-helper text
+
+  }
+
+  /**
+  * Remove dropdown error styling
+  */
+  function removeErrorStyles() {
+
+    // after clicking form submit button
+    // if the dropdown does not have a selection
+      // remove error classes to the dropdown, and hint message
+
+
+    // let dropdownCombo = $(currentDropdownElement).closest('.combo');
+    // let comboInput =  $(dropdownCombo).find('.combo-input')[0];
+    // comboInput.removeClass("sl-input-error");
+
 
   }
 
