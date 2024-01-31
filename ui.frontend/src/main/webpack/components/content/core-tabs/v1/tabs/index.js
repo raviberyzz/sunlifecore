@@ -37,11 +37,14 @@ $(document).ready(function() {
     if($keyName === "ArrowRight"){
       $currentItem = $thisKey.next('.nav-item');
       $currentItem = $currentItem.index() < 0 ? $navItem.first() :$currentItem;
+      if($currentItem.index() === 0) {
+        $navItem.show();
+      }
       navigateTabOnArrowKey($currentItem);
     }
     else if($keyName === "ArrowLeft"){
       $currentItem = $thisKey.prev('.nav-item'); 
-      $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;       
+      $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
       navigateTabOnArrowKey($currentItem);
     }    
     if($currentItem && $currentItem.index()){
