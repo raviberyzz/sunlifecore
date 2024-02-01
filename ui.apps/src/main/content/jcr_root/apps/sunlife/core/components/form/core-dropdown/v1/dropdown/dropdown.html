@@ -13,10 +13,9 @@
                     <div class="combo-input-selected d-none">${options.placeholderText}</div> 
                     <span class="sl-icon fal fa-chevron-down"></span>
                 </div>
-                <div class="combo-menu" role="listbox" id="default-listbox${options.id}" aria-labelledby="default-label${options.id}"
-                    tabindex="-1">
+                <div class="combo-menu" role="listbox" id="default-listbox${options.id}" aria-labelledby="default-label${options.id}" tabindex="-1">
                     <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
-                        <div class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
+                        <div id="option-${itemsList.index}" class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
                     </sly>
                 </div>
             </div>

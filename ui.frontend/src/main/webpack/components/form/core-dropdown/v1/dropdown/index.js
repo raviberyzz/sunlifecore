@@ -36,6 +36,7 @@
     let currentComboInput = e.currentTarget;
     let combo = $(currentComboInput).closest('.combo');
     let currentOptionSelected = $(currentComboInput).next().find(".option-current");
+    let comboInput = combo.find(".combo-input")[0];
 
     if (e.keyCode == '40') { // down arrow
 
@@ -48,10 +49,13 @@
         if (currentOptionSelected.next().length) { // not last option
           $(currentOptionSelected).toggleClass("option-current");
           $(currentOptionSelected).next().toggleClass("option-current");
+          let selectedOptionID = $(currentOptionSelected).next()[0].getAttribute("id");
+          comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
       } else { // first option
-
         $(currentComboInput).next().children(":first").toggleClass("option-current");
+        let selectedOptionID = $(currentComboInput).next().children(":first")[0].getAttribute("id");
+        comboInput.setAttribute("aria-activedescendant", selectedOptionID);
       }
     } else if (e.keyCode == '38') { // up arrow
 
@@ -64,9 +68,13 @@
         if (currentOptionSelected.prev().length) {
           $(currentOptionSelected).toggleClass("option-current");
           $(currentOptionSelected).prev().toggleClass("option-current");
+          let selectedOptionID = $(currentOptionSelected).prev()[0].getAttribute("id");
+          comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
       } else { // first option
         $(currentComboInput).next().children(":first").toggleClass("option-current");
+        let selectedOptionID = $(currentComboInput).next().children(":first")[0].getAttribute("id");
+        comboInput.setAttribute("aria-activedescendant", selectedOptionID);
       }
     } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key
 
@@ -101,8 +109,8 @@
 
     appendSelectedText(currentDropdownElement, linkText);
     selectOption(currentDropdownElement);
-    $(dropdownCombo).toggleClass("open");
     comboInput.setAttribute("aria-expanded", "false");
+    comboInput.removeAttribute("aria-activedescendant");
     raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));    
   }
 
@@ -121,6 +129,7 @@
       $(dropDown).find('label').addClass("active");
     } else {
       $(dropDown).find('label').removeClass("active");
+      $(dropDown).closest('.combo').find('.combo-input')[0].removeAttribute("aria-activedescendant");
     }
   }
 
@@ -135,6 +144,7 @@
       $(dropDown).find('.combo-input-selected').addClass("d-none");
       $(dropDown).find('label').removeClass("raised active");
     }
+    $(dropDown)[0].removeAttribute("aria-activedescendant");
   }
 
   /**
