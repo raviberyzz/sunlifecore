@@ -3,7 +3,8 @@
 <sly data-sly-test="${!empty}" 
     data-sly-use.grid="${'layoutUse.js' @ column=layout.numberOfColumn, grid=layout.customGrid}">
         <div 
-            class="row ${layout.containerAlignment} ${layout.spacing} ${properties.debug ? 'debug': ''} ${layout.centerAlign ? 'justify-content-center':''}"
+            data-sly-use.authoringuimode="/libs/wcm/foundation/components/utils/AuthoringUtils.js"
+            class="row ${layout.containerAlignment} ${layout.spacing} ${properties.debug ? 'debug': ''} ${layout.centerAlign ? 'justify-content-center':''} ${authoringuimode.isTouch ? 'pb-5 pt-3': ''}"
             data-section="${layout.dataSection}"
             data-sly-list.col="${grid.columns}">
             
@@ -12,6 +13,7 @@
                     data-sly-set.gridName="${['grid', colList.index] @ join = '-'}">
                     <sly data-sly-resource="${ gridName @ resourceType='wcm/foundation/components/responsivegrid'}"/>
                 </div>
+               
         </div>
 </sly>
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
