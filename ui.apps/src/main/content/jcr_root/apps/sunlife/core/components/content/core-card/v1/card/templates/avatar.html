@@ -1,0 +1,35 @@
+<template data-sly-template.avatar="${@options}">
+  <div class="card" data-sly-test="${options.avatarSize == 'large'}">
+    <div class="sl-avatar">
+      <img src="${properties.imageFileReference}" alt="" class="large" />
+    </div>
+    <div class="card-body">
+      <div class="h2 card-title">${properties.title}</div>
+      <div class="card-text">${properties.description @ context ='html'}</div>
+    </div>
+  </div>
+  <div
+    class="avatar-body card"
+    data-sly-test="${options.avatarSize == 'withBody'}"
+  >
+    <div class="sl-avatar">
+      <img src="${properties.imageFileReference}" alt="" class="medium" />
+    </div>
+    <div class="card-body">
+      <div class="h4 card-title">${properties.title}</div>
+      <div class="card-text">${properties.description @ context ='html'}</div>
+      <div class="avatar-link">
+        <a
+          target="_self"
+          href="${properties.buttonLink}"
+          class="sl-link"
+          >${properties.buttonLabel}<span class="sl-icon-after"
+            ><span class="sl-icon sl-icon-chevron-circle-right"></span></span
+        ></a>
+      </div>
+    </div>
+    <div class="body-quote card-text">
+     ${properties.quote}
+    </div>
+  </div>
+</template>

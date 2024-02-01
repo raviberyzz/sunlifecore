@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Form Dropdown Field">
+    jcr:title="Form Dropdown Field"
+    extraClientlibs="[sunlife.core-author.form-dropdown]">
     <content jcr:primaryType="nt:unstructured">
         <items jcr:primaryType="nt:unstructured">
             <tabs jcr:primaryType="nt:unstructured">
@@ -15,14 +16,21 @@
                                             <mainHeading
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Form Dropdown Properties"/>
+                                            <optionTypes jcr:primaryType="nt:unstructured">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <multiDropDown
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:hideResource="{Boolean}true"/>
+                                                </items>
+                                            </optionTypes>
                                             <title
                                                 jcr:primaryType="nt:unstructured"
-                                                emptyText="Please configure the dropdown title."
-                                                name="./jcr:title"
+                                                sling:hideResource="{Boolean}true"
                                                 required="{Boolean}false"/>
                                             <name
                                                 jcr:primaryType="nt:unstructured"
                                                 emptyText="Please configure the dropdown name."
+                                                fieldLabel="Label"
                                                 name="./name"
                                                 required="{Boolean}true"/>
                                             <id
@@ -31,14 +39,6 @@
                                                 emptyText="Please configure the dropdown id."
                                                 fieldLabel="Dropdown Id"
                                                 name="./id"/>
-                                            <isScreenReader
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check if the title has to be hide and read for screenreader only"
-                                                name="./isScreenReader"
-                                                text="Do you want to Make title hidden"
-                                                uncheckedValue="false"
-                                                value="{Boolean}true"/>
                                             <aria-label
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -89,12 +89,8 @@
                                                                             uncheckedValue="false"
                                                                             value="{Boolean}true"/>
                                                                         <disabled
-                                                                            granite:class="cmp-form-option-item-disabled"
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                                            name="./disabled"
-                                                                            text="Disabled"
-                                                                            value="{Boolean}true"/>
+                                                                            sling:hideResource="{Boolean}true"/>
                                                                     </items>
                                                                 </container>
                                                                 <text
@@ -184,13 +180,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                             <dataTitle
+                                            <dataTitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                               emptyText="Please configure the data title for Analytics."
-												fieldDescription="Please configure the data title for Analytics tracking."
-												fieldLabel="Data Title"
-												name="./dataTitle"/>
+                                                emptyText="Please configure the data title for Analytics."
+                                                fieldDescription="Please configure the data title for Analytics tracking."
+                                                fieldLabel="Data Title"
+                                                name="./dataTitle"/>
                                             <dataSection
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
