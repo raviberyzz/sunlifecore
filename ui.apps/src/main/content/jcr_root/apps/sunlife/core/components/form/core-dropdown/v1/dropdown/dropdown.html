@@ -5,17 +5,16 @@
     <sly data-sly-test="${options.type == 'drop-down'}">
         <div class="sl-dropdown" aria-disabled="false">
             <div class="combo">
-                <div aria-controls="default-listbox${options.id}" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
-                    aria-labelledby="default-label${options.id}" id="${options.id}" class="combo-input" role="combobox"
+                <div aria-controls="listbox${options.id}" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
+                    aria-labelledby="label${options.id}" id="${options.id}" class="combo-input" role="combobox"
                     tabindex="0">
-                    <label for="${options.id}" id="default-label${options.id}">${options.name}</label>
-                    <!-- replace with text from dialog -->
+                    <label for="${options.id}" id="label${options.id}">${options.name}</label>
                     <div class="combo-input-selected d-none">${options.placeholderText}</div> 
                     <span class="sl-icon fal fa-chevron-down"></span>
                 </div>
-                <div class="combo-menu" role="listbox" id="default-listbox${options.id}" aria-labelledby="default-label${options.id}" tabindex="-1">
+                <div class="combo-menu" role="listbox" id="listbox${options.id}" aria-labelledby="label${options.id}" tabindex="-1">
                     <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
-                        <div id="option-${itemsList.index}" class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</div>
+                        <div id="option-${itemsList.index}" class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" data-shortname="${items.shortName}">${items.text}</div>
                     </sly>
                 </div>
             </div>

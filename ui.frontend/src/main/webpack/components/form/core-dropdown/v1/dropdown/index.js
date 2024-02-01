@@ -111,7 +111,8 @@
     selectOption(currentDropdownElement);
     comboInput.setAttribute("aria-expanded", "false");
     comboInput.removeAttribute("aria-activedescendant");
-    raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));    
+    raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));
+    dropDownOnBlur(e);    
   }
 
   /**
