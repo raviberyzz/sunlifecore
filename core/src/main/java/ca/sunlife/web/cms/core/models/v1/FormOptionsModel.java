@@ -35,4 +35,7 @@ public class FormOptionsModel extends OptionsImpl {
 
 	@ValueMapValue
 	private String spacing;
+	
+	@ValueMapValue
+	private String layout;
 }

@@ -18,6 +18,15 @@
                                                 fieldDescription="Please enter the id for this textfield"
                                                 fieldLabel="Element Id"
                                                 name="./id"/>
+											<iconPosition
+                                                jcr:primaryType="nt:unstructured"
+												sling:orderBefore="name"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
+                                                name="./iconPosition"
+                                                text="Trailing Icon Position"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

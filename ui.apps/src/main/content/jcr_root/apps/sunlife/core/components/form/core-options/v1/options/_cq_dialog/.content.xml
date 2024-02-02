@@ -24,6 +24,23 @@
                                                 fieldLabel="Title"
                                                 name="./jcr:title"
                                                 required="false"/>
+											<layout
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="title"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Layout"
+                                                name="./layout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <inline
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Inline"
+                                                        value="inline"/>
+                                                    <stacked
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Stacked"
+                                                        value="stacked"/>
+                                                </items>
+                                            </layout>
                                         </items>
                                     </column>
                                 </items>

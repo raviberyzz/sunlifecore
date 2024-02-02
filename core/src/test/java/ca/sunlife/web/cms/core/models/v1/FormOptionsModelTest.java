@@ -31,7 +31,8 @@ public class FormOptionsModelTest {
     	assertEquals("test-required", formOptionsModel.getRequired());
     	assertEquals("test-constraintMessage", formOptionsModel.getConstraintMessage());
     	assertEquals("test-dataSection", formOptionsModel.getDataSection());
-    	assertEquals("mb-s18", formOptionsModel.getSpacing());    	
+    	assertEquals("mb-s18", formOptionsModel.getSpacing()); 
+    	assertEquals("inline", formOptionsModel.getLayout()); 
 	}
 	
 }
