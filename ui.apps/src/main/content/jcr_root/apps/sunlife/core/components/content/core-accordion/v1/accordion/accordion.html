@@ -1,18 +1,18 @@
 <div
-        data-sly-use.accordion="ca.sunlife.web.cms.core.models.v1.AccordionModel"
-        class="sl-accordion ${accordion.spacing}"
-        data-sl-component="accordion"
-        aria-label="${accordion.accessibilityLabel}"
-        data-title="${accordion.dataTitle}"
+  data-sly-use.accordion="ca.sunlife.web.cms.core.models.v1.AccordionModel"
+  class="sl-accordion ${accordion.spacing}"
+  data-sl-component="accordion"
+  aria-label="${accordion.accessibilityLabel}"
+  data-title="${accordion.dataTitle}"
 >
   <div class="container">
     <div class="accordion">
       <div
-              data-sly-test="${accordion.items.size > 0}"
-              data-sly-repeat.item="${accordion.items}"
-              class="accordion-item ${item.name in accordion.expandedItems ? 'expand-collapse' : ''}"
-              data-cmp-hook-accordion="item"
-              data-cmp-expanded="${item.name in accordion.expandedItems}"
+        data-sly-test="${accordion.items.size > 0}"
+        data-sly-repeat.item="${accordion.items}"
+        class="accordion-item ${item.name in accordion.expandedItems ? 'expand-collapse' : ''}"
+        data-cmp-hook-accordion="item"
+        data-cmp-expanded="${item.name in accordion.expandedItems}"
       >
         <div
           data-sly-element="${accordion.headingElement @ context='elementName'}"
