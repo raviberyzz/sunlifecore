@@ -80,7 +80,20 @@
         });
         HEADERSELECTOR.$menuOpen.click(callMenuOpen);
         HEADERSELECTOR.$menuClose.click(callMenuClose);
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 70) {
+                document.getElementById('nav-header').classList.add('fixed-top');
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            } else {
+                document.getElementById('nav-header').classList.remove('fixed-top');
+                document.body.style.paddingTop = '0';
+            }
+        });
     }
+
+   
  
     function isModuleExist() {
         if($('.header').length <= 0) {
