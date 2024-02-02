@@ -1,0 +1,75 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/design-system.scss';
+
+.sl-left-nav {
+
+    @include media-breakpoint-down(lg) {
+        display: none;
+    }
+
+     ul, .sub-menu.show {
+        display: flex;
+        gap: 1rem;
+    }
+
+     .nav-item {
+        width: 100%;
+
+        .nav-link {
+            color: var(--grey-700);
+            font-family: "Sun Life New Text Regular", "Helvetica Neue", "Calibri", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            text-decoration: none;
+            padding: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+            
+            &:focus-visible {
+                outline: none;
+                box-shadow: 0 0 0 0.125rem var(--brand-tertiary-500);
+            }
+
+            &.active{
+                color: var(--grey-900);
+                font-family: "Sun Life New Text Bold",Helvetica Neue,Calibri,sans-serif;
+                font-weight: 700;
+                text-decoration: none;
+            }
+                    
+            .nav-link svg.sl-icon {
+                margin-left: 1rem;
+                vertical-align: middle;
+            }
+            
+            .nav-link[aria-expanded='true'] .sl-icon.fa-chevron-down {
+                transform: rotate(180deg);
+            }
+        }
+
+        &.nav-content{
+            flex: 1;
+        }
+
+        .sub-menu li:first-child {
+            margin-top: 1rem; 
+            width: 100%
+        }
+        
+        .sub-menu .nav-link {
+            margin-left: 1.5rem;
+            display: flex;
+            justify-content: flex-start;
+        
+        }
+    }
+
+    &.nav-dropdown {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

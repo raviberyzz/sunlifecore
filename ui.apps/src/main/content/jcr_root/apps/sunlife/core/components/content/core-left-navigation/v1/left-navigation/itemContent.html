@@ -1,19 +1,23 @@
 <template data-sly-template.itemContent="${@ item='The navigation item'}">
-	  <sly data-sly-test="${item.level==0}">
-         <a class="cmp-navigation__item-link"> ${item.title}</a>
-	  </sly>
-      <sly data-sly-test="${(item.level==1) && !(item.level==0)}" >
-          <sly data-sly-test="${item.getChildren.size>0 }">
-              <a data-toggle="collapse" aria-current="${item.active && 'page'}" aria-expanded="false"
-               class="cmp-navigation__item-link ${item.active ? ' cmp-navigation__item--active' : ''}" tabindex="0" >${item.title}</a>
-          </sly>
-           <sly data-sly-test="${item.getChildren.size==0}">
-              <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
-               class="cmp-navigation__item-link ${item.active ? ' cmp-navigation__item--active' : ''}" >${item.title}</a>
-          </sly>
+    <sly data-sly-test="${item.level==0}">
+
+       <sly data-sly-test="${item.getChildren.size>0 }">
+            <a class="nav-dropdown nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="${item.title}">
+              <span class="nav-content">${item.title}</span> <span class="sl-icon fak fa-chevron-down sl-icon_size_md"></span></a>
       </sly>
-      <sly data-sly-test="${!(item.level==1) && !(item.level==0)}">
-		   <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
-           class="cmp-navigation__item-link ${item.active ? ' cmp-navigation__item--active' : ''}" >${item.title}</a>
-	  </sly>
+       <sly data-sly-test="${item.getChildren.size==0}">
+          <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
+           class="cmp-navigation__item-link nav-link ${item.active ? ' cmp-navigation__item--active active' : ''}" >${item.title}</a>
+      </sly>
+    </sly>
+    <sly data-sly-test="${(item.level==1) && !(item.level==0)}" >
+        <sly data-sly-test="${item.getChildren.size>0 }">
+              <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
+              class="cmp-navigation__item-link nav-link ${item.active ? ' cmp-navigation__item--active active' : ''}" >${item.title}</a>
+        </sly>
+         <sly data-sly-test="${item.getChildren.size==0}">
+            <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
+             class="cmp-navigation__item-link nav-link ${item.active ? ' cmp-navigation__item--active' : ''}" >${item.title}</a>
+        </sly>
+    </sly>
 </template>

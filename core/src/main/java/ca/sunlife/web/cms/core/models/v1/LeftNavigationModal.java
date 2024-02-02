@@ -25,8 +25,10 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.*;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -34,7 +36,7 @@ import javax.jcr.RangeIterator;
 import javax.jcr.RepositoryException;
 import java.util.*;
 
-@ Model (adaptables = SlingHttpServletRequest.class, adapters = LeftNavigationModal.class, resourceType = LeftNavigationModal.RESOURCE_TYPE)
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = LeftNavigationModal.class, resourceType = LeftNavigationModal.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LeftNavigationModal implements Navigation {
 
   /** The Constant RESOURCE_TYPE. */
