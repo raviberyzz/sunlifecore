@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:primaryType="nt:unstructured"
           jcr:title="Card Container"
-          sling:resourceType="cq/gui/components/authoring/dialog">
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[sunlife.core.author.dynamic-card-container]">
     <content
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+            granite:id="dynamic-card-tab-hide-show">
         <items jcr:primaryType="nt:unstructured">
             <column
                     jcr:primaryType="nt:unstructured"
@@ -45,40 +47,49 @@
                                                             fieldLabel="Card Type"
                                                             fieldDescription="Select the type of card. Different types provide various customization options."
                                                             name="./cardType"
-                                                            text="Card Type">
+                                                            text="Card Type"
+                                                            granite:id="dynamic-card-container-dropdown">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <horizontal
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Horizontal"
-                                                                    value="horizontal"/>
+                                                                    value="horizontal"
+                                                                    granite:class="horizontal"/>
                                                             <vertical
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Vertical"
-                                                                    value="vertical"/>
+                                                                    value="vertical"
+                                                                    granite:class="vertical"/>
                                                             <avatar
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Avatar"
-                                                                    value="avatar"/>
+                                                                    value="avatar"
+                                                                    granite:class="avatar"/>
                                                             <banner
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Banner"
-                                                                    value="banner"/>
+                                                                    value="banner"
+                                                                    granite:class="banner"/>
                                                             <banner-image
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Banner Image"
-                                                                    value="banner-image"/>
+                                                                    value="banner-image"
+                                                                    granite:class="banner-image"/>
                                                             <media
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Media"
-                                                                    value="media"/>
+                                                                    value="media"
+                                                                    granite:class="media"/>
                                                             <segmented
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Segmented"
-                                                                    value="segmented"/>
+                                                                    value="segmented"
+                                                                    granite:class="segmented"/>
                                                             <statistic
                                                                     jcr:primaryType="nt:unstructured"
                                                                     text="Statistic"
-                                                                    value="statistic"/>
+                                                                    value="statistic"
+                                                                    granite:class="statistic"/>
                                                         </items>
                                                     </cardType>
                                                 </items>
@@ -436,92 +447,12 @@
                             </statistics>
                             <analytics
                                     jcr:primaryType="nt:unstructured"
-                                    jcr:title="Analytics"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                                    margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <columns
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                            margin="{Boolean}true">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <column
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <analyticsDataSection
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            fieldLabel="Analytics Data Section"
-                                                            name="./analyticsDataSection"/>
-                                                </items>
-                                            </column>
-                                        </items>
-                                    </columns>
-                                </items>
-                            </analytics>
+                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                    path="/apps/sunlife/core/components/common/editor/dialog/analytics"/>
                             <spacing
                                     jcr:primaryType="nt:unstructured"
-                                    jcr:title="Spacing"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                                    margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <columns
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                            margin="{Boolean}true">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <column
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <spacing
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                            fieldLabel="Spacing"
-                                                            name="./spacing"
-                                                            text="Spacing">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <threexs
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="3XS"
-                                                                    value="3xs"/>
-                                                            <twoxs
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="2XS"
-                                                                    value="2xs"/>
-                                                            <xs
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="XS"
-                                                                    value="xs"/>
-                                                            <s
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="S"
-                                                                    value="s"/>
-                                                            <m
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="M"
-                                                                    value="m"/>
-                                                            <l
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="L"
-                                                                    value="l"/>
-                                                            <xl
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="XL"
-                                                                    value="xl"/>
-                                                            <threexl
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="3XL"
-                                                                    value="3xl"/>
-                                                        </items>
-                                                    </spacing>
-                                                </items>
-                                            </column>
-                                        </items>
-                                    </columns>
-                                </items>
-                            </spacing>
+                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                    path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
                         </items>
                     </tabs>
                 </items>
