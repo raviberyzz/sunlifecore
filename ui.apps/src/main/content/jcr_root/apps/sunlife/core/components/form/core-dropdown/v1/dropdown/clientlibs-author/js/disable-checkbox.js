@@ -2,13 +2,19 @@
     "use strict"
     $(document).on('dialog-ready', function() {
         checkToDisableCheckbox();
-        // Calling method to disable/enable checkbox on dialog load 
+        /* Calling method to disable/enable checkbox on dialog load */
         $('.list-option-listfrom-showhide-target').on('click', '.coral3-Checkbox-input[name*="./selected"]', checkToDisableCheckbox);
         $('.list-option-listfrom-showhide-target').on('click', 'button[coral-multifield-add]', processOnAddingToMultifield);
         $(document).on('click', "button[class*='coral3-Multifield-remove']", processOnDeletingFromMultifield);
     });
     function processOnDeletingFromMultifield() {
-        if ($(this).closest(':has("input.coral3-Checkbox-input")').find('input.coral3-Checkbox-input').is(':checked')) {
+        var isChecked = false;
+        var $closestParent = $(this).closest('.coral3-Checkbox');
+        if($closestParent.length){
+            var $checkbox = $closestParent.find('input.coral3-Checkbox-input');
+            isChecked = $checkbox.is(':checked');
+        }
+        if(!isChecked){
             $('.coral3-Checkbox-input[name*="./selected"]').each(function() {
                 $(this).attr('disabled', false);
             });
@@ -50,4 +56,4 @@
             });
         });
     }
-})($, $(document));
+})($, $(document))
