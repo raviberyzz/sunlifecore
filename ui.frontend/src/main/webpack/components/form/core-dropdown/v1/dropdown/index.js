@@ -39,45 +39,40 @@
     let comboInput = combo.find(".combo-input")[0];
 
     if (e.keyCode == '40') { // down arrow
-
-      $(combo).addClass("open");
-      currentComboInput.setAttribute("aria-expanded", "true");
-      raiseLabel(currentComboInput);
-
-      if (currentOptionSelected.length) {
-
-        if (currentOptionSelected.next().length) { // not last option
+      if ($(combo).hasClass("open")) { // not first down press
+        if (currentOptionSelected.length == 0) { // first dropdown option
+          $(currentComboInput).next().children(":first").toggleClass("option-current");          
+          let selectedOptionID = $(currentComboInput).next().find(".option-current")[0].getAttribute("id");
+          comboInput.setAttribute("aria-activedescendant", selectedOptionID);
+        } else if (currentOptionSelected.next().length) { // not last option
           $(currentOptionSelected).toggleClass("option-current");
           $(currentOptionSelected).next().toggleClass("option-current");
           let selectedOptionID = $(currentOptionSelected).next()[0].getAttribute("id");
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
-        }
-      } else { // first option
-        $(currentComboInput).next().children(":first").toggleClass("option-current");
-        let selectedOptionID = $(currentComboInput).next().children(":first")[0].getAttribute("id");
-        comboInput.setAttribute("aria-activedescendant", selectedOptionID);
+        }        
+      } else { // first down press
+        $(combo).addClass("open");
+        currentComboInput.setAttribute("aria-expanded", "true");
+        raiseLabel(currentComboInput);
       }
     } else if (e.keyCode == '38') { // up arrow
-
-      $(combo).addClass("open");
-      currentComboInput.setAttribute("aria-expanded", "true");
-      raiseLabel(currentComboInput);
-
-      if (currentOptionSelected.length) { // not first option
-
-        if (currentOptionSelected.prev().length) {
+      if ($(combo).hasClass("open")) { // not first down press
+        if (currentOptionSelected.length == 0) { // first dropdown option
+          $(currentComboInput).next().children(":first").toggleClass("option-current");
+          let selectedOptionID = $(currentComboInput).next().find(".option-current")[0].getAttribute("id");
+          comboInput.setAttribute("aria-activedescendant", selectedOptionID);
+        } else if (currentOptionSelected.prev().length) { // not last option
           $(currentOptionSelected).toggleClass("option-current");
           $(currentOptionSelected).prev().toggleClass("option-current");
           let selectedOptionID = $(currentOptionSelected).prev()[0].getAttribute("id");
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
-      } else { // first option
-        $(currentComboInput).next().children(":first").toggleClass("option-current");
-        let selectedOptionID = $(currentComboInput).next().children(":first")[0].getAttribute("id");
-        comboInput.setAttribute("aria-activedescendant", selectedOptionID);
+      } else { // first down press
+        $(combo).addClass("open");
+        currentComboInput.setAttribute("aria-expanded", "true");
+        raiseLabel(currentComboInput);
       }
     } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key
-
       let currOpt = $(currentComboInput).next().find(".option-current");
       currOpt.mousedown();
     } else if (e.type == 'mousedown') { // mousedown event
@@ -144,7 +139,8 @@
     if (!optionSelected) {
       $(dropDown).find('.combo-input-selected').addClass("d-none");
       $(dropDown).find('label').removeClass("raised active");
-    }
+    } 
+    $(dropDown).next().find(".option-current").removeClass("option-current");
     $(dropDown)[0].removeAttribute("aria-activedescendant");
   }
 
