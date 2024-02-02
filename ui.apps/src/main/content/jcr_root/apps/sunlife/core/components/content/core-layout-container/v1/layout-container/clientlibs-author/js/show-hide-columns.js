@@ -46,7 +46,6 @@
         }
     }
     function showHideFooterCheckbox(component, findelement) {
-    console.log("Inside showHideFooterCheckbox");
         var $findelement = $(findelement);
         if (component.checked) {
             $findelement.nextAll(".togglecolumnfield").first().removeClass("hide");
