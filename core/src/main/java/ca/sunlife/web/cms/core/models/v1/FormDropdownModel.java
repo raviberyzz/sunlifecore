@@ -6,7 +6,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.day.cq.commons.jcr.JcrConstants;
 
 /**
  * The FormDropDownModel is a sling model associated with Form dropdown
@@ -17,14 +16,8 @@ import com.day.cq.commons.jcr.JcrConstants;
 @Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface FormDropdownModel {
 
-	@ValueMapValue(name = JcrConstants.JCR_TITLE)
-	String getTitle();
-
 	@ValueMapValue
 	String getId();
-
-	@ValueMapValue
-	String getIsScreenReader();
 
 	@ValueMapValue
 	String getDataTitle();
@@ -69,17 +62,11 @@ public interface FormDropdownModel {
 		boolean isSelected();
 
 		@ValueMapValue
-		boolean isDisabled();
-
-		@ValueMapValue
 		String getShortName();
 
 	}
 
 	@ValueMapValue
 	String getSpacing();
-
-	@ValueMapValue
-	String getCustomActionGenerationRequired();
 
 }
