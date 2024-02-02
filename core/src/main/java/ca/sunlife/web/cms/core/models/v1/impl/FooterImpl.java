@@ -38,21 +38,20 @@ public class FooterImpl implements Footer {
 
     @ValueMapValue
     private String slfText;
-	
-	@ValueMapValue
+
+    @ValueMapValue
     private String screenReaderText;
 
     @ValueMapValue
     private Boolean feedback;
-
+    @ValueMapValue
+    private Boolean displayTopSection;
     @ValueMapValue
     private String dataSection;
 
     @ValueMapValue
     private String spacing;
 
-    @ValueMapValue
-    private String showSections;
     @ChildResource
     private Resource topLinks;
 
@@ -78,8 +77,8 @@ public class FooterImpl implements Footer {
     public String getSlfText() {
         return slfText;
     }
-	
-	@Override
+
+    @Override
     public String getScreenReaderText() {
         return screenReaderText;
     }
@@ -90,13 +89,15 @@ public class FooterImpl implements Footer {
     }
 
     @Override
+    public Boolean getDisplayTopSection() {
+        return this.displayTopSection;
+    }
+
+    @Override
     public String getDataSection() {
         return dataSection;
     }
-    @Override
-    public String getShowSections() {
-        return showSections;
-    }
+
     @Override
     public String getSpacing() {
         return spacing;
