@@ -3,10 +3,6 @@
 
 .sl-left-nav {
 
-    @include media-breakpoint-down(lg) {
-        display: none;
-    }
-
      ul, .sub-menu.show {
         display: flex;
         gap: 1rem;
@@ -40,13 +36,19 @@
                 text-decoration: none;
             }
                     
-            .nav-link svg.sl-icon {
+            svg.sl-icon {
                 margin-left: 1rem;
                 vertical-align: middle;
             }
             
-            .nav-link[aria-expanded='true'] .sl-icon.fa-chevron-down {
+            &[aria-expanded='true'] .sl-icon.fa-chevron-down {
                 transform: rotate(180deg);
+            }
+            
+            &.nav-dropdown {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
         }
 
@@ -67,9 +69,9 @@
         }
     }
 
-    &.nav-dropdown {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+
+
+    @include media-breakpoint-down(lg) {
+        display: none;
     }
 }
