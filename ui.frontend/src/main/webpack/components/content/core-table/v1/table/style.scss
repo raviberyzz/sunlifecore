@@ -13,12 +13,7 @@
     }
     tr{
         border-color: var(--bs-border-color);
-        &:first-child {
-            td {
-                @include table-column;
-            }
-        }
-        th {
+        &:first-child td, th {
             @include table-column;
         }
         td {
