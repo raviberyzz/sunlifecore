@@ -10,14 +10,14 @@ public interface Footer {
     String getRichText();
 
     String getSlfText();
-	
+
 	String getScreenReaderText();
 
     Boolean getFeedback();
 
-    String getDataSection();
+    Boolean getDisplayTopSection();
 
-    String getShowSections();
+    String getDataSection();
 
     String getSpacing();
 

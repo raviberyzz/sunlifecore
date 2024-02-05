@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:primaryType="nt:unstructured"
           jcr:title="Footer"
-          sling:resourceType="cq/gui/components/authoring/dialog">
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[sunlife.core-author.layout-container]">
     <content
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -12,40 +15,6 @@
                     sling:resourceType="granite/ui/components/coral/foundation/tabs"
                     maximized="true">
                 <items jcr:primaryType="nt:unstructured">
-                    <showSections
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Show Sections"
-                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                            margin="true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <column
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <showSections
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Target"
-                                            name="./showSections">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <option1
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Show Top"
-                                                    value="showTop"/>
-                                            <option2
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Show Bottom"
-                                                    value="showBottom"/>
-                                            <option3
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Show Both"
-                                                    value="showBoth"/>
-                                        </items>
-                                    </showSections>
-                                </items>
-                            </column>
-                        </items>
-                    </showSections>
                     <topSection
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Top Section"
@@ -56,86 +25,105 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <accordion
+                                    <displayTopSection
+                                            granite:class="cq-dialog-column-checkbox-showhide"
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                            composite="{Boolean}true"
-                                            fieldLabel="Top Links">
-                                        <field
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./displayTopSection"
+                                            text="Display Top Section"
+                                            uncheckedValue="false"
+                                            value="{Boolean}true">
+                                        <granite:data
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                name="./topLinks">
-                                            <items jcr:primaryType="nt:unstructured">
-                                                <column
+                                                cq-dialog-column-checkbox-showhide-target=".togglecolumnfield "/>
+                                    </displayTopSection>
+                                    <topLinks
+                                            granite:class="togglecolumnfield hide "
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <topLinks
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Top Links">
+                                                <field
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./topLinks">
                                                     <items jcr:primaryType="nt:unstructured">
-                                                        <title
+                                                        <column
                                                                 jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Heading"
-                                                                name="./heading"/>
-                                                        <accordion
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                                composite="{Boolean}true"
-                                                                fieldLabel="Links">
-                                                            <field
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                    name="./links">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <column
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <title
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Heading"
+                                                                        name="./heading"/>
+                                                                <accordion
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                        composite="{Boolean}true"
+                                                                        fieldLabel="Links">
+                                                                    <field
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                            name="./links">
                                                                         <items jcr:primaryType="nt:unstructured">
-                                                                            <linkName
+                                                                            <column
                                                                                     jcr:primaryType="nt:unstructured"
-                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                    fieldLabel="Link Name"
-                                                                                    name="./linkName"/>
-                                                                            <linkURL
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                                    fieldLabel="Link Url"
-                                                                                    name="./linkURL"
-                                                                                    required="{Boolean}true"/>
-                                                                            <langAttribute
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                    fieldLabel="Lang Attribute"
-                                                                                    name="./langAttribute"/>
-                                                                            <dataTitle
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                    fieldLabel="Data Title"
-                                                                                    name="./dataTitle"/>
-                                                                            <linkTarget
-                                                                                    jcr:primaryType="nt:unstructured"
-                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                                    fieldLabel="Target"
-                                                                                    name="./linkTarget">
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                                 <items jcr:primaryType="nt:unstructured">
-                                                                                    <option1
+                                                                                    <linkName
                                                                                             jcr:primaryType="nt:unstructured"
-                                                                                            text="Same Tab"
-                                                                                            value="sameTab"/>
-                                                                                    <option2
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                            fieldLabel="Link Name"
+                                                                                            name="./linkName"/>
+                                                                                    <linkURL
                                                                                             jcr:primaryType="nt:unstructured"
-                                                                                            text="New Tab"
-                                                                                            value="newTab"/>
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                                            fieldLabel="Link Url"
+                                                                                            name="./linkURL"
+                                                                                            required="{Boolean}true"/>
+                                                                                    <langAttribute
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                            fieldLabel="Lang Attribute"
+                                                                                            name="./langAttribute"/>
+                                                                                    <dataTitle
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                            fieldLabel="Data Title"
+                                                                                            name="./dataTitle"/>
+                                                                                    <linkTarget
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                            fieldLabel="Target"
+                                                                                            name="./linkTarget">
+                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                            <option1
+                                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                                    text="Same Tab"
+                                                                                                    value="sameTab"/>
+                                                                                            <option2
+                                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                                    text="New Tab"
+                                                                                                    value="newTab"/>
+                                                                                        </items>
+                                                                                    </linkTarget>
                                                                                 </items>
-                                                                            </linkTarget>
+                                                                            </column>
                                                                         </items>
-                                                                    </column>
-                                                                </items>
-                                                            </field>
-                                                        </accordion>
+                                                                    </field>
+                                                                </accordion>
+                                                            </items>
+                                                        </column>
                                                     </items>
-                                                </column>
-                                            </items>
-                                        </field>
-                                    </accordion>
+                                                </field>
+                                            </topLinks>
+                                        </items>
+                                    </topLinks>
                                 </items>
                             </column>
                         </items>
@@ -155,13 +143,12 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Title"
                                             name="./title"/>
-                                     <richText
+                                    <richText
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                             name="./richText"
                                             useFixedInlineToolbar="{Boolean}true">
                                         <rtePlugins jcr:primaryType="nt:unstructured">
-										
                                             <format
                                                     jcr:primaryType="nt:unstructured"
                                                     features="bold,italic"/>
@@ -196,80 +183,80 @@
                                                     </chars>
                                                 </specialCharsConfig>
                                             </misctools>
-											<styles
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*">
-                                                        <styles jcr:primaryType="nt:unstructured">
-                                                            <footer-body
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    cssName="footer-body"
-                                                                    text="Footer Body"/>
-															 <footer-copy
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="footer-copy"
-                                                                text="Footer Copyright"/>
-                                                            <body-medium
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-medium"
-                                                                text="Body Medium"/>
-                                                            <body-small
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-small"
-                                                                text="Body Small"/>
-                                                            <body-xs
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-xs"
-                                                                text="Body XS"/>
-                                                            <body-medium-bold
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-medium-bold"
-                                                                text="Body Medium Bold"/>
-                                                            <body-small-bold
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-small-bold"
-                                                                text="Body Small Bold"/>
-                                                            <body-xs-bold
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-xs-bold"
-                                                                text="Body XS Bold"/>
-                                                            <body-medium-italic
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-medium-italic"
-                                                                text="Body Medium Italic"/>
-                                                            <label-small
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="label-small"
-                                                                text="Label Small"/>
-                                                            <body-navigation
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="body-navigation"
-                                                                text="Navigation"/>
-                                                            <text-accessibility
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="visually-hidden"
-                                                                text="Screen Reader Only Text"/>
-                                                            <heading-1
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h1"
-                                                                text="Heading 1"/>
-                                                            <heading-2
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h2"
-                                                                text="Heading 2"/>
-                                                            <heading-3
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h3"
-                                                                text="Heading 3"/>
-                                                            <heading-4
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h4"
-                                                                text="Heading 4"/>
-                                                            <heading-5
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="h5"
-                                                                text="Heading 5"/>
-                                                        </styles>
-                                                    </styles>
+                                            <styles
+                                                    jcr:primaryType="nt:unstructured"
+                                                    features="*">
+                                                <styles jcr:primaryType="nt:unstructured">
+                                                    <footer-body
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="footer-body"
+                                                            text="Footer Body"/>
+                                                    <footer-copy
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="footer-copy"
+                                                            text="Footer Copyright"/>
+                                                    <body-medium
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-medium"
+                                                            text="Body Medium"/>
+                                                    <body-small
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-small"
+                                                            text="Body Small"/>
+                                                    <body-xs
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-xs"
+                                                            text="Body XS"/>
+                                                    <body-medium-bold
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-medium-bold"
+                                                            text="Body Medium Bold"/>
+                                                    <body-small-bold
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-small-bold"
+                                                            text="Body Small Bold"/>
+                                                    <body-xs-bold
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-xs-bold"
+                                                            text="Body XS Bold"/>
+                                                    <body-medium-italic
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-medium-italic"
+                                                            text="Body Medium Italic"/>
+                                                    <label-small
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="label-small"
+                                                            text="Label Small"/>
+                                                    <body-navigation
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="body-navigation"
+                                                            text="Navigation"/>
+                                                    <text-accessibility
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="visually-hidden"
+                                                            text="Screen Reader Only Text"/>
+                                                    <heading-1
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="h1"
+                                                            text="Heading 1"/>
+                                                    <heading-2
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="h2"
+                                                            text="Heading 2"/>
+                                                    <heading-3
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="h3"
+                                                            text="Heading 3"/>
+                                                    <heading-4
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="h4"
+                                                            text="Heading 4"/>
+                                                    <heading-5
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cssName="h5"
+                                                            text="Heading 5"/>
+                                                </styles>
+                                            </styles>
                                             <paraformat
                                                     jcr:primaryType="nt:unstructured"
                                                     features="*">
@@ -326,7 +313,7 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
                                                                 ref="lists"/>
-														<styles
+                                                        <styles
                                                                 jcr:primaryType="nt:unstructured"
                                                                 items="styles:getStyles:styles-pulldown"
                                                                 ref="styles"/>
@@ -342,10 +329,6 @@
                                             </cui>
                                         </uiSettings>
                                     </richText>
-											
-											
-											
-											
                                 </items>
                             </column>
                         </items>
@@ -438,10 +421,8 @@
                                                         <link
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-																fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
                                                                 fieldLabel="Link"
-                                                                name="./link"
-																required="{Boolean}true"/>
+                                                                name="./link"/>
                                                         <dataTitle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -457,11 +438,11 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="SLF Text"
                                             name="./slfText"/>
-									<screenReaderText
+                                    <screenReaderText
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Screen Reader Text"
-                                            name="./screenReaderText"/>		
+                                            name="./screenReaderText"/>
                                     <feedback
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

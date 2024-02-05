@@ -39,4 +39,20 @@ public interface MenuItems {
      */
     @ValueMapValue
     String getMenuItemTarget();
+
+    /**
+     * Gets the boolean value for hideInMobile
+     *
+     * @return the boolean value for hideInMobile
+     */
+    @ValueMapValue
+    boolean getHideInMobile();
+
+    /**
+     * Gets the mobileMenuItemLinkName
+     *
+     * @return the mobileMenuItemLinkName
+     */
+    @ValueMapValue
+    String getMobileMenuItemLinkName();
 }

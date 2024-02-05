@@ -16,12 +16,6 @@
     toolbar.splice(3, 0, GROUP + "#" + FEATURE);
     
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data){
-        // var i,fontSizes='';
-        // for(i=14;i<=36;i=i+2) {
-        //     if(i!=22 && i!=26 && i!=30 && i!=34) {
-        //         fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
-        //     }
-        // }
         return `<div class="rte-dialog-columnContainer">   
             	    <div class="rte-dialog-column">
                         <label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">
@@ -45,6 +39,35 @@
                         </coral-select>
                     </div>
                     <div class=" rte-dialog-column">
+                        <label id="label-vertical-color-0" class="coral-Form-fieldlabel">
+                            Color :</label>
+                        <coral-select class="coral-Form-field" placeholder="Select Color" name="awesomeIconColor" labelledby="label-vertical-color-0">
+                            <coral-select-item value="sl-icon_color_default">
+                                Default </coral-select-item>
+                            <coral-select-item value="sl-icon_color_success">
+                                Success </coral-select-item>
+                            <coral-select-item value="sl-icon_color_information">
+                                Information</coral-select-item>
+                            <coral-select-item value="sl-icon_color_warning">
+                                Warning</coral-select-item>
+                            <coral-select-item value="sl-icon_color_error">
+                                Error</coral-select-item>   
+                        </coral-select>
+                    </div>
+                    <div class="rte-dialog-column">
+                        <label id="label-vertical-font-1" class="coral-Form-fieldlabel">Size :</label>
+                        <coral-select class="coral-Form-field" placeholder="Select Size" name="awesomeIconSize" labelledby="label-vertical-font-1">
+                            <coral-select-item value="sl-icon_size_sm">
+                                Icon SM</coral-select-item>
+                            <coral-select-item value="sl-icon_size_md">
+                                Icon MD</coral-select-item> 
+                            <coral-select-item value="sl-icon_size_lg">
+                                Icon LG</coral-select-item>
+                            <coral-select-item value="sl-icon_size_xl">
+                                Icon XL</coral-select-item> 
+                        </coral-select>
+                    </div>
+                    <div class="rte-dialog-column">
                         <button is="coral-button"style="margin-top:20px;" class="coral3-Button coral3-Button--secondary" size="S" variant="secondary" type="button" icon="close" title="Cancel" aria-label="Cancel" data-type="execCloseIcon" tabindex="-1">
                             <coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--close" icon="close" size="S" role="img" aria-label="close">
                             </coral-icon>
@@ -75,11 +98,13 @@
             this.$saveBtn.on('click',function() {
                 var fClass = dialog.find('[name="awesomeIcon"]').val();
 
-                // var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
+                var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
+
+                var iconColor = dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'';
 
                 var iconClass = dialog.find('[name="awesomeIconType"] > coral-select-item:selected').length > 0 ? dialog.find('[name="awesomeIconType"] > coral-select-item:selected').val():'';
 
-                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} fa-${fClass}` : fClass;
+                fClass = fClass != "" ? `coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ${iconClass} ${iconSize} ${iconColor} fa-${fClass}` : fClass                        ;
 
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
@@ -171,6 +196,7 @@
             dialog.$dialog.find('[name="awesomeIcon"]').val(fontAwesomeClassIcon);
             dialog.$dialog.find('[name="awesomeIconType"] > coral-select-item:selected').removeAttr('selected');
             dialog.$dialog.find('[name="awesomeIconType"]').val(fontAwesomeClassPrefix).change();
+            dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
             
             dm.show(dialog);
         },

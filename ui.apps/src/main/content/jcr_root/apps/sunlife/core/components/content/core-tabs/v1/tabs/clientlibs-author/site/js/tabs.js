@@ -316,10 +316,7 @@
          * @param {Boolean} keepHash true to keep the hash in the URL, false to update it
          */
         function navigateAndFocusTab(index, keepHash) {
-            var exActive = that._active;
-            if (!keepHash && containerUtils) {
-                containerUtils.updateUrlHash(that, "tab", index);
-            }
+            var exActive = that._active;           
             navigate(index);
             focusWithoutScroll(that._elements["tab"][index]);
 
