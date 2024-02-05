@@ -99,7 +99,6 @@ public class LeftNavigationModal implements Navigation {
 
   /** The Skip navigation root */
   @Getter
-  @Setter
   private boolean skipNavigationRoot;
 
   /** The updated list. */
@@ -199,7 +198,7 @@ public class LeftNavigationModal implements Navigation {
     }
 
     Page parentPage;
-    final List <NavigationItem> children1 = new ArrayList <>();
+    final List<NavigationItem> childPages = new ArrayList<>();
     for (final NavigationItem navigationItem : navigationItems) {
 
       if (! navigationItem.getChildren().isEmpty()) {
@@ -207,7 +206,7 @@ public class LeftNavigationModal implements Navigation {
         final boolean isSelected = currentPage.equals(parentPage)
                 || currentPageIsRedirectTarget(parentPage);
         final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, isSelected, request,
-                navigationItem.getLevel() + 1, children1, title,linkManager, component);
+                navigationItem.getLevel() + 1, childPages, title, linkManager, component);
         navigationItem.getChildren().add(0, leftItemImpl);
       }
       processNavigationList(navigationItem.getChildren());
@@ -235,7 +234,7 @@ public class LeftNavigationModal implements Navigation {
           liveCopiesIterator = relationshipManager
                   .getLiveRelationships(navigationRoot.page.adaptTo(Resource.class), null, null);
         } catch (final WCMException e) {
-          // ignore it
+          LOGGER.error("Error while getting live relationships for page {}", navigationRoot.page.getPath(), e);
         }
         if (navigationRootLanguageRoot != null && currentPageLanguageRoot != null
                 && ! navigationRootLanguageRoot.equals(currentPageLanguageRoot)) {
