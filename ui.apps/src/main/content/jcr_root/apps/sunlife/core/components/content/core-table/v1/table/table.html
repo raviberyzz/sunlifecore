@@ -1,7 +1,12 @@
-<sly data-sly-use.tableText="ca.sunlife.web.cms.core.models.v1.TableModal"></sly>
-<sly data-sly-test.empty="${!tableText.tableData}"/>
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly
+  data-sly-use.tableText="ca.sunlife.web.cms.core.models.v1.TableModal"
+></sly>
+<sly data-sly-test.empty="${!tableText.tableData}" />
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
-    <div data-sly-test="${tableText.tableData}" class="cmp-text ${tableText.spacing}">
-		${tableText.tableData @context ='html'}
-	</div>
+<div
+  data-sly-test="${tableText.tableData}"
+  class="sl-table ${tableText.spacing}"
+>
+  ${tableText.tableData @context ='html'}
+</div>

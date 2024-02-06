@@ -34,12 +34,23 @@
         var findelement = $('[name="' + componentname + '"]');
         var $findelement = $(findelement);
 
+        if(componentname == "./displayTopSection"){
+        showHideFooterCheckbox(component, findelement);
+        }else{
+        if (component.checked) {
+                    $findelement.nextAll(".togglecolumnfield").first().removeClass("hide");
+                } else {
+                    $findelement.nextAll(".togglecolumnfield").first().addClass("hide");
+        			$findelement.nextAll(".togglecolumnfield").first().find("input").val('0');
+                }
+        }
+    }
+    function showHideFooterCheckbox(component, findelement) {
+        var $findelement = $(findelement);
         if (component.checked) {
             $findelement.nextAll(".togglecolumnfield").first().removeClass("hide");
-
         } else {
             $findelement.nextAll(".togglecolumnfield").first().addClass("hide");
-			$findelement.nextAll(".togglecolumnfield").first().find("input").val('0');
         }
     }
 })(document, Granite.$);
