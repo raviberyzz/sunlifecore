@@ -21,7 +21,6 @@ $(function () {
     function embedAnalytics(vyApi) {
       !(function (t) {
         function e(t) {
-          console.log("vidyard");
           var e,
             r = null,
             n = [];
