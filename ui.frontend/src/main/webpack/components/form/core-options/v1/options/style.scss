@@ -1,0 +1,8 @@
+.sl-checkbox, .sl-radio {
+    .form-check-label {
+        margin-left: 1rem;
+    }
+    &.form-floating {
+        margin: 15px 0;
+    }
+}
