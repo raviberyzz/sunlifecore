@@ -2,3 +2,11 @@
     padding-right: 16px;
     justify-content: right;
 }
+
+.sl-helper-text.hint-text:has(~ .sl-helper-text.error-text.combo-msg.filled) {
+    display: none;
+}
+
+.fa-exclamation-triangle.sl-icon:not(:has(+ .parsley-custom-error-message)) {
+    display: none;
+}

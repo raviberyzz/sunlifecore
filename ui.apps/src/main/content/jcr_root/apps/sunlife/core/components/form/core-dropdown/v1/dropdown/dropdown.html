@@ -18,8 +18,17 @@
                     </sly>
                 </div>
             </div>
-            <!-- <div id="hint-text-${options.name}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
-            <div id="error-text-${options.name}" class="sl-helper-text error-text combo-msg"><span class="sl-icon sl-icon-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span>Error message</div> -->
-        </div>
+            <div id="hint-text-${options.name}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
+
+            <select name="${options.name}" id="${options.name}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" data-parsley-required  adata-parsley-errors-container="#error-constraint-message-${options.name}" hidden> 
+                <option value="defaultNoneSelected" selected disabled>defaultNoneSelected</option>
+                <sly data-sly-list.items="${options.items}" data-sly-unwrap>
+                    <option value="${items.value}">${items.text}</option>
+                </sly>
+            </select>
+
+        </div>   
+
+
     </sly>
 </sly>

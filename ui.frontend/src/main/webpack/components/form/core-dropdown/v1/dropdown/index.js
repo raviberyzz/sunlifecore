@@ -162,10 +162,33 @@
     if ($(optionElem).closest('.combo-menu').find('.option-selected').length != 0) {
       $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'false');
       $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
+
+      // set select dropdown value to default
+      let selectId= $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+      const $select = document.querySelector('#' + selectId);
+      $select.value = "defaultNoneSelected";
+      // setSelectedValue($select, "defaultNoneSelected");
     }       
     $(optionElem).addClass('option-selected');
     $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');  
+    // set select dropdown value to value of the selected option
+    let selectId= $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+    const $select = document.querySelector('#' + selectId);
+    $select.value = $(optionElem)[0].getAttribute("value");
+    // setSelectedValue($select, $(optionElem)[0].getAttribute("value"));
+
   }
+
+
+  function setSelectedValue(selectObj, valueToSet) {
+    for (var i = 0; i < selectObj.options.length; i++) {
+        if (selectObj.options[i].value== valueToSet) {
+            selectObj.options[i].selected = true;
+            return;
+        }
+    }
+  }
+
 
   /**
   * Initialize the module.
@@ -202,41 +225,36 @@
   }
 
 
-  /**
-  * Add dropdown error styling
-  */
-  function addErrorStyles() {
 
-    // after clicking form submit button
-    // if the dropdown does not have a selection
-      // add error classes to the dropdown, and hint message
-      // aria-control error-listbox?
-      // get rid of unneccesary ids in the dropdown.html?
-    // let dropdownCombo = $(currentDropdownElement).closest('.combo');
-    // let comboInput =  $(dropdownCombo).find('.combo-input')[0];
-    // comboInput.addClass("sl-input-error");
-
-
-    // hide hint-helper-text and show error-helper text
-
-  }
-
-  /**
-  * Remove dropdown error styling
-  */
-  function removeErrorStyles() {
-
-    // after clicking form submit button
-    // if the dropdown does not have a selection
-      // remove error classes to the dropdown, and hint message
+  $('form').parsley().on('form:validate', function (formInstance) {
+      var ok = formInstance.isValid();
+      if (!ok) {
+        $(formInstance).find('.combo-input').addClass('sl-input-error');
+      } else {
+        $(formInstance).find('.combo-input').removeClass('sl-input-error');
+      
+      }
+      // is not valid
+        // add sl-input-error class to combo-input
+      // else
+        // remove class
+  });
 
 
-    // let dropdownCombo = $(currentDropdownElement).closest('.combo');
-    // let comboInput =  $(dropdownCombo).find('.combo-input')[0];
-    // comboInput.removeClass("sl-input-error");
+  $(function() {
 
+    const parsleyConfig = {
+        errorsContainer: function (elem) {
+            console.log(elem);
+            console.log(elem.$element.next('.error-text'));
+            return elem.$element.next('.error-text');
+        },  errorsWrapper: '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>',
+            errorTemplate: '<span></span>'
+    };
 
-  }
+    $('form').parsley(parsleyConfig);
+
+  });
 
   init();
 
