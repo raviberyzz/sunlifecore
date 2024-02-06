@@ -18,6 +18,13 @@
                                                 fieldDescription="Please enter the id for this textfield"
                                                 fieldLabel="Element Id"
                                                 name="./id"/>
+											<icon
+                                                jcr:primaryType="nt:unstructured"
+												sling:orderBefore="name"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Icon identifier for displaying an icon."
+                                                fieldLabel="Icon"
+                                                name="./icon"/>
 											<iconPosition
                                                 jcr:primaryType="nt:unstructured"
 												sling:orderBefore="name"
