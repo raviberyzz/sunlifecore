@@ -68,5 +68,8 @@ public interface FormDropdownModel {
 
 	@ValueMapValue
 	String getSpacing();
+	
+	@ValueMapValue
+	String getLabel();
 
 }
