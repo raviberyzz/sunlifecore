@@ -87,6 +87,9 @@ $(document).ready(function() {
         for(let i = 0; i < activeScrollTab; i++) {
           $navItem.eq(i).addClass("hide").removeClass("show");
         }
+        if(navWidth >= (scrollWidth - $navTab.find(".nav-item:last-child").width())){
+          $rightNavScroll.removeClass("active").addClass("disabled")
+        }
       }
       else{
         $rightNavScroll.removeClass("active").addClass("disabled")
