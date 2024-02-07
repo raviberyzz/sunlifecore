@@ -42,6 +42,7 @@
                                                 required="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
+												granite:class="unique-id"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Please configure the dropdown id."
                                                 fieldLabel="Dropdown Id"
