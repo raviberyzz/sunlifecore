@@ -1,16 +1,16 @@
 <template data-sly-template.signin="${ @ headerModel }">
     <sly data-sly-test="${headerModel.listFromSignin == 'signintrue'}">
         <sly data-sly-list.signinLinks="${headerModel.signinlinks}">
-            <li class="nav-item" data-section="header-sign-in">
-                <a id="signinbutton" href="${signinLinks.getLinkURL @ extension = 'html' }" data-rr-ui-event-key="#" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
+            <li class="nav-item" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=signinLinks.getLinkURL}" data-section="header-sign-in">
+                <a id="signinbutton" href="${utilityListParsing.navPath}" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
                     <div class="label-container">              
-                        <span class="fal ${signinLinks.getLinkIcon} sl-icon" role="presentation"></span>
+                        <span class="fak ${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
                         <span
                             class="dropdown-label d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${signinLinks.getDesktopLinkTitle}
-                        </span>  
-                        <span
-                        class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${signinLinks.getMobileLinkTitle}
-                        </span>  
+                        </span> 
+                        <sly data-sly-test.title="${signinLinks.getMobileLinkTitle ? signinLinks.getMobileLinkTitle : signinLinks.getDesktopLinkTitle}">
+                            <span class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${title}</span> 
+                        </sly>  
                     </div>
                 </a>
            </li>

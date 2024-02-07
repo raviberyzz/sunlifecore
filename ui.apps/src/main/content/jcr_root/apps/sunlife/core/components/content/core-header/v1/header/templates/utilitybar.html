@@ -19,11 +19,12 @@
                            <button type="button" id="sl-region-menu-dd" aria-expanded="false"
                                  data-bs-toggle="dropdown" class="nav-link dropdown-toggle btn btn-primary">
                                  <div class="label-container">                       
-                                 <span class="d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"><span
-                                    class="fak fa-location sl-icon_size_md sl-icon"></span></span><span
+                                 <span
+                                    class="fak fa-location sl-icon_size_md sl-icon d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none dropdown-label-icon"></span><span
                                     class="dropdown-label d-inline-block d-md-inline-block d-lg-inline d-xl-inline d-xxl-inline">${headerModel.regionTitle}
                                  <span class="visually-hidden">${headerModel.srRegionText}</span></span>
-                                <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
+                                <span class="fak fa-chevron-down sl-icon_size_sm sl-icon custom-icon d-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block" role="presentation"></span>
+                                <span class="fak fa-chevron-down sl-icon_size_md sl-icon custom-icon d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none" role="presentation"></span>
                               </div>
                               </button>
                                 <div aria-labelledby="sl-region-menu-dd" class="dropdown-menu dropdown-menu-end">
@@ -48,7 +49,8 @@
                                                     <span class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${title}</span>
                                                 </sly>
                                             <span class="visually-hidden">Change language</span>
-                                        <span class="fal fa-chevron-down sl-icon" role="presentation"></span>
+                                            <span class="fak fa-chevron-down sl-icon_size_sm sl-icon custom-icon d-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block" role="presentation"></span>
+                                            <span class="fak fa-chevron-down sl-icon_size_md sl-icon custom-icon d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none" role="presentation"></span>
                                     </div>
                                 </button>
                                 <ul aria-labelledby="sl-dropdown-toggle-language-utility"

@@ -25,6 +25,9 @@ public interface FormTextModel {
 
 	@ValueMapValue
 	String getId();
+	
+	@ValueMapValue
+	String getIcon();
 
 	@ValueMapValue
 	String getSpacing();

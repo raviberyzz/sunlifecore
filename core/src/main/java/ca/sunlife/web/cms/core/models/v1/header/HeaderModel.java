@@ -172,15 +172,6 @@ public interface HeaderModel {
     @ChildResource
     List<MegaMenuLinks> getMegaMenuLinks();
 
-    /** Mobile Menu */
-    /**
-     * Gets the mobile menu fragment Path
-     *
-     * @return the mobile menu fragment Path
-     */
-    @ValueMapValue
-    String getMobileNavFragmentPath();
-
 
     /** Region */
     /**
