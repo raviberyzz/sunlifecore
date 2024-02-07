@@ -1,7 +1,4 @@
 $(document).ready(function() {
-  let activeScrollTab = 0;    
-  const $leftNavScroll = $(".arrow-btn.left");      
-  const $rightNavScroll = $(".arrow-btn.right");
   //Function used to handle the tab click and key press event
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
@@ -32,7 +29,8 @@ $(document).ready(function() {
     const $thisKey = $(this);
     const $keyName = e.key;    
     const $navTabs = $thisKey.parents(".nav-tabs");
-    const $navItem = $navTabs.find('.nav-item');
+    const $navItem = $navTabs.find('.nav-item');   
+    const $leftNavScroll = $navTab.siblings(".arrow-btn.left"); 
     let $currentItem;
     if($keyName === "ArrowRight"){
       $currentItem = $thisKey.next('.nav-item');
@@ -58,10 +56,10 @@ $(document).ready(function() {
       }
     }
     else {
-      $(".nav-item").removeClass("focused");
-      $(".nav-item .nav-link").attr("tabindex", "-1")
-      $(".nav-item.active").addClass("focused");
-      $(".nav-item.active .nav-link").attr("tabindex", "0")
+      $navItem.removeClass("focused");
+      $navItem.find(".nav-link").attr("tabindex", "-1")
+      $navTabs.find(".nav-item.active").addClass("focused");
+      $navTabs.find(".nav-item.active .nav-link").attr("tabindex", "0")
     }
   }
   //Function used to get the scroll width for all visible tablist
@@ -79,26 +77,31 @@ $(document).ready(function() {
     const $navTab = $currentNav.siblings(".nav-tabs");
     const navWidth = $navTab.width();
     const scrollWidth = getActiveScrollWidth($currentNav);
-    const $navItem = $navTab.find(".nav-item");
+    const $navItem = $navTab.find(".nav-item");     
+    const $leftNavScroll = $navTab.siblings(".arrow-btn.left");      
+    const $rightNavScroll = $navTab.siblings(".arrow-btn.right");
+    let activeScrollTab = parseInt($navTab.attr('data-activeTab'));
     if($currentNav.hasClass("right")){  
       if(navWidth < scrollWidth){       
         activeScrollTab = activeScrollTab + 1; 
+        $navTab.attr('data-activeTab', activeScrollTab);
         $leftNavScroll.removeClass("disabled").addClass("active")
         for(let i = 0; i < activeScrollTab; i++) {
           $navItem.eq(i).addClass("hide").removeClass("show");
         }
         if(navWidth >= (scrollWidth - $navTab.find(".nav-item:last-child").width())){
-          $rightNavScroll.removeClass("active").addClass("disabled")
+          $rightNavScroll.removeClass("active").addClass("disabled");
         }
       }
       else{
-        $rightNavScroll.removeClass("active").addClass("disabled")
+        $rightNavScroll.removeClass("active").addClass("disabled");
       }
     }
     else{        
       $rightNavScroll.removeClass("disabled").addClass("active")
       if(activeScrollTab > 0){          
         activeScrollTab = activeScrollTab - 1;
+        $navTab.attr('data-activeTab', activeScrollTab);
         $navItem.eq(activeScrollTab).addClass("show").removeClass("hide");
         if(activeScrollTab < 1) {
           $leftNavScroll.removeClass("active").addClass("disabled")
@@ -110,12 +113,30 @@ $(document).ready(function() {
     }
   }
 
+  function mobileEnableScrolling ($navButton) {
+    const $navTab = $navButton.siblings(".nav-tabs");
+    const navWidth = $navTab.width();
+    const scrollWidth = getActiveScrollWidth($navButton);
+    if($(window).width() < 767 && navWidth < (scrollWidth + 15)) {
+      $navButton.removeClass('hide');
+    }
+  }
+
   function init() {
-    const $tabItem = $(".sl-tabs .nav-item");
-    $tabItem.keydown(tabItemKeyEventHandler);
-    $tabItem.click(tabItemClickEventHandler);
-    const $navItem = $(".arrow-btn");
-    $navItem.click(slideTabEventHandler);
+    const $tabContainer = $(".sl-tabs");    
+    if($tabContainer.length > 0){
+      $tabContainer.each(function() { 
+        const $tabItem = $(this);
+        const $navItem = $tabItem.find(".nav-item");
+        const $navTab = $tabItem.find(".nav-tabs");
+        const $navButton =  $tabItem.find(".arrow-btn");
+        $navTab.attr('data-activeTab', 0);
+        $navItem.keydown(tabItemKeyEventHandler);
+        $navItem.click(tabItemClickEventHandler);
+        $navButton.click(slideTabEventHandler);
+        mobileEnableScrolling($navButton);
+      })
+    }
   }
   init();
 
