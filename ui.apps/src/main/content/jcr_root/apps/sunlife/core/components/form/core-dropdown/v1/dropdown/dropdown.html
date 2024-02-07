@@ -20,15 +20,12 @@
             </div>
             <div id="hint-text-${options.id}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
 
-            <select name="${options.name}" id="select-${options.id}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" data-parsley-required> 
+            <select name="${options.name}" id="select-${options.id}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" data-parsley-required hidden> 
                 <option value="defaultNoneSelected" selected disabled>defaultNoneSelected</option>
                 <sly data-sly-list.items="${options.items}" data-sly-unwrap>
                     <option value="${items.value}">${items.text}</option>
                 </sly>
             </select>
-
         </div>   
-
-
     </sly>
 </sly>
