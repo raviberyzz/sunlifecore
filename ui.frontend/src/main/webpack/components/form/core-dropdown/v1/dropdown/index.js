@@ -164,16 +164,16 @@
       $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
 
       // set select dropdown value to default
-      let selectId= $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
-      const $select = document.querySelector('#' + selectId);
+      let selectId= '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+      const $select = document.querySelector(selectId);
       $select.value = "defaultNoneSelected";
       // setSelectedValue($select, "defaultNoneSelected");
     }       
     $(optionElem).addClass('option-selected');
     $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');  
     // set select dropdown value to value of the selected option
-    let selectId= $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
-    const $select = document.querySelector('#' + selectId);
+    let selectId= '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+    const $select = document.querySelector(selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
     // setSelectedValue($select, $(optionElem)[0].getAttribute("value"));
 
