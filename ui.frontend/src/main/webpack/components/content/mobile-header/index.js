@@ -215,6 +215,9 @@ $(document).ready(function () {
         $('.go-back').click(function (event) {
             $(this).closest("div").removeClass('active');
             $(this).closest('div').parent().closest('div').css({ 'overflow-y': 'auto' });
+            if ($(this).parent().hasClass('mobile-language-region')) {
+                $('.language-region').find('a').first().focus();
+            }
         });
         $('.language-region .second-level-navigation .go-back').click(function () {
             $('.language-region .second-level-navigation').removeClass('active');

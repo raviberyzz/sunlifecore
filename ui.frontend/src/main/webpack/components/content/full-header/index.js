@@ -194,14 +194,26 @@ $(document).ready(function () {
         $('#sun-language').on('shown.bs.collapse', function (e) {
             $(this).find(".fa-remove").focus();
         });
+
         var liEle = $("#sun-language .content-language li").last()[0];
         var finalAnchorEle = $(liEle).find('a:first');
-        $(finalAnchorEle).on('focusout', function (e) {
-            // Close this sub menu
-            $("#language-btn").trigger("click");
-            $("#language-btn").focus();
-            return false;
+
+        $(finalAnchorEle).on('keydown', function (e) {
+            if (e.shiftKey && e.keyCode == 9) {
+                // focus on the previous sibling of the liEle
+                $(liEle).prev().find('a:first').focus();
+            }
         });
+
+        // $(finalAnchorEle).on('focusout', function (e) {
+        //     // Close this sub menu
+            
+        //     console.log(e);
+        //     $("#language-btn").trigger("click");
+        //     $("#language-btn").focus();
+        //     return false;
+        // });
+        
     }
 
     // top margin for all pages in mobile & tablet view

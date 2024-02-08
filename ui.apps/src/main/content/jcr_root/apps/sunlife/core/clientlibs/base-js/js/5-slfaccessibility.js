@@ -72,7 +72,6 @@ addMegaMenuAriaLabels();
   function bindAccessibilityEvent(){
   // /* Full Header accessibility starts here */
       $('.search-icon-container').keyup(function (event) {
-
           if (event.keyCode == 13) {
               if ($('#sun-search').hasClass('in')) {
                   $('#sun-search').removeClass('in');
@@ -100,9 +99,25 @@ addMegaMenuAriaLabels();
                   $("#language-btn").attr('aria-expanded', 'true');
                   $("#search-btn").attr('aria-expanded', 'false');
                   $("#sun-search").removeClass('in');
-                  $(".sunLanguageCrossBtn").focus();
+                  $("#close-btn").focus();
               }
           }
+      });
+
+      $('.lang-btn').keydown(function (event) {
+        if (event.keyCode == 13) {
+            if ($('#sun-language').hasClass('in')) {
+                $('#sun-language').removeClass('in');
+                $("#language-btn").attr('aria-expanded', 'false');
+            }
+            else {
+                $('#sun-language').addClass('in');
+                $("#language-btn").attr('aria-expanded', 'true');
+                $("#search-btn").attr('aria-expanded', 'false');
+                $("#sun-search").removeClass('in');
+                $("#close-btn").focus();
+            }
+        }
       });
       $("#search-btn").keydown(function(e){
         if($(".desktop-primary-navigation").length!=0){
@@ -124,6 +139,14 @@ addMegaMenuAriaLabels();
               $('#language-btn').removeClass('lang-true');
               $('#language-btn').focus();
         }
+    });
+    $("#close-btn").keydown(function(e){
+      if (e.which == 13 ) {
+          e.preventDefault();
+          $("#sun-language").removeClass('in');
+          $('#language-btn').removeClass('lang-true');
+          $('#language-btn').focus();
+      }
     });
       $("#sun-search .close-div .fa-remove.collapse-x").keydown(function(e){
         if (e.which == 13 ) {
