@@ -4,16 +4,27 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
-    background-color: $white-shade;
-    align-items: center;
-    height: 80px;
-    border-bottom: 1px solid #dcdedf;
-    padding: 0px 15px;
-    z-index: 1;
-    white-space: nowrap;
+    z-index: 10;
+
+    .sticky-bar-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid #dcdedf;
+        height: 5pc;
+        padding: 0 15px;
+        
+        white-space: nowrap;
+    }
+
+    .desktop-sunlife-logo img {
+        cursor: pointer;
+        height: 36px;
+        width: 149px;
+    }
 
     .sticky-bar-button-wrapper {
         display: flex;
@@ -26,7 +37,7 @@
     }
 
     #stickyBarLinks {
-        width: 100%;
+        /* width: 100%; */
 
         li {
             display: inline-flex;
@@ -34,13 +45,23 @@
             align-items: center;
 
             a {
-                color: $dark-grey-shade;
-                font-weight: 400;
+                color: $brand-secondary-800;
+                font-weight: 700;
+                line-height: 24px;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: none
             }
 
             a.active {
                 color: $grey-900;
                 font-weight: 700;
+                color: $brand-secondary-800;
+                font-weight: 700;
+                line-height: 24px;
+                border-bottom: 2px solid $brand-primary-400;
             }
         }
     }
@@ -50,16 +71,43 @@ html {
     scroll-behavior: smooth;
 }
 
-@media (max-width: 1024px) {
+
+@media(max-width: 1024px) {
     .sticky-bar {
-        overflow-x: auto;
-        -webkit-user-select: none;
-        -webkit-overflow-scrolling: touch;
-        margin: 0 auto;
-        top: 50px;
+        justify-content: center;
+
+        .sticky-bar-wrapper.hide-bar {
+            display: flex;
+        }
+
+        .desktop-sunlife-logo {
+            display: none;
+        }
+
+        .stickyBarButtons {
+            width: 100%
+        }
+
+        .sticky-bar-button-wrapper {
+            display: flex;
+            justify-content: center;
+            width: auto;
+        }
+
+    }
+}
+
+@media (max-width: 767px) {
+    .sticky-bar {
+        /* position: fixed; */
 
         #stickyBarLinks {
+            display: none;
             width: auto;
+        }
+
+        .sticky-bar-button-wrapper {
+            width: 100%;
         }
     }
 }

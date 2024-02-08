@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Sticky-Bar"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -12,9 +12,9 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <properties
+                    <nav-links
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Properties"
+                        jcr:title="Links"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -82,6 +82,14 @@
                                     </links>
                                 </items>
                             </navigation-links>
+                        </items>
+                    </nav-links>
+                    <buttons
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Buttons"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
                             <action-button
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Action Buttons"
@@ -159,7 +167,124 @@
                                 </items>
                             </action-button>
                         </items>
-                    </properties>
+                    </buttons>
+                    <logo
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Logo"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <logo
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Sunlife Logo"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <logo
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Do you need logo for the sticky bar"
+                                        name="./needLogo">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <no
+                                                granite:hide="${cqDesign.disableChildren}"
+                                                jcr:primaryType="nt:unstructured"
+                                                text="No"
+                                                value="no"/>
+                                            <yes
+                                                granite:hide="${cqDesign.disableStatic}"
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Yes"
+                                                value="yes"/>
+                                        </items>
+                                    </logo>
+                                    <yes
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="yes"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <logoImage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldLabel="Logo Image"
+                                                        name="./logoImage"
+                                                        rootPath="/content"/>
+                                                    <linkUrl
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldLabel="Link Url"
+                                                        name="./logoLink"
+                                                        rootPath="/content"
+                                                        suffix=".html"/>
+                                                    <altText
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Alternative Text"
+                                                        name="./altText"/>
+                                                    <target
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Target"
+                                                        name="./logoTarget">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <sametab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Same Tab"
+                                                                value="_self"/>
+                                                            <newtab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Tab"
+                                                                value="_blank"/>
+                                                        </items>
+                                                    </target>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </yes>
+                                </items>
+                            </logo>
+                        </items>
+                    </logo>
+                    <view
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="View"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <views
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <view-bar
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Do you need to hide the sticky bar"
+                                        name="./viewStickyBar">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <no
+                                                jcr:primaryType="nt:unstructured"
+                                                text="No"
+                                                value="no"/>
+                                            <yes
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Yes"
+                                                value="yes"/>
+                                        </items>
+                                    </view-bar>
+                                </items>
+                            </views>
+                        </items>
+                    </view>
                 </items>
             </tabs>
         </items>
