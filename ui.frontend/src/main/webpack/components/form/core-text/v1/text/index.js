@@ -25,16 +25,18 @@
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
         if($fieldContainer.hasClass('sl-text-area')){
-            $fieldContainer.find(".character-count .count").html($field.val().length+1)
+            $fieldContainer.find(".character-count .count").html($field.val().length+1);
+            $fieldContainer.find(".visually-hidden .count").html($field.val().length+1);            
         }
     }
 
     
     function init() {
         let $field = $(".sl-text-field .form-control.required, .sl-text-area .form-control.required");
+        let $fieldForCount = $(".sl-text-area .form-control")
         $field.keyup(fieldValidationKeyEventHandler);
         $field.blur(fieldValidationBlurEventHandler);
-        $field.keypress(fieldValidationKeyPressEventHandler);
+        $fieldForCount.keypress(fieldValidationKeyPressEventHandler);
     }
     init();
 
