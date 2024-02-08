@@ -75,7 +75,7 @@
     } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key
       let currOpt = $(currentComboInput).next().find(".option-current");
       currOpt.mousedown();
-    } else if (e.type == 'mousedown') { // mousedown event
+    } else if (e.type == 'mousedown') {
       $(combo).toggleClass("open");
       let ariaExpanded = "";
       if ($(combo).hasClass("open")) {
@@ -163,14 +163,12 @@
       $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'false');
       $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
 
-      // set select dropdown value to default
       let selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
       const $select = document.querySelector(selectId);
       $select.value = "defaultNoneSelected";
     }
     $(optionElem).addClass('option-selected');
     $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');
-    // set select dropdown value to value of the selected option
     let selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
     const $select = document.querySelector(selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
@@ -203,7 +201,7 @@
   }
 
   /**
-  * Parsley custom error element container.
+  * Parsley custom error element container for dropdowns.
   */
   $(function () {
     const parsleyConfig = {
@@ -217,11 +215,9 @@
 
 
   /**
-  * Parsley field error logic.
+  * Add error styles to dropdown(s).
   */
   window.Parsley.on('field:error', function () {
-    var field = this.$element[0].id;
-    // This global callback will be called for any field that fails validation.
     let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
     comboInput.addClass("sl-input-error");
     let errorTextId = $(this.$element[0].closest(".sl-dropdown")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
@@ -229,17 +225,16 @@
     comboInput[0].setAttribute("aria-invalid", "true");
   });
   /**
-  * Parsley field success logic.
+  * Remove error styles from dropdown(s).
   */
   window.Parsley.on('field:success', function () {
-    var field = this.$element[0].id;
     let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
     comboInput.removeClass("sl-input-error");
     comboInput[0].setAttribute("aria-describedby", "");
     comboInput[0].setAttribute("aria-invalid", "false");
   });
   /**
-  * Parsley form validation logic.
+  * Focus on the first dropdown with an error.
   */
   $('form').parsley().on('form:validate', function (formInstance) {
   }).on('form:error', function () {
