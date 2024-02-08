@@ -5,48 +5,46 @@
   aria-label="${accordion.accessibilityLabel}"
   data-title="${accordion.dataTitle}"
 >
-  <div class="container">
-    <div class="accordion">
+  <div class="accordion">
+    <div
+      data-sly-test="${accordion.items.size > 0}"
+      data-sly-repeat.item="${accordion.items}"
+      class="accordion-item ${item.name in accordion.expandedItems ? 'expand-collapse' : ''}"
+      data-cmp-hook-accordion="item"
+      data-cmp-expanded="${item.name in accordion.expandedItems}"
+    >
       <div
-        data-sly-test="${accordion.items.size > 0}"
-        data-sly-repeat.item="${accordion.items}"
-        class="accordion-item ${item.name in accordion.expandedItems ? 'expand-collapse' : ''}"
-        data-cmp-hook-accordion="item"
-        data-cmp-expanded="${item.name in accordion.expandedItems}"
+        data-sly-element="${accordion.headingElement @ context='elementName'}"
+        class="${accordion.headingElement} accordion-header"
+        data-toggle="collapse"          
+        data-single-expansion="${accordion.singleExpansion}"
+      >
+        <button
+          data-cmp-hook-accordion="button"
+          aria-label="${item.title}"
+          aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
+          class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span
+            class="sl-icon fal fa-chevron-up ${item.name in accordion.expandedItems ? 'show' : 'hide'}"
+          ></span>
+          <span
+            class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
+          ></span>
+          <span class="accordion-item-heading ${accordion.headingElement}">${item.title}</span>
+        </button>
+      </div>
+      <div
+        class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"          
+        aria-hidden="${item.name in accordion.expandedItems ? 'false' : 'true'}"
       >
         <div
-          data-sly-element="${accordion.headingElement @ context='elementName'}"
-          class="${accordion.headingElement} accordion-header"
-          data-toggle="collapse"          
-          data-single-expansion="${accordion.singleExpansion}"
-        >
-          <button
-            data-cmp-hook-accordion="button"
-            aria-label="${item.title}"
-            aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
-            class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <span
-              class="sl-icon fal fa-chevron-up ${item.name in accordion.expandedItems ? 'show' : 'hide'}"
-            ></span>
-            <span
-              class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
-            ></span>
-            <span class="accordion-item-heading ${accordion.headingElement}">${item.title}</span>
-          </button>
-        </div>
-        <div
-          class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"          
-          aria-hidden="${item.name in accordion.expandedItems ? 'false' : 'true'}"
-        >
-          <div
-            class="accordion-body"
-            data-sly-resource="${item.name @ decorationTagName='div'}"
-            data-cmp-hook-accordion="panel"
-          ></div>
-        </div>
+          class="accordion-body"
+          data-sly-resource="${item.name @ decorationTagName='div'}"
+          data-cmp-hook-accordion="panel"
+        ></div>
       </div>
     </div>
   </div>
