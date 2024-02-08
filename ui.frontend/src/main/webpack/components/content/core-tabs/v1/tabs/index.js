@@ -32,6 +32,7 @@ $(document).ready(function() {
     const $navItem = $navTabs.find('.nav-item');   
     const $leftNavScroll = $navTab.siblings(".arrow-btn.left"); 
     let $currentItem;
+    //condition for right arrow focus on key event
     if($keyName === "ArrowRight"){
       $currentItem = $thisKey.next('.nav-item');
       $currentItem = $currentItem.index() < 0 ? $navItem.first() :$currentItem;
@@ -40,6 +41,7 @@ $(document).ready(function() {
       }
       navigateTabOnArrowKey($currentItem);
     }
+    //condition for left arrow focus on key event
     else if($keyName === "ArrowLeft"){
       $currentItem = $thisKey.prev('.nav-item'); 
       $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
@@ -81,6 +83,7 @@ $(document).ready(function() {
     const $leftNavScroll = $navTab.siblings(".arrow-btn.left");      
     const $rightNavScroll = $navTab.siblings(".arrow-btn.right");
     let activeScrollTab = parseInt($navTab.attr('data-activeTab'));
+    //condition for right arrow scrolling
     if($currentNav.hasClass("right")){  
       if(navWidth < scrollWidth){       
         activeScrollTab = activeScrollTab + 1; 
@@ -89,14 +92,17 @@ $(document).ready(function() {
         for(let i = 0; i < activeScrollTab; i++) {
           $navItem.eq(i).addClass("hide").removeClass("show");
         }
+        //Condition to disabled the right arrow when scroll reach to last tab item
         if(navWidth >= (scrollWidth - $navTab.find(".nav-item:last-child").width())){
           $rightNavScroll.removeClass("active").addClass("disabled");
         }
       }
+      //condition to disabled the right arrow
       else{
         $rightNavScroll.removeClass("active").addClass("disabled");
       }
     }
+    //condition for left arrow scrolling
     else{        
       $rightNavScroll.removeClass("disabled").addClass("active")
       if(activeScrollTab > 0){          
@@ -112,7 +118,7 @@ $(document).ready(function() {
       }
     }
   }
-
+//Function used to handle mobile enable scrolling
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
