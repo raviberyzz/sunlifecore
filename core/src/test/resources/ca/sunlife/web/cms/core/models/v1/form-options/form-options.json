@@ -6,6 +6,7 @@
     "constraintMessage": "test-constraintMessage",
     "required": "test-required",
     "dataSection": "test-dataSection",
-	"spacing": "mb-s18"	  
+	"spacing": "mb-s18",
+	"layout": "inline"	  
   }
 }

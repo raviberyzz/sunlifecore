@@ -1,10 +1,17 @@
 @import "bootstrap/scss/mixins";
+@import '@sunlife/ui-styles/design-system.scss';
 @import "@sunlife/ui-styles/base/variables.scss";
 @import "@sunlife/ui-styles/base/tokens.scss";
 @import "@sunlife/ui-styles/base/typography.scss";
 @import "@sunlife/ui-styles/base/container.scss";
 @import "@sunlife/ui-styles/base/functions.scss";
 
+#vidyard-overlay{
+  z-index: $zindex-modal-backdrop !important;
+}
+.vidyard-close-container,#vidyard-content-fixed{
+  z-index: $zindex-modal !important;
+}
 .sl-article-video-container {
   .sl-article-video-component {
     @include media-breakpoint-only(lg) {
