@@ -13,28 +13,13 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-dynamic-card-container/v1/dynamic-card-container";
 
     @ValueMapValue
-    private String name;
-
-    @ValueMapValue
     private String cardType;
 
-    @ValueMapValue
-    private String heightControl;
-
-    @ValueMapValue
-    private Boolean horizontalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean horizontalMultipleWithIcon;
+     @ValueMapValue
+    private String horizontalHeightControl;
 
     @ValueMapValue
     private String verticalHeightControl;
-
-    @ValueMapValue
-    private Boolean verticalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean verticalMultipleWithIcon;
 
     @ValueMapValue
     private Boolean withLink;
@@ -48,30 +33,12 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     @ValueMapValue
     private String mediaType;
 
-    @ValueMapValue
-    private String additionalFeatures;
-
-    @ValueMapValue
-    private String statisticEnhancements;
-
-    public String getName() {
-        return name;
-    }
-
     public String getCardType() {
         return cardType;
     }
 
-    public String getHeightControl () {
-        return heightControl;
-    }
-
-    public Boolean getHorizontalMultipleClickable() {
-        return horizontalMultipleClickable;
-    }
-
-    public Boolean getHorizontalMultipleWithIcon() {
-        return horizontalMultipleWithIcon;
+    public String getHorizontalHeightControl () {
+        return horizontalHeightControl;
     }
 
     public Boolean getWithLink() {
@@ -80,14 +47,6 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
 
     public String getVerticalHeightControl() {
         return verticalHeightControl;
-    }
-
-    public Boolean getVerticalMultipleClickable() {
-        return verticalMultipleClickable;
-    }
-
-    public Boolean getVerticalMultipleWithIcon() {
-        return verticalMultipleWithIcon;
     }
 
     public String getAvatarSize() {
@@ -102,12 +61,73 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
         return mediaType;
     }
 
-    public String getAdditionalFeatures() {
-        return additionalFeatures;
+    @ValueMapValue
+    private String spacing;
+
+    public String getSpacing() {
+        return spacing;
     }
 
-    public String getStatisticEnhancements() {
-        return statisticEnhancements;
+    @ValueMapValue
+    private Boolean horizontalMultipleCard;
+
+    public Boolean getHorizontalMultipleCard() {
+        return horizontalMultipleCard;
     }
 
+    @ValueMapValue
+    private Boolean horizontalClickable;
+
+    public Boolean getHorizontalClickable() {
+        return horizontalClickable;
+    }
+
+    @ValueMapValue
+    private Boolean horizontalIconCard;
+
+    public Boolean getHorizontalIconCard() {
+        return horizontalIconCard;
+    }
+
+    @ValueMapValue
+    private Boolean verticalMultipleCard;
+      
+    public Boolean getVerticalMultipleCard() {
+        return verticalMultipleCard;
+    }
+
+    @ValueMapValue
+    private Boolean verticalClickable;
+
+    public Boolean getVerticalClickable() {
+        return verticalClickable;
+    }
+
+    @ValueMapValue
+    private Boolean verticalIconCard;
+
+    public Boolean getVerticalIconCard() {
+        return verticalIconCard;
+    }
+
+    @ValueMapValue
+    private Boolean avatarMultipleCard; 
+
+    public Boolean getAvatarMultipleCard() {
+        return avatarMultipleCard;
+    }
+
+    @ValueMapValue
+    private Boolean segmentedMultipleCard;
+
+    public Boolean getSegmentedMultipleCard() {
+        return segmentedMultipleCard;
+    }
+
+    @ValueMapValue
+    private Boolean statisticsMultipleCard;
+
+    public Boolean getStatisticsMultipleCard() {
+        return statisticsMultipleCard;
+    }
 }

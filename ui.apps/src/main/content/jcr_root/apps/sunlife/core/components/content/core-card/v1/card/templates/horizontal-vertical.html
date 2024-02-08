@@ -1,0 +1,65 @@
+<template data-sly-template.details="${ @ model, containerConfigs }">
+  <sly
+    data-sly-set.isAsset="${model.assetType =='noAsset'? false : true }"
+    data-sly-set.isImageCard="${isAsset && model.assetType =='image' ? true : false }"
+    data-sly-set.isIconCard="${isAsset && model.assetType =='icon' ? true : false }"
+  >
+    <picture data-sly-test="${ !containerConfigs.isIcon && isImageCard }">
+      <img 
+        data-sly-test="${model.cardImageFileReference}"
+        src="${model.cardImageFileReference}" 
+        alt=""
+        class="img-container">
+    </picture>
+
+    <div class="card-body">
+      <div
+        data-sly-test="${containerConfigs.isIcon && isIconCard}"
+        class="icon-container card-text">
+          <i class="sl-card-icon fak fa-${model.cardIcon}"></i>
+      </div>
+
+      <div class="content-container">
+        <div
+          class="cat-badge-container"
+          data-sly-test="${model.cardCategory || model.cardBadgeText}"
+        >
+          <div class="category">${model.cardCategory}</div>
+          
+          <div data-sly-test="${model.cardBadgeText && model.cardBadgeType!='none'}">
+            <span class="sl-badge badge bg-${model.cardBadgeType}"
+              ><div class="badge-label">${model.cardBadgeText}</div></span
+            >
+          </div>
+        </div>
+
+        <div class="h4 card-title">${model.cardHeading}</div>
+        <div class="body-text card-text">
+          ${model.cardDescription @ context ='html'}
+        </div>
+        <div class="caption card-text">${model.cardCaption}</div>
+        <div class="cta-container"
+          data-sly-set.isBtn="${model.ctaType == 'button' ? true : false }">
+          <a 
+          data-sly-test="${model.ctaType != 'noCTA'}"
+          target="${ isBtn ? model.cardBtnTarget : model.cardLinkTarget }" 
+          href="${isBtn ? model.cardBtnURL : model.cardLinkURL}"
+          class="${isBtn ? 'sl-btn btn btn-primary' : 'sl-link sl-link-lg' }"
+          data-sly-set.iconType="${isBtn ? model.cardBtnIconType : model.cardLinkIconType }">
+                <sly data-sly-test="${iconType =='file-pdf'}">
+                    <i class="far fa-${iconType}"></i>
+                </sly>
+                ${isBtn  ? model.cardBtnLabel : model.cardLinkLabel }
+                <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}">
+                    <i class="far fa-${iconType} ${iconType == 'arrow-circle-right' ? 'icn-hover-hidden' : ''}"></i>
+                    <sly data-sly-test="${iconType == 'arrow-circle-right'}">
+                      <i class="fas fa-arrow-circle-right icn-hover-show"></i>
+                    </sly>
+                </sly>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </sly>
+</template>

@@ -1,0 +1,7 @@
+.card-type-dialog-container {
+    overflow: hidden !important;
+}
+.coral3-Button:not(:disabled):not(.is-disabled).is-selected, 
+.coral3-Button:not(:disabled):not(.is-disabled):active {
+    background-color: #c3c3c3;
+}

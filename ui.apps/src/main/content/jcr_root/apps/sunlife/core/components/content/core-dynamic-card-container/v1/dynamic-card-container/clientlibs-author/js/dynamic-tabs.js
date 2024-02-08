@@ -3,13 +3,10 @@
     "use strict";
 
     $(document).on("foundation-contentloaded", function(e) {
-
         $("#dynamic-card-tab-hide-show").each(function() {
             showHide();
         });
-
     });
-
 
     $document.on("change", "#dynamic-card-container-dropdown", function(e) {
         showHide();
@@ -68,4 +65,5 @@
             list[8].setAttribute("hidden", true);
         }
     }
+
 })($, $(document));
