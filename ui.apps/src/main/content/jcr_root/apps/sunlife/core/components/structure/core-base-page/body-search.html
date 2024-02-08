@@ -1,16 +1,14 @@
-<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel"/>
-<sly>
-    <form name="search-url" action="${baseModel.searchUrl @ extension = 'html'}"></form>
-    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
-    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
-    <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
-    <script type="text/javascript">
-        var coveoSearchlanguage = "${baseModel.searchLanguage @context='unsafe'}"
+<form name="search-url" action="/en/search-results/"></form>
+<script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
+<script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/en.js"></script>
+<script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
+<script type="text/javascript">
+        var coveoSearchlanguage = ""
         var searchConfig = {
-            orgId: "${baseModel.orgId @context='unsafe'}",
-            token: "${baseModel.searchToken @context='unsafe'}",
-            restUri: "${baseModel.restUri @context='unsafe'}",
-            searchHub: "${baseModel.searchHub @context='unsafe'}",
+            orgId: "sunlifefinancialincproductionapwbq5p7",
+            token: "xx266e8be8-4de6-4bd4-9e58-5b7e2b8b986d",
+            restUri: "https://platform.cloud.coveo.com/rest/search",
+            searchHub: "sunlifeCA",
             searchUrl: $('form[name="search-url"]').attr('action')
         };
 
@@ -48,4 +46,3 @@
             contentType: utag_data.page_category
         });
     </script>
-</sly>
