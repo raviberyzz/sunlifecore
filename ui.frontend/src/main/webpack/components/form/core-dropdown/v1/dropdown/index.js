@@ -172,6 +172,18 @@
     let selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
     const $select = document.querySelector(selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
+
+
+    let comboInput = $($(optionElem).closest(".sl-dropdown")).find(".combo-input");
+    comboInput.removeClass("sl-input-error");
+    comboInput[0].setAttribute("aria-describedby", "");
+    comboInput[0].setAttribute("aria-invalid", "false");
+
+    let parsleyError = $($(optionElem).closest(".sl-dropdown")).find(".sl-helper-text.error-text")[0];
+    $(parsleyError).removeClass('filled');
+    $(parsleyError)[0].textContent="";
+
+
   }
 
   /**
@@ -228,10 +240,10 @@
   * Remove error styles from dropdown(s).
   */
   window.Parsley.on('field:success', function () {
-    let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
-    comboInput.removeClass("sl-input-error");
-    comboInput[0].setAttribute("aria-describedby", "");
-    comboInput[0].setAttribute("aria-invalid", "false");
+    // let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
+    // comboInput.removeClass("sl-input-error");
+    // comboInput[0].setAttribute("aria-describedby", "");
+    // comboInput[0].setAttribute("aria-invalid", "false");
   });
   /**
   * Focus on the first dropdown with an error.
