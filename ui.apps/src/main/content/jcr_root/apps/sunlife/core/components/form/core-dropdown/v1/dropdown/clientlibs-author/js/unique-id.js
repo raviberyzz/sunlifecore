@@ -1,7 +1,7 @@
 (function($, $document) {
 
     "use strict"
-    $(document).on('dialog-ready', function() {
+    $(document).on('dialog-ready', function() { 
         if (!$('.unique-id[name="./id"]').val()) {
             assignRandomValue();
         }

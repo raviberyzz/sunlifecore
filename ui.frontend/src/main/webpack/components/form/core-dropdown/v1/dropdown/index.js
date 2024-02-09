@@ -9,9 +9,11 @@
   */
   function bindEvent() {
     // Bind mousedown event on dropdown.
-    $('form .sl-dropdown').on('mousedown keyup', '.combo-input', dropdownComboHandler);
-    $('form .sl-dropdown').on('mousedown keyup', '.combo-option', dropDownOptionHandler);
-    $('form .sl-dropdown').on('blur', '.combo-input', dropDownOnBlur);
+    if ($('form .sl-dropdown').length > 0) {
+      $('form .sl-dropdown').on('mousedown keyup', '.combo-input', dropdownComboHandler);
+      $('form .sl-dropdown').on('mousedown keyup', '.combo-option', dropDownOptionHandler);
+      $('form .sl-dropdown').on('blur', '.combo-input', dropDownOnBlur);
+    }
   }
 
   /**
@@ -180,10 +182,10 @@
     comboInput[0].setAttribute("aria-invalid", "false");
 
     let parsleyError = $($(optionElem).closest(".sl-dropdown")).find(".sl-helper-text.error-text")[0];
-    $(parsleyError).removeClass('filled');
-    $(parsleyError)[0].textContent="";
-
-
+    if (parsleyError != undefined) {
+      $(parsleyError).removeClass('filled');
+      $(parsleyError)[0].textContent="";
+    }
   }
 
   /**
@@ -225,7 +227,6 @@
     $('form').parsley(parsleyConfig);
   });
 
-
   /**
   * Add error styles to dropdown(s).
   */
@@ -236,15 +237,7 @@
     comboInput[0].setAttribute("aria-describedby", errorTextId);
     comboInput[0].setAttribute("aria-invalid", "true");
   });
-  /**
-  * Remove error styles from dropdown(s).
-  */
-  window.Parsley.on('field:success', function () {
-    // let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
-    // comboInput.removeClass("sl-input-error");
-    // comboInput[0].setAttribute("aria-describedby", "");
-    // comboInput[0].setAttribute("aria-invalid", "false");
-  });
+
   /**
   * Focus on the first dropdown with an error.
   */
