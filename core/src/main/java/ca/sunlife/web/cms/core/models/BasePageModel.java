@@ -71,9 +71,13 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * @version 1.0
  */
 @ Model (adaptables = {
-    SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
+    SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = {BasePageModel.RESOURCE_TYPE,BasePageModel.RESOURCE_TYPE_2})
 public class BasePageModel {
-  
+
+  protected static final  String RESOURCE_TYPE = "sunlife/core/components/structure/base-page";
+  protected static final  String RESOURCE_TYPE_2 = "sunlife/corfe/components/structure/core-base-page";
+
+
   /** The Constant DOMAIN_STR. */
   private static final String DOMAIN_STR = "domain";
   
