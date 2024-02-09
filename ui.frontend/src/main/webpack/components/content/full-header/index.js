@@ -195,25 +195,16 @@ $(document).ready(function () {
             $(this).find(".fa-remove").focus();
         });
 
-        var liEle = $("#sun-language .content-language li").last()[0];
-        var finalAnchorEle = $(liEle).find('a:first');
-
-        $(finalAnchorEle).on('keydown', function (e) {
-            if (e.shiftKey && e.keyCode == 9) {
-                // focus on the previous sibling of the liEle
-                $(liEle).prev().find('a:first').focus();
-            }
+        $(".region-language-menu").on("focusout", function() {
+            var $this = $(this);
+            setTimeout(function() {
+                if(!($this.find(":focus").length)){
+                    $("#language-btn").trigger("click");
+                    $("#language-btn").focus();
+                    return false;
+                }      
+            }, 0);
         });
-
-        // $(finalAnchorEle).on('focusout', function (e) {
-        //     // Close this sub menu
-            
-        //     console.log(e);
-        //     $("#language-btn").trigger("click");
-        //     $("#language-btn").focus();
-        //     return false;
-        // });
-        
     }
 
     // top margin for all pages in mobile & tablet view

@@ -139,15 +139,13 @@ addMegaMenuAriaLabels();
               $('#language-btn').removeClass('lang-true');
               $('#language-btn').focus();
         }
-    });
-    $("#close-btn").keydown(function(e){
-      if (e.which == 13 ) {
-          e.preventDefault();
-          $("#sun-language").removeClass('in');
-          $('#language-btn').removeClass('lang-true');
-          $('#language-btn').focus();
-      }
-    });
+      });
+      $("#close-btn").keydown(function(e){
+        if (e.which == 13 ) {
+            e.preventDefault();
+            $('#language-btn').focus();
+        }
+      });
       $("#sun-search .close-div .fa-remove.collapse-x").keydown(function(e){
         if (e.which == 13 ) {
               $('#search-btn').focus();
