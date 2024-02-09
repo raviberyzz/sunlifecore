@@ -131,18 +131,16 @@ $(document).ready(function() {
   function init() {
     const $tabContainer = $(".sl-tabs");    
     if($tabContainer.length > 0){
-      $tabContainer.each(function() { 
         const $tabItem = $(this);
         const $navItem = $tabItem.find(".nav-item");
         const $navTab = $tabItem.find(".nav-tabs");
         const $navButton =  $tabItem.find(".arrow-btn");
         $navTab.attr('data-activeTab', 0);
-        $navItem.keydown(tabItemKeyEventHandler);
-        $navItem.click(tabItemClickEventHandler);
-        $navButton.click(slideTabEventHandler);
+        $document.on("keydown", $navItem, tabItemKeyEventHandler);
+        $document.on("click", $navItem, tabItemClickEventHandler);
+        $document.on("click", $navButton, slideTabEventHandler);
         mobileEnableScrolling($navButton);
-      })
-    }
+      }
   }
   init();
 
