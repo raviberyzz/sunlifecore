@@ -9,11 +9,9 @@
   */
   function bindEvent() {
     // Bind mousedown event on dropdown.
-    if ($('form .sl-dropdown').length > 0) {
-      $('form .sl-dropdown').on('mousedown keyup', '.combo-input', dropdownComboHandler);
-      $('form .sl-dropdown').on('mousedown keyup', '.combo-option', dropDownOptionHandler);
-      $('form .sl-dropdown').on('blur', '.combo-input', dropDownOnBlur);
-    }
+    $('form .sl-dropdown').on('mousedown keyup', '.combo-input', dropdownComboHandler);
+    $('form .sl-dropdown').on('mousedown keyup', '.combo-option', dropDownOptionHandler);
+    $('form .sl-dropdown').on('blur', '.combo-input', dropDownOnBlur);
   }
 
   /**
@@ -249,12 +247,21 @@
   });
 
 
+  function doesDropdownExist() {
+    if ($('form .sl-dropdown').length <= 0) {
+        return false;
+    }
+    return true;
+  }
+
   /**
   * Initialize the module.
   */
   function init() {
-    bindEvent();
-    selectDefaultOption();
+    if(doesDropdownExist()) {
+      bindEvent();
+      selectDefaultOption();
+    }
   }
 
 
