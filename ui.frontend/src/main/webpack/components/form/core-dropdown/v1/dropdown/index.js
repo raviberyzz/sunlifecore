@@ -5,17 +5,18 @@
 (function () {
 
   /**
-  * Bind event on module.
+  * Bind events on module, for keyboard accessibility. 
   */
   function bindEvent() {
     // Bind mousedown event on dropdown.
-    $('form .sl-dropdown').on('mousedown keyup', '.combo-input', dropdownComboHandler);
-    $('form .sl-dropdown').on('mousedown keyup', '.combo-option', dropDownOptionHandler);
-    $('form .sl-dropdown').on('blur', '.combo-input', dropDownOnBlur);
+    let $dropdown = $('form .sl-dropdown');
+    $dropdown.on('mousedown keyup', '.combo-input', dropdownComboHandler);
+    $dropdown.on('mousedown keyup', '.combo-option', dropDownOptionHandler);
+    $dropdown.on('blur', '.combo-input', dropDownOnBlur);
   }
 
   /**
-  * Blur event on dropdown.
+  * Blur event on dropdown. Close the dropdown when user clicks Tab key or clicks out.
   */
   function dropDownOnBlur(e) {
     e.preventDefault();
@@ -27,7 +28,7 @@
   }
 
   /**
-  * Handles dropdown combo clicks.
+  * Handles dropdown combo clicks. Ensures keyboard accessibility for down, up, Enter, Space keys and mousedown event.
   * @param {Event} e - The event object.
   */
   function dropdownComboHandler(e) {
@@ -40,7 +41,7 @@
 
     if (e.keyCode == '40') { // down arrow
       if ($($combo).hasClass("open")) { // not first down press
-        if (currentOptionSelected.length == 0) { // first dropdown option
+        if (currentOptionSelected.length == 0) { // first dropdown option focuses on the first option
           $(currentComboInput).next().children(":first").toggleClass("option-current");
           let selectedOptionID = $(currentComboInput).next().find(".option-current")[0].getAttribute("id");
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
@@ -50,7 +51,7 @@
           let selectedOptionID = $(currentOptionSelected).next()[0].getAttribute("id");
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
-      } else { // first down press
+      } else { // first down press keeps focus on the dropdown
         $($combo).addClass("open");
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
@@ -72,7 +73,7 @@
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
       }
-    } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key
+    } else if (e.keyCode == '13' || e.keyCode == '32') { // enter or space key selects an option
       let currOpt = $(currentComboInput).next().find(".option-current");
       currOpt.mousedown();
     } else if (e.type == 'mousedown') {
@@ -91,7 +92,7 @@
   }
 
   /**
-  * Handles dropdown option clicks.
+  * Handles dropdown option click when an option is selected.
   * @param {Event} e - The event object.
   */
   function dropDownOptionHandler(e) {
@@ -111,26 +112,27 @@
   }
 
   /**
-  * Adds 'raised' class to the dropdown input label.
+  * Raises the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function raiseLabel(dropDown) {
-    if ($(dropDown).closest('.combo').find('.combo-input-selected')[0].innerText != "") {
-      if (!($(dropDown).closest('.combo').find('label')[0].matches(".raised"))) {
+    let $combo = $(dropDown).closest('.combo');
+    if ($combo.find('.combo-input-selected')[0].innerText != "") {
+      if (!($combo.find('label')[0].matches(".raised"))) {
         $(dropDown).find('label').addClass('raised');
         $(dropDown).find('.combo-input-selected').removeClass("d-none");
       }
     }
-    if ($(dropDown).closest('.combo').hasClass("open")) {
+    if ($combo.hasClass("open")) {
       $(dropDown).find('label').addClass("active");
     } else {
       $(dropDown).find('label').removeClass("active");
-      $(dropDown).closest('.combo').find('.combo-input')[0].removeAttribute("aria-activedescendant");
+      $combo.find('.combo-input')[0].removeAttribute("aria-activedescendant");
     }
   }
 
   /**
-  * Removes 'raised active' classes from the dropdown input label.
+  * Lowers the dropdown input label.
   * Hides the select text.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
@@ -154,25 +156,25 @@
   }
 
   /**
-  * Selects an option within the dropdown menu.
+  * Selects an option within the dropdown menu, and adds code neccessary for accessibility.
   * @param {HTMLElement} optionElem - The option element.
   */
   function selectOption(optionElem) {
 
-    if ($(optionElem).closest('.combo-menu').find('.option-selected').length != 0) {
-      $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'false');
-      $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
+    let $comboMenu = $(optionElem).closest('.combo-menu');
+    if ($comboMenu.find('.option-selected').length != 0) {
+      $comboMenu.find('.option-selected')[0].setAttribute('aria-selected', 'false');
+      $comboMenu.find('.option-selected').removeClass('option-selected');
 
       let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
       const $select = document.querySelector($selectId);
       $select.value = "defaultNoneSelected";
     }
     $(optionElem).addClass('option-selected');
-    $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');
+    $comboMenu.find('.option-selected')[0].setAttribute('aria-selected', 'true');
     let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
     const $select = document.querySelector($selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
-
 
     let $comboInput = $($(optionElem).closest(".sl-dropdown")).find(".combo-input");
     $comboInput.removeClass("sl-input-error");
@@ -210,20 +212,22 @@
   }
 
   /**
-  * Parsley custom error element container for dropdowns.
+  * Handle Parsley custom error element container for dropdowns.
   */
   $(function () {
+    const errorsWrapperHtml = '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>';
+    const errorTemplateHtml = '<span></span>';
     const parsleyConfig = {
       errorsContainer: function (elem) {
         return elem.$element.next('.error-text');
-      }, errorsWrapper: '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>',
-      errorTemplate: '<span></span>'
+      }, errorsWrapper: errorsWrapperHtml,
+      errorTemplate: errorTemplateHtml
     };
     $('form').parsley(parsleyConfig);
   });
 
   /**
-  * Add error styles to dropdown(s).
+  * On input error add error styles to dropdown(s).
   */
   window.Parsley.on('field:error', function () {
     let $comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
@@ -234,7 +238,7 @@
   });
 
   /**
-  * Focus on the first dropdown with an error.
+  * Focus on the first dropdown with an error after form submission.
   */
   $('form').parsley().on('form:validate', function (formInstance) {
   }).on('form:error', function () {
@@ -244,6 +248,9 @@
   });
 
 
+  /**
+  * Check if a dropdown component exists.
+  */
   function doesDropdownExist() {
     if ($('form .sl-dropdown').length <= 0) {
         return false;
@@ -260,7 +267,6 @@
       selectDefaultOption();
     }
   }
-
 
   init();
 
