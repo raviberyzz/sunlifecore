@@ -156,7 +156,7 @@
   }
 
   /**
-  * Selects an option within the dropdown menu, and adds code neccessary for accessibility.
+  * Selects an option within the dropdown menu, and adds code necessary for accessibility.
   * @param {HTMLElement} optionElem - The option element.
   */
   function selectOption(optionElem) {
