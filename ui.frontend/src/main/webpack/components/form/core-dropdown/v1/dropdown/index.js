@@ -34,12 +34,12 @@
     $(this).focus();
     e.preventDefault();
     let currentComboInput = e.currentTarget;
-    let combo = $(currentComboInput).closest('.combo');
+    let $combo = $(currentComboInput).closest('.combo');
     let currentOptionSelected = $(currentComboInput).next().find(".option-current");
-    let comboInput = combo.find(".combo-input")[0];
+    let comboInput = $combo.find(".combo-input")[0];
 
     if (e.keyCode == '40') { // down arrow
-      if ($(combo).hasClass("open")) { // not first down press
+      if ($($combo).hasClass("open")) { // not first down press
         if (currentOptionSelected.length == 0) { // first dropdown option
           $(currentComboInput).next().children(":first").toggleClass("option-current");
           let selectedOptionID = $(currentComboInput).next().find(".option-current")[0].getAttribute("id");
@@ -51,12 +51,12 @@
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
       } else { // first down press
-        $(combo).addClass("open");
+        $($combo).addClass("open");
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
       }
     } else if (e.keyCode == '38') { // up arrow
-      if ($(combo).hasClass("open")) { // not first down press
+      if ($($combo).hasClass("open")) { // not first down press
         if (currentOptionSelected.length == 0) { // first dropdown option
           $(currentComboInput).next().children(":first").toggleClass("option-current");
           let selectedOptionID = $(currentComboInput).next().find(".option-current")[0].getAttribute("id");
@@ -68,7 +68,7 @@
           comboInput.setAttribute("aria-activedescendant", selectedOptionID);
         }
       } else { // first down press
-        $(combo).addClass("open");
+        $($combo).addClass("open");
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
       }
@@ -76,14 +76,14 @@
       let currOpt = $(currentComboInput).next().find(".option-current");
       currOpt.mousedown();
     } else if (e.type == 'mousedown') {
-      $(combo).toggleClass("open");
+      $($combo).toggleClass("open");
       let ariaExpanded = "";
-      if ($(combo).hasClass("open")) {
+      if ($($combo).hasClass("open")) {
         ariaExpanded = "true";
         raiseLabel(currentComboInput);
       } else {
         ariaExpanded = "false";
-        $(combo).find('label').removeClass("active");
+        $($combo).find('label').removeClass("active");
         lowerLabel(currentComboInput);
       }
       currentComboInput.setAttribute("aria-expanded", ariaExpanded);
@@ -97,16 +97,16 @@
   function dropDownOptionHandler(e) {
     e.preventDefault();
     let currentElement = e.currentTarget;
-    let currentDropdownElement = $(currentElement);
-    let linkText = $(currentElement).text();
-    let dropdownCombo = $(currentDropdownElement).closest('.combo');
-    let comboInput = $(dropdownCombo).find('.combo-input')[0];
+    let $currentDropdownElement = $(currentElement);
+    let $linkText = $(currentElement).text();
+    let $dropdownCombo = $($currentDropdownElement).closest('.combo');
+    let $comboInput = $($dropdownCombo).find('.combo-input')[0];
 
-    appendSelectedText(currentDropdownElement, linkText);
-    selectOption(currentDropdownElement);
-    comboInput.setAttribute("aria-expanded", "false");
-    comboInput.removeAttribute("aria-activedescendant");
-    raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));
+    appendSelectedText($currentDropdownElement, $linkText);
+    selectOption($currentDropdownElement);
+    $comboInput.setAttribute("aria-expanded", "false");
+    $comboInput.removeAttribute("aria-activedescendant");
+    raiseLabel($currentDropdownElement.parent().parent().find('.combo-input'));
     dropDownOnBlur(e);
   }
 
@@ -135,8 +135,8 @@
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function lowerLabel(dropDown) {
-    let optionSelected = $(dropDown).next().find(".option-selected").length;
-    if (!optionSelected) {
+    let $optionSelected = $(dropDown).next().find(".option-selected").length;
+    if (!$optionSelected) {
       $(dropDown).find('.combo-input-selected').addClass("d-none");
       $(dropDown).find('label').removeClass("raised active");
     }
@@ -163,26 +163,26 @@
       $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'false');
       $(optionElem).closest('.combo-menu').find('.option-selected').removeClass('option-selected');
 
-      let selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
-      const $select = document.querySelector(selectId);
+      let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+      const $select = document.querySelector($selectId);
       $select.value = "defaultNoneSelected";
     }
     $(optionElem).addClass('option-selected');
     $(optionElem).closest('.combo-menu').find('.option-selected')[0].setAttribute('aria-selected', 'true');
-    let selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
-    const $select = document.querySelector(selectId);
+    let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
+    const $select = document.querySelector($selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
 
 
-    let comboInput = $($(optionElem).closest(".sl-dropdown")).find(".combo-input");
-    comboInput.removeClass("sl-input-error");
-    comboInput[0].setAttribute("aria-describedby", "");
-    comboInput[0].setAttribute("aria-invalid", "false");
+    let $comboInput = $($(optionElem).closest(".sl-dropdown")).find(".combo-input");
+    $comboInput.removeClass("sl-input-error");
+    $comboInput[0].setAttribute("aria-describedby", "");
+    $comboInput[0].setAttribute("aria-invalid", "false");
 
-    let parsleyError = $($(optionElem).closest(".sl-dropdown")).find(".sl-helper-text.error-text")[0];
-    if (parsleyError != undefined) {
-      $(parsleyError).removeClass('filled');
-      $(parsleyError)[0].textContent="";
+    let $parsleyError = $($(optionElem).closest(".sl-dropdown")).find(".sl-helper-text.error-text")[0];
+    if ($parsleyError != undefined) {
+      $($parsleyError).removeClass('filled');
+      $($parsleyError)[0].textContent="";
     }
   }
 
@@ -200,16 +200,13 @@
       }
     }
     if (selectedOption != null) {
-      let currentDropdownElement = $(currentElement);
-      let linkText = $(currentElement).text();
-      let dropdownCombo = $(currentDropdownElement).closest('.combo');
-      let comboInput = $(dropdownCombo).find('.combo-input')[0];
+      let $currentDropdownElement = $(currentElement);
+      let $linkText = $(currentElement).text();     
 
-      appendSelectedText(currentDropdownElement, linkText);
-      selectOption(currentDropdownElement);
-      raiseLabel(currentDropdownElement.parent().parent().find('.combo-input'));
+      appendSelectedText($currentDropdownElement, $linkText);
+      selectOption($currentDropdownElement);
+      raiseLabel($currentDropdownElement.parent().parent().find('.combo-input'));
     }
-
   }
 
   /**
@@ -229,11 +226,11 @@
   * Add error styles to dropdown(s).
   */
   window.Parsley.on('field:error', function () {
-    let comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
-    comboInput.addClass("sl-input-error");
-    let errorTextId = $(this.$element[0].closest(".sl-dropdown")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
-    comboInput[0].setAttribute("aria-describedby", errorTextId);
-    comboInput[0].setAttribute("aria-invalid", "true");
+    let $comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
+    $comboInput.addClass("sl-input-error");
+    let $errorTextId = $(this.$element[0].closest(".sl-dropdown")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
+    $comboInput[0].setAttribute("aria-describedby", $errorTextId);
+    $comboInput[0].setAttribute("aria-invalid", "true");
   });
 
   /**
@@ -241,9 +238,9 @@
   */
   $('form').parsley().on('form:validate', function (formInstance) {
   }).on('form:error', function () {
-    let firstErrorText = $(this.$element[0]).find(".parsley-custom-error-message").first()[0];
-    firstErrorText.setAttribute("role", "alert");
-    $(firstErrorText.closest(".sl-dropdown")).find(".combo-input").focus();
+    let $firstErrorText = $(this.$element[0]).find(".parsley-custom-error-message").first()[0];
+    $firstErrorText.setAttribute("role", "alert");
+    $($firstErrorText.closest(".sl-dropdown")).find(".combo-input").focus();
   });
 
 
