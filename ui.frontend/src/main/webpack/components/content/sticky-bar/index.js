@@ -4,6 +4,12 @@ $(document).ready(function () {
         $(this).addClass("active");
     });
 
+    $('#priButton a').click(function () {
+        if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
+            $('#leadgen-o2o').modal('show');
+        }
+    })
+
     function notificationHeight() {
         var notificationHeight = 0;
         var notificationTop = 0;
@@ -21,16 +27,6 @@ $(document).ready(function () {
         $('.sticky-bar').css('top', headerTop - notificationHeight + $('.slf-mobile-header-wrapper').outerHeight());
     });
 
-    function mobileHeaderHeight() {
-
-        // height = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
-        // $('.sticky-bar').css('top', height);
-
-    }
-
-
-
-
     if ($(window).width() <= 1024) {
         if ($(".sticky-bar-wrapper").hasClass("hide-bar")) {
             $(".sticky-bar-wrapper").removeClass("hide-bar")
@@ -40,7 +36,7 @@ $(document).ready(function () {
     }
 
     $(window).resize(function () {
-       var height = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
+        var height = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
         $('.sticky-bar').css('top', height);
     });
 
@@ -54,7 +50,7 @@ $(document).ready(function () {
     $(window).scroll(function (e) {
         var $el = $('.sticky-bar-wrapper');
         if ($(window).width() > 1024 && $(".sticky-bar-wrapper").hasClass("hide-bar")) {
-            
+
             var isPositionFixed = ($el.css('position') == 'sticky');
             if ($(this).scrollTop() > desktopHeaderHeight() && !isPositionFixed) {
                 $el.css({ 'position': 'sticky', 'top': '0px', 'display': 'flex' });

@@ -16,8 +16,11 @@
         border-bottom: 1px solid #dcdedf;
         height: 5pc;
         padding: 0 15px;
-        
         white-space: nowrap;
+
+        .hide-bar {
+            display: none;
+        }
     }
 
     .desktop-sunlife-logo img {

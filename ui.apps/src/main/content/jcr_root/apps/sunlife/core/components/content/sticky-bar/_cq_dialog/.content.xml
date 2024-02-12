@@ -269,7 +269,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                         fieldLabel="Do you need to hide the sticky bar"
-                                        name="./viewStickyBar">
+                                        name="./hideStickyBar">
                                         <items jcr:primaryType="nt:unstructured">
                                             <no
                                                 jcr:primaryType="nt:unstructured"
