@@ -32,7 +32,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.*;
-import org.apache.sling.settings.SlingSettingsService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -53,6 +52,10 @@ import java.util.stream.Collectors;
 public class BasePageModel {
 
     protected static final String RESOURCE_TYPE = "sunlife/corfe/components/structure/core-base-page";
+    /**
+     * The Constant LOG.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(BasePageModel.class);
 
     /**
      * The Constant DOMAIN_STR.
@@ -195,11 +198,6 @@ public class BasePageModel {
     static final String TWITTER_CREATOR = "twitter:creator";
 
     /**
-     * The Constant LOG.
-     */
-    private static final Logger LOG = LoggerFactory.getLogger(BasePageModel.class);
-
-    /**
      * The current page.
      */
     @ScriptVariable
@@ -217,11 +215,6 @@ public class BasePageModel {
     @SlingObject
     private ResourceResolver resolver;
 
-    /**
-     * The settings service.
-     */
-    @OSGiService
-    private SlingSettingsService settingsService;
 
     /**
      * The relationship manager.
@@ -236,12 +229,6 @@ public class BasePageModel {
     @Via("resource")
     private String canonicalUrl;
 
-    /**
-     * The page description.
-     */
-    @ValueMapValue
-    @Via("resource")
-    private String pageDescription;
 
     /**
      * The page title.
@@ -277,6 +264,7 @@ public class BasePageModel {
     /**
      * The social media descripton.
      */
+    @Getter
     @ValueMapValue
     @Via("resource")
     private String socialMediaDescripton;
@@ -284,6 +272,7 @@ public class BasePageModel {
     /**
      * The page indexing.
      */
+    @Getter
     @ValueMapValue
     @Via("resource")
     private String pageIndexing;
@@ -296,6 +285,7 @@ public class BasePageModel {
     /**
      * The seo page title.
      */
+    @Getter
     private String seoPageTitle;
 
     /**
@@ -318,6 +308,7 @@ public class BasePageModel {
     /**
      * The advanced page type.
      */
+    @Getter
     @ValueMapValue
     @Via("resource")
     private String advancedPageType;
@@ -389,6 +380,7 @@ public class BasePageModel {
     /**
      * The page category.
      */
+    @Getter
     private String pageCategory;
 
     /**
@@ -478,6 +470,7 @@ public class BasePageModel {
     /**
      * The search api.
      */
+    @Getter
     private String searchApi;
 
     /**
@@ -621,60 +614,6 @@ public class BasePageModel {
         socialMediaTitle = pageTitleTag;
     }
 
-    /**
-     * Gets the seo page title.
-     *
-     * @return the seo page title
-     */
-    public String getSeoPageTitle() {
-        return seoPageTitle;
-    }
-
-    /**
-     * Sets the seo page title.
-     *
-     * @param seoPageTitle the new seo page title
-     */
-    public void setSeoPageTitle(final String seoPageTitle) {
-        this.seoPageTitle = seoPageTitle;
-    }
-
-
-    /**
-     * Gets the search api.
-     *
-     * @return the search api
-     */
-    public final String getSearchApi() {
-        return searchApi;
-    }
-
-    /**
-     * Sets the search api.
-     *
-     * @param searchApi the new search api
-     */
-    public final void setSearchApi(final String searchApi) {
-        this.searchApi = searchApi;
-    }
-
-    /**
-     * Gets the page category.
-     *
-     * @return the page category
-     */
-    public final String getPageCategory() {
-        return pageCategory;
-    }
-
-    /**
-     * Sets the page category.
-     *
-     * @param pageCategory the new page category
-     */
-    public final void setPageCategory(final String pageCategory) {
-        this.pageCategory = pageCategory;
-    }
 
     /**
      * Gets the page sub category.
@@ -856,59 +795,6 @@ public class BasePageModel {
         this.udoTags = udoTags;
     }
 
-    /**
-     * Gets the advanced page type.
-     *
-     * @return the advanced page type
-     */
-    public String getAdvancedPageType() {
-        return advancedPageType;
-    }
-
-    /**
-     * Sets the advanced page type.
-     *
-     * @param advancedPageType the new advanced page type
-     */
-    public void setAdvancedPageType(final String advancedPageType) {
-        this.advancedPageType = advancedPageType;
-    }
-
-    /**
-     * Gets the social media descripton.
-     *
-     * @return the social media descripton
-     */
-    public String getSocialMediaDescripton() {
-        return socialMediaDescripton;
-    }
-
-    /**
-     * Sets the social media descripton.
-     *
-     * @param socialMediaDescripton the new social media descripton
-     */
-    public void setSocialMediaDescripton(final String socialMediaDescripton) {
-        this.socialMediaDescripton = socialMediaDescripton;
-    }
-
-    /**
-     * Gets the page indexing.
-     *
-     * @return the page indexing
-     */
-    public String getPageIndexing() {
-        return pageIndexing;
-    }
-
-    /**
-     * Sets the page indexing.
-     *
-     * @param pageIndexing the new page indexing
-     */
-    public void setPageIndexing(final String pageIndexing) {
-        this.pageIndexing = pageIndexing;
-    }
 
     /**
      * Gets the social media image.
@@ -1208,9 +1094,8 @@ public class BasePageModel {
         udoTags = gson.toJson(otherUDOTagsMap);
         autoCompleteUrl = StringUtils.defaultIfEmpty(
                 configService.getConfigValues("autoCompleteUrl", pagePath), StringUtils.EMPTY);
-        setSearchApi(StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath),
-                StringUtils.EMPTY));
-
+        searchApi = StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath),
+                StringUtils.EMPTY);
         LOG.debug("Map Display {}", udoTags);
     }
 
