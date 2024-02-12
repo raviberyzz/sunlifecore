@@ -29,8 +29,7 @@
             $fieldContainer.find(".visually-hidden .count").html($field.val().length+1);            
         }
     }
-
-    
+     
     function init() {
         let $field = $(".sl-text-field .form-control.required, .sl-text-area .form-control.required");
         let $fieldForCount = $(".sl-text-area .form-control")

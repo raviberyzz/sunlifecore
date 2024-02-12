@@ -2,7 +2,7 @@
      data-sly-use.customText="ca.sunlife.web.cms.core.models.v1.FormTextModel"
      data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html" 
      data-cmp-is="formText"
-     class="${text.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${text.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${text.spacing}"
+     class="form-field-container ${text.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${text.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${text.spacing}"
      data-cmp-constraint-message="${text.constraintMessage}"
      data-section="${text.analyticsId}"
      data-cmp-required-message="${text.requiredMessage}">

@@ -3,14 +3,18 @@
      data-section="${options.analyticsId}">
     <sly data-sly-test="${options.type == 'CHECKBOX' || options.type == 'RADIO'}">
         <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
-        <div class="field-group-container">
+        <div class="field-group-container" aria-required="${options.required}">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <input class="form-check-input" type="${options.type}" name="${options.name}" id="${options.id}"
                 disabled="${optionItem.disabled}" data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
                 value="${optionItem.value}" checked="${optionItem.selected}"/>
                 <label for="${options.id}" class="form-check-label">${optionItem.text}</label>
             </div>
-        </div>
+            <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
+                <span class="sl-icon sl-icon-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span>
+                ${options.constraintMessage}
+            </div> 
+        </div> 
     </sly>
     <fieldset class="${options.spacing} cmp-form-options cmp-form-options--${options.type}">
         <sly data-sly-test="${options.type.value == 'drop-down' || options.type.value == 'multi-drop-down'}">
