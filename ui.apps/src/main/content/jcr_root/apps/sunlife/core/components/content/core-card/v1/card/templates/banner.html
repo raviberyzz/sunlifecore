@@ -1,68 +1,35 @@
-<template data-sly-template.banner="${@options}">
-  <div class="card" data-sly-test="${!options.withLink}">
-    <div class="card-body">
-      <span class="sl-icon sl-icon-info-email"></span>
-      <div class="h3 banner-header card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
-      <div class="caption-container">
-        <p>${properties.caption}</p>
-        <div class="popover-container">
-          <div class="sl-popover-container">
-            <button class="popover-button">
-              <span class="visually-hidden">iconAria</span
-              ><span class="sl-icon sl-icon-info"></span>
-            </button>
+<!--/*
+Template for banner card component 
+Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11684-98289&mode=design&t=VXlORNimlyCeZtFI-4
+*/-->
+<template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+  <sly data-sly-set.haveSomthing="${model.bannerHeading || model.cardIcon || model.bannerDescription || model.bannerFormContainer || model.bannerCaption || model.cardDescription || model.cardCaption}" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Banner Card"></div>
+  <sly data-sly-test="${haveSomthing}">
+
+    <div class="card">
+      <div class="card-body">
+        <i data-sly-test="${model.cardIcon}" class="sl-card-icon fak fa-${model.cardIcon}"></i>
+        <h3 class="h3 banner-header card-title">${ model.bannerHeading }</h3>
+        <div class="card-text">${ model.bannerDescription @ context ='html' }</div>
+        <!-- Form container -->
+          <div data-sly-test="${model.bannerFormContainer}" class="grouped-form">
+              <sly data-sly-resource="${ 'form-container' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
           </div>
+        <!-- caption -->
+        <div class="caption-container">
+          ${model.bannerCaption @ context ='html'}
         </div>
-      </div>
-      <div>
-        <a target="_self" href="${properties.buttonLink}" class="sl-link"
-          >${properties.buttonLabel}<span class="sl-icon-after"
-            ><span class="sl-icon sl-icon-chevron-circle-right"></span></span
-        ></a>
-      </div>
-    </div>
-  </div>
-  <div class="card" data-sly-test="${options.withLink}">
-    <div class="card-body">
-      <span class="sl-icon sl-icon-info-email"></span>
-      <div class="h3 banner-header card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
-      <div class="grouped-form">
-        <div class="textfield-container">
-          <div class="">
-            <div class="sl-text-field form-floating">
-              <input
-                placeholder="text"
-                type="text"
-                id="text-field"
-                class="form-control"
-                value=""
-              /><label for="text-field">${properties.labelText}</label>
-            </div>
-          </div>
-        </div>
-        <div class="button-container">
-          <button
-            type="button"
-            href="${properties.buttonLink}"
-            class="sl-btn btn btn-secondary"
-          >
-            ${properties.buttonLabel}
-          </button>
-        </div>
-      </div>
-      <div class="caption-container">
-        <p>${properties.caption}</p>
-        <div class="popover-container">
-          <div class="sl-popover-container">
-            <button class="popover-button">
-              <span class="visually-hidden">iconAria</span
-              ><span class="sl-icon sl-icon-info"></span>
-            </button>
-          </div>
+        <!-- link -->
+        <div data-sly-test="${containerConfigs.isLink}">
+          <sly 
+                data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+                data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+            </sly>
         </div>
       </div>
     </div>
-  </div>
+  </sly>
 </template>
