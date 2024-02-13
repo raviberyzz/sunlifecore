@@ -22,9 +22,19 @@ public interface DynamicCardContainer {
 
     public Boolean getVerticalIconCard();
 
+    public Boolean getLargeAvatarSize();
+
+    public Boolean getAvatarWithBody();
+
     public Boolean getAvatarMultipleCard();
 
+    public String getBannerImagePosition();
+    
+    public String getMediaType();
+
     public Boolean getSegmentedMultipleCard();
+
+    public Boolean getSegmentedformContainer();
 
     public Boolean getStatisticsMultipleCard();
 }

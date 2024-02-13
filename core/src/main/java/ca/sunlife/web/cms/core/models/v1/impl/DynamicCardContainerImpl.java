@@ -25,13 +25,7 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     private Boolean withLink;
 
     @ValueMapValue
-    private String avatarSize;
-
-    @ValueMapValue
     private String bannerImagePosition;
-
-    @ValueMapValue
-    private String mediaType;
 
     public String getCardType() {
         return cardType;
@@ -49,13 +43,12 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
         return verticalHeightControl;
     }
 
-    public String getAvatarSize() {
-        return avatarSize;
-    }
-
     public String getBannerImagePosition() {
         return bannerImagePosition;
     }
+
+    @ValueMapValue
+    private String mediaType;
 
     public String getMediaType() {
         return mediaType;
@@ -111,6 +104,20 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     }
 
     @ValueMapValue
+    private Boolean largeAvatarSize; 
+
+    public Boolean getLargeAvatarSize() {
+        return largeAvatarSize;
+    }
+
+    @ValueMapValue
+    private Boolean avatarWithBody; 
+
+    public Boolean getAvatarWithBody() {
+        return avatarWithBody;
+    }
+
+    @ValueMapValue
     private Boolean avatarMultipleCard; 
 
     public Boolean getAvatarMultipleCard() {
@@ -122,6 +129,13 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
 
     public Boolean getSegmentedMultipleCard() {
         return segmentedMultipleCard;
+    }
+
+    @ValueMapValue
+    private Boolean segmentedformContainer;
+
+    public Boolean getSegmentedformContainer() {
+        return segmentedformContainer;
     }
 
     @ValueMapValue

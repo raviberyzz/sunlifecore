@@ -114,6 +114,13 @@ public class CardImpl implements Card {
     }
 
     @ValueMapValue
+    private String altText;
+
+    public String getAltText() {
+        return altText;
+    }
+
+    @ValueMapValue
     private String cardIcon;
 
     public String getCardIcon() {
@@ -182,5 +189,125 @@ public class CardImpl implements Card {
     public String getCardLinkTarget() {
         return cardLinkTarget;
     }
+
+    @ValueMapValue
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    @ValueMapValue
+    private String jobTitle;
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    @ValueMapValue
+    private String quote;
+
+    public String getQuote() {
+        return quote;
+    }
+
+    @ValueMapValue
+    private String bannerHeading;
+
+    public String getBannerHeading() {
+        return bannerHeading;
+    }
+
+    @ValueMapValue
+    private String bannerDescription;
+
+    public String getBannerDescription() {
+        return bannerDescription;
+    }
+
+    @ValueMapValue
+    private String bannerCaption;
+
+    public String getBannerCaption() {
+        return bannerCaption;
+    }
+
+    @ValueMapValue
+    private Boolean bannerFormContainer;
+
+    public Boolean getBannerFormContainer() {
+        return bannerFormContainer;
+    }
+
+    @ValueMapValue
+    private String bannerImageHeading;
+
+    public String getBannerImageHeading() {
+        return bannerImageHeading;
+    }
+
+    @ValueMapValue
+    private String bannerImageDescription;
+
+    public String getBannerImageDescription() {
+        return bannerImageDescription;
+    }
+
+    @ValueMapValue
+    private String bannerImageCaption;
+
+    public String getBannerImageCaption() {
+        return bannerImageCaption;
+    }
+
+    @ValueMapValue
+    private String mediaHeading;
+
+    public String getMediaHeading() {
+        return mediaHeading;
+    }
+
+    @ValueMapValue
+    private String mediaDescription;
+
+    public String getMediaDescription() {
+        return mediaDescription;
+    }
+
+    @ValueMapValue
+    private String segmentHeading;
+
+    public String getSegmentHeading() {
+        return segmentHeading;
+    }
+
+    @ValueMapValue
+    private String segmentDescription;
+
+    public String getSegmentDescription() {
+        return segmentDescription;
+    }
+
+    @ValueMapValue
+    private String statisticHeading;
+
+    public String getStatisticHeading() {
+        return statisticHeading;
+    }
+
+    @ValueMapValue
+    private String statisticDescription;
+
+    public String getStatisticDescription() {
+        return statisticDescription;
+    }
+
+    @ValueMapValue
+    private String statisticCaption;
+
+    public String getStatisticCaption() {
+        return statisticCaption;
+    }
+
     
 }

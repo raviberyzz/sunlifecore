@@ -7,8 +7,7 @@
           jcr:primaryType="nt:unstructured"
           jcr:title="Card/Content-Block"
           sling:resourceType="cq/gui/components/authoring/dialog"
-          helpPath="https://www.adobe.com/go/aem_cmp_list_v2"
-          extraClientlibs="[sunlife.core.author.text,sunlife.core.author.card,sunlife.core.author.select-showhide]">
+          extraClientlibs="[sunlife.core-author.card]">
     <content jcr:primaryType="nt:unstructured"
              sling:resourceType="granite/ui/components/coral/foundation/container"
              granite:class="card-type-dialog-container">
@@ -19,26 +18,289 @@
                   granite:class="card-type-tabs">
                 <items jcr:primaryType="nt:unstructured">
                     <horizontalVertical jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/include"
-                                path="sunlife/core/components/content/core-card/v1/card/horizontal-vertical" />
+                            jcr:title="Horizontal/Vertical"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <cardHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Heading"
+                                                name="./cardHeading" />
+                                            <cardDescription jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./cardDescription"
+                                                fieldDescription="A description to display as the subheadline for the banner. As per reccomendation this text wrap up to 3 lines."
+                                                fieldLabel="Description Text"
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                            <cardCaption jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Caption"
+                                                name="./cardCaption" />
+                                            <cardCategory jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Category"
+                                                name="./cardCategory" />
+                                            <cardBadgeText jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Badge Text"
+                                                name="./cardBadgeText" />
+                                            <cardBadgeType jcr:primaryType="nt:unstructured"
+                                                name="./cardBadgeType"
+                                                fieldLabel="Badge Type"
+                                                fieldDescription="Select the type of badge want to show. Select none if dont want to show any badge."
+                                                selectionMode="single"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/buttongroup">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <none jcr:primaryType="nt:unstructured"
+                                                        name="./none"
+                                                        text="None"
+                                                        value="none"
+                                                        cq-msm-lockable="none" />
+                                                    <success jcr:primaryType="nt:unstructured"
+                                                        name="./success"
+                                                        text="Success"
+                                                        value="success"
+                                                        cq-msm-lockable="success" />
+                                                    <info jcr:primaryType="nt:unstructured"
+                                                        name="./info"
+                                                        text="Info"
+                                                        value="info"
+                                                        cq-msm-lockable="info" />
+                                                    <error jcr:primaryType="nt:unstructured"
+                                                        name="./error"
+                                                        text="Error"
+                                                        value="error"
+                                                        cq-msm-lockable="error" />
+                                                    <warning jcr:primaryType="nt:unstructured"
+                                                        name="./warning"
+                                                        text="Warning"
+                                                        value="warning"
+                                                        cq-msm-lockable="warning" />
+                                                </items>
+                                            </cardBadgeType>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </horizontalVertical>
                     <avatar jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/include"
-                            path="sunlife/core/components/content/core-card/v1/card/avatar" />
+                            jcr:title="Avatar"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <name jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Name"
+                                                name="./name" />
+                                            <jobTitle jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Job Title"
+                                                name="./jobTitle" />
+                                            <quote jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./quote"
+                                                fieldDescription="A description/quote to displayed under avatar."
+                                                fieldLabel="Description/Quote"
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </avatar>
                     <banner jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/include"
-                            path="sunlife/core/components/content/core-card/v1/card/banner" />
+                            jcr:title="Banner"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <bannerHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./bannerHeading" />
+                                            <bannerDescription jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./bannerDescription"
+                                                fieldDescription="A description to display as the subheadline for the banner. As per reccomendation this text wrap up to 3 lines."
+                                                fieldLabel="Banner Description "
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                            <bannerCaption jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./bannerCaption"
+                                                fieldDescription="A caption to display as the subheadline for the banner."
+                                                fieldLabel="Banner Caption"
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                            <bannerFormContainer
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                uncheckedValue="{Boolean}false"
+                                                name="./bannerFormContainer"
+                                                fieldDescription="Check if banner card has form inside."
+                                                text="Is form banner?"
+                                                value="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </banner>
                     <bannerImage jcr:primaryType="nt:unstructured"
-                                 sling:resourceType="granite/ui/components/coral/foundation/include"
-                                 path="sunlife/core/components/content/core-card/v1/card/banner-image" />
+                                 jcr:title="Banner-Image"
+                                 sling:resourceType="granite/ui/components/coral/foundation/container"
+                                 margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <bannerImageHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./bannerImageHeading" />
+                                            <bannerImageDescription 
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./bannerImageDescription"
+                                                fieldDescription="A description to display as the below heading for the banner Image."
+                                                fieldLabel="Banner Image Description "
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                            <bannerImageCaption jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./bannerImageCaption"
+                                                fieldDescription="A caption to display in the bottom for the banner Image."
+                                                fieldLabel="Banner Caption"
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </bannerImage>
                     <media jcr:primaryType="nt:unstructured"
-                           sling:resourceType="granite/ui/components/coral/foundation/include"
-                           path="sunlife/core/components/content/core-card/v1/card/media" />
+                           jcr:title="Media"
+                           sling:resourceType="granite/ui/components/coral/foundation/container"
+                           margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <mediaHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./mediaHeading" />
+                                            <mediaDescription jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./mediaDescription"
+                                                fieldDescription="A description to display as the below heading for the media content card."
+                                                fieldLabel="Media Description "
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </media>
                     <segmented jcr:primaryType="nt:unstructured"
-                               sling:resourceType="granite/ui/components/coral/foundation/include"
-                               path="sunlife/core/components/content/core-card/v1/card/segmented" />
+                           jcr:title="Segmented"
+                           sling:resourceType="granite/ui/components/coral/foundation/container"
+                           margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <segmentHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./segmentHeading" />
+                                            <segmentDescription jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./segmentDescription"
+                                                fieldDescription="A description to display as the below heading for the segmented content card."
+                                                fieldLabel="Segment Description "
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </segmented>
                     <statistic jcr:primaryType="nt:unstructured"
-                               sling:resourceType="granite/ui/components/coral/foundation/include"
-                               path="sunlife/core/components/content/core-card/v1/card/statistic" />
+                           jcr:title="Statistic"
+                           sling:resourceType="granite/ui/components/coral/foundation/container"
+                           margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                     margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <statisticHeading jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./statisticHeading" />
+                                            <statisticDescription jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./statisticDescription"
+                                                fieldDescription="A description to display as the below heading for the statistic content card."
+                                                fieldLabel="Statistic Description "
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                            <statisticCaption jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                name="./statisticCaption"
+                                                fieldDescription="A caption to display in the top for the statistic content card."
+                                                fieldLabel="Statistic Caption"
+                                                useFixedInlineToolbar="{Boolean}true" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </statistic>
                     <asset jcr:primaryType="nt:unstructured"
                            sling:resourceType="granite/ui/components/coral/foundation/include"
                            path="sunlife/core/components/content/core-card/v1/card/asset" />

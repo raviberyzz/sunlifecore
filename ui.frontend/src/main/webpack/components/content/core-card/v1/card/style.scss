@@ -1,8 +1,30 @@
-.sl-cards.horizontal .card picture {
-    width: 50%;
+
+.card {
+    .sl-link {
+        .svg-inline--fa {
+            width: 20px !important;
+            height: 20px !important;
+            margin-bottom: -2px;
+        }
+    }
 }
 
 .sl-card-icon {
     height: 4rem !important;
     width: 4rem !important;
+}
+
+.sl-banner-content-block  {
+    &::before {
+        content: '';
+        left: 50%;
+        margin-left: -50%;
+        margin-right: -50%;
+        position: relative;
+    }
+}
+
+// TODO: Helios-bugfix - Need to remove once helios fix it
+.sl-cards.horizontal .card picture {
+    width: 50%;
 }

@@ -2,9 +2,9 @@
 use(function () {
     var containerModel = this.containerModel;
     var cardType = this.cardType;
-
     var containerClasses = [];
 
+    /* Update dynamic wrapper class depending upon current card type and selected card specific options */
     switch (cardType) {
         case 'horizontal':
             containerClasses.push('sl-cards horizontal');
@@ -16,43 +16,38 @@ use(function () {
             break;
         case 'avatar':
             containerClasses.push('sl-avatar-blocks');
-            // Need to update as multi avatar selection
-            // sl-avatar-blocks multi
+            containerModel.avatarMultipleCard ? containerClasses.push('multi') : '';
             break;
         case 'banner':
             containerClasses.push('sl-banner-content-block');
             break;
         case 'banner-image':
             containerClasses.push('sl-banner-image-block card');
-            // banner-image-block-right 
-            // banner-image-block-left
-            // sl-media-block media-block-left card
+            containerModel.bannerImagePosition =='right' ? containerClasses.push('banner-image-block-right') : containerClasses.push('banner-image-block-left');
             break;
         case 'media':
-            containerClasses.push('sl-media-block card');
-            // media-block-left 
-            // media-block-right   
-            // media-block-left video-block   
+            containerClasses.push('container');
             break;
         case 'segmented':
             containerClasses.push('sl-segmented-blocks');
-            // sl-segmented-blocks multi
+            containerModel.segmentedMultipleCard ? containerClasses.push('multi') : '';
             break;
         case 'statistic':
             containerClasses.push('sl-statistic-blocks');
-            // sl-statistic-blocks multi
+            containerModel.statisticsMultipleCard ? containerClasses.push('multi') : '';
             break;
         default:
             containerClasses.push('sl-cards');
             break;
     }
 
+    /* return card specific wrapper class for passed card type and horizontal control authored value */
     function handleCardSpecificWrapperClasses(type) {
         var cardTypeSpecificConfigs = ''
         if(type=='horizontal') {
-            cardTypeSpecificConfigs = containerModel.horizontalHeightControl == 'auto'? 'auto' : ''
+            cardTypeSpecificConfigs = containerModel.horizontalHeightControl == 'auto'? 'auto' : '';
         } else if(type=='vertical') {
-            cardTypeSpecificConfigs = containerModel.verticalHeightControl == 'auto'? 'auto' : ''
+            cardTypeSpecificConfigs = containerModel.verticalHeightControl == 'auto'? 'auto' : '';
         } 
         return cardTypeSpecificConfigs
     }

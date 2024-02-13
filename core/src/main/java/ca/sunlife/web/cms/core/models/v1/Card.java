@@ -24,6 +24,8 @@ public interface Card {
 
     public String getCardImageFileReference();
 
+    public String getAltText();
+
     public String getCardIcon();
 
     public String getCtaType(); 
@@ -43,5 +45,39 @@ public interface Card {
     public String getCardLinkIconType();
 
     public String getCardLinkTarget();
+
+    public String getName();
+
+    public String getJobTitle();
+
+    public String getQuote();
+
+    public String getBannerHeading();
+
+    public String getBannerDescription();
+
+    public String getBannerCaption();
+
+    public Boolean getBannerFormContainer();
+
+    public String getBannerImageHeading();
+
+    public String getBannerImageDescription();
+
+    public String getBannerImageCaption();
+
+    public String getMediaHeading();
+
+    public String getMediaDescription();
+
+    public String getSegmentHeading();
+
+    public String getSegmentDescription();
+
+    public String getStatisticHeading();
+
+    public String getStatisticDescription();
+
+    public String getStatisticCaption();
 
 }

@@ -1,17 +1,22 @@
+/**
+* Dynamic Card Container Component author dialog specific JS
+*/
 (function($, $document) {
-
     "use strict";
 
+    /* Binding event and callback on foundation-contentloaded */
     $(document).on("foundation-contentloaded", function(e) {
         $("#dynamic-card-tab-hide-show").each(function() {
             showHide();
         });
     });
 
+    /* Binding change event and callback on dynamic card container dropdown */
     $document.on("change", "#dynamic-card-container-dropdown", function(e) {
         showHide();
     });
 
+    /* Show/hide authoring tabs depending upon selected card type */
     function showHide() {
         var list = $("#dynamic-card-tab-hide-show").find("coral-tab");
         let horizontal = $(".horizontal").prop("selected");

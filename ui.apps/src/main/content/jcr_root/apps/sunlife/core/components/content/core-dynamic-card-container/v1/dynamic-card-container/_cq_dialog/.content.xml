@@ -237,24 +237,24 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <avatarSize
+                                                    <largeAvatarSize
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                            fieldLabel="Avatar Size"
-                                                            fieldDescription="Choose 'Large' for a bigger avatar or 'With Body' to include additional content."
-                                                            name="./avatarSize"
-                                                            text="Avatar Size">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <large
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Large"
-                                                                    value="large"/>
-                                                            <withBody
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="With Body"
-                                                                    value="withBody"/>
-                                                        </items>
-                                                    </avatarSize>
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./largeAvatarSize"
+                                                            fieldDescription="Check, if want to show large avatar size."
+                                                            text="Is Large Avatar?"
+                                                            value="{Boolean}true"/>
+                                                    <avatarWithBody
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./avatarWithBody"
+                                                            fieldDescription="Check, if want to show avatar with body content."
+                                                            text="Is avatar body card?"
+                                                            value="{Boolean}true"/>
                                                     <multipleCard
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -325,12 +325,12 @@
                                                             <left jcr:primaryType="nt:unstructured"
                                                                     name="./left"
                                                                     text="Left"
-                                                                    value="banner-image-block-left"
+                                                                    value="left"
                                                                     cq-msm-lockable="left" />
                                                             <right jcr:primaryType="nt:unstructured"
                                                                 name="./right"
                                                                 text="Right"
-                                                                value="banner-image-block-right"
+                                                                value="right"
                                                                 cq-msm-lockable="right" />
                                                         </items>
                                                     </imagePosition>
@@ -365,17 +365,17 @@
                                                             <left jcr:primaryType="nt:unstructured"
                                                                     name="./left"
                                                                     text="Image Left"
-                                                                    value="media-block-left"
+                                                                    value="left"
                                                                     cq-msm-lockable="left" />
                                                             <right jcr:primaryType="nt:unstructured"
                                                                 name="./right"
                                                                 text="Image Right"
-                                                                value="media-block-right"
+                                                                value="right"
                                                                 cq-msm-lockable="right" />
                                                             <video jcr:primaryType="nt:unstructured"
                                                                 name="./video"
                                                                 text="video"
-                                                                value="media-block-left video-block"
+                                                                value="video"
                                                                 cq-msm-lockable="video" />
                                                         </items>
                                                     </mediaType>
@@ -408,6 +408,15 @@
                                                             name="./segmentedMultipleCard"
                                                             fieldDescription="Enable if multiple cards will be added."
                                                             text="Is multiple card?"
+                                                            value="{Boolean}true"/>
+                                                    <formContainer
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            checked="{Boolean}false"
+                                                            uncheckedValue="{Boolean}false"
+                                                            name="./segmentedformContainer"
+                                                            fieldDescription="Check if segment card has form inside."
+                                                            text="Is form segment card?"
                                                             value="{Boolean}true"/>
                                                 </items>
                                             </column>
