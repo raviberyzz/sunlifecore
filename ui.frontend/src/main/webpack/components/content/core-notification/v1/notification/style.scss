@@ -10,6 +10,13 @@
 
 .sl-notification {
 
+    @include media-breakpoint-up(lg) {
+        .container {
+            padding-left: 2.75rem;
+            padding-right: 2.75rem;
+        }
+    }
+   
     .sl-icon_color_information {
         color: var(--brand-secondary-800);
     }
@@ -29,6 +36,11 @@
      .notification-icon svg {
         vertical-align: bottom;
     }
+
+    .notification-text p {
+        margin-bottom: 0;
+    }
+    
      .btn-close {
         height: 1.5rem;
         padding: 0;
@@ -45,5 +57,5 @@
             box-shadow: 0 0 0 0.125rem var(--brand-tertiary-500);
         }
     }
-
+  
 }
