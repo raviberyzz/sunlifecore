@@ -18,15 +18,15 @@
 
     /* Show/hide authoring tabs depending upon selected card type */
     function showHide() {
-        var list = $("#dynamic-card-tab-hide-show").find("coral-tab");
-        let horizontal = $(".horizontal").prop("selected");
-        let vertical = $(".vertical").prop("selected");
-        let avatar = $(".avatar").prop("selected");
-        let banner = $(".banner").prop("selected");
-        let banner_image = $(".banner-image").prop("selected");
-        let media = $(".media").prop("selected");
-        let segmented = $(".segmented").prop("selected");
-        let statistic = $(".statistic").prop("selected");
+        const list = $("#dynamic-card-tab-hide-show").find("coral-tab");
+        const horizontal = $(".horizontal").prop("selected");
+        const vertical = $(".vertical").prop("selected");
+        const avatar = $(".avatar").prop("selected");
+        const banner = $(".banner").prop("selected");
+        const banner_image = $(".banner-image").prop("selected");
+        const media = $(".media").prop("selected");
+        const segmented = $(".segmented").prop("selected");
+        const statistic = $(".statistic").prop("selected");
 
 
         if (horizontal) {

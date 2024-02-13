@@ -3,32 +3,27 @@ Template for segmented card component
 Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11195-65411&mode=design&t=VXlORNimlyCeZtFI-4
 */-->
 <template data-sly-template.details="${ @ model, cardType, containerConfigs }">
- 
+  <sly data-sly-set.haveSomthing="${model.segmentHeading || model.cardIcon || model.segmentDescription || model.ctaType }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="segmented Card"></div>
+  <sly data-sly-test="${haveSomthing}">
+
     <div class="card-body">
       <i data-sly-test="${model.cardIcon}" class="sl-card-icon fak fa-${model.cardIcon}"></i>
       <h4 class="h4 card-title">${model.segmentHeading}</h4>
       <div class="card-text">${model.segmentDescription @ context ='html'}</div>
 
       <div class="link-container">
-        <a data-sly-test="${model.ctaType != 'noCTA'}"
-            target="${ isBtn ? model.cardBtnTarget : model.cardLinkTarget }"
-            href="${isBtn ? model.cardBtnURL : model.cardLinkURL}"
-            class="${isBtn ? 'sl-btn btn btn-secondary' : 'sl-link' } hover-icn-cta"
-            data-sly-set.iconType="${isBtn ? model.cardBtnIconType : model.cardLinkIconType }">
-            <sly data-sly-test="${iconType =='file-pdf'}">
-              <i class="far fa-${iconType}"></i>
-            </sly>
-            ${isBtn ? model.cardBtnLabel : model.cardLinkLabel }
-            <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}">
-              <i class="fak fa-${iconType} icn-hover-hidden"></i>
-              <i class="fak fa-${iconType}-hover icn-hover-show"></i>
-            </sly>
-          </a>
+        <sly 
+              data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+          </sly>
       </div>
     </div>
 
     <div data-sly-test="${containerConfigs.isForm}" class="grouped-form">
       <sly data-sly-resource="${ 'form-container' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
     </div>
-  
+  </sly>
 </template>

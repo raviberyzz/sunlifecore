@@ -6,12 +6,12 @@
 
     /* Binding event and callback on foundation-contentloaded */
     $(document).on("foundation-contentloaded", function (e) {
-        var currentComponentPath = Granite.author.DialogFrame.currentDialog.editable.path;
-        var parentPath = currentComponentPath.substr(0, currentComponentPath.lastIndexOf("/"));
-        var cardType = CQ.shared.HTTP.get(parentPath + '/cardType').responseText;
-        var tabs = $(".card-type-tabs").find("coral-tab");
-        var selectedTab = null;
-        var currentTab = '';
+        let currentComponentPath = Granite.author.DialogFrame.currentDialog.editable.path;
+        let parentPath = currentComponentPath.substr(0, currentComponentPath.lastIndexOf("/"));
+        let cardType = CQ.shared.HTTP.get(parentPath + '/cardType').responseText;
+        let tabs = $(".card-type-tabs").find("coral-tab");
+        let selectedTab = null;
+        let currentTab = '';
 
         /* show/hide tabs of different card type depending upon current card type */
         tabs.each(function (index, value) {

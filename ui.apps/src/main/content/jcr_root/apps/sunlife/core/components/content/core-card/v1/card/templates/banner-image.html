@@ -3,6 +3,13 @@ Template for banner-image card component
 Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11145-69119&mode=design&t=VXlORNimlyCeZtFI-4
 */-->
 <template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+  
+  <sly data-sly-set.haveSomthing="${model.cardImageFileReference || model.bannerImageHeading || model.bannerImageDescription || model.altText || model.bannerImageCaption || model.ctaType }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Banner-Image Card"></div>
+  <sly data-sly-test="${haveSomthing}">
+
       <div data-sly-test="${containerConfigs.imagePosition =='left'}" class="col-md-6 col-sm-12 col-12">
         <picture data-sly-test="${model.cardImageFileReference}">
           <source srcset="${model.cardImageFileReference}">
@@ -18,20 +25,10 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
             <div class="caption-text">${model.bannerImageCaption @ context ='html'}</div>
           </div>
 
-          <a data-sly-test="${model.ctaType != 'noCTA'}"
-            target="${ isBtn ? model.cardBtnTarget : model.cardLinkTarget }"
-            href="${isBtn ? model.cardBtnURL : model.cardLinkURL}"
-            class="${isBtn ? 'sl-btn btn btn-secondary' : 'sl-link' } hover-icn-cta"
-            data-sly-set.iconType="${isBtn ? model.cardBtnIconType : model.cardLinkIconType }">
-            <sly data-sly-test="${iconType =='file-pdf'}">
-              <i class="far fa-${iconType}"></i>
-            </sly>
-            ${isBtn ? model.cardBtnLabel : model.cardLinkLabel }
-            <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}">
-              <i class="fak fa-${iconType} icn-hover-hidden"></i>
-              <i class="fak fa-${iconType}-hover icn-hover-show"></i>
-            </sly>
-          </a>
+          <sly 
+              data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+          </sly>
 
         </div>
       </div>
@@ -42,5 +39,5 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
           <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
         </picture>
       </div>
-
+    </sly>
 </template>

@@ -4,11 +4,17 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
 video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11820-86684&mode=design&t=VXlORNimlyCeZtFI-4
 */-->
 <template data-sly-template.details="${@ model, cardType, containerConfigs }">
-   
-  <picture data-sly-test="${containerConfigs.mediaType =='left' && model.cardImageFileReference}">
-    <source srcset="${model.cardImageFileReference}">
-    <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
-  </picture>
+
+  <sly data-sly-set.haveSomthing="${model.cardImageFileReference || model.mediaHeading || model.mediaDescription || model.ctaType || model.altText }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Media Card"></div>
+
+  <sly data-sly-test="${haveSomthing}">
+    <picture data-sly-test="${containerConfigs.mediaType =='left' && model.cardImageFileReference}">
+      <source srcset="${model.cardImageFileReference}">
+      <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
+    </picture>
 
   <div data-sly-test="${containerConfigs.mediaType =='video'}" class="video-container">
     <sly data-sly-resource="${ 'embed' @ resourceType='sunlife/core/components/content/core-embed-video/v1/embed'}"/>
@@ -19,20 +25,10 @@ video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Compone
       <div class="card-text">${model.mediaDescription @ context ='html'}</div>
 
       <div class="media-cta-container">
-        <a data-sly-test="${model.ctaType != 'noCTA'}"
-            target="${ isBtn ? model.cardBtnTarget : model.cardLinkTarget }"
-            href="${isBtn ? model.cardBtnURL : model.cardLinkURL}"
-            class="${isBtn ? 'sl-btn btn btn-secondary' : 'sl-link' } hover-icn-cta"
-            data-sly-set.iconType="${isBtn ? model.cardBtnIconType : model.cardLinkIconType }">
-            <sly data-sly-test="${iconType =='file-pdf'}">
-              <i class="far fa-${iconType}"></i>
-            </sly>
-            ${isBtn ? model.cardBtnLabel : model.cardLinkLabel }
-            <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}">
-              <i class="fak fa-${iconType} icn-hover-hidden"></i>
-              <i class="fak fa-${iconType}-hover icn-hover-show"></i>
-            </sly>
-          </a>
+        <sly 
+              data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+          </sly>
       </div>
 
     </div>
@@ -41,5 +37,5 @@ video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Compone
       <source srcset="${model.cardImageFileReference}">
       <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
     </picture>
-
+</sly>
 </template>
