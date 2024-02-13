@@ -2,14 +2,14 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-panelcontainer="${wcmmode.edit && 'tabs'}"
      id="${tabs.id}"
-     class="cmp-tabs sl-tabs ${tabs.spacings}"
+     class="cmp-tabs sl-tabs ${tabs.spacing}"
      data-cmp-is="tabs"
      aria-label="${tabs.accessibilityLabel}"
-     data-section="${tabs.dataTitle}"
+     data-title="${tabs.dataTitle}"
      data-cmp-data-layer="${tabs.data.json}"
      data-placeholder-text="${wcmmode.edit && 'Please drag Tab components here' @ i18n}">	 
      <div class="stack-tab-container no-border">
-          <div class="arrow-btn left ${tabs.enableScrolling == 'true' ? '': 'hide'} disabled"><span class="sl-icon fal fa-chevron-left"></span></div>  
+          <button aria-label="Previous tab" class="arrow-btn left ${tabs.enableScrolling == 'true' ? '': 'hide'} disabled"><span class="sl-icon fal fa-chevron-left"></span></button>  
           <div data-sly-set.items="${tabs.children || tabs.items}"
                data-sly-test="${items && items.size > 0}"
                data-sly-list.tab="${items}"
@@ -27,7 +27,7 @@
                     </a>
                </div>			   
           </div>
-          <div class="arrow-btn right  ${tabs.enableScrolling == 'true'? '': 'hide'} active"><span class="sl-icon fal fa-chevron-right"></span></div>
+          <button aria-label="Next tab" class="arrow-btn right  ${tabs.enableScrolling == 'true'? '': 'hide'} active"><span class="sl-icon fal fa-chevron-right"></span></button>
      </div>
 	<div class="tab-content">
 		 <div data-sly-repeat.item="${items}"
