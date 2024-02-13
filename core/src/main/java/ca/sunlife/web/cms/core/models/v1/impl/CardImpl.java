@@ -54,7 +54,7 @@ public class CardImpl implements Card {
             while (comboListIterator.hasNext()) {
                 Resource comboItem = comboListIterator.next();
                 HashMap<String, String> comboMap = new HashMap<>();
-                comboMap.put(TITLE, comboItem.getValueMap().get(TITLE, String.class).toString());
+                comboMap.put(TITLE, comboItem.getValueMap().get(TITLE, String.class));
                 comboItemList.add(comboMap);
             }
         }
