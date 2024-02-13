@@ -14,6 +14,8 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import lombok.Getter;
+
 import ca.sunlife.web.cms.core.models.v1.Card;
 import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
 
@@ -21,6 +23,8 @@ import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
         CardImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CardImpl implements Card {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-card/v1/card";
+	
+	private static final String TITLE = "title";
 
     @SlingObject
     private Resource card;
@@ -50,7 +54,7 @@ public class CardImpl implements Card {
             while (comboListIterator.hasNext()) {
                 Resource comboItem = comboListIterator.next();
                 HashMap<String, String> comboMap = new HashMap<>();
-                comboMap.put("title", comboItem.getValueMap().get("title").toString());
+                comboMap.put(TITLE, comboItem.getValueMap().get(TITLE, String.class).toString());
                 comboItemList.add(comboMap);
             }
         }
@@ -58,256 +62,147 @@ public class CardImpl implements Card {
     }
 
     @ValueMapValue
-    private String cardHeading;
-
-    public String getCardHeading() {
-        return cardHeading;
-    }
+	@Getter
+    private String cardHeading;  
 
     @ValueMapValue
-    private String cardDescription;
-
-    public String getCardDescription() {
-        return cardDescription;
-    }
+	@Getter
+    private String cardDescription;   
 
     @ValueMapValue
-    private String cardCaption;
-
-    public String getCardCaption() {
-        return cardCaption;
-    }
+	@Getter
+    private String cardCaption;  
 
     @ValueMapValue
-    private String cardCategory;
-
-    public String getCardCategory() {
-        return cardCategory;
-    }
+	@Getter
+    private String cardCategory;  
 
     @ValueMapValue
-    private String cardBadgeText;
-
-    public String getCardBadgeText() {
-        return cardBadgeText;
-    }
+	@Getter
+    private String cardBadgeText;   
 
     @ValueMapValue
-    private String cardBadgeType;
-
-    public String getCardBadgeType() {
-        return cardBadgeType;
-    }
+	@Getter
+    private String cardBadgeType;   
 
     @ValueMapValue
-    private String assetType;
-
-    public String getAssetType() {
-        return assetType;
-    }
+	@Getter
+    private String assetType;  
 
     @ValueMapValue
-    private String cardImageFileReference;
-
-    public String getCardImageFileReference() {
-        return cardImageFileReference;
-    }
+	@Getter
+    private String cardImageFileReference;  
 
     @ValueMapValue
-    private String altText;
-
-    public String getAltText() {
-        return altText;
-    }
+	@Getter
+    private String altText; 
 
     @ValueMapValue
-    private String cardIcon;
-
-    public String getCardIcon() {
-        return cardIcon;
-    }
+	@Getter
+    private String cardIcon;  
 
     @ValueMapValue
-    private String ctaType;
-
-    public String getCtaType() {
-        return ctaType;
-    }
+	@Getter
+    private String ctaType;  
 
     @ValueMapValue
+	@Getter
     private String cardBtnLabel;
-
-    public String getCardBtnLabel() {
-        return cardBtnLabel;
-    }
+   
+    @ValueMapValue
+	@Getter
+    private String cardBtnURL; 
 
     @ValueMapValue
-    private String cardBtnURL;
-
-    public String getCardBtnURL() {
-        return cardBtnURL;
-    }
-
-    @ValueMapValue
+	@Getter
     private String cardBtnIconType;
 
-    public String getCardBtnIconType() {
-        return cardBtnIconType;
-    }
-
     @ValueMapValue
+	@Getter
     private String cardBtnTarget;
 
-    public String getCardBtnTarget() {
-        return cardBtnTarget;
-    }
+    @ValueMapValue
+	@Getter
+    private String cardLinkLabel;  
 
     @ValueMapValue
-    private String cardLinkLabel;
-
-    public String getCardLinkLabel() {
-        return cardLinkLabel;
-    }
+	@Getter
+    private String cardLinkURL;  
 
     @ValueMapValue
-    private String cardLinkURL;
-
-    public String getCardLinkURL() {
-        return cardLinkURL;
-    }
-
-    @ValueMapValue
+	@Getter
     private String cardLinkIconType;
 
-    public String getCardLinkIconType() {
-        return cardLinkIconType;
-    }
+    @ValueMapValue
+	@Getter
+    private String cardLinkTarget;  
 
     @ValueMapValue
-    private String cardLinkTarget;
-
-    public String getCardLinkTarget() {
-        return cardLinkTarget;
-    }
-
-    @ValueMapValue
+	@Getter
     private String name;
 
-    public String getName() {
-        return name;
-    }
-
     @ValueMapValue
+	@Getter
     private String jobTitle;
 
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
     @ValueMapValue
+	@Getter
     private String quote;
 
-    public String getQuote() {
-        return quote;
-    }
-
     @ValueMapValue
+	@Getter
     private String bannerHeading;
 
-    public String getBannerHeading() {
-        return bannerHeading;
-    }
-
     @ValueMapValue
+	@Getter
     private String bannerDescription;
-
-    public String getBannerDescription() {
-        return bannerDescription;
-    }
-
+  
     @ValueMapValue
+	@Getter
     private String bannerCaption;
 
-    public String getBannerCaption() {
-        return bannerCaption;
-    }
-
     @ValueMapValue
+	@Getter
     private Boolean bannerFormContainer;
 
-    public Boolean getBannerFormContainer() {
-        return bannerFormContainer;
-    }
+    @ValueMapValue
+	@Getter
+    private String bannerImageHeading;  
 
     @ValueMapValue
-    private String bannerImageHeading;
-
-    public String getBannerImageHeading() {
-        return bannerImageHeading;
-    }
-
-    @ValueMapValue
+	@Getter
     private String bannerImageDescription;
 
-    public String getBannerImageDescription() {
-        return bannerImageDescription;
-    }
+    @ValueMapValue
+	@Getter
+    private String bannerImageCaption; 
 
     @ValueMapValue
-    private String bannerImageCaption;
-
-    public String getBannerImageCaption() {
-        return bannerImageCaption;
-    }
-
-    @ValueMapValue
+	@Getter
     private String mediaHeading;
 
-    public String getMediaHeading() {
-        return mediaHeading;
-    }
-
     @ValueMapValue
+	@Getter
     private String mediaDescription;
 
-    public String getMediaDescription() {
-        return mediaDescription;
-    }
-
     @ValueMapValue
+	@Getter
     private String segmentHeading;
 
-    public String getSegmentHeading() {
-        return segmentHeading;
-    }
-
     @ValueMapValue
+	@Getter
     private String segmentDescription;
 
-    public String getSegmentDescription() {
-        return segmentDescription;
-    }
-
     @ValueMapValue
+	@Getter
     private String statisticHeading;
 
-    public String getStatisticHeading() {
-        return statisticHeading;
-    }
+    @ValueMapValue
+	@Getter
+    private String statisticDescription;  
 
     @ValueMapValue
-    private String statisticDescription;
-
-    public String getStatisticDescription() {
-        return statisticDescription;
-    }
-
-    @ValueMapValue
+	@Getter
     private String statisticCaption;
-
-    public String getStatisticCaption() {
-        return statisticCaption;
-    }
-
     
 }
