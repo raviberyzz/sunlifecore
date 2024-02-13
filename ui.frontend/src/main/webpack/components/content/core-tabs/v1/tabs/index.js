@@ -30,7 +30,7 @@ $(document).ready(function() {
     const $keyName = e.key;    
     const $navTabs = $thisKey.parents(".nav-tabs");
     const $navItem = $navTabs.find('.nav-item');   
-    const $leftNavScroll = $navTab.siblings(".arrow-btn.left"); 
+    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left"); 
     let $currentItem;
     //condition for right arrow focus on key event
     if($keyName === "ArrowRight"){
@@ -127,18 +127,17 @@ $(document).ready(function() {
       $navButton.removeClass('hide');
     }
   }
-
+  //Function used to intialize the events
   function init() {
     const $tabContainer = $(".sl-tabs");    
     if($tabContainer.length > 0){
-        const $tabItem = $(this);
-        const $navItem = $tabItem.find(".nav-item");
-        const $navTab = $tabItem.find(".nav-tabs");
-        const $navButton =  $tabItem.find(".arrow-btn");
+        const $navTab = $(".sl-tabs .nav-tabs");
+        const $navButton =  $('.sl-tabs .arrow-btn');
         $navTab.attr('data-activeTab', 0);
-        $document.on("keydown", $navItem, tabItemKeyEventHandler);
-        $document.on("click", $navItem, tabItemClickEventHandler);
-        $document.on("click", $navButton, slideTabEventHandler);
+        const $document = $(document);
+        $document.on("keydown", ".sl-tabs .nav-item", tabItemKeyEventHandler);
+        $document.on("click", ".sl-tabs .nav-item", tabItemClickEventHandler);
+        $document.on("click", ".sl-tabs .arrow-btn", slideTabEventHandler);
         mobileEnableScrolling($navButton);
       }
   }
