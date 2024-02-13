@@ -17,3 +17,14 @@
         }
     }
 }
+.error-text {
+    display: none;
+}
+.sl-input-error {
+    .hint-text {
+        display: none;
+    }
+    .error-text {
+        display: block;
+    }
+}

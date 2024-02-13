@@ -1,31 +1,33 @@
 (function () {
     //function use for radio and checkbox validation
     function checkBoxValidationEventHandler() {
-        const optionName = $(this).attr('name');
-        const requiredField = $(this).attr('required');
-        console.log("requiredField", requiredField)
-        const $AllCheckboxes = $('.form-check-input[name="'+optionName+'"]:not(disabled)');
+        const $scope = $(this);
+        const optionName = $scope.attr('name');
+        const requiredField = $scope.attr('required');
+        const $AllCheckboxes = $('.form-check-input[name="'+optionName+'"]:not(:disabled)');
+        const $parentContainer = $scope.parent(".form-check").parents('.field-group-container');
         let selectedCheck = false;
+        //Condition to check if the checkbox/radio is requred or not
         if(requiredField === "required"){
-            console.log("asdsadsad", $AllCheckboxes.length)
             $AllCheckboxes.each((index, item) => {
-               console.log("checking", index, item, item.checked)
                if(item.checked) {
                 selectedCheck = true;
                }
             })
-        }
-        if(!selectedCheck){
-            $AllCheckboxes.addClass("is-invalid");
-        }
-        else {
-            $AllCheckboxes.removeClass("is-invalid");
+            //Condition to check if all checkbox/radio are selected or not
+            if(!selectedCheck){
+                $AllCheckboxes.addClass("is-invalid");
+                $parentContainer.addClass("sl-input-error");
+            }
+            else {
+                $AllCheckboxes.removeClass("is-invalid");            
+                $parentContainer.removeClass("sl-input-error");
+            }
         }
     }  
-
+    //Function used to initilize the event
     function init() {
-        const $field = $(".field-group-container .form-check-input");
-        $field.on('change click blur', checkBoxValidationEventHandler);
+        $(document).on('change click blur', '.form-check-input', checkBoxValidationEventHandler);
     }
     
     init();
