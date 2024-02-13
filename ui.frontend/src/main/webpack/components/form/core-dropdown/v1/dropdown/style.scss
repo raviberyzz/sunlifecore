@@ -1,0 +1,18 @@
+.sl-dropdown .combo-input {
+    padding-right: 16px;
+    justify-content: right;
+}
+
+.sl-helper-text.hint-text:has(~ .sl-helper-text.error-text.combo-msg.filled) {
+    display: none;
+}
+
+.fa-exclamation-triangle.sl-icon:not(:has(+ .parsley-custom-error-message)) {
+    display: none;
+}
+
+.sl-helper-text.error-text.combo-msg.filled .sl-icon {
+    margin-right: 8px;
+    margin-top: 0px;
+}
+
