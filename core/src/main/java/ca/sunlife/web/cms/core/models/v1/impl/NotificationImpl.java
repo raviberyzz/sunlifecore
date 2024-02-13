@@ -37,6 +37,9 @@ public class NotificationImpl implements Notification {
     private String buttonTarget;
 
     @ValueMapValue
+    private String buttonAccessibilityLabel;
+
+    @ValueMapValue
     private String accessibilityLabel;
 
     @ValueMapValue
@@ -108,6 +111,11 @@ public class NotificationImpl implements Notification {
     }
 
     @Override
+    public String getButtonAccessibilityLabel() {
+        return buttonAccessibilityLabel;
+    }
+
+    @Override
     public String getAccessibilityLabel() {
         return accessibilityLabel;
     }
@@ -122,4 +130,3 @@ public class NotificationImpl implements Notification {
         return spacing;
     }
 }
-

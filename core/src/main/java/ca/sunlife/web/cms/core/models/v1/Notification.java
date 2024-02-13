@@ -15,6 +15,8 @@ package ca.sunlife.web.cms.core.models.v1;
 
     String getButtonTarget();
 
+    String getButtonAccessibilityLabel();
+
     String getAccessibilityLabel();
 
     String getDataTitle();
