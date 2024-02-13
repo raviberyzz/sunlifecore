@@ -6,7 +6,7 @@ package ca.sunlife.web.cms.core.models.v1;
 import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.ArticleConstants;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.AdvisorDetailService;
@@ -57,145 +57,6 @@ public class BasePageModel {
      */
     private static final Logger LOG = LoggerFactory.getLogger(BasePageModel.class);
 
-    /**
-     * The Constant DOMAIN_STR.
-     */
-    private static final String DOMAIN_STR = "domain";
-
-    /**
-     * The Constant Extra Clientlibs.
-     */
-    private static final String EXTRA_CLIENTLIBS = "extraClientlibs";
-
-    /**
-     * The Constant siteHeadInclude.
-     */
-    private static final String SITE_HEAD_INCLUDE = "siteHeadInclude";
-
-    /**
-     * The Constant siteBodyInclude.
-     */
-    private static final String SITE_BODY_INCLUDE = "siteBodyInclude";
-
-    /**
-     * The Constant addOpeningDiv.
-     */
-    private static final String ADD_OPENING_DIV = "addOpeningDiv";
-
-    /**
-     * The Constant wrapperDivClass.
-     */
-    private static final String WRAPPER_DIV_CLASS = "wrapperDivClass";
-
-    /**
-     * The Constant MFA_DOMAIN_PATH.
-     */
-    private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
-
-    /**
-     * The Constant MFA_Encryption.
-     */
-    private static final String MFA_ENCRYPTION = "mfaEncryption";
-
-    /**
-     * The Constant UDO_TAGS_PATH.
-     */
-    private static final String UDO_TAGS_PATH = "udoTagsPath";
-
-    /**
-     * The Constant PAGE_LOCALE.
-     */
-    private static final String PAGE_LOCALE = "pageLocale";
-
-    /**
-     * The Constant HREF_LANG.
-     */
-    private static final String HREF_LANG = "hrefLang";
-
-    /**
-     * The Constant OG_URL.
-     */
-    static final String OG_URL = "og:url";
-
-    /**
-     * The Constant OG_TITLE.
-     */
-    static final String OG_TITLE = "og:title";
-
-    /**
-     * The Constant OG_LOCALE.
-     */
-    static final String OG_LOCALE = "og:locale";
-
-    /**
-     * The Constant OG_DESCRIPTION.
-     */
-    static final String OG_DESCRIPTION = "og:description";
-
-    /**
-     * The Constant OG_IMAGE.
-     */
-    static final String OG_IMAGE = "og:image";
-
-    /**
-     * The Constant TWITTER_URL.
-     */
-    static final String TWITTER_URL = "twitter:url";
-
-    /**
-     * The Constant TWITTER_TITLE.
-     */
-    static final String TWITTER_TITLE = "twitter:title";
-
-    /**
-     * The Constant TWITTER_DESCRIPTION.
-     */
-    static final String TWITTER_DESCRIPTION = "twitter:description";
-
-    /**
-     * The Constant TWITTER_IMAGE.
-     */
-    static final String TWITTER_IMAGE = "twitter:image";
-
-    /**
-     * The Constant TWITTER_CARD.
-     */
-    static final String TWITTER_CARD = "twitter:card";
-
-    /**
-     * The Constant OG_TYPE.
-     */
-    static final String OG_TYPE = "og:type";
-
-    /**
-     * The Constant OG_PUBLISHED_DATE.
-     */
-    static final String OG_PUBLISHED_DATE = "og:published_date";
-
-    /**
-     * The Constant OG_MODIFIED_DATE.
-     */
-    static final String OG_MODIFIED_DATE = "og:modified_time";
-
-    /**
-     * The Constant OG_PUBLISHER.
-     */
-    static final String OG_PUBLISHER = "og:publisher";
-
-    /**
-     * The Constant OG_SITENAME.
-     */
-    static final String OG_SITENAME = "og:sitename";
-
-    /**
-     * The Constant TWITTER_SITE.
-     */
-    static final String TWITTER_SITE = "twitter:site";
-
-    /**
-     * The Constant TWITTER_CREATOR.
-     */
-    static final String TWITTER_CREATOR = "twitter:creator";
 
     /**
      * The current page.
@@ -291,11 +152,13 @@ public class BasePageModel {
     /**
      * The seo canonical url.
      */
+    @Getter
     private String seoCanonicalUrl;
 
     /**
      * The seo description.
      */
+    @Getter
     private String seoDescription;
 
     /**
@@ -316,6 +179,7 @@ public class BasePageModel {
     /**
      * The head include.
      */
+    @Getter
     @ValueMapValue
     @Via("resource")
     private String headInclude;
@@ -325,6 +189,7 @@ public class BasePageModel {
      */
     @ValueMapValue
     @Via("resource")
+    @Getter
     private String bodyInclude;
 
     /**
@@ -355,26 +220,31 @@ public class BasePageModel {
     /**
      * The custom metadata.
      */
+    @Getter
     private Map<String, String> customMetadata;
 
     /**
      * The alt language links.
      */
+    @Getter
     private Map<String, String> altLanguageLinks;
 
     /**
      * The analytics scriptlet.
      */
+    @Getter
     private String analyticsScriptlet;
 
     /**
      * The analytics script path.
      */
+    @Getter
     private String analyticsScriptPath;
 
     /**
      * The bread crumb.
      */
+    @Getter
     private String breadCrumb;
 
     /**
@@ -386,6 +256,7 @@ public class BasePageModel {
     /**
      * The page sub category.
      */
+    @Getter
     private String pageSubCategory;
 
     /**
@@ -399,11 +270,13 @@ public class BasePageModel {
     /**
      * The other UDO tags map.
      */
+    @Getter
     private JsonObject otherUDOTagsMap;
 
     /**
      * The udo tags.
      */
+    @Getter
     private String udoTags;
 
     /**
@@ -421,40 +294,6 @@ public class BasePageModel {
      */
     private String masterSeoCanonicalUrl;
 
-    /**
-     * The Constant JCR_CONTENT_DATA_MASTER.
-     */
-    private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
-
-    /**
-     * The Constant ARTICLE_PUBLISHED_DATE.
-     */
-    private static final String ARTICLE_PUBLISHED_DATE = "articlePublishedDate";
-
-    /**
-     * The Constant ARTICLE_MODIFIED_DATE.
-     */
-    private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
-
-    /**
-     * The Constant SITE_SELECTOR.
-     */
-    private static final String SITE_SELECTOR = "siteSelector";
-
-    /**
-     * The Constant PUBLIC.
-     */
-    private static final String PUBLIC = "public";
-
-    /**
-     * The Constant SECURE.
-     */
-    private static final String SECURE = "secure";
-
-    /**
-     * The Constant SLGI.
-     */
-    private static final String SLGI = "slgi";
 
     /**
      * The page locale default.
@@ -507,6 +346,7 @@ public class BasePageModel {
     /**
      * The site Body Include.
      */
+    @Getter
     private String addOpeningDiv;
 
     /**
@@ -530,12 +370,14 @@ public class BasePageModel {
     /**
      * The favicon.
      */
+    @Getter
     @ValueMapValue
     private String favIcon;
 
     /**
      * The disableSocialSharingTags.
      */
+    @Getter
     @ValueMapValue
     private String disableSocialSharingTags;
 
@@ -616,187 +458,6 @@ public class BasePageModel {
 
 
     /**
-     * Gets the page sub category.
-     *
-     * @return the page sub category
-     */
-    public final String getPageSubCategory() {
-        return pageSubCategory;
-    }
-
-    /**
-     * Sets the page sub category.
-     *
-     * @param pageSubCategory the new page sub category
-     */
-    public final void setPageSubCategory(final String pageSubCategory) {
-        this.pageSubCategory = pageSubCategory;
-    }
-
-    /**
-     * Gets the analytics script path.
-     *
-     * @return the analytics script path
-     */
-    public final String getAnalyticsScriptPath() {
-        return analyticsScriptPath;
-    }
-
-    /**
-     * Sets the analytics script path.
-     *
-     * @param analyticsScriptPath the new analytics script path
-     */
-    public final void setAnalyticsScriptPath(final String analyticsScriptPath) {
-        this.analyticsScriptPath = analyticsScriptPath;
-    }
-
-    /**
-     * Gets the analytics scriptlet.
-     *
-     * @return the analytics scriptlet
-     */
-    public final String getAnalyticsScriptlet() {
-        return analyticsScriptlet;
-    }
-
-    /**
-     * Sets the analytics scriptlet.
-     *
-     * @param analyticsScriptlet the new analytics scriptlet
-     */
-    public final void setAnalyticsScriptlet(final String analyticsScriptlet) {
-        this.analyticsScriptlet = analyticsScriptlet;
-    }
-
-    /**
-     * Gets the custom metadata.
-     *
-     * @return the custom metadata
-     */
-    public Map<String, String> getCustomMetadata() {
-        return customMetadata;
-    }
-
-    /**
-     * Sets the custom metadata.
-     *
-     * @param customMetadata the custom metadata
-     */
-    public void setCustomMetadata(final Map<String, String> customMetadata) {
-        this.customMetadata = customMetadata;
-    }
-
-    /**
-     * Gets the alt language links.
-     *
-     * @return the alt language links
-     */
-    public Map<String, String> getAltLanguageLinks() {
-        return altLanguageLinks;
-    }
-
-    /**
-     * Sets the alt language links.
-     *
-     * @param altLanguageLinks the alt language links
-     */
-    public void setAltLanguageLinks(final Map<String, String> altLanguageLinks) {
-        this.altLanguageLinks = altLanguageLinks;
-    }
-
-    /**
-     * Gets the seo canonical url.
-     *
-     * @return the seo canonical url
-     */
-    public String getSeoCanonicalUrl() {
-        return seoCanonicalUrl;
-    }
-
-    /**
-     * Sets the seo canonical url.
-     *
-     * @param seoCanonicalUrl the new seo canonical url
-     */
-    public void setSeoCanonicalUrl(final String seoCanonicalUrl) {
-        this.seoCanonicalUrl = seoCanonicalUrl;
-    }
-
-    /**
-     * Gets the seo description.
-     *
-     * @return the seo description
-     */
-    public String getSeoDescription() {
-        return seoDescription;
-    }
-
-    /**
-     * Sets the seo description.
-     *
-     * @param seoDescription the new seo description
-     */
-    public void setSeoDescription(final String seoDescription) {
-        this.seoDescription = seoDescription;
-    }
-
-    /**
-     * Gets the bread crumb.
-     *
-     * @return the bread crumb
-     */
-    public String getBreadCrumb() {
-        return breadCrumb;
-    }
-
-    /**
-     * Sets the bread crumb.
-     *
-     * @param breadCrumb the new bread crumb
-     */
-    public void setBreadCrumb(final String breadCrumb) {
-        this.breadCrumb = breadCrumb;
-    }
-
-    /**
-     * Gets the other UDO tags map.
-     *
-     * @return the other UDO tags map
-     */
-    public JsonObject getOtherUDOTagsMap() {
-        return otherUDOTagsMap;
-    }
-
-    /**
-     * Sets the other UDO tags map.
-     *
-     * @param otherUDOTagsMap the new other UDO tags map
-     */
-    public void setOtherUDOTagsMap(final JsonObject otherUDOTagsMap) {
-        this.otherUDOTagsMap = otherUDOTagsMap;
-    }
-
-    /**
-     * Gets the udo tags.
-     *
-     * @return the udo tags
-     */
-    public String getUdoTags() {
-        return udoTags;
-    }
-
-    /**
-     * Sets the udo tags.
-     *
-     * @param udoTags the new udo tags
-     */
-    public void setUdoTags(final String udoTags) {
-        this.udoTags = udoTags;
-    }
-
-
-    /**
      * Gets the social media image.
      *
      * @return the social media image
@@ -814,41 +475,6 @@ public class BasePageModel {
         this.socialMediaImage = socialMediaImage;
     }
 
-    /**
-     * Gets the head include.
-     *
-     * @return the head include
-     */
-    public final String getHeadInclude() {
-        return headInclude;
-    }
-
-    /**
-     * Sets the head include.
-     *
-     * @param headInclude the new head include
-     */
-    public final void setHeadInclude(final String headInclude) {
-        this.headInclude = headInclude;
-    }
-
-    /**
-     * Gets the body include.
-     *
-     * @return the body include
-     */
-    public final String getBodyInclude() {
-        return bodyInclude;
-    }
-
-    /**
-     * Sets the body include.
-     *
-     * @param bodyInclude the new body include
-     */
-    public final void setBodyInclude(final String bodyInclude) {
-        this.bodyInclude = bodyInclude;
-    }
 
     /**
      * Gets the tags.
@@ -888,23 +514,6 @@ public class BasePageModel {
 
 
     /**
-     * Gets the addOpeningDiv
-     *
-     * @return the addOpeningDiv
-     */
-    public String getAddOpeningDiv() {
-        return addOpeningDiv;
-    }
-
-    /**
-     * @param addOpeningDiv the addOpeningDiv to set
-     */
-    public void setAddOpeningDiv(String addOpeningDiv) {
-        this.addOpeningDiv = addOpeningDiv;
-    }
-
-
-    /**
      * Inits the.
      *
      * @throws LoginException      the login exception
@@ -913,16 +522,16 @@ public class BasePageModel {
     @PostConstruct
     public void init() throws LoginException, RepositoryException, WCMException {
         final String pagePath = currentPage.getPath();
-        final String domain = configService.getConfigValues(DOMAIN_STR, pagePath);
+        final String domain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, pagePath);
         final String staticPath = configService.getConfigValues(BasePageModelConstants.STATIC_PATH_CONSTANT, pagePath);
-        final String locale = configService.getConfigValues(PAGE_LOCALE, pagePath);
-        final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
+        final String locale = configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, pagePath);
+        final String udoTagsPath = configService.getConfigValues(BasePageModelConstants.UDO_TAGS_PATH, pagePath);
         //final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         //  pagePath);
         favIcon = configService.getConfigValues("favIcon", pagePath);
         enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
         userInfoPath = configService.getConfigValues("userInfoPath", pagePath);
-        extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
+        extraClientlibs = configService.getConfigValues(BasePageModelConstants.EXTRA_CLIENTLIBS, pagePath);
         disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
         disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
         nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
@@ -935,20 +544,20 @@ public class BasePageModel {
         searchLanguage = configService.getConfigValues("searchLanguage", pagePath);
 
         if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH) || currentPage.getPath().contains(BasePageModelConstants.SUNCENTRAL_PATH)) {
-            siteHeadInclude = null == configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
-            siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
+            siteHeadInclude = null == configService.getConfigValues(BasePageModelConstants.SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(BasePageModelConstants.SITE_HEAD_INCLUDE, pagePath));
+            siteBodyInclude = null == configService.getConfigValues(BasePageModelConstants.SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(BasePageModelConstants.SITE_BODY_INCLUDE, pagePath));
             headInclude = null == this.headInclude ? "" : processPageIncludes(this.headInclude);
             bodyInclude = null == this.bodyInclude ? "" : processPageIncludes(this.bodyInclude);
             LOG.debug("Head include {}", headInclude);
             LOG.debug("Body include {}", bodyInclude);
         } else {
-            siteHeadInclude = configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath);
-            siteBodyInclude = configService.getConfigValues(SITE_BODY_INCLUDE, pagePath);
+            siteHeadInclude = configService.getConfigValues(BasePageModelConstants.SITE_HEAD_INCLUDE, pagePath);
+            siteBodyInclude = configService.getConfigValues(BasePageModelConstants.SITE_BODY_INCLUDE, pagePath);
         }
-        addOpeningDiv = configService.getConfigValues(ADD_OPENING_DIV, pagePath);
-        wrapperDivClass = configService.getConfigValues(WRAPPER_DIV_CLASS, pagePath);
-        mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
-        mfaEncryption = configService.getConfigValues(MFA_ENCRYPTION, pagePath);
+        addOpeningDiv = configService.getConfigValues(BasePageModelConstants.ADD_OPENING_DIV, pagePath);
+        wrapperDivClass = configService.getConfigValues(BasePageModelConstants.WRAPPER_DIV_CLASS, pagePath);
+        mfaDomainPath = configService.getConfigValues(BasePageModelConstants.MFA_DOMAIN_PATH, pagePath);
+        mfaEncryption = configService.getConfigValues(BasePageModelConstants.MFA_ENCRYPTION, pagePath);
         if (null != locale && locale.length() > 0) {
             pageLocaleDefault = locale.split("_")[0];
         }
@@ -1011,25 +620,25 @@ public class BasePageModel {
             seoCanonicalUrl = null == canonicalUrl ? configService.getPageUrl(pagePath) : canonicalUrl;
         }
 
-        setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
-        setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
+        analyticsScriptPath = configService.getConfigValues("analyticsScriptPath", pagePath);
+        analyticsScriptlet = configService.getConfigValues("analyticsTealiumScript", pagePath);
 
         // Fetching social sharing component meta-data
         customMetadata = new HashMap<>();
 
         // Configuring custom social sharing - meta-tags
-        customMetadata.put(OG_TITLE, socialMediaTitle);
-        customMetadata.put(TWITTER_TITLE, socialMediaTitle);
-        customMetadata.put(OG_URL, seoCanonicalUrl);
-        customMetadata.put(TWITTER_URL, seoCanonicalUrl);
-        customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
-        customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
-        customMetadata.put(OG_LOCALE, null != locale ? locale.replace("-", "_") : null);
+        customMetadata.put(BasePageModelConstants.OG_TITLE, socialMediaTitle);
+        customMetadata.put(BasePageModelConstants.TWITTER_TITLE, socialMediaTitle);
+        customMetadata.put(BasePageModelConstants.OG_URL, seoCanonicalUrl);
+        customMetadata.put(BasePageModelConstants.TWITTER_URL, seoCanonicalUrl);
+        customMetadata.put(BasePageModelConstants.OG_DESCRIPTION, socialMediaDescripton);
+        customMetadata.put(BasePageModelConstants.TWITTER_DESCRIPTION, socialMediaDescripton);
+        customMetadata.put(BasePageModelConstants.OG_LOCALE, null != locale ? locale.replace("-", "_") : null);
         if (socialMediaImage != null) {
-            customMetadata.put(OG_IMAGE, staticPath + socialMediaImage);
-            customMetadata.put(TWITTER_IMAGE, staticPath + socialMediaImage);
+            customMetadata.put(BasePageModelConstants.OG_IMAGE, staticPath + socialMediaImage);
+            customMetadata.put(BasePageModelConstants.TWITTER_IMAGE, staticPath + socialMediaImage);
         }
-        customMetadata.put(TWITTER_CARD, "summary_large_image");
+        customMetadata.put(BasePageModelConstants.TWITTER_CARD, "summary_large_image");
         // Condition for article pages start
         if (null != advancedPageType
                 && BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT.equals(advancedPageType)) {
@@ -1058,7 +667,7 @@ public class BasePageModel {
             if (null != canonicalUrl && null != masterSeoCanonicalUrl && masterSeoCanonicalUrl.length() > 0) {
                 otherUDOTagsMap.addProperty("page_canonical_url_default", masterSeoCanonicalUrl);
             } else {
-                String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+                String masterDomain = this.configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, masterPagePath);
                 otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
                         .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
                 // url
@@ -1402,11 +1011,11 @@ public class BasePageModel {
         final String articleCreator = configService
                 .getConfigValues(ArticleConstants.ARTICLE_CREATOR_CONSTANT, pagePath);
 
-        customMetadata.put(OG_TYPE, articleType);
-        customMetadata.put(OG_PUBLISHER, articlePublisherForMetaTag);
-        customMetadata.put(OG_SITENAME, siteName);
-        customMetadata.put(TWITTER_SITE, articleSite);
-        customMetadata.put(TWITTER_CREATOR, articleCreator);
+        customMetadata.put(BasePageModelConstants.OG_TYPE, articleType);
+        customMetadata.put(BasePageModelConstants.OG_PUBLISHER, articlePublisherForMetaTag);
+        customMetadata.put(BasePageModelConstants.OG_SITENAME, siteName);
+        customMetadata.put(BasePageModelConstants.TWITTER_SITE, articleSite);
+        customMetadata.put(BasePageModelConstants.TWITTER_CREATOR, articleCreator);
 
         final String articlePath = pagePath
                 + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
@@ -1429,7 +1038,7 @@ public class BasePageModel {
         }
 
         final Resource articleFragmentResource = resolver
-                .getResource(fragmentPath.concat(JCR_CONTENT_DATA_MASTER));
+                .getResource(fragmentPath.concat(BasePageModelConstants.JCR_CONTENT_DATA_MASTER));
         if (null == articleFragmentResource) {
             LOG.debug("articleFragmentResource is null");
             return;
@@ -1437,18 +1046,18 @@ public class BasePageModel {
         final ValueMap articleContent = articleFragmentResource.getValueMap();
 
         final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-        if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
+        if (articleContent.containsKey(BasePageModelConstants.ARTICLE_PUBLISHED_DATE)) {
             articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
-                    .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
+                    .getOrDefault(BasePageModelConstants.ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
         }
 
-        if (articleContent.containsKey(ARTICLE_MODIFIED_DATE)) {
+        if (articleContent.containsKey(BasePageModelConstants.ARTICLE_MODIFIED_DATE)) {
             articlePublishedModifiedDate = formatter.format(((GregorianCalendar) articleContent
-                    .getOrDefault(ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
+                    .getOrDefault(BasePageModelConstants.ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
         }
 
-        customMetadata.put(OG_PUBLISHED_DATE, articlePublishedDate);
-        customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
+        customMetadata.put(BasePageModelConstants.OG_PUBLISHED_DATE, articlePublishedDate);
+        customMetadata.put(BasePageModelConstants.OG_MODIFIED_DATE, articlePublishedModifiedDate);
         LOG.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
     }
 
@@ -1474,12 +1083,12 @@ public class BasePageModel {
 
             }
             final String pagePath = currentPage.getPath();
-            final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
-            final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
+            final String modHrefLang = configService.getConfigValues(BasePageModelConstants.HREF_LANG, pagePath);
+            final String pageLocale = configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, pagePath);
             if (null == pageLocale || pageLocale.length() == 0) {
                 return;
             }
-            final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
+            final String siteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, pagePath);
             //      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
             // check if it is a source
             LOG.debug("is source {}", relationshipManager.isSource(resource));
@@ -1588,7 +1197,7 @@ public class BasePageModel {
                         BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + altLangIterator + "_defaultLanguage", resource.getPath());
 
                 final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
-                final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
+                final String altSiteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, altUrl);
                 String updatedSyncPath = "";
 
                 if (defaultLanguage.length() > 0)
@@ -1615,15 +1224,15 @@ public class BasePageModel {
                             altLang.split("_")[0] + "-"
                                     + altLang.split("_")[1].replace("_", "-").toLowerCase(Locale.ROOT),
                             altUrl);
-                    if (configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
+                    if (configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
                         isAltLangSameAsCurPgLocale = true;
                     }
                 }
             }
 
             final String pagePath = currentPage.getPath();
-            final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
-            final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
+            final String pageLocale = configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, pagePath);
+            final String siteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, pagePath);
             if (!altLanguageLinks.isEmpty()) {
                 if (isAltLangSameAsCurPgLocale) return;
 
@@ -1647,15 +1256,15 @@ public class BasePageModel {
     private void addAlternateUrl(final String liveCopyPath)
             throws LoginException, RepositoryException {
         LOG.debug("path :: {}", liveCopyPath);
-        final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
+        final String sourcePageLocale = configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE,
                 liveCopyPath);
         final String sourceSiteUrl = configService.getPageRelativeUrl(liveCopyPath);
-        final String sourceSiteDomain = configService.getConfigValues(DOMAIN_STR,
+        final String sourceSiteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR,
                 liveCopyPath);
         LOG.debug(
                 "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
                 liveCopyPath, sourcePageLocale, sourceSiteUrl);
-        final String modHrefLang = configService.getConfigValues(HREF_LANG, liveCopyPath);
+        final String modHrefLang = configService.getConfigValues(BasePageModelConstants.HREF_LANG, liveCopyPath);
         String hrefLang = null;
         if (modHrefLang != null && modHrefLang.equals("true")) {
             hrefLang = sourcePageLocale.substring(0, sourcePageLocale.length() - 3);
@@ -1703,8 +1312,8 @@ public class BasePageModel {
                         .getOrDefault("defaultLanguage", StringUtils.EMPTY);
 
                 final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
-                final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
-                final String modHrefLang = configService.getConfigValues(HREF_LANG, altUrl);
+                final String altSiteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, altUrl);
+                final String modHrefLang = configService.getConfigValues(BasePageModelConstants.HREF_LANG, altUrl);
                 String hrefLang = null;
                 if (modHrefLang != null && modHrefLang.equals("true")) {
                     hrefLang = altLang.substring(0, altLang.length() - 3);
@@ -1733,7 +1342,7 @@ public class BasePageModel {
                     altLanguageLinks.put(
                             hrefLang,
                             altUrl);
-                    if (configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
+                    if (configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
                         isAltLangSameAsCurPgLocale = true;
                     }
                 }
@@ -1765,9 +1374,9 @@ public class BasePageModel {
 
 
             final String pagePath = currentPage.getPath();
-            final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
-            final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
-            final String modifiedHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
+            final String pageLocale = configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, pagePath);
+            final String siteDomain = configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, pagePath);
+            final String modifiedHrefLang = configService.getConfigValues(BasePageModelConstants.HREF_LANG, pagePath);
             String pageHrefLang = null;
             if (modifiedHrefLang != null && modifiedHrefLang.equals("true")) {
                 pageHrefLang = pageLocale.substring(0, pageLocale.length() - 3);
@@ -1801,17 +1410,17 @@ public class BasePageModel {
         String siteSelector = "";
         try {
             urlSelector = request.getRequestPathInfo().getSelectors().length > 0 ? request.getRequestPathInfo().getSelectors()[0] : "";
-            siteSelector = configService.getConfigValues(SITE_SELECTOR, currentPage.getPath());
+            siteSelector = configService.getConfigValues(BasePageModelConstants.SITE_SELECTOR, currentPage.getPath());
             if (urlSelector.equals(siteSelector) && request.getRequestPathInfo().getSelectors().length > 1) {
                 urlSelector = request.getRequestPathInfo().getSelectors()[1];
             }
             LOG.debug("Final URL Selector::{}", urlSelector);
             boolean hasHtmlTags = true;
-            if (parsedSiteInclude.getElementsByTag(PUBLIC).html().isEmpty() && parsedSiteInclude.getElementsByTag(SECURE).html().isEmpty() && parsedSiteInclude.getElementsByTag(SLGI).html().isEmpty()) {
+            if (parsedSiteInclude.getElementsByTag(BasePageModelConstants.PUBLIC).html().isEmpty() && parsedSiteInclude.getElementsByTag(BasePageModelConstants.SECURE).html().isEmpty() && parsedSiteInclude.getElementsByTag(BasePageModelConstants.SLGI).html().isEmpty()) {
                 hasHtmlTags = false;
                 LOG.debug("Site include does not have html");
             }
-            if (hasHtmlTags && (urlSelector.equals(PUBLIC) || urlSelector.equals(SECURE) || urlSelector.equals(SLGI))) {
+            if (hasHtmlTags && (urlSelector.equals(BasePageModelConstants.PUBLIC) || urlSelector.equals(BasePageModelConstants.SECURE) || urlSelector.equals(BasePageModelConstants.SLGI))) {
                 processedSiteInclude = parsedSiteInclude.getElementsByTag(urlSelector).html();
                 LOG.debug("Processed site include if site has html and has selector ::{}", processedSiteInclude);
             } else if (hasHtmlTags && urlSelector.isEmpty()) {
@@ -1835,7 +1444,7 @@ public class BasePageModel {
         String processedPageInclude = "";
         Document parsedPageInclude = Jsoup.parse(pageInclude);
         boolean hasHtmlTags = true;
-        if (parsedPageInclude.getElementsByTag(PUBLIC).html().isEmpty() && parsedPageInclude.getElementsByTag(SECURE).html().isEmpty() && parsedPageInclude.getElementsByTag(SLGI).html().isEmpty()) {
+        if (parsedPageInclude.getElementsByTag(BasePageModelConstants.PUBLIC).html().isEmpty() && parsedPageInclude.getElementsByTag(BasePageModelConstants.SECURE).html().isEmpty() && parsedPageInclude.getElementsByTag(BasePageModelConstants.SLGI).html().isEmpty()) {
             hasHtmlTags = false;
             LOG.debug("Page include does not have html");
         }
