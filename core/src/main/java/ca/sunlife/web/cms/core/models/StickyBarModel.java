@@ -128,4 +128,52 @@ public interface StickyBarModel {
   @ Inject
   String getSecButtonTarget();
 
+   /**
+   * Gets the Need Logo.
+   *
+   * @return the Need Logo
+   */
+  @ Inject
+  String getNeedLogo();
+
+   /**
+   * Gets the Logo image.
+   *
+   * @return the Logo image
+   */
+  @ Inject
+  String getLogoImage();
+
+   /**
+   * Gets the Logo link.
+   *
+   * @return the Logo link
+   */
+  @ Inject
+  String getLogoLink();
+
+   /**
+   * Gets the Logo Alt text.
+   *
+   * @return the Logo Alt text
+   */
+  @ Inject
+  String getAltText();
+
+   /**
+   * Gets the Logo target.
+   *
+   * @return the Logo target
+   */
+  @ Inject
+  String getLogoTarget();
+
+   /**
+   * Gets the View StickyBar value.
+   *
+   * @return the View StickyBar value
+   */
+  @ Inject
+  String getViewStickyBar();
+
 }
