@@ -35,10 +35,8 @@
         var $findelement = $(findelement);
         if (component.checked) {
         $findelement.nextAll(".togglecolumnfield").first().addClass("hide");
-        $findelement.nextAll(".togglecolumnfield").first().find("input").removeAttr("required");
         } else {
         $findelement.nextAll(".togglecolumnfield").first().removeClass("hide");
-        $findelement.nextAll(".togglecolumnfield").first().find("input").attr("required", "required");
         }
     }
 
