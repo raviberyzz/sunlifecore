@@ -223,7 +223,9 @@
       }, errorsWrapper: errorsWrapperHtml,
       errorTemplate: errorTemplateHtml
     };
-    $('form').parsley(parsleyConfig);
+    if ($('form').length > 0) {
+      $('form').parsley(parsleyConfig);
+    }    
   });
 
   /**
@@ -240,7 +242,7 @@
   /**
   * Focus on the first dropdown with an error after form submission.
   */
-  $('form').parsley().on('form:validate', function (formInstance) {
+  window.Parsley.on('form:validate', function (formInstance) {
   }).on('form:error', function () {
     let $firstErrorText = $(this.$element[0]).find(".parsley-custom-error-message").first()[0];
     $firstErrorText.setAttribute("role", "alert");
