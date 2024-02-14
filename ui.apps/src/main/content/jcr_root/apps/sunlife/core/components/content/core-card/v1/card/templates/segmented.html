@@ -1,90 +1,29 @@
-<template data-sly-template.segmented="${@options}">
-  <div class="card" data-sly-test="${options.additionalFeatures == 'withLink'}">
+<!--/*
+Template for segmented card component
+Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11195-65411&mode=design&t=VXlORNimlyCeZtFI-4
+*/-->
+<template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+  <sly data-sly-set.haveSomthing="${model.segmentHeading || model.cardIcon || model.segmentDescription || model.ctaType }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="segmented Card"></div>
+  <sly data-sly-test="${haveSomthing}">
+
     <div class="card-body">
-      <span class="sl-icon sl-icon-info-find-advisor"></span>
-      <div class="h4 card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
+      <i data-sly-test="${model.cardIcon}" class="sl-card-icon fak fa-${model.cardIcon}"></i>
+      <h4 class="h4 card-title">${model.segmentHeading}</h4>
+      <div class="card-text">${model.segmentDescription @ context ='html'}</div>
+
       <div class="link-container">
-        <a target="_self" href="${properties.buttonLink}" class="sl-link"
-          >${properties.buttonLabel}<span class="sl-icon-after"
-            ><span class="sl-icon sl-icon-chevron-circle-right"></span></span
-        ></a>
+        <sly 
+              data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+          </sly>
       </div>
     </div>
-  </div>
-  <div
-    class="single-form card"
-    data-sly-test="${options.additionalFeatures == 'withButton'}"
-  >
-    <div class="card-body">
-      <span class="sl-icon sl-icon-info-find-advisor"></span>
-      <div class="h4 card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
+
+    <div data-sly-test="${containerConfigs.isForm}" class="grouped-form">
+      <sly data-sly-resource="${ 'form-container' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
     </div>
-    <button
-      type="button"
-      href="${properties.buttonLink}"
-      class="sl-btn btn btn-secondary"
-    >
-      ${properties.buttonLabel}
-    </button>
-  </div>
-  <div
-    class="single-form card"
-    data-sly-test="${options.additionalFeatures == 'withDropdown'}"
-    data-sly-use.card="ca.sunlife.web.cms.core.models.v1.Card"
-  >
-    <div class="card-body">
-      <span class="sl-icon sl-icon-info-find-advisor"></span>
-      <div class="h4 card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
-    </div>
-    <div class="grouped-form">
-      <div class="sl-dropdown" aria-disabled="false">
-        <div class="combo">
-          <div
-            aria-controls="basic-listbox"
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-invalid="false"
-            aria-labelledby="basic-label"
-            id="basic"
-            class="combo-input"
-            role="combobox"
-            tabindex="0"
-          >
-            <label class="" for="basic" id="basic-label">Label</label>
-            <div class="combo-input-selected"></div>
-            <span
-              class="sl-icon sl-icon-chevron-down sl-icon_non-interactive"
-            ></span>
-          </div>
-          <div
-            class="combo-menu"
-            role="listbox"
-            id="basic-listbox"
-            aria-labelledby="basic-label"
-            tabindex="-1"
-          >
-            <div
-              class="combo-option"
-              role="option"
-              aria-selected="false"
-              id="basic-0"
-              data-sly-repeat="${card.comboList}"
-            >
-              ${item.title}
-            </div>
-          </div>
-        </div>
-      </div>
-      <button
-        type="button"
-        href="${properties.buttonLink}"
-        class="sl-btn btn btn-secondary"
-      >
-        ${properties.buttonLabel}
-      </button>
-    </div>
-  </div>
+  </sly>
 </template>

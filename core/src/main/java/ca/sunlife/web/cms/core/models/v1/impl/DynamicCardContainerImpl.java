@@ -4,6 +4,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import lombok.Getter;
 
 import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
 
@@ -13,101 +14,79 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-dynamic-card-container/v1/dynamic-card-container";
 
     @ValueMapValue
-    private String name;
-
-    @ValueMapValue
+	@Getter
     private String cardType;
 
     @ValueMapValue
-    private String heightControl;
+	@Getter
+    private String horizontalHeightControl;
 
     @ValueMapValue
-    private Boolean horizontalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean horizontalMultipleWithIcon;
-
-    @ValueMapValue
+	@Getter
     private String verticalHeightControl;
 
     @ValueMapValue
-    private Boolean verticalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean verticalMultipleWithIcon;
-
-    @ValueMapValue
+	@Getter
     private Boolean withLink;
 
     @ValueMapValue
-    private String avatarSize;
+	@Getter
+    private String bannerImagePosition;   
 
     @ValueMapValue
-    private String bannerImagePosition;
+	@Getter
+    private String mediaType; 
 
     @ValueMapValue
-    private String mediaType;
+	@Getter
+    private String spacing;
 
     @ValueMapValue
-    private String additionalFeatures;
+	@Getter
+    private Boolean horizontalMultipleCard;
 
     @ValueMapValue
-    private String statisticEnhancements;
+	@Getter
+    private Boolean horizontalClickable; 
 
-    public String getName() {
-        return name;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean horizontalIconCard;
 
-    public String getCardType() {
-        return cardType;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean verticalMultipleCard;    
 
-    public String getHeightControl () {
-        return heightControl;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean verticalClickable;
 
-    public Boolean getHorizontalMultipleClickable() {
-        return horizontalMultipleClickable;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean verticalIconCard;
 
-    public Boolean getHorizontalMultipleWithIcon() {
-        return horizontalMultipleWithIcon;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean largeAvatarSize; 
 
-    public Boolean getWithLink() {
-        return withLink;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean avatarWithBody; 
 
-    public String getVerticalHeightControl() {
-        return verticalHeightControl;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean avatarMultipleCard; 
 
-    public Boolean getVerticalMultipleClickable() {
-        return verticalMultipleClickable;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean segmentedMultipleCard;
 
-    public Boolean getVerticalMultipleWithIcon() {
-        return verticalMultipleWithIcon;
-    }
+    @ValueMapValue
+	@Getter
+    private Boolean segmentedformContainer; 
 
-    public String getAvatarSize() {
-        return avatarSize;
-    }
-
-    public String getBannerImagePosition() {
-        return bannerImagePosition;
-    }
-
-    public String getMediaType() {
-        return mediaType;
-    }
-
-    public String getAdditionalFeatures() {
-        return additionalFeatures;
-    }
-
-    public String getStatisticEnhancements() {
-        return statisticEnhancements;
-    }
-
+    @ValueMapValue
+	@Getter
+    private Boolean statisticsMultipleCard;
+  
 }

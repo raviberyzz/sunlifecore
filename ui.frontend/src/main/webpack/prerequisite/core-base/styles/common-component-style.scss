@@ -45,3 +45,22 @@
         margin-top: var(--L);
     }
 }
+
+.hover-icn-cta {
+    .svg-inline--fa {
+        margin: 0 4px;
+    } 
+    .icn-hover-show {
+        display: none;
+    }
+
+    &:hover {
+        .icn-hover-hidden {
+            display: none;
+        }
+
+        .icn-hover-show {
+            display: inline-block;
+        }
+    }
+}
