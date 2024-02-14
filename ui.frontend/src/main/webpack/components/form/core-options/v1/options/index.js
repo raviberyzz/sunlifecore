@@ -6,28 +6,23 @@
         const requiredField = $scope.attr('required');
         const $AllCheckboxes = $('.form-check-input[name="'+optionName+'"]:not(:disabled)');
         const $parentContainer = $scope.parent(".form-check").parents('.field-group-container');
-        let selectedCheck = false;
-        //Condition to check if the checkbox/radio is requred or not
-        if(requiredField === "required"){
-            $AllCheckboxes.each((index, item) => {
-               if(item.checked) {
-                selectedCheck = true;
-               }
-            })
-            //Condition to check if all checkbox/radio are selected or not
-            if(!selectedCheck){
-                $AllCheckboxes.addClass("is-invalid");
-                $parentContainer.addClass("sl-input-error");
-            }
-            else {
-                $AllCheckboxes.removeClass("is-invalid");            
-                $parentContainer.removeClass("sl-input-error");
-            }
-        }
+        //Events to check if the checkbox/radio has error validation or not
+        window.Parsley.on('field:error', function () {
+            $AllCheckboxes.removeClass("is-invalid");            
+            $parentContainer.removeClass("sl-input-error");
+        });
+        //Events to check if the checkbox/radio has success validation or not
+        window.Parsley.on('field:success', function () {            
+            $AllCheckboxes.removeClass("is-invalid");            
+            $parentContainer.removeClass("sl-input-error");             
+        });
     }  
     //Function used to initilize the event
     function init() {
-        $(document).on('change click blur', '.form-check-input', checkBoxValidationEventHandler);
+        const $checkInput = $('.form-check-input');
+        if($checkInput){
+            $(document).on('change click blur', $checkInput, checkBoxValidationEventHandler);
+        }
     }
     
     init();

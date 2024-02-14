@@ -30,12 +30,17 @@
         }
     }
      
+    //Function used to initilize the event
     function init() {
         let $field = $(".sl-text-field .form-control.required, .sl-text-area .form-control.required");
         let $fieldForCount = $(".sl-text-area .form-control")
-        $field.keyup(fieldValidationKeyEventHandler);
-        $field.blur(fieldValidationBlurEventHandler);
-        $fieldForCount.keypress(fieldValidationKeyPressEventHandler);
+        if($field){
+            $field.keyup(fieldValidationKeyEventHandler);
+            $field.blur(fieldValidationBlurEventHandler);
+        }
+        if($fieldForCount){
+            $fieldForCount.keypress(fieldValidationKeyPressEventHandler);
+        }
     }
     init();
 
