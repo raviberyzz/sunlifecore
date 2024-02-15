@@ -2,18 +2,40 @@
 Card Container Component
 */-->
 <div
-  data-component="cardContainer"
-  data-sly-use.model="ca.sunlife.web.cms.core.models.v1.DynamicCardContainer"
+  data-sly-use.dynamicCardContainer="ca.sunlife.web.cms.core.models.v1.DynamicCardContainer"
   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-  data-sly-use.container="${'cardContainerUse.js' @ containerModel=model, cardType=model.cardType}">
-
-  <div 
-    class="${container.wrapperClass}"
-    data-sly-list.item="${ resource.listChildren }">
-      <sly data-sly-resource="${ item.path @ resourceType=item.resourceType }">
-          ${ item.path }
-      </sly>
-  </div>
+  data-sly-set.horizontalCardConfig="heightControl:${dynamicCardContainer.horizontalHeightControl}, multiple:${dynamicCardContainer.horizontalMultipleCard},clickable:${dynamicCardContainer.horizontalClickable},icon:${dynamicCardContainer.horizontalIconCard}"
+  data-sly-set.verticalCardConfig="heightControl:${dynamicCardContainer.verticalHeightControl}, multiple:${dynamicCardContainer.verticalMultipleCard},clickable:${dynamicCardContainer.verticalClickable},icon:${dynamicCardContainer.verticalIconCard}"
+  data-sly-set.avatarCardConfig="{ multiple:${dynamicCardContainer.avatarMultipleCard},largeSize:${dynamicCardContainer.largeAvatarSize},withBody:${dynamicCardContainer.avatarWithBody}}"
+  data-sly-set.bannerCardConfig="{ withLink:${dynamicCardContainer.withLink}}"
+  data-sly-set.bannerImageCardConfig="{ imagePosition:${dynamicCardContainer.bannerImagePosition}}"
+  data-sly-set.mediaCardConfig="{ mediaType:${dynamicCardContainer.mediaType}}"
+  data-sly-set.segmentedCardConfig="{ multiple:${dynamicCardContainer.segmentedMultipleCard},segmentedformContainer:${dynamicCardContainer.segmentedformContainer}}"
+  data-sly-set.statisticsCardConfig="{ multiple:${dynamicCardContainer.statisticsMultipleCard}}"
+  data-sly-use.container="${'dynamicCardContainerUse.js' @ containerModel=dynamicCardContainer, cardType=dynamicCardContainer.cardType}"
+  class="${container.wrapperClass} ${dynamicCardContainer.spacing} ${wcmmode.edit ? 'pb-3 pt-3': ''}">
+    <!--/*  Render list of added child card Component */-->
+    <sly data-sly-list.item="${ resource.listChildren }">
+        <div 
+            data-sly-use.cardContainer="${'sunlife/core/components/common/useJs/cardConfigUse.js' @  cardType=dynamicCardContainer.cardType, horizontalCardConfig=horizontalCardConfig, verticalCardConfig=verticalCardConfig, avatarCardConfig=avatarCardConfig, bannerCardConfig=bannerCardConfig, bannerImageCardConfig=bannerImageCardConfig, mediaCardConfig=mediaCardConfig,segmentedCardConfig=segmentedCardConfig,statisticsCardConfig=statisticsCardConfig}"
+            class="${ cardContainer.cardClass }" 
+            data-sly-resource="${ item.path @ resourceType=item.resourceType }">
+                ${ item.path }
+        </div>
+    </sly>
 </div>
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = model.cardType != '', classAppend='cmp-card-container'}"></sly>
+<!--/* Count number of child elements */-->
+<sly data-sly-test.totalItems="${0}"></sly>
+<sly data-sly-list.child="${resource.listChildren}">
+    <sly data-sly-test.totalItems="${ childList.count }"></sly>
+</sly>
+
+<!--/* check if container is empty or not */-->
+<sly data-sly-set.isEmptyContainer="${totalItems < 1 ? true : false}"></sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = isEmptyContainer, classAppend='cmp-card-container'}"></sly>
+
+
+
+

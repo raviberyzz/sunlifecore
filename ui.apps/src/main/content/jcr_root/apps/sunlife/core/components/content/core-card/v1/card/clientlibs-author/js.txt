@@ -1,2 +1,3 @@
 #base=js
-dynamic-card.js
+script.js
+

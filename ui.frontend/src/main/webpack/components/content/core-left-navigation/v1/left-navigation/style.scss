@@ -2,7 +2,9 @@
 @import '@sunlife/ui-styles/design-system.scss';
 
 .sl-left-nav {
-
+    .collapsing {
+            transition: height, visibility .10s ease-in;
+    }  
      ul, .sub-menu.show {
         display: flex;
         gap: 1rem;
@@ -49,6 +51,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                width: 100%;
             }
         }
 

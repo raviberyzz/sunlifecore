@@ -1,0 +1,56 @@
+<!--/*
+Template for horizontal and vertical card component
+Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=580-2961&mode=design&t=VXlORNimlyCeZtFI-4
+*/-->
+<template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+
+  <sly data-sly-set.isAsset="${model.assetType =='noAsset'? false : true }"
+    data-sly-set.isImageCard="${isAsset && model.assetType =='image' ? true : false }"
+    data-sly-set.isIconCard="${isAsset && model.assetType =='icon' ? true : false }"
+    data-sly-set.haveSomthing="${model.cardImageFileReference || model.cardIcon || model.cardCategory || model.cardBadgeText || model.cardHeading || model.cardDescription || model.cardCaption}"
+    >
+    <!--/* Empty Placeholder */-->
+    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Horizontal/ Vertical Card"></div>
+
+    <sly data-sly-test="${haveSomthing}">
+      <picture data-sly-test="${ !containerConfigs.isIcon && isImageCard }">
+        <img data-sly-test="${model.cardImageFileReference}" 
+          src="${model.cardImageFileReference}" 
+          alt="${model.altText}"
+          class="img-container">
+      </picture>
+
+      <div class="card-body">
+        <div data-sly-test="${containerConfigs.isIcon && isIconCard}" class="icon-container card-text">
+          <i data-sly-test="${model.cardIcon}" role="presentation" class="sl-card-icon fak fa-${model.cardIcon}"></i>
+        </div>
+
+        <div class="content-container">
+          <div class="cat-badge-container" data-sly-test="${model.cardCategory || model.cardBadgeText}">
+            <div class="category">${model.cardCategory}</div>
+
+            <div data-sly-test="${model.cardBadgeText && model.cardBadgeType!='none'}">
+              <span class="sl-badge badge bg-${model.cardBadgeType}">
+                <div class="badge-label">${model.cardBadgeText}</div>
+              </span>
+            </div>
+          </div>
+
+          <h4 class="h4 card-title">${model.cardHeading}</h4>
+          <div class="body-text card-text">
+            ${model.cardDescription @ context ='html'}
+          </div>
+          <div class="caption card-text">${model.cardCaption}</div>
+          <div class="cta-container">
+            <sly 
+                data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+                data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+            </sly>
+          </div>
+
+        </div>
+
+      </div>
+    </sly>
+  </sly>
+</template>
