@@ -1,6 +1,5 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import ca.sunlife.web.cms.core.models.v1.FormDropdownModel.Items;
 import java.util.List;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
@@ -15,10 +14,10 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  * @author Sunlife
  */
 
-@Model(adaptables = {Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = PopupModalModel.RESOURCE_TYPE)
-public interface PopupModalModel {
+@Model(adaptables = {Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ModalModel.RESOURCE_TYPE)
+public interface ModalModel {
 
-	String RESOURCE_TYPE = "sunlife/core/components/content/core-pop-up-modal/v1/pop-up-modal";
+	String RESOURCE_TYPE = "sunlife/core/components/content/core-modal/v1/modal";
 
 	@ValueMapValue
 	String getModalID();
