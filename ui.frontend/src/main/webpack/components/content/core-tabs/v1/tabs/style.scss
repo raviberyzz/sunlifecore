@@ -14,12 +14,12 @@
             scrollbar-width: none;
         }
     }
-}
-.arrow-btn {
-    border: none;
-    background: none;
-    &.hide{
-        display: none;
+    .arrow-btn {
+        border: none;
+        background: none;
+        &.hide{
+            display: none;
+        }
     }
 }
 .nav-item {
