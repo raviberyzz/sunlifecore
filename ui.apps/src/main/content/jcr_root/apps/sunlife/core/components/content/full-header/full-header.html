@@ -145,14 +145,14 @@
 					</sly>
 				  </ul>
 				</div>
-				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="${properties.utilityLanguageLabel || 'Region & Language Selection, Search Function'}">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" aria-label="${properties.utilityLanguageLabel || 'Region & Language Selection, Search Function'}">
 				  <ul>
 					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
-						<label class="sr-only">
+						<span class="sr-only">
 						  ${listModel.srRegionText}
-						</label>
+						</span>
 						${regionTitle}
 					  </div>
 					</li>
@@ -182,14 +182,14 @@
 					</sly>
 				  </ul>
 				</div>
-				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="${properties.utilityLanguageLabel || 'Region & Language Selection, Search Function'}">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" aria-label="${properties.utilityLanguageLabel || 'Region & Language Selection, Search Function'}">
 				  <ul>
 					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
-						<label class="sr-only">
+						<span class="sr-only">
 						  ${listModel.srRegionText}
-						</label>
+						</span>
 						${regionTitle}
 					  </div>
 					</li>
@@ -359,9 +359,6 @@
 			</sly>
           </div>
           <ul class="first-level-navigation">
-
-            <sly data-sly-test="${listModel.mobilenav.path}" data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
-
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
               <a href="#">${regionTitle @context='html'}</a>
               <div class="second-level-navigation" role="menu">
@@ -370,6 +367,10 @@
 
               </div>
             </li>
+            
+            <sly data-sly-test="${listModel.mobilenav.path}" data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
+
+            
           </ul>
         </div>
         <div class="offcanvas-overlay">

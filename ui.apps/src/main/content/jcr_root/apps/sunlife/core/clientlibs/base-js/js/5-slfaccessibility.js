@@ -7,13 +7,7 @@ var RIGHT = 39;
 var LEFT = 37;
 var UP = 38;
 var ESC = 27;
-// Adds aria-labels to mega menu by tagging it with the text in the anchor tags 
-function addMegaMenuAriaLabels () {
-  $(".desktop-mega-menu .dropdown-menu .mega-menu-wrapper-desk a:not(.icon-style)").each(function(){
-    $(this).attr("aria-label", $(this).text());
-  });
-}
-addMegaMenuAriaLabels();
+
   function set_active(tab)
   {
     var tab_number=$(tab).index();
@@ -72,7 +66,6 @@ addMegaMenuAriaLabels();
   function bindAccessibilityEvent(){
   // /* Full Header accessibility starts here */
       $('.search-icon-container').keyup(function (event) {
-
           if (event.keyCode == 13) {
               if ($('#sun-search').hasClass('in')) {
                   $('#sun-search').removeClass('in');
@@ -100,9 +93,25 @@ addMegaMenuAriaLabels();
                   $("#language-btn").attr('aria-expanded', 'true');
                   $("#search-btn").attr('aria-expanded', 'false');
                   $("#sun-search").removeClass('in');
-                  $(".sunLanguageCrossBtn").focus();
+                  $("#close-btn").focus();
               }
           }
+      });
+
+      $('.lang-btn').keydown(function (event) {
+        if (event.keyCode == 13) {
+            if ($('#sun-language').hasClass('in')) {
+                $('#sun-language').removeClass('in');
+                $("#language-btn").attr('aria-expanded', 'false');
+            }
+            else {
+                $('#sun-language').addClass('in');
+                $("#language-btn").attr('aria-expanded', 'true');
+                $("#search-btn").attr('aria-expanded', 'false');
+                $("#sun-search").removeClass('in');
+                $("#close-btn").focus();
+            }
+        }
       });
       $("#search-btn").keydown(function(e){
         if($(".desktop-primary-navigation").length!=0){
@@ -124,7 +133,13 @@ addMegaMenuAriaLabels();
               $('#language-btn').removeClass('lang-true');
               $('#language-btn').focus();
         }
-    });
+      });
+      $("#close-btn").keydown(function(e){
+        if (e.which == 13 ) {
+            e.preventDefault();
+            $('#language-btn').focus();
+        }
+      });
       $("#sun-search .close-div .fa-remove.collapse-x").keydown(function(e){
         if (e.which == 13 ) {
               $('#search-btn').focus();
