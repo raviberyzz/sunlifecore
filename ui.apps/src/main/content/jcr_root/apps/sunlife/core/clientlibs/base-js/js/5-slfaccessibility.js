@@ -7,13 +7,7 @@ var RIGHT = 39;
 var LEFT = 37;
 var UP = 38;
 var ESC = 27;
-// Adds aria-labels to mega menu by tagging it with the text in the anchor tags 
-function addMegaMenuAriaLabels () {
-  $(".desktop-mega-menu .dropdown-menu .mega-menu-wrapper-desk a:not(.icon-style)").each(function(){
-    $(this).attr("aria-label", $(this).text());
-  });
-}
-addMegaMenuAriaLabels();
+
   function set_active(tab)
   {
     var tab_number=$(tab).index();
