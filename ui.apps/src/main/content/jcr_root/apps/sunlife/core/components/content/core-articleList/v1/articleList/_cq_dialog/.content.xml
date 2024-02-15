@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Article List"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <parentPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Path under which the Content Fragments are located."
+                                        fieldLabel="Parent Path"
+                                        required="{Boolean}true"
+                                        name="./parentPath"
+                                        rootPath="/content/dam"/>
+                                    <tags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                        fieldDescription="Tags for filtering the list."
+                                        fieldLabel="Tags"
+                                        multiple="{Boolean}true"
+                                        name="./tagNames"/>
+                                    <displayType
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Select how component should look like."
+                                        fieldLabel="Display Type"
+                                        required="{Boolean}true"
+                                        name="./displayType">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Article List"
+                                                value="articleList"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Editorial Article List"
+                                                value="editorialArticleList"/>
+                                            <item2
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Related Article List"
+                                                value="relatedArticleList"/>
+                                            <item3
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Overview Highlight"
+                                                value="overviewHighlight"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".displayType-showhide-target"/>
+                                    </displayType>
+                                    <hideTopThree
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Number of items to hide from the top, only applicable for 1st page not from other pages in pagination"
+                                        fieldLabel="Hide Top Items"
+                                        min="{Long}0"
+                                        name="./hideTop"/>
+                                    <maxItems
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Maximum number of items displayed in the list. Empty for all items."
+                                        fieldLabel="Max Items"
+                                        min="{Long}0"
+                                        required="{Boolean}true"
+                                        name="./maxItems"/>
+                                    <lazyLoading
+                                         jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                         fieldDescription="Check if the articlelist should be lazy loaded. Should be checked for all images that are below the fold"
+                                         name="./isLazyLoaded"
+                                         text="Lazy Load Image"
+                                         checked="false"
+                                         uncheckedValue="false"
+                                         value="{Boolean}true"/>
+                                    <container
+                                        granite:class="hide displayType-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Title for Editorial Article List or Related Article List"
+                                                fieldLabel="Title"
+                                                name="./title">
+                                            </title>
+                                            <titleLevel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select title level"
+                                                fieldLabel="Title Level"
+                                                name="./titleLevel">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value="div"/>
+                                                    <h2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H2"
+                                                        value="h2"/>
+                                                    <h3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H3"
+                                                        value="h3"/>
+                                                    <h4
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H4"
+                                                        value="h4"/>
+                                                    <h5
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H5"
+                                                        value="h5"/>
+                                                    <h6
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H6"
+                                                        value="h6"/>
+                                                    
+                                                </items>
+                                            </titleLevel>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="relatedArticleList"/>
+                                            
+                                    </container>
+                                </items>
+                            </column>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
