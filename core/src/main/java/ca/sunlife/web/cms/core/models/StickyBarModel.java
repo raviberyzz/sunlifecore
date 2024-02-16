@@ -174,6 +174,6 @@ public interface StickyBarModel {
    * @return the View StickyBar value
    */
   @ Inject
-  String getViewStickyBar();
+  String getHideStickyBar();
 
 }
