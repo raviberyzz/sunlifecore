@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="notification-component" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
                     <div class="notification-icon">
-                       <span class="sl-icon fak ${notification.iconType} sl-icon_size_md"></span>
+                       <span class="sl-icon fak ${notification.iconType}"></span>
                     </div>
                     <div class="h4 notification-heading">${notification.notificationHeading}</div>
                     <div class="notification-buttons"> <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <span class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button></span> </div>
@@ -16,10 +16,10 @@
     </sly>
     <sly data-sly-test.displayNotificationHeading="${!notification.notificationHeading} ">
         <div role="alert" class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}">
-            <div class="container ${notification.spacing}">
+            <div class="container">
                 <div class="notification-component" aria-label="${notification.accessibilityLabel}" data-title="${notification.dataTitle}">
                     <div class="notification-icon">
-                        <span class="sl-icon fak ${notification.iconType} sl-icon_size_md"></span>
+                        <span class="sl-icon fak ${notification.iconType}"></span>
                     </div>
                     <div class="notification-text">${notification.text @context ='html'}</div>
                     <div class="notification-buttons">

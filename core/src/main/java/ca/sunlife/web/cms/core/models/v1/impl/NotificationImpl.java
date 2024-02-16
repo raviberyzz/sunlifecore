@@ -53,13 +53,14 @@ public class NotificationImpl implements Notification {
    private String iconType;
 
 
-    protected static final String INFO_ICON = "fa-info sl-icon_color_information";
+   protected static final String INFO_ICON = "fa-info sl-icon_color_information sl-icon_size_md";
 
-    protected static final String SUCCESS_ICON = "fa-check-circle-yes sl-icon_color_success";
+   protected static final String SUCCESS_ICON = "fa-check-circle-yes sl-icon_color_success sl-icon_size_md";
 
-    protected static final String WARNING_ICON = "fa-exclamation-circle sl-icon_color_warning";
-   
-    protected static final String ERROR_ICON = "fa-exclamation-triangle sl-icon_color_error";
+   protected static final String WARNING_ICON = "fa-exclamation-circle sl-icon_color_warning sl-icon_size_md";
+  
+   protected static final String ERROR_ICON = "fa-exclamation-triangle sl-icon_size_md sl-icon_color_error";
+
 
 
     @PostConstruct

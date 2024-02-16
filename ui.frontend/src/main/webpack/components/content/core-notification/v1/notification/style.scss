@@ -1,6 +1,13 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
 
+.aem-AuthorLayer-Edit {
+
+    .sl-notification.fade {
+          opacity: 1;
+    }
+}
+
 .sl-notification {
 
     @include media-breakpoint-up(lg) {
