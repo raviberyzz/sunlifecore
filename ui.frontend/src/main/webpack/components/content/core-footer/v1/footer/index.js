@@ -56,6 +56,19 @@
         }
     }
 
-    window.addEventListener("load", footerAccordion);
-    window.addEventListener("resize", footerAccordion);
+    function isModuleExist() {
+        if($('.sl-footer .footer-menus').length <= 0) {
+            return false;
+        }
+        return true;
+    }
+ 
+    function init() {
+        if(isModuleExist()) {
+            footerAccordion();
+        }
+    }
+ 
+    window.addEventListener("DOMContentLoaded", init);
+    window.addEventListener("resize", init);
 })()
