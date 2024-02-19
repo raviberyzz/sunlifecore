@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $("#stickyBarLinks li a").click(function () {
-        $("#stickyBarLinks li a").removeClass("active");
-        $(this).addClass("active");
-    });
 
     $('#priButton a').click(function () {
         if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
@@ -60,5 +56,17 @@ $(document).ready(function () {
                 // $('.sticky-bar-wrapper').addClass('hide-bar')
             }
         }
+        var scrollPos = $(document).scrollTop();
+        $('#stickyBarLinks a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.offset().top - 80 <= scrollPos && refElement.offset().top + refElement.height() > scrollPos) {
+                $('#stickyBarLinks a').removeClass("active");
+                currLink.addClass("active");
+            }
+            // else{
+            //     currLink.removeClass("active");
+            // }
+        });
     });
 });
