@@ -49,13 +49,13 @@
     </div>
     <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>
     <div data-sly-test="${text.required && !useTextarea}" class="sl-helper-text error-text sl-textfield-helper-text">
-        <span class="sl-icon sl-icon-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span>
+        <i class="icon-class far fa-exclamation-triangle" role="presentation"></i>
         ${text.requiredMessage}
     </div>     
 </div>
 <div data-sly-test="${text.required && useTextarea}" class="form-floating-error">
     <div class="form-floating sl-helper-text error-text sl-textfield-helper-text">
-        <span class="sl-icon sl-icon-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span>
+        <i class="icon-class far fa-exclamation-triangle" role="presentation"></i>
         ${text.requiredMessage}
     </div>
 </div>
