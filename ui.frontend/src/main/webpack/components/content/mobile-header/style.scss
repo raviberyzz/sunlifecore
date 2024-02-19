@@ -244,7 +244,7 @@
             }
          }
         .language-region{
-            margin:32px 16px;
+            margin:8px 16px;
         }
         .second-level-navigation{
             background:$light-orange-20;
@@ -266,14 +266,12 @@
                 display:block;
             }
             .navigation-title{
-                a{
-                    font-weight:700;
-                    padding-left:16px;
-                    font-size:1rem;
-                    line-height:26px;
-                    &:after{
-                        content:'';
-                    }
+                font-weight:700;
+                padding-left:16px;
+                font-size:1rem;
+                line-height:26px;
+                &:after{
+                    content:'';
                 }
             }
             .navigation-menu{

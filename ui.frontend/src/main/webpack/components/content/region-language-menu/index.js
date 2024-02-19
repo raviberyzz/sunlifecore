@@ -59,6 +59,8 @@ $(document).ready(function () {
             $('.mobile-header .region-tab').css({ 'display': 'none' });
             $('.mobile-header .language-tab').css({ 'display': 'block' });
         });
+
+        $('.cross-btn').children('button').removeAttr('aria-expanded');
         
         // No language present scenario starts here
         var languageNumber = $('.mobile-header .mobile-region-language-menu-wrapper .language-tab ul').children('li');
