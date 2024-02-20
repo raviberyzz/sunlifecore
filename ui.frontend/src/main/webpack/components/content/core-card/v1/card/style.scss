@@ -1,3 +1,5 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/design-system';
 
 .card {
     .sl-link {
@@ -20,8 +22,14 @@
     width: 100vw !important;
 }
 
+.sl-avatar-blocks .card .card-body {
+	flex: 1 1 !important;
+}
+
 
 // TODO: Helios-bugfix - Need to remove once helios fix it
 .sl-cards.horizontal .card picture {
-    width: 50%;
+    @include media-breakpoint-up(md) {
+        width: 50%;
+    }
 }

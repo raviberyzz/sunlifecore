@@ -6,7 +6,7 @@ Template for rendering link and button component
     data-sly-call="${template.details @ ctaType='button', cardBtnTarget='_self', cardBtnURL='URL', cardBtnIconType='file-pdf', cardBtnLabel='Click Here', cardBtnType='secondary'}">
 </sly>
 */-->
-<template data-sly-template.details="${ @ ctaType, cardBtnTarget, cardBtnURL, cardBtnIconType, cardBtnLabel, cardBtnType, cardLinkTarget, cardLinkURL, cardLinkIconType, cardLinkLabel, cardLinkType }"> 
+<template data-sly-template.details="${ @ ctaType, cardBtnTarget, cardBtnURL, cardBtnIconType, cardBtnLabel, cardBtnType, cardLinkTarget, cardLinkURL, cardLinkIconType, cardLinkLabel, cardLinkType, dataTitle }"> 
   <sly
     data-sly-set.isBtn="${ctaType == 'button' ? true : false }"
     data-sly-set.iconType="${isBtn ? cardBtnIconType : cardLinkIconType }"
@@ -19,6 +19,7 @@ Template for rendering link and button component
         data-sly-test="${ctaType != 'noCTA'}"
         target="${ isBtn ? cardBtnTarget : cardLinkTarget }"
         href="${isBtn ? cardBtnURL : cardLinkURL}"
+        data-title="${dataTitle}"
         class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta">
         <sly data-sly-test="${iconType =='file-pdf'}">
           <i title="PDF file link" class="far fa-${iconType}"></i>
