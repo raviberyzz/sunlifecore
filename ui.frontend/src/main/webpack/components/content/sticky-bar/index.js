@@ -1,9 +1,4 @@
 $(document).ready(function () {
-    $("#stickyBarLinks li a").click(function () {
-        $("#stickyBarLinks li a").removeClass("active");
-        $(this).addClass("active");
-    });
-
     $('#priButton a').click(function () {
         if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
             $('#leadgen-o2o').modal('show');
@@ -53,12 +48,19 @@ $(document).ready(function () {
             var isPositionFixed = ($el.css('position') == 'sticky');
             if ($(this).scrollTop() > desktopHeaderHeight && !isPositionFixed) {
                 $el.css({ 'position': 'sticky', 'top': '0px', 'display': 'flex' });
-                // $('.sticky-bar-wrapper').removeClass('hide-bar')
             }
             if ($(this).scrollTop() < desktopHeaderHeight && isPositionFixed) {
                 $el.css({ 'position': 'static', 'top': '0px', 'display': 'none' });
-                // $('.sticky-bar-wrapper').addClass('hide-bar')
             }
         }
+        var scrollPos = $(document).scrollTop();
+        $('#stickyBarLinks a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.offset().top - 80 <= scrollPos && refElement.offset().top + refElement.height() > scrollPos) {
+                $('#stickyBarLinks a').removeClass("active");
+                currLink.addClass("active");
+            }
+        });
     });
 });
