@@ -1,0 +1,116 @@
+@import '../../../prerequisite/base/styles/core.scss';
+
+.sticky-bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+
+    .sticky-bar-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid #dcdedf;
+        height: 5pc;
+        padding: 0 15px;
+        white-space: nowrap;
+    }
+
+    .sticky-bar-wrapper.hide-bar {
+        display: none;
+    }
+
+    .desktop-sunlife-logo img {
+        cursor: pointer;
+        height: 36px;
+        width: 149px;
+    }
+
+    .sticky-bar-button-wrapper {
+        display: flex;
+        column-gap: 10px;
+    }
+
+    .stickyBarButtons a span {
+        min-width: 160px;
+        border-radius: 4px;
+    }
+
+    #stickyBarLinks {
+        /* width: 100%; */
+
+        li {
+            display: inline-flex;
+            padding-right: 30px;
+            align-items: center;
+
+            a {
+                color: $brand-secondary-800;
+                font-weight: 700;
+                line-height: 24px;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: none
+            }
+
+            a.active {
+                color: $grey-900;
+                font-weight: 700;
+                color: $brand-secondary-800;
+                font-weight: 700;
+                line-height: 24px;
+                border-bottom: 2px solid $brand-primary-400;
+            }
+        }
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+@media(max-width: 1024px) {
+    .sticky-bar {
+        justify-content: center;
+
+        .sticky-bar-wrapper.hide-bar {
+            display: flex;
+        }
+
+        .desktop-sunlife-logo {
+            display: none;
+        }
+
+        .stickyBarButtons {
+            width: 100%
+        }
+
+        .sticky-bar-button-wrapper {
+            display: flex;
+            justify-content: center;
+            width: auto;
+        }
+
+    }
+}
+
+@media (max-width: 767px) {
+    .sticky-bar {
+        /* position: fixed; */
+
+        #stickyBarLinks {
+            display: none;
+            width: auto;
+        }
+
+        .sticky-bar-button-wrapper {
+            width: 100%;
+        }
+    }
+}
