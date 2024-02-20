@@ -42,8 +42,10 @@ package ca.sunlife.web.cms.core.models.v1.impl;
  import com.day.cq.tagging.TagConstants;
  import com.day.cq.wcm.api.Page;
  import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  
  import ca.sunlife.web.cms.core.beans.Pagination;
+ import ca.sunlife.web.cms.core.models.v1.ArticleList;
   import ca.sunlife.web.cms.core.services.SiteConfigService;
   import lombok.Getter;
  
@@ -54,12 +56,12 @@ package ca.sunlife.web.cms.core.models.v1.impl;
   * @version 1.0
   */
 
- @ Model (adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class}, resourceType = {
+ @ Model (adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class, ArticleList.class}, resourceType = {
     ArticleListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
  @ Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
  @ JsonSerialize(as = ArticleListImpl.class)
 
- public class ArticleListImpl implements ComponentExporter{
+ public class ArticleListImpl implements ComponentExporter, ArticleList{
 
   
    /** The Constant LOGGER. */
@@ -68,40 +70,33 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    /** The Constant RESOURCE_TYPE. */
    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-articleList/v1/articleList";
  
-   /** The parent path. */
-   @ Inject
-   @ Via ("resource")
+   @ValueMapValue
    private String parentPath;
- 
-   /** The tag names. */
-   @ Inject
-   @ Via ("resource")
+
+   @ValueMapValue
    private String [ ] tagNames;
  
-   /** The display type. */
-   @ Inject
-   @ Via ("resource")
+   @ValueMapValue
    private String displayType;
  
-   /** The hide top. */
-   @ Inject
-   @ Via ("resource")
+   @ValueMapValue
    private int hideTop;
  
-   /** The max items. */
-   @ Inject
-   @ Via ("resource")
+   @ValueMapValue
    private int maxItems;
  
-   /** The title. */
-   @ Inject
-   @ Via ("resource")
+   @ValueMapValue
    private String title;
- 
-   /** The title level. */
-   @ Inject
-   @ Via ("resource")
+
+   @ValueMapValue
    private String titleLevel;
+
+   @ValueMapValue
+   private String spacing;
+
+   @ValueMapValue
+   private String accessibilityLabel;
+ 
  
    /** The resource resolver. */
    @ SlingObject
@@ -210,44 +205,6 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    }
  
    /**
-    * Gets the title.
-    *
-    * @return the title
-    */
-   public final String getTitle() {
-     return title;
-   }
- 
-   /**
-    * Sets the title.
-    *
-    * @param title
-    *          the new title
-    */
-   public final void setTitle(final String title) {
-     this.title = title;
-   }
- 
-   /**
-    * Gets the title level.
-    *
-    * @return the title level
-    */
-   public final String getTitleLevel() {
-     return titleLevel;
-   }
- 
-   /**
-    * Sets the title level.
-    *
-    * @param titleLevel
-    *          the new title level
-    */
-   public final void setTitleLevel(final String titleLevel) {
-     this.titleLevel = titleLevel;
-   }
- 
-   /**
     * Sets the date format.
     *
     * @param dateFormat
@@ -303,82 +260,6 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
        "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
        "articleMainDescription", "articleThumbnailImage" };
- 
-   /**
-    * Gets the parent path.
-    *
-    * @return the parent path
-    */
-   public final String getParentPath() {
-     return parentPath;
-   }
- 
-   /**
-    * Sets the parent path.
-    *
-    * @param parentPath
-    *          the new parent path
-    */
-   public final void setParentPath(final String parentPath) {
-     this.parentPath = parentPath;
-   }
- 
-   /**
-    * Gets the display type.
-    *
-    * @return the display type
-    */
-   public final String getDisplayType() {
-     return displayType;
-   }
- 
-   /**
-    * Sets the display type.
-    *
-    * @param displayType
-    *          the new display type
-    */
-   public final void setDisplayType(final String displayType) {
-     this.displayType = displayType;
-   }
- 
-   /**
-    * Gets the hide top.
-    *
-    * @return the hide top
-    */
-   public final int getHideTop() {
-     return hideTop;
-   }
- 
-   /**
-    * Sets the hide top.
-    *
-    * @param hideTop
-    *          the new hide top
-    */
-   public final void setHideTop(final int hideTop) {
-     this.hideTop = hideTop;
-   }
- 
-   /**
-    * Gets the max items.
-    *
-    * @return the max items
-    */
-   public final int getMaxItems() {
-     return maxItems;
-   }
- 
-   /**
-    * Sets the max items.
-    *
-    * @param maxItems
-    *          the new max items
-    */
-   public final void setMaxItems(final int maxItems) {
-     this.maxItems = maxItems;
-   }
  
    /**
     * Gets the list items.
@@ -514,11 +395,46 @@ package ca.sunlife.web.cms.core.models.v1.impl;
      }
    }
  
-   /**
-    * Gets the Resource Type.
-    *
-    * @return the Resource Type.
-    */
+   @Override
+    public String getParentPath() {
+        return parentPath;
+    }
+
+    @Override
+    public String getDisplayType() {
+        return displayType;
+    }
+
+    @Override
+    public int getHideTop() {
+        return hideTop;
+    }
+
+    @Override
+    public int getMaxItems() {
+        return maxItems;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getTitleLevel() {
+        return titleLevel;
+    }
+
+    @Override
+    public String getSpacing() {
+        return spacing;
+    }
+
+    @Override
+    public String getAccessibilityLabel() {
+        return accessibilityLabel;
+    }
+
    @Override
    public String getExportedType() {
      return RESOURCE_TYPE;

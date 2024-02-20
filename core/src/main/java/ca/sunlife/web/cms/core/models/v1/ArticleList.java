@@ -1,23 +1,24 @@
-// package ca.sunlife.web.cms.core.models.v1;
+package ca.sunlife.web.cms.core.models.v1;
 
-// import java.util.HashMap;
-// import java.util.List;
+import java.util.HashMap;
+import java.util.List;
 
-// public interface ArticleList {
+public interface ArticleList {
 	
-// 	 String getParentPath(); 	 
-	 
-// 	 String getTagNames();	 
+	 String getParentPath(); 	  
 
-// 	 String getDisplayType();	 
+	 String getDisplayType();	 
 
-// 	 int getHideTop();	 
+	 int getHideTop();	 
 	 
-// 	 int getMaxItems();	 
+	 int getMaxItems();	 
 	 
-// 	 String getTitle();	
+	 String getTitle();	
     
-// 	 String getTitleLevel();	 
-	 
+	 String getTitleLevel();	 
 
-// }
+     String getSpacing();
+
+     String getAccessibilityLabel();
+
+}
