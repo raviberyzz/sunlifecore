@@ -3,7 +3,7 @@
           jcr:primaryType="nt:unstructured"
           jcr:title="Mega Menu"
           sling:resourceType="cq/gui/components/authoring/dialog"
-          extraClientlibs="[core.wcm.components.navigation.v1.editor,sunlife.core-author.megamenu]"
+          extraClientlibs="[core.wcm.components.navigation.v1.editor,sunlife.core.author.checkbox-showhide]"
           helpPath="https://www.adobe.com/go/aem_cmp_navigation_v2"
           trackingFeature="core-components:navigation:v2">
     <content
