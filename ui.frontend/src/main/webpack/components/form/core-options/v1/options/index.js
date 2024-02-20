@@ -16,12 +16,36 @@
             $AllCheckboxes.removeClass("is-invalid");            
             $parentContainer.removeClass("sl-input-error");             
         });
+        let selectedCheck = false;
+        //Condition to check if the checkbox/radio is requred or not
+        if(requiredField === "required"){
+            $AllCheckboxes.each((index, item) => {
+               if(item.checked) {
+                selectedCheck = true;
+               }
+            })
+            //Condition to check if all checkbox/radio are selected or not
+            if(!selectedCheck){
+                $AllCheckboxes.addClass("is-invalid");
+                $parentContainer.addClass("sl-input-error");
+            }
+            else {
+                $AllCheckboxes.removeClass("is-invalid");            
+                $parentContainer.removeClass("sl-input-error");
+            }
+        }
     }  
+    //Check if a dropdown component exists.
+    function doesModuleExist() {
+        if ($('.form-check-input').length <= 0) {
+            return false;
+        }
+        return true;
+    }
     //Function used to initilize the event
     function init() {
-        const $checkInput = $('.form-check-input');
-        if($checkInput){
-            $(document).on('change click blur', $checkInput, checkBoxValidationEventHandler);
+        if(doesModuleExist()){
+            $(document).on('change click blur', '.form-check-input', checkBoxValidationEventHandler);
         }
     }
     

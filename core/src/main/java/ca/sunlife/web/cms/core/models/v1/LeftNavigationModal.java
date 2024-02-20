@@ -154,6 +154,9 @@ public class LeftNavigationModal implements Navigation {
     if (collectAllPages) {
       structureDepth = -1;
     }
+    else{
+      structureDepth = 1;
+    }
     navigationRootPage = properties.get(PN_NAVIGATION_ROOT, String.class);
     if (currentStyle.containsKey(PN_STRUCTURE_START) || properties.containsKey(PN_STRUCTURE_START)) {
       //workaround to maintain the content of Navigation component of users in case they update to the current i.e. the `structureStart` version.

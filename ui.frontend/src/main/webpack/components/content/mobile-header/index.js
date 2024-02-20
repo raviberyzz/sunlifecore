@@ -207,6 +207,7 @@ $(document).ready(function () {
         });
         $('.navigation-menu').children('a').click(function (event) {
             event.preventDefault();
+            // $(this).toggleClass('last-clicked');
             $(this).parent().closest('div').scrollTop(0);
             $(this).siblings("div").addClass('active');
             $(this).parent().closest('div').css({ 'overflow-y': 'hidden' });
@@ -215,6 +216,12 @@ $(document).ready(function () {
         $('.go-back').click(function (event) {
             $(this).closest("div").removeClass('active');
             $(this).closest('div').parent().closest('div').css({ 'overflow-y': 'auto' });
+            // check if theres an elemet with class last-clicked and focus on it
+            // if ($('.last-clicked').length > 0) {
+            //     console.log('theres an item with the class of "last-clicked"');
+            //     $('.last-clicked').focus();
+            //     $('.last-clicked').removeClass('last-clicked');
+            // }
         });
         $('.language-region .second-level-navigation .go-back').click(function () {
             $('.language-region .second-level-navigation').removeClass('active');
