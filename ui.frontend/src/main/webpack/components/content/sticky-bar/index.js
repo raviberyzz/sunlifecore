@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $('#priButton a').click(function () {
         if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
             $('#leadgen-o2o').modal('show');
@@ -49,11 +48,9 @@ $(document).ready(function () {
             var isPositionFixed = ($el.css('position') == 'sticky');
             if ($(this).scrollTop() > desktopHeaderHeight && !isPositionFixed) {
                 $el.css({ 'position': 'sticky', 'top': '0px', 'display': 'flex' });
-                // $('.sticky-bar-wrapper').removeClass('hide-bar')
             }
             if ($(this).scrollTop() < desktopHeaderHeight && isPositionFixed) {
                 $el.css({ 'position': 'static', 'top': '0px', 'display': 'none' });
-                // $('.sticky-bar-wrapper').addClass('hide-bar')
             }
         }
         var scrollPos = $(document).scrollTop();
@@ -64,9 +61,6 @@ $(document).ready(function () {
                 $('#stickyBarLinks a').removeClass("active");
                 currLink.addClass("active");
             }
-            // else{
-            //     currLink.removeClass("active");
-            // }
         });
     });
 });
