@@ -16,7 +16,7 @@
         /* show/hide tabs of different card type depending upon current card type */
         tabs.each(function (index, value) {
             currentTab = $(value).find('coral-tab-label').text().toLowerCase();
-            if ((currentTab != 'asset' && currentTab != 'cta') || (cardType === 'statistic')) {
+            if ((currentTab != 'asset' && currentTab != 'cta' && currentTab != 'analytics') || (cardType === 'statistic')) {
                 $(value).attr("aria-selected", false).attr("selected", false);
                 $(value).attr("hidden", true);
             }

@@ -1,6 +1,7 @@
 "use strict";
-use(function () {
+use(["/libs/sightly/js/3rd-party/q.js"], function (Q){
     var cardType = this.cardType;
+    var cardPath = this.cardPath;
     var horizontalCardConfig = JSON.stringify(this.horizontalCardConfig);
     var verticalCardConfig= JSON.stringify(this.verticalCardConfig);
     var avatarCardConfig= JSON.stringify(this.avatarCardConfig);
@@ -12,6 +13,8 @@ use(function () {
     var containerConfigs = { isClickable: false, isMultiple: false, isIcon: false, isLarge: false, isBody: false, isLink: false, imagePosition: 'left', mediaType: 'left', isForm: false };
     var cardTemplate = '';
     var cardClasses = [];
+
+    var cardClickable = Q.defer();
   
     /* Update card class depending upon card type and selected card specific options */
     switch (cardType) {
@@ -21,6 +24,7 @@ use(function () {
             if(horizontalCardConfigs.clickable === 'true') {
                 cardClasses.push('clickable');
                 containerConfigs.isClickable = true;
+                updateCardClickableConfs();
             }
             if(horizontalCardConfigs.multiple ==='true') {
                 cardClasses.push('multi-h');
@@ -38,6 +42,7 @@ use(function () {
             if(verticalCardConfigs.clickable==='true') {
                 cardClasses.push('clickable');
                 containerConfigs.isClickable = true;
+                updateCardClickableConfs();
             }
             if(verticalCardConfigs.multiple==='true') {
                 cardClasses.push('multi-v');
@@ -148,10 +153,22 @@ use(function () {
         return str.trim();
     }
 
+    function updateCardClickableConfs() {   
+        granite.resource.resolve(cardPath).then(function(childResource) {
+            if (childResource.properties["cardClickableLinkURL"]) {
+                cardClickable.resolve({'url':childResource.properties["cardClickableLinkURL"], 'target':childResource.properties["cardClickableLinkTarget"] || '_self'});
+            } 
+        },function() {
+            cardClickable.resolve(false);
+        });
+    }
+
     return {
         cardClass: cardClasses.join(' '),
         cardTemplateRef: cardTemplate,
-        containerConfigObj: containerConfigs
+        containerConfigObj: containerConfigs,
+        cardClickable: cardClickable.promise
+
     };
 });
 
