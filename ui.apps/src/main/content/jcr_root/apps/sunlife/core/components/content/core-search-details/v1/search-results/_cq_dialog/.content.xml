@@ -4,7 +4,6 @@
     jcr:title="Search Results"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
-        granite:class="cmp-news-list__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
