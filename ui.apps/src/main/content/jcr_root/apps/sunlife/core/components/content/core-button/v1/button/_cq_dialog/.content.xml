@@ -94,7 +94,7 @@
                                                 </items>
                                             </linkDetails>
                                             <modalDetails
-                                                granite:class="checkbox-modaldetails-target"
+                                                granite:class="hide checkbox-modaldetails-target"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="link"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">

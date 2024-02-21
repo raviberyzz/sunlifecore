@@ -1,21 +1,26 @@
-Hello Modal
 <!-- Initial code for UI Developer to access the dialog values -->
-<sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.ModalModel">
+<sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
-ModalID   : ${modalObj.modalID} <br>
-ModalType : ${modalObj.modalTypes} <br>
-Trigger   : ${modalObj.trigger} <br>
-Heading   : ${modalObj.heading} <br>
-Content   : ${modalObj.content} <br>
-Addition Text : ${modalObj.additionalText} <br>
-Data Section : ${modalObj.dataSection} <br>
+	ModalID   : ${modalObj.modalID} <br>
+	ModalType : ${modalObj.modalTypes} <br>
+	Trigger   : ${modalObj.trigger} <br>
+	Heading   : ${modalObj.heading} <br>
+	Content   : ${modalObj.content} <br>
+	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+		Addition Text : ${modalObj.additionalText} <br>
+	</sly>
+	Data Section : ${modalObj.dataSection} <br>
 
-<h3>Buttons</h3>
+	<sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
 
-<ul data-sly-list.buttonList="${modalObj.buttons}">
-    <li> Button type   : ${buttonList.buttonType} </li>
-    <li> Button Text   : ${buttonList.buttonText} </li>
-    <li> Button Target : ${buttonList.linkTarget} </li>
-</ul>
+		<h3>Buttons</h3>
+		
+		<ul data-sly-list.buttonList="${modalObj.buttons}">
+			<li> Button type   : ${buttonList.buttonType} </li>
+			<li> Button Text   : ${buttonList.buttonText} </li>
+			<li> Button Target : ${buttonList.linkTarget} </li>
+		</ul>
+
+	</sly>
 
 </sly>
