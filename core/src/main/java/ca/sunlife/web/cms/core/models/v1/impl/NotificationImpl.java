@@ -49,36 +49,36 @@ public class NotificationImpl implements Notification {
     private String spacing;
 
 
-   @Getter
-   private String iconType;
+    @Getter
+    private String iconType;
 
 
-   protected static final String INFO_ICON = "fa-info sl-icon_color_information sl-icon_size_md";
+    protected static final String INFO = "info";
 
-   protected static final String SUCCESS_ICON = "fa-check-circle-yes sl-icon_color_success sl-icon_size_md";
+    protected static final String SUCCESS = "success";
 
-   protected static final String WARNING_ICON = "fa-exclamation-circle sl-icon_color_warning sl-icon_size_md";
-  
-   protected static final String ERROR_ICON = "fa-exclamation-triangle sl-icon_size_md sl-icon_color_error";
+    protected static final String WARNING = "warning";
 
+    protected static final String ERROR = "error";
+    protected static final String DANGER = "danger";
 
 
     @PostConstruct
     private void initModel() {
-        if(notificationType != null){
-			if (notificationType.equals("info") ) {
-				this.iconType = INFO_ICON;
-			}    
-			if (notificationType.equals("success")) {
-				this.iconType = SUCCESS_ICON;
-			}			
-			if (notificationType.equals("warning")) {
-				this.iconType = WARNING_ICON;
-			}			
-			if (notificationType.equals("danger")) {
-			  this.iconType = ERROR_ICON;
-			}  
-		}
+        if (notificationType != null) {
+            if (notificationType.equals(INFO)) {
+                this.iconType = INFO;
+            }
+            if (notificationType.equals(SUCCESS)) {
+                this.iconType = SUCCESS;
+            }
+            if (notificationType.equals(WARNING)) {
+                this.iconType = WARNING;
+            }
+            if (notificationType.equals(DANGER)) {
+                this.iconType = ERROR;
+            }
+        }
     }
 
     @Override
