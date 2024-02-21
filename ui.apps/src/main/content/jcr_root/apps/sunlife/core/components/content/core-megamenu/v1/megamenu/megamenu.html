@@ -25,7 +25,7 @@
                         data-sly-list.menuItems="${menuSections.menuItems}" class="d-none d-lg-inline d-xl-inline d-xxl-inline">
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
-                                class="dropdown-item" data-title="${menuItems.menuItemDataTitle}"
+                                class="dropdown-item text-wrap" data-title="${menuItems.menuItemDataTitle}"
                                 data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
                                 <div class="d-inline">
                                     <span>${menuItems.menuItemLinkName}</span>
@@ -34,12 +34,13 @@
                         </li>
                     </ul>
                     <sly data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}" data-sly-list.menuItems="${menuSections.menuItems}">
-                        <ul data-sly-test.menuItemLinkName="${menuItems.hideInMobile ? '' : menuItems.mobileMenuItemLinkName}" 
+                        <ul data-sly-test.menuItemLinkName="${menuItems.hideInMobile ? menuItems.menuItemLinkName : menuItems.mobileMenuItemLinkName}"
                             class="d-inline d-md-inline d-lg-none d-xl-none d-xxl-none">
                             <li>
-                                <a href="${menuItems.menuItemLinkURL @extension = 'html'}" class="dropdown-item"
-                                    data-title="${menuItems.menuItemDataTitle}"
-                                    data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
+                                <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
+                                   class="dropdown-item text-wrap"
+                                   data-title="${menuItems.menuItemDataTitle}"
+                                   data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
                                     <div class="d-inline">
                                         <span>${menuItemLinkName}</span>
                                     </div>

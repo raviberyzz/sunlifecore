@@ -7,7 +7,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Hero Banner"
 	sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[sunlife.core.author.text, sunlife.core.author.hero-banner]">
+    extraClientlibs="[sunlife.core.author.hero-banner]">
     <content
         granite:class="cmp-hero-banner__editor"
         jcr:primaryType="nt:unstructured"

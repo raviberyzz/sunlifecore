@@ -1,0 +1,35 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/design-system';
+
+.card {
+    .sl-link {
+        .svg-inline--fa {
+            width: 20px !important;
+            height: 20px !important;
+            margin-bottom: -2px;
+        }
+    }
+}
+
+.sl-card-icon {
+    height: 4rem !important;
+    width: 4rem !important;
+}
+
+.sl-banner-content-block  {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 100vw !important;
+}
+
+.sl-avatar-blocks .card .card-body {
+	flex: 1 1 !important;
+}
+
+
+// TODO: Helios-bugfix - Need to remove once helios fix it
+.sl-cards.horizontal .card picture {
+    @include media-breakpoint-up(md) {
+        width: 50%;
+    }
+}

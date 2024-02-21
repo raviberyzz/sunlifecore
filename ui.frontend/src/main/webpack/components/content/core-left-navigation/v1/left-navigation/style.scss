@@ -2,7 +2,15 @@
 @import '@sunlife/ui-styles/design-system.scss';
 
 .sl-left-nav {
-
+    .collapsing {
+            transition: height, visibility .10s ease-in;
+    } 
+    .cmp-navigation__item--level-0 .cmp-navigation__item--level-1{
+            padding-left: 1.5rem;
+            .cmp-navigation__item--level-2{
+                padding-left: 1.5rem;
+            }
+    }
      ul, .sub-menu.show {
         display: flex;
         gap: 1rem;
@@ -49,6 +57,8 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                text-align: start;
+                width: 100%;
             }
         }
 
@@ -62,10 +72,13 @@
         }
         
         .sub-menu .nav-link {
-            margin-left: 1.5rem;
             display: flex;
             justify-content: flex-start;
-        
+            &.nav-dropdown {
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
         }
     }
 

@@ -12,9 +12,9 @@
 <!-- Desktop view starts -->
 <div class="col-xs-12 desktop-region-language-menu-wrapper desktop-linkfarm-table collapse in" data-section="${languageRegionModel.analyticsId ? languageRegionModel.analyticsId : 'header-region-and-languages'}" aria-expanded="true">
    	<div class="cross-btn">
-        <a data-toggle="collapse" href="#sun-language">
-           <span class="sunLanguageCrossBtn fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
-        </a>
+        <button id="close-btn" aria-label="close" data-toggle="collapse" href="#sun-language">
+           <span class="sunLanguageCrossBtn fa fa-remove collapse-x"></span>
+        </button>
     </div>
 
     <sly data-sly-test="${!regionsEmpty}">
@@ -61,7 +61,7 @@
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
                 <sly data-sly-test.langFirstElement="${languageLinkList.index == 0}" />
                 <li class="${languageLink.subLinkHighlight  ? 'nav-select' : 'not-bold'}">
-                    <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
+                    <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}" aria-current="${languageLink.subLinkHighlight ? 'true' : false}">${languageLink.subLinkName}</a>
                 </li>
 
                 <sly data-sly-test="${languageLink.subLinkSeparator}">
@@ -85,7 +85,7 @@
         <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target=".region-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
         </div>
-        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target=".language-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target=".language-tab" data-toggle="tab">
             ${languageRegionModel.languageSectionTitleMobile ? languageRegionModel.languageSectionTitleMobile : languageRegionModel.languageSectionTitle}
         </div>
     </div>

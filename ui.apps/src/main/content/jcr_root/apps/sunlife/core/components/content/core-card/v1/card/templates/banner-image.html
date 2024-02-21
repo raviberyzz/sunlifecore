@@ -1,71 +1,43 @@
-<template data-sly-template.bannerImage="${@options}">
-  <div
-    class="sl-banner-image-block banner-image-block-right card"
-    data-sly-test="${options.bannerImagePosition == 'imageBlockLeft'}"
-  >
-    <div class="banner-image-block-row no-gutters h-100 row">
-      <div class="col-md-6 col-sm-12 col-12">
-        <img
-          data-sly-test="${properties.imageFileReference}"
-          src="${properties.imageFileReference}"
-          alt="UX image"
-        />
+<!--/*
+Template for banner-image card component 
+Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=11145-69119&mode=design&t=VXlORNimlyCeZtFI-4
+*/-->
+<template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+  
+  <sly data-sly-set.haveSomthing="${model.cardImageFileReference || model.bannerImageHeading || model.bannerImageDescription || model.altText || model.bannerImageCaption || model.ctaType }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Banner-Image Card"></div>
+  <sly data-sly-test="${haveSomthing}">
+
+      <div data-sly-test="${containerConfigs.imagePosition =='left'}" class="col-md-6 col-sm-12 col-12">
+        <picture data-sly-test="${model.cardImageFileReference}">
+          <source srcset="${model.cardImageFileReference}">
+          <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
+        </picture>
       </div>
+
       <div class="body-container col">
         <div class="card-body">
-          <div class="h3 card-title">${properties.title}</div>
+          <h3 class="h3 card-title">${model.bannerImageHeading}</h3>
           <div class="card-text">
-            ${properties.description @ context ='html'}
-            <p class="caption-text">${properties.caption}</p>
+            ${model.bannerImageDescription @ context ='html'}
+            <div class="caption-text">${model.bannerImageCaption @ context ='html'}</div>
           </div>
-          <button type="button" class="sl-btn btn btn-secondary">
-            ${properties.buttonLabel}
-          </button>
+
+          <sly 
+              data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnURL=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel, dataTitle=model.dataTitle }">
+          </sly>
+
         </div>
       </div>
-    </div>
-  </div>
-  <div
-    id="story--components-react-content-blocks-banner-image--image-block-right"
-    class="sb-story sb-unstyled"
-    data-story-block="true"
-    data-sly-test="${options.bannerImagePosition == 'imageBlockRight'}"
-  >
-    <div
-      id="story--components-react-content-blocks-banner-image--image-block-right-inner"
-      data-name="Image Block Right"
-    >
-      <div class="sl-banner-image-block banner-image-block-right card">
-        <div class="banner-image-block-row no-gutters h-100 row">
-          <div class="body-container col">
-            <div class="card-body">
-              <div class="h3 card-title">${properties.title}</div>
-              <div class="card-text">
-                ${properties.description @ context ='html'}
-                <p class="caption-text">
-                  ${properties.description @ context ='html'}
-                </p>
-              </div>
-              <a
-                target="_self"
-                href="${properties.buttonLink}"
-                class="sl-link"
-                >${properties.buttonLabel}<span class="sl-icon-after"
-                  ><span
-                    class="sl-icon sl-icon-chevron-circle-right"
-                  ></span></span
-              ></a>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12 col-12">
-            <img
-              data-sly-test="${properties.imageFileReference}"
-              src="${properties.imageFileReference}"
-              alt="UX image"
-            />
-          </div>
-        </div>
+
+      <div data-sly-test="${containerConfigs.imagePosition =='right'}" class="col-md-6 col-sm-12 col-12">
+        <picture data-sly-test="${model.cardImageFileReference}">
+          <source srcset="${model.cardImageFileReference}">
+          <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
+        </picture>
       </div>
-    </div>
-  </div>
+    </sly>
 </template>
