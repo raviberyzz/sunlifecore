@@ -2,7 +2,7 @@
          data-sly-repeat.child="${templatedContainer.structureResources}"
          data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
 		 
-	<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" /> 
+	<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel" />
 	<!--/* Include Context Hub */-->
     <sly data-sly-test = "${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
 		<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-call="${clientlib.js @ categories='granite.utils,cq.widgets'}"></sly>
