@@ -658,10 +658,6 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="New Tab"
                                                                             value="_blank"/>
-                                                                        <modal
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="Modal"
-                                                                            value="modal"/>
                                                                     </items>
                                                                 </linkTarget>
                                                             </items>

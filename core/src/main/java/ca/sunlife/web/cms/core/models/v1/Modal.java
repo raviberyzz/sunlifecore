@@ -14,8 +14,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  * @author Sunlife
  */
 
-@Model(adaptables = {Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ModalModel.RESOURCE_TYPE)
-public interface ModalModel {
+@Model(adaptables = {Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = Modal.RESOURCE_TYPE)
+public interface Modal {
 
 	String RESOURCE_TYPE = "sunlife/core/components/content/core-modal/v1/modal";
 
