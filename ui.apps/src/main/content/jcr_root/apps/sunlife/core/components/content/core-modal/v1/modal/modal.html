@@ -1,26 +1,61 @@
 <!-- Initial code for UI Developer to access the dialog values -->
 <sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
-	ModalID   : ${modalObj.modalID} <br>
+	<!-- ModalID : ${modalObj.modalID} <br>
 	ModalType : ${modalObj.modalTypes} <br>
-	Trigger   : ${modalObj.trigger} <br>
-	Heading   : ${modalObj.heading} <br>
-	Content   : ${modalObj.content} <br>
+	Trigger : ${modalObj.trigger} <br>
+	Heading : ${modalObj.heading} <br>
+	Content : ${modalObj.content} <br> -->
+
+    <!-- What's left: trigger, additionalText, linkTarget -->
+    <!-- close icon, remove inline styles, add longer content to test out vertical scroll -->
+
 	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
 		Addition Text : ${modalObj.additionalText} <br>
 	</sly>
-	Data Section : ${modalObj.dataSection} <br>
+	<!-- Data Section : ${modalObj.dataSection} <br> -->
 
 	<sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
 
-		<h3>Buttons</h3>
-		
-		<ul data-sly-list.buttonList="${modalObj.buttons}">
-			<li> Button type   : ${buttonList.buttonType} </li>
-			<li> Button Text   : ${buttonList.buttonText} </li>
-			<li> Button Target : ${buttonList.linkTarget} </li>
-		</ul>
+        <div class="fade modal-backdrop sl-modal show"></div>
+        <div role="dialog" aria-modal="true" id="${modalObj.modalID}" class="fade sl-modal modal show" tabindex="-1" aria-labelledby="two-button-modal" style="display: block; padding-right: 17px;" data-section="${modalObj.dataSection}">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
+                        window</span>
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="two-button-modal">${modalObj.heading}</h2>
+                        <button aria-label="Close">
+
+                            <!-- <span class="sl-icon sl-icon-close sl-icon_size_xl sl-icon_non-interactive"></span> -->
+                            <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ${modalObj.content}
+                    </div>
+
+                    <!-- <ul data-sly-list.buttonList="${modalObj.buttons}">
+                        <li> Button type : ${buttonList.buttonType} </li>
+                        <li> Button Text : ${buttonList.buttonText} </li>
+                        <li> Button Target : ${buttonList.linkTarget} </li>
+                    </ul> -->
+
+                    <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
+                        <button type="button" id="close-button"
+                            class="sl-btn btn ${buttonList.buttonType}">${buttonList.buttonText}</button>
+                    </div>
+
+                        <span id="two-button-modal-end-sr"
+                        class="visually-hidden">End of dialog window</span>
+                </div>
+            </div>
+        </div>
 
 	</sly>
+
+
+
+
 
 </sly>
