@@ -17,7 +17,9 @@
 			   aria-multiselectable="false"
 			   role="tablist">   
                <sly data-sly-test.isActive="${tab.name == tabs.activeItem}"/>
-               <div id="${tab.id}-tab"
+               <sly data-sly-test.isDynamic = "${tabs.accessibilityLabel}-id-${tablist.index}"/>
+               <sly data-sly-test.isStatic = "tab-item-id-${tablist.index}"/>
+               <div id="${tabs.accessibilityLabel ? isDynamic : isStatic}"
                     class="cmp-tabs__tab${isActive ? ' cmp-tabs__tab--active' : ''} nav-item ${isActive ? ' active focused' : 'in-active'}"
 					tabindex="${isActive ? '0' : '-1'}"
 					data-cmp-hook-tabs="tab"

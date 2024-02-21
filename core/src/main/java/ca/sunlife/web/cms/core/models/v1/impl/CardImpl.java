@@ -139,6 +139,14 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String cardClickableLinkURL; 
+
+    @ValueMapValue
+	@Getter
+    private String cardClickableLinkTarget;
+
+    @ValueMapValue
+	@Getter
     private String name;
 
     @ValueMapValue
@@ -204,5 +212,9 @@ public class CardImpl implements Card {
     @ValueMapValue
 	@Getter
     private String statisticCaption;
+
+    @ValueMapValue
+	@Getter
+    private String dataTitle;
     
 }

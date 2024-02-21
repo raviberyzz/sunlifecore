@@ -1,6 +1,7 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
 
+
 .sl-notification {
     --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
     width: var(--viewportWidth);

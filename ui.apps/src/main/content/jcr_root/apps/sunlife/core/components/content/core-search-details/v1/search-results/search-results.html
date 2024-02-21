@@ -1,0 +1,159 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+<sly data-sly-test.rawtitle="${['$','{raw.title}'] @ join=''}"> </sly>
+<sly data-sly-test.rawtruncateduri="${['$','{raw.truncateduri}'] @ join=''}" </sly>
+
+<!-- 20220622 -->
+<div id="coveo-search-body" class="CoveoSearchInterface" data-enable-history="true"
+     data-allow-queries-without-keywords="false">
+    <div class="CoveoSunlifeSearch"></div>
+    <div class="CoveoAnalytics"></div>
+    <div class="coveo-search-section">
+        <label for="CoveoSearchbox" class="sr-only">Search:</label>
+        <div id='CoveoSearchbox' class="CoveoSearchbox" data-enable-omnibox="true" data-add-search-button='true'
+             data-placeholder="Search" data-enable-query-syntax="false"></div>
+    </div>
+    <div class="coveo-main-section">
+
+        <!-- **** Below check only include if withFilter option is selected ****-->
+
+        <sly data-sly-test="${properties.searchResults== 'withFilter'}">
+            <div id="search-result-filters">
+                <div class="CoveoTextBlock" data-content="Filter your results:" data-constantly-visible="false"
+                     data-as="h4"
+                     data-content-type="sr-only-xs" data-override-aria-hidden="true">
+                </div>
+                <div class="P1Ycoe"></div>
+                <div class="coveo-tab-section">
+                    <a class="CoveoTab" data-enable-responsive-mode='false' data-id="All" data-caption="All"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;All&quot;"></a>
+                    <a class="CoveoTab" data-id="Articles" data-caption="Articles"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Articles&quot;"></a>
+                    <a class="CoveoTab" data-id="Products" data-caption="Products"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Products&quot;"></a>
+                    <a class="CoveoTab" data-id="Tools" data-caption="Tools"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Tools&quot;"></a>
+                    <a class="CoveoTab" data-id="Videos" data-caption="Videos"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Videos&quot;"></a>
+                    <div class="CoveoCountedTabs" data-field="@commontabs" data-hide-when-empty="true"
+                         data-count-template="" data-hide-count="true" data-sanitize-query="true"></div>
+                </div>
+            </div>
+        </sly>
+
+        <div class="coveo-results-column">
+            <div class="CoveoShareQuery"></div>
+            <div class="CoveoPreferencesPanel">
+                <div class="CoveoResultsPreferences"></div>
+                <div class="CoveoResultsFiltersPreferences"></div>
+            </div>
+            <div class="coveo-results-header">
+                <div class="coveo-summary-section">
+                    <span class="CoveoQuerySummary search-result-num-results"></span>
+                </div>
+                <div class="coveo-result-layout-section">
+                    <span class="CoveoResultLayout"></span>
+                </div>
+            </div>
+            <div class="CoveoTriggers" id="bodySearchAd" data-section="body search ad"></div>
+            <div class="CoveoDidYouMean"></div>
+            <div class="CoveoHiddenQuery"></div>
+            <div class="CoveoErrorReport" data-pop-up="false"></div>
+            <div class="CoveoResultList" data-layout="list" data-wait-animation="fade"
+                 data-auto-select-fields-to-include="true" data-section="body search results">
+                <script id="PDF" class="result-template" type="text/html" data-layout="list" data-field-filetype="pdf">
+                    <div class="coveo-result-frame" style="padding: 10px 0px;">
+                        <div class="coveo-result-cell" style="vertical-align: top;">
+                            <div class="coveo-result-row" style="margin-top:0;">
+                                <div class="coveo-result-cell" style="vertical-align:top;font-size:16px;"
+                                     role="heading" aria-level="2">
+               <span class="pdf-link" style="margin-right: 5px">
+               <span class="sr-only">pdf</span>
+               </span>
+                                    <a class="CoveoResultLink" data-title-template="${rawtitle @ context='scriptString'}"
+                                       data-always-open-in-new-window="true"
+                                       aria-label="${rawtitle @ context='scriptString'}"></a>
+                                </div>
+                            </div>
+                            <div class="coveo-result-row" style="margin-top:10px;">
+                                <div class="coveo-result-cell">
+                                    <div class="CoveoShowIfFieldValue" data-field="@hasdescription"
+                                         data-field-value="true">
+               <span class="CoveoFieldValue" data-field="@slfdescription"
+                     data-html-value='true' data-helper="highlightStreamText"></span>
+                                    </div>
+                                    <div class="CoveoShowIfFieldValue" data-field="@hasdescription"
+                                         data-field-value="false">
+                                        <span class="CoveoExcerpt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coveo-result-row" style="margin-top:10px;">
+                                <div class="coveo-result-cell" aria-hidden="true" tabindex="-1">
+                                    <a class="CoveoResultLink printed-url"
+                                       data-title-template="${rawtruncateduri @ context='scriptString'}" data-always-open-in-new-window='true'
+                                       tabindex="-1"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+                <script id="Default" class="result-template" type="text/html" data-layout="list">
+                    <div class="coveo-result-frame" style="padding: 10px 0px;">
+                        <div class="coveo-result-cell" style="vertical-align: top;">
+                            <div class="coveo-result-row" style="margin-top:0;">
+                                <div class="coveo-result-cell" style="vertical-align:top;font-size:16px;"
+                                     role="heading" aria-level="2">
+               <span class="CoveoShowIfFieldValue" data-field="@isexternal"
+                     data-field-value="yes">
+               <span style="margin-right: 5px" class="fa fa-external-link">
+               <span class="sr-only">external link</span>
+               </span>
+               <a class="CoveoResultLink" data-title-template="${rawtitle @ context='scriptString'}"
+                  data-always-open-in-new-window="true"></a>
+               </span>
+                                    <span class="CoveoShowIfFieldValue" data-field="@isexternal"
+                                          data-field-value="no">
+               <a class="CoveoResultLink" data-title-template="${rawtitle @ context='scriptString'}"></a>
+               </span>
+                                </div>
+                            </div>
+                            <div class="coveo-result-row" style="margin-top:10px;">
+                                <div class="coveo-result-cell">
+                                    <div class="CoveoShowIfFieldValue" data-field="@hasdescription"
+                                         data-field-value="true">
+               <span class="CoveoFieldValue" data-field="@slfdescription"
+                     data-html-value='true' data-helper="highlightStreamText"></span>
+                                    </div>
+                                    <div class="CoveoShowIfFieldValue" data-field="@hasdescription"
+                                         data-field-value="false">
+                                        <span class="CoveoExcerpt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coveo-result-row" style="margin-top:10px;">
+                                <div class="coveo-result-cell" aria-hidden="true" tabindex="-1">
+               	<span class="CoveoShowIfFieldValue" data-field="@isexternal"
+                      data-field-value="yes">
+               	<a class="CoveoResultLink printed-url"
+                   data-title-template="${rawtruncateduri @ context='scriptString'}" data-always-open-in-new-window="true"
+                   aria-hidden="true" tabindex="-1"></a>
+               	</span>
+                                    <span class="CoveoShowIfFieldValue" data-field="@isexternal"
+                                          data-field-value="no">
+               	<a class="CoveoResultLink printed-url"
+                   data-title-template="${rawtruncateduri @ context='scriptString'}"
+                   data-always-open-in-new-window="false" aria-hidden="true"
+                   tabindex="-1"></a>
+               	</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+            <div class="CoveoPager"></div>
+            <div class="CoveoResultsPerPage"></div>
+        </div>
+    </div>
+</div>
