@@ -388,6 +388,10 @@ public class BasePageModel {
     private String disableContextHubTags;
 
 
+    /** The coveoSearchEnabled. */
+    @Getter
+    private String coveoSearchEnabled;
+
     /**
      * The searchToken.
      */
@@ -535,6 +539,7 @@ public class BasePageModel {
         disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
         disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
         nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
+        coveoSearchEnabled = configService.getConfigValues("coveoSearchEnabled", pagePath);
         searchToken = configService.getConfigValues("searchToken", pagePath);
         searchUrl = configService.getConfigValues("searchUrl", pagePath);
         orgId = configService.getConfigValues("orgId", pagePath);
