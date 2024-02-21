@@ -46,6 +46,10 @@ public interface Card {
 
     public String getCardLinkTarget();
 
+    public String getCardClickableLinkURL();
+
+    public String getCardClickableLinkTarget();
+
     public String getName();
 
     public String getJobTitle();
@@ -80,4 +84,6 @@ public interface Card {
 
     public String getStatisticCaption();
 
+    public String getDataTitle();
+    
 }
