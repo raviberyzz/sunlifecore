@@ -2,7 +2,7 @@
 <sly data-sly-test.notEmpty="${article.fragmentPath}">
     <article class="article-wrapper">
         <div class="article-intro">
-            <div class="article-date" data-sly-test="${!article.checkboxHideDate}">
+            <div class="article-date" data-sly-test="${article.checkboxHideDate}">
                 ${article.articleData.articlePublishedDate}
             </div>
             <div class="article-title heading-2" data-sly-test="${article.articleData.articleHeadline}">

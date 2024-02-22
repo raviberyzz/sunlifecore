@@ -63,16 +63,6 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	@ScriptVariable
 	private ResourceResolver resolver;
 
-	/** The article unique ID. */
-	@Inject
-	@Via("resource")
-	private String articleUniqueID;
-
-	/** The checkbox comment. */
-	@Inject
-	@Via("resource")
-	private String checkboxComment;
-
 	/** The checkbox hide date. */
 	@Inject
 	@Via("resource")
@@ -107,6 +97,11 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 
 	/** The article image. */
 	private String articleImage;
+
+	/** The checkbox to include social share. */
+	@Inject
+	@Via("resource")
+	private String socialShare;
 
 	/**
 	 * Gets the article image.
@@ -277,30 +272,21 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	}
 
 	/**
+	 * Gets the Check box Social Share.
+	 *
+	 * @return the Check box Social Share
+	 */
+	public String getSocialShare() {
+		return socialShare;
+	}
+
+	/**
 	 * Sets the fragment path.
 	 *
 	 * @param fragmentPath the new fragment path
 	 */
 	public void setFragmentPath(final String fragmentPath) {
 		this.fragmentPath = fragmentPath;
-	}
-
-	/**
-	 * Gets the checkbox comment.
-	 *
-	 * @return the checkbox comment
-	 */
-	public String getCheckboxComment() {
-		return checkboxComment;
-	}
-
-	/**
-	 * Sets the checkbox comment.
-	 *
-	 * @param checkboxComment the new checkbox comment
-	 */
-	public void setCheckboxComment(final String checkboxComment) {
-		this.checkboxComment = checkboxComment;
 	}
 
 	/**
@@ -319,24 +305,6 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	 */
 	public void setCheckboxHideDate(final String checkboxHideDate) {
 		this.checkboxHideDate = checkboxHideDate;
-	}
-
-	/**
-	 * Gets the article unique ID.
-	 *
-	 * @return the article unique ID
-	 */
-	public String getArticleUniqueID() {
-		return articleUniqueID;
-	}
-
-	/**
-	 * Sets the article unique ID.
-	 *
-	 * @param articleUniqueID the new article unique ID
-	 */
-	public void setArticleUniqueID(final String articleUniqueID) {
-		this.articleUniqueID = articleUniqueID;
 	}
 
 	/**
@@ -374,6 +342,7 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 			if (null != articleResource) {
 				LOGGER.debug("Parsing Article Data");
 				final ValueMap articleContent = articleResource.getValueMap();
+
 				articleData.put(ArticleConstants.ARTICLE_HEADLINE,
 						getValueMapValue(articleContent, ArticleConstants.ARTICLE_HEADLINE));
 				articleData.put(ArticleConstants.ARTICLE_IMAGE,
@@ -386,6 +355,7 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 						getValueMapValue(articleContent, ArticleConstants.ARTICLE_PAGE_LINK));
 				articleData.put(ArticleConstants.ARTICLE_MINI_DESCRIPTION,
 						getValueMapValue(articleContent, ArticleConstants.ARTICLE_MINI_DESCRIPTION));
+
 				setArticlePublishDate(articleContent);
 				setArticleAuthorData(resourceResolver, articleContent);
 				setArticleImage(configService.getConfigValues(ArticleConstants.DOMAIN, pagePath)
@@ -486,4 +456,5 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 		return (articleContent.containsKey(Key) ? articleContent.get(Key, String.class) : StringUtils.EMPTY);
 
 	}
+
 }
