@@ -28,6 +28,9 @@
         .error-text {
             display: block;
         }
+        .form-check-input {
+            border-color: var(--red-800);
+        }
     }    
     .sl-checkbox, .sl-radio {
         .error-text {
