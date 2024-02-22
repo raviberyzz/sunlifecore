@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function coveoSearch() {
+
     coveoSearchcount++;
     const searchBody = document.querySelector('#coveo-search-body');
     const searchBoxDesktop = document.querySelector('#search-box-desktop');
@@ -92,7 +93,6 @@ function coveoSearch() {
             });
 
         } else {
-
             if (searchBoxSunSearch) {
                 Coveo.$$(searchBoxSunSearch).on(Coveo.InitializationEvents.afterInitialization, (args) => {
                     searchBoxSunSearch.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
@@ -128,6 +128,17 @@ function coveoSearch() {
                     },
                 });
             }
+
+              Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
+                            Analytics: {
+                                searchHub: searchConfig.searchHub,
+                            },
+                        });
+              Coveo.initSearchbox(searchBoxMobile, searchConfig.searchUrl, {
+                            Analytics: {
+                                searchHub: searchConfig.searchHub,
+                            },
+                        });
 
             //searchBoxDesktop - label 
             Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
@@ -180,16 +191,7 @@ function coveoSearch() {
             });
 
 
-            Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
-                Analytics: {
-                    searchHub: searchConfig.searchHub,
-                },
-            });
-            Coveo.initSearchbox(searchBoxMobile, searchConfig.searchUrl, {
-                Analytics: {
-                    searchHub: searchConfig.searchHub,
-                },
-            });
+
         }
         Coveo.$$(searchBoxDesktop).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
             args.queryBuilder.addContext(userContext);
