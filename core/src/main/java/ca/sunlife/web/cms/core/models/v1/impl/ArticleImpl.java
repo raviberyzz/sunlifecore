@@ -27,6 +27,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +38,8 @@ import ca.sunlife.web.cms.core.models.v1.Article;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import ca.sunlife.web.cms.core.utils.SLAbstractComponentImpl;
+
+
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 
@@ -98,10 +101,28 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	/** The article image. */
 	private String articleImage;
 
-	/** The checkbox to include social share. */
+	/** The config service. */
 	@Inject
-	@Via("resource")
+	private SiteConfigService configService;
+
+	/** The core resource resolver. */
+	@Inject
+	private CoreResourceResolver coreResourceResolver;
+
+	/** The current page. */
+	@ScriptVariable
+	private Page currentPage;
+
+	/** The article data. */
+	private final Map<String, String> articleData = new HashMap<>();
+
+	/** The checkbox to include social share. */
+	@ValueMapValue
 	private String socialShare;
+
+	/** The checkbox to include social share. */
+	@ValueMapValue
+	private String spacing;
 
 	/**
 	 * Gets the article image.
@@ -238,21 +259,6 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 		this.pageUrl = pageUrl;
 	}
 
-	/** The config service. */
-	@Inject
-	private SiteConfigService configService;
-
-	/** The core resource resolver. */
-	@Inject
-	private CoreResourceResolver coreResourceResolver;
-
-	/** The current page. */
-	@ScriptVariable
-	private Page currentPage;
-
-	/** The article data. */
-	private final Map<String, String> articleData = new HashMap<>();
-
 	/**
 	 * Gets the article data.
 	 *
@@ -269,15 +275,6 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	 */
 	public String getFragmentPath() {
 		return fragmentPath;
-	}
-
-	/**
-	 * Gets the Check box Social Share.
-	 *
-	 * @return the Check box Social Share
-	 */
-	public String getSocialShare() {
-		return socialShare;
 	}
 
 	/**
@@ -323,6 +320,24 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	 */
 	public void setResourceType(final String resourceType) {
 		this.resourceType = resourceType;
+	}
+
+	/**
+	 * Gets the Social Share value.
+	 *
+	 * @return the social share value
+	 */
+	public String getSocialShare() {
+		return socialShare;
+	}
+
+	/**
+	 * Gets the Spacing value.
+	 *
+	 * @return the spacing value
+	 */
+	public String getSpacing() {
+		return spacing;
 	}
 
 	/**

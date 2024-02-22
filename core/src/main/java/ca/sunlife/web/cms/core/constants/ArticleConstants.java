@@ -75,5 +75,5 @@ public final class ArticleConstants {
   /** The Constant ARTICLE_HEADLINE. */
   public static final String ARTICLE_HEADLINE = "articleHeadline";
   
-  public static final String ARTICLE_RESOURCETYPE = "sunlife/core/components/content/article";
+  public static final String ARTICLE_RESOURCETYPE = "sunlife/core/components/content/core-article/v1/article";
 }

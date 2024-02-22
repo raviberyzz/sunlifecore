@@ -91,5 +91,12 @@ public interface Article extends Component {
 	 * @return the social share
 	 */
 	public String getSocialShare();
+	
+	/**
+	 * Gets the Get Spacing value
+	 * 
+	 * @return the spacing value
+	 */
+	public String getSpacing();
 
 }
