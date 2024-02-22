@@ -3,10 +3,10 @@
     <div data-sly-test="${(wcmmode.edit) && !(isConfigured)}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 
     <sly data-sly-test="${options.type == 'drop-down'}">
-        <div class="sl-dropdown ${options.spacing}" aria-disabled="false" data-title="${options.dataTitle}" data-section="${options.dataSection}">
+        <div class="sl-dropdown formValidate ${options.spacing}" aria-disabled="false" data-title="${options.dataTitle}" data-section="${options.dataSection}">
             <div class="combo">
                 <div aria-controls="listbox-a${options.id}" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
-                    aria-labelledby="label-a${options.id}" id="a${options.id}" class="combo-input" role="combobox"
+                    aria-labelledby="label-a${options.id}" id="a${options.id}" class="combo-input form-field" role="combobox"
                     tabindex="0">
                     <label for="a${options.id}" id="label-a${options.id}">${options.label}</label>
                     <div class="combo-input-selected d-none">${options.placeholderText}</div> 

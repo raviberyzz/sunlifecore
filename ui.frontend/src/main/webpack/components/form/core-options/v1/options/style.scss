@@ -28,5 +28,10 @@
         .error-text {
             display: block;
         }
+    }    
+    .sl-checkbox, .sl-radio {
+        .error-text {
+            display: none;
+        }
     }
 }

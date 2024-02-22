@@ -2,7 +2,7 @@
      data-sly-use.customText="ca.sunlife.web.cms.core.models.v1.FormTextModel"
      data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html" 
      data-cmp-is="formText"
-     class="form-field-container ${text.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${text.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${text.spacing}"
+     class="form-field-container formValidate ${text.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${text.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${text.spacing}"
      data-cmp-constraint-message="${text.constraintMessage}"
      data-section="${text.analyticsId}"
      data-cmp-required-message="${text.requiredMessage}">
@@ -12,22 +12,27 @@
         id="${text.id}"
         placeholder="${text.placeholder && text.helpMessage}"
         data-parsley-error-message="${customText.requiredMessage}"
+        data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
+        data-parsley-pattern-message="${customText.validationError}"
+        data-parsley-trigger="keyup"
+        data-parsley-minlength="1"
+        data-parsley-maxlength="500"
         data-parsley-id="4"
         maxlength="500"
         name="${text.name}"
         disabled="${text.readOnly}"
         required="${text.required}"
-        class="form-control ${text.required ? 'required': ''}"
+        class="form-control form-field ${text.required ? 'required': ''}"
         data-parsley-required="${text.required}"
         rows="${text.rows}">${text.value}</textarea>
     <input data-sly-test="${!useTextarea}"
-        class="form-control ${text.required ? 'required': ''}"
+        class="form-control form-field ${text.required ? 'required': ''}"
         data-cmp-hook-form-text="input"
         type="${text.type}"
         id="${text.id}"
         placeholder="${text.placeholder}"
-        data-parsley-error-message="${customText.validationError}"
+        data-parsley-error-message="${customText.requiredMessage}"
         data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
         data-parsley-pattern-message="${customText.validationError}"
@@ -47,15 +52,5 @@
     <div data-sly-test="${!text.placeholder && text.helpMessage}" id="hint-msg-helper-text" class="sl-helper-text hint-text sl-textfield-helper-text">
         ${text.helpMessage}
     </div>
-    <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>
-    <div data-sly-test="${text.required && !useTextarea}" class="sl-helper-text error-text sl-textfield-helper-text">
-        <i class="icon-class far fa-exclamation-triangle" role="presentation"></i>
-        ${text.requiredMessage}
-    </div>     
-</div>
-<div data-sly-test="${text.required && useTextarea}" class="form-floating-error">
-    <div class="form-floating sl-helper-text error-text sl-textfield-helper-text">
-        <i class="icon-class far fa-exclamation-triangle" role="presentation"></i>
-        ${text.requiredMessage}
-    </div>
+    <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>     
 </div>

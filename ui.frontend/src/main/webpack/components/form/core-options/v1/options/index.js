@@ -6,16 +6,6 @@
         const requiredField = $scope.attr('required');
         const $AllCheckboxes = $('.form-check-input[name="'+optionName+'"]:not(:disabled)');
         const $parentContainer = $scope.parent(".form-check").parents('.field-group-container');
-        //Events to check if the checkbox/radio has error validation or not
-        window.Parsley.on('field:error', function () {
-            $AllCheckboxes.removeClass("is-invalid");            
-            $parentContainer.removeClass("sl-input-error");
-        });
-        //Events to check if the checkbox/radio has success validation or not
-        window.Parsley.on('field:success', function () {            
-            $AllCheckboxes.removeClass("is-invalid");            
-            $parentContainer.removeClass("sl-input-error");             
-        });
         let selectedCheck = false;
         //Condition to check if the checkbox/radio is requred or not
         if(requiredField === "required"){
@@ -46,6 +36,7 @@
     function init() {
         if(doesModuleExist()){
             $(document).on('change click blur', '.form-check-input', checkBoxValidationEventHandler);
+            //$('.field-group-container .sl-checkbox').first().find(".form-check-input").attr("data-parsley-mincheck", "1")
         }
     }
     

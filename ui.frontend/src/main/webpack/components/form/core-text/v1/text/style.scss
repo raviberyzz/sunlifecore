@@ -20,6 +20,10 @@
         .form-control {
             border-color: var(--red-50);
         }
+        .error-text {
+            position: relative;
+            top: 30px;
+        }
     }
     .form-control {
         height: 12.375rem;

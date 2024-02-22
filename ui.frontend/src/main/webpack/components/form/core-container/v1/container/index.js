@@ -19,12 +19,20 @@
   * On input error add error styles to dropdown(s).
   */
   window.Parsley.on('field:error', function () {
-    let $comboInput = $(this.$element[0].closest(".sl-dropdown")).find(".combo-input");
+    let $comboInput = $(this.$element[0].closest(".formValidate")).find(".form-field");
     $comboInput.addClass("sl-input-error");
-    let $errorTextId = $(this.$element[0].closest(".sl-dropdown")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
+    this.$element.each(function(){
+      $(this).closest(".formValidate").addClass("sl-input-error");
+    })
+    let $errorTextId = $(this.$element[0].closest(".formValidate")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
     $comboInput[0].setAttribute("aria-describedby", $errorTextId);
     $comboInput[0].setAttribute("aria-invalid", "true");
+  }).on('field:success', function () {
+    this.$element.each(function(){
+      $(this).closest(".formValidate").removeClass("sl-input-error");
+    })
   });
+
 
   /**
   * Focus on the first dropdown with an error after form submission.
