@@ -3,6 +3,11 @@
 
 
 .sl-notification {
+    --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    width: var(--viewportWidth);
+    left: 50%;
+    margin-right: calc(var(--viewportWidth) / -2);
+    margin-left: calc(var(--viewportWidth) / -2);
 
     @include media-breakpoint-up(lg) {
         .container {

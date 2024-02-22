@@ -44,7 +44,7 @@
                     <div class="notification-text">${notification.text @context ='html'}</div>
                     <div class="notification-buttons">
                         <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}">
-                            <button class="sl-btn multiline-action-button btn btn-secondary-small"
+                            <button class="sl-btn oneline-action-button btn btn-secondary-small"
                                     data-sly-attribute.loadButton="${notificationButton}"
                                     data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
                                     type="${notification.buttonURL}" href="${notification.buttonURL}"

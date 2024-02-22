@@ -1,4 +1,4 @@
-<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel" />
 <sly data-sly-test="${baseModel.coveoSearchEnabled == 'true' @context='unsafe'}">
     <form name="search-url" action="${baseModel.searchUrl @ extension = 'html'}"></form>
     <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
