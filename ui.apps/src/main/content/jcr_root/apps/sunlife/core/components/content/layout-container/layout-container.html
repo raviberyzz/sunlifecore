@@ -12,7 +12,9 @@
         <sly data-sly-test="${layout.type == 'site-notification'}" > 
             <div class="site-level-notification" id="${layout.siteNotificationId}">
                 <div class="close-div">
-                    <span class="fa fa-remove collapse-x" tabindex="0" aria-label="${layout.closeText}">&nbsp;</span>
+                    <button aria-label="${layout.closeText}">
+                        <span class="fa fa-remove collapse-x"></span>
+                    </button>
                 </div>
                 <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
             </div>
