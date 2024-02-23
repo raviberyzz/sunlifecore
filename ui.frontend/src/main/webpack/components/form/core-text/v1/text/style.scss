@@ -10,7 +10,10 @@
             display: none;
         }
         .error-text {
-            display: block;
+            display: inline-flex;
+            .svg-inline--fa {
+                margin: 0;
+            }
         }
     }
 }
