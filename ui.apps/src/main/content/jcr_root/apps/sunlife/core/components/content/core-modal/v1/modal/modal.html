@@ -23,4 +23,8 @@
 
 	</sly>
 
+	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+		<sly data-sly-resource="${ 'modal-grid' @ resourceType='wcm/foundation/components/responsivegrid'}"/>
+	</sly>
+
 </sly>

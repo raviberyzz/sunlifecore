@@ -15,9 +15,16 @@
     });
 
     function toggleEditorialView(el) {
+        const $checkBox = $('.coral3-Checkbox-input[name*="./triggerModel"]');
         const fieldWrapper = ".coral-Form-fieldwrapper";
         el.parent(fieldWrapper).siblings(".checkbox-linkdetails-target").first().toggleClass("hide");
         el.parent(fieldWrapper).siblings(".checkbox-modaldetails-target").first().toggleClass("hide");
+        if($checkBox.is(':checked')){
+            $('[name="./modalID"]').prop('required',true);
+        }
+        else{
+            $('[name="./modalID"]').prop('required',false);
+        }
     }
 
 	function clearModalID() {
