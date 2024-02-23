@@ -1,22 +1,21 @@
 (function(document, $) {
     "use strict";
 
-    const checkBox = '.coral3-Checkbox-input[name*="./triggerModel"]';
-    const checkBoxClass = '.checkbox-toggle-target[name="./triggerModel"]';
-    const fieldWrapper = ".coral-Form-fieldwrapper";
-
     $(document).on('dialog-ready', function(e) {
-        if($(checkBox).is(':checked')){
-            checkEditorialView($(checkBoxClass, e.target));
+        const $checkBox = $('.coral3-Checkbox-input[name*="./triggerModel"]');
+        // Showing Modal or Links based on checkbox on reopening dialog
+        if($checkBox.is(':checked')){
+            toggleEditorialView($('.checkbox-toggle-target[name="./triggerModel"]', e.target));
         }
     });
 
-    $(document).on("change", checkBoxClass, function(e) {
-        checkEditorialView($(this));
+    $(document).on("change", '.checkbox-toggle-target[name="./triggerModel"]', function(e) {
+        toggleEditorialView($(this));
         clearModalID();
     });
 
-    function checkEditorialView(el) {
+    function toggleEditorialView(el) {
+        const fieldWrapper = ".coral-Form-fieldwrapper";
         el.parent(fieldWrapper).siblings(".checkbox-linkdetails-target").first().toggleClass("hide");
         el.parent(fieldWrapper).siblings(".checkbox-modaldetails-target").first().toggleClass("hide");
     }

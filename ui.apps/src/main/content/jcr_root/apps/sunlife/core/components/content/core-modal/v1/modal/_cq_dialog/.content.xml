@@ -34,6 +34,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Unique identifier for the modal"
                                                 fieldLabel="Modal ID"
+												required="{Boolean}true"
                                                 name="./modalID"/>
                                             <modalTypes
                                                 granite:class="cq-dialog-tab-showhide"
@@ -88,6 +89,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Heading of the Modal"
                                                 fieldLabel="Heading"
+												required="{Boolean}true"
                                                 name="./heading"/>
                                             <content
                                                 jcr:primaryType="nt:unstructured"
@@ -95,7 +97,8 @@
                                                 fieldDescription="Main content of the Modal"
                                                 fieldLabel="Content"
                                                 name="./content"
-                                                useFixedInlineToolbar="{Boolean}true">
+                                                useFixedInlineToolbar="{Boolean}true"
+												required="{Boolean}true">
                                                 <htmlRules jcr:primaryType="nt:unstructured">
                                                     <docType jcr:primaryType="nt:unstructured">
                                                         <typeConfig
