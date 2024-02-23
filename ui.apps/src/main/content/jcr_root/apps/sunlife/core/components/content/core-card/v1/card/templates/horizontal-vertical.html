@@ -2,49 +2,70 @@
 Template for horizontal and vertical card component
 Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=580-2961&mode=design&t=VXlORNimlyCeZtFI-4
 */-->
-<template data-sly-template.details="${ @ model, cardType, containerConfigs }">
+<template data-sly-template.details="${ @ model, cardType, containerConfigs, cardImage, imageAlt, icon, heading, description, caption, category, badgeText, badgeType, headingType, ctaType,btnTarget,btnURL, btnIconType, btnLabel, linkTarget, linkURL, linkIconType, linkLabel, ctaDataTitle  }">
 
-  <sly data-sly-set.isAsset="${model.assetType =='noAsset'? false : true }"
+  <sly 
+    data-sly-set.image="${model.cardImageFileReference || cardImage }"
+    data-sly-set.altText="${model.altText || imageAlt }"
+    data-sly-set.cardIcon="${model.cardIcon || icon }"
+    data-sly-set.cardCategory="${model.cardCategory || category }"
+    data-sly-set.cardBadgeText="${model.cardBadgeText || badgeText }"
+    data-sly-set.cardBadgeType="${model.cardBadgeType || badgeType }"
+    data-sly-set.cardHeadingType="${model.cardHeadingType || headingType || 'h4' }"
+    data-sly-set.cardHeading="${model.cardHeading || heading }"
+    data-sly-set.cardDescription="${model.cardDescription || description }"
+    data-sly-set.cardCaption="${model.cardCaption || caption }"
+    data-sly-set.ctaType="${model.ctaType || ctaType }"
+    data-sly-set.cardBtnTarget="${model.cardBtnTarget || btnTarget }"
+    data-sly-set.cardBtnURL="${model.cardBtnURL || btnURL }"
+    data-sly-set.cardBtnIconType="${model.cardBtnIconType || btnIconType }"
+    data-sly-set.cardBtnLabel="${model.cardBtnLabel || btnLabel }"
+    data-sly-set.cardLinkTarget="${model.cardLinkTarget || linkTarget }"
+    data-sly-set.cardLinkURL="${model.cardLinkURL || linkURL }"
+    data-sly-set.cardLinkIconType="${model.cardLinkIconType || linkIconType }"
+    data-sly-set.cardLinkLabel="${model.cardLinkLabel || linkLabel }"
+    data-sly-set.dataTitle="${model.dataTitle || ctaDataTitle }"
+    data-sly-set.isAsset="${model.assetType =='noAsset'? false : true }"
     data-sly-set.isImageCard="${isAsset && model.assetType =='image' ? true : false }"
     data-sly-set.isIconCard="${isAsset && model.assetType =='icon' ? true : false }"
-    data-sly-set.haveSomthing="${model.cardImageFileReference || model.cardIcon || model.cardCategory || model.cardBadgeText || model.cardHeading || model.cardDescription || model.cardCaption}"
-    >
+    data-sly-set.haveSomthing="${image || cardIcon || cardCategory || cardBadgeText || cardHeading || cardDescription || cardCaption}">
+    
     <!--/* Empty Placeholder */-->
     <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Horizontal/ Vertical Card"></div>
 
     <sly data-sly-test="${haveSomthing}">
-      <picture data-sly-test="${ !containerConfigs.isIcon && isImageCard }">
-        <img data-sly-test="${model.cardImageFileReference}" 
-          src="${model.cardImageFileReference}" 
-          alt="${model.altText}"
+      <picture data-sly-test="${ cardImage || (!containerConfigs.isIcon && isImageCard) }">
+        <img data-sly-test="${image}" 
+          src="${image}" 
+          alt="${altText}"
           class="img-container">
       </picture>
 
       <div class="card-body">
-        <div data-sly-test="${containerConfigs.isIcon && isIconCard}" class="icon-container card-text">
-          <i data-sly-test="${model.cardIcon}" role="presentation" class="sl-card-icon fak fa-${model.cardIcon}"></i>
+        <div data-sly-test="${icon || (containerConfigs.isIcon && isIconCard)}" class="icon-container card-text">
+          <i data-sly-test="${cardIcon}" role="presentation" class="sl-card-icon fak fa-${cardIcon}"></i>
         </div>
 
         <div class="content-container">
-          <div class="cat-badge-container" data-sly-test="${model.cardCategory || model.cardBadgeText}">
-            <div class="category">${model.cardCategory}</div>
+          <div class="cat-badge-container" data-sly-test="${cardCategory || cardBadgeText}">
+            <div class="category">${cardCategory}</div>
 
-            <div data-sly-test="${model.cardBadgeText && model.cardBadgeType!='none'}">
-              <span class="sl-badge badge bg-${model.cardBadgeType}">
-                <div class="badge-label">${model.cardBadgeText}</div>
+            <div data-sly-test="${cardBadgeText && cardBadgeType!='none'}">
+              <span class="sl-badge badge bg-${cardBadgeType}">
+                <div class="badge-label">${cardBadgeText}</div>
               </span>
             </div>
           </div>
 
-          <h4 class="h4 card-title">${model.cardHeading}</h4>
+          <h4 class="h4 card-title" data-sly-element="${cardHeadingType}">${cardHeading}</h4>
           <div class="body-text card-text">
-            ${model.cardDescription @ context ='html'}
+            ${cardDescription @ context ='html'}
           </div>
-          <div class="caption card-text">${model.cardCaption}</div>
+          <div class="caption card-text">${cardCaption}</div>
           <div class="cta-container">
             <sly 
                 data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
-                data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnURL=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+                data-sly-call="${template.details @ ctaType=ctaType, cardBtnTarget=cardBtnTarget, cardBtnURL=cardBtnURL, cardBtnIconType=cardBtnIconType, cardBtnLabel=cardBtnLabel, cardLinkTarget=cardLinkTarget, cardLinkURL=cardLinkURL, cardLinkIconType=cardLinkIconType, cardLinkLabel=cardLinkLabel, dataTitle=dataTitle }">
             </sly>
           </div>
 

@@ -19,7 +19,8 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
 
       <div class="body-container col">
         <div class="card-body">
-          <h3 class="h3 card-title">${model.bannerImageHeading}</h3>
+          <h3 class="h3 card-title" data-sly-element="${model.bannerImageHeadingType || 'h3'}">
+            ${model.bannerImageHeading}</h3>
           <div class="card-text">
             ${model.bannerImageDescription @ context ='html'}
             <div class="caption-text">${model.bannerImageCaption @ context ='html'}</div>

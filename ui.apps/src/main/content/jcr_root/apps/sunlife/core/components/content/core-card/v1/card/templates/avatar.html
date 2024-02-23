@@ -18,7 +18,8 @@ Figma design reference -  https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-
             class="${containerConfigs.isLarge ? 'large' : 'medium'} " />
       </div>
       <div class="card-body">
-        <div class="h2 card-title">${model.name}</div>
+        <h2 class="h2 card-title" data-sly-element="${model.avatarHeadingType || 'h2'}">
+          ${model.name}</h2>
         <div class="card-text">${model.jobTitle}</div>
         <div class="avatar-link">
             <sly 

@@ -5,7 +5,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
 <template data-sly-template.details="${ @ model, cardType, containerConfigs }"> 
   <div class="card-body">
     <div class="caption">${model.statisticCaption @ context ='html'}</div>
-    <div class="h3 card-title">${model.statisticHeading}</div>
+    <h3 class="h3 card-title" data-sly-element="${model.statisticHeadingType || 'h3'}">${model.statisticHeading}</h3>
     <div class="card-text">${model.statisticDescription @ context ='html'}</div>
   </div>
 </template>
