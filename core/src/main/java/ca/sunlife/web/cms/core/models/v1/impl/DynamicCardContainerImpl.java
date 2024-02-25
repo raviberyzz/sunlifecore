@@ -14,79 +14,155 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-dynamic-card-container/v1/dynamic-card-container";
 
     @ValueMapValue
-	@Getter
-    private String cardType;
+	private String cardType;
 
     @ValueMapValue
-	@Getter
     private String horizontalHeightControl;
 
     @ValueMapValue
-	@Getter
     private String verticalHeightControl;
 
     @ValueMapValue
-	@Getter
     private Boolean withLink;
 
-    @ValueMapValue
-	@Getter
-    private String bannerImagePosition;   
+   
+	@ValueMapValue
+	private String bannerImagePosition;   
 
     @ValueMapValue
-	@Getter
-    private String mediaType; 
+	private String mediaType; 
 
     @ValueMapValue
-	@Getter
-    private String spacing;
+	private String spacing;
 
     @ValueMapValue
-	@Getter
+	
     private Boolean horizontalMultipleCard;
 
     @ValueMapValue
-	@Getter
-    private Boolean horizontalClickable; 
+	private Boolean horizontalClickable; 
 
     @ValueMapValue
-	@Getter
-    private Boolean horizontalIconCard;
+	private Boolean horizontalIconCard;
 
     @ValueMapValue
-	@Getter
-    private Boolean verticalMultipleCard;    
+	private Boolean verticalMultipleCard;    
 
     @ValueMapValue
-	@Getter
-    private Boolean verticalClickable;
+	private Boolean verticalClickable;
 
     @ValueMapValue
-	@Getter
-    private Boolean verticalIconCard;
+	private Boolean verticalIconCard;
 
     @ValueMapValue
-	@Getter
     private Boolean largeAvatarSize; 
 
     @ValueMapValue
-	@Getter
-    private Boolean avatarWithBody; 
+	private Boolean avatarWithBody; 
 
     @ValueMapValue
-	@Getter
-    private Boolean avatarMultipleCard; 
+	private Boolean avatarMultipleCard; 
 
     @ValueMapValue
-	@Getter
-    private Boolean segmentedMultipleCard;
+	private Boolean segmentedMultipleCard;
 
     @ValueMapValue
-	@Getter
-    private Boolean segmentedformContainer; 
+	private Boolean segmentedformContainer; 
 
     @ValueMapValue
-	@Getter
-    private Boolean statisticsMultipleCard;
-  
+	private Boolean statisticsMultipleCard;
+
+	@Override
+	public String getCardType() {
+		return cardType;
+	}
+
+	@Override
+	public String getSpacing() {
+		return spacing;
+	}
+
+	@Override
+	public String getHorizontalHeightControl() {
+		return horizontalHeightControl;
+	}
+
+	@Override
+	public Boolean getHorizontalMultipleCard() {
+		return horizontalMultipleCard;
+	}
+
+	@Override
+	public Boolean getHorizontalClickable() {
+		return horizontalClickable;
+	}
+
+	@Override
+	public Boolean getHorizontalIconCard() {
+		return horizontalIconCard;
+	}
+
+	@Override
+	public String getVerticalHeightControl() {
+		return verticalHeightControl;
+	}
+
+	@Override
+	public Boolean getVerticalMultipleCard() {
+		return verticalMultipleCard;
+	}
+
+	@Override
+	public Boolean getVerticalClickable() {
+		return verticalClickable;
+	}
+
+	@Override
+	public Boolean getVerticalIconCard() {
+		return verticalIconCard;
+	}
+
+	@Override
+	public Boolean getLargeAvatarSize() {
+		return largeAvatarSize;
+	}
+
+	@Override
+	public Boolean getAvatarWithBody() {
+		return avatarWithBody;
+	}
+
+	@Override
+	public Boolean getAvatarMultipleCard() {
+		return avatarMultipleCard;
+	}
+
+	@Override
+	public String getBannerImagePosition() {
+		return bannerImagePosition;
+	}
+
+	@Override
+	public String getMediaType() {
+		return mediaType;
+	}
+
+	@Override
+	public Boolean getSegmentedMultipleCard() {
+		return segmentedMultipleCard;
+	}
+
+	@Override
+	public Boolean getSegmentedformContainer() {
+		return segmentedformContainer;
+	}
+
+	@Override
+	public Boolean getStatisticsMultipleCard() {
+		return statisticsMultipleCard;
+	}
+	@Override
+	public Boolean getWithLink() {
+			return withLink;
+	}
 }
