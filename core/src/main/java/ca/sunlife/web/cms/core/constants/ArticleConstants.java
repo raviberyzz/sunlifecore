@@ -35,4 +35,5 @@ public final class ArticleConstants {
 
   /** The Constant ARTICLE_DATE_FORMAT_CONSTANT. */
   public static final String ARTICLE_DATE_FORMAT_CONSTANT = "articleDateFormat";
+
 }
