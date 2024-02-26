@@ -153,7 +153,7 @@ public class ArticleDataExtractor {
 		}
 	}
 
-	public String getValueMapValue(ValueMap articleContent, String Key) {
+	private String getValueMapValue(ValueMap articleContent, String Key) {
 		return (articleContent.containsKey(Key) ? articleContent.get(Key, String.class) : StringUtils.EMPTY);
 
 	}
