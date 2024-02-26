@@ -1,3 +1,4 @@
+@import '@sunlife/ui-styles/design-system';
 @import "../../../../../prerequisite/base/styles/core.scss";
 @mixin table-column {
     font-size: 1rem;
@@ -8,8 +9,11 @@
     border-style: hidden;
 }
 .sl-table {
-    @media screen and (max-width: 1000px) {                
+    @include media-breakpoint-down(md) {             
         overflow: auto;
+        td, th {
+            white-space: nowrap;
+        }
     }
     table {
         border: none;
@@ -26,9 +30,6 @@
             border-color: var(--bs-border-color);
         }
         td, th {
-            @media screen and (max-width: 1000px) {                
-                white-space: nowrap;
-            }
             font-family: "Sun Life New Text Regular";
         }
     }
