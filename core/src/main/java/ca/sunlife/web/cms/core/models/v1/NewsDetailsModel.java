@@ -7,6 +7,7 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import com.day.cq.wcm.api.Page;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
@@ -61,12 +62,14 @@ public class NewsDetailsModel {
      * The news details object.
      */
     @Getter
+    @Setter
     private NewsDetails newsDetails;
 
     /**
      * The spacing in the component.
      */
     @Getter
+    @Setter
     @ValueMapValue
     private String spacing;
 

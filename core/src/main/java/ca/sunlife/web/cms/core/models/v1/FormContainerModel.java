@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.models.v1;
 
+import lombok.Setter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -17,6 +18,7 @@ import lombok.Getter;
  * @author Sunlife
  */
 @Getter
+@Setter
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class }, adapters = Container.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = FormContainerModel.RESOURCE_TYPE)
 public class FormContainerModel extends ContainerImpl implements Container {
 
