@@ -1,0 +1,28 @@
+{
+  "dynamic-card-container" : {
+	"jcr:primaryType": "nt:unstructured",
+	"bannerImagePosition": "left",
+	"jcr:createdBy": "Tolu.Obakin@sunlife.com",
+	"verticalMultipleCard": "false",
+	"statisticsMultipleCard": "false",
+	"jcr:lastModifiedBy": "Tolu.Obakin@sunlife.com",
+	"avatarMultipleCard": "false",
+	"verticalIconCard": "false",
+	"withLink": "false",
+	"verticalClickable": "false",
+	"verticalHeightControl": "manual",
+	"largeAvatarSize": "false",
+	"horizontalIconCard": "true",
+	"jcr:created": "Thu Feb 15 2024 18:17:15 GMT+0000",
+	"horizontalHeightControl": "auto",
+	"cardType": "horizontal",
+	"horizontalMultipleCard": "true",
+	"jcr:lastModified": "Fri Feb 16 2024 04:29:16 GMT+0000",
+	"sling:resourceType": "sunlife/ca/components/content/ca-dynamic-card-container/v1/dynamic-card-container",
+	"avatarWithBody": "false",
+	"segmentedformContainer": "false",
+	"segmentedMultipleCard": "false",
+	"horizontalClickable": "true",
+	"mediaType": "left"
+ }
+}

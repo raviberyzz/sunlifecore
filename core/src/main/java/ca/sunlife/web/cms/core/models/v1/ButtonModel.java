@@ -15,8 +15,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  * @author Sunlife
  */
 
- @Model(adaptables = {
-    Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ButtonModel.RESOURCE_TYPE)
+ @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ButtonModel.RESOURCE_TYPE)
 public interface ButtonModel {
 
     String RESOURCE_TYPE = "sunlife/core/components/content/core-button";
@@ -48,5 +47,12 @@ public interface ButtonModel {
 
     @ValueMapValue
     String getSpacing();
+    
+	@ValueMapValue
+	String getModalID();
+	
+	@ValueMapValue
+	@Default(booleanValues = { false })
+	boolean isTriggerModel();
 
 }

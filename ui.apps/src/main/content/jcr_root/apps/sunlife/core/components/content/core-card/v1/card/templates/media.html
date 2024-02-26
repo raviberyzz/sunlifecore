@@ -21,13 +21,13 @@ video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Compone
   </div>
 
     <div class="body-with-section card-body">
-      <h3 class="h3 card-title">${model.mediaHeading}</h3>
+      <h3 class="h3 card-title" data-sly-element="${model.mediaHeadingType || 'h3'}">${model.mediaHeading}</h3>
       <div class="card-text">${model.mediaDescription @ context ='html'}</div>
 
       <div class="media-cta-container">
         <sly 
               data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
-              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnURL=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardBtnType='secondary', cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel, dataTitle=model.dataTitle }">
           </sly>
       </div>
 

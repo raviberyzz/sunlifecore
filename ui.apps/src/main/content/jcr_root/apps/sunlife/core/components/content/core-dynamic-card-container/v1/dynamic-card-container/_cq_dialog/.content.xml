@@ -454,10 +454,6 @@
                                     </columns>
                                 </items>
                             </statistics>
-                            <analytics
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/include"
-                                    path="/apps/sunlife/core/components/common/editor/dialog/analytics"/>
                             <spacing
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/include"

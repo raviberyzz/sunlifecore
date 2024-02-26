@@ -10,14 +10,14 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
   <sly data-sly-test="${haveSomthing}">
 
     <div class="card-body">
-      <i data-sly-test="${model.cardIcon}" class="sl-card-icon fak fa-${model.cardIcon}"></i>
-      <h4 class="h4 card-title">${model.segmentHeading}</h4>
+      <i data-sly-test="${model.cardIcon}" class="mb-4 sl-card-icon fak fa-${model.cardIcon}"></i>
+      <h4 class="h4 card-title" data-sly-element="${model.segmentHeadingType || 'h4'}">${model.segmentHeading}</h4>
       <div class="card-text">${model.segmentDescription @ context ='html'}</div>
 
       <div class="link-container">
         <sly 
               data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
-              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnUR=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel }">
+              data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnURL=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardBtnType='secondary', cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel, dataTitle=model.dataTitle }">
           </sly>
       </div>
     </div>

@@ -10,6 +10,8 @@ public interface Card {
 
     public String getCardHeading();
 
+    public String getCardHeadingType();
+
     public String getCardDescription();
 
     public String getCardCaption();
@@ -46,13 +48,21 @@ public interface Card {
 
     public String getCardLinkTarget();
 
+    public String getCardClickableLinkURL();
+
+    public String getCardClickableLinkTarget();
+
     public String getName();
+
+    public String getAvatarHeadingType();
 
     public String getJobTitle();
 
     public String getQuote();
 
     public String getBannerHeading();
+
+    public String getBannerHeadingType();
 
     public String getBannerDescription();
 
@@ -62,22 +72,32 @@ public interface Card {
 
     public String getBannerImageHeading();
 
+    public String getBannerImageHeadingType();
+
     public String getBannerImageDescription();
 
     public String getBannerImageCaption();
 
     public String getMediaHeading();
 
+    public String getMediaHeadingType();
+
     public String getMediaDescription();
 
     public String getSegmentHeading();
+
+    public String getSegmentHeadingType();
 
     public String getSegmentDescription();
 
     public String getStatisticHeading();
 
+    public String getStatisticHeadingType();
+
     public String getStatisticDescription();
 
     public String getStatisticCaption();
 
+    public String getDataTitle();
+    
 }

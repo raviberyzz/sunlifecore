@@ -30,7 +30,8 @@ $(document).ready(function() {
     const $keyName = e.key;    
     const $navTabs = $thisKey.parents(".nav-tabs");
     const $navItem = $navTabs.find('.nav-item');   
-    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left"); 
+    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
+    const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
     let $currentItem;
     //condition for right arrow focus on key event
     if($keyName === "ArrowRight"){
@@ -46,15 +47,17 @@ $(document).ready(function() {
       $currentItem = $thisKey.prev('.nav-item'); 
       $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
       navigateTabOnArrowKey($currentItem);
-    }    
-    if($currentItem && $currentItem.index()){
+    }
+    if($currentItem && $currentItem.index() >= 0){
       const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1);        
-      const activeTabsWidth = $navTabs.width();      
+      const activeTabsWidth = $navTabs.width();
       if(activeTabsWidth < scrollWidth && $currentItem.index() > 0){
-        $leftNavScroll.removeClass("disabled").addClass("active")
+        $leftNavScroll.removeClass("disabled").addClass("active");
+        $rightNavScroll.addClass("disabled").removeClass("active");
       }
       else if(activeTabsWidth >= scrollWidth || $currentItem.index() < 0) {
         $leftNavScroll.removeClass("active").addClass("disabled")
+        $rightNavScroll.addClass("active").removeClass("disabled");
       }
     }
     else {

@@ -63,7 +63,11 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
-    private String cardHeading;  
+    private String cardHeading;
+
+    @ValueMapValue
+	@Getter
+    private String cardHeadingType;  
 
     @ValueMapValue
 	@Getter
@@ -139,7 +143,19 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String cardClickableLinkURL; 
+
+    @ValueMapValue
+	@Getter
+    private String cardClickableLinkTarget;
+
+    @ValueMapValue
+	@Getter
     private String name;
+
+    @ValueMapValue
+	@Getter
+    private String avatarHeadingType;
 
     @ValueMapValue
 	@Getter
@@ -155,6 +171,10 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String bannerHeadingType;
+
+    @ValueMapValue
+	@Getter
     private String bannerDescription;
   
     @ValueMapValue
@@ -167,7 +187,11 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
-    private String bannerImageHeading;  
+    private String bannerImageHeading;
+
+    @ValueMapValue
+	@Getter
+    private String bannerImageHeadingType;  
 
     @ValueMapValue
 	@Getter
@@ -183,11 +207,19 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String mediaHeadingType;
+
+    @ValueMapValue
+	@Getter
     private String mediaDescription;
 
     @ValueMapValue
 	@Getter
     private String segmentHeading;
+
+    @ValueMapValue
+	@Getter
+    private String segmentHeadingType;
 
     @ValueMapValue
 	@Getter
@@ -199,10 +231,18 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String statisticHeadingType;
+
+    @ValueMapValue
+	@Getter
     private String statisticDescription;  
 
     @ValueMapValue
 	@Getter
     private String statisticCaption;
+
+    @ValueMapValue
+	@Getter
+    private String dataTitle;
     
 }

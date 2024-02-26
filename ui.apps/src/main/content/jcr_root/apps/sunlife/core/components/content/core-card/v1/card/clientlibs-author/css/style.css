@@ -1,6 +1,11 @@
 .card-type-dialog-container {
-    overflow: hidden !important;
+    overflow: hidden !important;	
 }
+
+[class^="card-"] h4, [class*=" card-"] h4, [class^="card-"] p, [class*=" card-"] p {
+    white-space: normal !important;
+}
+
 .coral3-Button:not(:disabled):not(.is-disabled).is-selected, 
 .coral3-Button:not(:disabled):not(.is-disabled):active {
     background-color: #c3c3c3;
