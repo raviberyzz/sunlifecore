@@ -622,7 +622,7 @@
                                                                     sling:orderBefore="text"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                     fieldLabel="Type"
-                                                                    name="./buttonType">
+                                                                    name="./buttons">
                                                                     <items jcr:primaryType="nt:unstructured">
                                                                         <primary
                                                                             jcr:primaryType="nt:unstructured"
