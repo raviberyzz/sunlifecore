@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.core.components.util.AbstractComponentImpl;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.models.v1.Article;
@@ -34,7 +35,7 @@ import ca.sunlife.web.cms.core.models.v1.ArticleDataExtractor;
 import ca.sunlife.web.cms.core.models.v1.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-import ca.sunlife.web.cms.core.utils.SLAbstractComponentImpl;
+
 
 /**
  * The Class ArticleImpl.
@@ -45,7 +46,7 @@ import ca.sunlife.web.cms.core.utils.SLAbstractComponentImpl;
 @Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, adapters = { Article.class,
 		ComponentExporter.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ArticleConstants.ARTICLE_RESOURCETYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, selector = ExporterConstants.SLING_MODEL_SELECTOR, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class ArticleImpl extends SLAbstractComponentImpl implements Article {
+public class ArticleImpl extends AbstractComponentImpl implements Article {
 
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleImpl.class);

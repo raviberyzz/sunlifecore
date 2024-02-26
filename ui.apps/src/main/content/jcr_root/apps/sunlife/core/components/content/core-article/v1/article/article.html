@@ -18,11 +18,8 @@
         </figure>
         <div class="article-body">
             ${article.articleData.articleMainDescription  @context='html'}
-            <div><sly data-sly-resource="${'layout-container' @ resourceType=article.layoutResourceType}"></sly></div>
+            <div><sly data-sly-resource="${'./layout-container' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}"></sly></div>
            </div>
-        <div class="article-rating" data-sly-test="${article.ratingRequired == 'true'}">
-            <div class="mar-bottom-30" id="pd_rating_holder_${article.articleID}"></div>
-        </div>
         <div class="article-footer" data-sly-test="${article.articleData.authorBody}">
             ${article.articleData.authorBody  @context='html'}
         </div>
