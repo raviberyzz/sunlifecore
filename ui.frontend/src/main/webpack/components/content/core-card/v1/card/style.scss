@@ -9,6 +9,11 @@
             margin-bottom: -2px;
         }
     }
+    .content-container {
+        .sl-cards & {
+            width: 100%;
+        }
+    }
 }
 
 .sl-card-icon {
@@ -17,13 +22,21 @@
 }
 
 .sl-banner-content-block  {
+    --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
     margin-left: 50%;
     transform: translateX(-50%);
-    width: 100vw !important;
+    width: var(--viewportWidth);
 }
 
-.sl-avatar-blocks .card .card-body {
-	flex: 1 1 !important;
+.sl-avatar-blocks {
+    .card {
+        .card-body {
+            flex: 1 1 !important;
+        }
+        .body-quote {
+            width: 100%;
+        }
+    }
 }
 
 

@@ -1,8 +1,8 @@
 const CONST = {
 	SELECTOR: {
-		externalLink: '.cmp-text .sl-link-external',
-		internalLink: '.cmp-text .sl-link-internal',
-		pdfLink: '.cmp-text .sl-link-pdf'
+		externalLink: '.sl-link-external[data-class-icon]',
+		internalLink: '.sl-link-internal[data-class-icon]',
+		pdfLink: '.sl-link-pdf[data-class-icon]'
 	}
 }
 const TextComp = {

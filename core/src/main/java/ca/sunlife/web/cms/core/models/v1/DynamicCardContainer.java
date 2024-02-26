@@ -37,4 +37,6 @@ public interface DynamicCardContainer {
     public Boolean getSegmentedformContainer();
 
     public Boolean getStatisticsMultipleCard();
+    
+    public Boolean getWithLink();
 }

@@ -1,0 +1,17 @@
+{
+  "breadcrumb": {
+    "jcr:primaryType": "nt:unstructured",
+    "spacing": "mb-sl24",
+    "startLevel": "4",
+    "langcode": "false",
+    "sling:resourceType": "sunlife/core/components/content/core-breadcrumb/v1/breadcrumb",
+    "properties": {
+      "currentStyle": {
+        "startLevel": "2",
+        "showHidden": "2",
+        "hideCurrent": "2"
+      }
+    }
+
+  }
+}
