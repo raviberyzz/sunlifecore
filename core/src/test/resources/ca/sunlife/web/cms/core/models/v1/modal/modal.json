@@ -1,0 +1,18 @@
+{
+  "modal": {
+    "jcr:primaryType": "nt:unstructured",
+    "modalID": "12345",
+    "modalTypes": "standard-model",
+    "isTrigger": "true",
+    "heading": "Modal Heading",
+	"content": "Main Content",
+	"additionalText": "Additional Text",	 
+	"dataSection": "Data Section",
+	"button": {
+		"buttonType": "submit",	  
+		"buttonText": "login",	  
+		"linkURL": "submit",	
+		"linkTarget": "new"	
+	}  
+  }
+}
