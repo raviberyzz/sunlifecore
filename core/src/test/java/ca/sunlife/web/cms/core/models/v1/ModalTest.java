@@ -37,6 +37,9 @@ public class ModalTest {
 			moda1.getContent();
 			moda1.getDataSection();
 			moda1.getHeading();
+			moda1.getModalID();
+			moda1.getModalTypes();
+			moda1.isTrigger();
 			moda1.getId();
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
