@@ -1,3 +1,4 @@
+package ca.sunlife.web.cms.core.models.v1.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
