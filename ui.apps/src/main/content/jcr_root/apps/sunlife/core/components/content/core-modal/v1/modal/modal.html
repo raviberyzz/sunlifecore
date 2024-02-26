@@ -1,7 +1,6 @@
 <!-- Initial code for UI Developer to access the dialog values -->
 <sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
-	Modal List : ${modalObj.listType} <br>
 	ModalID   : ${modalObj.modalID} <br>
 	ModalType : ${modalObj.modalTypes} <br>
 	Trigger : ${modalObj.trigger} <br>
@@ -44,7 +43,7 @@
 
 		<h3>Buttons</h3>
 		
-		<ul data-sly-list.buttonList="${modalObj.modalButtons}">
+		<ul data-sly-list.buttonList="${modalObj.buttons}">
 			<li> Button type   : ${buttonList.buttonType} </li>
 			<li> Button Text   : ${buttonList.buttonText} </li>
 			<li> Button Target : ${buttonList.linkTarget} </li>
