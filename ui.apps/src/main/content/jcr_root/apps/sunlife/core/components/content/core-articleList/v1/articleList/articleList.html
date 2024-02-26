@@ -26,25 +26,6 @@
         </div>
     </sly>
 
-
-    <div class="sl-cards vertical">
-    <div class="card multi">
-        <sly 
-        data-sly-set.image="${'/content/dam/sunlife/regional/global-marketing/images/com/sunlife-page-image-372x287.jpg' }"
-        data-sly-set.altText="${'sdasd' }"
-        data-sly-set.cardHeading="${'this is heading'  }"
-        data-sly-set.cardDescription="${'this is description'  }"
-        data-sly-set.cardCaption="${'this is caption' }"
-        data-sly-set.ctaType="${'link'  }"
-        data-sly-set.cardLinkTarget="${ '_self' }"
-        data-sly-set.cardLinkURL="${'#' }"
-        data-sly-set.cardLinkLabel="${'link label' }"
-        data-sly-set.dataTitle="${'this is data title' }"
-        data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
-        data-sly-call="${template.details @  cardImage=image, imageAlt=altText,  heading=cardHeading, description=cardDescription, caption=cardCaption, ctaType=ctaType, linkTarget=cardLinkTarget, linkURL=cardLinkURL, linkLabel=cardLinkLabel, ctaDataTitle=dataTitle  }">
-    </sly>
-    </div>
-
 </div>
 
     <sly data-sly-test="${list.displayType=='editorialArticleList' && list.pageNum == 0}">
@@ -99,7 +80,6 @@
         <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
             <div class="card multi">
                     <sly data-sly-list="${list.listItems}">
-                        
                         <li>
                             <sly data-sly-list.element="${item.elements}">
                                 <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
