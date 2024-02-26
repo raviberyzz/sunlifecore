@@ -41,6 +41,35 @@
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
                                             cq-dialog-dropdown-showhide-target=".displayType-showhide-target"/>
+                                    <displayType
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Select how component should look like."
+                                        fieldLabel="Display Type"
+                                        required="{Boolean}true"
+                                        name="./displayType">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Article List"
+                                                value="articleList"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Editorial Article List"
+                                                value="editorialArticleList"/>
+                                            <item2
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Related Article List"
+                                                value="relatedArticleList"/>
+                                            <item3
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Overview Highlight"
+                                                value="overviewHighlight"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".displayType-showhide-target"/>
                                     </displayType>
                                     <hideTopThree
                                         jcr:primaryType="nt:unstructured"
@@ -66,7 +95,6 @@
                                          checked="false"
                                          uncheckedValue="false"
                                          value="{Boolean}true"/>
-                 
                                 </items>
                             </column>
                         </items>
