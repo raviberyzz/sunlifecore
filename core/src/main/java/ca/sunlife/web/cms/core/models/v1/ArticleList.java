@@ -12,10 +12,6 @@ public interface ArticleList {
 	 int getHideTop();	 
 	 
 	 int getMaxItems();	 
-	 
-	 String getTitle();	
-    
-	 String getTitleLevel();	 
 
      String getSpacing();
 

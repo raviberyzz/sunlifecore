@@ -46,16 +46,10 @@ package ca.sunlife.web.cms.core.models.v1.impl;
  
  import ca.sunlife.web.cms.core.beans.Pagination;
  import ca.sunlife.web.cms.core.models.v1.ArticleList;
-  import ca.sunlife.web.cms.core.services.SiteConfigService;
-  import lombok.Getter;
+ import ca.sunlife.web.cms.core.services.SiteConfigService;
+ import lombok.Getter;
  
- /**
-  * The Class ArticleListModel.
-  *
-  * @author TCS
-  * @version 1.0
-  */
-
+ @Getter
  @ Model (adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class, ArticleList.class}, resourceType = {
     ArticleListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
  @ Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -63,11 +57,8 @@ package ca.sunlife.web.cms.core.models.v1.impl;
 
  public class ArticleListImpl implements ComponentExporter, ArticleList{
 
-  
-   /** The Constant LOGGER. */
    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleListImpl.class);
    
-   /** The Constant RESOURCE_TYPE. */
    protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-articleList/v1/articleList";
  
    @ValueMapValue
@@ -84,177 +75,167 @@ package ca.sunlife.web.cms.core.models.v1.impl;
  
    @ValueMapValue
    private int maxItems;
- 
-   @ValueMapValue
-   private String title;
-
-   @ValueMapValue
-   private String titleLevel;
 
    @ValueMapValue
    private String spacing;
 
    @ValueMapValue
    private String accessibilityLabel;
- 
- 
+  
+   @ValueMapValue
+   private ContentTypeConverter contentTypeConverter;
+
+ /** The config service. */
+  @ Inject
+  private SiteConfigService configService;
+
    /** The resource resolver. */
    @ SlingObject
    private ResourceResolver resourceResolver;
  
-   /** The items. */
    private final List <DAMContentFragment> items = new ArrayList <>();
  
-   /** The request. */
    @ Self (injectionStrategy = InjectionStrategy.REQUIRED)
    private SlingHttpServletRequest request;
- 
-   /** The content type converter. */
-   @ Inject
-   private ContentTypeConverter contentTypeConverter;
- 
-   /** The config service. */
-   @ Inject
-   private SiteConfigService configService;
- 
+
    /** The page num. */
-   private int pageNum = 0;
+    private int pageNum = 0;
    
    /** The selector index */
-   private int index = 0;
+    private int index = 0;
  
-   /** The date format. */
-   private String dateFormat;
+      /** The date format. */
+    private String dateFormat;
  
-   /** The page locale. */
-   private String pageLocale;
+    /** The page locale. */
+    private String pageLocale;
  
-   /** The current page. */
-   @ ScriptVariable
-   private Page currentPage;
- 
-   /** The pagination. */
-   private Pagination pagination;
- 
-   /** The page url. */
-   private String pageUrl;
- 
-   /**
-    * Gets the page url.
-    *
-    * @return the page url
-    */
-   public final String getPageUrl() {
-     return pageUrl;
-   }
- 
-   /**
-    * Sets the page url.
-    *
-    * @param pageUrl
-    *          the new page url
-    */
-   public final void setPageUrl(final String pageUrl) {
-     this.pageUrl = pageUrl;
-   }
- 
-   /**
-    * Gets the pagination.
-    *
-    * @return the pagination
-    */
-   public final Pagination getPagination() {
-     return pagination;
-   }
- 
-   /**
-    * Sets the pagination.
-    *
-    * @param pagination
-    *          the new pagination
-    */
-   public final void setPagination(final Pagination pagination) {
-     this.pagination = pagination;
-   }
- 
-   /**
-    * Gets the total match.
-    *
-    * @return the total match
-    */
-   public final int getTotalMatch() {
-     return totalMatch;
-   }
- 
-   /**
-    * Gets the date format.
-    *
-    * @return the date format
-    */
-   public final String getDateFormat() {
-     return dateFormat;
-   }
- 
-   /**
-    * Gets the page locale.
-    *
-    * @return the page locale
-    */
-   public final String getPageLocale() {
-     return pageLocale;
-   }
- 
-   /**
-    * Sets the date format.
-    *
-    * @param dateFormat
-    *          the new date format
-    */
-   public final void setDateFormat(final String dateFormat) {
-     this.dateFormat = dateFormat;
-   }
- 
-   /**
-    * Sets the page locale.
-    *
-    * @param pageLocale
-    *          the new page locale
-    */
-   public final void setPageLocale(final String pageLocale) {
-     this.pageLocale = pageLocale;
-   }
- 
-   /**
-    * Gets the page num.
-    *
-    * @return the page num
-    */
-   public final int getPageNum() {
-     return pageNum;
-   }
- 
-   /**
-    * Sets the page num.
-    *
-    * @param pageNum
-    *          the new page num
-    */
-   public final void setPageNum(final int pageNum) {
-     this.pageNum = pageNum;
-   }
- 
-   /**
-    * Sets the total match.
-    *
-    * @param totalMatch
-    *          the new total match
-    */
-   public final void setTotalMatch(final int totalMatch) {
-     this.totalMatch = totalMatch;
-   }
- 
-   /** The total match. */
-   private int totalMatch;
+     /** The current page. */
+      @ ScriptVariable
+     private Page currentPage;
+   
+      /** The pagination. */
+      private Pagination pagination;
+
+      /** The page url. */
+      private String pageUrl;
+
+  /**
+   * Gets the page url.
+   *
+   * @return the page url
+   */
+  public final String getPageUrl() {
+    return pageUrl;
+  }
+
+  /**
+   * Sets the page url.
+   *
+   * @param pageUrl
+   *          the new page url
+   */
+  public final void setPageUrl(final String pageUrl) {
+    this.pageUrl = pageUrl;
+  }
+
+  /**
+   * Gets the pagination.
+   *
+   * @return the pagination
+   */
+  public final Pagination getPagination() {
+    return pagination;
+  }
+
+  /**
+   * Sets the pagination.
+   *
+   * @param pagination
+   *          the new pagination
+   */
+  public final void setPagination(final Pagination pagination) {
+    this.pagination = pagination;
+  }
+
+  /**
+   * Gets the total match.
+   *
+   * @return the total match
+   */
+  public final int getTotalMatch() {
+    return totalMatch;
+  }
+
+  /**
+   * Gets the date format.
+   *
+   * @return the date format
+   */
+  public final String getDateFormat() {
+    return dateFormat;
+  }
+
+  /**
+   * Gets the page locale.
+   *
+   * @return the page locale
+   */
+  public final String getPageLocale() {
+    return pageLocale;
+  }
+
+  /**
+   * Sets the date format.
+   *
+   * @param dateFormat
+   *          the new date format
+   */
+  public final void setDateFormat(final String dateFormat) {
+    this.dateFormat = dateFormat;
+  }
+
+  /**
+   * Sets the page locale.
+   *
+   * @param pageLocale
+   *          the new page locale
+   */
+  public final void setPageLocale(final String pageLocale) {
+    this.pageLocale = pageLocale;
+  }
+
+  /**
+   * Gets the page num.
+   *
+   * @return the page num
+   */
+  public final int getPageNum() {
+    return pageNum;
+  }
+
+  /**
+   * Sets the page num.
+   *
+   * @param pageNum
+   *          the new page num
+   */
+  public final void setPageNum(final int pageNum) {
+    this.pageNum = pageNum;
+  }
+
+  /**
+   * Sets the total match.
+   *
+   * @param totalMatch
+   *          the new total match
+   */
+  public final void setTotalMatch(final int totalMatch) {
+    this.totalMatch = totalMatch;
+  }
+
+  /** The total match. */
+  private int totalMatch;
  
    /** The Constant ELEMENT_NAMES. */
    private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
@@ -270,9 +251,7 @@ package ca.sunlife.web.cms.core.models.v1.impl;
      return Collections.unmodifiableCollection(items);
    }
  
-   /**
-    * Inits the model.
-    */
+  
     @ PostConstruct
     private void initModel() {
   
@@ -416,21 +395,6 @@ package ca.sunlife.web.cms.core.models.v1.impl;
     }
 
     @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public String getTitleLevel() {
-        return titleLevel;
-    }
-
-    @Override
-    public String getSpacing() {
-        return spacing;
-    }
-
-    @Override
     public String getAccessibilityLabel() {
         return accessibilityLabel;
     }
@@ -439,6 +403,5 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    public String getExportedType() {
      return RESOURCE_TYPE;
    }
- 
  }
  

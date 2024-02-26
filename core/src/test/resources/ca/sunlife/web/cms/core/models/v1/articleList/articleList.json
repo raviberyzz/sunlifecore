@@ -1,0 +1,13 @@
+{
+    "articleList": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "sunlife/ca/components/content/ca-articleList/v1/articleList",
+      "parentPath": "/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources",
+      "displayType": "Article List",
+      "hideTop": 3,
+      "maxItems": 10,
+      "accessibilityLabel": "Sample accessibility label",
+      "spacing": "mb-sl12"
+    }
+  }
+
