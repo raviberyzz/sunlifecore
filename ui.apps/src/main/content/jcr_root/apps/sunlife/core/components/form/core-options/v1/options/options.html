@@ -6,7 +6,7 @@
         <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <label for="${options.id}">
-                    <input class="form-check-input form-field" type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}" name="${options.name}[]" id="${options.id}"
+                    <input class="form-check-input form-field" aria-required="${text.required ? 'true': 'false'}" type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}" name="${options.name}[]" id="${options.id}"
                     disabled="${optionItem.disabled}" data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
                     value="${optionItem.value}" checked="${optionItem.selected}"/>
                     <span class="form-check-label">${optionItem.text}</span>

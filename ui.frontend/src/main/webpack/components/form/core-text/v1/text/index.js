@@ -36,7 +36,6 @@
         let $fieldForCount = $(".sl-text-area .form-control")
         if($field){
             $field.keyup(fieldValidationKeyEventHandler);
-            $field.blur(fieldValidationBlurEventHandler);
         }
         if($fieldForCount){
             $fieldForCount.keypress(fieldValidationKeyPressEventHandler);

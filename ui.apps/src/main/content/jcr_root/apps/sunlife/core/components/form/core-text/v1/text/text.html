@@ -25,6 +25,7 @@
         required="${text.required}"
         class="form-control form-field ${text.required ? 'required': ''}"
         data-parsley-required="${text.required}"
+        aria-required="${text.required ? 'true': 'false'}"
         rows="${text.rows}">${text.value}</textarea>
     <input data-sly-test="${!useTextarea}"
         class="form-control form-field ${text.required ? 'required': ''}"
@@ -42,6 +43,7 @@
         value="${text.value}"
         disabled="${text.readOnly}"
         required="${text.required}"
+        aria-required="${text.required ? 'true': 'false'}"
         data-parsley-required="${text.required}"/>
     <span data-sly-test="${useTextarea}" class="visually-hidden" aria-live="polite"><span class="count">0</span> out of 500 characters inputted</span>
     <div data-sly-test="${!useTextarea && customText.icon}" class="icon-container">

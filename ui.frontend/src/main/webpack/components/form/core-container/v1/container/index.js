@@ -19,14 +19,18 @@
   * On input error add error styles to dropdown(s).
   */
   window.Parsley.on('field:error', function () {
-    let $comboInput = $(this.$element[0].closest(".formValidate")).find(".form-field");
-    $comboInput.addClass("sl-input-error");
+    let $input = $(this.$element[0].closest(".formValidate")).find(".form-field");
+    $input.addClass("sl-input-error");
     this.$element.each(function(){
       $(this).closest(".formValidate").addClass("sl-input-error");
     })
     let $errorTextId = $(this.$element[0].closest(".formValidate")).find(".sl-helper-text.error-text.filled")[0].getAttribute("id");
-    $comboInput[0].setAttribute("aria-describedby", $errorTextId);
-    $comboInput[0].setAttribute("aria-invalid", "true");
+    $input[0].setAttribute("aria-describedby", $errorTextId);
+    $input[0].setAttribute("aria-invalid", "true");
+    if(this.$element[0]?.type === "text" && this.$element[0]?.value !== ""){
+      const patternError = $(this.$element[0]).attr("data-parsley-pattern-message");
+      $(this.$element[0].closest(".formValidate")).find(".parsley-custom-error-message").html(patternError);      
+    } 
   }).on('field:success', function () {
     this.$element.each(function(){
       $(this).closest(".formValidate").removeClass("sl-input-error");
