@@ -7,7 +7,9 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 @Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ButtonItems {

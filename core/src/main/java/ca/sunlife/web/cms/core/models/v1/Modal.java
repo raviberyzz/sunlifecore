@@ -11,13 +11,14 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.wcm.core.components.internal.models.v1.TableOfContentsImpl;
-
+import lombok.Setter;
 import lombok.Getter;
 /**
  * The Modal is a sling model associated with Modal component. 
  *
  * @author Sunlife
  */
+@Setter
 @Getter
 @Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class Modal extends TableOfContentsImpl{
