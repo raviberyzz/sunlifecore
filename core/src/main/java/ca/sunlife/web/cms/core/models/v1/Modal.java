@@ -45,23 +45,6 @@ public class Modal extends TableOfContentsImpl{
     String dataSection;
 
 	@ChildResource
-	List<Buttons> buttons;
-
-	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	interface Buttons {
-
-		@ValueMapValue
-		String getButtonType();
-
-		@ValueMapValue
-		String getButtonText();
-
-		@ValueMapValue
-		String getLinkURL();
-
-		@ValueMapValue
-		String getLinkTarget();
-
-	}
+	List<ButtonItems> modalButtons;
 
 }
