@@ -4,23 +4,17 @@
 
 package ca.sunlife.web.cms.core.models.v1.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -31,17 +25,16 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.wcm.api.Page;
 
-import ca.sunlife.web.cms.core.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.models.v1.Article;
+import ca.sunlife.web.cms.core.models.v1.ArticleDataExtractor;
+import ca.sunlife.web.cms.core.models.v1.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import ca.sunlife.web.cms.core.utils.SLAbstractComponentImpl;
-
-
-import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
 
 /**
  * The Class ArticleImpl.
@@ -58,8 +51,7 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleImpl.class);
 
 	/** The fragment path. */
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String fragmentPath;
 
 	/** The resolver. */
@@ -67,8 +59,7 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	private ResourceResolver resolver;
 
 	/** The checkbox hide date. */
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String checkboxHideDate;
 
 	/** The resource type. */
@@ -341,6 +332,16 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 	}
 
 	/**
+	 * Gets the Current Page.
+	 *
+	 * @return the Current Page
+	 */
+	@Override
+	public Page getCurrentPage() {
+		return currentPage;
+	}
+
+	/**
 	 * Inits the.
 	 */
 	@PostConstruct
@@ -348,128 +349,16 @@ public class ArticleImpl extends SLAbstractComponentImpl implements Article {
 		if (StringUtils.isEmpty(getFragmentPath())) {
 			return;
 		}
-		try {
-			final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-			LOGGER.debug("Reading content fragment {}", getFragmentPath() + ArticleConstants.JCR_CONTENT_DATA_MASTER);
-			final Resource articleResource = resourceResolver
-					.getResource(getFragmentPath().concat(ArticleConstants.JCR_CONTENT_DATA_MASTER));
-			final String pagePath = currentPage.getPath();
-			if (null != articleResource) {
-				LOGGER.debug("Parsing Article Data");
-				final ValueMap articleContent = articleResource.getValueMap();
-
-				articleData.put(ArticleConstants.ARTICLE_HEADLINE,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_HEADLINE));
-				articleData.put(ArticleConstants.ARTICLE_IMAGE,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_IMAGE));
-				articleData.put(ArticleConstants.ARTICLE_MAIN_DESCRIPTION,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_MAIN_DESCRIPTION));
-				articleData.put(ArticleConstants.ARTICLE_READ_TIME,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_READ_TIME));
-				articleData.put(ArticleConstants.ARTICLE_PAGE_LINK,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_PAGE_LINK));
-				articleData.put(ArticleConstants.ARTICLE_MINI_DESCRIPTION,
-						getValueMapValue(articleContent, ArticleConstants.ARTICLE_MINI_DESCRIPTION));
-
-				setArticlePublishDate(articleContent);
-				setArticleAuthorData(resourceResolver, articleContent);
-				setArticleImage(configService.getConfigValues(ArticleConstants.DOMAIN, pagePath)
-						.concat(articleData.get(ArticleConstants.ARTICLE_IMAGE)));
-			}
-			LOGGER.debug("Article Data {}", articleData);
-			final ValueMap pageProperties = currentPage.getProperties();
-			layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/')).concat("/layout-container");
-			setPageUrl(configService.getPageUrl(pagePath));
-			setOgImage(configService.getConfigValues(ArticleConstants.DOMAIN, pagePath)
-					.concat(pageProperties.containsKey(ArticleConstants.SOCIAL_MEDIA_IMAGE)
-							? (String) pageProperties.getOrDefault(ArticleConstants.SOCIAL_MEDIA_IMAGE,
-									StringUtils.EMPTY)
-							: configService.getConfigValues(ArticleConstants.SOCIAL_MEDIA_IMAGE, pagePath)));
-			setOgDescription(pageProperties.containsKey("socialMediaDescripton")
-					? pageProperties.get("socialMediaDescripton", String.class)
-					: configService.getConfigValues("pageDescription", pagePath));
-			final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			setPageModifiedDate(formatter.format(currentPage.getLastModified().getTime()));
-			setPublisherName(configService.getConfigValues("articlePublisherName", pagePath));
-			setPublisherLogo(configService.getConfigValues(ArticleConstants.DOMAIN, pagePath)
-					.concat(configService.getConfigValues("articlePublisherLogo", pagePath)));
-			resourceResolver.close();
-		} catch (LoginException | RepositoryException e) {
-			LOGGER.error("Login Error while getting resource resolver : {}", e);
-		}
+		ArticleDataExtractor dataExtractor = new ArticleDataExtractor();
+		dataExtractor.extractData(this, configService);
 	}
 
-	/**
-	 * Sets the article author data.
-	 *
-	 * @param resourceResolver the resource resolver
-	 * @param articleContent   the article content
-	 */
-	private void setArticleAuthorData(final ResourceResolver resourceResolver, final ValueMap articleContent) {
-		if (articleContent.containsKey(ArticleConstants.ARTICLE_AUTHOR)) {
-			final String articleAuthorPath = (String) articleContent.getOrDefault(ArticleConstants.ARTICLE_AUTHOR,
-					StringUtils.EMPTY);
-			final Resource authorResource = resourceResolver
-					.getResource(articleAuthorPath.concat(ArticleConstants.JCR_CONTENT_DATA_MASTER));
-			if (null != authorResource) {
-				final ValueMap authorContent = authorResource.getValueMap();
-				articleData.put(ArticleConstants.AUTHOR_NAME,
-						authorContent.containsKey(ArticleConstants.AUTHOR_NAME)
-								? authorContent.get(ArticleConstants.AUTHOR_NAME, String.class)
-								: StringUtils.EMPTY);
-				articleData.put(ArticleConstants.AUTHOR_BODY,
-						authorContent.containsKey(ArticleConstants.AUTHOR_BODY)
-								? authorContent.get(ArticleConstants.AUTHOR_BODY, String.class)
-								: StringUtils.EMPTY);
-			} else {
-				articleData.put(ArticleConstants.AUTHOR_NAME, StringUtils.EMPTY);
-				articleData.put(ArticleConstants.AUTHOR_BODY, StringUtils.EMPTY);
-			}
-		} else {
-			articleData.put(ArticleConstants.AUTHOR_NAME, StringUtils.EMPTY);
-			articleData.put(ArticleConstants.AUTHOR_BODY, StringUtils.EMPTY);
-		}
+	public CoreResourceResolver getCoreResourceResolver() {
+		return coreResourceResolver;
 	}
 
-	/**
-	 * Sets the article publish date.
-	 *
-	 * @param articleContent the new article publish date
-	 * @throws LoginException      the login exception
-	 * @throws RepositoryException the repository exception
-	 */
-	private void setArticlePublishDate(final ValueMap articleContent) throws LoginException, RepositoryException {
-		String articlePublishedDate = StringUtils.EMPTY;
-		String pageLocaleDefault = StringUtils.EMPTY;
-
-		try {
-			final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-			if (null != locale && locale.length() > 0) {
-				pageLocaleDefault = locale.contains("-") ? locale.split("-")[0] : locale.split("_")[0];
-			}
-
-			LOGGER.debug("Locale is {}", pageLocaleDefault);
-			if (articleContent.containsKey(ArticleConstants.ARTICLE_PUBLISHED_DATE)) {
-				LOGGER.debug("formatting date to {}",
-						configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-				LOGGER.debug("Before adding locale");
-				final SimpleDateFormat formatter = new SimpleDateFormat(
-						configService.getConfigValues("articleDateFormat", currentPage.getPath()),
-						new Locale(pageLocaleDefault));
-				LOGGER.debug("after adding locale");
-				articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
-						.getOrDefault(ArticleConstants.ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
-				LOGGER.debug("After date formatting");
-			}
-			articleData.put(ArticleConstants.ARTICLE_PUBLISHED_DATE, articlePublishedDate);
-		} catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
-			LOGGER.error("Error ::ArticleModel :: Article published date :: Exception :: {}", e);
-		}
-	}
-
-	public static String getValueMapValue(ValueMap articleContent, String Key) {
-		return (articleContent.containsKey(Key) ? articleContent.get(Key, String.class) : StringUtils.EMPTY);
-
+	public void setLayoutResourceType(String layoutResourceType) {
+		this.layoutResourceType = layoutResourceType;
 	}
 
 }

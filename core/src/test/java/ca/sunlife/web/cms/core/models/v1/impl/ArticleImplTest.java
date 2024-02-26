@@ -207,6 +207,7 @@ public class ArticleImplTest {
 			when(pageProperties.containsKey("socialMediaDescripton")).thenReturn(true);
 			when(pageProperties.getOrDefault("socialMediaImage", StringUtils.EMPTY)).thenReturn("/content/dam/sunlife/image");
 			when(pageProperties.getOrDefault("socialMediaDescripton", StringUtils.EMPTY)).thenReturn("This the social media desc");
+			//when(pageProperties.getOrDefault("socialShare", StringUtils.EMPTY)).thenReturn("True");
 			when(currentPage.getProperties()).thenReturn(pageProperties);
 			when(configService.getConfigValues("articleDateFormat", pagePath)).thenReturn("dd/MM/yyyy");
 			when(configService.getConfigValues("domain", pagePath)).thenReturn("www.ca-dev.com/");
