@@ -1,7 +1,8 @@
 <!-- Initial code for UI Developer to access the dialog values -->
 <sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
-	<!-- ModalID : ${modalObj.modalID} <br>
+	Modal List : ${modalObj.listType} <br>
+	ModalID   : ${modalObj.modalID} <br>
 	ModalType : ${modalObj.modalTypes} <br>
 	Trigger : ${modalObj.trigger} <br>
 	Heading : ${modalObj.heading} <br>
@@ -41,37 +42,18 @@
 
 	<sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
 
-        <!-- <div id="${modalObj.modalID}-backdrop"class="fade modal-backdrop sl-modal show" style="display:none;"></div> -->
-        <!-- <div role="dialog" aria-modal="true" id="${modalObj.modalID}" class="fade sl-modal modal show" tabindex="-1" aria-labelledby="two-button-modal" data-section="${modalObj.dataSection}" style="display:none;"> -->
-        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
-                        window</span>
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="two-button-modal">${modalObj.heading}</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ${modalObj.content @context='html'}
-                    </div>
-
-                    <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
-                        <button type="button" id="close-button"
-                            class="sl-btn btn ${buttonList.buttonType}">${buttonList.buttonText}</button>
-                    </div>
-
-                    <span id="two-button-modal-end-sr" class="visually-hidden">End of dialog window</span>
-                </div>
-            </div>
-        </div>
+		<h3>Buttons</h3>
+		
+		<ul data-sly-list.buttonList="${modalObj.modalButtons}">
+			<li> Button type   : ${buttonList.buttonType} </li>
+			<li> Button Text   : ${buttonList.buttonText} </li>
+			<li> Button Target : ${buttonList.linkTarget} </li>
+		</ul>
 
 	</sly>
 
 	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
-		<sly data-sly-resource="${ 'modal-grid' @ resourceType='wcm/foundation/components/responsivegrid'}"/>
+		<sly data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
 	</sly>
 
 </sly>

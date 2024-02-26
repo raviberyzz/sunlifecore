@@ -1,6 +1,8 @@
 package ca.sunlife.web.cms.core.models.v1;
 
 import java.util.List;
+
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -8,57 +10,42 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.adobe.cq.wcm.core.components.internal.models.v1.TableOfContentsImpl;
+import lombok.Setter;
+import lombok.Getter;
 /**
- * The PopupModalModel is a sling model associated with Popup Modal component. 
+ * The Modal is a sling model associated with Modal component. 
  *
  * @author Sunlife
  */
-
-@Model(adaptables = {Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = Modal.RESOURCE_TYPE)
-public interface Modal {
-
-	String RESOURCE_TYPE = "sunlife/core/components/content/core-modal/v1/modal";
-
-	@ValueMapValue
-	String getModalID();
+@Setter
+@Getter
+@Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class Modal extends TableOfContentsImpl{
 
 	@ValueMapValue
-	String getModalTypes();
+	String modalID;
+
+	@ValueMapValue
+	String modalTypes;
 
 	@ValueMapValue
 	@Default(booleanValues = { false })
-	boolean isTrigger();
+	boolean isTrigger;
 
 	@ValueMapValue
-	String getHeading();
+	String heading;
 
 	@ValueMapValue
-	String getContent();
+	String content;
 
 	@ValueMapValue
-    String getAdditionalText();
+    String additionalText;
 
 	@ValueMapValue
-    String getDataSection();
+    String dataSection;
 
 	@ChildResource
-	List<Buttons> getButtons();
-
-	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	interface Buttons {
-
-		@ValueMapValue
-		String getButtonType();
-
-		@ValueMapValue
-		String getButtonText();
-
-		@ValueMapValue
-		String getLinkURL();
-
-		@ValueMapValue
-		String getLinkTarget();
-
-	}
+	List<ButtonItems> modalButtons;
 
 }
