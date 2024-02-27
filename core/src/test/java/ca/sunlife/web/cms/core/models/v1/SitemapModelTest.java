@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import ca.sunlife.web.cms.core.models.v1.impl.FooterImpl;
-import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,28 +9,26 @@ import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static junitx.framework.Assert.assertEquals;
+
 
 @ExtendWith(AemContextExtension.class)
 public class SitemapModelTest {
-    private  final Logger LOGGER = LoggerFactory.getLogger(SitemapModelTest.class);
-    private final AemContext context = new AemContext();
+    private final Logger LOGGER = LoggerFactory.getLogger(SitemapModelTest.class);
     @InjectMocks
-    private SitemapModel sitemapMode1;
+    private SitemapModel sitemapModel;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        context.addModelsForClasses(SitemapModel.class);
-        context.load().json("/ca/sunlife/web/cms/core/models/v1/sitemap/sitemap.json", "/content");
+        sitemapModel.setSpacing("10");
     }
 
     @Test
     public void testInit() {
         try {
-            context.currentResource("/content/sitemap");
-            SitemapModel sitemapModel = context.request().adaptTo(SitemapModel.class);
-            sitemapMode1.getSpacing();
-            sitemapMode1.getAccessibilityLabel();
+
+            assertEquals("10", sitemapModel.getSpacing());
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.models.v1;
 
+import lombok.Setter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -16,6 +17,7 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
  */
 
  @Getter
+ @Setter
  @Model(adaptables = {
          SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = BreadcrumbModel.RESOURCE_TYPE)
  public class BreadcrumbModel extends BreadcrumbImpl implements Breadcrumb {
