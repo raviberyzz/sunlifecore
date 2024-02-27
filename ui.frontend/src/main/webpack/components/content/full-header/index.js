@@ -199,7 +199,9 @@ $(document).ready(function () {
             var $this = $(this);
             setTimeout(function() {
                 if(!($this.find(":focus").length)){
-                    $("#language-btn").trigger("click");
+                    $("#language-btn").attr('aria-expanded', 'false');
+                    $("#sun-language").removeClass('in');
+                    setTimeout(langOff, 150);
                     $("#language-btn").focus();
                     return false;
                 }      
