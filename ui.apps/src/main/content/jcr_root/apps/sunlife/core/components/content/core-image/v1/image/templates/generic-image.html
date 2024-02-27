@@ -1,7 +1,7 @@
 <!--/*  
 Template to render Generic Image.
 */-->
-<template data-sly-template.details="${ @ image }">
+<template data-sly-template.details="${ @ image, imageRef, mobileImageRef, altText, imgClass, isLazyLoaded }">
     <a 
         data-sly-unwrap="${!properties.linkURL}"
         class="cmp-image__link image__link" 
@@ -11,13 +11,13 @@ Template to render Generic Image.
         data-cmp-hook-image="link">
             <noscript data-sly-unwrap="${!image.lazyEnabled}" data-cmp-hook-image="noscript">
                 <picture>
-                    <source srcset="${image.fileReference}" media="(min-width: 600px)">
-                    <source srcset="${image.fileReferenceMobile || image.fileReference}" media="(max-width: 600px)">
+                    <source srcset="${image.fileReference || imageRef}" media="(min-width: 600px)">
+                    <source srcset="${image.fileReferenceMobile || image.fileReference || mobileImageRef || imageRef }" media="(max-width: 600px)">
                     <img 
-                        data-sly-set.imgLazyLoaded="${properties.isLazyLoaded ? 'lazy' : ''}"
-                        src="${ image.fileReference || image.fileReferenceMobile}" 
-                        alt="${image.alt || true}" 
-                        class="img ${properties.hideImageMobile ? 'd-none d-sm-block' : '' } "
+                        data-sly-set.imgLazyLoaded="${properties.isLazyLoaded || isLazyLoaded ? 'lazy' : ''}"
+                        src="${ image.fileReference || image.fileReferenceMobile || imageRef || mobileImageRef}" 
+                        alt="${image.alt || altText|| true}" 
+                        class="img ${properties.hideImageMobile ? 'd-none d-sm-block' : '' } ${imgClass}"
                         title="${image.displayPopupTitle && image.title}"
                         data-cmp-hook-image="image"
                         itemprop="contentUrl" 
