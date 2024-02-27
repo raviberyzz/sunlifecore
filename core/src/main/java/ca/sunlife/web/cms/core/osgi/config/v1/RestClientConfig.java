@@ -8,12 +8,6 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-/**
- * The Interface RestClientConfig.
- *
- * @author TCS
- * @version 1.0
- */
 @ ObjectClassDefinition (name = "Sun Life - Rest Client Configuration", description = "Rest Client Configuration")
 public @interface RestClientConfig {
 

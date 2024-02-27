@@ -7,12 +7,6 @@ package ca.sunlife.web.cms.core.beans.v1;
 
 import ca.sunlife.web.cms.core.models.v1.Release;
 
-/**
- * The Class NewsDetails.
- *
- * @author TCS
- * @version 1.0
- */
 public class NewsDetails {
 
   /** The release. */

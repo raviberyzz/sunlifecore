@@ -35,12 +35,6 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * The Class RestServiceImpl.
- *
- * @author TCS
- * @version 1.0
- */
 @ Component(service = RestService.class, immediate = true)
 @ Designate(ocd = RestClientConfig.class)
 public class RestServiceImpl implements RestService {

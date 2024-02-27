@@ -26,12 +26,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * The Class CNWNewsServiceImpl.
- *
- * @author TCS
- * @version 1.0
- */
 @ Component (service = { CNWNewsService.class }, immediate = true)
 @ Designate (ocd = CNWNewsConfig.class)
 public class CNWNewsServiceImpl implements CNWNewsService {

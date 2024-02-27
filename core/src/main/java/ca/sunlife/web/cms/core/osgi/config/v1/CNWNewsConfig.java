@@ -6,12 +6,6 @@ package ca.sunlife.web.cms.core.osgi.config.v1;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-/**
- * The Interface CNWNewsConfig.
- *
- * @author TCS
- * @version 1.0
- */
 @ ObjectClassDefinition (name = "Sun Life - CNW Services Configuration", description = "CNW Services Configuration")
 public @interface CNWNewsConfig {
 

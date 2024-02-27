@@ -31,12 +31,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/**
- * The Class SiteConfigServiceImpl.
- *
- * @author TCS
- * @version 1.0
- */
 @ Component (service = SiteConfigService.class, immediate = true)
 @ Designate (ocd = SiteConfig.class)
 public class SiteConfigServiceImpl implements SiteConfigService {

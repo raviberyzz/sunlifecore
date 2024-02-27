@@ -15,12 +15,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-/**
- * The Interface CNWNewsService.
- *
- * @author TCS
- * @version 1.0
- */
 public interface CNWNewsService {
 
   /**

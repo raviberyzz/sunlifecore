@@ -19,12 +19,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * The Class CoreResourceResolverImpl.
- *
- * @author TCS
- * @version 1.0
- */
 @ Component (service = CoreResourceResolver.class, immediate = true)
 @ Designate (ocd = CoreResourceResolverConfig.class)
 public class CoreResourceResolverImpl implements CoreResourceResolver {
