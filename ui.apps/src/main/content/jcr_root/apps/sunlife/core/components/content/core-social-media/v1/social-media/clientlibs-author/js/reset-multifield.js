@@ -8,25 +8,17 @@
         showHideHandler($(this));
     });
 
-    function showHideHandler(el) {
-        
-        var selectedValue = el.val();
-        
-        if (selectedValue == 'sociallinks') {
-            var targetElement = el.closest('div[class^="coral-Form-fieldwrapper"]').siblings('[data-showhidetargetvalue="shareoptions"]');
-            var $targetElement = $(targetElement);
-            $targetElement.find(".coral3-Multifield-item").each(function() {
-                $(this).remove();
-            });
-        }
-        else if(selectedValue == 'shareoptions') {
-            var targetElement = el.closest('div[class^="coral-Form-fieldwrapper"]').siblings('[data-showhidetargetvalue="sociallinks"]');
-            var $targetElement = $(targetElement);
-            $targetElement.find(".coral3-Multifield-item").each(function() {
-                $(this).remove();
-            });
-        }
-    }
+  function showHideHandler(el) {
+    	var selectedValue = el.val();
+        var targetvalue = (selectedValue == 'sociallinks') ? 'shareoptions' : selectedValue == 'shareoptions' ? 'sociallinks' : '';    
+        if(selectedValue) {
+        	var targetElement = el.closest('div[class^="coral-Form-fieldwrapper"]').siblings('[data-showhidetargetvalue="'+targetvalue+'"]');
+        	var $targetElement = $(targetElement);
+        	$targetElement.find(".coral3-Multifield-item").each(function() {
+            	$(this).remove();
+        	});
+    	}
+	}
 
     function initializeSocialShare(e) {
         const currentComponentPath =  Granite.author.DialogFrame.currentDialog.editable.path;
