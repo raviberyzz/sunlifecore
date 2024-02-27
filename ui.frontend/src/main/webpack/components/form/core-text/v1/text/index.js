@@ -1,24 +1,13 @@
 (function () {
-    //function use for field validation on blur
-    function fieldValidationBlurEventHandler() {
-        let $field = $(this);
-        if($field.val() === ''){
-            $field.parents(".form-floating").addClass("sl-input-error");
-            $field.parents(".form-floating").next('.form-floating-error')?.addClass("sl-input-error");
-        }
-    }
     //function use for field validation on keyup
     function fieldValidationKeyEventHandler() {
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
-        const $siblingContainer = $field.parents(".form-floating").next('.form-floating-error');
         if($field.val() === ''){
-            $fieldContainer.addClass("sl-input-error");
-            $siblingContainer?.addClass("sl-input-error");
+            $fieldContainer.toggleClass("sl-input-error");
         }
         else {
-            $fieldContainer.removeClass("sl-input-error");
-            $siblingContainer?.removeClass("sl-input-error");
+            $fieldContainer.toggleClass("sl-input-error");
         }
         if($fieldContainer.hasClass('sl-text-area')){
             $fieldContainer.find(".character-count .count").html($field.val().length)
@@ -40,13 +29,15 @@
         }
         return true;
     }
+     
     //Function used to initilize the event
-    function init() {        
+    function init() {
         let $field = $(".sl-text-field .form-control.required, .sl-text-area .form-control.required");
         let $fieldForCount = $(".sl-text-area .form-control")
         if(doesModuleExist($field)){
             $field.keyup(fieldValidationKeyEventHandler);
-            $field.blur(fieldValidationBlurEventHandler);
+        }
+        if(doesModuleExist($field) && $fieldForCount){
             $fieldForCount.keypress(fieldValidationKeyPressEventHandler);
         }
     }

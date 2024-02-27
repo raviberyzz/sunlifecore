@@ -3,31 +3,32 @@
      data-section="${options.analyticsId}">
     <sly data-sly-test="${options.type == 'CHECKBOX' || options.type == 'RADIO'}">
         <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
-        <div class="field-group-container">
+        <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <label for="${options.id}">
-                    <input class="form-check-input" type="${options.type}" name="${options.name}" id="${options.id}"
+                    <input class="form-check-input form-field" aria-required="${text.required ? 'true': 'false'}" type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}" name="${options.name}[]" id="${options.id}"
                     disabled="${optionItem.disabled}" data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
                     value="${optionItem.value}" checked="${optionItem.selected}"/>
                     <span class="form-check-label">${optionItem.text}</span>
                 </label>
-            </div>
-            <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
-                <i class="icon-class far fa-exclamation-triangle" role="presentation"></i>
-                ${options.constraintMessage}
-            </div> 
+                </div>
+                <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
+                    <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
+                    ${options.constraintMessage}
+                </div> 
         </div> 
     </sly>
-    <fieldset class="${options.spacing} cmp-form-options cmp-form-options--${options.type}">
-        <sly data-sly-test="${options.type.value == 'drop-down' || options.type.value == 'multi-drop-down'}">
+    
+    <sly data-sly-test="${options.type.value == 'drop-down' || options.type.value == 'multi-drop-down'}">
+        <fieldset class="${options.spacing} cmp-form-options cmp-form-options--${options.type}">
             <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
             <select class="cmp-form-options__field cmp-form-options__field--${options.type.value}" name="${options.name}" id="${options.id}"
                     data-sly-list.optionItem="${options.items}"
                     data-sly-attribute.multiple="${options.type.value == 'multi-drop-down'}">
                 <option value="${optionItem.value}" selected="${optionItem.selected}" disabled="${optionItem.disabled}">${optionItem.text}</option>
             </select>
-        </sly>
-        <p class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage}</p>
-    </fieldset>
+            <p class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage}</p>
+        </fieldset>    
+    </sly>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-form-options'}"></sly>
