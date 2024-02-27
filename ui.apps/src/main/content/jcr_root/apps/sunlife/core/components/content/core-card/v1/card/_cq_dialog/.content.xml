@@ -409,6 +409,15 @@
                                                 fieldDescription="A description to display as the below heading for the segmented content card."
                                                 fieldLabel="Segment Description "
                                                 useFixedInlineToolbar="{Boolean}true" />
+                                            <segmentCardFormContainer
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                uncheckedValue="{Boolean}false"
+                                                name="./segmentCardFormContainer"
+                                                fieldDescription="Check if this segment card has form inside."
+                                                text="Is form segment card?"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

@@ -42,46 +42,50 @@
                                                             text="Card Type"
                                                             granite:id="dynamic-card-container-dropdown">
                                                         <items jcr:primaryType="nt:unstructured">
+                                                            <default
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Select Card/Content Type"
+                                                                value="" />
                                                             <horizontal
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Horizontal"
-                                                                    value="horizontal"
-                                                                    granite:class="horizontal"/>
+                                                                jcr:primaryType="nt:unstructure"
+                                                                text="Horizontal"
+                                                                value="horizontal"
+                                                                granite:class="horizontal"/>
                                                             <vertical
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Vertical"
-                                                                    value="vertical"
-                                                                    granite:class="vertical"/>
+                                                                jcr:primaryType="nt:unstructure"
+                                                                text="Vertical"
+                                                                value="vertical"
+                                                                granite:class="vertical"/>
                                                             <avatar
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Avatar"
-                                                                    value="avatar"
-                                                                    granite:class="avatar"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Avatar"
+                                                                value="avatar"
+                                                                granite:class="avatar"/>
                                                             <banner
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Banner"
-                                                                    value="banner"
-                                                                    granite:class="banner"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Banner"
+                                                                value="banner"
+                                                                granite:class="banner"/>
                                                             <banner-image
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Banner Image"
-                                                                    value="banner-image"
-                                                                    granite:class="banner-image"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Banner Image"
+                                                                value="banner-image"
+                                                                granite:class="banner-image"/>
                                                             <media
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Media"
-                                                                    value="media"
-                                                                    granite:class="media"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Media"
+                                                                value="media"
+                                                                granite:class="media"/>
                                                             <segmented
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Segmented"
-                                                                    value="segmented"
-                                                                    granite:class="segmented"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Segmented"
+                                                                value="segmented"
+                                                                granite:class="segmented"/>
                                                             <statistic
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Statistic"
-                                                                    value="statistic"
-                                                                    granite:class="statistic"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Statistic"
+                                                                value="statistic"
+                                                                granite:class="statistic"/>
                                                         </items>
                                                     </cardType>
                                                 </items>
