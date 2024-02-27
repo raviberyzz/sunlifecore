@@ -1,18 +1,9 @@
-<!-- Initial code for UI Developer to access the dialog values -->
-<sly data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+    data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
-	ModalID   : ${modalObj.modalID} <br>
-	ModalType : ${modalObj.modalTypes} <br>
-	Trigger : ${modalObj.trigger} <br>
-	Heading : ${modalObj.heading} <br>
-	Content : ${modalObj.content} <br> -->
-
-    <!-- What's left: trigger, additionalText, ${buttonList.linkTarget}  aria-labelledby="two-button-modal"  -->
-    <!-- close icon, remove inline styles, add longer content to test out vertical scroll -->
-
-	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
-
-        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
+        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            data-section="${modalObj.dataSection}">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
@@ -26,33 +17,41 @@
                     <div class="modal-body">
                         ${modalObj.content @context='html'}
                     </div>
-
-                    ${modalObj.additionalText @context='html'} <br>
+                    <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
+                        <a href="${buttonList.linkURL}" class="sl-btn btn ${buttonList.buttonType}"
+                            target="${buttonList.linkTarget}">${buttonList.buttonText}</a>
+                    </div>
                     <span id="two-button-modal-end-sr" class="visually-hidden">End of dialog window</span>
                 </div>
             </div>
         </div>
+    </sly>
 
+    <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            data-section="${modalObj.dataSection}">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
+                        window</span>
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="two-button-modal">${modalObj.heading}</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ${modalObj.content @context='html'}
+                        <sly
+                            data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}" />
+                    </div>
+                    <span id="two-button-modal-end-sr" class="visually-hidden">End of dialog window</span>
+                </div>
+            </div>
+        </div>
+    </sly>
+</sly>
 
-
-		
-	</sly>
-	<!-- Data Section : ${modalObj.dataSection} <br> -->
-
-	<sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
-
-		<h3>Buttons</h3>
-		
-		<ul data-sly-list.buttonList="${modalObj.buttons}">
-			<li> Button type   : ${buttonList.buttonType} </li>
-			<li> Button Text   : ${buttonList.buttonText} </li>
-			<li> Button Target : ${buttonList.linkTarget} </li>
-		</ul>
-
-	</sly>
-
-	<sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
-		<sly data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
-	</sly>
-
+<sly data-sly-test="${!modalObj.modalID}">
+    <sly data-sly-call="${templates.placeholder @ isEmpty = !modalID, classAppend=''}"></sly>
 </sly>

@@ -4,17 +4,16 @@
 .link-list {
     min-height: 47px;
 }
-.modal.cq-cmp-modal{
-    display:block;
-    position: relative; 
-}
 .coral-Well {
     background: #d7d7d7;
 }
-
 .aem-AuthorLayer-Edit {
 
     .sl-notification.fade {
           opacity: 1;
     }
+}
+.cq-cmp-modal .modal {
+    display:block;
+    opacity:1;
 }
