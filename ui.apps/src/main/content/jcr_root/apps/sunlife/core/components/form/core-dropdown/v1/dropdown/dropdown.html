@@ -1,17 +1,31 @@
-<sly data-sly-use.options="ca.sunlife.web.cms.core.models.v1.FormDropdownModel" data-sly-test.isConfigured="${options.name}">
-    <fieldset class="cmp-form-options cmp-form-options--${options.type}">
-        <sly data-sly-test="${options.type == 'drop-down' || options.type == 'multi-drop-down'}">
-            <label class="cmp-form-options__label ${options.isScreenReader ? 'sr-only' : ''}" for="${options.id}" data-sly-test="${options.title}">${options.title}</label>
-                <select class="cmp-form-options__field cmp-form-options__field--${options.type}" aria-labelledby="${options.ariaLabel}" data-title="${options.dataTitle}" data-collection="${options.dataValue}" name="${options.name}" id="${options.id}" data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
-                	data-sly-list.itemGroup="${options.itemsGroup}" data-sly-attribute.multiple="${options.type == 'multi-drop-down'}" data-attribute-onchange-required = "${options.customActionGenerationRequired}">
-					<optgroup label="${itemGroup.groupText}" data-sly-unwrap="${!itemGroup.groupText}">
-						<sly data-sly-list.items="${itemGroup.items}">
-                     		<option value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</option>
-                     	</sly>
-                    </optgroup> 
-                </select>
-        </sly>
-        <p class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage}</p>
-    </fieldset>
+<sly data-sly-use.options="ca.sunlife.web.cms.core.models.v1.FormDropdownModel" data-sly-test.isConfigured="a${options.id}">
+
+    <div data-sly-test="${(wcmmode.edit) && !(isConfigured)}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+
+    <sly data-sly-test="${options.type == 'drop-down'}">
+        <div class="sl-dropdown ${options.spacing}" aria-disabled="false" data-title="${options.dataTitle}" data-section="${options.dataSection}">
+            <div class="combo">
+                <div aria-controls="listbox-a${options.id}" aria-expanded="false" aria-haspopup="listbox" aria-invalid="false"
+                    aria-labelledby="label-a${options.id}" id="a${options.id}" class="combo-input" role="combobox"
+                    tabindex="0">
+                    <label for="a${options.id}" id="label-a${options.id}">${options.label}</label>
+                    <div class="combo-input-selected d-none">${options.placeholderText}</div> 
+                    <span class="sl-icon fal fa-chevron-down"></span>
+                </div>
+                <div class="combo-menu" role="listbox" id="listbox-a${options.id}" aria-labelledby="label-a${options.id}" tabindex="-1">
+                    <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
+                        <div id="a${options.id}-option-${itemsList.index}" class="combo-option" role="option" aria-selected="${items.selected}" value="${items.value}" data-shortname="${items.shortName}">${items.text}</div>
+                    </sly>
+                </div>
+            </div>
+            <div id="hint-text-a${options.id}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
+
+            <select name="${options.name}" id="select-a${options.id}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" data-parsley-required hidden> 
+                <option value="defaultNoneSelected" selected disabled>defaultNoneSelected</option>
+                <sly data-sly-list.items="${options.items}" data-sly-unwrap>
+                    <option value="${items.value}">${items.text}</option>
+                </sly>
+            </select>
+        </div>   
+    </sly>
 </sly>
-<div data-sly-test="${(wcmmode.edit) && !(isConfigured)}" class="cq-placeholder" data-emptytext="${component.title}"></div>

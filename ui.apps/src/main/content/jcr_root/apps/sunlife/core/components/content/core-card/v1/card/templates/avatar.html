@@ -1,35 +1,38 @@
-<template data-sly-template.avatar="${@options}">
-  <div class="card" data-sly-test="${options.avatarSize == 'large'}">
-    <div class="sl-avatar">
-      <img src="${properties.imageFileReference}" alt="" class="large" />
-    </div>
-    <div class="card-body">
-      <div class="h2 card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
-    </div>
-  </div>
-  <div
-    class="avatar-body card"
-    data-sly-test="${options.avatarSize == 'withBody'}"
-  >
-    <div class="sl-avatar">
-      <img src="${properties.imageFileReference}" alt="" class="medium" />
-    </div>
-    <div class="card-body">
-      <div class="h4 card-title">${properties.title}</div>
-      <div class="card-text">${properties.description @ context ='html'}</div>
-      <div class="avatar-link">
-        <a
-          target="_self"
-          href="${properties.buttonLink}"
-          class="sl-link"
-          >${properties.buttonLabel}<span class="sl-icon-after"
-            ><span class="sl-icon sl-icon-chevron-circle-right"></span></span
-        ></a>
+<!--/*
+Template for avatar card component
+Figma design reference -  https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=14820-162989&mode=design&t=VXlORNimlyCeZtFI-4
+*/-->
+<template data-sly-template.details="${@ model, cardType, containerConfigs}">
+
+  <sly data-sly-set.haveSomthing="${model.cardImageFileReference || model.name || model.jobTitle || model.quote || model.ctaType }" />
+  
+    <!--/* Empty Placeholder */-->
+    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Avatar Card"></div>
+    <sly data-sly-test="${haveSomthing}">
+      <div 
+        class="sl-avatar"
+        data-sly-set.imgURL="${model.cardImageFileReference || '/etc.clientlibs/sunlife/core/components/content/core-card/v1/card/clientlibs/resources/avatar-default.png'}">
+          <img 
+            src="${imgURL}" 
+            alt="${model.altText}" 
+            class="${containerConfigs.isLarge ? 'large' : 'medium'} " />
       </div>
-    </div>
-    <div class="body-quote card-text">
-     ${properties.quote}
-    </div>
-  </div>
+      <div class="card-body">
+        <h2 class="h2 card-title" data-sly-element="${model.avatarHeadingType || 'h2'}">
+          ${model.name}</h2>
+        <div class="card-text">${model.jobTitle}</div>
+        <div class="avatar-link">
+            <sly 
+                data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+                data-sly-call="${template.details @ ctaType=model.ctaType, cardBtnTarget=model.cardBtnTarget, cardBtnURL=model.cardBtnURL, cardBtnIconType=model.cardBtnIconType, cardBtnLabel=model.cardBtnLabel, cardLinkTarget=model.cardLinkTarget, cardLinkURL=model.cardLinkURL, cardLinkIconType=model.cardLinkIconType, cardLinkLabel=model.cardLinkLabel, dataTitle=model.dataTitle }">
+            </sly>
+        </div>
+      </div>
+
+      <div 
+        data-sly-test="${containerConfigs.isBody && model.quote}" 
+        class="body-quote card-text">
+        ${model.quote @ context ='unsafe'}
+      </div>
+  </sly>
 </template>

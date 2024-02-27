@@ -5,7 +5,7 @@
         <ol class="breadcrumb-row" data-sly-list.navItem="${breadcrumb.items}">
             <li lang="${navitemList.index > 0 ? breadcrumb.langcode : ''}" class="${navItem.active ? 'active' : ''}" >
                 <a href="${navItem.URL}" data-sly-unwrap="${navItem.active}">
-                    <span >${navItem.title @context = 'html'}</span>
+                    <span aria-current="${navItem.active ? 'page' : false}">${navItem.title @context = 'html'}</span>
                 </a>
             </li>
         </ol>

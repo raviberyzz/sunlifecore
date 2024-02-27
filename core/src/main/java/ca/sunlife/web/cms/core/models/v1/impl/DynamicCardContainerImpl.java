@@ -4,6 +4,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import lombok.Getter;
 
 import ca.sunlife.web.cms.core.models.v1.DynamicCardContainer;
 
@@ -13,101 +14,155 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-dynamic-card-container/v1/dynamic-card-container";
 
     @ValueMapValue
-    private String name;
+	private String cardType;
 
     @ValueMapValue
-    private String cardType;
-
-    @ValueMapValue
-    private String heightControl;
-
-    @ValueMapValue
-    private Boolean horizontalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean horizontalMultipleWithIcon;
+    private String horizontalHeightControl;
 
     @ValueMapValue
     private String verticalHeightControl;
 
     @ValueMapValue
-    private Boolean verticalMultipleClickable;
-
-    @ValueMapValue
-    private Boolean verticalMultipleWithIcon;
-
-    @ValueMapValue
     private Boolean withLink;
 
-    @ValueMapValue
-    private String avatarSize;
+   
+	@ValueMapValue
+	private String bannerImagePosition;   
 
     @ValueMapValue
-    private String bannerImagePosition;
+	private String mediaType; 
 
     @ValueMapValue
-    private String mediaType;
+	private String spacing;
 
     @ValueMapValue
-    private String additionalFeatures;
+	
+    private Boolean horizontalMultipleCard;
 
     @ValueMapValue
-    private String statisticEnhancements;
+	private Boolean horizontalClickable; 
 
-    public String getName() {
-        return name;
-    }
+    @ValueMapValue
+	private Boolean horizontalIconCard;
 
-    public String getCardType() {
-        return cardType;
-    }
+    @ValueMapValue
+	private Boolean verticalMultipleCard;    
 
-    public String getHeightControl () {
-        return heightControl;
-    }
+    @ValueMapValue
+	private Boolean verticalClickable;
 
-    public Boolean getHorizontalMultipleClickable() {
-        return horizontalMultipleClickable;
-    }
+    @ValueMapValue
+	private Boolean verticalIconCard;
 
-    public Boolean getHorizontalMultipleWithIcon() {
-        return horizontalMultipleWithIcon;
-    }
+    @ValueMapValue
+    private Boolean largeAvatarSize; 
 
-    public Boolean getWithLink() {
-        return withLink;
-    }
+    @ValueMapValue
+	private Boolean avatarWithBody; 
 
-    public String getVerticalHeightControl() {
-        return verticalHeightControl;
-    }
+    @ValueMapValue
+	private Boolean avatarMultipleCard; 
 
-    public Boolean getVerticalMultipleClickable() {
-        return verticalMultipleClickable;
-    }
+    @ValueMapValue
+	private Boolean segmentedMultipleCard;
 
-    public Boolean getVerticalMultipleWithIcon() {
-        return verticalMultipleWithIcon;
-    }
+    @ValueMapValue
+	private Boolean segmentedformContainer; 
 
-    public String getAvatarSize() {
-        return avatarSize;
-    }
+    @ValueMapValue
+	private Boolean statisticsMultipleCard;
 
-    public String getBannerImagePosition() {
-        return bannerImagePosition;
-    }
+	@Override
+	public String getCardType() {
+		return cardType;
+	}
 
-    public String getMediaType() {
-        return mediaType;
-    }
+	@Override
+	public String getSpacing() {
+		return spacing;
+	}
 
-    public String getAdditionalFeatures() {
-        return additionalFeatures;
-    }
+	@Override
+	public String getHorizontalHeightControl() {
+		return horizontalHeightControl;
+	}
 
-    public String getStatisticEnhancements() {
-        return statisticEnhancements;
-    }
+	@Override
+	public Boolean getHorizontalMultipleCard() {
+		return horizontalMultipleCard;
+	}
 
+	@Override
+	public Boolean getHorizontalClickable() {
+		return horizontalClickable;
+	}
+
+	@Override
+	public Boolean getHorizontalIconCard() {
+		return horizontalIconCard;
+	}
+
+	@Override
+	public String getVerticalHeightControl() {
+		return verticalHeightControl;
+	}
+
+	@Override
+	public Boolean getVerticalMultipleCard() {
+		return verticalMultipleCard;
+	}
+
+	@Override
+	public Boolean getVerticalClickable() {
+		return verticalClickable;
+	}
+
+	@Override
+	public Boolean getVerticalIconCard() {
+		return verticalIconCard;
+	}
+
+	@Override
+	public Boolean getLargeAvatarSize() {
+		return largeAvatarSize;
+	}
+
+	@Override
+	public Boolean getAvatarWithBody() {
+		return avatarWithBody;
+	}
+
+	@Override
+	public Boolean getAvatarMultipleCard() {
+		return avatarMultipleCard;
+	}
+
+	@Override
+	public String getBannerImagePosition() {
+		return bannerImagePosition;
+	}
+
+	@Override
+	public String getMediaType() {
+		return mediaType;
+	}
+
+	@Override
+	public Boolean getSegmentedMultipleCard() {
+		return segmentedMultipleCard;
+	}
+
+	@Override
+	public Boolean getSegmentedformContainer() {
+		return segmentedformContainer;
+	}
+
+	@Override
+	public Boolean getStatisticsMultipleCard() {
+		return statisticsMultipleCard;
+	}
+	@Override
+	public Boolean getWithLink() {
+			return withLink;
+	}
 }

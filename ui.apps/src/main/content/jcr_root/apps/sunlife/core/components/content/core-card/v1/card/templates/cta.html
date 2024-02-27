@@ -1,0 +1,34 @@
+<!--/*
+Template for rendering link and button component
+
+<sly 
+    data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
+    data-sly-call="${template.details @ ctaType='button', cardBtnTarget='_self', cardBtnURL='URL', cardBtnIconType='file-pdf', cardBtnLabel='Click Here', cardBtnType='secondary'}">
+</sly>
+*/-->
+<template data-sly-template.details="${ @ ctaType, cardBtnTarget, cardBtnURL, cardBtnIconType, cardBtnLabel, cardBtnType, cardLinkTarget, cardLinkURL, cardLinkIconType, cardLinkLabel, cardLinkType, dataTitle }"> 
+  <sly
+    data-sly-set.isBtn="${ctaType == 'button' ? true : false }"
+    data-sly-set.iconType="${isBtn ? cardBtnIconType : cardLinkIconType }"
+    data-sly-set.cardBtnVarient="${cardBtnType ? cardBtnType : 'primary'}"
+    data-sly-set.cardLinkVarient="${cardLinkType=='secondary' ? 'sl-link sl-link-secondary' : 'sl-link'}"
+    data-sly-set.cardBtnTypeClass="${['btn',cardBtnVarient] @ join='-'}"
+    data-sly-set.cardBtnClasses="${['sl-btn','btn',cardBtnTypeClass] @ join=' '}"
+    >  
+      <a 
+        data-sly-test="${ctaType != 'noCTA'}"
+        target="${ isBtn ? cardBtnTarget : cardLinkTarget }"
+        href="${isBtn ? cardBtnURL : cardLinkURL}"
+        data-title="${dataTitle}"
+        class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta">
+        <sly data-sly-test="${iconType =='file-pdf'}">
+          <i title="PDF file link" class="far fa-${iconType}"></i>
+        </sly>
+        ${isBtn ? cardBtnLabel : cardLinkLabel }
+        <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn' && iconType}">
+          <i title="link" class="fak fa-${iconType} icn-hover-hidden"></i>
+          <i title="link" class="fak fa-${iconType}-hover icn-hover-show"></i>
+        </sly>
+      </a>
+  </sly>
+</template>
