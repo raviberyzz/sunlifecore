@@ -1,6 +1,5 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,33 +9,37 @@ import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static junitx.framework.Assert.assertEquals;
+
 @ExtendWith(AemContextExtension.class)
 public class FormContainerModelTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FormContainerModelTest.class);
-    private final AemContext context = new AemContext();
 
     @InjectMocks
-    private FormContainerModel formContainerMode1;
+    private FormContainerModel formContainerModel;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        context.addModelsForClasses(FormContainerModel.class);
-        context.load().json("/ca/sunlife/web/cms/core/models/v1/formContainer/formContainer.json", "/content");
+        formContainerModel.setSpacing("10");
+        formContainerModel.setFormAction("http://www.sunlife.ca");
+        formContainerModel.setFormTarget("target");
+        formContainerModel.setActionType("post");
+        formContainerModel.setDataSection("section");
+        formContainerModel.setValidation("true");
+
     }
 
     @Test
     public void testInit() {
         try {
-            context.currentResource("/content/formContainer");
-            FormContainerModel formContainerModel = context.request().adaptTo(FormContainerModel.class);
-            formContainerMode1.getSpacing();
-            formContainerMode1.getFormAction();
-            formContainerMode1.getFormTarget();
-            formContainerMode1.getActionType();
-            formContainerMode1.getDataSection();
-            formContainerMode1.getValidation();
+            assertEquals("10", formContainerModel.getSpacing());
+            assertEquals("http://www.sunlife.ca", formContainerModel.getFormAction());
+            assertEquals("target", formContainerModel.getFormTarget());
+            assertEquals("post", formContainerModel.getActionType());
+            assertEquals("section", formContainerModel.getDataSection());
+            assertEquals("true", formContainerModel.getValidation());
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
