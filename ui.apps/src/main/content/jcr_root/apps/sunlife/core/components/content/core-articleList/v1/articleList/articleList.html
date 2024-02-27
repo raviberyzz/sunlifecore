@@ -41,6 +41,7 @@
                             <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
                             <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
                                 data-sly-test.date="${element.value}" />
+                                data-sly-set.image=${img}
                         </sly>
                         <div class="editorial-image">
                             <a href="${pageLink @ extension = 'html'}" >
@@ -57,7 +58,7 @@
             </sly>
         </div>
     </sly>    
-
+<!-- 
     <div class="sl-cards vertical">
         <div class="card multi">
             <sly 
@@ -74,7 +75,7 @@
             data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
             data-sly-call="${template.details @  cardImage=image, imageAlt=altText,  heading=cardHeading, description=cardDescription, caption=cardCaption, ctaType=ctaType, linkTarget=cardLinkTarget, linkURL=cardLinkURL, linkLabel=cardLinkLabel, ctaDataTitle=dataTitle  }">
         </sly>
-        </div>
+        </div> -->
 
     <sly data-sly-test="${list.displayType=='articleList'}">
         <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">

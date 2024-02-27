@@ -37,10 +37,6 @@
                                         fieldLabel="Tags"
                                         multiple="{Boolean}true"
                                         name="./tagNames"/>
-                                        </items>
-                                        <granite:data
-                                            jcr:primaryType="nt:unstructured"
-                                            cq-dialog-dropdown-showhide-target=".displayType-showhide-target"/>
                                     <displayType
                                         jcr:primaryType="nt:unstructured"
                                         granite:class="cq-dialog-dropdown-showhide"
@@ -95,11 +91,62 @@
                                          checked="false"
                                          uncheckedValue="false"
                                          value="{Boolean}true"/>
+                                    <container
+                                        granite:class="hide displayType-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Title for Editorial Article List or Related Article List"
+                                                fieldLabel="Title"
+                                                name="./title">
+                                            </title>
+                                            <titleLevel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select title level"
+                                                fieldLabel="Title Level"
+                                                name="./titleLevel">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value="div"/>
+                                                    <h2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H2"
+                                                        value="h2"/>
+                                                    <h3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H3"
+                                                        value="h3"/>
+                                                    <h4
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H4"
+                                                        value="h4"/>
+                                                    <h5
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H5"
+                                                        value="h5"/>
+                                                    <h6
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H6"
+                                                        value="h6"/>
+                                                    
+                                                </items>
+                                            </titleLevel>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="relatedArticleList"/>            
+                                    </container>
                                 </items>
                             </column>
                         </items>
                     </properties>
-                    <accessibility
+                    	<accessibility
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Accessibility"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -127,7 +174,11 @@
                             </columns>
                         </items>
                     </accessibility>
-                    <spacing
+                    <analytics
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/sunlife/core/components/common/editor/dialog/analytics"/>
+                     <spacing
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
                         path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
