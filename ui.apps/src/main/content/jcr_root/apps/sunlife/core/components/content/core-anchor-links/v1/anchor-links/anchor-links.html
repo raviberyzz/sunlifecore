@@ -1,10 +1,12 @@
-<sly
-  data-sly-use.anchorLinks="ca.sunlife.web.cms.core.models.v1.AnchorLinksModel"
->
-  <aside class="sl-anchor-links">
+<sly data-sly-use.anchorLinks="ca.sunlife.web.cms.core.models.v1.AnchorLinksModel">
+  <aside class="sl-anchor-links ${anchorLinks.spacing}">
     <nav>
       <div class="anchor-heading">${anchorLinks.anchorHeading}</div>
-      <ul></ul>
+      <!-- Below UL is used for loading the list of anchor links dynamically-->
+      <ul class="anchor-link-lists ${anchorLinks.listType}" 
+        data-startLevel="${anchorLinks.startLevel}" 
+        data-stopLevel="${anchorLinks.stopLevel}">
+      </ul>
     </nav>
-  </aside></sly
->
+  </aside>
+</sly>
