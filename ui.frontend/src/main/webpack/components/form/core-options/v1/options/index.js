@@ -36,7 +36,6 @@
     function init() {
         if(doesModuleExist()){
             $(document).on('change click', '.form-check-input', checkBoxValidationEventHandler);
-            //$('.field-group-container .sl-checkbox').first().find(".form-check-input").attr("data-parsley-mincheck", "1")
         }
     }
     
