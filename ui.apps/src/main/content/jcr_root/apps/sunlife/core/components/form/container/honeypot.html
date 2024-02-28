@@ -1,5 +1,5 @@
-<sly data-sly-use.cssClassName="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid">
-     <div class="text form-input ${cssClassName.cssClass} cmp-alertnate-form-field">
+<template data-sly-template.honeyPot="${@ cssClassName}">
+    <div class="text form-input ${cssClassName.cssClass} cmp-alertnate-form-field">
           <div class="cmp-form-text" data-cmp-is="formText">
                <label for="cmp-alertnate-phone-number">Alternate Phone Number*</label>
                <input data-cmp-hook-form-text="input" type="tel" id="cmp-alertnate-phone-number" data-parsley-id="4" name="cmp-alertnate-phone-number" required tabindex="-1"/>
@@ -7,8 +7,8 @@
      </div>
      <div class="text form-input ${cssClassName.cssClass} cmp-alertnate-form-field">
           <div class="cmp-form-text" data-cmp-is="formText">
-               <label for="cmp-alertnate-email">Alternate Email*</label>
+               <label for="alertnate-email">Alternate Email*</label>
                <input data-cmp-hook-form-text="input" type="email" id="cmp-alertnate-email" data-parsley-id="4" name="cmp-alertnate-email" required tabindex="-1"/>
           </div>
      </div>
-<sly>
+</template>
