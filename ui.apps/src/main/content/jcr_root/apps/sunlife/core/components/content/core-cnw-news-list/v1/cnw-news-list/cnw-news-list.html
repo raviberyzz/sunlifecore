@@ -1,0 +1,109 @@
+<sly data-sly-use.newsModel="ca.sunlife.web.cms.core.models.v1.CNWNewsModel" />
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+
+<div data-sly-test = "${newsModel.newsType == '1'}">
+    <div class="list-group  ${newsModel.spacing}">
+        <div class="news-article" data-sly-repeat.releaseObj="${newsModel.releaseMain.releases.release}">
+        <div class="list-group-item list-group-item-action">
+          <p class="releaseDate">${releaseObj.releaseDate}</p> 
+          <a class="h5 content" x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}${releaseObj.headlineUrl}/${releaseObj.id}/">${releaseObj.headline @ context = 'html'}</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<sly data-sly-test = "${newsModel.newsType == '2'}">
+    <div class="tabs tabs-wrapper news ${newsModel.spacing}">
+        <div class="cmp-tabs sl-tabs" data-cmp-is="tabs" >
+                <div class="stack-tab-container no-border">
+                    <div class="cmp-tabs__tablist flex-row tabs-cluster without-scroll  nav nav-tabs"  id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}" role="tablist">
+                        <div class="cmp-tabs__tab${yearsToShow == newsModel.activeYear ? ' cmp-tabs__tab--active' : ''} nav-item  ${yearsToShow == newsModel.activeYear ? ' active focused' : ''}">
+                            <!-- ${newsModel.relativeURL}${yearsToShow}/ -->
+                            <a role="tab" id="${yearsToShow}-tab"
+                            aria-controls="${yearsToShow}tab-content" aria-selected="${yearsToShow == newsModel.activeYear ? 'true': 'false'}" class="with-border nav-link ${yearsToShow == newsModel.activeYear ? 'active' : ''}"
+                            tabindex="${yearsToShow == newsModel.activeYear ? '0': '-1'}" href="#">${yearsToShow}</a>
+                        </div>
+                    </div>
+                </div>
+                <div data-sly-repeat.yearsTab="${newsModel.yearsToShow}"
+                role="tabpanel"
+                class="tab-content ${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
+                data-cmp-hook-tabs="tabpanel">
+                    <!-- <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == newsModel.activeYear ? 'true' : 'false'}" tabindex="0">
+                        <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}${yearsTab}/"><span>${yearsTab}</span></a>
+                    </div> -->
+                    <sly data-sly-test="${yearsTab == newsModel.activeYear}">
+					<sly data-sly-test.newsList="${newsModel.news.releaseMain.releases.release}" />
+                    <div class="option-box no-margin news-option-table">
+						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
+                            <div class="list-group">
+                                <div class="news-article">
+                                    <div class="list-group-item list-group-item-action">
+                                        <p class="releaseDate">${news.releaseDate}</p> 
+                                        <a class="h5 content" x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a>
+                                        <p class="summary">${news.summary @ context='html'}</p>
+                                    </div>
+                                </div>
+                            </div>
+						</sly>
+                    </div>
+					<sly data-sly-test = "${!newsList}">
+						<div class="news-article">
+							<p>${newsModel.noNewsMessage @ context='html'}</p>
+						</div>
+					</sly>
+                    <sly data-sly-test.paginationObj="${newsModel.news.pagination}" />
+                    <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />
+                    <div class="pagination-component" data-sly-test="${isPaginationrequired}">
+                        <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
+                        <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
+                        <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'active' : ''}" />
+                        <sly data-sly-test="${paginationObj.curPage == 1}">
+                            <ul class="sl-basic-pagination pagination pagination-list first-page">
+                        </sly>
+                        <sly data-sly-test="${paginationObj.curPage == paginationObj.totalPages}">
+                            <ul class="sl-basic-pagination pagination pagination-list last-page">
+                        </sly>
+                        <sly data-sly-test="${paginationObj.curPage != 1 && paginationObj.curPage != paginationObj.totalPages}">
+                            <ul class="sl-basic-paginationpagination pagination-list">
+                        </sly>
+                        <div class="sl-pagination" aria-label="pagination">
+                            <ul class="sl-basic-pagination">
+                                <!-- <sly data-sly-test="${paginationObj.curPage > 1}"> -->
+                                    <li class="sl-pagination-item disabled">
+                                        <a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.prevPage}/">
+                                            <span class="fal fa-chevron-left sl-icon sl-icon_size_sm"></span>
+                                            <span class="visually-hidden">${newsModel.previousText}</span>
+                                        </a>
+                                    </li>
+                                <!-- </sly> -->
+                                <li class="sl-pagination-item selected-item">
+                                    <a x-cq-linkchecker="skip" href="${newsModel.requestURL}1/" aria-current="page">1<span class="visually-hidden">Page 1</span></a>
+                                </li>
+                                <sly data-sly-list.pageItems="${paginationObj.pageItems}">
+                                <li data-sly-test="${!pageItems.ellipsis}" class="sl-pagination-item ${paginationObj.curPage == pageItems.index ? 'active' : ''}">
+                                    <a x-cq-linkchecker="skip" href="${pageItems.href}/">${pageItems.index}<span class="visually-hidden">Go to page ${pageItems.index}</span></a>
+                                </li>
+                                </sly>
+                                <li data-sly-test = "${pageItems.ellipsis}" class="sl-pagination-item ellipsis">
+                                    <div>...</div>
+                                </li>
+                                <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
+                                    <li class="sl-pagination-item">
+                                        <a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.nextPageNo}/">
+                                            <span class="fal fa-chevron-right sl-icon sl-icon_size_sm"></span>
+                                            <span class="visually-hidden">${newsModel.nextText}</span>
+                                        </a>
+                                    </li>
+                                </sly>
+                            </ul>
+                            <button type="button" class="sl-btn load-more-pagination btn btn-secondary">Load More</button>
+                        </div>
+                    </div>
+                </sly>
+            </div>
+        </div>
+    </div>
+</sly>
