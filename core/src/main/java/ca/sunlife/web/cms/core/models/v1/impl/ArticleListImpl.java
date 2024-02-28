@@ -77,6 +77,12 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    private int maxItems;
 
    @ValueMapValue
+   private String title;
+ 
+   @ValueMapValue
+   private String titleLevel;
+
+   @ValueMapValue
    private String spacing;
 
    @ValueMapValue
@@ -236,6 +242,7 @@ package ca.sunlife.web.cms.core.models.v1.impl;
 
   /** The total match. */
   private int totalMatch;
+
  
    /** The Constant ELEMENT_NAMES. */
    private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
@@ -252,86 +259,71 @@ package ca.sunlife.web.cms.core.models.v1.impl;
    }
  
   
-    @ PostConstruct
-    private void initModel() {
-  
-      String pageLocaleDefault = StringUtils.EMPTY;
-      if (StringUtils.isEmpty(getParentPath())) {
-        return;
-      }
-      final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-      index = selectors.length > 0 ? (selectors.length - 1) : 0;
-      if (selectors.length > 0 && StringUtils.isNumeric(selectors[index]) && Integer.parseInt(selectors [ index ]) > 1
-          && ! getDisplayType().equals("articleList")) {
-        return;
-      }
-      try {
-        setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-  
-        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-        if (null != locale && locale.length() > 0) { 
-          pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
-          }
-  
-        setPageLocale(pageLocaleDefault);
-        final Session session = resourceResolver.adaptTo(Session.class);
-        if (session == null) {
-          LOGGER.warn("Session was null therefore no query was executed");
-          return;
-        }
-        final QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
-        if (queryBuilder == null) {
-          LOGGER.warn("Query builder was null therefore no query was executed");
-          return;
-        }
-  
-        final Map <String, String> queryParameterMap = new HashMap <>();
-        setQueryParameterMap(selectors, queryParameterMap);
-  
-        final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
-        LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
-        final Query query = queryBuilder.createQuery(predicateGroup, session);
-        LOGGER.debug("Query before search {}", query);
-        final SearchResult searchResult = query.getResult();
-  
-        LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
-            searchResult.getTotalMatches());
-  
-        setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
-        // Query builder has a leaking resource resolver, so the following work around
-        // is required.
-        ResourceResolver leakingResourceResolver = null;
-        try {
-          // Iterate over the hits if you need special information
-          final Iterator <Resource> resourceIterator = searchResult.getResources();
-          while (resourceIterator.hasNext()) {
-            final Resource resource = resourceIterator.next();
-            if (leakingResourceResolver == null) {
-              // Get a reference to QB's leaking resource resolver
-              leakingResourceResolver = resource.getResourceResolver();
-            }
-  
-            final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
-                contentTypeConverter, null, ELEMENT_NAMES);
-  
-            items.add(contentFragmentModel);
-          }
-        } finally {
-          if (null != leakingResourceResolver) {
-            // Always close the leaking query builder resource resolver
-            leakingResourceResolver.close();
-          }
-        }
-        if (getDisplayType().equals("articleList")) {
-          String path = currentPage.getPath();
-          path = configService.getPageRelativeUrl(path);
-          setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
-          setPageUrl(path);
-        }
-      } catch (LoginException | RepositoryException e) {
-        LOGGER.error("Login exception while trying to get resource resolver {}", e);
-      }
-    }
+   @ PostConstruct
+   private void initModel() {
+ 
+     String pageLocaleDefault = StringUtils.EMPTY;
+     if (StringUtils.isEmpty(getParentPath())) {
+       return;
+     }
+     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
+     index = selectors.length > 0 ? (selectors.length - 1) : 0;
+     if (selectors.length > 0 && StringUtils.isNumeric(selectors[index]) && Integer.parseInt(selectors [ index ]) > 1
+         && ! getDisplayType().equals("articleList")) {
+       return;
+     }
+     try {
+       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+ 
+       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+       if (null != locale && locale.length() > 0) { 
+         pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
+         }
+ 
+       setPageLocale(pageLocaleDefault);
+       final Session session = resourceResolver.adaptTo(Session.class);
+       if (session == null) {
+         LOGGER.warn("Session was null therefore no query was executed");
+         return;
+       }
+       final QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
+       if (queryBuilder == null) {
+         LOGGER.warn("Query builder was null therefore no query was executed");
+         return;
+       }
+ 
+       final Map <String, String> queryParameterMap = new HashMap <>();
+       setQueryParameterMap(selectors, queryParameterMap);
+ 
+       final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
+       LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
+       final Query query = queryBuilder.createQuery(predicateGroup, session);
+       LOGGER.debug("Query before search {}", query);
+       final SearchResult searchResult = query.getResult();
+ 
+       LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
+           searchResult.getTotalMatches());
+ 
+       setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
+       // Query builder has a leaking resource resolver, so the following work around
+       // is required.
+       final Iterator <Resource> resourceIterator = searchResult.getResources();
+       while (resourceIterator.hasNext()) {	
+     final Resource resource = resourceIterator.next();				
+     final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
+     contentTypeConverter, null, ELEMENT_NAMES);  
+     items.add(contentFragmentModel);
+   }
+       if (getDisplayType().equals("articleList")) {
+         String path = currentPage.getPath();
+         path = configService.getPageRelativeUrl(path);
+         setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
+         setPageUrl(path);
+       }
+     } catch (LoginException | RepositoryException e) {
+       LOGGER.error("Login exception while trying to get resource resolver {}", e);
+     }
+   }
  
    /**
     * Sets the query parameter map.
@@ -392,6 +384,16 @@ package ca.sunlife.web.cms.core.models.v1.impl;
     @Override
     public int getMaxItems() {
         return maxItems;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getTitleLevel() {
+        return titleLevel;
     }
 
     @Override

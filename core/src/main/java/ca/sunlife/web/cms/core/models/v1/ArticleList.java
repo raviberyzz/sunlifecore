@@ -13,6 +13,10 @@ public interface ArticleList {
 	 
 	 int getMaxItems();	 
 
+	 String getTitle();
+
+     String getTitleLevel();
+
      String getSpacing();
 
      String getAccessibilityLabel();
