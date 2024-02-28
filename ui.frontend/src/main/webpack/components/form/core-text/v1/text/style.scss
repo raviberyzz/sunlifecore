@@ -10,15 +10,24 @@
             display: none;
         }
         .error-text {
-            display: block;
+            display: inline-flex;
+            width: 100%;
+            .svg-inline--fa {
+                margin: 0;
+            }
         }
     }
 }
 .sl-text-area.form-floating.form-field-container {
     &.sl-input-error {
         background: var(--red-50);
+        margin-bottom: 50px;
         .form-control {
             border-color: var(--red-50);
+        }
+        .error-text {
+            position: relative;
+            top: 40px;
         }
     }
     .form-control {
