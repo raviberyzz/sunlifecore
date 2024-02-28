@@ -15,12 +15,6 @@
         showHide();
     });
 
-$(document).on("dialog-ready", function() {
-
-});
-
-
-
     function showHide() {
         var list = $("#tab-hide-show").find("coral-tab");
         let overview = $(".overview").prop("selected");
