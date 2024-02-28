@@ -114,7 +114,6 @@ public class MailServiceImpl implements MailService {
 
                 final ValueMap mailContent = getEmailConfig(requestParameters, request.getResourceResolver());
                 isRequestValid = isValidForm(mailContent, requestParameters, request.getResourceResolver());
-
                 if (isRequestValid) {
                     fromEmailId = getMapValue(mailContent, "from-email-id");
                     toEmailId = getMapValue(mailContent, "to-email-id");
@@ -135,8 +134,7 @@ public class MailServiceImpl implements MailService {
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-
-                if (isRequestValid) {
+                if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -149,11 +147,12 @@ public class MailServiceImpl implements MailService {
                     }
 
                     mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);
-                    if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
+                    if (null!= mailResponse && mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
                         LOG.debug("Mail sent to marketing team..");
                         return successResponse;
                     } else {
-                        LOG.error("Error in sending mail to marketing team.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
+                        // LOG.error("Error in sending mail to marketing team.. {} {}",  mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
+                        LOG.error("Error in sending mail to marketing team.. {} {}",mailResponse);
                         return errorResponse;
                     }
                 }
@@ -376,7 +375,8 @@ public class MailServiceImpl implements MailService {
      */
     private JSONObject getValidationDetails(String cfName, String cfLocale, ResourceResolver resourceResolver) {
         JSONObject formDetails = null;
-        try {//Check for missing config
+        try {
+            //Check for missing config
             final String configFilePath = mailConfig.getValidationsPath().concat(validationNodePath);
             LOG.debug("Request validation config file path {} ", configFilePath);
 
@@ -519,5 +519,11 @@ public class MailServiceImpl implements MailService {
     private static boolean isValid(String value) {
         return null != value && !value.trim().isEmpty();
     }
+
+     private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
+        final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-phone-number");
+        final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-email");
+        return (null != honeyPotFieldPhone || null != honeyPotFieldEmail);
+     }
 
 }

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+	 $(".cmp-form-button").click(function(){
+       $('#cmp-alertnate-phone-number').attr('required', 'false');
+       $('#cmp-alertnate-email').attr('required', 'false');
+	});
+
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
 		var pathName= window.location.pathname ;
 		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
