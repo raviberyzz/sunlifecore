@@ -9,7 +9,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 /**
- * The PopupModalModel is a sling model associated with Popup Modal component. 
+ * The Modal is a sling model associated with  Modal component. 
  *
  * @author Sunlife
  */
