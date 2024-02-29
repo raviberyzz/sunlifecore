@@ -16,25 +16,27 @@
 
 <sly data-sly-test = "${newsModel.newsType == '2'}">
     <div class="tabs tabs-wrapper news ${newsModel.spacing}">
-        <div class="cmp-tabs sl-tabs" data-cmp-is="tabs" >
+        <div class="cmp-tabs sl-tabs" >
                 <div class="stack-tab-container no-border">
                     <div class="cmp-tabs__tablist flex-row tabs-cluster without-scroll  nav nav-tabs"  id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}" role="tablist">
                         <div class="cmp-tabs__tab${yearsToShow == newsModel.activeYear ? ' cmp-tabs__tab--active' : ''} nav-item  ${yearsToShow == newsModel.activeYear ? ' active focused' : ''}">
                             <!-- ${newsModel.relativeURL}${yearsToShow}/ -->
-                            <a role="tab" id="${yearsToShow}-tab"
+                            <a role="tab" id="tab-${yearsToShow}"
                             aria-controls="${yearsToShow}tab-content" aria-selected="${yearsToShow == newsModel.activeYear ? 'true': 'false'}" class="with-border nav-link ${yearsToShow == newsModel.activeYear ? 'active' : ''}"
                             tabindex="${yearsToShow == newsModel.activeYear ? '0': '-1'}" href="#">${yearsToShow}</a>
                         </div>
                     </div>
                 </div>
+                <div class="tab-content">
                 <div data-sly-repeat.yearsTab="${newsModel.yearsToShow}"
                 role="tabpanel"
-                class="tab-content ${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
-                data-cmp-hook-tabs="tabpanel">
+                id="default-tab-tabpane-tab-${yearsTab}"
+                class="${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
+                >
                     <!-- <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == newsModel.activeYear ? 'true' : 'false'}" tabindex="0">
                         <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}${yearsTab}/"><span>${yearsTab}</span></a>
                     </div> -->
-                    <sly data-sly-test="${yearsTab == newsModel.activeYear}">
+                    <sly data-sly-test="${yearsTab == newsModel.activeYear}"/>
 					<sly data-sly-test.newsList="${newsModel.news.releaseMain.releases.release}" />
                     <div class="option-box no-margin news-option-table">
 						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
@@ -102,7 +104,8 @@
                             <button type="button" class="sl-btn load-more-pagination btn btn-secondary">Load More</button>
                         </div>
                     </div>
-                </sly>
+                </div>
+                </div>
             </div>
         </div>
     </div>
