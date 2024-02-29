@@ -1,4 +1,7 @@
+@import '@sunlife/ui-styles/design-system';
 .sl-anchor-links nav {
-    position: fixed;
-    top: var(--sl-anchor-links-sticky-top);
+    @include media-breakpoint-up(md) { 
+        position: fixed;
+        top: var(--sl-anchor-links-sticky-top);
+    }
 }

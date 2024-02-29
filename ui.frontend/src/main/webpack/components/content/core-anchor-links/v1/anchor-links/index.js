@@ -15,6 +15,7 @@ $(document).ready(function () {
       $(this).attr("id", "anchorLinkHeading-"+index);
       anchorLinksListItem += '<li class=""><a class="anchorLinkHeading-'+index+'" href="#anchorLinkHeading-'+index+'">'+$(this).html()+'</a></li>';
     })
+    //Remove this once the table of content load the anchor links
     $anchorLinksList.html(anchorLinksListItem);
   }
   var handleScroll = function handleScroll(e) {
@@ -23,6 +24,7 @@ $(document).ready(function () {
     $anchorLinks.each(function(index, item){
       linkIds.push("anchorLinkHeading-"+index)
     })
+    let activeLinkIndex = null;
     for (var index = 0; index < linkIds.length; index++) {
       var linkId = linkIds[index];
       var targetElement = document.getElementById(linkId);
@@ -30,10 +32,13 @@ $(document).ready(function () {
         var eleRect = targetElement === null || targetElement === void 0 ? void 0 : targetElement.getBoundingClientRect();
         var isInView = eleRect.top >= 0 && eleRect.bottom <= window.innerHeight;
         if (isInView) {
-          $(".sl-anchor-links li").removeClass("active-anchor");
-          $(".anchorLinkHeading-"+index).parents("li").addClass("active-anchor");
+          activeLinkIndex = index;
         }
       }
+    }
+    if(activeLinkIndex !== null){
+      $(".sl-anchor-links li").removeClass("active-anchor");
+      $(".anchorLinkHeading-"+activeLinkIndex).parents("li").addClass("active-anchor");
     }
   };
   function init() {
