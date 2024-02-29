@@ -1,21 +1,16 @@
 <sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}">
-    <div data-sly-test.customIconType="${notification.iconType == 'info' ? 'fa-info sl-icon_color_information sl-icon_size_md': ''}"
-         data-sly-unwrap></div>
-    <div data-sly-test.customIconType="${notification.iconType == 'success' ? 'fa-check-circle-yes sl-icon_color_success sl-icon_size_md': customIconType}"
-         data-sly-unwrap></div>
-    <div data-sly-test.customIconType="${notification.iconType == 'warning' ? 'fa-exclamation-circle sl-icon_color_warning sl-icon_size_md': customIconType}"
-         data-sly-unwrap></div>
-    <div data-sly-test.customIconType="${notification.iconType == 'error' ? 'fa-exclamation-triangle sl-icon_size_md sl-icon_color_error': customIconType}"
-         data-sly-unwrap></div>
     <div role="alert"
          class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}">
         <div class="container">
             <sly data-sly-test.displayNotificationHeading="${notification.notificationHeading} ">
                 <div class="notification-component" aria-label="${notification.accessibilityLabel}"
                      data-title="${notification.dataTitle}">
-                    <div class="notification-icon">
-                        <span class="sl-icon fak ${iconType}"></span>
+                     <div class="notification-icon">
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'info'}"> <span class="sl-icon fak fa-info sl-icon_color_information sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'success'}"> <span class="sl-icon fak fa-check-circle-yes sl-icon_color_success sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'warning'}"> <span class="sl-icon fak fa-exclamation-circle sl-icon_color_warning sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'danger'}"> <span class="sl-icon fak fa-exclamation-triangle sl-icon_size_md sl-icon_color_error"></span> </sly>
                     </div>
                     <div class="h4 notification-heading">${notification.notificationHeading}</div>
                     <div class="notification-buttons">
@@ -38,8 +33,11 @@
             <sly data-sly-test.displayNotificationHeading="${!notification.notificationHeading} ">
                 <div class="notification-component" aria-label="${notification.accessibilityLabel}"
                      data-title="${notification.dataTitle}">
-                    <div class="notification-icon">
-                        <span class="sl-icon fak ${iconType}"></span>
+                     <div class="notification-icon">
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'info'}"> <span class="sl-icon fak fa-info sl-icon_color_information sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'success'}"> <span class="sl-icon fak fa-check-circle-yes sl-icon_color_success sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'warning'}"> <span class="sl-icon fak fa-exclamation-circle sl-icon_color_warning sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'danger'}"> <span class="sl-icon fak fa-exclamation-triangle sl-icon_size_md sl-icon_color_error"></span> </sly>
                     </div>
                     <div class="notification-text">${notification.text @context ='html'}</div>
                     <div class="notification-buttons">

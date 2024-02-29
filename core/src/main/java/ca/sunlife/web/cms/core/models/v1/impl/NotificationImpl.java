@@ -49,38 +49,6 @@ public class NotificationImpl implements Notification {
     private String spacing;
 
 
-    @Getter
-    private String iconType;
-
-
-    protected static final String INFO = "info";
-
-    protected static final String SUCCESS = "success";
-
-    protected static final String WARNING = "warning";
-
-    protected static final String ERROR = "error";
-    protected static final String DANGER = "danger";
-
-
-    @PostConstruct
-    private void initModel() {
-        if (notificationType != null) {
-            if (notificationType.equals(INFO)) {
-                this.iconType = INFO;
-            }
-            if (notificationType.equals(SUCCESS)) {
-                this.iconType = SUCCESS;
-            }
-            if (notificationType.equals(WARNING)) {
-                this.iconType = WARNING;
-            }
-            if (notificationType.equals(DANGER)) {
-                this.iconType = ERROR;
-            }
-        }
-    }
-
     @Override
     public String getNotificationType() {
         return notificationType;
