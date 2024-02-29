@@ -1,114 +1,101 @@
 <sly data-sly-use.list="ca.sunlife.web.cms.core.models.v1.ArticleList"
      data-sly-test="${list.listItems.size>0}">
+
 <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+<!-- relatedArticleList -->
     <sly data-sly-test="${list.displayType=='relatedArticleList'}">
+        <sly data-sly-test="list.title">
+            <div class="title col-sm-12 col-md-12 col-xs-12">
+                <div data-sly-element="${list.titleLevel}">${list.title}</div>
+            </div>
+        </sly>
         <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
-            <sly data-sly-test="list.title">
-                <div class="title col-sm-12 col-md-12 col-xs-12"><div data-sly-element="${list.titleLevel}">${list.title}</div></div>
-            </sly>
             <sly data-sly-list="${list.listItems}">
-                <div class="col-sm-4 col-md-4 col-xs-12">
-                    <div class="article-content">
-                        <sly data-sly-list.element="${item.elements}">
-                            <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
-                            <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
-                            <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
-                        </sly>
-                        <a href="${pageLink @ extension = 'html'}">
-                            <div class="article-image" aria-hidden="true">
-                                <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="" aria-hidden="true" />                                
-                            </div>
-                            ${headline @context='html'}
-                        </a>
-                    </div>
-                </div>
+                <sly data-sly-list.element="${item.elements}">
+                    <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
+                    <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
+                    <sly data-sly-test="${element.dataType == 'calendar'}" 
+                        data-sly-test.date="${element.value}" />
+                </sly>
+                <a class="card multi clickable" href="${pageLink @ extension = 'html'}">
+                    <sly 
+                        data-sly-set.image="${img @ context = 'text'}"
+                        data-sly-set.altText="${headline}"
+                        data-sly-set.format="${list.dateFormat}"
+                        data-sly-set.dateFormat="${format ? format : 'MMMM dd, YYYY'}"
+                        data-sly-set.cardCategory="${dateFormat @ format=date, type='date', locale = list.pageLocale}"
+                        data-sly-set.cardHeading="${headline @context='html'}"
+                        data-sly-set.cardDescription="${description @context='html'}"
+                        data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
+                        data-sly-call="${template.details @  cardImage=image, imageAlt=altText, category=cardCategory,  heading=cardHeading, description=cardDescription }" />
+                </a>
             </sly>
         </div>
     </sly>
 
-</div>
-
+<!-- editorialArticleList -->
     <sly data-sly-test="${list.displayType=='editorialArticleList' && list.pageNum == 0}">
-        <div class="row editorial-related-articles ${list.spacing}" aria-label="${list.accessibilityLabel}">
+        <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
-                <div class="col-sm-4 col-md-4 col-xs-12">
-                    <div class="row-separator-yellow"></div>
-                    <div class="editorial-article-content">
-                        <sly data-sly-list.element="${item.elements}">
-                            <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
-                            <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
-                            <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
-                            <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
-                            <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
-                                data-sly-test.date="${element.value}" />
-                                data-sly-set.image=${img}
-                        </sly>
-                        <div class="editorial-image">
-                            <a href="${pageLink @ extension = 'html'}" >
-                                <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="${headline}" />
-                            </a>
-                        </div>
-                        <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly> <br/></div>
-                        <div class="editorial">
-                            <a href="${pageLink @ extension = 'html'}">${headline @context='html'}</a><br />
-                        </div>
-                        ${description @context='html'}
-                    </div>
-                </div>
+                <sly data-sly-list.element="${item.elements}">
+                    <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
+                    <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
+                    <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
+                        data-sly-test.date="${element.value}" />
+                </sly>
+                <a class="card multi clickable" href="${pageLink @ extension = 'html'}">
+                    <sly 
+                        data-sly-set.image="${img @ context = 'text'}"
+                        data-sly-set.altText="${headline}"
+                        data-sly-set.format="${list.dateFormat}"
+                        data-sly-set.dateFormat="${format ? format : 'MMMM dd, YYYY'}"
+                        data-sly-set.cardCategory="${dateFormat @ format=date, type='date', locale = list.pageLocale}"
+                        data-sly-set.cardHeading="${headline @context='html'}"
+                        data-sly-set.cardDescription="${description @context='html'}"
+                        data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
+                        data-sly-call="${template.details @  cardImage=image, imageAlt=altText, category=cardCategory,  heading=cardHeading, description=cardDescription }" />
+                </a>
             </sly>
         </div>
     </sly>    
-<!-- 
-    <div class="sl-cards vertical">
-        <div class="card multi">
-            <sly 
-            data-sly-set.image="${'/content/dam/sunlife/regional/global-marketing/images/com/sunlife-page-image-372x287.jpg' }"
-            data-sly-set.altText="${'sdasd' }"
-            data-sly-set.cardHeading="${'this is heading'  }"
-            data-sly-set.cardDescription="${'this is description'  }"
-            data-sly-set.cardCaption="${'this is caption' }"
-            data-sly-set.ctaType="${'link'  }"
-            data-sly-set.cardLinkTarget="${ '_self' }"
-            data-sly-set.cardLinkURL="${'#' }"
-            data-sly-set.cardLinkLabel="${'link label' }"
-            data-sly-set.dataTitle="${'this is data title' }"
-            data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
-            data-sly-call="${template.details @  cardImage=image, imageAlt=altText,  heading=cardHeading, description=cardDescription, caption=cardCaption, ctaType=ctaType, linkTarget=cardLinkTarget, linkURL=cardLinkURL, linkLabel=cardLinkLabel, ctaDataTitle=dataTitle  }">
-        </sly>
-        </div> -->
 
+<!-- articleList -->
     <sly data-sly-test="${list.displayType=='articleList'}">
         <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
-            <div class="card multi">
-                    <sly data-sly-list="${list.listItems}">
-                        <li>
-                            <sly data-sly-list.element="${item.elements}">
-                                <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
-                                <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
-                                <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
-                                <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
-                                <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
-                                    data-sly-test.date="${element.value}" />
-                            </sly>
-                            <div class="content-list-thumbnail">
-                                <a href="${pageLink @ extension = 'html'}" >
-                                    <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="${headline}" />
-                                </a>
-                            </div>
-                            <div class="content-list-summary">
-                                <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly></div>
-                                <h2>
-                                    <a href="${pageLink @ extension = 'html'}">${headline @context='html'}</a>
-                                </h2>
-                                ${description @context='html'}
-                            </div>
-                        </li>
-                    </sly>
-                <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html"
-                        data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
-            </div>            
+            <sly data-sly-list="${list.listItems}">
+                <sly data-sly-list.element="${item.elements}">
+                    <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
+                    <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
+                    <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
+                    <sly data-sly-test="${element.dataType == 'calendar'}"  data-sly-test.date="${element.value}" />
+                </sly>
+                <a class="card multi clickable" href="${pageLink @ extension = 'html'}">
+                    <sly 
+                        data-sly-set.image="${img @ context = 'text'}"
+                        data-sly-set.altText="${headline}"
+                        data-sly-set.format="${list.dateFormat}"
+                        data-sly-set.dateFormat="${format ? format : 'MMMM dd, YYYY'}"
+                        data-sly-set.cardCategory="${dateFormat @ format=date, type='date', locale = list.pageLocale}"
+                        data-sly-set.cardHeading="${headline @context='html'}"
+                        data-sly-set.cardDescription="${description @context='html'}"
+                        data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/horizontal-vertical.html"
+                        data-sly-call="${template.details @  cardImage=image, imageAlt=altText, category=cardCategory,  heading=cardHeading, description=cardDescription }" />
+                </a>
+            </sly>
         </div>
+
+        <sly 
+            data-sly-test="${list.pagination}" 
+            data-sly-use.tpl="sunlife/core/components/templates/v1/pagination.html"
+            data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
     </sly>
+
+<!-- overviewHighlight -->
      <sly data-sly-test="${list.displayType=='overviewHighlight'}">
         <ul class="dotted ${list.spacing}" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
@@ -125,25 +112,11 @@
 
 </sly>
 
-<sly data-sly-list="${list.listItems}">
-    <div class="col-sm-4 col-md-4 col-xs-12">
-        <div class="article-content">
-            <sly data-sly-list.element="${item.elements}">
-                <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
-                <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
-                <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
-            </sly>
-            <a href="${pageLink @ extension = 'html'}">
-                <div class="article-image" aria-hidden="true">
-                    <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="" aria-hidden="true" />                                
-                </div>
-                ${headline @context='html'}
-            </a>
-        </div>
-    </div>
-</sly>
-   
-
-
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
+
+<style>
+    a.card {
+        text-decoration: none;
+    }
+</style> 
