@@ -134,10 +134,10 @@ public class MailServiceImpl implements MailService {
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-                 System.out.println("isRequestValid------..   {}"+isRequestValid +" ishoneyPot--->>>   "+ishoneyPotFieldEmpty(requestParameters));
+                LOG.info("isRequestValid------..   {}"+isRequestValid +" ishoneyPot--->>>   "+ishoneyPotFieldEmpty(requestParameters)); 
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
                     LOG.debug("isClient------..   {}",isClient);
-                    System.out.println("isClient------..   {}"+isClient);
+                   LOG.info("isClient------..   {}"+isClient);
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -148,9 +148,9 @@ public class MailServiceImpl implements MailService {
                             LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
                         }
                     }
-                    System.out.println("LINEEEE---151111------..   {}");
+                   LOG.info("LINEEEE---151111------..   {}");
                     mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);
-                     System.out.println("mailResponse LINEEEE---15222222------..   {}"+mailResponse);
+                    LOG.info("mailResponse LINEEEE---15222222------..   {}"+mailResponse);
                     LOG.debug("mailResponse------..   {}",mailResponse);
                     if (null!= mailResponse )  {
                         if(null != mailResponse.getStatusLine() && mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK){
