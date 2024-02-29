@@ -1,0 +1,24 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/design-system';
+@import '@sunlife/ui-styles/components/pagination';
+
+.news-article{
+    margin-bottom: 40px;
+    .content{
+        text-decoration: none;
+    }
+    .releaseDate{
+            @include sl-body-small;
+            color: var(--grey-600);
+            margin-bottom: 0.75rem;
+    }
+    .h5{
+            color: var(--brand-tertiary-800);
+            margin-bottom: 0.75rem;
+    }
+    .summary{
+            @include sl-body-medium;
+            margin-bottom: 0; 
+    }
+}
+

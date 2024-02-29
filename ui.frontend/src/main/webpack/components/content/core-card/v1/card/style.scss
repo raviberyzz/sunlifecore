@@ -1,6 +1,7 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
 
+/* Style overirde for font-awesome icon fixes */ 
 .card {
     .sl-link {
         .svg-inline--fa {
@@ -21,6 +22,7 @@
     width: 4rem !important;
 }
 
+/* Style for banner content block */ 
 .sl-banner-content-block  {
     --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
     margin-left: 50%;
@@ -28,6 +30,7 @@
     width: var(--viewportWidth);
 }
 
+/* Style for avatar content block */ 
 .sl-avatar-blocks {
     .card {
         .card-body {
@@ -39,10 +42,53 @@
     }
 }
 
+/* Style for media content block */ 
+.sl-media-block {
+    .sl-article-video iframe {
+        width: 100% !important;
+    }
+}
+
+/* Style for banner-image content block */ 
+.sl-banner-image-block {
+    &.banner-image-block-left,
+    &.banner-image-block-right {
+      .card-body {
+        .card-text {
+          .caption-text p {
+            @include sl-body-small;
+            color: var(--grey-700);
+            margin-bottom: 0;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+}
+  
 
 // TODO: Helios-bugfix - Need to remove once helios fix it
 .sl-cards.horizontal .card picture {
     @include media-breakpoint-up(md) {
         width: 50%;
+    }
+}
+
+// TODO: Helios-bugfix - Need to remove once helios fix it
+.sl-cards {
+    &.vertical {
+      .card {
+        &.multi-v {
+            flex-basis: inherit;
+            
+            @include media-breakpoint-only(md) {
+                flex-basis: inherit;
+            }
+
+            @include media-breakpoint-only(sm) {
+                width: width-by-cols(sm, 6);
+            }
+        }
+      }
     }
 }

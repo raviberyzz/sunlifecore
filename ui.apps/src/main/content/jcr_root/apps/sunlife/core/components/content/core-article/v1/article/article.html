@@ -1,29 +1,79 @@
+<!--/*  
+Template to render Article detail.
+Figma - https://www.figma.com/file/WWnQlqR6HRusFOYRIjAZ8G/1.1-Helios-Web-Templates?type=design&node-id=2479-39708&mode=design&t=SIfulKvfIgEcXe74-4
+*/-->
 <sly data-sly-use.article="ca.sunlife.web.cms.core.models.v1.Article"></sly>
 <sly data-sly-test.notEmpty="${article.fragmentPath}">
-    <article class="article-wrapper">
-        <div class="article-intro">
-            <div class="article-date" data-sly-test="${article.checkboxHideDate}">
-                ${article.articleData.articlePublishedDate}
+    <article class="article-container mt-sl24">
+        <div class="row">
+            <div class="col-sm-3">
+                <!-- Time to read article -->
+                <div 
+                    data-sly-test="${article.articleData.articleReadtime}" 
+                    class="body-small caption-text mb-sl8">
+                        ${article.articleData.articleReadtime} ${'read' @ i18n}
+                </div>
+                <!-- article publish date -->
+                <div 
+                    data-sly-test="${article.checkboxHideDate && article.articleData.articlePublishedDate}" 
+                    class="body-small">
+                    ${article.articleData.articlePublishedDate}
+                </div>
             </div>
-            <div class="article-title heading-2" data-sly-test="${article.articleData.articleHeadline}">
-                <h1>${article.articleData.articleHeadline @context='html'}</h1>
-            </div>
-            <div class="article-author-name" data-sly-test="${article.articleData.authorName}">
-                ${'By' @ i18n} ${article.articleData.authorName @context='html'}
+            <div class="col-sm-9">
+                <!-- social share on article page -->
+                <div
+                    data-sly-test="${article.socialShare}" 
+                    class="article-socials">
+                    <sly data-sly-resource="${ 'social-media' @ resourceType='sunlife/core/components/content/core-social-media/v1/social-media'}"/>
+                </div>
             </div>
         </div>
-        ${article.articleData.articleMiniDescription  @context='html'}
-        <figure class="article-image" data-sly-test="${article.articleData.articleImage}">
-            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${article.articleData.articleImage}" alt="${article.articleData.articleHeadline}" aria-hidden="true">
-        </figure>
-        <div class="article-body">
+        <!-- headline of article page -->
+        <h1 
+            data-sly-test="${article.articleData.articleHeadline}" 
+            class="mt-sl24 mb-sl4">
+                ${article.articleData.articleHeadline @context='html'}
+        </h1>
+        <!-- article author name -->
+        <div 
+            data-sly-test="${article.articleData.authorName}" 
+            class="caption-text mb-sl24">
+            ${'By' @ i18n} ${article.articleData.authorName @context='html'}
+        </div>
+        <!-- Mini description of article page -->
+        <div 
+            data-sly-test="${article.articleData.articleMiniDescription}"
+            class="mb-sl24">
+                ${article.articleData.articleMiniDescription  @context='html'}
+        <div>
+        <!-- Image of article page -->
+        <div 
+            data-sly-test="${article.articleData.articleImage}" 
+            class="sl-article-image mb-sl24">
+                <sly
+                    data-sly-use.template="/apps/sunlife/core/components/content/core-image/v1/image/templates/generic-image.html"
+                    data-sly-call="${template.details @  imageRef=article.articleData.articleImage,  altText=article.articleData.articleHeadline, imgClass='article-img w-100', isLazyLoaded=imgLazyLoaded }">
+                </sly>
+        </div>
+        <!-- main description of article page -->
+        <div 
+            data-sly-test="${article.articleData.articleMainDescription}"
+            class="mb-sl24">
             ${article.articleData.articleMainDescription  @context='html'}
-            <div><sly data-sly-resource="${'./layout-container' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}"></sly></div>
-           </div>
-        <div class="article-footer" data-sly-test="${article.articleData.authorBody}">
-            ${article.articleData.authorBody  @context='html'}
+        <div>
+        <!-- article page layout container for custom content -->
+        <div>
+            <sly data-sly-resource="${ 'layout-container' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}"/>
+        </div>
+        <!-- author body for article page -->
+        <div 
+            data-sly-test="${article.articleData.authorBody}" 
+            class="mb-sl24">
+                ${article.articleData.authorBody  @context='html'}
         </div>
     </article>
+    <!-- article page open schema -->
     <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
         {"@context":"http://schema.org","@type":"Article",
         "author":{"@type":"Person","name":"${article.articleData.authorName @context='html'}"},
