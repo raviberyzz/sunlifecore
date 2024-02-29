@@ -9,7 +9,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  * @author TCS
  * @version 1.0
  */
-@ ObjectClassDefinition (name = "Sun Life - Advisor Web Service Configuration", description = "Article Query Service Configuration")
+@ ObjectClassDefinition (name = "Sun Life - Article Query Service Configuration", description = "Article Query Service Configuration")
 public @interface ArticleQueryServiceConfig {
 
   /**

@@ -7,7 +7,7 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 
 /**
- * The Interface AdvisorDetailService.
+ * The Interface ArticleQueryService.
  *
  * @author TCS
  * @version 1.0
@@ -15,7 +15,7 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 public interface ArticleQueryService {
 
   /**
-   * Gets the advisor details.
+   * Gets the Article Query details.
    *
    * @param selectors
    *          the language
