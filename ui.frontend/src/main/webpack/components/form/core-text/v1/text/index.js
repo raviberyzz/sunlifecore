@@ -4,10 +4,10 @@
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
         if($field.val() === ''){
-            $fieldContainer.toggleClass("sl-input-error");
+            $fieldContainer.addClass("sl-input-error");
         }
         else {
-            $fieldContainer.toggleClass("sl-input-error");
+            $fieldContainer.removeClass("sl-input-error");
         }
         if($fieldContainer.hasClass('sl-text-area')){
             $fieldContainer.find(".character-count .count").html($field.val().length)
