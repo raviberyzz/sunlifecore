@@ -9,20 +9,16 @@ $(document).ready(function () {
   function loadAnchorLinks() {
     const $anchorLinks = $("h2");
     if($anchorLinks.length === 0) return;
-    const $anchorLinksList = $(".sl-anchor-links ul");
-    let anchorLinksListItem = '';
     $anchorLinks.each(function(index, item){
-      $(this).attr("id", "anchorLinkHeading-"+index);
-      anchorLinksListItem += '<li class=""><a class="anchorLinkHeading-'+index+'" href="#anchorLinkHeading-'+index+'">'+$(this).html()+'</a></li>';
+      $(this).attr("id", "heading-"+(index+1));
+      $(".cmp-toc__content li").eq(index).addClass("heading-"+(index+1))
     })
-    //Remove this once the table of content load the anchor links
-    $anchorLinksList.html(anchorLinksListItem);
   }
   var handleScroll = function handleScroll(e) {
     let linkIds = [];
-    const $anchorLinks = $(".anchor-link-lists li");
+    const $anchorLinks = $(".cmp-toc__content li");
     $anchorLinks.each(function(index, item){
-      linkIds.push("anchorLinkHeading-"+index)
+      linkIds.push("heading-"+(index+1))
     })
     let activeLinkIndex = null;
     for (var index = 0; index < linkIds.length; index++) {
@@ -32,13 +28,13 @@ $(document).ready(function () {
         var eleRect = targetElement === null || targetElement === void 0 ? void 0 : targetElement.getBoundingClientRect();
         var isInView = eleRect.top >= 0 && eleRect.bottom <= window.innerHeight;
         if (isInView) {
-          activeLinkIndex = index;
+          activeLinkIndex = index+1;
         }
       }
     }
     if(activeLinkIndex !== null){
       $(".sl-anchor-links li").removeClass("active-anchor");
-      $(".anchorLinkHeading-"+activeLinkIndex).parents("li").addClass("active-anchor");
+      $(".heading-"+activeLinkIndex).addClass("active-anchor");
     }
   };
   function init() {
