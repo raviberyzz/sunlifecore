@@ -114,6 +114,7 @@ public class MailServiceImpl implements MailService {
 
                 final ValueMap mailContent = getEmailConfig(requestParameters, request.getResourceResolver());
                 isRequestValid = isValidForm(mailContent, requestParameters, request.getResourceResolver());
+                 LOG.debug("isRequestValid..---->>>>   ",isRequestValid);
                 if (isRequestValid) {
                     fromEmailId = getMapValue(mailContent, "from-email-id");
                     toEmailId = getMapValue(mailContent, "to-email-id");
@@ -133,24 +134,32 @@ public class MailServiceImpl implements MailService {
                 resourceResolver.close();
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
+                LOG.debug("successResponse..---->>>>  {} ",successResponse);
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
+                 LOG.debug("errorResponse..---->>>>  {} ",errorResponse);
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
+                     LOG.debug("INSIDEEEEEEEEEEEE..---ishoneyPotFieldEmpty->>>>   ");
                     if ("true".equalsIgnoreCase(isClient)) {
+                        LOG.debug("INSIDEEEEEEEEEEEE..---143333333->>>>   ");
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
+                        LOG.debug("INSIDEEEEEEEEEEEE..--mailResponse-1455555555->>>>  {}  ",mailResponse);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
                             LOG.debug("Mail sent to client..");
-                        } else {
+                        } else {                        
                             LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
                             mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, requestParameters);
+                            LOG.debug("INSIDEEEEEEEEEEEE..--mailResponse-15111111111->>>> {}   ",mailResponse);
                             LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
                         }
                     }
-
-                    mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);
+                    LOG.debug("INSIDEEEEEEEEEEEE..--mailResponse-155555555555->>>>   ");
+                    mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);  
+                    LOG.debug("INSIDEEEEEEEEEEEE..--mailResponse-15777777777->>>>  {}   ",mailResponse);                   
                     if (null!= mailResponse && mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
                         LOG.debug("Mail sent to marketing team..");
                         return successResponse;
                     } else {
+                         LOG.debug("INSIDEEEEEEEEEEEE..--mailResponse-162222222222->>>>   ",mailResponse);
                         // LOG.error("Error in sending mail to marketing team.. {} {}",  mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
                         LOG.error("Error in sending mail to marketing team.. {} {}",mailResponse);
                         return errorResponse;
