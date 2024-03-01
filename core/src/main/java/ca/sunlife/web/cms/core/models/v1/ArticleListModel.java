@@ -9,7 +9,6 @@ import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
-import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
@@ -205,8 +204,8 @@ public class ArticleListModel implements ComponentExporter {
         contentFragmentCriteria.setOffset(offset);
         contentFragmentCriteria.setLimit(getMaxItems());
         contentFragmentCriteria.setTagNames(getTagNames());
-        contentFragmentCriteria.setModelPath("/conf/sunlife/settings/dam/cfm/models/article-model");
-        contentFragmentCriteria.setOrderBy("@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
+        contentFragmentCriteria.setModelPath(ContentFragmentConstants.ARTICLE_CFM_MODEL_PATH);
+        contentFragmentCriteria.setOrderBy(ContentFragmentConstants.PROP_PATH_ARTICLE_PUBLISH_DATE);
         contentFragmentCriteria.setOrderBySort("desc");
         return damContentFragmentService.getCFResourceList(contentFragmentCriteria);
     }

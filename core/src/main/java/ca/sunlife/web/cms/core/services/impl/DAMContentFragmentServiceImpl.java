@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.services.impl;
 
 import ca.sunlife.web.cms.core.beans.v1.ContentFragmentCriteria;
+import ca.sunlife.web.cms.core.constants.v1.ContentFragmentConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.DAMContentFragmentService;
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 
 @Component(service = DAMContentFragmentService.class, immediate = true)
@@ -68,16 +70,16 @@ public class DAMContentFragmentServiceImpl implements DAMContentFragmentService 
         queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
         queryParameterMap.put("p.limit", Integer.toString(contentFragmentCriteria.getLimit()));
         queryParameterMap.put("p.offset", Integer.toString(contentFragmentCriteria.getOffset()));
-        queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
+        queryParameterMap.put("1_property", ContentFragmentConstants.JCR_PATH_METADATA_MODEL);
         queryParameterMap.put("1_property.value", contentFragmentCriteria.getModelPath());
         queryParameterMap.put("orderby", contentFragmentCriteria.getOrderBy());
         queryParameterMap.put("orderby.sort", contentFragmentCriteria.getOrderBySort());
         String tagNames[] = contentFragmentCriteria.getTagNames();
         if (tagNames != null && tagNames.length > 0) {
-            queryParameterMap.put("2_property", JcrConstants.JCR_CONTENT + "/metadata/" + JcrConstants.JCR_MIXINTYPES);
+            queryParameterMap.put("2_property", ContentFragmentConstants.JCR_PATH_METADATA_MIXINTYPES);
             queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
             // Check for the actual tags (by default, tag are or'ed)
-            queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
+            queryParameterMap.put("tagid.property", ContentFragmentConstants.JCR_PATH_METADATA_TAGS);
             for (int i = 0; i < tagNames.length; i++) {
                 queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames[i].trim());
             }
