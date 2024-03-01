@@ -424,6 +424,8 @@ public class MailServiceImpl implements MailService {
             for (int i = 0; i < mandatoryFields.length(); i++) {
                 String mandatoryKey = mandatoryFields.getString(i);
                 String paramValue = requestParameters.getOrDefault(mandatoryKey, "NA");
+                LOG.debug("mandatoryKey---->>>  {} ",mandatoryKey);
+                LOG.debug("   paramValue--->>>   {} ",paramValue);
                 if (paramValue.equals("NA") || paramValue.trim().length() == 0) {
                     return false;
                 }
