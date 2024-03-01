@@ -20,6 +20,8 @@
         /* show/hide tabs of different card type depending upon current card type */
         tabs.each(function (index, value) {
             currentTab = $(value).find('coral-tab-label').text().toLowerCase();
+            currentTab = (currentTab == "banner image block") ? 'banner-image' : currentTab;
+
             if ((currentTab != 'asset' && currentTab != 'cta' && currentTab != 'analytics') || (cardType === 'statistic')) {
                 $(value).attr("aria-selected", false).attr("selected", false);
                 $(value).attr("hidden", true);
@@ -66,15 +68,18 @@
                 break;
             case 'banner-image':
                 disableAssetOption('icon');
-                disableCtaOption(['cardlink']);
+                disableCtaOption(['button','cardlink']);
                 break;
             case 'media':
                 disableAssetOption('icon');
                 if(mediaType=='video') {
                     $assetTab.attr("aria-selected", false).attr("selected", false);
                     $assetTab.attr("hidden", true);
+                    disableCtaOption(['button','cardlink']);
+                } else {
+                    disableCtaOption(['cardlink']);
                 }
-                disableCtaOption(['cardlink']);
+                
                 break;
             case 'segmented':
                 disableAssetOption('image');

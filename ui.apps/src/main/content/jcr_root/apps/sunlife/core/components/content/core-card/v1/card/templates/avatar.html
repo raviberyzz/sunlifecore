@@ -7,7 +7,7 @@ Figma design reference -  https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-
   <sly data-sly-set.haveSomthing="${model.cardImageFileReference || model.name || model.jobTitle || model.quote || model.ctaType }" />
   
     <!--/* Empty Placeholder */-->
-    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Avatar Card"></div>
+    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Avatar Block"></div>
     <sly data-sly-test="${haveSomthing}">
       <div 
         class="sl-avatar"

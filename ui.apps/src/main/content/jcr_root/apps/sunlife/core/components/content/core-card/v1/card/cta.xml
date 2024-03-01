@@ -17,7 +17,7 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                     fieldLabel="CTA Type"
-                    fieldDescription="Select the type of CTA need to render for card. If don't want any CTA then select the default placeholder option."
+                    fieldDescription="Select the type of CTA to display in the Card. Select the default placeholder option to not display a CTA."
                     name="./ctaType">
                     <items jcr:primaryType="nt:unstructured">
                         <static jcr:primaryType="nt:unstructured"
