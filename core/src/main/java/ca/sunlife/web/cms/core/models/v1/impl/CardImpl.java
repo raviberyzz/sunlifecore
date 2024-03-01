@@ -215,6 +215,10 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private String mediaWatchTime;
+
+    @ValueMapValue
+	@Getter
     private String segmentHeading;
 
     @ValueMapValue

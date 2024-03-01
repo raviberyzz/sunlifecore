@@ -84,6 +84,8 @@ public interface Card {
 
     public String getMediaDescription();
 
+    public String getMediaWatchTime();
+    
     public String getSegmentHeading();
 
     public String getSegmentHeadingType();

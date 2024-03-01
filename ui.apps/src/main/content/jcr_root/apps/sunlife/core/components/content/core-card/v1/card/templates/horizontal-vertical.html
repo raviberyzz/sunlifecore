@@ -31,7 +31,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
     data-sly-set.haveSomthing="${image || cardIcon || cardCategory || cardBadgeText || cardHeading || cardDescription || cardCaption}">
     
     <!--/* Empty Placeholder */-->
-    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Horizontal/ Vertical Card"></div>
+    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="${cardType =='horizontal' ? 'Horizontal Card' : 'Vertical Card'}"></div>
 
     <sly data-sly-test="${haveSomthing}">
       <picture data-sly-test="${ cardImage || (!containerConfigs.isIcon && isImageCard) }">
