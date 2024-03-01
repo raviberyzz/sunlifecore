@@ -3,34 +3,29 @@
  */
 package ca.sunlife.web.cms.core.services;
 
-import ca.sunlife.web.cms.core.exception.ApplicationException;
-import ca.sunlife.web.cms.core.exception.SystemException;
+import com.day.cq.search.result.SearchResult;
 
-/**
- * The Interface ArticleQueryService.
- *
- * @author TCS
- * @version 1.0
- */
+import java.util.Map;
+
+
 public interface ArticleQueryService {
 
-  /**
-   * Gets the Article Query details.
-   *
-   * @param selectors
-   *          the language
-   * @param queryParameterMap
-   *          the page id
-   * @param advisorId
-   *          the advisor id
-   * @return the advisor details
-   * @throws ApplicationException
-   *           the application exception
-   * @throws SystemException
-   *           the system exception
-   */
-  public String getAdvisorDetails(String language, String pageId, String advisorId)
-      throws ApplicationException, SystemException;
+    /** This method is used to process the query and return the search result
+     *
+     * @param queryParameterMap queryParameterMap
+     * @return SearchResult searchResult
+     */
+    SearchResult processQuery(Map<String, String> queryParameterMap);
+
+    /** This method is used to generate the query parameter map
+     *
+     * @param path path
+     * @param offset offset
+     * @param limit limit
+     * @param tagNames tagname
+     * @return Map<String, String> QueryParameterMap
+     */
+    Map<String, String> generateQueryParameterMap(String path, int offset, int limit, String[] tagNames);
 
 }
 

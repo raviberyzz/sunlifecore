@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.models.v1.impl;
 
+import ca.sunlife.web.cms.core.models.v1.ArticleListModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,18 +14,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ArticleListImplTest {
 
     private final AemContext context = new AemContext();
-    ArticleListImpl articleList;
+    ArticleListModel articleList;
 
     @BeforeEach
     public void setUp(AemContext context) throws Exception{
-        context.addModelsForClasses(ArticleListImpl.class);
+        context.addModelsForClasses(ArticleListModel.class);
         context.load().json("/ca/sunlife/web/cms/core/models/v1/articleList/articleList.json", "/content");
     }
 
     @Test
     void testGetterMethods() {
         context.currentResource("/content/articleList");
-        articleList = context.request().adaptTo(ArticleListImpl.class);
+        articleList = context.request().adaptTo(ArticleListModel.class);
         assertEquals("/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources", articleList.getParentPath());
         assertEquals("Article List", articleList.getDisplayType());
         assertEquals(3, articleList.getHideTop());
