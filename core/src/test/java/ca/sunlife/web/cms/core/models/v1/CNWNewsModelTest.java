@@ -7,7 +7,6 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.models.CNWNewsModel;
 import ca.sunlife.web.cms.core.models.NewsCategory;
-import ca.sunlife.web.cms.core.models.v1.TestUtils;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import com.day.cq.wcm.api.Page;
@@ -33,9 +32,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-/**
- * @author mo92 The Class CNWNewsModelTest
- */
 @ExtendWith(AemContextExtension.class)
 public class CNWNewsModelTest {
   private final String DUMMY_ACTIVE_YEAR = "1950";
