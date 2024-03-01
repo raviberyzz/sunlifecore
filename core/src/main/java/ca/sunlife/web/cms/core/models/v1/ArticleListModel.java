@@ -5,7 +5,6 @@ import ca.sunlife.web.cms.core.beans.v1.ContentFragmentCriteria;
 import ca.sunlife.web.cms.core.constants.v1.ContentFragmentConstants;
 import ca.sunlife.web.cms.core.services.DAMContentFragmentService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
@@ -26,7 +25,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,9 +70,6 @@ public class ArticleListModel implements ComponentExporter {
 
     @ValueMapValue
     private String accessibilityLabel;
-
-    @Inject
-    private ContentTypeConverter contentTypeConverter;
 
     @OSGiService
     private SiteConfigService configService;
@@ -161,14 +156,13 @@ public class ArticleListModel implements ComponentExporter {
             // initialize here to get "TotalMatchCount" as pass by reference so the total count of the content fragment can be used in pagination
             ContentFragmentCriteria contentFragmentCriteria = new ContentFragmentCriteria();
             List<Resource> resourceList = getCFResouceList(selectors, contentFragmentCriteria);
+
             if (null != contentFragmentCriteria.getTotalMatchCount())
                 setTotalMatch(contentFragmentCriteria.getTotalMatchCount().intValue());
             LOGGER.debug("Total Match Count : {}", getTotalMatch());
 
-            for (Resource resource : resourceList) {
-                if (resource != null)
-                    items.add(damContentFragmentService.getContentFragment(resource.getPath(), ContentFragmentConstants.ARTICLE_LIST_ELEMENT, contentTypeConverter));
-            }
+            if (resourceList != null && !resourceList.isEmpty())
+                items.addAll(damContentFragmentService.getContentFragmentList(resourceList));
 
             if (getDisplayType().equals("articleList")) {
                 String path = currentPage.getPath();

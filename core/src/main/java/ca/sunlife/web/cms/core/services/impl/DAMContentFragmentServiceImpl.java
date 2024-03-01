@@ -7,7 +7,6 @@ import ca.sunlife.web.cms.core.services.DAMContentFragmentService;
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
-import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
@@ -31,7 +30,6 @@ import java.util.List;
 import java.util.Map;
 
 
-
 @Component(service = DAMContentFragmentService.class, immediate = true)
 public class DAMContentFragmentServiceImpl implements DAMContentFragmentService {
 
@@ -40,24 +38,27 @@ public class DAMContentFragmentServiceImpl implements DAMContentFragmentService 
     @Reference
     private CoreResourceResolver coreResourceResolver;
 
+    @Reference
+    private ContentTypeConverter contentTypeConverter1;
+
     @Override
-    public DAMContentFragment getContentFragment(String path, String[] elementNames, ContentTypeConverter contentTypeConverter) {
-        LOGGER.debug("Entering getContentFragment : path : {} : elementNames : {} : contentTypeConverter : {}", path, elementNames, contentTypeConverter);
-        DAMContentFragment damContentFragment = null;
+    public List<DAMContentFragment> getContentFragmentList(List<Resource> cfResourceList) {
+        LOGGER.debug("Entering getContentFragmentList method : cfResourceList Size : {}", cfResourceList.size());
+        List<DAMContentFragment> damContentFragmentList = new ArrayList<>();
         try (ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver()) {
-            if (null != path) {
-                Resource resource = resourceResolver.getResource(path);
-                if (null != resource && null != contentTypeConverter) {
-                    damContentFragment = new DAMContentFragmentImpl(resource, contentTypeConverter, null, elementNames);
+            for (Resource resource : cfResourceList) {
+                if (null != resource && null != contentTypeConverter1) {
+                    DAMContentFragment damContentFragment = new DAMContentFragmentImpl(resourceResolver.getResource(resource.getPath()), contentTypeConverter1, null, ContentFragmentConstants.ARTICLE_LIST_ELEMENT);
+                    damContentFragmentList.add(damContentFragment);
                 } else {
-                    LOGGER.debug("Resource/contentTypeConverter is null for path : {}", path);
+                    LOGGER.info("Resource/contentTypeConverter is null for path : {}", resource);
                 }
             }
+            LOGGER.debug("Exiting getContentFragmentList method: damContentFragment");
         } catch (LoginException e) {
-            LOGGER.error("Error in getContentFragmentList " + e.getMessage(), e);
+            LOGGER.error("Error in getContentFragmentList metod " + e.getMessage(), e);
         }
-        LOGGER.debug("Exiting getContentFragment : damContentFragment");
-        return damContentFragment;
+        return damContentFragmentList;
     }
 
 

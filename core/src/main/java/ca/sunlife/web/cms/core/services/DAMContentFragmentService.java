@@ -2,7 +2,6 @@
 package ca.sunlife.web.cms.core.services;
 
 import ca.sunlife.web.cms.core.beans.v1.ContentFragmentCriteria;
-import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import org.apache.sling.api.resource.Resource;
 
@@ -12,14 +11,12 @@ import java.util.List;
 public interface DAMContentFragmentService {
 
     /**
-     * This method is used to get the DAMContentFragment
+     * This method is used to get the DAMContentFragment List
      *
-     * @param path                 path
-     * @param elementNames         elementNames
-     * @param contentTypeConverter contentTypeConverter
+     * @param cfResourceList cfResourceList
      * @return DAMContentFragment DAMContentFragment
      */
-    DAMContentFragment getContentFragment(String path, String[] elementNames, ContentTypeConverter contentTypeConverter);
+    List<DAMContentFragment> getContentFragmentList(List<Resource> cfResourceList);
 
     /**
      * This method is used to get the DAMContentFragmentList
