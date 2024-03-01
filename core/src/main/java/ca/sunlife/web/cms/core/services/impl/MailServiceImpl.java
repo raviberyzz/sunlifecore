@@ -107,7 +107,6 @@ public class MailServiceImpl implements MailService {
         HttpResponse mailResponse = null;
         JSONObject successResponse = null;
         JSONObject errorResponse = null;
-        JSONObject response = new
         try {
             if (null != request) {
                 final HashMap <String, String> requestParameters = fetchRequestParams(request);
