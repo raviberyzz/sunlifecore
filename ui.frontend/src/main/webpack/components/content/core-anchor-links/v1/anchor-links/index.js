@@ -28,13 +28,16 @@ $(document).ready(function () {
         var eleRect = targetElement === null || targetElement === void 0 ? void 0 : targetElement.getBoundingClientRect();
         var isInView = eleRect.top >= 0 && eleRect.bottom <= window.innerHeight;
         if (isInView) {
-          activeLinkIndex = index+1;
+          activeLinkIndex = linkId;
         }
+      }
+      if(activeLinkIndex !== null){
+        break;
       }
     }
     if(activeLinkIndex !== null){
       $(".sl-anchor-links li").removeClass("active-anchor");
-      $(".heading-"+activeLinkIndex).addClass("active-anchor");
+      $("."+activeLinkIndex).addClass("active-anchor");
     }
   };
   function init() {
