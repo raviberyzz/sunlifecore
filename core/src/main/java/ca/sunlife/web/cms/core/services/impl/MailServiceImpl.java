@@ -107,6 +107,7 @@ public class MailServiceImpl implements MailService {
         HttpResponse mailResponse = null;
         JSONObject successResponse = null;
         JSONObject errorResponse = null;
+        JSONObject response = new
         try {
             if (null != request) {
                 final HashMap <String, String> requestParameters = fetchRequestParams(request);
@@ -134,6 +135,8 @@ public class MailServiceImpl implements MailService {
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
+                LOG.debug("successResponse------..   {}",successResponse);
+                LOG.debug("errorResponse------..   {}",errorResponse);
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
                     LOG.debug("isClient------..   {}",isClient);
                     if ("true".equalsIgnoreCase(isClient)) {
@@ -522,10 +525,10 @@ public class MailServiceImpl implements MailService {
         return null != value && !value.trim().isEmpty();
     }
 
-     private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
+    private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
         final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-phone-number");
         final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-email");
         return (null != honeyPotFieldPhone || null != honeyPotFieldEmail);
-     }
+    }
 
 }
