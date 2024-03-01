@@ -1,16 +1,15 @@
 package ca.sunlife.web.cms.core.models.v1;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
+import ca.sunlife.web.cms.core.beans.v1.ContentFragmentCriteria;
 import ca.sunlife.web.cms.core.constants.v1.ContentFragmentConstants;
-import ca.sunlife.web.cms.core.services.ArticleQueryService;
 import ca.sunlife.web.cms.core.services.DAMContentFragmentService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
-import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
@@ -30,7 +29,10 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,7 +45,6 @@ public class ArticleListModel implements ComponentExporter {
 
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-articleList/v1/articleList";
     private static final Logger LOGGER = LoggerFactory.getLogger(ArticleListModel.class);
-
     private final List<DAMContentFragment> items = new ArrayList<>();
 
     @ValueMapValue
@@ -79,11 +80,10 @@ public class ArticleListModel implements ComponentExporter {
     @OSGiService
     private SiteConfigService configService;
 
-    /** This is the service that is being used to get the article list.*/
-    @OSGiService
-    private ArticleQueryService articleQueryService;
 
-    /** This is the service that is being used to get the content fragment.*/
+    /**
+     * This is the service that is being used to get the content fragment.
+     */
     @OSGiService
     private DAMContentFragmentService damContentFragmentService;
 
@@ -138,8 +138,13 @@ public class ArticleListModel implements ComponentExporter {
             return;
         }
         final String[] selectors = request.getRequestPathInfo().getSelectors();
-        index = selectors.length > 0 ? (selectors.length - 1) : 0;
-        if (selectors.length > 0 && StringUtils.isNumeric(selectors[index]) && Integer.parseInt(selectors[index]) > 1
+        int index = 0;
+        if (selectors.length > 0) {
+            index = selectors.length - 1;
+        }
+        if (selectors.length > 0
+                && StringUtils.isNumeric(selectors[index])
+                && Integer.parseInt(selectors[index]) > 1
                 && !getDisplayType().equals("articleList")) {
             LOGGER.debug("Returning as the selector is not a number or is less than 1 or display type is not articleList");
             return;
@@ -152,13 +157,18 @@ public class ArticleListModel implements ComponentExporter {
                 pageLocaleDefault = locale.contains("-") ? locale.split("-")[0] : locale.split("_")[0];
             }
             setPageLocale(pageLocaleDefault);
-            SearchResult searchResult = articleQueryService.processQuery(getQueryParameterMap(selectors));
-            if (null != searchResult) {
-                setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
-                List<Hit> hits = searchResult.getHits();
-                for (Hit hit : hits) {
-                    items.add(damContentFragmentService.getContentFragment(hit.getPath(), ContentFragmentConstants.ARTICLE_LIST_ELEMENT, contentTypeConverter));
-                }
+
+            // Created object of ContentFragmentCriteria to set the criteria for the content fragment,
+            // initialize here to get "TotalMatchCount" as pass by reference so the total count of the content fragment can be used in pagination
+            ContentFragmentCriteria contentFragmentCriteria = new ContentFragmentCriteria();
+            List<Resource> resourceList = getCFResouceList(selectors, contentFragmentCriteria);
+            if (null != contentFragmentCriteria.getTotalMatchCount())
+                setTotalMatch(contentFragmentCriteria.getTotalMatchCount().intValue());
+            LOGGER.debug("Total Match Count : {}", getTotalMatch());
+
+            for (Resource resource : resourceList) {
+                if (resource != null)
+                    items.add(damContentFragmentService.getContentFragment(resource.getPath(), ContentFragmentConstants.ARTICLE_LIST_ELEMENT, contentTypeConverter));
             }
 
             if (getDisplayType().equals("articleList")) {
@@ -172,9 +182,15 @@ public class ArticleListModel implements ComponentExporter {
         }
     }
 
-    private Map<String, String> getQueryParameterMap(String[] selectors) {
+    /**
+     * This method is used to get the content fragment resource list
+     *
+     * @param selectors               selectors
+     * @param contentFragmentCriteria contentFragmentCriteria
+     * @return List<Resource> List<Resource>
+     */
+    private List<Resource> getCFResouceList(String[] selectors, ContentFragmentCriteria contentFragmentCriteria) {
         LOGGER.debug("Entry :: ArticleListImpl :: getQueryParameterMap");
-
         int offset = 0;
         int limit = getMaxItems();
         if (selectors.length > 0 && StringUtils.isNumeric(selectors[index])) {
@@ -184,7 +200,15 @@ public class ArticleListModel implements ComponentExporter {
             offset = getHideTop();
             limit = getMaxItems() - getHideTop();
         }
-        return articleQueryService.generateQueryParameterMap(getParentPath(), offset, limit, tagNames);
+        contentFragmentCriteria.setPath(getParentPath());
+        contentFragmentCriteria.setLimit(limit);
+        contentFragmentCriteria.setOffset(offset);
+        contentFragmentCriteria.setLimit(getMaxItems());
+        contentFragmentCriteria.setTagNames(getTagNames());
+        contentFragmentCriteria.setModelPath("/conf/sunlife/settings/dam/cfm/models/article-model");
+        contentFragmentCriteria.setOrderBy("@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
+        contentFragmentCriteria.setOrderBySort("desc");
+        return damContentFragmentService.getCFResourceList(contentFragmentCriteria);
     }
 
 }

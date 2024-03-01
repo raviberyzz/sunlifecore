@@ -11,4 +11,5 @@ public class ContentFragmentConstants {
     public final static String[] ARTICLE_LIST_ELEMENT = {"articlePublishedDate", "articleHeadline",
             "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
             "articleMainDescription", "articleThumbnailImage"};
+
 }
