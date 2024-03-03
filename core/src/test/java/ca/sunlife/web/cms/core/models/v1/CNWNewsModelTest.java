@@ -5,7 +5,7 @@ import ca.sunlife.web.cms.core.beans.ReleaseMain;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
-import ca.sunlife.web.cms.core.models.CNWNewsModel;
+
 import ca.sunlife.web.cms.core.models.NewsCategory;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
