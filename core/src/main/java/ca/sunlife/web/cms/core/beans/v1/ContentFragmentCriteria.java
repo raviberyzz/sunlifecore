@@ -1,9 +1,4 @@
-/*
- *
- */
-
 package ca.sunlife.web.cms.core.beans.v1;
-
 
 public class ContentFragmentCriteria {
 

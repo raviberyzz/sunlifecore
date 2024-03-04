@@ -1,4 +1,3 @@
-
 package ca.sunlife.web.cms.core.services;
 
 import ca.sunlife.web.cms.core.beans.v1.ContentFragmentCriteria;
@@ -6,7 +5,6 @@ import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragmen
 import org.apache.sling.api.resource.Resource;
 
 import java.util.List;
-
 
 public interface DAMContentFragmentService {
 
@@ -25,7 +23,6 @@ public interface DAMContentFragmentService {
      * @return List<DAMContentFragment> List<DAMContentFragment>
      */
     List<Resource> getCFResourceList(ContentFragmentCriteria contentFragmentCriteria);
-
 
 }
 
