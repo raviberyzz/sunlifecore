@@ -36,7 +36,7 @@ public class ContentFragmentCriteria {
      */
     String orderBySort;
     /**
-     * The total match count of the Search Resultso
+     * The total match count of the Search Results
      */
     Long totalMatchCount;
 

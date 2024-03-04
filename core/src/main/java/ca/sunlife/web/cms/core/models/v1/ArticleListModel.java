@@ -9,6 +9,7 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.wcm.api.Page;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +34,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {ComponentExporter.class}, resourceType = {
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {ComponentExporter.class}, resourceType = {
         ArticleListModel.RESOURCE_TYPE}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 @JsonSerialize(as = ArticleListModel.class)
@@ -65,12 +66,15 @@ public class ArticleListModel implements ComponentExporter {
     @ValueMapValue
     private String titleLevel;
 
+    @JsonIgnore
     @ValueMapValue
     private String spacing;
 
+    @JsonIgnore
     @ValueMapValue
     private String accessibilityLabel;
 
+    @JsonIgnore
     @OSGiService
     private SiteConfigService configService;
 
@@ -78,6 +82,7 @@ public class ArticleListModel implements ComponentExporter {
     /**
      * This is the service that is being used to get the content fragment.
      */
+    @JsonIgnore
     @OSGiService
     private DAMContentFragmentService damContentFragmentService;
 
