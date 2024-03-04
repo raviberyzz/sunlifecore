@@ -3,12 +3,7 @@
     function fieldValidationKeyEventHandler() {
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
-        if($field.val() === ''){
-            $fieldContainer.addClass("sl-input-error");
-        }
-        else {
-            $fieldContainer.removeClass("sl-input-error");
-        }
+        $fieldContainer.toggleClass("sl-input-error", $field.val() === ' ');
         if($fieldContainer.hasClass('sl-text-area')){
             $fieldContainer.find(".character-count .count").html($field.val().length)
         }
