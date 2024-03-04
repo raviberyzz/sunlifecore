@@ -37,6 +37,7 @@ import com.adobe.cq.wcm.core.components.internal.models.v1.NavigationImpl;
 import com.adobe.cq.wcm.core.components.internal.models.v1.NavigationItemImpl;
 import com.adobe.cq.wcm.core.components.internal.models.v2.PageImpl;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
+import com.adobe.cq.wcm.core.components.util.ComponentUtils;
 import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
@@ -45,7 +46,8 @@ import com.day.cq.wcm.api.WCMException;
 import com.day.cq.wcm.api.designer.Style;
 import com.day.cq.wcm.msm.api.LiveRelationship;
 import com.day.cq.wcm.msm.api.LiveRelationshipManager;
-
+import com.adobe.cq.wcm.core.components.commons.link.LinkManager;
+import com.day.cq.wcm.api.components.Component;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -99,6 +101,7 @@ public class LeftNavigationModal extends NavigationImpl {
   @ Inject
   private SiteConfigService configService;
 
+
   /** The structure depth. */
   private int structureDepth;
 
@@ -108,9 +111,11 @@ public class LeftNavigationModal extends NavigationImpl {
   /** The items. */
   private List <NavigationItem> items;
 
+  private static final String ITEM_ID_PREFIX = "item";
+
   /** The structure start. */
   private int structureStart;
-  
+
   /** The Skip navigation root */
   private boolean skipNavigationRoot;
 
@@ -119,7 +124,11 @@ public class LeftNavigationModal extends NavigationImpl {
 
   /** The constant for skip nav root. */
   private final static String PN_SKIP_NAVIGATION_ROOT_CONSTANT = "skipNavigationRoot";
-  
+
+  @ Self
+  private LinkManager linkManager;
+
+
   /**
    * Gets the updated list.
    *
@@ -145,8 +154,8 @@ public class LeftNavigationModal extends NavigationImpl {
    * @return the skipNavigationRoot
    */
   public boolean isSkipNavigationRoot() {
-		return skipNavigationRoot;
-	}
+    return skipNavigationRoot;
+  }
 
   /**
    * Sets the skipNavigationRoot.
@@ -154,11 +163,11 @@ public class LeftNavigationModal extends NavigationImpl {
    * @param skipNavigationRoot
    *          the skipNavigationRoot
    */
-	public void setSkipNavigationRoot(boolean skipNavigationRoot) {
-		this.skipNavigationRoot = skipNavigationRoot;
-	}
+  public void setSkipNavigationRoot(boolean skipNavigationRoot) {
+    this.skipNavigationRoot = skipNavigationRoot;
+  }
 
-	/**
+  /**
    * Inits the model.
    */
   @ PostConstruct
@@ -173,31 +182,31 @@ public class LeftNavigationModal extends NavigationImpl {
     final int pageDepth = currentPage.getDepth();
     final int m = pageDepth - 6;
     final Page page = currentPage.getParent(m);
-    
+
     structureDepth = properties.get(PN_STRUCTURE_DEPTH, currentStyle.get(PN_STRUCTURE_DEPTH, -1));
     boolean collectAllPages = properties.get(PN_COLLECT_ALL_PAGES, currentStyle.get(PN_COLLECT_ALL_PAGES, true));
     if (collectAllPages) {
-        structureDepth = -1;
+      structureDepth = -1;
     }
     navigationRootPage = properties.get(PN_NAVIGATION_ROOT, String.class);
     if (currentStyle.containsKey(PN_STRUCTURE_START) || properties.containsKey(PN_STRUCTURE_START)) {
-        //workaround to maintain the content of Navigation component of users in case they update to the current i.e. the `structureStart` version.
-        structureStart = properties.get(PN_STRUCTURE_START, currentStyle.get(PN_STRUCTURE_START, 1));
+      //workaround to maintain the content of Navigation component of users in case they update to the current i.e. the `structureStart` version.
+      structureStart = properties.get(PN_STRUCTURE_START, currentStyle.get(PN_STRUCTURE_START, 1));
     } else {
-        skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, currentStyle.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, true));
-        if (skipNavigationRoot) {
-            structureStart = 1;
-        } else {
-            structureStart = 0;
-        }
+      skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, currentStyle.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, true));
+      if (skipNavigationRoot) {
+        structureStart = 1;
+      } else {
+        structureStart = 0;
+      }
     }
-    
+
     if(!(navigationRootPage != null && navigationRootPage.length() > 0) ) {
-  	    structureDepth = 2;
-	    navigationRootPage = page.getPath();
-	    structureStart = 0;
+      structureDepth = 2;
+      navigationRootPage = page.getPath();
+      structureStart = 0;
     }
-    
+
     updatedList = processNavigationList(getItems());
 
   }
@@ -229,9 +238,9 @@ public class LeftNavigationModal extends NavigationImpl {
       if (! navigationItem.getChildren().isEmpty()) {
         parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
         final boolean isSelected = currentPage.equals(parentPage)
-            || currentPageIsRedirectTarget(parentPage);
+                || currentPageIsRedirectTarget(parentPage);
         final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, isSelected, request,
-            navigationItem.getLevel() + 1, children1, title);
+                navigationItem.getLevel() + 1, children1, title,linkManager, component);
         navigationItem.getChildren().add(0, leftItemImpl);
       }
       processNavigationList(navigationItem.getChildren());
@@ -251,22 +260,22 @@ public class LeftNavigationModal extends NavigationImpl {
       if (rootPage != null) {
         NavigationRoot navigationRoot = new NavigationRoot(rootPage, structureDepth);
         final Page navigationRootLanguageRoot = navigationRoot.getPageResource()
-            .map(languageManager::getLanguageRoot).orElse(null);
+                .map(languageManager::getLanguageRoot).orElse(null);
         final Page currentPageLanguageRoot = languageManager
-            .getLanguageRoot(currentPage.getContentResource());
+                .getLanguageRoot(currentPage.getContentResource());
         RangeIterator liveCopiesIterator = null;
         try {
           liveCopiesIterator = relationshipManager
-              .getLiveRelationships(navigationRoot.page.adaptTo(Resource.class), null, null);
+                  .getLiveRelationships(navigationRoot.page.adaptTo(Resource.class), null, null);
         } catch (final WCMException e) {
           // ignore it
         }
         if (navigationRootLanguageRoot != null && currentPageLanguageRoot != null
-            && ! navigationRootLanguageRoot.equals(currentPageLanguageRoot)) {
+                && ! navigationRootLanguageRoot.equals(currentPageLanguageRoot)) {
           // check if there's a language copy of the navigation root
           final Page languageCopyNavigationRoot = pageManager
-              .getPage(ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/"
-                  + getRelativePath(navigationRootLanguageRoot, navigationRoot.page)));
+                  .getPage(ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/"
+                          + getRelativePath(navigationRootLanguageRoot, navigationRoot.page)));
           if (languageCopyNavigationRoot != null) {
             navigationRoot = new NavigationRoot(languageCopyNavigationRoot, structureDepth);
           }
@@ -318,10 +327,10 @@ public class LeftNavigationModal extends NavigationImpl {
    * @return the items
    */
   private List <NavigationItem> getItems(final NavigationRoot navigationRoot,
-      final Page subtreeRoot) {
+                                         final Page subtreeRoot) {
     final List <NavigationItem> pages = new ArrayList <>();
     if (navigationRoot.structureDepth == - 1
-        || getLevel(subtreeRoot) < navigationRoot.structureDepth) {
+            || getLevel(subtreeRoot) < navigationRoot.structureDepth) {
       final Iterator <Page> it = subtreeRoot.listChildren(new PageFilter());
       while (it.hasNext()) {
         final Page page = it.next();
@@ -329,11 +338,11 @@ public class LeftNavigationModal extends NavigationImpl {
         int level = pageLevel - navigationRoot.startLevel - 1;
         final List <NavigationItem> children = getItems(navigationRoot, page);
         final boolean isSelected = checkSelected(page);
+        final boolean isCurrent = checkCurrent(page);
         if (structureStart == 0) {
           level = level + 1;
         }
-
-        pages.add(new NavigationItemImpl(page, isSelected, request, level, children));
+        pages.add(new NavigationItemImpl(page, isSelected, isCurrent, linkManager, level, children,getId(), component));
       }
     }
     return pages;
@@ -355,8 +364,8 @@ public class LeftNavigationModal extends NavigationImpl {
     }
     if (structureStart == 0) {
       final boolean isSelected = checkSelected(navigationRoot.page);
-      final NavigationItemImpl root = new NavigationItemImpl(navigationRoot.page, isSelected,
-          request, 0, itemTree);
+      final boolean isCurrent = checkCurrent(navigationRoot.page);
+      final NavigationItemImpl root = new NavigationItemImpl(navigationRoot.page, isSelected, isCurrent, linkManager, 0, itemTree,getId(), component);
       itemTree = new ArrayList <>();
       itemTree.add(root);
     }
@@ -373,7 +382,7 @@ public class LeftNavigationModal extends NavigationImpl {
    * @return the root items
    */
   private List <NavigationRoot> getRootItems(final NavigationRoot navigationRoot,
-      final int structureStartVar) {
+                                             final int structureStartVar) {
     final LinkedList <NavigationRoot> pages = new LinkedList <>();
     pages.addLast(navigationRoot);
     if (structureStartVar != 0) {
@@ -403,9 +412,13 @@ public class LeftNavigationModal extends NavigationImpl {
    */
   private boolean checkSelected(final Page page) {
     return currentPage.equals(page) || currentPage.getPath().startsWith(page.getPath() + "/")
-        || currentPageIsRedirectTarget(page);
+            || currentPageIsRedirectTarget(page);
   }
 
+  private boolean checkCurrent(final Page page) {
+    return this.currentPage.equals(page)
+            || currentPageIsRedirectTarget(page);
+  }
   /**
    * Current page is redirect target.
    *
@@ -477,8 +490,8 @@ public class LeftNavigationModal extends NavigationImpl {
 
     /** The structure depth. */
     private int structureDepth = - 1;
-    
-		/**
+
+    /**
      * Instantiates a new navigation root.
      *
      * @param navigationRoot
@@ -502,10 +515,10 @@ public class LeftNavigationModal extends NavigationImpl {
 
     final Optional <Resource> getPageResource() {
       return Optional.ofNullable(Optional.of(page)
-          // get the parent of the content resource
-          .map(Page::getContentResource).map(Resource::getParent)
-          // if content resource is missing, resolve resource at page path
-          .orElseGet(() -> resourceResolver.getResource(page.getPath())));
+              // get the parent of the content resource
+              .map(Page::getContentResource).map(Resource::getParent)
+              // if content resource is missing, resolve resource at page path
+              .orElseGet(() -> resourceResolver.getResource(page.getPath())));
     }
   }
 

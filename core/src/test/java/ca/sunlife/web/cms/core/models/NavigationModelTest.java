@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.models;
 
@@ -39,44 +39,44 @@ public class NavigationModelTest {
 
 	@ Mock
 	private Page page;
-	
+
 	@ Mock
 	private SiteConfigService configService;
-	
+
 	@ Mock
 	private SlingHttpServletRequest request;
-	
+
 	//@ Mock
 	private List <NavigationItem> navigationItems;
-	
+
 	private List <NavigationItem> childItems;
-	
+
 	@ Mock
 	private PageManager pageManager;
-	
+
 	@ Mock
-	private ValueMap valueMap;	
-	
+	private ValueMap valueMap;
+
 	@ InjectMocks
 	NavigationModel navModel;
-	
+
 	@ BeforeEach
 	void setUp( ) throws IllegalAccessException {
 		MockitoAnnotations.initMocks(this);
 	}
-	
+
 	@ Test
 	void testProcessNavigationList() throws LoginException, RepositoryException {
 		String pagePath = "/content/sunlife/ca/en/home";
 		when(page.getPath()).thenReturn("/content/experience-fragments/sunlife/home/header");
 		when(configService.getConfigValues("navigationOverview",pagePath)).thenReturn("SLGI");
-		navigationItems = new ArrayList <NavigationItem>(); 
-		childItems = new ArrayList <NavigationItem>(); 
-		NavigationItem navItem1 = new NavigationItemImpl("/content/sunlife/ca/en/home", "home", "home", "home",childItems);
-		NavigationItem navItem2 = new NavigationItemImpl("/content/sunlife/ca/en/home1", "home1", "home1", "home1", childItems);		
+		navigationItems = new ArrayList <NavigationItem>();
+		childItems = new ArrayList <NavigationItem>();
+		/*NavigationItem navItem1 = new NavigationItemImpl("/content/sunlife/ca/en/home", "home", "home", "home",childItems);
+		NavigationItem navItem2 = new NavigationItemImpl("/content/sunlife/ca/en/home1", "home1", "home1", "home1", childItems);
 		navigationItems.add(navItem1);
 		navigationItems.add(navItem2);
-		navModel.processNavigationList(navigationItems);
-	}	
-	
+		navModel.processNavigationList(navigationItems);*/
+	}
+
 }

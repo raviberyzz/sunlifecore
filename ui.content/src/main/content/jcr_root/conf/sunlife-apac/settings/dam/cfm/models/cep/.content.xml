@@ -262,6 +262,56 @@
                             </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_685512239787>
+                        <_x0031_706191883103
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
+                                allowNew="{Boolean}false"
+                                fieldLabel="CVM Offer"
+                                filter="hierarchy"
+                                fragmentmodelreference="/conf/sunlife-apac/settings/dam/cfm/models/cep-content"
+                                listOrder="9"
+                                metaType="fragment-reference"
+                                name="cvmOffer"
+                                nameSuffix="contentReference"
+                                renderReadOnly="false"
+                                rootPath="/content/dam/sunlife/external/hk/en/content-fragments/cep-models/fragment-references"
+                                showEmptyInReadOnly="true"
+                                valueType="string/content-fragment[]">
+                            <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                    fragmentmodelreference="/conf/sunlife-apac/settings/dam/cfm/models/cep-content"
+                                    name="cvmOffer"
+                                    renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_706191883103>
+                        <_x0031_706191983198
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
+                                allowNew="{Boolean}false"
+                                fieldLabel="CVM Banner"
+                                filter="hierarchy"
+                                fragmentmodelreference="/conf/sunlife-apac/settings/dam/cfm/models/cep-content"
+                                listOrder="9"
+                                metaType="fragment-reference"
+                                name="cvmBanner"
+                                nameSuffix="contentReference"
+                                renderReadOnly="false"
+                                rootPath="/content/dam/sunlife/external/hk/en/content-fragments/cep-models/fragment-references"
+                                showEmptyInReadOnly="true"
+                                valueType="string/content-fragment[]">
+                            <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                    fragmentmodelreference="/conf/sunlife-apac/settings/dam/cfm/models/cep-content"
+                                    name="cvmBanner"
+                                    renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_706191983198>
                     </items>
                 </content>
             </cq:dialog>

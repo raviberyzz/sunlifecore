@@ -26,6 +26,8 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
+import com.adobe.cq.wcm.core.components.commons.link.LinkManager;
+import com.day.cq.wcm.api.components.Component;
 
 /**
  * The Class NavigationModel.
@@ -61,6 +63,11 @@ public class NavigationModel extends NavigationImpl {
   /** The modified items. */
   /* Field to collect the modified items */
   private Collection <NavigationItem> modifiedItems;
+
+
+
+  @Self
+  private LinkManager linkManager;
 
   /**
    * Gets the modified items.
@@ -107,14 +114,14 @@ public class NavigationModel extends NavigationImpl {
     String title = null;
     String sitePath = null;
     try {
-    	String pagePath = currentPage.getPath();
-    	if (null != pagePath && pagePath.length() > 0 && pagePath.contains("experience-fragments")) {
-    		sitePath = configService.getConfigValues("siteUrl", pagePath);
-    	}
-      
-		if(null != sitePath && sitePath.length() > 0) {
-      		title = configService.getConfigValues("navigationOverview", sitePath);
-		}
+      String pagePath = currentPage.getPath();
+      if (null != pagePath && pagePath.length() > 0 && pagePath.contains("experience-fragments")) {
+        sitePath = configService.getConfigValues("siteUrl", pagePath);
+      }
+
+      if(null != sitePath && sitePath.length() > 0) {
+        title = configService.getConfigValues("navigationOverview", sitePath);
+      }
     } catch (RepositoryException | LoginException e) {
       LOGGER.error("Error :: init method of Left Navigation Model :: {}", e);
     }
@@ -126,7 +133,7 @@ public class NavigationModel extends NavigationImpl {
       if (! navigationItem.getChildren().isEmpty()) {
         parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
         final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, false, request,
-            navigationItem.getLevel() + 1, itemChildren, title);
+                navigationItem.getLevel() + 1, itemChildren, title, linkManager, component);
         navigationItem.getChildren().add(0, leftItemImpl);
 
       }
