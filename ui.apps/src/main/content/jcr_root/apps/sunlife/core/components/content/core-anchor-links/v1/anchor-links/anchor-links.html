@@ -1,9 +1,7 @@
 <sly data-sly-use.anchorLinks="ca.sunlife.web.cms.core.models.v1.AnchorLinksModel" />
-<aside class="sl-anchor-links ${anchorLinks.spacing}">
+<aside class="sl-anchor-links">
     <div class="anchor-heading">${anchorLinks.anchorHeading}</div>
-    <div
-        data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
-        class="cmp-toc__placeholder"
+    <div class="cmp-toc__placeholder"
         data-cmp-toc-start-level="${anchorLinks.startLevel && anchorLinks.startLevel.value}"
         data-cmp-toc-stop-level="${anchorLinks.stopLevel && anchorLinks.stopLevel.value}"
     ></div>
