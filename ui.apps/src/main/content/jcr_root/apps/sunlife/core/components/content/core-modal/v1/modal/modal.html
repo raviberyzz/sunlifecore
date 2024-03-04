@@ -2,14 +2,14 @@
     data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
 
     <sly data-sly-test="${modalObj.modalTypes == 'standardModal' || modalObj.modalTypes == 'formModal'}"> 
-        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" data-triggerOnScroll="${modalObj.trigger}" aria-labelledby="exampleModalLabel"
+        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" data-triggerOnScroll="${modalObj.trigger}" aria-labelledby="modalTitle-${modalObj.modalID}"
             data-section="${modalObj.dataSection}">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
                         window</span>
                     <div class="modal-header">
-                        <h2 class="modal-title" id="two-button-modal">${modalObj.heading}</h2>
+                        <h2 class="modal-title" id="modalTitle-${modalObj.modalID}">${modalObj.heading}</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                         </button>
