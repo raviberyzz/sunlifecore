@@ -134,10 +134,7 @@ public class MailServiceImpl implements MailService {
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-                LOG.debug("successResponse------..   {}",successResponse);
-                LOG.debug("errorResponse------..   {}",errorResponse);
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
-                    LOG.debug("isClient------..   {}",isClient);
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -155,7 +152,6 @@ public class MailServiceImpl implements MailService {
                             return successResponse;
                         }
                     } else {
-                        // LOG.error("Error in sending mail to marketing team.. {} {}",  mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
                         LOG.error("Error in sending mail to marketing team.. {} {}",mailResponse);
                         return errorResponse;
                     }
@@ -424,8 +420,6 @@ public class MailServiceImpl implements MailService {
             for (int i = 0; i < mandatoryFields.length(); i++) {
                 String mandatoryKey = mandatoryFields.getString(i);
                 String paramValue = requestParameters.getOrDefault(mandatoryKey, "NA");
-                LOG.debug("mandatoryKey---->>>  {} ",mandatoryKey);
-                LOG.debug("   paramValue--->>>   {} ",paramValue);
                 if (paramValue.equals("NA") || paramValue.trim().length() == 0) {
                     return false;
                 }
@@ -529,7 +523,6 @@ public class MailServiceImpl implements MailService {
     private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
         final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-phone-number");
         final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-email");
-        return (null != honeyPotFieldPhone || null != honeyPotFieldEmail);
+        return (null != honeyPotFieldPhone && null != honeyPotFieldEmail);
     }
-
 }
