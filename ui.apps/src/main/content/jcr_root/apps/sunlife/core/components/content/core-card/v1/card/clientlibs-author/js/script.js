@@ -4,12 +4,16 @@
 (function ($, $document, author) {
     "use strict";
 
-    /* Binding event and callback on foundation-contentloaded */
-    $(document).on("foundation-contentloaded", function (e) {
-        let currentComponentPath = Granite.author.DialogFrame.currentDialog.editable.path;
-        let parentPath = currentComponentPath.substr(0, currentComponentPath.lastIndexOf("/"));
-        let cardType = CQ.shared.HTTP.get(parentPath + '/cardType').responseText;
-        let tabs = $(".card-type-tabs").find("coral-tab");
+    /* Binding event and callback on dialog-ready */
+    $(document).on("dialog-ready", function (e) {
+        const currentComponentPath = Granite.author.DialogFrame.currentDialog.editable.path;
+        const parentPath = currentComponentPath.substr(0, currentComponentPath.lastIndexOf("/"));
+        const cardType = CQ.shared.HTTP.get(parentPath + '/cardType').responseText;
+        const mediaType = CQ.shared.HTTP.get(parentPath + '/mediaType').responseText;
+        const horizontalIconCard = CQ.shared.HTTP.get(parentPath+'/horizontalIconCard').responseText;
+        const verticalIconCard = CQ.shared.HTTP.get(parentPath+'/verticalIconCard').responseText;
+        const tabs = $(".card-type-tabs").find("coral-tab");
+        let $assetTab = null;
         let selectedTab = null;
         let currentTab = '';
 
@@ -30,10 +34,28 @@
                 $(value).attr("aria-selected", true).attr("selected", true);
                 $(value).attr("hidden", false);
             }
+            if (currentTab == 'asset') {
+                $assetTab = $(value);
+            }
+            
         });
 
         /* Update/Disable different select option depending upon current card type */
         switch (cardType) {
+            case 'horizontal':
+                if(horizontalIconCard =='true') {
+                    disableAssetOption('image');
+                 } else {
+                    disableAssetOption('icon');
+                 }
+                break;
+            case 'vertical':
+                if(verticalIconCard =='true') {
+                    disableAssetOption('image');
+                 } else {
+                    disableAssetOption('icon');
+                 }
+                break;
             case 'avatar':
                 disableAssetOption('icon');
                 disableCtaOption(['button', 'cardlink']);
@@ -48,6 +70,10 @@
                 break;
             case 'media':
                 disableAssetOption('icon');
+                if(mediaType=='video') {
+                    $assetTab.attr("aria-selected", false).attr("selected", false);
+                    $assetTab.attr("hidden", true);
+                }
                 disableCtaOption(['cardlink']);
                 break;
             case 'segmented':
@@ -75,6 +101,7 @@
         function disableAssetOption(option) {
             $('coral-select[name="./assetType"]').find('coral-select-item[value="' + option + '"]').attr("disabled", true);
         }
+       
     });
 
 })($, $(document), Granite.author);

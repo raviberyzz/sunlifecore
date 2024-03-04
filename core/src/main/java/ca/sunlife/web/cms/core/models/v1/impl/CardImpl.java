@@ -227,6 +227,10 @@ public class CardImpl implements Card {
 
     @ValueMapValue
 	@Getter
+    private Boolean segmentCardFormContainer;
+
+    @ValueMapValue
+	@Getter
     private String statisticHeading;
 
     @ValueMapValue

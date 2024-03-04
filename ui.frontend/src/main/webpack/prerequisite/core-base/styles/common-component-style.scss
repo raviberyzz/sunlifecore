@@ -2,7 +2,10 @@
 * Styles shared across different components 
 */
 .cmp-text, 
-.news-details-container {
+.news-details-container,
+.article-container,
+.sl-media-block,
+.sl-banner-image-block {
     // Responsive image in text component
     img {
         max-width: 100%;

@@ -1,7 +1,7 @@
 <form data-sly-use.formContainer="ca.sunlife.web.cms.core.models.v1.FormContainerModel"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="${formContainer.method}" action="${formContainer.formAction}" name="${formContainer.name}" id="${formContainer.id}"
-      class="cmp-form ${grid.cssClass}" data-section="${formContainer.dataSection}" data-parsley-validate="data-parsley-validate" onsubmit="${formContainer.validation @ context='html'}" target="${formContainer.formTarget}">
+      class="cmp-form ${grid.cssClass}" data-section="${formContainer.dataSection}" data-parsley-validate="" onsubmit="return false" target="${formContainer.formTarget}">
      <sly data-sly-test="${formContainer.actionType != 'foundation/components/form/actions/custom'}">
           <input type="hidden" name=":formstart" value="${resource.path}"/>
           <input type="hidden" name="_charset_" value="utf-8"/>

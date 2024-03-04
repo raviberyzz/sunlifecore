@@ -90,6 +90,8 @@ public interface Card {
 
     public String getSegmentDescription();
 
+    public Boolean getSegmentCardFormContainer();
+
     public String getStatisticHeading();
 
     public String getStatisticHeadingType();

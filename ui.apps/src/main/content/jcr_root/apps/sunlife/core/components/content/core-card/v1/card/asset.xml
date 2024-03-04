@@ -65,8 +65,11 @@
                     <items jcr:primaryType="nt:unstructured">
                         <cardIcon jcr:primaryType="nt:unstructured"
                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                  fieldDescription="Only sunlife custom call to action specific icons are used here. Eg.- the lighthouse icon is used when the call to action is to Find an advisor. For lighthouse input 'info-find-advisor'"
                                   fieldLabel="Icon"
                                   name="./cardIcon" />
+
+                                  
                     </items>
                     <granite:data jcr:primaryType="nt:unstructured"
                                   showhidetargetvalue="icon" />
