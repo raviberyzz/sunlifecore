@@ -523,6 +523,6 @@ public class MailServiceImpl implements MailService {
     private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
         final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-phone-number");
         final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-email");
-        return (null != honeyPotFieldPhone && null != honeyPotFieldEmail);
+        return (null == honeyPotFieldPhone && null == honeyPotFieldEmail);
     }
 }
