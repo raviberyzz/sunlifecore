@@ -39,7 +39,7 @@
             						<hasSocial
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Check to include social sharing options for Facebook, Twitter, and YouTube"
+                                        fieldDescription="Check to include social sharing options for Facebook, Twitter, and Linkedin"
                                         text="Include Social Share"
                                         uncheckedValue="false"
                                         value="true"
@@ -52,10 +52,6 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
                         path="sunlife/core/components/common/editor/dialog/spacing"/>
-                    <includeSocial
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="sunlife/core/components/content/core-social-media/v1/social-media/cq:dialog/content/items/tabs/items/properties"/>
                 </items>
             </tabs>
         </items>

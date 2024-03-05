@@ -16,7 +16,7 @@ import lombok.Getter;
 @Getter
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, adapters = Accordion.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = AccordionModel.RESOURCE_TYPE)
-public class AccordionModel extends AccordionImpl implements Accordion {
+public class AccordionModel extends AccordionImpl {
 	
 	protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-accordion/v1/accordion";	
 	

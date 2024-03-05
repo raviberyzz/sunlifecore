@@ -32,7 +32,12 @@ $(document).ready(function() {
     const $navItem = $navTabs.find('.nav-item');   
     const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
     const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
-    let $currentItem;
+    let $currentItem;           
+    const activeTabsWidth = $navTabs.width();
+    const tabListWidth = getActiveScrollWidth($navItem.eq(0))
+    if(tabListWidth <= activeTabsWidth){
+      return false;
+    }
     //condition for right arrow focus on key event
     if($keyName === "ArrowRight"){
       $currentItem = $thisKey.next('.nav-item');
@@ -49,8 +54,7 @@ $(document).ready(function() {
       navigateTabOnArrowKey($currentItem);
     }
     if($currentItem && $currentItem.index() >= 0){
-      const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1);        
-      const activeTabsWidth = $navTabs.width();
+      const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1); 
       if(activeTabsWidth < scrollWidth && $currentItem.index() > 0){
         $leftNavScroll.removeClass("disabled").addClass("active");
         $rightNavScroll.addClass("disabled").removeClass("active");
@@ -121,13 +125,26 @@ $(document).ready(function() {
       }
     }
   }
-//Function used to handle mobile enable scrolling
+  //Function used to handle mobile enable scrolling
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
     const scrollWidth = getActiveScrollWidth($navButton);
     if($(window).width() < 767 && navWidth < (scrollWidth + 15)) {
       $navButton.removeClass('hide');
+    }
+  }
+  //Function used to disabled scrolling
+  function disabledScrolling() {
+    const $navTabs = $(".sl-tabs .nav-tabs");
+    const $navItem = $('.sl-tabs .nav-item');   
+    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
+    const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
+    const activeTabsWidth = $navTabs.width();
+    const tabListWidth = getActiveScrollWidth($navItem.eq(0));
+    if(tabListWidth <= activeTabsWidth){
+      $leftNavScroll.addClass("disabled").removeClass("active");
+      $rightNavScroll.addClass("disabled").removeClass("active");
     }
   }
   //Function used to intialize the events
@@ -142,6 +159,7 @@ $(document).ready(function() {
         $document.on("click", ".sl-tabs .nav-item", tabItemClickEventHandler);
         $document.on("click", ".sl-tabs .arrow-btn", slideTabEventHandler);
         mobileEnableScrolling($navButton);
+        disabledScrolling();
       }
   }
   init();
