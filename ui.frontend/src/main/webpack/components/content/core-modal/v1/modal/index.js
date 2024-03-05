@@ -1,3 +1,7 @@
+/**
+ * Bind a throttled scroll window event if there is a modal on the page which gets triggered on page scroll. 
+ * Manage the display of the modal only once per browser session, by writing and reading a cookie.
+ */
 $(document).ready(function () {
 
     /**
