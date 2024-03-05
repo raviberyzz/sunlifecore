@@ -23,7 +23,7 @@ $(document).ready(function () {
     function triggerModal() {
         var modalId = modalTriggerOnScroll.getAttribute('id');
         if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2) {
-            if (getCookie(modalId) == "") {
+            if (getCookie(modalId) === "") {
                 $("#" + modalId).modal("show");
                 if (navigator.userAgent.indexOf("MSIE") > 0) {
                     createCookie(modalId, 'displayed', 1, false);
@@ -35,9 +35,9 @@ $(document).ready(function () {
             }
         }
     }
-    
-    var modalTriggerOnScroll = document.querySelectorAll('[data-triggerOnScroll]')[0];
-    if (modalTriggerOnScroll != undefined) {
+
+    const modalTriggerOnScroll = document.querySelectorAll('[data-triggerOnScroll]')[0];
+    if (modalTriggerOnScroll) {
         window.addEventListener('scroll', throttle(triggerModal, 300));
     }
 });
