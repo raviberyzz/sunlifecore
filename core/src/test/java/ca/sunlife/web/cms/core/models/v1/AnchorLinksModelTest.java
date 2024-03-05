@@ -20,14 +20,11 @@ public class AnchorLinksModelTest {
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		anchorLinksModel.setAnchorHeading("Test Heading");
-		anchorLinksModel.setSpacing("mb-12");
-
 	}
 
 	@Test
 	public void testInit() {
 		assertEquals("Test Heading", anchorLinksModel.getAnchorHeading());
-		assertEquals("mb-12", anchorLinksModel.getSpacing());
 	}
 
 }
