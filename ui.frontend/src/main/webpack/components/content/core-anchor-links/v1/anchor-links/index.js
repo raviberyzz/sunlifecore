@@ -1,4 +1,10 @@
+/**
+ * Bind a throttled scroll window event if there is anchor links on the page which gets triggered on page scroll. 
+ * Manage to activate the anchor link on click of links.
+ * load id's in anchor links and map it to content to scroll it to correct place.
+ */
 $(document).ready(function () {
+  let isVisible = null;
   /**
      * Function used to update the active anchor link on click event.
      * @function
@@ -19,8 +25,6 @@ $(document).ready(function () {
       $(".cmp-toc__content li").eq(index).addClass("heading-"+(index+1))
     })
   }
-  
-  let isVisible = null;
   /**
      * Function used to handle the scroll and update visible anchor link active.
      * @function
