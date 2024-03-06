@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.constants.v1;
 
+import java.util.Arrays;
+
 import com.day.cq.commons.jcr.JcrConstants;
 
 public class ContentFragmentConstants {
@@ -16,8 +18,14 @@ public class ContentFragmentConstants {
     /**
      * The Constant ARTICLE_LIST_ELEMENT.
      */
-    public final static String[] ARTICLE_LIST_ELEMENT = {"articlePublishedDate", "articleHeadline",
+    private final static String[] ARTICLE_LIST_ELEMENT = {"articlePublishedDate", "articleHeadline",
             "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
             "articleMainDescription", "articleThumbnailImage"};
-
+    /**
+     * Retrieves the copy of article elements array
+     * @return a copy of the article elements array, ensuring immutability.
+     */
+    public static String[] getArticleElements() {
+    	return Arrays.copyOf(ARTICLE_LIST_ELEMENT, ARTICLE_LIST_ELEMENT.length);
+    }
 }

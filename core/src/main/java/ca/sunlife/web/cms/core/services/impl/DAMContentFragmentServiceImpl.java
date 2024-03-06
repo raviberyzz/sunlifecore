@@ -48,7 +48,7 @@ public class DAMContentFragmentServiceImpl implements DAMContentFragmentService 
         try (ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver()) {
             for (Resource resource : cfResourceList) {
                 if (null != resource && null != contentTypeConverter1) {
-                    DAMContentFragment damContentFragment = new DAMContentFragmentImpl(resourceResolver.getResource(resource.getPath()), contentTypeConverter1, null, ContentFragmentConstants.ARTICLE_LIST_ELEMENT);
+                    DAMContentFragment damContentFragment = new DAMContentFragmentImpl(resourceResolver.getResource(resource.getPath()), contentTypeConverter1, null, ContentFragmentConstants.getArticleElements());
                     damContentFragmentList.add(damContentFragment);
                 } else {
                     LOGGER.info("Resource/contentTypeConverter is null for path : {}", resource);
