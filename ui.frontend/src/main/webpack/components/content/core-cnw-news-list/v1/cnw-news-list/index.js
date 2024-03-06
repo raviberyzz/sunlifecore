@@ -1,22 +1,33 @@
 $(document).ready(function() {
-  //Function used to handle the tab click and key press event
+  /**
+     * Function used to handle the tab click and key press event
+     * @function
+     * @param {object} scope - scope of the selected element
+  */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
-    const $tabContainer = $currentTab.parents(".nav-tabs").parents(".stack-tab-container").parents(".sl-tabs")
     const $id = $currentTab.attr('id');
-    console.log("id", $id)
-    $tabContainer.find(".nav-item").removeClass("active focused")
-    $tabContainer.find(".nav-item .nav-link").removeClass("active focused").attr("tabindex","-1").attr("aria-selected", "false");
+    const $navItem = $currentTab.closet(".nav-item");
+    const $allTabsLink = $navItem.find(".nav-link");
+    const $selectedNavLink = $currentTab.find(".nav-link");
+    $navItem.removeClass("active focused")
+    $allTabsLink.removeClass("active focused").attr("tabindex","-1").attr("aria-selected", "false");
     $currentTab.addClass("active focused");
-    $currentTab.find(".nav-link").addClass("active").attr("tabindex","0").attr("aria-selected", "true");
-    $tabContainer.find(".tab-pane").removeClass("active show")
+    $selectedNavLink.addClass("active").attr("tabindex","0").attr("aria-selected", "true");
     $("#default-tab-tabpane-"+$id).addClass("active show")
   }
-  //Function used to handle the tab item click event
+  /**
+     * Function used to handle the tab item click event
+     * @function
+  */
   function tabItemClickEventHandler(){
     tabItemEventHandler(this);
   }
-  //Function is used to navigate the tab on arrow key
+  /**
+     * Function is used to navigate the tab on arrow key
+     * @function
+     * @param {object} $thisScope - scope of the selected element
+  */
   function navigateTabOnArrowKey($thisScope) {  
     const $navTab = $thisScope.parents(".nav-tabs");   
     $navTab.find(".nav-item .nav-link").attr("tabindex", "-1").attr("aria-selected", "false");
@@ -25,7 +36,20 @@ $(document).ready(function() {
     $thisScope.addClass("focused");
     tabItemEventHandler($thisScope);
   }
-  //Function used to handle the tab keypress for left arrow, right arrow, and enter
+  /**
+   * Function used to handle the tab keypress for left arrow, right arrow, and enter
+    * @function
+    * @param {object} $navItem - pass the first/last element of nav item
+    * @param {object} $currentItem - pass the current element of nav item
+  */
+  function getCurrentItem($navItem, $currentItem) {
+    return $currentItem.index() < 0 ? $navItem : $currentItem
+  }
+  /**
+   * Function used to handle the tab keypress for left arrow, right arrow, and enter
+    * @function
+    * @param {object} e - capture event for selected element
+  */  
   function tabItemKeyEventHandler(e) {
     const $thisKey = $(this);
     const $keyName = e.key;    
@@ -37,7 +61,8 @@ $(document).ready(function() {
     //condition for right arrow focus on key event
     if($keyName === "ArrowRight"){
       $currentItem = $thisKey.next('.nav-item');
-      $currentItem = $currentItem.index() < 0 ? $navItem.first() :$currentItem;
+      $firstItem = $navItem.first();
+      $currentItem = getCurrentItem($firstItem, $currentItem);
       if($currentItem.index() === 0) {
         $navItem.show();
       }
@@ -45,8 +70,9 @@ $(document).ready(function() {
     }
     //condition for left arrow focus on key event
     else if($keyName === "ArrowLeft"){
-      $currentItem = $thisKey.prev('.nav-item'); 
-      $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
+      $currentItem = $thisKey.prev('.nav-item');      
+      $lastItem = $navItem.first(); 
+      $currentItem = getCurrentItem($lastItem, $currentItem);    
       navigateTabOnArrowKey($currentItem);
     }
     if($currentItem && $currentItem.index() >= 0){
@@ -62,13 +88,18 @@ $(document).ready(function() {
       }
     }
     else {
+      const $activeNavItem = $navTabs.find(".nav-item.active");
       $navItem.removeClass("focused");
       $navItem.find(".nav-link").attr("tabindex", "-1")
-      $navTabs.find(".nav-item.active").addClass("focused");
-      $navTabs.find(".nav-item.active .nav-link").attr("tabindex", "0")
+      $activeNavItem.addClass("focused");
+      $activeNavItem.find(".nav-link").attr("tabindex", "0")
     }
   }
-  //Function used to get the scroll width for all visible tablist
+  /**
+     * Function used to get the scroll width for all visible tablist
+     * @function
+     * @param {object} $currentNav - scope for selected element
+  */
   function getActiveScrollWidth($currentNav) {
     const $navItem = $currentNav.parents(".stack-tab-container").find(".nav-item:not(.hide)");
     let navWidth = 0;
@@ -77,7 +108,10 @@ $(document).ready(function() {
     })
     return navWidth;
   }
-  //Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
+  /**
+     * Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
+     * @function
+  */
   function slideTabEventHandler() {
     const $currentNav = $(this);
     const $navTab = $currentNav.siblings(".nav-tabs");
@@ -87,7 +121,7 @@ $(document).ready(function() {
     const $leftNavScroll = $navTab.siblings(".arrow-btn.left");      
     const $rightNavScroll = $navTab.siblings(".arrow-btn.right");
     let activeScrollTab = parseInt($navTab.attr('data-activeTab'));
-    //condition for right arrow scrolling
+    /*condition for right arrow scrolling */
     if($currentNav.hasClass("right")){  
       if(navWidth < scrollWidth){       
         activeScrollTab = activeScrollTab + 1; 
@@ -96,17 +130,17 @@ $(document).ready(function() {
         for(let i = 0; i < activeScrollTab; i++) {
           $navItem.eq(i).addClass("hide").removeClass("show");
         }
-        //Condition to disabled the right arrow when scroll reach to last tab item
+        /*Condition to disabled the right arrow when scroll reach to last tab item */
         if(navWidth >= (scrollWidth - $navTab.find(".nav-item:last-child").width())){
           $rightNavScroll.removeClass("active").addClass("disabled");
         }
       }
-      //condition to disabled the right arrow
+      /*condition to disabled the right arrow */
       else{
         $rightNavScroll.removeClass("active").addClass("disabled");
       }
     }
-    //condition for left arrow scrolling
+    /*condition for left arrow scrolling */
     else{        
       $rightNavScroll.removeClass("disabled").addClass("active")
       if(activeScrollTab > 0){          
@@ -122,7 +156,11 @@ $(document).ready(function() {
       }
     }
   }
-//Function used to handle mobile enable scrolling
+  /**
+     * Function used to handle mobile enable scrolling.
+     * @function
+     * @param {function} $navButton - Current selected navigation button (prev/next)
+  */
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
@@ -131,9 +169,11 @@ $(document).ready(function() {
       $navButton.removeClass('hide');
     }
   }
-  //Function used to intialize the events
+  /**
+     * Function used to intialize the events
+     * @function
+  */
   function init() {
-    console.log("In Js")
     const $tabContainer = $(".sl-tabs");    
     if($tabContainer.length > 0){
         const $navTab = $(".sl-tabs .nav-tabs");

@@ -16,9 +16,21 @@
             color: var(--brand-tertiary-800);
             margin-bottom: 0.75rem;
             font-size: 1.375rem;
+            display: block;
     }
     .summary{
             @include sl-body-medium;
             margin-bottom: 0; 
     }
+}
+.cnw-news-list{
+        .sl-pagination {
+                .sl-basic-pagination{
+                        justify-content: flex-start;
+                        display: flex;
+                }
+        }
+        .tab-content:focus-visible {
+                outline: 0;
+        }
 }

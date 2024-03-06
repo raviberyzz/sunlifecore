@@ -47,16 +47,16 @@
                 tabindex="0"
                 class="cmp-tabs__tabpanel${yearsTab == newsModel.activeYear ? ' cmp-tabs__tabpanel--active' : ''}"
                 data-cmp-hook-tabs="tabpanel">
-                <sly data-sly-test="${yearsTab == newsModel.activeYear}"/>
+                <sly data-sly-test="${yearsTab}"/>
 					<sly data-sly-test.newsList="${newsModel.news.releaseMain.releases.release}" />
                     <div class="option-box no-margin news-option-table">
-						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
+						<sly data-sly-test ="${newsList}" data-sly-list.news="${newsList}">
                             <div class="list-group">
                                 <div class="news-article">
                                     <div class="list-group-item list-group-item-action">
                                         <p class="releaseDate">${news.releaseDate}</p> 
                                         <a class="h5 content" x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a>
-                                        <p class="summary">${news.summary @ context='html'}</p>
+                                        ${news.summary @ context='html'}
                                     </div>
                                 </div>
                             </div>
@@ -73,15 +73,6 @@
                         <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
                         <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
                         <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'active' : ''}" />
-                        <sly data-sly-test="${paginationObj.curPage == 1}">
-                            <ul class="sl-basic-pagination pagination pagination-list first-page">
-                        </sly>
-                        <sly data-sly-test="${paginationObj.curPage == paginationObj.totalPages}">
-                            <ul class="sl-basic-pagination pagination pagination-list last-page">
-                        </sly>
-                        <sly data-sly-test="${paginationObj.curPage != 1 && paginationObj.curPage != paginationObj.totalPages}">
-                            <ul class="sl-basic-paginationpagination pagination-list">
-                        </sly>
                         <div class="sl-pagination" aria-label="pagination">
                             <ul class="sl-basic-pagination">
                                 <!-- <sly data-sly-test="${paginationObj.curPage > 1}"> -->
@@ -112,11 +103,9 @@
                                     </li>
                                 </sly>
                             </ul>
-                            <button type="button" class="sl-btn load-more-pagination btn btn-secondary">Load More</button>
                         </div>
                     </div>
-                </div>
-                
+                </div>                
             </div>
         </div>
     </div>
