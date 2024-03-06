@@ -38,7 +38,7 @@ public class BreadcrumbImpl extends AbstractComponentImpl implements Breadcrumb 
 	private com.adobe.cq.wcm.core.components.models.Breadcrumb delegate;
 
 	private interface DelegationExclusion {
-    //Here we define the methods we want to override
+		// Here we define the methods we want to override
 	}
 
 	@ValueMapValue
@@ -64,7 +64,7 @@ public class BreadcrumbImpl extends AbstractComponentImpl implements Breadcrumb 
 	/**
 	 * Gets the Accordion Lang Code.
 	 *
-	 * @return the  accordion lang code
+	 * @return the accordion lang code
 	 */
 	@Override
 	public final String getLangcode() {
@@ -81,5 +81,4 @@ public class BreadcrumbImpl extends AbstractComponentImpl implements Breadcrumb 
 		return spacing;
 	}
 
-	
 }
