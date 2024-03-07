@@ -32,22 +32,22 @@ import java.util.Calendar;
 import javax.jcr.RepositoryException;
 
 import ca.sunlife.web.cms.core.models.BreadcrumbModel;
-import ca.sunlife.web.cms.core.models.v1.Breadcrumb;
+import ca.sunlife.web.cms.core.models.v1.CustomBreadcrumb;
 import ca.sunlife.web.cms.core.models.v1.TabsModel;
-import ca.sunlife.web.cms.core.models.v1.impl.BreadcrumbImpl;
+import ca.sunlife.web.cms.core.models.v1.impl.CustomBreadcrumbImpl;
 
 @ExtendWith({ AemContextExtension.class })
-public class BreadcrumbImplTest {
+public class CustomBreadcrumbImplTest {
 
 	private final AemContext context = new AemContext();
 
 	@InjectMocks
-	private BreadcrumbImpl breadcrumb;
+	private CustomBreadcrumbImpl breadcrumb;
 
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		context.addModelsForClasses(BreadcrumbImpl.class);
+		context.addModelsForClasses(CustomBreadcrumbImpl.class);
 		context.load().json("/ca/sunlife/web/cms/core/models/v1/breadcrumb/breadcrumb.json", "/content");
 
 	}
@@ -56,7 +56,7 @@ public class BreadcrumbImplTest {
 	public void testInit() {
 
 		context.currentResource("/content/breadcrumb");
-		breadcrumb = context.request().adaptTo(BreadcrumbImpl.class);
+		breadcrumb = context.request().adaptTo(CustomBreadcrumbImpl.class);
 		assertEquals("mb-sl24", breadcrumb.getSpacing());
 		assertEquals("en", breadcrumb.getLangcode());
 		assertEquals("4", breadcrumb.getStartLevel());

@@ -3,6 +3,7 @@ package ca.sunlife.web.cms.core.models.v1.impl;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
@@ -10,15 +11,18 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.util.AbstractComponentImpl;
 
-import ca.sunlife.web.cms.core.models.v1.Breadcrumb;
+import ca.sunlife.web.cms.core.models.v1.CustomBreadcrumb;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Delegate;
+import com.adobe.cq.wcm.core.components.models.Breadcrumb;
+import com.adobe.cq.export.json.ExporterConstants;
 
 /**
- * The BreadcrumbModel is a sling model associated with Breadcrumb component.
+ * The CustomBreadcrumbImpl is a sling model associated with Breadcrumb component.
  *
  * @author Sunlife
  */
@@ -26,21 +30,20 @@ import lombok.experimental.Delegate;
 @Getter
 @Setter
 @Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, adapters = {
-		com.adobe.cq.wcm.core.components.models.Breadcrumb.class, ComponentExporter.class,
-		Breadcrumb.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = BreadcrumbImpl.RESOURCE_TYPE)
-public class BreadcrumbImpl extends AbstractComponentImpl implements Breadcrumb {
+		Breadcrumb.class, ComponentExporter.class,
+		CustomBreadcrumb.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = CustomBreadcrumbImpl.RESOURCE_TYPE)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, selector = ExporterConstants.SLING_MODEL_SELECTOR, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+
+public class CustomBreadcrumbImpl extends AbstractComponentImpl implements CustomBreadcrumb {
 
 	protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-breadcrumb/v1/breadcrumb";
 
 	@Self
 	@Via(type = ResourceSuperType.class)
-	@Delegate(excludes = DelegationExclusion.class)
-	private com.adobe.cq.wcm.core.components.models.Breadcrumb delegate;
+	@Delegate
+	private Breadcrumb delegate;
 
-	private interface DelegationExclusion {
-		// Here we define the methods we want to override
-	}
-
+	
 	@ValueMapValue
 	private String startLevel;
 

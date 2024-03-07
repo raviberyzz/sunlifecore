@@ -1,12 +1,14 @@
 package ca.sunlife.web.cms.core.models.v1;
 
+import com.adobe.cq.wcm.core.components.models.Breadcrumb;
+
 /**
  * The Breadcrumb is a Interface associated with Breadcrumb component.
  *
  * @author Sunlife
  */
 
-public interface Breadcrumb extends com.adobe.cq.wcm.core.components.models.Breadcrumb {
+public interface CustomBreadcrumb extends Breadcrumb {
 
 	/**
 	 * Gets the Accordion Start Level
