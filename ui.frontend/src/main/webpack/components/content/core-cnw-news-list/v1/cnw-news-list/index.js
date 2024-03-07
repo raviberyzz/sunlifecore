@@ -6,6 +6,7 @@ $(document).ready(function() {
      * Function used to handle the tab click and key press event
      * @function
      * @param {object} scope - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
   */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
