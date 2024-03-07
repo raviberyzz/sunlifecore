@@ -1,22 +1,25 @@
 (function(document, $) {
     "use strict";
- 
-    $(document).on("foundation-contentloaded", function (e) {
-        Coral.commons.ready(function () {
-            showHideHandler($('.coral-Form-field[name*="./type"]', e.target));
-        });
+
+    const typeField = '.coral-Form-field[name*="./type"]'
+
+    $(document).on('foundation-contentloaded', function () {
+        setTimeout(function(){
+            showHideHandler($(typeField));
+        }, 10);
     });
 
-    $(document).on("change", '.coral-Form-field[name*="./type"]', function(e) {
-        showHideHandler($(this));
+    $(document).on("change", typeField, function(e) {
+        showHideHandler($(e.target));
     });
- 
+
     function showHideHandler(el) {
+        const $iconContainer = $(".showhide-icon").first();
         if(el.val() === "textarea"){
-            el.parent(".coral-Form-fieldwrapper").siblings(".showhide-icon").first().addClass("hide");
+            $iconContainer.addClass("hide");
         }
         else{
-            el.parent(".coral-Form-fieldwrapper").siblings(".showhide-icon").first().removeClass("hide");
+            $iconContainer.removeClass("hide");
         }
     }
 })(document, Granite.$);
