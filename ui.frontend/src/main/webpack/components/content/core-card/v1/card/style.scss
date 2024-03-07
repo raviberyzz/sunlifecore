@@ -28,6 +28,12 @@
     margin-left: 50%;
     transform: translateX(-50%);
     width: var(--viewportWidth);
+
+    .caption-container p {
+        @include sl-body-small;
+        display: flex;
+        margin: 0;
+    }
 }
 
 /* Style for avatar content block */ 
@@ -47,8 +53,17 @@
     .sl-article-video iframe {
         width: 100% !important;
     }
+    .card-text{
+        padding-bottom: 0 !important;
+    }
 }
 
+.sl-media-block, 
+.sl-banner-content-block {
+    .card-text p:last-child {
+        margin-bottom: 0;
+    }
+}
 /* Style for banner-image content block */ 
 .sl-banner-image-block {
     &.banner-image-block-left,
@@ -62,6 +77,10 @@
             margin-top: 0.5rem;
           }
         }
+      }
+
+      .btn {
+        width: fit-content;
       }
     }
 }
