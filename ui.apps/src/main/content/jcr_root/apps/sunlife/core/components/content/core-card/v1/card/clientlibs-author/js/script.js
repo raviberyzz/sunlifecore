@@ -68,7 +68,7 @@
                 break;
             case 'banner-image':
                 disableAssetOption('icon');
-                disableCtaOption(['button','cardlink']);
+                disableCtaOption(['cardlink']);
                 break;
             case 'media':
                 disableAssetOption('icon');
@@ -78,6 +78,7 @@
                     disableCtaOption(['button','cardlink']);
                 } else {
                     disableCtaOption(['cardlink']);
+                    $('.card-type-dialog-container').find('[name="./mediaWatchTime"]').parent().hide();
                 }
                 
                 break;
