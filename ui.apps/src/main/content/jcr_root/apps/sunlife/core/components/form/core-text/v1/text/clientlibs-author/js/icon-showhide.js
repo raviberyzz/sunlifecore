@@ -12,7 +12,6 @@
     });
  
     function showHideHandler(el) {
-        console.log(el.val());
         if(el.val() === "textarea"){
             el.parent(".coral-Form-fieldwrapper").siblings(".showhide-icon").first().addClass("hide");
         }
