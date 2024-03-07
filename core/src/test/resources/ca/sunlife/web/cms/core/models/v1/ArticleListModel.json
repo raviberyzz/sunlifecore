@@ -1,0 +1,41 @@
+{
+  "articleList": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/core/components/content/core-articleList/v1/articleList",
+    "parentPath": "/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources",
+    "displayType": "articleList",
+    "hideTop": 3,
+    "maxItems": 10,
+    "accessibilityLabel": "Sample accessibility label",
+    "spacing": "mb-sl12",
+    "tagNames": [
+      "tag1, tag2"
+    ],
+    "title": "Article List",
+    "titleLevel": "h2",
+    "dateFormat": "MMM dd, yyyy",
+    "pageLocale": "en_CA",
+    "totalMatch": 10
+  },
+  "articleList2": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/core/components/content/core-articleList/v1/articleList",
+    "parentPath": "/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources",
+    "displayType": "editorialList"
+  },
+  "articleList3": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/core/components/content/core-articleList/v1/articleList",
+    "parentPath": ""
+
+  },
+  "articleList4": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/core/components/content/core-articleList/v1/articleList",
+    "parentPath": "/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources",
+    "displayType": "articleList",
+    "dateFormat": "MMM dd, yyyy",
+    "pageLocale": "en_CA"
+
+  }
+}

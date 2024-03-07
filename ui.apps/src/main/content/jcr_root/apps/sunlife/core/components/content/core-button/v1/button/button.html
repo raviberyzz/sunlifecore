@@ -8,6 +8,8 @@
             type="${buttonObj.linkURL ? '' : 'button'}"
             href="${buttonObj.linkURL}"
             data-sly-attribute.target="${buttonObj.linkURL ? buttonObj.linkTarget : '' }"
+            data-bs-toggle="${buttonObj.triggerModel == true ? 'modal' : '' }" 
+            data-bs-target="#${buttonObj.triggerModel == true ? buttonObj.modalID : '' }"
             data-title="${buttonObj.dataTitle}"
             class="${buttonObj.spacing} sl-btn btn ${buttonObj.buttonType}"
             aria-label="${buttonObj.accessibilityLabel}">

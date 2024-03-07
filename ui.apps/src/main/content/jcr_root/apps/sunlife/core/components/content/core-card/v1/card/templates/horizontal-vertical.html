@@ -31,16 +31,15 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
     data-sly-set.haveSomthing="${image || cardIcon || cardCategory || cardBadgeText || cardHeading || cardDescription || cardCaption}">
     
     <!--/* Empty Placeholder */-->
-    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Horizontal/ Vertical Card"></div>
+    <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="${cardType =='horizontal' ? 'Horizontal Card' : 'Vertical Card'}"></div>
 
     <sly data-sly-test="${haveSomthing}">
       <picture data-sly-test="${ cardImage || (!containerConfigs.isIcon && isImageCard) }">
         <img data-sly-test="${image}" 
           src="${image}" 
           alt="${altText}"
-          class="img-container">
+          class="img-container" />
       </picture>
-
       <div class="card-body">
         <div data-sly-test="${icon || (containerConfigs.isIcon && isIconCard)}" class="icon-container card-text">
           <i data-sly-test="${cardIcon}" role="presentation" class="sl-card-icon fak fa-${cardIcon}"></i>
@@ -64,6 +63,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
           <div class="caption card-text">${cardCaption}</div>
           <div class="cta-container">
             <sly 
+                data-sly-test="${ctaType || cardBtnURL || cardLinkURL }"
                 data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
                 data-sly-call="${template.details @ ctaType=ctaType, cardBtnTarget=cardBtnTarget, cardBtnURL=cardBtnURL, cardBtnIconType=cardBtnIconType, cardBtnLabel=cardBtnLabel, cardLinkTarget=cardLinkTarget, cardLinkURL=cardLinkURL, cardLinkIconType=cardLinkIconType, cardLinkLabel=cardLinkLabel, dataTitle=dataTitle }">
             </sly>
