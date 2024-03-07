@@ -1,0 +1,79 @@
+<template data-sly-template.pagination="${@paginationObj,pageUrl}">
+    <sly data-sly-test="${paginationObj}">
+        <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />
+        <sly data-sly-test="${isPaginationrequired > 1}">
+            <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
+            <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
+            <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'selected-item' : ''}" />
+            <nav role="navigation" aria-label="Page" class="sl-pagination">
+                <sly data-sly-test="${paginationObj.curPage == 1}">
+                    <ul class="sl-basic-pagination first-page">
+                </sly>
+                <sly data-sly-test="${paginationObj.curPage == paginationObj.totalPages}">
+                    <ul class="sl-basic-pagination last-page">
+                </sly>
+                <sly data-sly-test="${paginationObj.curPage != 1 && paginationObj.curPage != paginationObj.totalPages}">
+                    <ul class="sl-basic-pagination">
+                </sly>
+                <sly data-sly-test="${paginationObj.curPage > 1}">
+                    <li class="sl-pagination-item ${previousCss}">
+                        <button>
+                            <span class="icon-container">
+                                <i class="fal fa-chevron-left fa-w-8" role="presentation"></i>
+                            </span>
+                            <span class="visually-hidden">Previous page</span>
+                        </button>
+
+                    	<!--/*
+                        <sly data-sly-test="${paginationObj.prevPage > 1}">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}${paginationObj.prevPage}/">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span>${'Prev' @ i18n}</span>
+                            </a>
+                        </sly>
+                         <sly data-sly-test="${paginationObj.prevPage == 1}">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span>${'Prev' @ i18n}</span>
+                            </a>
+                        </sly> */-->
+                    </li>
+                </sly>
+                <sly data-sly-test="${paginationObj.pageItems.size > 0}">
+                <li class="sl-pagination-item ${firstPageCss}">
+                    <a x-cq-linkchecker="skip" href="${pageUrl}1/" aria-label="${paginationObj.firstPageText}">
+                        <span>1</span>
+                    </a>
+                </li>
+                </sly>
+                <sly data-sly-list.pageItems="${paginationObj.pageItems}">
+
+                    <li data-sly-test="${!paginationObj.ellipsis && pageItems.index != 0}" class="sl-pagination-item ${paginationObj.curPage == pageItems.index ? 'selected-item' : ''}">
+                        <a x-cq-linkchecker="skip" href="${pageItems.href}/">
+                            <span>${pageItems.index}</span>
+                        </a>
+                    </li>
+                    <li data-sly-test="${paginationObj.ellipsis || pageItems.index == 0}" class="ellipsis"><a><span>...</span></a></li>
+                </sly>
+
+                <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
+                    <li class="sl-pagination-item ${nextCss}">
+                        <a x-cq-linkchecker="skip" href="${pageUrl}${paginationObj.nextPageNo}/">
+                            <span class="icon-container">
+                                <i class="fal fa-chevron-right fa-w-8" role="presentation"></i>
+                            </span>
+                            <span class="visually-hidden">${'Next' @ i18n}</span> 
+                        </a>
+                    </li>
+                </sly>
+
+                </ul>
+                <!-- /*                
+                <div class="pagination-indicator">
+                    ${'Page' @ i18n} ${paginationObj.curPage} ${'Of' @ i18n} ${paginationObj.totalPages}
+                </div> 
+                */ -->
+            </nav>
+        </sly>
+    </sly>
+</template>

@@ -4,7 +4,7 @@ Figma - https://www.figma.com/file/WWnQlqR6HRusFOYRIjAZ8G/1.1-Helios-Web-Templat
 */-->
 <sly data-sly-use.article="ca.sunlife.web.cms.core.models.v1.Article"></sly>
 <sly data-sly-test.notEmpty="${article.fragmentPath}">
-    <article class="article-container mt-sl24">
+    <article class="article-container mt-sl24 ${article.spacing}">
         <div class="row">
             <div class="col-sm-3">
                 <!-- Time to read article -->

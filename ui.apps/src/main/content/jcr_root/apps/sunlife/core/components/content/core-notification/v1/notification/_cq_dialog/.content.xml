@@ -49,7 +49,7 @@
                                                         value="warning"/>
                                                     <error
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Error"
+                                                        text="Danger"
                                                         value="danger"/>
                                                 </items>
                                             </notificationType>

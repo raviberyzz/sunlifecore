@@ -20,6 +20,8 @@
         /* show/hide tabs of different card type depending upon current card type */
         tabs.each(function (index, value) {
             currentTab = $(value).find('coral-tab-label').text().toLowerCase();
+            currentTab = (currentTab == "banner image block") ? 'banner-image' : currentTab;
+
             if ((currentTab != 'asset' && currentTab != 'cta' && currentTab != 'analytics') || (cardType === 'statistic')) {
                 $(value).attr("aria-selected", false).attr("selected", false);
                 $(value).attr("hidden", true);
@@ -73,8 +75,12 @@
                 if(mediaType=='video') {
                     $assetTab.attr("aria-selected", false).attr("selected", false);
                     $assetTab.attr("hidden", true);
+                    disableCtaOption(['button','cardlink']);
+                } else {
+                    disableCtaOption(['cardlink']);
+                    $('.card-type-dialog-container').find('[name="./mediaWatchTime"]').parent().hide();
                 }
-                disableCtaOption(['cardlink']);
+                
                 break;
             case 'segmented':
                 disableAssetOption('image');

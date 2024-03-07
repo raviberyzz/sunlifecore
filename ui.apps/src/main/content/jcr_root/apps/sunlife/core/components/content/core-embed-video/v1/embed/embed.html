@@ -1,7 +1,7 @@
-<div data-sly-use.embed="com.adobe.cq.wcm.core.components.models.Embed"
+<sly data-sly-use.embed="com.adobe.cq.wcm.core.components.models.Embed"
      data-sly-use.commonsTemplates="core/wcm/components/commons/v1/templates.html"
      data-sly-test.hasContent="${(embed.result && embed.result.processor) || embed.html || embed.embeddableResourceType}">
-   <div class="sl-article-video-container container ${properties['spacing']}">
+   <div class="sl-article-video-container ${properties['spacing']}">
     <div class="sl-article-video-component">
       <div class="sl-article-video" tabindex="0" aria-label="${properties['caption']}">
         <sly data-sly-test="${embed.result && embed.result.processor}"
@@ -15,5 +15,5 @@
       <span class="sl-article-video-caption">${properties['caption']}</span>
     </div>
   </div>
-</div>
+</sly>
 <sly data-sly-call="${commonsTemplates.placeholder @ isEmpty = !hasContent}"></sly>

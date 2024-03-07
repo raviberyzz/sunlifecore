@@ -3,9 +3,15 @@ Template for statistic card component
 Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=12940-112107&mode=design&t=VXlORNimlyCeZtFI-4
 */-->
 <template data-sly-template.details="${ @ model, cardType, containerConfigs }"> 
-  <div class="card-body">
-    <div class="caption">${model.statisticCaption @ context ='html'}</div>
-    <h3 class="h3 card-title" data-sly-element="${model.statisticHeadingType || 'h3'}">${model.statisticHeading}</h3>
-    <div class="card-text">${model.statisticDescription @ context ='html'}</div>
-  </div>
+  <sly data-sly-set.haveSomthing="${model.statisticCaption || model.statisticHeadingType || model.statisticDescription }" />
+
+  <!--/* Empty Placeholder */-->
+  <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="Statistic Block"></div>
+  <sly data-sly-test="${haveSomthing}">
+    <div class="card-body">
+        <div class="caption">${model.statisticCaption @ context ='html'}</div>
+        <h3 class="h3 card-title" data-sly-element="${model.statisticHeadingType || 'h3'}">${model.statisticHeading}</h3>
+        <div class="card-text">${model.statisticDescription @ context ='html'}</div>
+    </div>
+  </sly>
 </template>
