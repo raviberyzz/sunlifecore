@@ -23,7 +23,7 @@
                     <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
                         <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
                             <a href="${buttonList.linkURL}" class="sl-btn btn ${buttonList.buttonType}"
-                                target="${buttonList.linkTarget}">${buttonList.buttonText}</a>
+                                target="${buttonList.linkTarget}"  data-title="${buttonList.dataTitle}">${buttonList.buttonText}</a>
                         </div>
                     </sly>
                     <sly data-sly-test="${modalObj.modalTypes == 'formModal'}"
