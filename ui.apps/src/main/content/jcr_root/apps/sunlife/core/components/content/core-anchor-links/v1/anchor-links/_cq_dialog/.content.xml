@@ -18,7 +18,8 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Enter a heading for the anchor links section. This heading will be displayed above the list of anchor links on the page"
                                                 fieldLabel="Anchor Heading"
-                                                name="./anchorHeading"/>
+                                                name="./anchorHeading"
+												required="{Boolean}true"/>
                                             <startlevel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"/>
