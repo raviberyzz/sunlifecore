@@ -3,6 +3,7 @@
  * Manage to activate the anchor link on click of links.
  * load id's in anchor links and map it to content to scroll it to correct place.
  */
+
 $(document).ready(function () {
   let isVisible = null;
   /**
@@ -42,25 +43,23 @@ $(document).ready(function () {
     }
     const callback = (entries) => {
       entries.map((item) => {
-        if(item.isIntersecting){
-          isVisible = item.target.id;
+        if(item.isIntersecting && item.intersectionRect.top <= 0 && item.intersectionRect.bottom >= 0){
+          isVisible = item.target;
         }
       })      
     }    
     const observer = new IntersectionObserver(callback, options)    
     for (var index = 0; index < linkIds.length; index++) {
       var linkId = linkIds[index];
-      var targetElement = document.getElementById(linkId);
+      var targetElement = document.getElementById(linkId).parentNode;
       if (targetElement) {
         observer.observe(targetElement)
-        var eleRect = targetElement === null || targetElement === void 0 ? void 0 : targetElement.getBoundingClientRect();
-        var isInView = eleRect.top >= 0 && eleRect.bottom <= window.innerHeight;
-        if (isInView) {
-          activeLinkIndex = isVisible === linkId ? isVisible: linkId;
+        if (isVisible) {
+          activeLinkIndex = $(isVisible).find('h2').attr('id');
         }
       }
-      if(activeLinkIndex !== null){
-        break;
+      if(activeLinkIndex !== null) {
+        return false;
       }
     }
     if(activeLinkIndex !== null){
@@ -68,21 +67,6 @@ $(document).ready(function () {
       $("."+activeLinkIndex).addClass("active-anchor");
     }
   };
-  /**
-     * Set up throttler.
-     * @function
-     * @param {function} fn - The function to throttle.
-     * @param {number} delay - The function will run once per given amount of milliseconds.
-  */
-  const throttle = (fn, delay) => {
-      let time = Date.now();
-      return () => {
-          if ((time + delay - Date.now()) <= 0) {
-              fn();
-              time = Date.now();
-          }
-      }
-  }
   /**
      * Check if Anchor links component exists.
      * @function
