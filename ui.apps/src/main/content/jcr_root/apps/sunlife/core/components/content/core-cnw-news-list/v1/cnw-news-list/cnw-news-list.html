@@ -13,7 +13,6 @@
     </div>
 </div>
 
-
 <sly data-sly-test = "${newsModel.newsType == '2'}">
     <div data-panelcontainer="${wcmmode.edit && 'tabs'}"
      id="${newsModel.id}"
@@ -67,44 +66,10 @@
 							<p>${newsModel.noNewsMessage @ context='html'}</p>
 						</div>
 					</sly>
-                    <sly data-sly-test.paginationObj="${newsModel.news.pagination}" />
-                    <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />
-                    <div class="pagination-component" data-sly-test="${isPaginationrequired}">
-                        <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
-                        <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
-                        <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'active' : ''}" />
-                        <div class="sl-pagination" aria-label="pagination">
-                            <ul class="sl-basic-pagination">
-                                <!-- <sly data-sly-test="${paginationObj.curPage > 1}"> -->
-                                    <li class="sl-pagination-item disabled">
-                                        <a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.prevPage}/">
-                                            <span class="fal fa-chevron-left sl-icon sl-icon_size_sm"></span>
-                                            <span class="visually-hidden">${newsModel.previousText}</span>
-                                        </a>
-                                    </li>
-                                <!-- </sly> -->
-                                <li class="sl-pagination-item selected-item">
-                                    <a x-cq-linkchecker="skip" href="${newsModel.requestURL}1/" aria-current="page">1<span class="visually-hidden">Page 1</span></a>
-                                </li>
-                                <sly data-sly-list.pageItems="${paginationObj.pageItems}">
-                                <li data-sly-test="${!pageItems.ellipsis}" class="sl-pagination-item ${paginationObj.curPage == pageItems.index ? 'active' : ''}">
-                                    <a x-cq-linkchecker="skip" href="${pageItems.href}/">${pageItems.index}<span class="visually-hidden">Go to page ${pageItems.index}</span></a>
-                                </li>
-                                </sly>
-                                <li data-sly-test = "${pageItems.ellipsis}" class="sl-pagination-item ellipsis">
-                                    <div>...</div>
-                                </li>
-                                <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
-                                    <li class="sl-pagination-item">
-                                        <a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.nextPageNo}/">
-                                            <span class="fal fa-chevron-right sl-icon sl-icon_size_sm"></span>
-                                            <span class="visually-hidden">${newsModel.nextText}</span>
-                                        </a>
-                                    </li>
-                                </sly>
-                            </ul>
-                        </div>
-                    </div>
+                    <sly data-sly-test.paginationObj="${newsModel.news.pagination}" />    
+                    <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />                
+                    <sly data-sly-test="${isPaginationrequired}" data-sly-use.tpl="sunlife/core/components/templates/v1/pagination.html"
+                        data-sly-call="${tpl.pagination @ paginationObj = paginationObj}" />                    
                 </div>                
             </div>
         </div>

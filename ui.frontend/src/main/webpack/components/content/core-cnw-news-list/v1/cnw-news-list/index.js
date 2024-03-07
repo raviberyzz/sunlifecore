@@ -1,3 +1,6 @@
+/**
+ * Update the tabs for news list component on key and click event
+ */
 $(document).ready(function() {
   /**
      * Function used to handle the tab click and key press event

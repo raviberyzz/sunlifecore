@@ -1,6 +1,7 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
 @import '@sunlife/ui-styles/components/pagination';
+@import '../../../../../prerequisite/base/styles/core.scss';
 
 .news-article{
     margin-bottom: 40px;
@@ -32,5 +33,12 @@
         }
         .tab-content:focus-visible {
                 outline: 0;
+        }
+        .pagination {
+                list-style: none;
+                display: flex;
+        }
+        .pagination-indicator {
+                display: none;
         }
 }
