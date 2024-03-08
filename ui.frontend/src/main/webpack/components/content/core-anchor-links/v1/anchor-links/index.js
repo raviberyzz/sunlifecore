@@ -4,7 +4,7 @@
  * load id's in anchor links and map it to content to scroll it to correct place.
  */
 
-$(document).ready(function () {
+(function($, util) {
   let isVisible = null;
   /**
      * Function used to update the active anchor link on click event.
@@ -85,9 +85,14 @@ $(document).ready(function () {
     if(doesModuleExist()){
       loadAnchorLinks();
       $(document).on("click", ".sl-anchor-links li", handleClickEventForActiveLink);        
-      $(window).bind("scroll", throttle(handleScroll, 10));
-      $(window).bind("load", throttle(handleScroll, 10));
+      $(window).bind("scroll", util.throttle(handleScroll, 10));
+      $(window).bind("load", util.throttle(handleScroll, 10));
     }
   }
-  init();
-});
+
+  $(document).ready(function(){
+    init();
+  });
+  
+
+})(sunCore.$, sunCore.util);
