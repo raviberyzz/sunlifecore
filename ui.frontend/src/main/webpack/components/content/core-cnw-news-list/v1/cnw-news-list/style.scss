@@ -35,8 +35,12 @@
         .pagination {
                 list-style: none;
                 display: flex;
-        }
-        .pagination-indicator {
-                display: none;
+        }        
+        .nav-link a {
+                color: var(--grey-700);
+                font-family: Sun Life New Text Regular, Helvetica Neue, Calibri, sans-serif;
+                font-size: 1rem;
+                text-decoration: none;
+                font-weight: 400;    
         }
 }

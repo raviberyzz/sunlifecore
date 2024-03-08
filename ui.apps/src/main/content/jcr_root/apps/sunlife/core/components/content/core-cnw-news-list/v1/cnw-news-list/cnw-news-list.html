@@ -30,9 +30,11 @@
                     tabindex="${isActive ? '0' : '-1'}"
                     data-cmp-hook-tabs="tab"
                     >
-                    <a role="tab" tabindex="${isActive ? '0' : '-1'}" id="default-tab-tab-${tab}" aria-controls="default-tab-tabpane-${tab}" aria-selected="${isActive ? 'true': 'false'}" class="with-border nav-link ${isActive ? ' active' : ''}" href="javascript:void(0);">
-                        ${tab}
-                    </a>
+                    <div role="tab" tabindex="${isActive ? '0' : '-1'}" id="default-tab-tab-${tab}" aria-controls="default-tab-tabpane-${tab}" aria-selected="${isActive ? 'true': 'false'}" class="with-border nav-link ${isActive ? ' active' : ''}">
+                        <a href="${newsModel.relativeURL}${tab}/">
+                            ${newsModel.relativeURL}${tab}
+                        </a>
+                    </div>
             </div>		   
             </div>		
         </div>
