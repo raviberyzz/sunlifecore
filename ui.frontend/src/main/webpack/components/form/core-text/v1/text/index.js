@@ -1,5 +1,13 @@
+/**
+ * Text field validation on key up key press.
+ * Text area validation on key up key press.
+ * Updating entered text count for text area on key up
+*/
 (function () {
-    //function use for field validation on keyup
+    /**
+         * Function use for field validation on keyup
+         * @function
+    */
     function fieldValidationKeyEventHandler() {
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
@@ -8,7 +16,10 @@
             $fieldContainer.find(".character-count .count").html($field.val().length)
         }
     }
-    //function use for field validation on key press
+    /**
+         * Function use for field validation on key press
+         * @function
+    */
     function fieldValidationKeyPressEventHandler() {
         const $field = $(this);
         const $fieldContainer = $field.parents(".form-floating");
@@ -17,15 +28,21 @@
             $fieldContainer.find(".visually-hidden .count").html($field.val().length+1);            
         }
     }
-    //Check if a dropdown component exists.
+    /**
+         * Check if the dropdown component exists.
+         * @function
+         * @field {object} scope - scope of the selected element
+    */
     function doesModuleExist($field) {
         if ($field.length <= 0) {
             return false;
         }
         return true;
     }
-     
-    //Function used to initilize the event
+    /**
+         * Function use to initilize the event
+         * @function
+    */
     function init() {
         let $field = $(".sl-text-field .form-control.required, .sl-text-area .form-control.required");
         let $fieldForCount = $(".sl-text-area .form-control")
