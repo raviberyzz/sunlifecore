@@ -11,7 +11,7 @@ $(document).ready(function() {
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
     const $id = $currentTab.attr('id');
-    const $navItem = $currentTab.closet(".nav-item");
+    const $navItem = $currentTab.closest(".nav-item");
     const $allTabsLink = $navItem.find(".nav-link");
     const $selectedNavLink = $currentTab.find(".nav-link");
     $navItem.removeClass("active focused")
@@ -78,6 +78,15 @@ $(document).ready(function() {
       $lastItem = $navItem.first(); 
       $currentItem = getCurrentItem($lastItem, $currentItem);    
       navigateTabOnArrowKey($currentItem);
+    }
+    //Redirect for Tab Links
+    else if($keyName === "Enter") {
+      let redirectURL = $(this).find("a").attr("href");
+      window.location.href = redirectURL;
+    }
+    //Ensure Tab moves to Panel for Keyboard Access
+    else if($keyName === "Tab") {
+      $(this).closest('.stack-tab-container').next('.tab-content').find('.cmp-tabs__tabpanel--active').focus();
     }
     if($currentItem && $currentItem.index() >= 0){
       const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1);        

@@ -31,8 +31,8 @@
                     data-cmp-hook-tabs="tab"
                     >
                     <div role="tab" tabindex="${isActive ? '0' : '-1'}" id="default-tab-tab-${tab}" aria-controls="default-tab-tabpane-${tab}" aria-selected="${isActive ? 'true': 'false'}" class="with-border nav-link ${isActive ? ' active' : ''}">
-                        <a href="${newsModel.relativeURL}${tab}/">
-                            ${newsModel.relativeURL}${tab}
+                        <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}${tab}/">
+                            ${tab}
                         </a>
                     </div>
             </div>		   
