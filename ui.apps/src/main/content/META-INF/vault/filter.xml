@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/apps/sunlife/core" />
-    <filter root="/apps/foundation" mode="merge"/>
+    <filter root="/apps/foundation" />
     <filter root="/apps/cq" mode="update"/>
     <filter root="/apps/sunlife" mode="merge"/>
     <filter root="/apps/sling/servlet" mode="merge" />

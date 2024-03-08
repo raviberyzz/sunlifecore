@@ -26,7 +26,7 @@ use(function () {
             containerModel.bannerImagePosition =='right' ? containerClasses.push('banner-image-block-right') : containerClasses.push('banner-image-block-left');
             break;
         case 'media':
-            containerClasses.push('container');
+            containerClasses.push('sl-media-block-container');
             break;
         case 'segmented':
             containerClasses.push('sl-segmented-blocks');

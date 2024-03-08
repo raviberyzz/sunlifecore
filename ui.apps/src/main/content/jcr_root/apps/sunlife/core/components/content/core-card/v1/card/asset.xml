@@ -17,7 +17,7 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                     fieldLabel="Card Asset Type"
-                    fieldDescription="Select the type of asset to display on the Card. Select the default placeholder option to not display an asset."
+                    fieldDescription="Select the type of asset to display on the Card/Content block. Select the default placeholder option to not display an asset."
                     name="./assetType">
                     <items jcr:primaryType="nt:unstructured">
                         <static jcr:primaryType="nt:unstructured"
@@ -65,7 +65,7 @@
                     <items jcr:primaryType="nt:unstructured">
                         <cardIcon jcr:primaryType="nt:unstructured"
                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                  fieldDescription="Icon identifier to display an icon in the Card. You can select an icon based on the icon name that best matches the purpose of the Card."
+                                  fieldDescription="Icon identifier to display an icon in the Card/Content block. You can select an icon based on the icon name that best matches the purpose of the Card/Content block."
                                   fieldLabel="Icon"
                                   name="./cardIcon" />
                     </items>
