@@ -38,21 +38,14 @@
             fieldDescription="Please specify the form Action"
             fieldLabel="Form Action"
             name="./formAction"
-            required="{Boolean}false"/>
-        <id
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-            emptyText="Please specify the form ID"
-            fieldDescription="Please specify the form ID"
-            fieldLabel="Form ID"
-            name="./id"/>
+            required="{Boolean}false"/>     
         <validation
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
             emptyText="Please specify the form validation function."
             fieldDescription="Please specify the form validation function."
             fieldLabel="Validation Function"
-            name="./validation"/>
+            name="./validation"/> 
 		<formTarget
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -62,8 +55,8 @@
             <items jcr:primaryType="nt:unstructured">
                 <select
                     jcr:primaryType="nt:unstructured"
-                    text=""
-                    value=""/>
+                    text="Same Tab"
+                    value="_self"/>
                 <newTab
                     jcr:primaryType="nt:unstructured"
                     text="New Tab"
