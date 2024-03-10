@@ -9,10 +9,7 @@ import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
-import ca.sunlife.web.cms.core.services.AdvisorDetailService;
-import ca.sunlife.web.cms.core.services.CNWNewsService;
-import ca.sunlife.web.cms.core.services.SEOService;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
+import ca.sunlife.web.cms.core.services.*;
 import com.adobe.cq.wcm.launches.utils.LaunchUtils;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.WCMException;
@@ -44,8 +41,10 @@ import javax.jcr.RangeIterator;
 import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 @Model(adaptables = {
         SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = BasePageModel.RESOURCE_TYPE)
@@ -84,6 +83,9 @@ public class BasePageModel {
 
     @OSGiService
     private SEOService seoService;
+
+    @OSGiService
+    private AnalyticsService analyticsService;
 
     /**
      * The canonical url.
@@ -298,10 +300,6 @@ public class BasePageModel {
     @Setter
     private String udoTags;
 
-    /**
-     * The default reporting language.
-     */
-    private String defaultReportingLanguage;
 
     /**
      * The master page path.
@@ -735,17 +733,17 @@ public class BasePageModel {
         }
 
         // Sets UDO parameters
-        setUDOParameters();
+        analyticsService.setUDOParameters(currentPage, masterPagePath, advancedPageType, pageCategory, pageSubCategory, breadCrumb, otherUDOTagsMap);
 
         // Sets UDO other parameters
         if (null != udoTagsPath && udoTagsPath.length() > 0) {
-            seoService.setOtherUDOTags(udoTagsPath, tags, otherUDOTagsMap);
+            analyticsService.setOtherUDOTags(udoTagsPath, tags, otherUDOTagsMap);
         }
 
         // Sets UDO tags specific to advisor pages
         if (null != advancedPageType
                 && BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT.equals(advancedPageType)) {
-            otherUDOTagsMap = seoService.setUDOTagsForAdvisorPages(request, advisorType, otherUDOTagsMap);
+            otherUDOTagsMap = analyticsService.setUDOTagsForAdvisorPages(request, advisorType, otherUDOTagsMap);
         }
 
         final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
@@ -773,81 +771,6 @@ public class BasePageModel {
         } else {
             return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, titleStr);
         }
-    }
-
-    /**
-     * Sets the UDO parameters.
-     *
-     * @throws LoginException      the login exception
-     * @throws RepositoryException the repository exception
-     */
-    public void setUDOParameters() throws LoginException, RepositoryException {
-        LOG.debug("Entry :: setUDOParameters :: ");
-        Page pageResource = null;
-        String pagePath = currentPage.getPath();
-        final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
-        LOG.debug("setUDOParameters :: siteUrl: {}, defaultReportingLanguage: {}", siteUrl,
-                defaultReportingLanguage);
-        if (null == siteUrl || siteUrl.length() <= 0) {
-            return;
-        }
-        pagePath = null == masterPagePath ? pagePath : masterPagePath;
-        LOG.debug("pagePath is: {}", pagePath);
-        final Resource resource = resolver.getResource(pagePath);
-        if (null != resource) {
-            pageResource = resource.adaptTo(Page.class);
-        } else {
-            pageResource = currentPage;
-        }
-        int startLevel = siteUrl.replaceFirst(BasePageModelConstants.SLASH_CONSTANT, "")
-                .split(BasePageModelConstants.SLASH_CONSTANT).length;
-        int rootPageLevel = startLevel - 1;
-        int currentLevel = null != pageResource ? pageResource.getDepth() : 0;
-        final List<String> navList = new ArrayList<>();
-        // Root page title fetch
-        final Page rootPage = null != pageResource ? pageResource.getAbsoluteParent(rootPageLevel)
-                : null;
-        if (rootPage != null) {
-            navList.add(CommonUtils.getBreadcrumbTitle(rootPage).toLowerCase(Locale.getDefault()));
-        }
-        if (null != advancedPageType
-                && BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT.equals(advancedPageType)) {
-            currentLevel = currentLevel - 1;
-        }
-        while (startLevel < currentLevel) {
-            final Page page = null != pageResource ? pageResource.getAbsoluteParent(startLevel) : null;
-            if (page != null) {
-                final boolean isActivePage = page.equals(pageResource);
-                navList.add(page.getName().replaceAll("-", " "));
-                if (isActivePage) {
-                    break;
-                }
-            }
-            startLevel++;
-        }
-
-        if (!navList.isEmpty()) {
-            if (navList.size() > 1) {
-                pageCategory = navList.get(1);
-            }
-            if (navList.size() > 2) {
-                pageSubCategory = navList.get(2);
-            }
-            breadCrumb = BasePageModelConstants.SLASH_CONSTANT
-                    + navList.stream().collect(Collectors.joining(BasePageModelConstants.SLASH_CONSTANT));
-        }
-        LOG.debug("breadCrumb: {}, pageCategory: {}, pageSubCategory: {}", breadCrumb, pageCategory,
-                pageSubCategory);
-        otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
-        otherUDOTagsMap.addProperty("page_category", pageCategory == null ? breadCrumb : pageCategory); // Page
-        // category
-        otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page
-        // sub
-        // category
-
-        // For advisor pages
-
-        LOG.debug("Exit :: setUDOParameters :: otherUDOTagsMap: {}", otherUDOTagsMap);
     }
 
 

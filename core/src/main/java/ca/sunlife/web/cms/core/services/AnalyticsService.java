@@ -1,26 +1,34 @@
-/*
- *
- */
+
 
 package ca.sunlife.web.cms.core.services;
 
-import ca.sunlife.web.cms.core.beans.News;
-import ca.sunlife.web.cms.core.beans.NewsDetails;
-import ca.sunlife.web.cms.core.beans.ReleaseMain;
-import ca.sunlife.web.cms.core.exception.ApplicationException;
-import ca.sunlife.web.cms.core.exception.SystemException;
-import ca.sunlife.web.cms.core.models.NewsCategory;
+import com.day.cq.wcm.api.Page;
+import com.google.gson.JsonObject;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.List;
+import javax.jcr.RepositoryException;
 
 public interface AnalyticsService {
 
 
-  public News getCNWNews();
+
+  /**
+   * Sets the other UDO tags.
+   *
+   * @param udoTagStart the new other UDO tags
+   * @return the json object
+   */
+  JsonObject setOtherUDOTags(final String udoTagStart, String[] tags, JsonObject otherUDOTagsMap);
 
 
+  /**
+   * Sets the UDO tags for advisor pages.
+   *
+   * @return the json object
+   */
+  JsonObject setUDOTagsForAdvisorPages(SlingHttpServletRequest request, String advisorType, JsonObject otherUDOTagsMap);
 
-  public NewsDetails getCNWNewsDetails();
+
+  public void setUDOParameters( Page currentPage,String masterPagePath, String advancedPageType,String pageCategory,String pageSubCategory,String breadCrumb,JsonObject otherUDOTagsMap) throws LoginException, RepositoryException;
 }

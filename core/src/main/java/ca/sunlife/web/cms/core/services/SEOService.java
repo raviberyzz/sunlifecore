@@ -19,20 +19,5 @@ public interface SEOService {
     Map<String, String> setArticlePageSocialMetaTags(ResourceResolver resolver, String pagePath, SiteConfigService configService, Map<String, String> customMetadata) throws LoginException, RepositoryException;
 
 
-    /**
-     * Sets the other UDO tags.
-     *
-     * @param udoTagStart the new other UDO tags
-     * @return the json object
-     */
-    JsonObject setOtherUDOTags(final String udoTagStart, String[] tags, JsonObject otherUDOTagsMap);
-
-
-    /**
-     * Sets the UDO tags for advisor pages.
-     *
-     * @return the json object
-     */
-    JsonObject setUDOTagsForAdvisorPages(SlingHttpServletRequest request, String advisorType, JsonObject otherUDOTagsMap);
 
 }
