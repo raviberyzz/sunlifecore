@@ -45,7 +45,7 @@ import java.util.Map;
 @Model(adaptables = {SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = BasePageModel.RESOURCE_TYPE)
 public class BasePageModel {
 
-    protected static final String RESOURCE_TYPE = "sunlife/corfe/components/structure/core-base-page";
+    protected static final String RESOURCE_TYPE = "sunlife/core/components/structure/core-base-page";
     /**
      * The Constant LOG.
      */
@@ -582,7 +582,7 @@ public class BasePageModel {
         // Condition for article pages start
         if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT.equals(advancedPageType)) {
             LOG.debug("Inside article page block");
-            customMetadata = seoService.setArticlePageSocialMetaTags(resolver, currentPage.getPath(), configService, customMetadata);
+            customMetadata = seoService.setArticlePageSocialMetaTags(currentPage.getPath(), customMetadata);
         }
         // Condition for article pages end
         LOG.debug("metadata :: {}", customMetadata);
