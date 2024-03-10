@@ -1,26 +1,22 @@
 
 package ca.sunlife.web.cms.core.services.impl;
 
-import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;
 import ca.sunlife.web.cms.core.services.SEOService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import org.apache.commons.lang.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Map;
 
@@ -28,11 +24,11 @@ import java.util.Map;
 @Component(service = {SEOService.class}, immediate = true)
 public class SEOServiceImpl implements SEOService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SEOService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SEOService.class);
 
     @Override
     public Map<String, String> setArticlePageSocialMetaTags(ResourceResolver resolver, String pagePath, SiteConfigService configService, Map<String, String> customMetadata) throws LoginException, RepositoryException {
-        LOG.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
+        LOGGER.debug("Entry :: setArticlePageSocialMetaTags :: ");
         final String articleType = configService.getConfigValues(ArticleConstants.ARTICLE_TYPE_CONSTANT,
                 pagePath);
         final String articlePublisherForMetaTag = configService
@@ -53,7 +49,7 @@ public class SEOServiceImpl implements SEOService {
                 + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
         final Resource articleResource = null != resolver ? resolver.getResource(articlePath) : null;
         if (null == articleResource) {
-            LOG.debug("articleResource is null");
+            LOGGER.debug("articleResource is null");
             return customMetadata;
         }
         final ValueMap articleResContent = articleResource.getValueMap();
@@ -65,14 +61,14 @@ public class SEOServiceImpl implements SEOService {
         String articlePublishedModifiedDate = StringUtils.EMPTY;
 
         if (null == fragmentPath) {
-            LOG.debug("fragmentPath is null");
+            LOGGER.debug("fragmentPath is null");
             return customMetadata;
         }
 
         final Resource articleFragmentResource = resolver
                 .getResource(fragmentPath.concat(BasePageModelConstants.JCR_CONTENT_DATA_MASTER));
         if (null == articleFragmentResource) {
-            LOG.debug("articleFragmentResource is null");
+            LOGGER.debug("articleFragmentResource is null");
             return customMetadata;
         }
         final ValueMap articleContent = articleFragmentResource.getValueMap();
@@ -90,8 +86,13 @@ public class SEOServiceImpl implements SEOService {
 
         customMetadata.put(BasePageModelConstants.OG_PUBLISHED_DATE, articlePublishedDate);
         customMetadata.put(BasePageModelConstants.OG_MODIFIED_DATE, articlePublishedModifiedDate);
-        LOG.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
+        LOGGER.debug("Exit :: setArticlePageSocialMetaTags :: ");
         return customMetadata;
+    }
+
+    @Activate
+    public void activate() {
+        LOGGER.debug("Entry :: activate method of SEOServiceImpl");
     }
 
 

@@ -1,12 +1,16 @@
 package ca.sunlife.web.cms.core.common.utility;
 
 import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 import com.day.cq.wcm.api.Page;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.jcr.RepositoryException;
 
 public class CommonUtils {
 
@@ -79,5 +83,40 @@ public class CommonUtils {
         }
         LOG.debug("Page include processed: {}", processedPageInclude);
         return processedPageInclude;
+    }
+
+    public static String processSiteIncludes(String siteInclude, SlingHttpServletRequest request, Page currentPage, SiteConfigService configService) {
+        String processedSiteInclude = "";
+        Document parsedSiteInclude = Jsoup.parse(siteInclude);
+        LOG.debug("Parsed site include:: {}", parsedSiteInclude);
+        String urlSelector = "";
+        String siteSelector = "";
+        try {
+            urlSelector = request.getRequestPathInfo().getSelectors().length > 0 ? request.getRequestPathInfo().getSelectors()[0] : "";
+            siteSelector = configService.getConfigValues(BasePageModelConstants.SITE_SELECTOR, currentPage.getPath());
+            if (urlSelector.equals(siteSelector) && request.getRequestPathInfo().getSelectors().length > 1) {
+                urlSelector = request.getRequestPathInfo().getSelectors()[1];
+            }
+            LOG.debug("Final URL Selector::{}", urlSelector);
+            boolean hasHtmlTags = true;
+            if (parsedSiteInclude.getElementsByTag(BasePageModelConstants.PUBLIC).html().isEmpty() && parsedSiteInclude.getElementsByTag(BasePageModelConstants.SECURE).html().isEmpty() && parsedSiteInclude.getElementsByTag(BasePageModelConstants.SLGI).html().isEmpty()) {
+                hasHtmlTags = false;
+                LOG.debug("Site include does not have html");
+            }
+            if (hasHtmlTags && (urlSelector.equals(BasePageModelConstants.PUBLIC) || urlSelector.equals(BasePageModelConstants.SECURE) || urlSelector.equals(BasePageModelConstants.SLGI))) {
+                processedSiteInclude = parsedSiteInclude.getElementsByTag(urlSelector).html();
+                LOG.debug("Processed site include if site has html and has selector ::{}", processedSiteInclude);
+            } else if (hasHtmlTags && urlSelector.isEmpty()) {
+                processedSiteInclude = parsedSiteInclude.body().child(0).html();
+                LOG.debug("Processed site include if site has html and no selector ::{}", processedSiteInclude);
+            } else {
+                processedSiteInclude = siteInclude;
+                LOG.debug("Processed site include if site has no html and no selector ::{}", processedSiteInclude);
+            }
+            LOG.debug("ProcessedSiteInclude text :: {}", processedSiteInclude);
+        } catch (RepositoryException | LoginException e) {
+            LOG.error("Error :: processSiteInclude method of Base Page model :: {}", e);
+        }
+        return processedSiteInclude;
     }
 }

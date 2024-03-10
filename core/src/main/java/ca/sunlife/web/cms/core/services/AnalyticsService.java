@@ -12,23 +12,29 @@ import javax.jcr.RepositoryException;
 public interface AnalyticsService {
 
 
-
-  /**
-   * Sets the other UDO tags.
-   *
-   * @param udoTagStart the new other UDO tags
-   * @return the json object
-   */
-  JsonObject setOtherUDOTags(final String udoTagStart, String[] tags, JsonObject otherUDOTagsMap);
+    /**
+     * Sets the other UDO tags.
+     *
+     * @param udoTagStart the new other UDO tags
+     */
+    void setOtherUDOTags(final String udoTagStart, String[] tags, JsonObject otherUDOTagsMap);
 
 
-  /**
-   * Sets the UDO tags for advisor pages.
-   *
-   * @return the json object
-   */
-  JsonObject setUDOTagsForAdvisorPages(SlingHttpServletRequest request, String advisorType, JsonObject otherUDOTagsMap);
+    /**
+     * Sets the UDO tags for advisor pages.
+     */
+    void setUDOTagsForAdvisorPages(SlingHttpServletRequest request, String advisorType, JsonObject otherUDOTagsMap);
 
-
-  public void setUDOParameters( Page currentPage,String masterPagePath, String advancedPageType,String pageCategory,String pageSubCategory,String breadCrumb,JsonObject otherUDOTagsMap) throws LoginException, RepositoryException;
+    /**
+     * @param currentPage      Current page
+     * @param masterPagePath   Master page path
+     * @param advancedPageType Advanced page type
+     * @param pageCategory     Page category
+     * @param pageSubCategory  Page sub category
+     * @param breadCrumb       Bread crumb
+     * @param otherUDOTagsMap  Other UDO tags map
+     * @throws LoginException      the login exception
+     * @throws RepositoryException the repository exception
+     */
+    void setUDOParameters(Page currentPage, String masterPagePath, String advancedPageType, String pageCategory, String pageSubCategory, String breadCrumb, JsonObject otherUDOTagsMap) throws LoginException, RepositoryException;
 }
