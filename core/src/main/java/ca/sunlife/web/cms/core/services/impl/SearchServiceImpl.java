@@ -34,25 +34,23 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public CoveoSearchConfig getSearchConfig(String pagePath) {
+        CoveoSearchConfig coveoSearchConfig = null;
         LOGGER.debug("Entry :: getSearchConfig method of SearchServiceImpl, pagePath : {}", pagePath);
-        CoveoSearchConfig coveoSearchConfig = new CoveoSearchConfig();
         try {
-            if (null != configService) {
-                coveoSearchConfig.setCoveoSearchEnabled(configService.getConfigValues(COVEO_SEARCH_ENABLED, pagePath));
-                coveoSearchConfig.setSearchToken(configService.getConfigValues(SEARCH_TOKEN, pagePath));
-                coveoSearchConfig.setSearchUrl(configService.getConfigValues(SEARCH_URL, pagePath));
-                coveoSearchConfig.setOrgId(configService.getConfigValues(ORG_ID, pagePath));
-                coveoSearchConfig.setRestUri(configService.getConfigValues(REST_URI, pagePath));
-                coveoSearchConfig.setSearchHub(configService.getConfigValues(SEARCH_HUB, pagePath));
-                coveoSearchConfig.setSiteLocale(configService.getConfigValues(SITE_LOCALE, pagePath));
-                coveoSearchConfig.setSearchLanguage(configService.getConfigValues(SEARCH_LANGUAGE, pagePath));
-            }
+            coveoSearchConfig = new CoveoSearchConfig(
+                    configService.getConfigValues(COVEO_SEARCH_ENABLED, pagePath),
+                    configService.getConfigValues(SEARCH_TOKEN, pagePath),
+                    configService.getConfigValues(SEARCH_URL, pagePath),
+                    configService.getConfigValues(ORG_ID, pagePath),
+                    configService.getConfigValues(REST_URI, pagePath),
+                    configService.getConfigValues(SEARCH_HUB, pagePath),
+                    configService.getConfigValues(SITE_LOCALE, pagePath),
+                    configService.getConfigValues(SEARCH_LANGUAGE, pagePath));
 
         } catch (LoginException | RepositoryException e) {
             LOGGER.error("Error while getting search config", e);
         }
         return coveoSearchConfig;
-
     }
 
     @Activate
