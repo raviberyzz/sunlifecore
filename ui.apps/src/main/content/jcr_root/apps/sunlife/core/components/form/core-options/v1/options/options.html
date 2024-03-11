@@ -11,11 +11,12 @@
                     value="${optionItem.value}" checked="${optionItem.selected}"/>
                     <span class="form-check-label">${optionItem.text}</span>
                 </label>
-                </div>
-                <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
-                    <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
-                    ${options.constraintMessage}
-                </div> 
+            </div>
+            <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
+                <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
+                ${options.constraintMessage}
+            </div> 
+            <div class="help-message">${options.helpMessage}</div>
         </div> 
     </sly>
     
