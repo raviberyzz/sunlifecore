@@ -58,6 +58,9 @@ public interface Modal {
 
 		@ValueMapValue
 		String getLinkTarget();
+		
+		@ValueMapValue
+		String getDataTitle();
 
 	}
 
