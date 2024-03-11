@@ -12,6 +12,7 @@
     let $dropdown = $('form .sl-dropdown');
     $dropdown.on('mousedown keyup', '.combo-input', dropdownComboHandler);
     $dropdown.on('mousedown keyup', '.combo-option', dropDownOptionHandler);
+    $dropdown.on('mousedown keyup', '.combo-menu', dropDownMenuHandler);
     $dropdown.on('blur', '.combo-input', dropDownOnBlur);
   }
 
@@ -109,6 +110,14 @@
     $comboInput.removeAttribute("aria-activedescendant");
     raiseLabel($currentDropdownElement.parent().parent().find('.combo-input'));
     dropDownOnBlur(e);
+  }
+
+  /**
+  * Handles dropdown scrollbar mousedown event so that the dropdown menu does not close.
+  * @param {Event} e - The event object.
+  */
+  function dropDownMenuHandler(e) {
+    e.preventDefault();
   }
 
   /**
