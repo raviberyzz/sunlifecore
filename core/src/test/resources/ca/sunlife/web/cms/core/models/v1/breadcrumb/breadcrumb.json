@@ -3,7 +3,7 @@
     "jcr:primaryType": "nt:unstructured",
     "spacing": "mb-sl24",
     "startLevel": "4",
-    "langcode": "false",
+    "langcode": "en",
     "sling:resourceType": "sunlife/core/components/content/core-breadcrumb/v1/breadcrumb",
     "properties": {
       "currentStyle": {
