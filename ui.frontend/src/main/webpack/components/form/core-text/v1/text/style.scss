@@ -11,9 +11,13 @@
         }
         .error-text {
             display: inline-flex;
+            align-items: center;
             width: 100%;
             .svg-inline--fa {
                 margin: 0;
+                margin-right: 8px;
+                height: 0.75rem;
+                width: 0.75rem !important;
             }
         }
     }

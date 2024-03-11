@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
-          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-          jcr:primaryType="nt:unstructured" xmlns:granite="http://www.adobe.com/jcr/granite/1.0">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    extraClientlibs="[core.wcm.components.form.text.v2.editor,sunlife.core-author.form-text]">
     <content jcr:primaryType="nt:unstructured">
         <items jcr:primaryType="nt:unstructured">
             <tabs jcr:primaryType="nt:unstructured">
@@ -12,7 +12,7 @@
                                 <items jcr:primaryType="nt:unstructured">
                                     <column jcr:primaryType="nt:unstructured">
                                         <items jcr:primaryType="nt:unstructured">
-											<fieldType jcr:primaryType="nt:unstructured">
+                                            <fieldType jcr:primaryType="nt:unstructured">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <date
                                                         jcr:primaryType="nt:unstructured"
@@ -32,22 +32,28 @@
                                                 fieldDescription="Please enter the id for this textfield"
                                                 fieldLabel="Element Id"
                                                 name="./id"/>
-											<icon
+                                            <texticon
+                                                granite:class="showhide-icon"
                                                 jcr:primaryType="nt:unstructured"
-												sling:orderBefore="name"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Icon identifier for displaying an icon."
-                                                fieldLabel="Icon"
-                                                name="./icon"/>
-											<iconPosition
-                                                jcr:primaryType="nt:unstructured"
-												sling:orderBefore="name"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
-                                                name="./iconPosition"
-                                                text="Trailing Icon Position"
-                                                uncheckedValue="false"
-                                                value="{Boolean}true"/>
+                                                sling:orderBefore="name"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <icon
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Icon identifier for displaying an icon."
+                                                        fieldLabel="Icon"
+                                                        name="./icon"/>
+                                                    <iconPosition
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
+                                                        name="./iconPosition"
+                                                        text="Trailing Icon Position"
+                                                        uncheckedValue="false"
+                                                        value="{Boolean}true"/>
+                                                </items>
+                                            </texticon>
                                         </items>
                                     </column>
                                 </items>

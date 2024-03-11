@@ -1,6 +1,5 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/design-system';
-@import '@sunlife/ui-styles/components/pagination';
 
 .news-article{
     margin-bottom: 40px;
@@ -15,10 +14,33 @@
     .h5{
             color: var(--brand-tertiary-800);
             margin-bottom: 0.75rem;
+            font-size: 1.375rem;
+            display: block;
     }
     .summary{
             @include sl-body-medium;
             margin-bottom: 0; 
     }
 }
-
+.cnw-news-list{
+        .sl-pagination {
+                .sl-basic-pagination{
+                        justify-content: flex-start;
+                        display: flex;
+                }
+        }
+        .tab-content:focus-visible {
+                outline: 0;
+        }
+        .pagination {
+                list-style: none;
+                display: flex;
+        }        
+        .nav-link a {
+                color: var(--grey-700);
+                font-family: Sun Life New Text Regular, Helvetica Neue, Calibri, sans-serif;
+                font-size: 1rem;
+                text-decoration: none;
+                font-weight: 400;    
+        }
+}
