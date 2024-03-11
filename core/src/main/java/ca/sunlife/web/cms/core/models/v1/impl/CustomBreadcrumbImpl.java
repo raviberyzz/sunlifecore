@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.util.AbstractComponentImpl;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ca.sunlife.web.cms.core.models.v1.CustomBreadcrumb;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class CustomBreadcrumbImpl extends AbstractComponentImpl implements Custo
 	@Self
 	@Via(type = ResourceSuperType.class)
 	@Delegate
+	@JsonIgnore
 	private Breadcrumb delegate;
 
 	
