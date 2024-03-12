@@ -19,11 +19,14 @@
                                                 fieldDescription="Enter a heading for the anchor links section. This heading will be displayed above the list of anchor links on the page"
                                                 fieldLabel="Anchor Heading"
                                                 name="./anchorHeading"
-												required="{Boolean}true"/>
+                                                required="{Boolean}true"/>
                                             <startlevel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"/>
                                             <stoplevel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="{Boolean}true"/>
+                                            <listtype
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"/>
                                         </items>
