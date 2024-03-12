@@ -192,7 +192,7 @@
   * Select the default selected option on page load.
   */
   function selectDefaultOption() {
-    var dropdowns = document.getElementsByClassName('combo-menu');
+    const dropdowns = document.getElementsByClassName('combo-menu');
     for(var index=0;index < dropdowns.length;index++){
       let options = dropdowns[index].getElementsByClassName("combo-option");
       let currentElement = null;
@@ -216,7 +216,7 @@
   * Check if a dropdown component exists.
   */
   function doesDropdownExist() {
-    if ($('.sl-dropdown').length <= 0) {
+    if ($('form .sl-dropdown').length <= 0) {
         return false;
     }
     return true;
