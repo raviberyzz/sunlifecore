@@ -8,7 +8,7 @@
 
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
 
-    <body class="${page.cssClassNames} ${page.templateName}" data-section="body-content">
+    <body class="${page.cssClassNames} ${page.templateName} sl-body-helios" data-section="body-content">
         <sly data-sly-test="${baseModel.addOpeningDiv}">
             <div id="${baseModel.addOpeningDiv}" class="${baseModel.wrapperDivClass}">
         </sly>

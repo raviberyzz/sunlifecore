@@ -1,5 +1,8 @@
+@import '@sunlife/ui-styles/base/variables';
 @import 'bootstrap/scss/mixins';
-@import '@sunlife/ui-styles/design-system';
+@import '@sunlife/ui-styles/base/container';
+@import '@sunlife/ui-styles/base/functions';
+
 
 .sl-banner {
 --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
