@@ -34,6 +34,11 @@
   function dropdownComboHandler(e) {
     $(this).focus();
     e.preventDefault();
+
+    // toggle the chevron down and up class
+    //$('#chevron-down').toggleClass("d-none");
+    //$('#chevron-up').toggleClass("d-none");
+
     let currentComboInput = e.currentTarget;
     let $combo = $(currentComboInput).closest('.combo');
     let currentOptionSelected = $(currentComboInput).next().find(".option-current");
