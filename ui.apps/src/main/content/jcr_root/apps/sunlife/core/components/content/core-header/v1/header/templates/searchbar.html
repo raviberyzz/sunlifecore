@@ -1,15 +1,13 @@
 <template data-sly-template.search="${ @ headerModel }">
     <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
-
-
 	<!-- Below initial code for Coveo class search bar -->
-       <div class="search-bar" data-section="header-search">
+       <div class="search-bar collapse" data-section="header-search" id="headerSearchBar">
             <div class="search-box container">
                 <div class="close-div">
-                    <a data-toggle="collapse" aria-expanded="true" href="#sun-search"> 
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#headerSearchBar" aria-expanded="true" aria-controls="headerSearchBar"> 
                         <span class="sr-only">Close search</span> 
                         <span class="fa fa-remove collapse-x">&nbsp;</span>
-                    </a>
+                    </button>
                 </div>
                 <div class="global-search"></div>
                 <div id="search-box-desktop" 
@@ -28,54 +26,5 @@
             </div>
         </div>
 		<!-- END of search bar -->
-
-        <style>
-            .search-bar {
-                --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
-                margin-left: 50%;
-                transform: translateX(-50%);
-                width: var(--viewportWidth);
-                background: #F9FAFA;
-                padding: 32px 0;
-                position: relative;
-                z-index: 1031;
-            }
-
-            .search-box .close-div {
-                text-align: right;
-            }
-
-            /* Coveo */
-            .magic-box .magic-box-input .magic-box-underlay, 
-            .magic-box .magic-box-input>input {
-                padding-top: 12px 50px 12px 16px;
-                border: 1px solid #5B6062;
-            }
-            .CoveoSearchButton.coveo-accessible-button {
-                background-color: #FFCB05;
-                color: #004570;
-                border-radius: 0;
-            }
-            .CoveoOmnibox.magic-box .magic-box-suggestions {
-                padding: 0 1px;
-                margin-top: 0;
-            }
-
-            .CoveoSearchbox .magic-box .magic-box-input {
-                border-radius: 0px;
-            }
-            .magic-box .magic-box-clear {
-                margin-top: 1px;
-                margin-right: 2px;
-                height: 46px;
-            }
-            .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-magicbox-suggestions, .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-suggestion-container {
-                border-width: 0;
-                box-shadow: 0px 4px 8px 3px #00000014;
-            }
-        </style>
-
-        
     </sly>
-
 </template>

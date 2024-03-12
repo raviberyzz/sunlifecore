@@ -1,0 +1,177 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+.sl-body-helios {
+
+    .search-bar {
+        --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: var(--viewportWidth);
+        background: #F9FAFA;
+        padding: 32px 0;
+        position: relative;
+        z-index: 1031;
+    }
+
+    .search-box {
+        .close-div {
+            text-align: right;
+
+            button {
+                border: 0;
+                text-decoration: none;
+                padding: 4px;
+                color: var(--grey-900, #202223);
+                background: transparent;
+                padding: 0 7px;
+            }
+        }
+    }
+
+    /* Coveo */
+    .magic-box .magic-box-input .magic-box-underlay,
+    .magic-box .magic-box-input>input {
+        padding: 12px 50px 12px 16px;
+        border: 1px solid #5B6062;
+    }
+
+    .CoveoSearchButton.coveo-accessible-button {
+        background-color: #FFCB05;
+        color: #004570;
+        border-radius: 0;
+    }
+
+    .CoveoOmnibox.magic-box .magic-box-suggestions {
+        padding: 0 1px;
+        margin-top: 0;
+    }
+
+    .CoveoSearchbox .magic-box .magic-box-input {
+        border-radius: 0px;
+    }
+
+    .magic-box .magic-box-clear {
+        margin-top: 1px;
+        margin-right: 2px;
+        height: calc(100% - 4px);
+        font-size: 20px;
+        display: flex;
+    }
+
+    .magic-box .magic-box-clear .magic-box-icon {
+        height: 24px;
+        width: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-magicbox-suggestions,
+    .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-suggestion-container {
+        border-width: 0;
+        box-shadow: 0px 4px 8px 3px #00000014;
+    }
+
+    .CoveoSearchbox .magic-box .magic-box-clear-svg {
+        height: 16px;
+        width: 16px;
+        fill: var(--grey-700, #5B6062);
+
+    }
+
+
+    /* listing style */
+
+    .coveo-list-layout.CoveoResult {
+        border-bottom: 1px solid var(--grey-300);
+    }
+
+    .coveo-list-layout .coveo-result-frame {
+        padding: 40px 0 !important;
+    }
+
+    .coveo-result-cell .coveo-result-row:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .CoveoResultLink {
+        color: var(--brand-tertiary-800, #00588B);
+
+        @include sl-h5;
+    }
+
+    .CoveoSearchInterface {
+        color: var(--grey-900, #202223);
+
+        @include sl-body-medium;
+    }
+
+    .CoveoResultLink.printed-url {
+        color: var(--brand-tertiary-800, #00588B);
+
+        @include sl-link-small;
+    }
+
+
+    .coveo-pager-list-item.coveo-active,
+    .coveo-results-per-page-list-item.coveo-active {
+        background: var(--brand-tertiary-800, #00588B) !important;
+
+    }
+
+    .coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        color: #fff !important;
+    }
+
+    .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor {
+        color: var(--grey-900, #202223);
+        text-align: center;
+
+        @include sl-body-medium;
+    }
+
+    #coveo-search-body .coveo-search-section {
+        margin: 0 0 24px;
+        padding: 0;
+    }
+
+    #search-result-filters {
+        margin: 0;
+    }
+
+    #search-result-filters .CoveoTextBlock .text-block {
+        margin-bottom: 16px;
+
+        color: var(--grey-900, #202223);
+        @include sl-h5;
+    }
+
+    .CoveoSearchInterface .coveo-results-column {
+        margin: 24px 0;
+        padding: 0;
+    }
+
+    .CoveoTab.coveo-accessible-button.coveo-selected {
+        border: 1px solid var(--grey-300, #DCDEDF) !important;
+        background: var(--grey-50, #F9FAFA) !important;
+    }
+
+
+    .CoveoTab.coveo-accessible-button.coveo-selected p {
+        color: var(--grey-900, #202223) !important;
+        text-align: center;
+
+        @include sl-body-medium-bold;
+    }
+
+    .CoveoTab.coveo-accessible-button,
+    .CoveoTab.coveo-accessible-button p {
+        border-color: var(--grey-300, #DCDEDF) !important;
+        color: var(--grey-900, #202223) !important;
+        text-align: center;
+
+        @include sl-body-medium;
+    }
+}

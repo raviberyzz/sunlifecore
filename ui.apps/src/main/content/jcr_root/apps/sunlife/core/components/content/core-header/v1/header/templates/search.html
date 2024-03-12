@@ -1,9 +1,8 @@
 <template data-sly-template.search="${ @ headerModel }">
-    <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
+    <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
          <li>
-                <div class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block">
-                    <a href="#" data-rr-ui-event-key="#"
-                       class="utility-nav-item-container nav-link">
+                <div class="d-none d-md-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block" data-comp="search">
+                    <button  type="button" class="utility-nav-item-container nav-link sl-search-btn" data-bs-toggle="collapse" data-bs-target="#headerSearchBar" aria-expanded="false" aria-controls="headerSearchBar">
                         <div class="label-container">
                                 <span class="fak fa-search sl-icon_size_md sl-icon custom-icon"
                                       role="presentation"></span>
@@ -11,9 +10,8 @@
                                     class="d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${headerModel.searchTitle}
                         </span>
                         </div>
-                    </a>
+                    </button>
                 </div>
-            </div>
         </li>
     </sly>
 </template>
