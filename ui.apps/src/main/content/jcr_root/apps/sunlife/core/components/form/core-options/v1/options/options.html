@@ -1,6 +1,7 @@
 <div data-sly-use.options="ca.sunlife.web.cms.core.models.v1.FormOptionsModel"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"     
-     data-section="${options.analyticsId}">
+     data-section="${options.analyticsId}"
+     class="sl-options ${options.spacing}">
     <sly data-sly-test="${options.type == 'CHECKBOX' || options.type == 'RADIO'}">
         <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
         <div class="field-group-container formValidate">
@@ -11,17 +12,16 @@
                     value="${optionItem.value}" checked="${optionItem.selected}"/>
                     <span class="form-check-label">${optionItem.text}</span>
                 </label>
-            </div>
-            <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
-                <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
-                ${options.constraintMessage}
-            </div> 
-            <div class="help-message">${options.helpMessage}</div>
+                </div>
+                <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
+                    <i class="icon-class far fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></i>
+                    ${options.constraintMessage}
+                </div> 
         </div> 
     </sly>
     
     <sly data-sly-test="${options.type.value == 'drop-down' || options.type.value == 'multi-drop-down'}">
-        <fieldset class="${options.spacing} cmp-form-options cmp-form-options--${options.type}">
+        <fieldset class="cmp-form-options cmp-form-options--${options.type}">
             <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
             <select class="cmp-form-options__field cmp-form-options__field--${options.type.value}" name="${options.name}" id="${options.id}"
                     data-sly-list.optionItem="${options.items}"
