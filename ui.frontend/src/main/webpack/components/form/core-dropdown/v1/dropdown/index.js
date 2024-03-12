@@ -12,6 +12,7 @@
     let $dropdown = $('form .sl-dropdown');
     $dropdown.on('mousedown keyup', '.combo-input', dropdownComboHandler);
     $dropdown.on('mousedown keyup', '.combo-option', dropDownOptionHandler);
+    $dropdown.on('mousedown keyup', '.combo-menu', dropDownMenuHandler);
     $dropdown.on('blur', '.combo-input', dropDownOnBlur);
   }
 
@@ -119,6 +120,14 @@
   }
 
   /**
+  * Handles dropdown scrollbar mousedown event so that the dropdown menu does not close.
+  * @param {Event} e - The event object.
+  */
+  function dropDownMenuHandler(e) {
+    e.preventDefault();
+  }
+
+  /**
   * Raises the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
@@ -199,25 +208,25 @@
   * Select the default selected option on page load.
   */
   function selectDefaultOption() {
-    let options = document.getElementsByClassName("combo-option");
-    let currentElement = null;
-    let selectedOption = null;
-    for (var i = 0; i < options.length; i++) {
-      currentElement = options[i];
-      if ((currentElement).getAttribute("aria-selected") != null) {
-        selectedOption = currentElement;
+    const dropdowns = document.getElementsByClassName('combo-menu');
+    for(var index=0;index < dropdowns.length;index++){
+      let options = dropdowns[index].getElementsByClassName("combo-option");
+      let currentElement = null;
+      let selectedOption = null;
+      for (var i = 0; i < options.length; i++) {
+        currentElement = options[i];
+        if ((currentElement).getAttribute("aria-selected") != null) {
+          selectedOption = currentElement;
+        }
+      }
+      if (selectedOption != null) {
+        let $linkText = $(selectedOption).text();     
+        appendSelectedText($(selectedOption), $linkText);
+        selectOption($(selectedOption));
+        raiseLabel($(selectedOption).parent().parent().find('.combo-input'));
       }
     }
-    if (selectedOption != null) {
-      let $currentDropdownElement = $(currentElement);
-      let $linkText = $(currentElement).text();
-
-      appendSelectedText($currentDropdownElement, $linkText);
-      selectOption($currentDropdownElement);
-      raiseLabel($currentDropdownElement.parent().parent().find('.combo-input'));
-    }
   }
-
 
   /**
   * Check if a dropdown component exists.
