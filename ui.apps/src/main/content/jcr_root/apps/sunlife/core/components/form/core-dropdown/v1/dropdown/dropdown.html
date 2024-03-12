@@ -10,7 +10,8 @@
                     tabindex="0">
                     <label for="a${options.id}" id="label-a${options.id}">${options.label}</label>
                     <div class="combo-input-selected d-none">${options.placeholderText}</div> 
-                    <span class="sl-icon fal fa-chevron-down"></span>
+                    <span id="chevron-down" class="sl-icon fal fa-chevron-down"></span>
+                    <span id="chevron-up" class="sl-icon fal fa-chevron-up d-none"></span>
                 </div>
                 <div class="combo-menu" role="listbox" id="listbox-a${options.id}" aria-labelledby="label-a${options.id}" tabindex="-1">
                     <sly data-sly-list.items="${options.items}" data-sly-unwrap>                    
