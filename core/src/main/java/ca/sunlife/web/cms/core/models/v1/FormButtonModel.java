@@ -25,7 +25,7 @@ public interface FormButtonModel {
 	String getButtonStyle();
 
 	@ValueMapValue(name = JcrConstants.JCR_TITLE)
-	String getTitle();
+	String getText();
 
 	@ValueMapValue
 	String getName();
