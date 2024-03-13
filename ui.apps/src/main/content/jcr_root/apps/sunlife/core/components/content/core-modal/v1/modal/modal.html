@@ -19,6 +19,8 @@
                         <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
                             ${modalObj.additionalText @context='html'}    
                         </sly>
+                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}"
+                        data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}" />
                     </div>
                     <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
                         <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
@@ -26,8 +28,6 @@
                                 target="${buttonList.linkTarget}"  data-title="${buttonList.dataTitle}">${buttonList.buttonText}</a>
                         </div>
                     </sly>
-                    <sly data-sly-test="${modalObj.modalTypes == 'formModal'}"
-                    data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}" />
                     <span id="two-button-modal-end-sr" class="visually-hidden">End of dialog window</span>
                 </div>
             </div>
