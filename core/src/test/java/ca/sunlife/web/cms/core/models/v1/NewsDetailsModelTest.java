@@ -1,120 +1,79 @@
 package ca.sunlife.web.cms.core.models.v1;
 
-import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
+import com.adobe.cq.export.json.ComponentExporter;
 import com.day.cq.wcm.api.Page;
+import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.request.RequestPathInfo;
-import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.scripting.SlingBindings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junitx.framework.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 
-@ExtendWith(AemContextExtension.class)
+@ExtendWith({AemContextExtension.class, MockitoExtension.class})
 public class NewsDetailsModelTest {
-    private String releaseID = "12704";
-    private final String[] DUMMY_STRING_ARRAY = {releaseID, "string", "array"};
-    private final Locale CANADA_LOCALE = new Locale("en", "CA");
 
-    @Mock
-    private Page currentPage;
-
-    @Mock
-    private SlingHttpServletRequest request;
-
+    private final AemContext ctx = new AemContext();
     @Mock
     private CNWNewsService newsService;
 
-    @InjectMocks
+
     private NewsDetailsModel cnwNewsDetailsModel;
 
 
     @Mock
     private SiteConfigService configService;
 
+    private Page currentPage;
+
 
     @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            when(configService.getConfigValues("pageLocale", currentPage.getPath())).thenReturn("en_CA");
-        } catch (Exception e) {
-            assertTrue(e instanceof Exception);
-        }
+    public void setup() throws LoginException, RepositoryException {
+        ctx.addModelsForClasses(ArticleListModel.class, ComponentExporter.class);
+        ctx.load().json("/ca/sunlife/web/cms/core/models/v1/NewsDetailsModel.json", "/content");
+        ctx.requestPathInfo().setSelectorString("123.234.567");
+        // OSGI SiteConfigService
+        ctx.registerService(SiteConfigService.class, configService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI DAMContentFragmentService
+        ctx.registerService(CNWNewsService.class, newsService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+
+        // Sling Bindings object for currentPage
+        currentPage = ctx.create().page("/content/dam/sunlife/external/ca/en/content-fragments/tools-and-resources");
+        SlingBindings slingBindings = (SlingBindings) ctx.request().getAttribute(SlingBindings.class.getName());
+        slingBindings.put("currentPage", currentPage);
+
+        when(configService.getConfigValues("pageLocale", currentPage.getPath())).thenReturn("en_CA");
+
     }
 
 
     @Test
     public void testInit() throws IOException, ParseException, ApplicationException, SystemException {
-        when(request.getRequestPathInfo()).thenReturn(getDummyRequestPathInfo(DUMMY_STRING_ARRAY));
 
-        cnwNewsDetailsModel.init();
-        assertNull(cnwNewsDetailsModel.getNewsDetails());
-        assertNull(cnwNewsDetailsModel.getSpacing());
+        ctx.currentResource("/content/newsdetails");
+        cnwNewsDetailsModel = ctx.request().adaptTo(NewsDetailsModel.class);
+        assertEquals("mb-sl12", cnwNewsDetailsModel.getSpacing());
 
-        when(newsService.getCNWNewsDetails(releaseID, CANADA_LOCALE.getLanguage())).thenReturn(new NewsDetails());
-        cnwNewsDetailsModel.init();
-        assertNotNull(cnwNewsDetailsModel.getNewsDetails());
+
     }
 
-    @Test
-    public void testInitException() {
-        try {
-            cnwNewsDetailsModel.init();
-        } catch (Exception e) {
-            assertTrue(e instanceof NullPointerException);
-        }
-    }
 
-    public RequestPathInfo getDummyRequestPathInfo(String[] dummySelector) {
-        return new RequestPathInfo() {
-
-            @Override
-            public Resource getSuffixResource() {
-                return null;
-            }
-
-            @Override
-            public String getSuffix() {
-                return null;
-            }
-
-            @Override
-            public String[] getSelectors() {
-                return dummySelector;
-            }
-
-            @Override
-            public String getSelectorString() {
-                return null;
-            }
-
-            @Override
-            public String getResourcePath() {
-                return null;
-            }
-
-            @Override
-            public String getExtension() {
-                return null;
-            }
-        };
-    }
 }
 
 
