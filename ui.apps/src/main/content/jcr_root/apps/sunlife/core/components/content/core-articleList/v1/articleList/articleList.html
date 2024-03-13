@@ -2,8 +2,9 @@
      data-sly-test="${list.listItems.size>0}">
 
 <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
-<div class="${list.spacing}">
-<!-- relatedArticleList -->
+<div class="sl-article-list-wrapper ${list.spacing}">
+<!--/* relatedArticleList */-->
+
     <sly data-sly-test="${list.displayType=='relatedArticleList' || list.displayType=='overviewHighlight'}">
         <sly data-sly-test="list.title">
             <div class="title col-sm-12 col-md-12 col-xs-12">
@@ -36,7 +37,7 @@
         </div>
     </sly>
 
-<!-- editorialArticleList -->
+<!--/* editorialArticleList */-->
     <sly data-sly-test="${list.displayType=='editorialArticleList' && list.pageNum == 0}">
         <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
@@ -64,7 +65,7 @@
         </div>
     </sly>    
 
-<!-- articleList -->
+<!--/* articleList */-->
     <sly data-sly-test="${list.displayType=='articleList'}">
         <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
@@ -96,15 +97,10 @@
             data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
     </sly>
 
-
 </div>
+
+
 </sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
-
-<style>
-    a.card {
-        text-decoration: none;
-    }
-</style> 

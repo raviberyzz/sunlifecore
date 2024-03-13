@@ -1,11 +1,21 @@
- .article-container {
+@import '@sunlife/ui-styles/base/variables';
+@import 'bootstrap/scss/mixins';
+
+.article-container {
     
     .caption-text {
         color: var(--grey-700);
     }
 
     .sl-social-media {
-        justify-content: end;
+        margin-top: 16px;
+    }
+
+    @include media-breakpoint-up(sm) {
+        .sl-social-media {
+            justify-content: end;
+            margin-top: 0;
+        }
     }
     
 }
