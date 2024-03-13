@@ -3,4 +3,4 @@
     jcr:description="News Overview and Listing"
     jcr:primaryType="cq:Component"
     jcr:title="CNW News List"
-    componentGroup="Sunlife CA V1"/>
+    componentGroup=".hidden"/>

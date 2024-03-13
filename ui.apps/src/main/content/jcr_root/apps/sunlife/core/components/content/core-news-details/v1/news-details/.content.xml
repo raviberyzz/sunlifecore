@@ -3,4 +3,4 @@
     jcr:description="News Details"
     jcr:primaryType="cq:Component"
     jcr:title="News Details"
-    componentGroup="hidden"/>
+    componentGroup=".hidden"/>
