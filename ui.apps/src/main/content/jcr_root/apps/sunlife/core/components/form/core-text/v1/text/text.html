@@ -1,15 +1,16 @@
-<div data-sly-use.customText="ca.sunlife.web.cms.core.models.v1.FormTextModel"
+<div data-sly-use.text="com.adobe.cq.wcm.core.components.models.form.Text"
+     data-sly-use.customText="ca.sunlife.web.cms.core.models.v1.FormTextModel"
      data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html" 
      data-cmp-is="formText"
-     class="form-field-container formValidate ${customText.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${customText.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${customText.spacing}"
-     data-cmp-constraint-message="${customText.constraintMessage}"
-     data-section="${customText.analyticsId}"
-     data-cmp-required-message="${customText.requiredMessage}">
-    <label for="${customText.id}" class="sr-only" data-sly-test="${customText.hideTitle}">${customText.title}</label>
-    <textarea data-sly-test.useTextarea="${customText.type == 'textarea'}"
+     class="form-field-container formValidate ${text.type == 'textarea' ? 'sl-text-area' : 'sl-text-field'} ${text.readOnly ? 'disabled': ''} form-floating ${customText.icon ? (customText.iconPosition ? 'icon-after' : 'icon-before'): ''} ${customText.spacing}"
+     data-cmp-constraint-message="${text.constraintMessage}"
+     data-section="${text.analyticsId}"
+     data-cmp-required-message="${text.requiredMessage}">
+	<label for="${text.id}" class="sr-only" data-sly-test="${text.hideTitle}">${text.title}</label>
+	<textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
         data-cmp-hook-form-text="input"
-        id="${customText.id}"
-        placeholder="${customText.placeholder && customText.helpMessage}"
+        id="${text.id}"
+        placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.requiredMessage}"
         data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
@@ -19,39 +20,40 @@
         data-parsley-maxlength="500"
         data-parsley-id="4"
         maxlength="500"
-        name="${customText.name}"
-        disabled="${customText.readOnly}"
-        required="${customText.required}"
-        class="form-control form-field ${customText.required ? 'required': ''}"
-        data-parsley-required="${customText.required}"
-        aria-required="${customText.required ? 'true': 'false'}"
-        rows="${customText.rows}">${customText.value}</textarea>
-    <input data-sly-test="${!useTextarea}"
-        class="form-control form-field ${customText.required ? 'required': ''}"
+        name="${text.name}"
+        disabled="${text.readOnly}"
+        required="${text.required}"
+        class="form-control form-field ${text.required ? 'required': ''}"
+        data-parsley-required="${text.required}"
+        aria-required="${text.required ? 'true': 'false'}"
+        rows="${text.rows}">${text.value}</textarea>
+		<input data-sly-test="${!useTextarea}"
+        class="form-control form-field ${text.required ? 'required': ''}"
         data-cmp-hook-form-text="input"
-        type="${customText.type}"
-        id="${customText.id}"
-        placeholder="${customText.placeholder}"
+        type="${text.type}"
+        id="${text.id}"
+        placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.requiredMessage}"
         data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
         data-parsley-pattern-message="${customText.validationError}"
         data-parsley-id="4"
         maxlength="500"
-        name="${customText.name}"
-        value="${customText.value}"
-        disabled="${customText.readOnly}"
-        required="${customText.required}"
-        aria-required="${customText.required ? 'true': 'false'}"
-        data-parsley-required="${customText.required}"/>
-    <span data-sly-test="${useTextarea}" class="visually-hidden" aria-live="polite"><span class="count">0</span> out of 500 characters inputted</span>
-    <div data-sly-test="${!useTextarea && customText.icon}" class="icon-container">
-        <sly data-sly-call="${iconTemplate.view @ buttonObj=customText}" />
-    </div>
-    <label for="${customText.id}" class="${customText.readOnly ? 'disabled': ''}" data-sly-test="${customText.title && !customText.hideTitle}">${customText.title}<span data-sly-test="${useTextarea}" class="visually-hidden"></span>
-    </label>
-    <div data-sly-test="${!customText.placeholder && customText.helpMessage}" id="hint-msg-helper-text" class="sl-helper-text hint-text sl-textfield-helper-text">
-        ${customText.helpMessage}
-    </div>
-    <p data-sly-test="${useTextarea}" class="character-count ${customText.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>     
+        name="${text.name}"
+        value="${text.value}"
+        disabled="${text.readOnly}"
+        required="${text.required}"
+        aria-required="${text.required ? 'true': 'false'}"
+        data-parsley-required="${text.required}"/>
+<span data-sly-test="${useTextarea}" class="visually-hidden" aria-live="polite"><span class="count">0</span> out of 500 characters inputted</span>
+<div data-sly-test="${!useTextarea && customText.icon}" class="icon-container">
+<sly data-sly-call="${iconTemplate.view @ buttonObj=customText}" />
+</div>
+<sly data-sly-test.textLabel = "${text.placeholder ? text.placeholder : text.title}" />
+<label for="${text.id}" class="${text.readOnly ? 'disabled': ''}" data-sly-test="${text.title && !text.hideTitle}">${textLabel}<span data-sly-test="${useTextarea}" class="visually-hidden"></span>
+</label>
+<div data-sly-test="${!text.placeholder && text.helpMessage}" id="hint-msg-helper-text" class="sl-helper-text hint-text sl-textfield-helper-text">
+        ${text.helpMessage}
+</div>
+<p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>     
 </div>
