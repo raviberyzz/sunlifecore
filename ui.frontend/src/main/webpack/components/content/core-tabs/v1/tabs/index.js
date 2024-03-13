@@ -1,5 +1,14 @@
+/**
+ * Tab component event handling
+ * Tab component scrolling enable and disabled
+ */
 $(document).ready(function() {
-  //Function used to handle the tab click and key press event
+  /**
+     * Function used to handle the tab click and key press event
+     * @function
+     * @param {object} scope - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
     const $tabContainer = $currentTab.parents(".nav-tabs").parents(".stack-tab-container").parents(".sl-tabs")
@@ -11,11 +20,20 @@ $(document).ready(function() {
     $tabContainer.find(".tab-pane").removeClass("active show")
     $("#default-tab-tabpane-"+$id).addClass("active show")
   }
-  //Function used to handle the tab item click event
+  /**
+     * Function used to handle the tab item click event
+     * @function
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function tabItemClickEventHandler(){
     tabItemEventHandler(this);
   }
-  //Function is used to navigate the tab on arrow key
+  /**
+     * Function is used to navigate the tab on arrow key
+     * @function
+     * @param {object} thisScope - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function navigateTabOnArrowKey($thisScope) {  
     const $navTab = $thisScope.parents(".nav-tabs");   
     $navTab.find(".nav-item .nav-link").attr("tabindex", "-1").attr("aria-selected", "false");
@@ -24,7 +42,12 @@ $(document).ready(function() {
     $thisScope.addClass("focused");
     tabItemEventHandler($thisScope);
   }
-  //Function used to handle the tab keypress for left arrow, right arrow, and enter
+  /**
+     * Function used to handle the tab keypress for left arrow, right arrow, and enter
+     * @function
+     * @param {object} e - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function tabItemKeyEventHandler(e) {
     const $thisKey = $(this);
     const $keyName = e.key;    
@@ -71,7 +94,12 @@ $(document).ready(function() {
       $navTabs.find(".nav-item.active .nav-link").attr("tabindex", "0")
     }
   }
-  //Function used to get the scroll width for all visible tablist
+  /**
+     * Function used to get the scroll width for all visible tablist
+     * @function
+     * @param {object} e - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function getActiveScrollWidth($currentNav) {
     const $navItem = $currentNav.parents(".stack-tab-container").find(".nav-item:not(.hide)");
     let navWidth = 0;
@@ -80,7 +108,11 @@ $(document).ready(function() {
     })
     return navWidth;
   }
-  //Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
+  /**
+     * Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
+     * @function
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function slideTabEventHandler() {
     const $currentNav = $(this);
     const $navTab = $currentNav.siblings(".nav-tabs");
@@ -125,7 +157,12 @@ $(document).ready(function() {
       }
     }
   }
-  //Function used to handle mobile enable scrolling
+  /**
+     * Function used to handle mobile enable scrolling
+     * @function
+     * @param {object} navButton - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
@@ -134,20 +171,31 @@ $(document).ready(function() {
       $navButton.removeClass('hide');
     }
   }
-  //Function used to disabled scrolling
-  function disabledScrolling() {
-    const $navTabs = $(".sl-tabs .nav-tabs");
-    const $navItem = $('.sl-tabs .nav-item');   
-    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
-    const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
-    const activeTabsWidth = $navTabs.width();
-    const tabListWidth = getActiveScrollWidth($navItem.eq(0));
-    if(tabListWidth <= activeTabsWidth){
-      $leftNavScroll.addClass("disabled").removeClass("active");
-      $rightNavScroll.addClass("disabled").removeClass("active");
-    }
+  /**
+     * Function used to disabled scrolling
+     * @function
+     * @param {object} tabContainer - scope of the selected element
+     * @returns {} It will not return anything, this method just update DOM
+  */
+  function disabledScrolling($tabContainer) {
+    $tabContainer.each(function() {
+      const $navTabs = $(this).find(".nav-tabs");
+      const $navItem = $(this).find('.nav-item');   
+      const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
+      const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
+      const activeTabsWidth = $navTabs.width();
+      const tabListWidth = getActiveScrollWidth($navItem.eq(0));
+      if(tabListWidth <= activeTabsWidth){
+        $leftNavScroll.addClass("disabled").removeClass("active");
+        $rightNavScroll.addClass("disabled").removeClass("active");
+      }
+    })
   }
-  //Function used to intialize the events
+  /**
+     * Function used to intialize the events
+     * @function
+     * @returns {} It will not return anything, this method just update DOM
+  */
   function init() {
     const $tabContainer = $(".sl-tabs");    
     if($tabContainer.length > 0){
@@ -159,7 +207,7 @@ $(document).ready(function() {
         $document.on("click", ".sl-tabs .nav-item", tabItemClickEventHandler);
         $document.on("click", ".sl-tabs .arrow-btn", slideTabEventHandler);
         mobileEnableScrolling($navButton);
-        disabledScrolling();
+        disabledScrolling($tabContainer);
       }
   }
   init();
