@@ -45,7 +45,15 @@ public class CommonUtils {
 
     }
 
-    /* Below code will get the full url request and split the pagination from AEM page */
+
+    /**
+     * Create href lang path string and get the full url request and split the pagination from AEM page
+     *
+     * @param domain
+     * @param siteUrl
+     * @param request
+     * @return
+     */
     public static String createHrefLangPath(String domain, String siteUrl, SlingHttpServletRequest request) {
         String selector[] = request.getRequestPathInfo().getSelectors();
         siteUrl = siteUrl.substring(0, siteUrl.length() - 1);
@@ -65,6 +73,12 @@ public class CommonUtils {
         return hrefLangPath + urlValue;
     }
 
+    /**
+     * Process page includes.
+     *
+     * @param pageInclude
+     * @return
+     */
     public static String processPageIncludes(String pageInclude) {
 	 /* if(pageInclude.isEmpty()) {
 		  return pageInclude;
@@ -85,6 +99,15 @@ public class CommonUtils {
         return processedPageInclude;
     }
 
+    /**
+     * Process site includes.
+     *
+     * @param siteInclude
+     * @param request
+     * @param currentPage
+     * @param configService
+     * @return
+     */
     public static String processSiteIncludes(String siteInclude, SlingHttpServletRequest request, Page currentPage, SiteConfigService configService) {
         String processedSiteInclude = "";
         Document parsedSiteInclude = Jsoup.parse(siteInclude);
