@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.models.v1.impl;
 
+import java.util.Arrays;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -91,7 +93,7 @@ public class CustomAccordionImpl extends AbstractComponentImpl implements Custom
 
 	@Override
 	public String[] getExpandedItems() {
-		return expandedItems;
+		return Arrays.copyOf(expandedItems, expandedItems.length);
 	}
 
 }
