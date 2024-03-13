@@ -2,7 +2,7 @@
 
 package ca.sunlife.web.cms.core.services;
 
-import ca.sunlife.web.cms.core.beans.v1.CoveoSearchConfig;
+import ca.sunlife.web.cms.core.dto.CoveoSearchConfig;
 
 public interface SearchService {
 

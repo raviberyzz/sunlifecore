@@ -1,7 +1,7 @@
 
 package ca.sunlife.web.cms.core.services.impl;
 
-import ca.sunlife.web.cms.core.beans.v1.CoveoSearchConfig;
+import ca.sunlife.web.cms.core.dto.CoveoSearchConfig;
 import ca.sunlife.web.cms.core.services.SearchService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import org.apache.sling.api.resource.LoginException;
@@ -22,14 +22,14 @@ public class SearchServiceImpl implements SearchService {
     @Reference
     private SiteConfigService configService;
 
-    private static final String COVEO_SEARCH_ENABLED = "coveoSearchEnabled";
-    private static final String SEARCH_TOKEN = "searchToken";
-    private static final String SEARCH_URL = "searchUrl";
-    private static final String ORG_ID = "orgId";
-    private static final String REST_URI = "restUri";
-    private static final String SEARCH_HUB = "searchHub";
-    private static final String SITE_LOCALE = "siteLocale";
-    private static final String SEARCH_LANGUAGE = "searchLanguage";
+    public static final String COVEO_SEARCH_ENABLED = "coveoSearchEnabled";
+    public static final String SEARCH_TOKEN = "searchToken";
+    public static final String SEARCH_URL = "searchUrl";
+    public static final String ORG_ID = "orgId";
+    public static final String REST_URI = "restUri";
+    public static final String SEARCH_HUB = "searchHub";
+    public static final String SITE_LOCALE = "siteLocale";
+    public static final String SEARCH_LANGUAGE = "searchLanguage";
 
 
     @Override

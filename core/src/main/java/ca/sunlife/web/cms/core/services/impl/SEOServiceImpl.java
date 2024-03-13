@@ -25,6 +25,10 @@ import java.util.Map;
 public class SEOServiceImpl implements SEOService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SEOService.class);
+    private static final String SITE_NAME = "siteName";
+    private static final String ARTICLE_PATH = "/jcr:content/root/layout_container/container1/layout_container/container1/article";
+    private static final String FRAGMENT_PATH = "fragmentPath";
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
     @Reference
     SiteConfigService configService;
@@ -40,7 +44,7 @@ public class SEOServiceImpl implements SEOService {
                     pagePath);
             final String articlePublisherForMetaTag = configService
                     .getConfigValues(ArticleConstants.ARTICLE_PUBLISHER_CONSTANT, pagePath);
-            final String siteName = configService.getConfigValues("siteName", pagePath);
+            final String siteName = configService.getConfigValues(SITE_NAME, pagePath);
             final String articleSite = configService.getConfigValues(ArticleConstants.ARTICLE_SITE_CONSTANT,
                     pagePath);
             final String articleCreator = configService
@@ -52,8 +56,7 @@ public class SEOServiceImpl implements SEOService {
             customMetadata.put(BasePageModelConstants.TWITTER_SITE, articleSite);
             customMetadata.put(BasePageModelConstants.TWITTER_CREATOR, articleCreator);
 
-            final String articlePath = pagePath
-                    + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
+            final String articlePath = pagePath + ARTICLE_PATH;
 
             final Resource articleResource = null != resolver ? resolver.getResource(articlePath) : null;
             if (null == articleResource) {
@@ -62,8 +65,8 @@ public class SEOServiceImpl implements SEOService {
             }
             final ValueMap articleResContent = articleResource.getValueMap();
 
-            final String fragmentPath = articleResContent.containsKey("fragmentPath")
-                    ? articleResContent.get("fragmentPath", String.class)
+            final String fragmentPath = articleResContent.containsKey(FRAGMENT_PATH)
+                    ? articleResContent.get(FRAGMENT_PATH, String.class)
                     : null;
             String articlePublishedDate = StringUtils.EMPTY;
             String articlePublishedModifiedDate = StringUtils.EMPTY;
@@ -82,7 +85,7 @@ public class SEOServiceImpl implements SEOService {
 
             final ValueMap articleContent = articleFragmentResource.getValueMap();
 
-            final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            final SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
             if (articleContent.containsKey(BasePageModelConstants.ARTICLE_PUBLISHED_DATE)) {
                 articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
                         .getOrDefault(BasePageModelConstants.ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());

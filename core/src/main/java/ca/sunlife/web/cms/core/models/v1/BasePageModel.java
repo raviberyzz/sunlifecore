@@ -1,7 +1,7 @@
 package ca.sunlife.web.cms.core.models.v1;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
-import ca.sunlife.web.cms.core.beans.v1.CoveoSearchConfig;
+import ca.sunlife.web.cms.core.dto.CoveoSearchConfig;
 import ca.sunlife.web.cms.core.common.utility.CommonUtils;
 import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;

@@ -1,4 +1,4 @@
-package ca.sunlife.web.cms.core.beans.v1;
+package ca.sunlife.web.cms.core.dto;
 
 public class CoveoSearchConfig {
 

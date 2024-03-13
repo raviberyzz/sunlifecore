@@ -30,9 +30,10 @@ import java.util.stream.Collectors;
 
 
 @Component(service = {AnalyticsService.class}, immediate = true)
-public class AnalyticsServiceImp implements AnalyticsService {
+public class AnalyticsServiceImpl implements AnalyticsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SEOService.class);
+    private static final String TAGS_PATH = "/content/cq:tags/";
 
     @Reference
     SiteConfigService configService;
@@ -148,7 +149,7 @@ public class AnalyticsServiceImp implements AnalyticsService {
     @Override
     public void setOtherUDOTags(String udoTagStart, String[] tags, JsonObject otherUDOTagsMap) {
         LOGGER.debug("Entry :: setOtherUDOTags method of :: udoTagStart :: {}", udoTagStart);
-        final String tagAbsolutePath = udoTagStart.replace("/content/cq:tags/", "");
+        final String tagAbsolutePath = udoTagStart.replace(TAGS_PATH, "");
         final String tagRootPath = tagAbsolutePath
                 .substring(tagAbsolutePath.indexOf(BasePageModelConstants.SLASH_CONSTANT));
         if (null != tags && tags.length > 0) {
@@ -182,7 +183,7 @@ public class AnalyticsServiceImp implements AnalyticsService {
 
     @Activate
     public void activate() {
-        LOGGER.debug("Entry :: activate method of AnalyticsServiceImp");
+        LOGGER.debug("Entry :: activate method of AnalyticsServiceImpl");
     }
 }
 
