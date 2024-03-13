@@ -12,12 +12,16 @@
 }
 
 .sl-helper-text.error-text.combo-msg.filled .sl-icon {
+    margin: 0;
     margin-right: 8px;
-    margin-top: 0px;
+    height: 0.75rem;
+    width: 0.75rem !important;
 }
 
 .options .sl-dropdown {
     .error-text {
         display: inline-flex !important;
+        align-items: center;
     }
+    
 }

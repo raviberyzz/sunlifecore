@@ -1,1 +1,12 @@
-Anchore Links
+<sly data-sly-use.anchorLinks="ca.sunlife.web.cms.core.models.v1.AnchorLinksModel" 
+	 data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+
+<sly data-sly-test.isConfigured="${anchorLinks.anchorHeading}">
+    <aside class="sl-anchor-links">
+        <div class="anchor-heading">${anchorLinks.anchorHeading}</div>
+        <div class="cmp-toc__placeholder" data-cmp-toc-start-level="h2" data-cmp-toc-stop-level="h2"></div>
+    </aside>
+</sly>
+<sly data-sly-test="${!isConfigured}">
+	<sly data-sly-test="${wcmmode.edit || wcmmode.preview}" data-sly-call="${template.placeholder @ isEmpty = true, classAppend = 'cmp-toc__template-placeholder'}" />
+</sly>

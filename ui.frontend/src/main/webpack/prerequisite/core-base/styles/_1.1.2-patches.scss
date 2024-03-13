@@ -1,11 +1,4 @@
-
-// //   CDT-2251
-// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/fcea1820e9c51ee7063bb9cfb443ccb1d0a18486 */
-// /* cards.scss */
-
-// .sl-cards.horizontal .card .card-body {
-//     flex-shrink: 0;
-//   }
+// ====================== ISSUE LIST 1 ======================================
 
 // CDT-2242 Issue 2 and 3
   /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/270781f431b0aae7420c800e74789c0c4d9df48e */
@@ -67,3 +60,97 @@
     background-color: rgba(255, 248, 224, 0.92);
   }
   
+// ====================== ISSUE LIST 2 ======================================
+
+//   CDT-2251 (Related bug: CDT-2324)
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/fcea1820e9c51ee7063bb9cfb443ccb1d0a18486 */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/ec3dfaddb43d6f16e8288457488da266f25bb6a4 */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/cd266ea10f197bfb54d432700cc86de521e33244 */
+// /* cards.scss */
+.sl-cards.horizontal .card .card-body {
+    flex-shrink: 0;
+  }
+
+  .sl-cards.vertical img {
+    height: 11.5rem;
+    object-fit: cover;
+    @include media-breakpoint-only(sm) {
+      height: 18.875rem;
+    }
+    @include media-breakpoint-only(md) {
+      height: 13.375rem;
+    }
+    @include media-breakpoint-up(lg) {
+      height: 12.9375rem;
+    }
+  }
+
+  .sl-cards.horizontal .card picture {
+    @include media-breakpoint-only(sm) {
+      height: 18.875rem;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 11.5rem;
+    }
+  }
+
+
+//   CDT-2346
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/17ef89769ec28ddadce8a68dc8dd4673ebd7fe8d */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/8c14b52348adc0c1dc6b5a718c444a9e7933b13b */
+// /* avatarBlocks.scss */
+.sl-avatar-blocks .card {
+  flex-wrap: nowrap;
+
+  width: width-by-cols(xs, 12);
+  @include media-breakpoint-up(lg) {
+    max-width: width-by-cols(lg, 6);
+  }
+  @include media-breakpoint-only(md) {
+    width: width-by-cols(md, 12);
+  }
+  @include media-breakpoint-only(sm) {
+    width: width-by-cols(sm, 12);
+  }
+}
+
+  .sl-avatar-blocks .card.avatar-body {
+    flex-wrap: wrap;
+      width: width-by-cols(xs, 12);
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 8);
+        max-width: width-by-cols(lg, 8);
+      }
+      @include media-breakpoint-only(md) {
+        width: width-by-cols(md, 12);
+      }
+      @include media-breakpoint-only(sm) {
+        width: width-by-cols(sm, 12);
+      }
+  }
+
+  .sl-avatar-blocks .card.avatar-body .body-quote {
+    @include sl-body-medium-italic;
+    margin-top: 1rem;
+    flex-basis: 100%;
+  }
+
+  .sl-avatar-blocks .card .card-body {
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(sm) {
+      width: 70%;
+    }
+  }
+
+// CDT-2345
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/06ac8b15a73ce0c56d2576102b1fd0cfb28edd1e */
+  .sl-cards.horizontal .card.icon .card-body .content-container {
+    width: 100%;
+  }
+
+  .sl-cards.vertical{
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
+  }

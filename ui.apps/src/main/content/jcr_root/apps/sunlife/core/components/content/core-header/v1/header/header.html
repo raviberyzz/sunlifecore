@@ -7,6 +7,10 @@
      <a href="#mainfooter" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
 </div>
 
+ <!-- /* Including Search */ -->
+ <sly data-sly-use.search="templates/searchbar.html"
+ data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+
 <!--/* Including Utility Bar */-->
 <sly data-sly-use.utilitybar="templates/utilitybar.html"
      data-sly-call="${utilitybar.navList @ headerModel=headerModel}"></sly>

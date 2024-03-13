@@ -2,14 +2,15 @@
      data-sly-test="${list.listItems.size>0}">
 
 <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+<div class="${list.spacing}">
 <!-- relatedArticleList -->
-    <sly data-sly-test="${list.displayType=='relatedArticleList'}">
+    <sly data-sly-test="${list.displayType=='relatedArticleList' || list.displayType=='overviewHighlight'}">
         <sly data-sly-test="list.title">
             <div class="title col-sm-12 col-md-12 col-xs-12">
                 <div data-sly-element="${list.titleLevel}">${list.title}</div>
             </div>
         </sly>
-        <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
+        <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
                 <sly data-sly-list.element="${item.elements}">
                     <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
@@ -37,7 +38,7 @@
 
 <!-- editorialArticleList -->
     <sly data-sly-test="${list.displayType=='editorialArticleList' && list.pageNum == 0}">
-        <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
+        <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
                 <sly data-sly-list.element="${item.elements}">
                     <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
@@ -65,7 +66,7 @@
 
 <!-- articleList -->
     <sly data-sly-test="${list.displayType=='articleList'}">
-        <div class="sl-cards vertical ${list.spacing}" aria-label="${list.accessibilityLabel}">
+        <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
             <sly data-sly-list="${list.listItems}">
                 <sly data-sly-list.element="${item.elements}">
                     <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
@@ -95,21 +96,8 @@
             data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
     </sly>
 
-<!-- overviewHighlight -->
-     <sly data-sly-test="${list.displayType=='overviewHighlight'}">
-        <ul class="dotted ${list.spacing}" aria-label="${list.accessibilityLabel}">
-            <sly data-sly-list="${list.listItems}">
-                <li>
-                    <sly data-sly-list.element="${item.elements}">
-                        <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
-                        <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
-                    </sly>
-                    <a href="${pageLink @ extension = 'html'}">${headline @context='html'}</a>
-                </li>
-            </sly>
-        </ul>
-    </sly>
 
+</div>
 </sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"

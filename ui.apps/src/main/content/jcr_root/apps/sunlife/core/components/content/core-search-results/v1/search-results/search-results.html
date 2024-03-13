@@ -1,7 +1,7 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
 <sly data-sly-test.rawtitle="${['$','{raw.title}'] @ join=''}"> </sly>
-<sly data-sly-test.rawtruncateduri="${['$','{raw.truncateduri}'] @ join=''}" </sly>
+<sly data-sly-test.rawtruncateduri="${['$','{raw.truncateduri}'] @ join=''}" />
 
 <!-- 20220622 -->
 <div id="coveo-search-body" class="CoveoSearchInterface" data-enable-history="true"

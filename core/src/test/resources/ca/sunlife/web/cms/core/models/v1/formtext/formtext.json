@@ -1,0 +1,11 @@
+{
+  "formtext": {
+    "jcr:primaryType": "nt:unstructured",
+    "spacing": "mb-sl24",
+    "icon": "search",
+    "iconPosition": true,
+    "validation": "Test Validation",
+    "validationError": "Test Validation Error",
+    "sling:resourceType": "sunlife/core/components/form/core-text/v1/text"
+    }
+}

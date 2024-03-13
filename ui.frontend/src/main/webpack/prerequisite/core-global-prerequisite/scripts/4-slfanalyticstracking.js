@@ -337,17 +337,15 @@ $(document).ready(function () {
     //         //console.log("mobile sign in module expanding is being tracked successfully");        
     //     });
     
-    $('.article-list-container .related-articles a').click(function(){
+    $('.article-list-container .sl-cards a').click(function(){
         var value=$(this).text().trim();
-        //alert(value);
         utag.link({
             "ev_action"		: "clk",
             "ev_data_one" 	: "related articles",
             "ev_data_two"	: value,
             "ev_title"		: "related articles",
             "ev_type"		: "others"
-        });
-    //console.log("mobile sign in module expanding is being tracked successfully");        
+        });    
     });
     
     //Related Articles Analytics ends here//
