@@ -11,8 +11,11 @@
      * @function
   */
   function handleClickEventForActiveLink() {
-    $(".sl-anchor-links li").removeClass("active-anchor");
-    $(this).addClass("active-anchor");
+    const $scope = $(this);
+    setTimeout(function(){
+      $(".sl-anchor-links li").removeClass("active-anchor");
+      $scope.addClass("active-anchor");
+    }, 100)
   }
   /**
      * Function used to generate the anchorlinks
@@ -22,19 +25,35 @@
     const $anchorLinks = $("h2");
     if($anchorLinks.length === 0) return;
     $anchorLinks.each(function(index, item){
-      $(this).attr("id", "heading-"+(index+1));
-      $(".cmp-toc__content li").eq(index).addClass("heading-"+(index+1))
+      const id = $(".cmp-toc__content li").eq(index).find('a').attr('href')?.replace("#","")?.replace(".","");
+      $(this).attr("id", "anchor-"+id);
+      $(".cmp-toc__content li").eq(index).find('a').attr('href', "#anchor-"+id);
+      $(this).parents("div").attr("data-id", "anchor-"+id);
+      $(".cmp-toc__content li").eq(index).addClass("anchor-"+id)
     })
+    const headerHeight = $(".header").height();
+    $(".sl-anchor-links").css("top",headerHeight);
+    $("html, body").scrollTop(0);
+    $(".sl-anchor-links li").eq(0).addClass("active-anchor");
   }
   /**
      * Function used to handle the scroll and update visible anchor link active.
      * @function
   */
   var handleScroll = function handleScroll() {
+    const $footer = $(".footer");
+    const footerTop = $footer.offset().top;
+    const $slLinks = $(".sl-anchor-links");
+    $slLinks.removeClass("no-sticky");
+    const slLinksTop = $slLinks.offset().top + $slLinks.height();
+    if($footer.length > 0 && slLinksTop >= footerTop){
+      $slLinks.addClass("no-sticky");
+    }
     let linkIds = [];
     const $anchorLinks = $(".cmp-toc__content li");
-    $anchorLinks.each(function(index, item){
-      linkIds.push("heading-"+(index+1))
+    $anchorLinks.each(function(){
+      const id = $(this).find('a').attr('href')?.replace("#","");
+      linkIds.push(id)
     })
     let activeLinkIndex = null;
     const container = document.querySelector(".layout-container")
@@ -43,8 +62,8 @@
     }
     const callback = (entries) => {
       entries.map((item) => {
-        if(item.isIntersecting && item.intersectionRect.top <= 0 && item.intersectionRect.bottom >= 0){
-          isVisible = item.target;
+        if(item.isIntersecting && item.intersectionRect.top <= 20 && item.intersectionRect.bottom >= 0){
+          isVisible = item.target.dataset.id;
         }
       })      
     }    
@@ -55,16 +74,13 @@
       if (targetElement) {
         observer.observe(targetElement)
         if (isVisible) {
-          activeLinkIndex = $(isVisible).find('h2').attr('id');
+          activeLinkIndex = isVisible;
         }
       }
       if(activeLinkIndex !== null) {
-        return false;
+        $(".sl-anchor-links li").removeClass("active-anchor");
+        $("."+activeLinkIndex).addClass("active-anchor");
       }
-    }
-    if(activeLinkIndex !== null){
-      $(".sl-anchor-links li").removeClass("active-anchor");
-      $("."+activeLinkIndex).addClass("active-anchor");
     }
   };
   /**
@@ -86,13 +102,8 @@
       loadAnchorLinks();
       $(document).on("click", ".sl-anchor-links li", handleClickEventForActiveLink);        
       $(window).bind("scroll", util.throttle(handleScroll, 10));
-      $(window).bind("load", util.throttle(handleScroll, 10));
     }
   }
-
-  $(document).ready(function(){
-    init();
-  });
-  
+  init(); 
 
 })(sunCore.$, sunCore.util);
