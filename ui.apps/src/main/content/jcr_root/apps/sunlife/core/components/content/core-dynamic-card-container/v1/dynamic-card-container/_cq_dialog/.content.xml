@@ -47,12 +47,12 @@
                                                                 text="Select Card/Content Block"
                                                                 value="" />
                                                             <horizontal
-                                                                jcr:primaryType="nt:unstructure"
+                                                                jcr:primaryType="nt:unstructured"
                                                                 text="Horizontal Card"
                                                                 value="horizontal"
                                                                 granite:class="horizontal"/>
                                                             <vertical
-                                                                jcr:primaryType="nt:unstructure"
+                                                                jcr:primaryType="nt:unstructured"
                                                                 text="Vertical Card"
                                                                 value="vertical"
                                                                 granite:class="vertical"/>
