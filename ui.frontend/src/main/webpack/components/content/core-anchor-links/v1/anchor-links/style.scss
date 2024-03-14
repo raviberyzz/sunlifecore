@@ -1,8 +1,16 @@
 @import '@sunlife/ui-styles/design-system';
 .sl-anchor-links {
-    @include media-breakpoint-up(md) { 
+    @include media-breakpoint-up(xl) { 
         position: fixed;
         top: var(--sl-anchor-links-sticky-top);
+    }
+    ul {
+        @include media-breakpoint-down(xl) {        
+            margin-bottom: 30px;
+        }
+    }
+    &.no-sticky {
+        position: inherit;
     }
 }
 .aem-AuthorLayer-Edit .sl-anchor-links {
