@@ -113,14 +113,6 @@ public interface HeaderModel {
     String getSearchTitle();
 
     /**
-     * Gets the searchPlaceholder
-     *
-     * @return the searchPlaceholder
-     */
-    @ValueMapValue
-    String getSearchPlaceholder();
-
-    /**
      * Gets the searchButton
      *
      * @return the searchButton

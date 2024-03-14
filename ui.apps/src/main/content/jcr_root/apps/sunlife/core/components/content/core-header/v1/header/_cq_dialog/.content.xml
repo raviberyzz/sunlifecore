@@ -303,11 +303,6 @@
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                 fieldLabel="Search Title"
                                                                 name="./searchTitle"/>
-                                                            <searchplaceholder
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Search Placeholder Text"
-                                                                name="./searchPlaceholder"/>
                                                             <searchbutton
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
