@@ -1,0 +1,29 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+// To remove the margin from the buttons in the modal footer section and add margin-top to the buttons except the first button in medium devices.
+@include media-breakpoint-down(md) {
+   .cq-cmp-modal .modal-dialog.modal-dialog-scrollable .modal-content {
+      max-height: 100%;
+      .modal-footer{
+         & > a {
+            margin:0;
+            &:not(:first-child){
+               margin-top: 24px;
+            }
+         }
+      }
+   }
+}
+
+// To remove the margin from the buttons in the modal footer section and add margin-left to the buttons except the first button in large devices.
+@include media-breakpoint-up(md) {
+   .cq-cmp-modal .modal-content .modal-footer{
+      & > a {
+         margin:0;
+         &:not(:first-child){
+            margin-left: 24px; 
+         }
+      }
+   }
+}
