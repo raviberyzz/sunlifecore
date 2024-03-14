@@ -19,8 +19,10 @@
                         <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
                             ${modalObj.additionalText @context='html'}    
                         </sly>
-                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}"
-                        data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}" />
+                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+                            <div data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/form/core-container/v1/container'}" >
+                            </div>
+                        </sly>
                     </div>
                     <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
                         <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">

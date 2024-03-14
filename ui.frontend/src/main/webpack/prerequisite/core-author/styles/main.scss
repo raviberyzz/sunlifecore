@@ -19,5 +19,8 @@
     position: relative;
     .modal-dialog {
         transform: none;
+        .modal-content {
+            max-height: none !important;
+        }
     }
 }
