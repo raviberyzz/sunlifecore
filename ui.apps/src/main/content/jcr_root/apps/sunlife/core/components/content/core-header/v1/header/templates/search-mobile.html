@@ -1,6 +1,7 @@
 <template data-sly-template.search="${ @ headerModel }">
     <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
-        <button type="button" class="navbar-toggler" data-section="header-search">
+        <button type="button" class="navbar-toggler collapsed menuOpen" data-section="header-search" aria-controls="sl-header-offcanvas" aria-label="Open menu"
+         data-bs-toggle="offcanvas" data-bs-target="#sl-header-offcanvas">
             <span class="fak fa-search sl-icon_size_xl sl-icon" role="presentation"></span>
         </button>
     </sly>

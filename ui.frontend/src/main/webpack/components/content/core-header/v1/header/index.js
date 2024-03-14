@@ -69,8 +69,8 @@
         HEADERSELECTOR.$navNode = $comp.find('#nav-header');
         HEADERSELECTOR.$additionalLinks = $comp.find(".menu-container");
         HEADERSELECTOR.$additionalLinksParent = $comp.find(".content-container");
-        HEADERSELECTOR.$menuOpen = $comp.find("#menuOpen");
-        HEADERSELECTOR.$menuClose = $comp.find("#menuClose");
+        HEADERSELECTOR.$menuOpen = $comp.find(".menuOpen");
+        HEADERSELECTOR.$menuClose = $comp.find(".menuClose");
     }
  
     function bindEvent() {
