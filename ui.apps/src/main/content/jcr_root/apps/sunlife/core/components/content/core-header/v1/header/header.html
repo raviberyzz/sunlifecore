@@ -7,9 +7,9 @@
      <a href="#mainfooter" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
 </div>
 
- <!-- /* Including Search */ -->
- <sly data-sly-use.search="templates/searchbar.html"
- data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+<!-- /* Including Search */ -->
+<sly data-sly-use.search="templates/searchbar.html"
+data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
 <!--/* Including Utility Bar */-->
 <sly data-sly-use.utilitybar="templates/utilitybar.html"
@@ -20,7 +20,7 @@
      <div class="nav-bar container">
           <div id="sl-nav" class="sl-nav navbar navbar-expand-lg navbar-light">
                <button id="menuOpen" aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu"
-                    class="navbar-toggler collapsed" data-bs-toggle="offcanvas" data-bs-target="#sl-header-offcanvas">
+                    class="navbar-toggler collapsed menuOpen" data-bs-toggle="offcanvas" data-bs-target="#sl-header-offcanvas">
                     <span class="fak fa-bars sl-icon_size_xl sl-icon"></span>
                </button>
 
@@ -39,7 +39,7 @@
                     <!-- mobile -->
                     <div class="offcanvas-header">
                           <!-- close icon -->
-                         <button id="menuClose" class="canvas-close" aria-label="Close menu" data-bs-dismiss="offcanvas">
+                         <button id="menuClose" class="canvas-close menuClose" aria-label="Close menu" data-bs-dismiss="offcanvas">
                               <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                          </button>
                          <!-- mobile logo in expanded hamburger menu -->
@@ -48,6 +48,10 @@
                     </div>
 
                     <div id="offcanvas-body" class="offcanvas-body">
+
+                        <!-- /* Including Search */ -->
+                         <sly data-sly-use.search="templates/searchbar-mobile.html"
+                         data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
                          <!-- megamenu.html -->
                          <ul class="sl-main-nav flex-grow-1 navbar-nav">

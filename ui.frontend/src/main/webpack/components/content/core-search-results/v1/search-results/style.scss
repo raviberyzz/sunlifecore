@@ -80,9 +80,7 @@
 
     }
 
-
     /* listing style */
-
     .coveo-list-layout.CoveoResult {
         border-bottom: 1px solid var(--grey-300);
     }
@@ -96,7 +94,7 @@
     }
 
     .CoveoResultLink {
-        color: var(--brand-tertiary-800, #00588B);
+        color: var(--brand-tertiary-800, #00588B) !important;
 
         @include sl-h5;
     }
@@ -108,7 +106,7 @@
     }
 
     .CoveoResultLink.printed-url {
-        color: var(--brand-tertiary-800, #00588B);
+        color: var(--brand-tertiary-800, #00588B) !important;
 
         @include sl-link-small;
     }
@@ -117,12 +115,14 @@
     .coveo-pager-list-item.coveo-active,
     .coveo-results-per-page-list-item.coveo-active {
         background: var(--brand-tertiary-800, #00588B) !important;
+        border-radius: 0 !important;
 
     }
 
     .coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
     .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
         color: #fff !important;
+        border-radius: 0 !important;
     }
 
     .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor {
@@ -174,4 +174,46 @@
 
         @include sl-body-medium;
     }
+
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        color: var(--brand-tertiary-800, #00588B) !important;
+    }
+
+    .coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-item-text {
+        color: #fff !important;
+        border-radius: 0 !important;
+    }
+    .coveo-pager-list-item .coveo-pager-list-item-text {
+        padding: 4px 10px !important;
+    }
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        padding: 4px 8px !important;
+    }
+
+    .coveo-result-cell .pdf-link {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M8.5 14V12C10.5 12 11 12 11 13C11 14 10.5 14 8.5 14ZM8.5 14V16.5M20 12H17.5V14M17.5 14V16.5M17.5 14H20M20 9.5L19.9999 8.5L17.5 6H8V9.5M20 9.5H8M20 9.5H22V18.5H20M8 9.5H6V18.5H8M8 18.5V22H20L20 18.5M8 18.5H20M13 12C15 12 15.5 12.6667 15.5 14C15.5 15.3333 15 16 13 16V12Z" stroke="%23202223"/></svg>');
+        height: 28px;
+        width: 28px;
+        display: inline-block;
+
+        &::before {
+            content: none;
+        }
+    }
+
+    .CoveoPager {
+        margin-left: 0px !important;
+    }
+
+    .CoveoSearchButton.coveo-accessible-button:hover {
+        background-color: var(--brand-primary-500) !important;
+        border-color: var(--brand-primary-500);
+        color: var(--brand-tertiary-900);
+    }
+
+    .search-result-num-results {
+        color: var(--grey-700, #5B6062);
+        @include sl-body-small;
+    }
+    
 }

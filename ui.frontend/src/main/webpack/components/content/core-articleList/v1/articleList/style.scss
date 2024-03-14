@@ -1,8 +1,14 @@
 .sl-article-list-wrapper {
     
-    .sl-pagination .sl-basic-pagination {
-        display: flex;
-        margin-top: var(--L);
+    .sl-pagination {
+        .sl-basic-pagination {
+            display: flex;
+            margin-top: var(--L);
+        }
+        
+        .ellipsis::marker {
+            display: none !important;
+        }
     }
 
     .sl-cards a.card {
