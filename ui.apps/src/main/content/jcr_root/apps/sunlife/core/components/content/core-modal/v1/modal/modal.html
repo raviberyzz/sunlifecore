@@ -14,7 +14,7 @@
                             <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" tabindex="0">
                         ${modalObj.content @context='html'}
                         <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
                             ${modalObj.additionalText @context='html'}    
