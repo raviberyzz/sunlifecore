@@ -153,30 +153,20 @@ public class LeftNavigationModal implements Navigation {
 
 		structureDepth = properties.get(PN_STRUCTURE_DEPTH, currentStyle.get(PN_STRUCTURE_DEPTH, -1));
 		boolean collectAllPages = properties.get(PN_COLLECT_ALL_PAGES, currentStyle.get(PN_COLLECT_ALL_PAGES, true));
-		if (collectAllPages) {
-			structureDepth = -1;
-		} else {
-			structureDepth = 1;
-		}
+		structureDepth = collectAllPages ? -1 : 1;
 		navigationRootPage = properties.get(PN_NAVIGATION_ROOT, String.class);
 		if (currentStyle.containsKey(PN_STRUCTURE_START) || properties.containsKey(PN_STRUCTURE_START)) {
 			structureStart = properties.get(PN_STRUCTURE_START, currentStyle.get(PN_STRUCTURE_START, 1));
 		} else {
 			skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT,
 					currentStyle.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, true));
-			if (skipNavigationRoot) {
-				structureStart = 1;
-			} else {
-				structureStart = 0;
-			}
+			structureStart = skipNavigationRoot ? 1 : 0;
 		}
-
 		if (!(navigationRootPage != null && navigationRootPage.length() > 0)) {
 			structureDepth = 2;
 			navigationRootPage = page.getPath();
 			structureStart = 0;
 		}
-
 		updatedList = leftNavigationItemProcessor.processNavigationList(getItems(), configService, page, request,
 				linkManager, component, resourceResolver, items);
 
