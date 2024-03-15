@@ -2,7 +2,7 @@
    * Handle Parsley custom error element container for dropdowns.
 */
 $(function () {
-  const errorsWrapperHtml = '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="icon-class far fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>';
+  const errorsWrapperHtml = '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>';
   const errorTemplateHtml = '<span></span>';
   const parsleyConfig = {
     errorsContainer: function (elem) {

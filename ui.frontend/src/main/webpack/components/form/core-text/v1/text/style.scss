@@ -14,6 +14,9 @@
             width: 100%;
             .svg-inline--fa {
                 margin: 0;
+                margin-right: 8px;
+                height: 1.25rem;
+                width: 1.25rem !important;
             }
         }
     }
@@ -21,7 +24,7 @@
 .sl-text-area.form-floating.form-field-container {
     &.sl-input-error {
         background: var(--red-50);
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         position: relative;
         .form-control {
             border-color: var(--red-50);
