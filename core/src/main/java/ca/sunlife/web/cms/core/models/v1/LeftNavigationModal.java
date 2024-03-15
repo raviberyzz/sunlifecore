@@ -95,8 +95,6 @@ public class LeftNavigationModal implements Navigation {
 	/** The items. */
 	private List<NavigationItem> items;
 
-	private static final String ITEM_ID_PREFIX = "item";
-
 	/** The structure start. */
 	private int structureStart;
 
@@ -116,7 +114,7 @@ public class LeftNavigationModal implements Navigation {
 	@ScriptVariable
 	@Nullable
 	protected Component component;
-	
+
 	private LeftNavigationItemProcessor leftNavigationItemProcessor = new LeftNavigationItemProcessor();
 
 	/**
@@ -179,7 +177,8 @@ public class LeftNavigationModal implements Navigation {
 			structureStart = 0;
 		}
 
-		updatedList = leftNavigationItemProcessor.processNavigationList(getItems(), configService, page, request, linkManager, component, resourceResolver,items);
+		updatedList = leftNavigationItemProcessor.processNavigationList(getItems(), configService, page, request,
+				linkManager, component, resourceResolver, items);
 
 	}
 
@@ -204,15 +203,15 @@ public class LeftNavigationModal implements Navigation {
 					liveCopiesIterator = relationshipManager
 							.getLiveRelationships(navigationRoot.getPage().adaptTo(Resource.class), null, null);
 				} catch (final WCMException e) {
-					LOGGER.error("Error while getting live relationships for page {}", navigationRoot.getPage().getPath(),
-							e);
+					LOGGER.error("Error while getting live relationships for page {}",
+							navigationRoot.getPage().getPath(), e);
 				}
 				if (navigationRootLanguageRoot != null && currentPageLanguageRoot != null
 						&& !navigationRootLanguageRoot.equals(currentPageLanguageRoot)) {
 					// check if there's a language copy of the navigation root
-					final Page languageCopyNavigationRoot = pageManager
-							.getPage(ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/"
-									+ leftNavigationItemProcessor.getRelativePath(navigationRootLanguageRoot, navigationRoot.getPage())));
+					final Page languageCopyNavigationRoot = pageManager.getPage(
+							ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/" + leftNavigationItemProcessor
+									.getRelativePath(navigationRootLanguageRoot, navigationRoot.getPage())));
 					if (languageCopyNavigationRoot != null) {
 						navigationRoot = new NavigationRoot(languageCopyNavigationRoot, structureDepth);
 					}
@@ -228,7 +227,8 @@ public class LeftNavigationModal implements Navigation {
 						}
 					}
 				}
-				items = leftNavigationItemProcessor.getNavigationTree(navigationRoot,linkManager,component,getId(),structureStart,structureDepth,currentPage,resourceResolver);
+				items = leftNavigationItemProcessor.getNavigationTree(navigationRoot, linkManager, component, getId(),
+						structureStart, structureDepth, currentPage, resourceResolver);
 			} else {
 				items = Collections.emptyList();
 			}
@@ -247,6 +247,4 @@ public class LeftNavigationModal implements Navigation {
 		return request.getResource().getResourceType();
 	}
 
-	
-	
 }
