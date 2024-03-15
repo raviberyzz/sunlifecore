@@ -41,6 +41,10 @@ public interface FormButtonModel {
     boolean isIconPosition();
 
 	@ValueMapValue
+	@Default(booleanValues = {false})
+	boolean isInlineButton();
+
+	@ValueMapValue
 	String getId();
 
 	@ValueMapValue

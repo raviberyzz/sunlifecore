@@ -50,6 +50,14 @@
                                                 text="Trailing Icon Position"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
+                                            <inlineButton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check this option to align the button horizontally within the form container"
+                                                name="./inlineButton"
+                                                text="Display Buttons Inline"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
