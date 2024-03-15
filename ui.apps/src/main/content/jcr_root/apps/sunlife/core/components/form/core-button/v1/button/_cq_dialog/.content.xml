@@ -53,9 +53,9 @@
                                             <inlineButton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Select this option to make this button an inline button for displaying form buttons side-by-side"
+                                                fieldDescription="Check this option to align the button horizontally within the form container"
                                                 name="./inlineButton"
-                                                text="Inline Button?"
+                                                text="Display Buttons Inline"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
                                             <id
