@@ -41,7 +41,6 @@ public class CNWNewsModel {
      * The logger.
      */
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final static String ENGLISH_LANGUAGE_CODE = "en";
 
     /** News Type tab **/
     /**
@@ -236,10 +235,6 @@ public class CNWNewsModel {
         }
         try {
             String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
-            // Setting Default Value to English, in case pageLocale is not defined in config
-            if(StringUtils.isBlank(pageLocale)){
-                pageLocale = ENGLISH_LANGUAGE_CODE;
-            }
             if (null != pageLocale && pageLocale.length() > 0) {
                 locale = pageLocale.split("_")[0];
             }
