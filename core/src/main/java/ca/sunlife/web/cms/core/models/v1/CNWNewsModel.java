@@ -11,6 +11,7 @@ import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -233,8 +234,7 @@ public class CNWNewsModel {
             return;
         }
         try {
-            //final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
-            final String pageLocale = "en";
+            String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
             if (null != pageLocale && pageLocale.length() > 0) {
                 locale = pageLocale.split("_")[0];
             }
