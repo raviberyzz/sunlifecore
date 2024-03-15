@@ -19,76 +19,70 @@
                         jcr:title="Configuration"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <selectionSection
+                            <newsType
+                                granite:class="newsType"
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Display Mode"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Select 'News Overview' to display a summarized view featuring a selection of news items. Each overview item includes a 'View All Releases' link that directs users to a page with the complete list of news items. Select 'News List' to display a complete selection of news items."
+                                fieldLabel="Display Mode"
+                                name="./newsType">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <newsType
-                                        granite:class="newsType"
+                                    <overview
+                                        granite:class="overview"
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                        fieldDescription="Select 'News Overview' to display a summarized view featuring a selection of news items. Each overview item includes a 'View All Releases' link that directs users to a page with the complete list of news items. Select 'News List' to display a complete selection of news items."
-                                        name="./newsType">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <overview
-                                                granite:class="overview"
-                                                jcr:primaryType="nt:unstructured"
-                                                text="News Overview"
-                                                value="1"/>
-                                            <listing
-                                                granite:class="listing"
-                                                jcr:primaryType="nt:unstructured"
-                                                text="News Listing"
-                                                value="2"/>
-                                        </items>
-                                    </newsType>
-                                    <newsConfigurations
+                                        text="News Overview"
+                                        value="1"/>
+                                    <listing
+                                        granite:class="listing"
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <heading
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
-                                                text="News Configurations"/>
-                                            <well
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/well">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <newsCategories
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                        composite="{Boolean}true"
-                                                        fieldDescription="Click 'Add' to add a new news category"
-                                                        fieldLabel="News Categories">
-                                                        <field
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                            name="./newsCategories">
-                                                            <items jcr:primaryType="nt:unstructured">
-                                                                <newsCategory
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldLabel="Category"
-                                                                    name="./category"
-                                                                    required="{Boolean}true"/>
-                                                            </items>
-                                                        </field>
-                                                    </newsCategories>
-                                                    <newsArticleUrl
-                                                        granite:id="newsOverview-newsArticleUrl"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="News Article URL"
-                                                        fieldLabel="News Article URL"
-                                                        name="./newsArticleUrl"
-                                                        required="{Boolean}true"/>
-                                                </items>
-                                            </well>
-                                        </items>
-                                    </newsConfigurations>
+                                        text="News Listing"
+                                        value="2"/>
                                 </items>
-                            </selectionSection>
+                            </newsType>
+                            <newsConfigurations
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <heading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        text="News Configurations"/>
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <newsCategories
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Click 'Add' to add a new news category"
+                                                fieldLabel="News Categories">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./newsCategories">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <newsCategory
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Category"
+                                                            name="./category"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </field>
+                                            </newsCategories>
+                                            <newsArticleUrl
+                                                granite:id="newsOverview-newsArticleUrl"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="News Article URL"
+                                                fieldLabel="News Article URL"
+                                                name="./newsArticleUrl"
+                                                required="{Boolean}true"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </newsConfigurations>
                         </items>
                     </configuration>
                     <newsOverview
