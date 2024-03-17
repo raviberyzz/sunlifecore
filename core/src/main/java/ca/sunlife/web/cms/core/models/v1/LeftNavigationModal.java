@@ -14,6 +14,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
@@ -24,6 +25,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.commons.link.LinkManager;
 import com.adobe.cq.wcm.core.components.models.Navigation;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
@@ -40,7 +43,9 @@ import com.drew.lang.annotations.Nullable;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 import lombok.Getter;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = LeftNavigationModal.class, resourceType = LeftNavigationModal.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { LeftNavigationModal.class,
+		ComponentExporter.class }, resourceType = LeftNavigationModal.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, selector = ExporterConstants.SLING_MODEL_SELECTOR, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class LeftNavigationModal implements Navigation {
 
 	/** The Constant RESOURCE_TYPE. */
