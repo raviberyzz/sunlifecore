@@ -178,19 +178,21 @@
   function selectOption(optionElem) {
 
     let $comboMenu = $(optionElem).closest('.combo-menu');
+    let listboxId = $comboMenu[0].getAttribute("id");
+    let dropdownId = listboxId.substr(listboxId.indexOf("-") + 1, listboxId.length - 1);
+    let $selectId = '#select-' + dropdownId;
+
     if ($comboMenu.find('.option-selected').length != 0) {
       $comboMenu.find('.option-selected')[0].setAttribute('aria-selected', 'false');
       $comboMenu.find('.option-selected').removeClass('option-selected');
-
-      let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
       const $select = document.querySelector($selectId);
       $select.value = "defaultNoneSelected";
     }
     $(optionElem).addClass('option-selected');
     $comboMenu.find('.option-selected')[0].setAttribute('aria-selected', 'true');
-    let $selectId = '#select-' + $(optionElem).closest(".combo-menu")[0].getAttribute("id").split("-")[1];
     const $select = document.querySelector($selectId);
     $select.value = $(optionElem)[0].getAttribute("value");
+    handleCustomActionGeneration($select);
 
     let $comboInput = $($(optionElem).closest(".sl-dropdown")).find(".combo-input");
     $comboInput.removeClass("sl-input-error");
@@ -205,11 +207,25 @@
   }
 
   /**
+  * If the custom action generation is required, update the selected select value to the form action.
+  * @param {HTMLElement} select - The select element.
+  */
+  function handleCustomActionGeneration(select) {
+    var isOnChangeRequired = $(select).attr("data-attribute-onchange-required"); //on change required
+
+    if (null != isOnChangeRequired && '' != isOnChangeRequired && 'yes' == isOnChangeRequired) {
+      var action = select.value;
+      var formObj = $(select).closest('form');
+      $(formObj).attr("action", action);
+    }
+  }
+
+  /**
   * Select the default selected option on page load.
   */
   function selectDefaultOption() {
     const dropdowns = document.getElementsByClassName('combo-menu');
-    for(var index=0;index < dropdowns.length;index++){
+    for (var index = 0; index < dropdowns.length; index++) {
       let options = dropdowns[index].getElementsByClassName("combo-option");
       let currentElement = null;
       let selectedOption = null;
@@ -220,7 +236,7 @@
         }
       }
       if (selectedOption != null) {
-        let $linkText = $(selectedOption).text();     
+        let $linkText = $(selectedOption).text();
         appendSelectedText($(selectedOption), $linkText);
         selectOption($(selectedOption));
         raiseLabel($(selectedOption).parent().parent().find('.combo-input'));
@@ -251,10 +267,10 @@
   * Lower the dropdown input label.
   * @param {HTMLElement} dropDown - The dropdown element.
   */
-    function lowerChevron(dropDown) {
-      dropDown.find('#chevron-up').removeClass("d-none").addClass("d-none");
-      dropDown.find('#chevron-down').removeClass("d-none");
-    }
+  function lowerChevron(dropDown) {
+    dropDown.find('#chevron-up').removeClass("d-none").addClass("d-none");
+    dropDown.find('#chevron-down').removeClass("d-none");
+  }
 
   /**
   * Initialize the module.
