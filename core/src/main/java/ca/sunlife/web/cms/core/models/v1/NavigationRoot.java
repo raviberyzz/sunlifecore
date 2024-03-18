@@ -35,19 +35,25 @@ public class NavigationRoot {
       }
     }
 
-    /**
-     * Gets the page resource.
-     *
-     * @return the page resource
-     */
+    
+    
+	/**
+	 * Retrieves the resource associated with the current page. If the content
+	 * resource exists, returns its parent resource. Otherwise, resolves the
+	 * resource at the page's path.
+	 * 
+	 * @param resourceResolver the ResourceResolver used to resolve resources
+	 *
+	 * @return an Optional containing the resource associated with the current page
+	 */
 
-   public final Optional <Resource> getPageResource(ResourceResolver resourceResolver) {
-      return Optional.ofNullable(Optional.of(page)
-              // get the parent of the content resource
-              .map(Page::getContentResource).map(Resource::getParent)
-              // if content resource is missing, resolve resource at page path
-              .orElseGet(() -> resourceResolver.getResource(page.getPath())));
-    }
+    public final Optional <Resource> getPageResource(ResourceResolver resourceResolver) {
+        return Optional.ofNullable(Optional.of(page)
+                // get the parent of the content resource
+                .map(Page::getContentResource).map(Resource::getParent)
+                // if content resource is missing, resolve resource at page path
+                .orElseGet(() -> resourceResolver.getResource(page.getPath())));
+      }
     
     /**
 	 * Gets the level.

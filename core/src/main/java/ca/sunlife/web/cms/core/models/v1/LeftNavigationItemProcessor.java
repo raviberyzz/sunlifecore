@@ -34,6 +34,8 @@ public class LeftNavigationItemProcessor {
 
 	/** The Constant log. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(LeftNavigationItemProcessor.class);
+	
+	public static final String NAVIGATION_OVERVIEW ="navigationOverview";
 
 	/**
 	 * Process navigation list.
@@ -47,14 +49,14 @@ public class LeftNavigationItemProcessor {
 
 		String title = null;
 		try {
-			title = configService.getConfigValues("navigationOverview", currentPage.getPath());
+			title = configService.getConfigValues(NAVIGATION_OVERVIEW, currentPage.getPath());
 
 		} catch (RepositoryException | LoginException e) {
 			LOGGER.error("Error :: init method of Left Navigation Model :: {}", e);
 		}
 
 		Page parentPage;
-		final List<NavigationItem> children1 = new ArrayList<>();
+		final List<NavigationItem> navchild = new ArrayList<>();
 		for (final NavigationItem navigationItem : navigationItems) {
 
 			if (!navigationItem.getChildren().isEmpty()) {
@@ -62,7 +64,7 @@ public class LeftNavigationItemProcessor {
 				final boolean isSelected = currentPage.equals(parentPage)
 						|| currentPageIsRedirectTarget(parentPage, currentPage, resolver);
 				final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, isSelected, request,
-						navigationItem.getLevel() + 1, children1, title, linkManager, component);
+						navigationItem.getLevel() + 1, navchild, title, linkManager, component);
 				navigationItem.getChildren().add(0, leftItemImpl);
 			}
 			processNavigationList(navigationItem.getChildren(), configService, currentPage, request, linkManager,
