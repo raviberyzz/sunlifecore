@@ -176,4 +176,20 @@ public interface StickyBarModel {
   @ Inject
   String getHideStickyBar();
 
+  /**
+   * Gets the View NavLink Dropdown value.
+   *
+   * @return the View NavLink Dropdown value
+   */
+  @ Inject
+  String getHideNavLinksDropdown();
+
+   /**
+   * Gets the NavLink Dropdown Title.
+   *
+   * @return the NavLink Dropdown Title
+   */
+  @ Inject
+  String getNavLinksDropdownTitle();
+
 }

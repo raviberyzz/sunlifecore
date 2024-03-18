@@ -68,6 +68,10 @@
             }
         }
     }
+
+    .nav-links-dropdown {
+        display: none;
+    }
 }
 
 html {
@@ -112,5 +116,26 @@ html {
         .sticky-bar-button-wrapper {
             width: 100%;
         }
+
+            .sticky-bar-wrapper {
+                height: auto;
+                border-top: 1px solid #dcdedf;
+                padding: 10px 15px;
+            }
+
+            .nav-links-dropdown {
+                display: block;
+
+                .cmp-form-options--drop-down {
+                    width: 100%;
+                }
+            }
+
+            .links-button-wrapper {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                width: 100%;
+            }
     }
 }
