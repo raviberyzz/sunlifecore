@@ -2,193 +2,202 @@ package ca.sunlife.web.cms.core.models.v1;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.beans.Release;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
+import ca.sunlife.web.cms.core.constants.v1.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
-
-import ca.sunlife.web.cms.core.services.CNWNewsService;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
+import ca.sunlife.web.cms.core.services.*;
 import com.day.cq.wcm.api.Page;
-import ca.sunlife.web.cms.core.models.TestUtils;
 import com.day.cq.wcm.api.WCMException;
+import com.day.cq.wcm.msm.api.LiveCopy;
+import com.day.cq.wcm.msm.api.LiveRelationship;
 import com.day.cq.wcm.msm.api.LiveRelationshipManager;
+import com.google.gson.JsonObject;
+import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.scripting.SlingBindings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.jcr.RepositoryException;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
-import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junitx.framework.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
-@ ExtendWith (AemContextExtension.class)
+@ExtendWith({AemContextExtension.class, MockitoExtension.class})
 public class BasePageModelTest {
 
-    @ Mock
-    private Page currentPage;
+    private final AemContext ctx = new AemContext();
 
-    @ Mock
+    @Mock
     private SlingHttpServletRequest request;
 
-    @ Mock
+    @Mock
     private ResourceResolver resolver;
 
-    @ Mock
+    @Mock
     private Resource resource;
 
-    @ Mock
+    @Mock
     private LiveRelationshipManager relationshipManager;
 
-    @ InjectMocks
-    private BasePageModel basePageModel;
 
-    @ Mock
+    @Mock
     private SiteConfigService configService;
 
-    @ Mock
+    @Mock
+    private SearchService searchService;
+
+    @Mock
+    private SEOService seoService;
+
+    @Mock
+    private AnalyticsService analyticsService;
+
+    @Mock
     private CNWNewsService cnwNewsService;
 
-    @ Mock
-    private Page page;
 
-    @ Mock
-    private Page page2;
+    @Mock
+    private AdvisorDetailService advisorDetailService;
 
-    @ Mock
-    private Page page3;
+    private Page currentPage;
 
-    private final static String LOCALE = "en_CA";
-    private final static String PAGE_PATH = "/content/sunlife/external/ca/en/home";
-    private final static String RELEASE_ID = "12355";
+    private BasePageModel basePageModel;
 
-    final Locale CANADA_LOCALE = new Locale("en" , "CA");
 
-    @ BeforeEach
-    public void setUp() throws IllegalAccessException {
-        MockitoAnnotations.initMocks(this);
-    }
+    @BeforeEach
+    public void setUp(AemContext ctx) throws IllegalAccessException {
 
-    public void setInitData() throws LoginException , RepositoryException {
-        when(currentPage.getPath( )).thenReturn(PAGE_PATH);
-        when(configService.getConfigValues("domain" , PAGE_PATH)).thenReturn("www.dev-ca.sunlife.ca");
-        when(configService.getConfigValues("pageLocale" , PAGE_PATH)).thenReturn(LOCALE);
-        when(configService.getConfigValues("udoTagsPath" , PAGE_PATH))
-                .thenReturn("/content/cq:tags/sunlife/UDO/ca");
-        when(configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT , PAGE_PATH))
-                .thenReturn("/content/sunlife/external/ca/en");
-        when(request.getRequestPathInfo( ))
-                .thenReturn(TestUtils.getDummyRequestPathInfo(new String [ ] { RELEASE_ID }));
-        when(configService.getConfigValues("socialMediaImage" , PAGE_PATH))
-                .thenReturn("/content/dam/sunlife/images/social.png");
-        when(resolver.getResource(PAGE_PATH)).thenReturn(resource);
-        when(currentPage.getLanguage( )).thenReturn(CANADA_LOCALE);
-        when(configService.getConfigValues("mfaDomainPath" , PAGE_PATH)).thenReturn("https://mfa-dev.sunlifecorp.com");
-    }
+        ctx.addModelsForClasses(BasePageModel.class);
+        ctx.load().json("/ca/sunlife/web/cms/core/models/v1/BasePageModel.json", "/content");
+        ctx.requestPathInfo().setSelectorString("123.234.567");
+        // OSGI SiteConfigService
+        ctx.registerService(SiteConfigService.class, configService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI SearchService
+        ctx.registerService(SearchService.class, searchService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI SEOService
+        ctx.registerService(SEOService.class, seoService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI AnalyticsService
+        ctx.registerService(AnalyticsService.class, analyticsService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI CNWNewsService
+        ctx.registerService(CNWNewsService.class, cnwNewsService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI relationshipManagerService
+        ctx.registerService(LiveRelationshipManager.class, relationshipManager,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
+        // OSGI AdvisorDetailServiceService
+        ctx.registerService(AdvisorDetailService.class, advisorDetailService,
+                org.osgi.framework.Constants.SERVICE_RANKING, Integer.MAX_VALUE);
 
-    public void setAltLangParams() throws LoginException , RepositoryException {
-        when(configService.getConfigValues("altLangCount" , PAGE_PATH)).thenReturn("2");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 0 + "_domain" , PAGE_PATH))
-                .thenReturn("https://dev-www.ca.sunlife");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 0 + "_languageCode" , PAGE_PATH))
-                .thenReturn("en_CA");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 0 + "_siteLocation" , PAGE_PATH))
-                .thenReturn("/content/sunlife/external/ca/en");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 0 + "_defaultLanguage" , PAGE_PATH))
-                .thenReturn("true");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 1 + "_domain" , PAGE_PATH))
-                .thenReturn("https://dev-www.ca.sunlife");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 1 + "_languageCode" , PAGE_PATH))
-                .thenReturn("fr_CA");
-        when(configService.getConfigValues(
-                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + 1 + "_siteLocation" , PAGE_PATH))
-                .thenReturn("/content/sunlife/external/ca/fr");
-    }
 
-    @ Test
-    public void testInitMethodValidFields()
-            throws IllegalAccessException, NoSuchMethodException, SecurityException,
-            IllegalArgumentException, InvocationTargetException, LoginException, RepositoryException, WCMException {
-        setInitData( );
-        basePageModel.init( );
-    }
+        currentPage = ctx.create().page("/content/sunlife/external/ca/slfas/en");
+        // Sling Bindings object for currentPage
+        SlingBindings slingBindings = (SlingBindings) ctx.request().getAttribute(SlingBindings.class.getName());
+        slingBindings.put("currentPage", currentPage);
+        ctx.request().setAttribute(SlingBindings.class.getName(), slingBindings);
 
-    @ Test
-    public void testInitForCnwPageType() throws LoginException, RepositoryException, IOException,
-            ParseException, ApplicationException, SystemException, WCMException {
-        setInitData( );
-        basePageModel.setAdvancedPageType(BasePageModelConstants.PAGE_TYPE_CNW_CONSTANT);
-        Release release = new Release( );
-        release.setHeadline("This is my news headline.");
-        release.setId(RELEASE_ID);
-        release.setSummary("This is the test news release summary.");
-        NewsDetails newsDetails = new NewsDetails( );
-        newsDetails.setRelease(release);
-        when(cnwNewsService.getCNWNewsDetails(RELEASE_ID , "en")).thenReturn(newsDetails);
-        basePageModel.setSeoCanonicalUrl("www.dev-ca.sunlife.ca/en/home/");
-        basePageModel.init( );
-        setAltLangParams( );
-        when(resource.adaptTo(Page.class)).thenReturn(page);
-        when(page.getDepth( )).thenReturn(7);
-        when(page.getAbsoluteParent(4)).thenReturn(page2);
-        when(page2.getName( )).thenReturn("Home");
-
-        when(page.getAbsoluteParent(5)).thenReturn(page3);
-        when(page3.getName( )).thenReturn("Insurance");
-
-        when(page.getAbsoluteParent(6)).thenReturn(page);
-        when(page.getName( )).thenReturn("Health Insurance");
-
-        basePageModel.init( );
-        assertEquals("This is my news headline." , basePageModel.getSeoPageTitle( ));
-
-        basePageModel.setTags(new String[] {"sunlife:UDO/ca/page_audience/Advisor",
-                "sunlife:UDO/ca/abcs", "sunlife:UDO/ca/page_audience/Agent",
-                "sunlife:UDO/ca/page_manager/None", "sunlife:UDO/ca/page_manager/Value1",
-                "sunlife:UDO/ca/page_manager/Value2", "sunlife:UDO/ca/page_dir/None"});
-        basePageModel.init( );
 
     }
 
-    @ Test
-    public void testInitForAdvisorPageType() {
-        try {
-            setInitData( );
-            basePageModel.setAdvancedPageType(BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT);
-            basePageModel.init( );
-        } catch (Exception e) {
-            assertTrue(e instanceof NullPointerException);
-        }
+    private void executeCommonWhenStatement() throws LoginException, RepositoryException, WCMException, ApplicationException, SystemException, IOException, ParseException {
+        when(configService.getConfigValues(BasePageModelConstants.STATIC_PATH_CONSTANT, currentPage.getPath())).thenReturn("/content/");
+        when(configService.getConfigValues(BasePageModelConstants.PAGE_LOCALE, currentPage.getPath())).thenReturn("en_CA");
+        when(configService.getConfigValues("favIcon", currentPage.getPath())).thenReturn("/content/dam/favIcon.png");
+        when(configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, currentPage.getPath())).thenReturn("/content/dam/favIcon.png");
+        when(configService.getConfigValues(BasePageModelConstants.UDO_TAGS_PATH, currentPage.getPath())).thenReturn("udoTags");
+        when(configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, currentPage.getPath())).thenReturn("true");
+        when(configService.getConfigValues("userInfoPath", currentPage.getPath())).thenReturn("userInfoPath");
+        when(configService.getConfigValues(BasePageModelConstants.EXTRA_CLIENTLIBS, currentPage.getPath())).thenReturn("ca.sunlife-author-extra-libs");
+        when(configService.getConfigValues("disableSocialSharingTags", currentPage.getPath())).thenReturn("true");
+        when(configService.getConfigValues("disableContextHubTags", currentPage.getPath())).thenReturn("true");
+        when(configService.getConfigValues("nonResponsive", currentPage.getPath())).thenReturn("false");
+        when(configService.getConfigValues(BasePageModelConstants.SITE_HEAD_INCLUDE, currentPage.getPath())).thenReturn("<div>SiteHeader</div>");
+        when(configService.getConfigValues(BasePageModelConstants.SITE_BODY_INCLUDE, currentPage.getPath())).thenReturn("<div>SiteBody</div>");
+        when(configService.getConfigValues(BasePageModelConstants.ADD_OPENING_DIV, currentPage.getPath())).thenReturn("true");
+        when(configService.getConfigValues(BasePageModelConstants.WRAPPER_DIV_CLASS, currentPage.getPath())).thenReturn("true");
+        when(configService.getConfigValues(BasePageModelConstants.MFA_DOMAIN_PATH, currentPage.getPath())).thenReturn("www.sunlife.ca/mfa/");
+        when(configService.getConfigValues(BasePageModelConstants.MFA_ENCRYPTION, currentPage.getPath())).thenReturn("true");
+        lenient().when(configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, currentPage.getPath())).thenReturn("com");
+        lenient().when(configService.getConfigValues(BasePageModelConstants.DOMAIN_STR, "/content/sunlife/external/master")).thenReturn("ca");
+        when(configService.getConfigValues(BasePageModelConstants.SITE_SELECTOR, currentPage.getPath())).thenReturn("siteSelector");
+        lenient().when(configService.getConfigValues("siteSuffix", currentPage.getPath())).thenReturn("");
+        lenient().when(configService.getConfigValues("pageDescription", currentPage.getPath())).thenReturn("this is page description");
+        lenient().when(configService.getConfigValues("autoCompleteUrl", currentPage.getPath())).thenReturn("www.sunlife.ca");
+        lenient().when(configService.getConfigValues("searchApi", currentPage.getPath())).thenReturn("/search/api");
+        lenient().when(configService.getConfigValues("analyticsScriptPath", currentPage.getPath())).thenReturn("/content/dam/scriptpath");
+        lenient().when(configService.getConfigValues("analyticsTealiumScript", currentPage.getPath())).thenReturn("/content/dam/scriptpath");
+        lenient().when(configService.getConfigValues(BasePageModelConstants.HREF_LANG, currentPage.getPath())).thenReturn("en");
+        lenient().when(configService.getPageRelativeUrl("/content/sunlife/external/master")).thenReturn("masterPath");
+        lenient().when(configService.getConfigValues("articleTitleFormat", currentPage.getPath())).thenReturn("true");
+        lenient().when(relationshipManager.hasLiveRelationship(any(Resource.class))).thenReturn(true);
+        LiveCopy liveCopy = Mockito.mock(LiveCopy.class);
+        LiveRelationship rel = Mockito.mock(LiveRelationship.class);
+        lenient().when(relationshipManager.getLiveRelationship(any(Resource.class), anyBoolean())).thenReturn(rel);
+        lenient().when(rel.getLiveCopy()).thenReturn(liveCopy);
+        lenient().when(liveCopy.getBlueprintPath()).thenReturn("/content/sunlife/external/master");
+        NewsDetails newsDetail = Mockito.mock(NewsDetails.class);
+        lenient().when(cnwNewsService.getCNWNewsDetails(Mockito.anyString(), Mockito.any(String.class))).thenReturn(newsDetail);
+        Release release = Mockito.mock(Release.class);
+        lenient().when(newsDetail.getRelease()).thenReturn(release);
+        lenient().when(release.getHeadline()).thenReturn("this is headline");
+        lenient().when(release.getSummary()).thenReturn("this is summary");
+
 
     }
 
-    @ Test
-    public void testInitForArticlePageType() {
-        try {
-            setInitData( );
-            basePageModel.setAdvancedPageType(BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT);
-            basePageModel.init( );
-        } catch (Exception e) {
-            assertTrue(e instanceof NullPointerException);
-        }
+    @Test
+    public void testCase1() throws LoginException, RepositoryException, WCMException, ApplicationException, SystemException, IOException, ParseException {
+        executeCommonWhenStatement();
+        ctx.currentResource("/content/basePageList");
+        basePageModel = ctx.request().adaptTo(BasePageModel.class);
+        assertEquals("/content/sunlife/external/ca/slfas/en", currentPage.getPath());
+        assertEquals("com", basePageModel.getFavIcon(), "/content/dam/favIcon.png");
+        assertEquals("This is social media description", basePageModel.getSocialMediaDescripton());
+        assertEquals("true", basePageModel.getPageIndexing());
+        assertEquals("Sun Life Financial", basePageModel.getSeoPageTitle());
+        assertEquals("https://www.sunlife.ca", basePageModel.getSeoCanonicalUrl());
+        assertEquals("www.sunlife.ca/mfa/", basePageModel.getMfaDomainPath());
+        assertEquals("true", basePageModel.getMfaEncryption());
+
 
     }
+
+    @Test
+    public void testCase2() throws LoginException, RepositoryException, WCMException, ApplicationException, SystemException, IOException, ParseException {
+        executeCommonWhenStatement();
+        ctx.currentResource("/content/basePageList1");
+        basePageModel = ctx.request().adaptTo(BasePageModel.class);
+
+    }
+
+    @Test
+    public void testCase3() throws LoginException, RepositoryException, WCMException, ApplicationException, SystemException, IOException, ParseException {
+        executeCommonWhenStatement();
+        ctx.currentResource("/content/basePageList2");
+        basePageModel = ctx.request().adaptTo(BasePageModel.class);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(AdvisorDetailConstants.ERROR_CODE_CONSTANT, "ERROR");
+        basePageModel.getAdvisorTitle(jsonObject);
+
+    }
+
+
 }

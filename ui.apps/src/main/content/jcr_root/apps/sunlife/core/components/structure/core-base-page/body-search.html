@@ -1,16 +1,17 @@
-<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel" />
-<sly data-sly-test="${baseModel.coveoSearchEnabled == 'true' @context='unsafe'}">
-    <form name="search-url" action="${baseModel.searchUrl @ extension = 'html'}"></form>
-    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
-    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
-    <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
-    <script type="text/javascript">
-        var coveoSearchlanguage = "${baseModel.searchLanguage @context='unsafe'}"
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel"/>
+<sly data-sly-test.coveoSearchConfig=${baseModel.coveoSearchConfig}>
+    <sly data-sly-test="${coveoSearchConfig.coveoSearchEnabled == 'true' @context='text'}">
+        <form name="search-url" action="${coveoSearchConfig.searchUrl @ extension = 'html'}"></form>
+        <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
+        <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${coveoSearchConfig.siteLocale @context='text'}.js"></script>
+        <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
+        <script type="text/javascript">
+        var coveoSearchlanguage = "${coveoSearchConfig.searchLanguage @context='text'}"
         var searchConfig = {
-            orgId: "${baseModel.orgId @context='unsafe'}",
-            token: "${baseModel.searchToken @context='unsafe'}",
-            restUri: "${baseModel.restUri @context='unsafe'}",
-            searchHub: "${baseModel.searchHub @context='unsafe'}",
+            orgId: "${coveoSearchConfig.orgId @context='text'}",
+            token: "${coveoSearchConfig.searchToken @context='text'}",
+            restUri: "${coveoSearchConfig.restUri @context='text'}",
+            searchHub: "${coveoSearchConfig.searchHub @context='text'}",
             searchUrl: $('form[name="search-url"]').attr('action')
         };
 
@@ -47,5 +48,7 @@
             contentIdValue: utag_data.page_canonical_url,
             contentType: utag_data.page_category
         });
-    </script>
+
+        </script>
+    </sly>
 </sly>
