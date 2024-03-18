@@ -9,6 +9,8 @@ package ca.sunlife.web.cms.core.models.v1;
 
     String getText();
 
+    Boolean getMultiline();
+
     String getButtonTitle();
 
     String getButtonURL();
