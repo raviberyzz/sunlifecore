@@ -148,6 +148,7 @@
 												fieldDescription="Custom action is required to add dynamic action to the form based on the value selected in dropdown."
                                                 name="./customActionGenerationRequired"
                                                 text="Is Custom Action Generation Required"
+												required="{Boolean}true"
                                                 value="yes"/>
                                         </items>
                                     </column>
