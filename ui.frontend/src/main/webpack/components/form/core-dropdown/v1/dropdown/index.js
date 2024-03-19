@@ -24,7 +24,7 @@
     let currentComboInput = e.currentTarget; // .combo-input
     $combo = $(currentComboInput).closest('.combo');
     $combo.removeClass("open");
-    lowerChevron($combo);
+    switchChevron($combo, "down")
     lowerLabel(currentComboInput);
     currentComboInput.setAttribute("aria-expanded", "false");
     $combo.find('label').removeClass("active");
@@ -57,7 +57,7 @@
         }
       } else { // first down press keeps focus on the dropdown
         $($combo).addClass("open");
-        raiseChevron($combo);
+        switchChevron($combo, "up");
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
       }
@@ -75,7 +75,7 @@
         }
       } else { // first down press
         $($combo).addClass("open");
-        raiseChevron($combo);
+        switchChevron($combo, "up");
         currentComboInput.setAttribute("aria-expanded", "true");
         raiseLabel(currentComboInput);
       }
@@ -88,12 +88,12 @@
       if ($($combo).hasClass("open")) {
         ariaExpanded = "true";
         raiseLabel(currentComboInput);
-        raiseChevron($combo);
+        switchChevron($combo, "up");
       } else {
         ariaExpanded = "false";
         $($combo).find('label').removeClass("active");
         lowerLabel(currentComboInput);
-        lowerChevron($combo);
+        switchChevron($combo, "down");
       }
       currentComboInput.setAttribute("aria-expanded", ariaExpanded);
     }
@@ -211,11 +211,11 @@
   * @param {HTMLElement} select - The select element.
   */
   function handleCustomActionGeneration(select) {
-    var isOnChangeRequired = $(select).attr("data-attribute-onchange-required"); //on change required
+    const isOnChangeRequired = $(select).attr("data-attribute-onchange-required"); //on change required
 
     if (null != isOnChangeRequired && '' != isOnChangeRequired && 'yes' == isOnChangeRequired) {
-      var action = select.value;
-      var formObj = $(select).closest('form');
+      const action = select.value;
+      const formObj = $(select).closest('form');
       $(formObj).attr("action", action);
     }
   }
@@ -225,11 +225,11 @@
   */
   function selectDefaultOption() {
     const dropdowns = document.getElementsByClassName('combo-menu');
-    for (var index = 0; index < dropdowns.length; index++) {
+    for (let index = 0; index < dropdowns.length; index++) {
       let options = dropdowns[index].getElementsByClassName("combo-option");
       let currentElement = null;
       let selectedOption = null;
-      for (var i = 0; i < options.length; i++) {
+      for (let i = 0; i < options.length; i++) {
         currentElement = options[i];
         if ((currentElement).getAttribute("aria-selected") != null) {
           selectedOption = currentElement;
@@ -254,23 +254,18 @@
     return true;
   }
 
-  /**
-  * Raise the dropdown input label.
-  * @param {HTMLElement} dropDown - The dropdown element.
-  */
-  function raiseChevron(dropDown) {
-    dropDown.find('#chevron-down').removeClass("d-none").addClass("d-none");
-    dropDown.find('#chevron-up').removeClass("d-none");
-  }
 
   /**
-  * Lower the dropdown input label.
+  * Switch the chevron direction in the dropdown.
   * @param {HTMLElement} dropDown - The dropdown element.
+  * @param {String} direction - The chevron direction up or down.
   */
-  function lowerChevron(dropDown) {
-    dropDown.find('#chevron-up').removeClass("d-none").addClass("d-none");
-    dropDown.find('#chevron-down').removeClass("d-none");
+  function switchChevron(dropDown, direction) {
+    let directionOpposite = {"down":"up", "up":"down"};
+    dropDown.find('#chevron-'+ directionOpposite[direction]).removeClass("d-none").addClass("d-none");
+    dropDown.find('#chevron-'+direction).removeClass("d-none");    
   }
+
 
   /**
   * Initialize the module.
