@@ -1,109 +1,239 @@
 /**
- * Bind a throttled scroll window event if there is anchor links on the page which gets triggered on page scroll. 
- * Manage to activate the anchor link on click of links.
- * load id's in anchor links and map it to content to scroll it to correct place.
+ * anchor-links/index.js
+ * Module to handle functionality required for Anchor-link component, which extends AEM core Table * of content component
  */
 
-(function($, util) {
-  let isVisible = null;
-  /**
-     * Function used to update the active anchor link on click event.
-     * @function
-  */
-  function handleClickEventForActiveLink() {
-    const $scope = $(this);
-    setTimeout(function(){
-      $(".sl-anchor-links li").removeClass("active-anchor");
-      $scope.addClass("active-anchor");
-    }, 100)
-  }
-  /**
-     * Function used to generate the anchorlinks
-     * @function
-  */
-  function loadAnchorLinks() {
-    const $anchorLinks = $("h2");
-    if($anchorLinks.length === 0) return;
-    $anchorLinks.each(function(index, item){
-      const id = $(".cmp-toc__content li").eq(index).find('a').attr('href')?.replace("#","")?.replace(".","");
-      $(this).attr("id", "anchor-"+id);
-      $(".cmp-toc__content li").eq(index).find('a').attr('href', "#anchor-"+id);
-      $(this).parents("div").attr("data-id", "anchor-"+id);
-      $(".cmp-toc__content li").eq(index).addClass("anchor-"+id)
-    })
-    const headerHeight = $(".header").height();
-    $(".sl-anchor-links").css("top",headerHeight);
-    $("html, body").scrollTop(0);
-    $(".sl-anchor-links li").eq(0).addClass("active-anchor");
-  }
-  /**
-     * Function used to handle the scroll and update visible anchor link active.
-     * @function
-  */
-  var handleScroll = function handleScroll() {
-    const $footer = $(".footer");
-    const footerTop = $footer.offset().top;
-    const $slLinks = $(".sl-anchor-links");
-    $slLinks.removeClass("no-sticky");
-    const slLinksTop = $slLinks.offset().top + $slLinks.height();
-    if($footer.length > 0 && slLinksTop >= footerTop){
-      $slLinks.addClass("no-sticky");
-    }
-    let linkIds = [];
-    const $anchorLinks = $(".cmp-toc__content li");
-    $anchorLinks.each(function(){
-      const id = $(this).find('a').attr('href')?.replace("#","");
-      linkIds.push(id)
-    })
-    let activeLinkIndex = null;
-    const container = document.querySelector(".layout-container")
-    const options = {
-      root: container
-    }
-    const callback = (entries) => {
-      entries.map((item) => {
-        if(item.isIntersecting && item.intersectionRect.top <= 20 && item.intersectionRect.bottom >= 0){
-          isVisible = item.target.dataset.id;
-        }
-      })      
-    }    
-    const observer = new IntersectionObserver(callback, options)    
-    for (var index = 0; index < linkIds.length; index++) {
-      var linkId = linkIds[index];
-      var targetElement = document.getElementById(linkId).parentNode;
-      if (targetElement) {
-        observer.observe(targetElement)
-        if (isVisible) {
-          activeLinkIndex = isVisible;
-        }
-      }
-      if(activeLinkIndex !== null) {
-        $(".sl-anchor-links li").removeClass("active-anchor");
-        $("."+activeLinkIndex).addClass("active-anchor");
-      }
-    }
-  };
-  /**
-     * Check if Anchor links component exists.
-     * @function
-  */
-  function doesModuleExist() {
-      if ($('.sl-anchor-links').length <= 0) {
-          return false;
-      }
-      return true;
-  }
-  /**
-     * Function used to initilize the event
-     * @function
-  */
-  function init() {
-    if(doesModuleExist()){
-      loadAnchorLinks();
-      $(document).on("click", ".sl-anchor-links li", handleClickEventForActiveLink);        
-      $(window).bind("scroll", util.throttle(handleScroll, 10));
-    }
-  }
-  init(); 
+(function (core) {
+	"use strict";
 
-})(sunCore.$, sunCore.util);
+	/**
+	 * Anchor-Link component
+	 * @namespace anchorLinks
+	 * @memberof sunCore.comp
+	 */
+	core.comp.anchorLinks = (function ($, util) {
+		const CONSTANT = {
+			SELECTOR: {
+				slArticle: ".article-container",
+				slAnchorLinkComp: ".sl-anchor-links",
+				slAnchorLinkListLink: ".sl-anchor-links li a",
+				slHeader: ".sl-header",
+				slArticleAnchorLinksInline: ".article-anchor-links-inline",
+				slAnchorLinks: ".anchor-links",
+			},
+			CLASS: {
+				dLgNone: "d-lg-none",
+			},
+		};
+
+		let $slAnchorLinkComp,
+			$slArticleAnchorLinksInline,
+			$slArticle,
+			$slAnchorLinkListLink,
+			$slAnchorLinks,
+			listeners = [];
+
+		/**
+		 * Method to handle user interaction on anchor links
+		 * @function handleLinkInteraction
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 * @param {object} event - event object
+		 */
+		function handleLinkInteraction(event) {
+			event.preventDefault();
+			scrollToHeading(event);
+		}
+
+		/**
+		 * It returns the height of the header on the top
+		 * @function getHeaderOffset
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 * @return {number} height of the sticky header on top
+		 */
+		function getHeaderOffset() {
+			return $(CONSTANT.SELECTOR.slHeader).height();
+		}
+
+		/**
+		 * It update the height and top values to make anchor link sticky
+		 * @function updateAnchorLinkStickyConfigs
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function updateAnchorLinkStickyConfigs() {
+			const articleHeight = $slArticle[0].clientHeight;
+			$slAnchorLinkComp.parent().css("height", articleHeight);
+			$slAnchorLinkComp.css("top", getHeaderOffset() + 20);
+		}
+
+		/**
+		 * Method to handle scroll to context to required heading
+		 * @function handleLinkInteraction
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 * @param {object} event - event object
+		 */
+		function scrollToHeading(event) {
+			const currentLinkHref = event.target.getAttribute("href");
+			const $currentHrefElem = $(
+				`h2[id="${currentLinkHref.substring(1)}"]`
+			);
+
+			// get retuired offset
+			let offsetTop = getHeaderOffset() + 20;
+
+			core.util.scrollTo.element(
+				$currentHrefElem,
+				{ duration: 100 },
+				offsetTop
+			);
+		}
+
+		/**
+		 * Method to filter/show only required headings given in container to anchor-link
+		 * @function filterRequiredLinksOnly
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 * @param {object} $container - jquery dom selector for container where all required heading exist
+		 */
+		function filterRequiredLinksOnly($container) {
+			let headingIds = [];
+			let $containerHeadings = $container.find("h2");
+			$containerHeadings.map((index, value) => headingIds.push(value.id));
+			$slAnchorLinkComp.find("a").each(function (index, element) {
+				if (
+					!headingIds.includes(
+						element.getAttribute("href").substring(1)
+					)
+				) {
+					$(element).parent().hide();
+				}
+			});
+		}
+
+		/**
+		 * Method to handle responsive rendering of anchor-link in article page
+		 * @function renderAnchorLinks
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function renderAnchorLinks() {
+			if (util.matchmedia.L.matches || util.matchmedia.XL.matches) {
+				$slArticleAnchorLinksInline.addClass(CONSTANT.CLASS.dLgNone);
+				$slAnchorLinks.show();
+				return;
+			}
+			$slAnchorLinks.hide();
+			$slArticleAnchorLinksInline.html("");
+			$slArticleAnchorLinksInline
+				.html($slAnchorLinks.html())
+				.removeClass(CONSTANT.CLASS.dLgNone);
+		}
+
+		/**
+		 * High order function to handle anchor-link rendering on article page
+		 * @function loadAnchorLinks
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function loadAnchorLinks() {
+			if ($slArticle.length) {
+				filterRequiredLinksOnly($slArticle);
+				updateAnchorLinkStickyConfigs();
+				renderAnchorLinks();
+			}
+		}
+
+		/**
+		 * Method to update the active state of sticky anchor link on scrolling
+		 * @function activeLinkStateHandler
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function activeLinkStateHandler() {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						const anchorLinkSelector = `.sl-anchor-links li a[href="#${id}"]`;
+						if (entry.intersectionRatio > 0) {
+							document
+								.querySelector(anchorLinkSelector)
+								.parentElement.classList.add("active-anchor");
+						} else {
+							document
+								.querySelector(anchorLinkSelector)
+								.parentElement.classList.remove(
+									"active-anchor"
+								);
+						}
+					});
+				},
+				{ rootMargin: "0px 0px -30% 0px" }
+			);
+
+			// Track all h2 headings inside article-container
+			document
+				.querySelectorAll(".article-container h2")
+				.forEach((heading) => {
+					observer.observe(heading);
+				});
+		}
+
+		/**
+		 * Handler to bind event specific for anchor-link
+		 * @function bindEvent
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function bindEvent() {
+			$(document).on(
+				util.customEvents.INTERACTION,
+				$slAnchorLinkListLink,
+				handleLinkInteraction
+			);
+
+			listeners.push(
+				$.subscribe(util.customEvents.RESIZED, renderAnchorLinks)
+			);
+		}
+
+		/**
+		 * Handler to cache dom selector on module load
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.anchorLinks
+		 * @private
+		 */
+		function cacheSelectors() {
+			$slAnchorLinkComp = $(CONSTANT.SELECTOR.slAnchorLinkComp);
+			$slArticle = $(CONSTANT.SELECTOR.slArticle);
+			$slAnchorLinkListLink = $(CONSTANT.SELECTOR.slAnchorLinkListLink);
+			$slArticleAnchorLinksInline = $(
+				CONSTANT.SELECTOR.slArticleAnchorLinksInline
+			);
+			$slAnchorLinks = $(CONSTANT.SELECTOR.slAnchorLinks);
+		}
+
+		/**
+		 * Method used to initilize the module
+		 * @function
+		 */
+		function init() {
+			cacheSelectors();
+			bindEvent();
+			loadAnchorLinks();
+			activeLinkStateHandler();
+		}
+
+		return {
+			init: init,
+		};
+	})(core.$, core.util);
+
+	/**
+	 * Initialise anchorLinks module if given selector is in DOM
+	 */
+	core.util.initialise(core.comp, "anchorLinks", ".sl-anchor-links");
+})(sunCore);

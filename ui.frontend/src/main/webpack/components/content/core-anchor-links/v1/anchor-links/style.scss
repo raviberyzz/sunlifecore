@@ -1,8 +1,9 @@
-@import '@sunlife/ui-styles/design-system';
+@import '@sunlife/ui-styles/base/variables';
+@import 'bootstrap/scss/mixins';
+
 .sl-anchor-links {
     @include media-breakpoint-up(xl) { 
-        position: fixed;
-        top: var(--sl-anchor-links-sticky-top);
+        position: sticky;
     }
     ul {
         @include media-breakpoint-down(xl) {        
