@@ -17,24 +17,24 @@
 				slArticle: ".article-container",
 				slAnchorLinkComp: ".sl-anchor-links",
 				slAnchorLinkListLink: ".sl-anchor-links li a",
-        slHeader: ".sl-header",
-        slArticleAnchorLinksInline: ".article-anchor-links-inline",
-        slAnchorLinks: ".anchor-links"
+				slHeader: ".sl-header",
+				slArticleAnchorLinksInline: ".article-anchor-links-inline",
+				slAnchorLinks: ".anchor-links",
 			},
-      CLASS:{
-        dLgNone: "d-lg-none"
-      }
+			CLASS: {
+				dLgNone: "d-lg-none",
+			},
 		};
 
 		let $slAnchorLinkComp,
 			$slArticleAnchorLinksInline,
 			$slArticle,
 			$slAnchorLinkListLink,
-      $slAnchorLinks,
+			$slAnchorLinks,
 			listeners = [];
 
-    /**
-		 * Method to handle user interaction on anchor links 
+		/**
+		 * Method to handle user interaction on anchor links
 		 * @function handleLinkInteraction
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
@@ -45,7 +45,7 @@
 			scrollToHeading(event);
 		}
 
-    /**
+		/**
 		 * It returns the height of the header on the top
 		 * @function getHeaderOffset
 		 * @memberof sunCore.comp.anchorLinks
@@ -56,7 +56,7 @@
 			return $(CONSTANT.SELECTOR.slHeader).height();
 		}
 
-    /**
+		/**
 		 * It update the height and top values to make anchor link sticky
 		 * @function updateAnchorLinkStickyConfigs
 		 * @memberof sunCore.comp.anchorLinks
@@ -68,8 +68,8 @@
 			$slAnchorLinkComp.css("top", getHeaderOffset() + 20);
 		}
 
-    /**
-		 * Method to handle scroll to context to required heading 
+		/**
+		 * Method to handle scroll to context to required heading
 		 * @function handleLinkInteraction
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
@@ -81,7 +81,7 @@
 				`h2[id="${currentLinkHref.substring(1)}"]`
 			);
 
-      // get retuired offset
+			// get retuired offset
 			let offsetTop = getHeaderOffset() + 20;
 
 			core.util.scrollTo.element(
@@ -91,8 +91,8 @@
 			);
 		}
 
-    /**
-		 * Method to filter/show only required headings given in container to anchor-link 
+		/**
+		 * Method to filter/show only required headings given in container to anchor-link
 		 * @function filterRequiredLinksOnly
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
@@ -113,8 +113,8 @@
 			});
 		}
 
-    /**
-		 * Method to handle responsive rendering of anchor-link in article page 
+		/**
+		 * Method to handle responsive rendering of anchor-link in article page
 		 * @function renderAnchorLinks
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
@@ -127,11 +127,13 @@
 			}
 			$slAnchorLinks.hide();
 			$slArticleAnchorLinksInline.html("");
-			$slArticleAnchorLinksInline.html($slAnchorLinks.html()).removeClass(CONSTANT.CLASS.dLgNone);
+			$slArticleAnchorLinksInline
+				.html($slAnchorLinks.html())
+				.removeClass(CONSTANT.CLASS.dLgNone);
 		}
 
-    /**
-		 * High order function to handle anchor-link rendering on article page 
+		/**
+		 * High order function to handle anchor-link rendering on article page
 		 * @function loadAnchorLinks
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
@@ -144,27 +146,33 @@
 			}
 		}
 
-		 /**
-		 * Method to update the active state of sticky anchor link on scrolling 
+		/**
+		 * Method to update the active state of sticky anchor link on scrolling
 		 * @function activeLinkStateHandler
 		 * @memberof sunCore.comp.anchorLinks
 		 * @private
 		 */
 		function activeLinkStateHandler() {
-      
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					const id = entry.target.getAttribute("id");
-          const anchorLinkSelector = `.sl-anchor-links li a[href="#${id}"]`;
-					if (entry.intersectionRatio > 0) {
-						document.querySelector(anchorLinkSelector)
-							.parentElement.classList.add("active-anchor");
-					} else {
-						document.querySelector(anchorLinkSelector)
-							.parentElement.classList.remove("active-anchor");
-					}
-				});
-			}, { rootMargin: "0px 0px -30% 0px" });
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						const anchorLinkSelector = `.sl-anchor-links li a[href="#${id}"]`;
+						if (entry.intersectionRatio > 0) {
+							document
+								.querySelector(anchorLinkSelector)
+								.parentElement.classList.add("active-anchor");
+						} else {
+							document
+								.querySelector(anchorLinkSelector)
+								.parentElement.classList.remove(
+									"active-anchor"
+								);
+						}
+					});
+				},
+				{ rootMargin: "0px 0px -30% 0px" }
+			);
 
 			// Track all h2 headings inside article-container
 			document
@@ -202,8 +210,10 @@
 			$slAnchorLinkComp = $(CONSTANT.SELECTOR.slAnchorLinkComp);
 			$slArticle = $(CONSTANT.SELECTOR.slArticle);
 			$slAnchorLinkListLink = $(CONSTANT.SELECTOR.slAnchorLinkListLink);
-      $slArticleAnchorLinksInline = $(CONSTANT.SELECTOR.slArticleAnchorLinksInline);
-      $slAnchorLinks = $(CONSTANT.SELECTOR.slAnchorLinks);
+			$slArticleAnchorLinksInline = $(
+				CONSTANT.SELECTOR.slArticleAnchorLinksInline
+			);
+			$slAnchorLinks = $(CONSTANT.SELECTOR.slAnchorLinks);
 		}
 
 		/**
