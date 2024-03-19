@@ -124,7 +124,7 @@ public class CNWNewsModel {
      * Analytics data title
      **/
     @ValueMapValue
-    private String dataTitle;
+    private String analyticsDataSection;
 
     /** Spacing tab **/
     /**
