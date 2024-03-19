@@ -121,10 +121,10 @@ public class CNWNewsModel {
 
     /** Analytics tab **/
     /**
-     * Analytics data title
+     * Analytics data Section
      **/
     @ValueMapValue
-    private String analyticsDataSection;
+    private String dataSection;
 
     /** Spacing tab **/
     /**

@@ -1,8 +1,8 @@
 <sly data-sly-use.newsModel="ca.sunlife.web.cms.core.models.v1.CNWNewsModel" />
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
-<div data-section="${newsModel.section}" data-sly-test = "${newsModel.newsType == '1'}">
-    <div class="list-group  ${newsModel.spacing}" data-section="${newsModel.analyticsDataSection}">
+<div data-section="${newsModel.dataSection}" data-sly-test = "${newsModel.newsType == '1'}">
+    <div class="list-group  ${newsModel.spacing}" data-section="${newsModel.dataSection}">
         <div class="news-article" data-sly-repeat.releaseObj="${newsModel.releaseMain.releases.release}">
         <div class="list-group-item list-group-item-action">
           <p class="releaseDate">${releaseObj.releaseDate}</p> 
@@ -14,9 +14,10 @@
 
 <sly data-sly-test = "${newsModel.newsType == '2'}">
     <div data-panelcontainer="${wcmmode.edit && 'tabs'}"
-     data-section="${newsModel.section}"
+     data-section="${newsModel.dataSection}"
      id="${newsModel.id}"
      class="cmp-tabs sl-tabs ${newsModel.spacing}"
+     data-section="${newsModel.dataSection}"
      data-cmp-is="tabs">	 
         <div class="stack-tab-container no-border">
             <div data-sly-set.items="${newsModel.yearsToShow}"
