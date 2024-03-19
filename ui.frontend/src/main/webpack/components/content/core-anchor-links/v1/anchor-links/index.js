@@ -16,7 +16,6 @@
 			SELECTOR: {
 				slArticle: ".article-container",
 				slAnchorLinkComp: ".sl-anchor-links",
-				slAnchorLinkListItem: ".sl-anchor-links li",
 				slAnchorLinkListLink: ".sl-anchor-links li a",
         slHeader: ".sl-header",
         slArticleAnchorLinksInline: ".article-anchor-links-inline",
@@ -201,7 +200,6 @@
 		 */
 		function cacheSelectors() {
 			$slAnchorLinkComp = $(CONSTANT.SELECTOR.slAnchorLinkComp);
-			$slAnchorLinkListItem = $(CONSTANT.SELECTOR.slAnchorLinkListItem);
 			$slArticle = $(CONSTANT.SELECTOR.slArticle);
 			$slAnchorLinkListLink = $(CONSTANT.SELECTOR.slAnchorLinkListLink);
       $slArticleAnchorLinksInline = $(CONSTANT.SELECTOR.slArticleAnchorLinksInline);
