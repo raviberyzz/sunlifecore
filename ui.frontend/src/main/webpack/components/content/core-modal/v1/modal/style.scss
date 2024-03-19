@@ -26,4 +26,14 @@
          }
       }
    }
+
+   .xf-web-container .sl-modal .modal-dialog.modal-dialog-scrollable .modal-content {
+      max-height: fit-content;
+  }
+}
+
+.xf-web-container .cq-Editable-dom .fade:not(.show) {
+   opacity: 1;
+   display: block;
+   top: auto;
 }
