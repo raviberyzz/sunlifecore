@@ -1,3 +1,6 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
 .popover-button {
     display: inline-block;
 }
@@ -23,4 +26,16 @@
             max-height: none !important;
         }
     }
+}
+
+@include media-breakpoint-up(md) {
+    .xf-web-container .sl-modal .modal-dialog.modal-dialog-scrollable .modal-content {
+       max-height: fit-content;
+   }
+}
+ 
+.xf-web-container .cq-Editable-dom .fade:not(.show) {
+    opacity: 1;
+    display: block;
+    top: auto;
 }
