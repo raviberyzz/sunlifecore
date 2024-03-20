@@ -6,8 +6,8 @@
             margin-top: var(--L);
         }
         
-        .ellipsis::marker {
-            display: none !important;
+        .ellipsis {
+            list-style: none !important;
         }
     }
 
