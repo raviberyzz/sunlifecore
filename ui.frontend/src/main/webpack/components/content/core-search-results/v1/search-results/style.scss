@@ -191,7 +191,7 @@
     }
 
     .coveo-result-cell .pdf-link {
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M8.5 14V12C10.5 12 11 12 11 13C11 14 10.5 14 8.5 14ZM8.5 14V16.5M20 12H17.5V14M17.5 14V16.5M17.5 14H20M20 9.5L19.9999 8.5L17.5 6H8V9.5M20 9.5H8M20 9.5H22V18.5H20M8 9.5H6V18.5H8M8 18.5V22H20L20 18.5M8 18.5H20M13 12C15 12 15.5 12.6667 15.5 14C15.5 15.3333 15 16 13 16V12Z" stroke="%23202223"/></svg>');
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4IiBmaWxsPSJub25lIj48cGF0aCBkPSJNOC41IDE0VjEyQzEwLjUgMTIgMTEgMTIgMTEgMTNDMTEgMTQgMTAuNSAxNCA4LjUgMTRaTTguNSAxNFYxNi41TTIwIDEySDE3LjVWMTRNMTcuNSAxNFYxNi41TTE3LjUgMTRIMjBNMjAgOS41TDE5Ljk5OTkgOC41TDE3LjUgNkg4VjkuNU0yMCA5LjVIOE0yMCA5LjVIMjJWMTguNUgyME04IDkuNUg2VjE4LjVIOE04IDE4LjVWMjJIMjBMMjAgMTguNU04IDE4LjVIMjBNMTMgMTJDMTUgMTIgMTUuNSAxMi42NjY3IDE1LjUgMTRDMTUuNSAxNS4zMzMzIDE1IDE2IDEzIDE2VjEyWiIgc3Ryb2tlPSIlMjMyMDIyMjMiLz48L3N2Zz4=");
         height: 28px;
         width: 28px;
         display: inline-block;
@@ -214,6 +214,22 @@
     .search-result-num-results {
         color: var(--grey-700, #5B6062);
         @include sl-body-small;
+    }
+
+    .coveo-results-header {
+        box-shadow: none !important;
+        margin-bottom: 32px;
+    }
+
+    .error-required:before {
+        content: " "!important;
+        left: 0 !important;
+        font: inherit;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNNTY5LjUgNDQwQzU4OCA0NzIgNTY0LjggNTEyIDUyNy45IDUxMkg0OC4xYy0zNi45IDAtNjAtNDAuMS00MS42LTcyTDI0Ni40IDI0YzE4LjUtMzIgNjQuNy0zMiA4My4yIDBsMjM5LjkgNDE2ek0yODggMzU0Yy0yNS40IDAtNDYgMjAuNi00NiA0NnMyMC42IDQ2IDQ2IDQ2IDQ2LTIwLjYgNDYtNDYtMjAuNi00Ni00Ni00NnptLTQzLjctMTY1LjNsNy40IDEzNmMuMyA2LjQgNS42IDExLjMgMTIgMTEuM2g0OC41YzYuNCAwIDExLjYtNSAxMi0xMS4zbDcuNC0xMzZjLjQtNi45LTUuMS0xMi43LTEyLTEyLjdoLTYzLjRjLTYuOSAwLTEyLjQgNS44LTEyIDEyLjd6Ii8+PC9zdmc+");
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        top: 5px;
     }
     
 }
