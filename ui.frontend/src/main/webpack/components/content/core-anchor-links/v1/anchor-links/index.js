@@ -191,7 +191,7 @@
 		function bindEvent() {
 			$(document).on(
 				util.customEvents.INTERACTION,
-				$slAnchorLinkListLink,
+				CONSTANT.SELECTOR.slAnchorLinkListLink,
 				handleLinkInteraction
 			);
 
