@@ -15,7 +15,6 @@
    * @param {string} selector - selector upon whose existance module is being called  
   */
   core.util.initialise = function(namespace, module, selector) {
-    
     // Check if namespace is given and module exist in given namespace
     if((namespace && typeof namespace !== 'object') || (typeof module !== 'string') || !namespace[module]) return;
     
