@@ -3,10 +3,10 @@
 
 	/**
 	 * Options component
-	 * @namespace Options
+	 * @namespace formOptions
 	 * @memberof sunCore.comp
 	 */
-    core.comp.Options = (function ($, util) {
+    core.comp.formOptions = (function ($, util) {
 		const CONSTANT = {
 			SELECTOR: {
 				formCheckInput: '.form-check-input',
@@ -15,7 +15,7 @@
         /**
 		 * Method to update the radio and checkbox validation
 		 * @function checkBoxValidationEventHandler
-		 * @memberof sunCore.comp.Options
+		 * @memberof sunCore.comp.formOptions
 		 * @private
 		 */
         function checkBoxValidationEventHandler() {
@@ -44,9 +44,9 @@
             }
         }  
         /**
-		 * Handler to bind event specific for Options
+		 * Handler to bind event specific for formOptions
 		 * @function bindEvent
-		 * @memberof sunCore.comp.Options
+		 * @memberof sunCore.comp.formOptions
 		 * @private
 		 */
 		function bindEvent() {
@@ -75,7 +75,7 @@
 	})(core.$, core.util);
 
 	/**
-	 * Initialise Options module if given selector is in DOM
+	 * Initialise formOptions module if given selector is in DOM
 	 */
-	core.util.initialise(core.comp, "Options", ".form-check-input");
+	core.util.initialise(core.comp, "formOptions", ".form-check-input");
 })(sunCore);
