@@ -154,3 +154,58 @@
       flex-direction: row;
     }
   }
+
+  // CDT-2404
+  // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/0d974332be0fed01902af2d135ee7f1d3cbef1cd */
+
+  .sl-media-block.card {
+    width: width-by-cols(xs, 12);
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 12);
+        min-height: 19.875rem; //UX spec - Desktop and Laptop (min height)
+      }
+      @include media-breakpoint-only(md) {
+        width: width-by-cols(md, 12);
+        min-height: 13.375rem; //UX spec - Tablet landscape (min height)
+      }
+      @include media-breakpoint-only(sm) {
+        width: width-by-cols(sm, 12);
+      }
+      @include media-breakpoint-up(md) {
+        height: 100%;
+      }
+  }
+
+  .sl-media-block.card picture {
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      height: 100%;
+      width: width-by-cols(md, 6);
+    }
+    @include media-breakpoint-up(lg) {
+      width: width-by-cols(lg, 6);
+    }
+    @include media-breakpoint-only(md) {
+      min-height: inherit; //UX spec - Tablet landscape (min height)
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: inherit; //UX spec - Desktop and Laptop (min height)
+    }
+    @include media-breakpoint-up(sm) {
+      height: 100%;
+    }
+  }
+
+  .sl-media-block.card.media-block-left .card-body {
+    @include media-breakpoint-up(md) {
+      position: relative;
+      margin-left: auto;
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 6);
+      }
+    }
+    
+    @include media-breakpoint-up(md) {
+      flex: 0 51%;
+    }
+  }
