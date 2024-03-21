@@ -7,6 +7,7 @@
   /**
   * Bind events on module, for keyboard accessibility. 
   * @function
+  * @return void
   */
   function bindEvent() {
     let $dropdown = $('form .sl-dropdown');
@@ -20,6 +21,7 @@
   * Blur event on dropdown. Close the dropdown when user clicks Tab key or clicks out.
   * @function
   * @param {Event} e - The event object.
+  * @return void
   */
   function dropDownOnBlur(e) {
     e.preventDefault();
@@ -36,6 +38,7 @@
   * Handles dropdown combo clicks. Ensures keyboard accessibility for down, up, Enter, Space keys and mousedown event.
   * @function
   * @param {Event} e - The event object.
+  * @return void
   */
   function dropdownComboHandler(e) {
     $(this).focus();
@@ -106,6 +109,7 @@
   * Handles dropdown option click when an option is selected.
   * @function
   * @param {Event} e - The event object.
+  * @return void
   */
   function dropDownOptionHandler(e) {
     e.preventDefault();
@@ -127,6 +131,7 @@
   * Handles dropdown scrollbar mousedown event so that the dropdown menu does not close.
   * @function
   * @param {Event} e - The event object.
+  * @return void
   */
   function dropDownMenuHandler(e) {
     e.preventDefault();
@@ -136,6 +141,7 @@
   * Raises the dropdown input label.
   * @function
   * @param {HTMLElement} dropDown - The dropdown element.
+  * @return void
   */
   function raiseLabel(dropDown) {
     let $combo = $(dropDown).closest('.combo');
@@ -157,6 +163,7 @@
   * Lowers the dropdown input label. Hides the select text.
   * @function
   * @param {HTMLElement} dropDown - The dropdown element.
+  * @return void
   */
   function lowerLabel(dropDown) {
     let $optionSelected = $(dropDown).next().find(".option-selected").length;
@@ -173,15 +180,17 @@
   * @function
   * @param {HTMLElement} dropDown - The dropdown element.
   * @param {String} text - The text to append.
+  * @return void
   */
   function appendSelectedText(dropDown, text) {
-    $(dropDown[0]).closest('.combo').find('div.combo-input-selected').text(text)
+    $(dropDown[0]).closest('.combo').find('div.combo-input-selected').text(text);
   }
 
   /**
   * Selects an option within the dropdown menu, and adds code necessary for accessibility.
   * @function
   * @param {HTMLElement} optionElem - The option element.
+  * @return void
   */
   function selectOption(optionElem) {
 
@@ -215,12 +224,13 @@
   }
 
   /**
-  * If the custom action generation is required, update the selected select value to the form action.
+  * If the custom form action generation is required, update the form action with the selected  value.
   * @function
   * @param {HTMLElement} select - The select element.
+  * @return void
   */
   function handleCustomActionGeneration(select) {
-    const isOnChangeRequired = $(select).attr("data-attribute-onchange-required"); //on change required
+    const isOnChangeRequired = $(select).attr("data-attribute-onchange-required");
 
     if (null != isOnChangeRequired && '' != isOnChangeRequired && 'yes' == isOnChangeRequired) {
       const action = select.value;
@@ -232,6 +242,7 @@
   /**
   * Select the default selected option on page load.
   * @function
+  * @return void
   */
   function selectDefaultOption() {
     const dropdowns = document.getElementsByClassName('combo-menu');
@@ -257,6 +268,7 @@
   /**
   * Check if a dropdown component exists.
   * @function
+  * @returns {Boolean} `true` if a form dropdown exists.
   */
   function doesDropdownExist() {
     if ($('form .sl-dropdown').length <= 0) {
@@ -265,12 +277,12 @@
     return true;
   }
 
-
   /**
   * Switch the chevron direction in the dropdown.
   * @function
   * @param {HTMLElement} dropDown - The dropdown element.
   * @param {String} direction - The chevron direction up or down.
+  * @return void
   */
   function switchChevron(dropDown, direction) {
     let directionOpposite = {"down":"up", "up":"down"};
@@ -278,10 +290,10 @@
     dropDown.find('#chevron-'+direction).removeClass("d-none");    
   }
 
-
   /**
   * Initialize the module.
   * @function
+  * @return void
   */
   function init() {
     if (doesDropdownExist()) {
