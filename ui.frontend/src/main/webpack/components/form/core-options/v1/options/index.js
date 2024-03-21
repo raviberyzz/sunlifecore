@@ -52,12 +52,12 @@
 		function bindEvent() {
 			$(document).on(
 				util.customEvents.INTERACTION,
-				$(CONSTANT.SELECTOR.formCheckInput),
+				CONSTANT.SELECTOR.formCheckInput,
 				checkBoxValidationEventHandler
 			);
             $(document).on(
 				util.customEvents.CHANGE,
-				$(CONSTANT.SELECTOR.formCheckInput),
+				CONSTANT.SELECTOR.formCheckInput,
 				checkBoxValidationEventHandler
 			);
 		}

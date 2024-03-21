@@ -8,7 +8,7 @@
         <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <label for="options${options.id}${optionItemList.index}">
-                    <sly data-sly-test.optionName="${options.type == 'RADIO'? options.name : optionItem.value}"></sly>
+                    <sly data-sly-set.optionName="${options.type == 'RADIO'? options.name : optionItem.value}"></sly>
                     <input
                         class="form-check-input form-field"
                         aria-required="${text.required ? 'true': 'false'}"
