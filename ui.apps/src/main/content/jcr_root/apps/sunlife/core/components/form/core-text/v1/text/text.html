@@ -11,7 +11,7 @@
                 <textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
                 data-cmp-hook-form-text="input"
                 id="${text.id}"
-                placeholder="${text.placeholder}"
+                placeholder="${text.placeholder || text.helpMessage}"
                 data-parsley-error-message="${customText.requiredMessage}"
                 data-parsley-required-message="${customText.requiredMessage}"
                 data-parsley-pattern="${customText.validation}"
@@ -28,12 +28,12 @@
                 data-parsley-required="${text.required}"
                 aria-required="${text.required ? 'true': 'false'}"
                 rows="${text.rows}">${text.value}</textarea>
-                        <input data-sly-test="${!useTextarea}"
+                <input data-sly-test="${!useTextarea}"
                 class="form-control form-field ${text.required ? 'required': ''}"
                 data-cmp-hook-form-text="input"
                 type="${text.type}"
                 id="${text.id}"
-                placeholder="${text.placeholder}"
+                placeholder="${text.placeholder || text.helpMessage}"
                 data-parsley-error-message="${customText.requiredMessage}"
                 data-parsley-required-message="${customText.requiredMessage}"
                 data-parsley-pattern="${customText.validation}"
@@ -58,7 +58,7 @@
                 </div>
                 <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>     
         </div>
-        <div data-sly-test="${useTextarea && text.helpMessage}" id="hint-msg-helper-text" class="sl-helper-text hint-text sl-textfield-helper-text">
+        <div data-sly-test="${useTextarea && text.helpMessage}" id="hint-msg-helper-text" class="textarea-help-text sl-helper-text hint-text sl-textfield-helper-text">
                 ${text.helpMessage}
         </div>
 </div>
