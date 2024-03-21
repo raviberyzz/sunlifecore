@@ -6,9 +6,9 @@
 
   /**
   * Bind events on module, for keyboard accessibility. 
+  * @function
   */
   function bindEvent() {
-    // Bind mousedown event on dropdown.
     let $dropdown = $('form .sl-dropdown');
     $dropdown.on('mousedown keyup', '.combo-input', dropdownComboHandler);
     $dropdown.on('mousedown keyup', '.combo-option', dropDownOptionHandler);
@@ -18,6 +18,8 @@
 
   /**
   * Blur event on dropdown. Close the dropdown when user clicks Tab key or clicks out.
+  * @function
+  * @param {Event} e - The event object.
   */
   function dropDownOnBlur(e) {
     e.preventDefault();
@@ -32,6 +34,7 @@
 
   /**
   * Handles dropdown combo clicks. Ensures keyboard accessibility for down, up, Enter, Space keys and mousedown event.
+  * @function
   * @param {Event} e - The event object.
   */
   function dropdownComboHandler(e) {
@@ -101,6 +104,7 @@
 
   /**
   * Handles dropdown option click when an option is selected.
+  * @function
   * @param {Event} e - The event object.
   */
   function dropDownOptionHandler(e) {
@@ -121,6 +125,7 @@
 
   /**
   * Handles dropdown scrollbar mousedown event so that the dropdown menu does not close.
+  * @function
   * @param {Event} e - The event object.
   */
   function dropDownMenuHandler(e) {
@@ -129,6 +134,7 @@
 
   /**
   * Raises the dropdown input label.
+  * @function
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function raiseLabel(dropDown) {
@@ -148,8 +154,8 @@
   }
 
   /**
-  * Lowers the dropdown input label.
-  * Hides the select text.
+  * Lowers the dropdown input label. Hides the select text.
+  * @function
   * @param {HTMLElement} dropDown - The dropdown element.
   */
   function lowerLabel(dropDown) {
@@ -164,8 +170,9 @@
 
   /**
   * Appends text to the dropdown input selected element.
+  * @function
   * @param {HTMLElement} dropDown - The dropdown element.
-  * @param {string} text - The text to append.
+  * @param {String} text - The text to append.
   */
   function appendSelectedText(dropDown, text) {
     $(dropDown[0]).closest('.combo').find('div.combo-input-selected').text(text)
@@ -173,6 +180,7 @@
 
   /**
   * Selects an option within the dropdown menu, and adds code necessary for accessibility.
+  * @function
   * @param {HTMLElement} optionElem - The option element.
   */
   function selectOption(optionElem) {
@@ -208,6 +216,7 @@
 
   /**
   * If the custom action generation is required, update the selected select value to the form action.
+  * @function
   * @param {HTMLElement} select - The select element.
   */
   function handleCustomActionGeneration(select) {
@@ -222,6 +231,7 @@
 
   /**
   * Select the default selected option on page load.
+  * @function
   */
   function selectDefaultOption() {
     const dropdowns = document.getElementsByClassName('combo-menu');
@@ -246,6 +256,7 @@
 
   /**
   * Check if a dropdown component exists.
+  * @function
   */
   function doesDropdownExist() {
     if ($('form .sl-dropdown').length <= 0) {
@@ -257,6 +268,7 @@
 
   /**
   * Switch the chevron direction in the dropdown.
+  * @function
   * @param {HTMLElement} dropDown - The dropdown element.
   * @param {String} direction - The chevron direction up or down.
   */
@@ -269,6 +281,7 @@
 
   /**
   * Initialize the module.
+  * @function
   */
   function init() {
     if (doesDropdownExist()) {
