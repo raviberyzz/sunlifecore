@@ -26,4 +26,24 @@
          }
       }
    }
+
+   .cq-Editable-dom .sl-modal .modal-dialog.modal-dialog-scrollable .modal-content {
+      max-height: fit-content;
+   }
+}
+
+.cq-Editable-dom .cq-cmp-modal .modal.fade:not(.show) {
+   opacity: 1;
+   display: block;
+   top: auto;
+}
+
+.modal-body {
+   .cmp-form {
+      padding: 0 2px;
+   }
+}
+
+.sl-modal .modal-dialog .modal-body {
+   overflow-x: hidden;
 }

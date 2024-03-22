@@ -64,6 +64,14 @@
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/core-text/v1/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 name="./text"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                            <multiline
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check this option to display button below multiline text"
+                                                name="./multiline"
+                                                text="Multiline Button"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

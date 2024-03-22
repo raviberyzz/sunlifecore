@@ -46,7 +46,7 @@ Figma - https://www.figma.com/file/WWnQlqR6HRusFOYRIjAZ8G/1.1-Helios-Web-Templat
             data-sly-test="${article.articleData.articleMiniDescription}"
             class="mb-sl24">
                 ${article.articleData.articleMiniDescription  @context='html'}
-        <div>
+        </div>
         <!-- Image of article page -->
         <div 
             data-sly-test="${article.articleData.articleImage}" 
@@ -56,12 +56,14 @@ Figma - https://www.figma.com/file/WWnQlqR6HRusFOYRIjAZ8G/1.1-Helios-Web-Templat
                     data-sly-call="${template.details @  imageRef=article.articleData.articleImage,  altText=article.articleData.articleHeadline, imgClass='article-img w-100', isLazyLoaded=imgLazyLoaded }">
                 </sly>
         </div>
+
+        <div class="d-lg-none mt-sl64 article-anchor-links-inline"></div>
         <!-- main description of article page -->
         <div 
             data-sly-test="${article.articleData.articleMainDescription}"
             class="mb-sl24">
             ${article.articleData.articleMainDescription  @context='html'}
-        <div>
+        </div>
         <!-- article page layout container for custom content -->
         <div>
             <sly data-sly-resource="${ 'layout-container' @ resourceType='sunlife/core/components/content/core-layout-container/v1/layout-container'}"/>

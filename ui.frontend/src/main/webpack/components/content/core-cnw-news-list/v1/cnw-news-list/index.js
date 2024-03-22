@@ -1,59 +1,83 @@
 /**
  * Update the tabs for news list component on key and click event
  */
-$(document).ready(function() {
+(function (core) {
+	"use strict";
+
+	/**
+	 * Text component
+	 * @namespace cnwNewsList
+	 * @memberof sunCore.comp
+	 */
+  core.comp.cnwNewsList = (function ($, util) {
+  const CONSTANT = {
+    SELECTOR: {
+      tabNavItem: '.sl-tabs .nav-item',
+      tabNavButton: '.sl-tabs .arrow-btn',
+      navTab: '.sl-tabs .nav-tabs'
+    }
+  };
   /**
-     * Function used to handle the tab click and key press event
-     * @function
-     * @param {object} scope - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle the tab click and key press event
+   * @function tabItemEventHandler
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} scope - event object
+   */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
     const $id = $currentTab.attr('id');
     const $navItem = $currentTab.closest(".nav-item");
     const $allTabsLink = $navItem.find(".nav-link");
     const $selectedNavLink = $currentTab.find(".nav-link");
-    $navItem.removeClass("active focused")
-    $allTabsLink.removeClass("active focused").attr("tabindex","-1").attr("aria-selected", "false");
+    $navItem.removeClass("active focused cmp-tabs__tab--active")
+    $allTabsLink.removeClass("active focused cmp-tabs__tab--active").attr("tabindex","-1").attr("aria-selected", "false");
     $currentTab.addClass("active focused");
     $selectedNavLink.addClass("active").attr("tabindex","0").attr("aria-selected", "true");
     $("#default-tab-tabpane-"+$id).addClass("active show")
   }
   /**
-     * Function used to handle the tab item click event
-     * @function
-  */
+   * Method to handle the tab item click event
+   * @function tabItemClickEventHandler
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   */
   function tabItemClickEventHandler(){
     tabItemEventHandler(this);
   }
-  /**
-     * Function is used to navigate the tab on arrow key
-     * @function
-     * @param {object} $thisScope - scope of the selected element
-  */
+ /**
+   * Method to to navigate the tab on arrow key
+   * @function navigateTabOnArrowKey
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} $thisScope - event object
+   */
   function navigateTabOnArrowKey($thisScope) {  
     const $navTab = $thisScope.parents(".nav-tabs");   
     $navTab.find(".nav-item .nav-link").attr("tabindex", "-1").attr("aria-selected", "false");
-    $navTab.find(".nav-item").removeClass("focused");    
+    $navTab.find(".nav-item").removeClass("focused active");    
     $thisScope.find(".nav-link").attr("tabindex", "0").focus().attr("aria-selected", "true");
-    $thisScope.addClass("focused");
+    $thisScope.addClass("focused active");
     tabItemEventHandler($thisScope);
   }
   /**
-   * Function used to handle the tab keypress for left arrow, right arrow, and enter
-    * @function
-    * @param {object} $navItem - pass the first/last element of nav item
-    * @param {object} $currentItem - pass the current element of nav item
-  */
+   * Method to handle the tab keypress for left arrow, right arrow, and enter
+   * @function getCurrentItem
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} navItem - pass the first/last element of nav item
+   * @param {object} sccurrentItemope - pass the current element of nav item
+   */
   function getCurrentItem($navItem, $currentItem) {
     return $currentItem.index() < 0 ? $navItem : $currentItem
   }
   /**
-   * Function used to handle the tab keypress for left arrow, right arrow, and enter
-    * @function
-    * @param {object} e - capture event for selected element
-  */  
+   * Method to handle the tab keypress for left arrow, right arrow, and enter
+   * @function tabItemKeyEventHandler
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} e - event Object
+   */
   function tabItemKeyEventHandler(e) {
     const $thisKey = $(this);
     const $keyName = e.key;    
@@ -102,17 +126,19 @@ $(document).ready(function() {
     }
     else {
       const $activeNavItem = $navTabs.find(".nav-item.active");
-      $navItem.removeClass("focused");
-      $navItem.find(".nav-link").attr("tabindex", "-1")
-      $activeNavItem.addClass("focused");
-      $activeNavItem.find(".nav-link").attr("tabindex", "0")
+      $navItem.removeClass("focused active");
+      $navItem.find(".nav-link").attr("tabindex", "-1").removeClass("active");
+      $activeNavItem.addClass("focused active");
+      $activeNavItem.find(".nav-link").attr("tabindex", "0").addClass("active");
     }
   }
   /**
-     * Function used to get the scroll width for all visible tablist
-     * @function
-     * @param {object} $currentNav - scope for selected element
-  */
+   * Method to get the scroll width for all visible tablist
+   * @function getActiveScrollWidth
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} $currentNav - scope for selected element
+   */
   function getActiveScrollWidth($currentNav) {
     const $navItem = $currentNav.parents(".stack-tab-container").find(".nav-item:not(.hide)");
     let navWidth = 0;
@@ -122,9 +148,11 @@ $(document).ready(function() {
     return navWidth;
   }
   /**
-     * Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
-     * @function
-  */
+   * Method to handle the enable scrolling feature for tab on click of next and previous arrow button
+   * @function slideTabEventHandler
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   */
   function slideTabEventHandler() {
     const $currentNav = $(this);
     const $navTab = $currentNav.siblings(".nav-tabs");
@@ -170,10 +198,12 @@ $(document).ready(function() {
     }
   }
   /**
-     * Function used to handle mobile enable scrolling.
-     * @function
-     * @param {function} $navButton - Current selected navigation button (prev/next)
-  */
+   * Method to handle mobile enable scrolling.
+   * @function mobileEnableScrolling
+   * @memberof sunCore.comp.cnwNewsList
+   * @private
+   * @param {object} $navButton - Current selected navigation button (prev/next)
+   */
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
@@ -182,23 +212,48 @@ $(document).ready(function() {
       $navButton.removeClass('hide');
     }
   }
+  
   /**
-     * Function used to intialize the events
-     * @function
-  */
-  function init() {
-    const $tabContainer = $(".sl-tabs");    
-    if($tabContainer.length > 0){
-        const $navTab = $(".sl-tabs .nav-tabs");
-        const $navButton =  $('.sl-tabs .arrow-btn');
-        $navTab.attr('data-activeTab', 0);
-        const $document = $(document);
-        $document.on("keydown", ".sl-tabs .nav-item", tabItemKeyEventHandler);
-        $document.on("click", ".sl-tabs .nav-item", tabItemClickEventHandler);
-        $document.on("click", ".sl-tabs .arrow-btn", slideTabEventHandler);
-        mobileEnableScrolling($navButton);
-      }
+		 * Handler to bind event specific for cnwNewsList
+		 * @function bindEvent
+		 * @memberof sunCore.comp.cnwNewsList
+		 * @private
+		 */
+  function bindEvent() {
+    $(document).on(
+      util.customEvents.KEYDOWN,
+      CONSTANT.SELECTOR.tabNavItem,
+      tabItemKeyEventHandler
+    );
+    $(document).on(
+      util.customEvents.INTERACTION,
+      CONSTANT.SELECTOR.tabNavItem,
+      tabItemClickEventHandler
+    );
+    $(document).on(
+      util.customEvents.INTERACTION,
+      CONSTANT.SELECTOR.tabNavButton,
+      slideTabEventHandler
+    );
   }
-  init();
+  /**
+		 * Method used to initilize the module
+		 * @function
+		 */
+  function init() {
+    const $navButton = $(CONSTANT.SELECTOR.navTab)
+    $navButton.attr('data-activeTab', 0);
+    bindEvent();
+    mobileEnableScrolling($(CONSTANT.SELECTOR.tabNavButton));
+  }   
+      
+  return {
+    init: init,
+};
+})(core.$, core.util);
 
-});
+/**
+* Initialise cnwNewsList module if given selector is in DOM
+*/
+core.util.initialise(core.comp, "cnwNewsList", ".cnw-news-list .sl-tabs");
+})(sunCore);

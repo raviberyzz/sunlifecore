@@ -48,6 +48,9 @@ public class NotificationImpl implements Notification {
     @ValueMapValue
     private String spacing;
 
+    @ValueMapValue
+    private Boolean multiline;
+
 
     @Override
     public String getNotificationType() {
@@ -97,5 +100,10 @@ public class NotificationImpl implements Notification {
     @Override
     public String getSpacing() {
         return spacing;
+    }
+
+    @Override
+    public Boolean getMultiline(){
+        return multiline;
     }
 }

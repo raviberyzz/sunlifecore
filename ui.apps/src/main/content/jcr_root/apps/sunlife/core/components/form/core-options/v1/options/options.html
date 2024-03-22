@@ -4,16 +4,17 @@
 	  class="sl-options ${options.spacing}">
     <sly data-sly-test.isConfigured="${(wcmmode.edit) && (options.name)}" />
     <sly data-sly-test="${(options.type == 'CHECKBOX' || options.type == 'RADIO') && (options.name)}">
-        <label class="cmp-form-options__label" for="${options.id}">${options.title}</label>
+        <label class="cmp-form-options__label">${options.title}</label>
         <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
-                <label for="${options.id}">
+                <label for="options${options.id}${optionItemList.index}">
+                    <sly data-sly-set.optionName="${options.type == 'RADIO'? options.name : optionItem.value}"></sly>
                     <input
                         class="form-check-input form-field"
                         aria-required="${text.required ? 'true': 'false'}"
                         type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}"
-                        name="${options.name}"
-                        id="${options.id}"
+                        name="${optionName}"
+                        id="options${options.id}${optionItemList.index}"
                         disabled="${optionItem.disabled}"
                         data-parsley-error-message="${options.constraintMessage}"
                         required="${options.required}"
@@ -24,7 +25,12 @@
             </div>
             <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
                 <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
-                ${options.constraintMessage}
+                <sly data-sly-test="${options.constraintMessage}">
+                    ${options.constraintMessage}
+                </sly>
+                <sly data-sly-test="${!options.constraintMessage}">
+                    The value is required
+                </sly>
             </div>
             <div data-sly-test="${options.helpMessage}" class="help-message">${options.helpMessage}</div>
         </div>

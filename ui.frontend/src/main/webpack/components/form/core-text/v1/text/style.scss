@@ -21,10 +21,14 @@
         }
     }
 }
+.textarea-help-text {
+    position: relative;
+    top: -15px;
+}
 .sl-text-area.form-floating.form-field-container {
     &.sl-input-error {
         background: var(--red-50);
-        margin-bottom: 30px;
+        margin-bottom: 38px;
         position: relative;
         .form-control {
             border-color: var(--red-50);
