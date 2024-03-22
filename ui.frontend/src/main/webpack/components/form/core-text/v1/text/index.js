@@ -5,20 +5,20 @@
 	"use strict";
 
 	/**
-	 * Text component
-	 * @namespace Text
+	 * formText component
+	 * @namespace formText
 	 * @memberof sunCore.comp
 	 */
-    core.comp.Text = (function ($, util) {
+    core.comp.formText = (function ($, util) {
 		const CONSTANT = {
 			SELECTOR: {
 				textAreaField: '.sl-text-area .form-control'
 			}
 		};
         /**
-		 * Method to update the text count in text area
+		 * Method to update the character count in text area
 		 * @function checkBoxValidationEventHandler
-		 * @memberof sunCore.comp.Text
+		 * @memberof sunCore.comp.formText
 		 * @private
 		 */
         function fieldValidationKeyPressEventHandler() {
@@ -30,9 +30,9 @@
             }
         }
         /**
-		 * Handler to bind event specific for Text
+		 * Handler to bind event specific for formText
 		 * @function bindEvent
-		 * @memberof sunCore.comp.Text
+		 * @memberof sunCore.comp.formText
 		 * @private
 		 */
 		function bindEvent() {
@@ -55,7 +55,7 @@
 })(core.$, core.util);
 
 /**
- * Initialise Text module if given selector is in DOM
+ * Initialise formText module if given selector is in DOM
  */
-core.util.initialise(core.comp, "Text", ".sl-text-area .form-control");
+core.util.initialise(core.comp, "formText", ".sl-text-area .form-control");
 })(sunCore);
