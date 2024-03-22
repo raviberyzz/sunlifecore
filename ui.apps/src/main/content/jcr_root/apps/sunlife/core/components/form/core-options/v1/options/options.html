@@ -8,32 +8,18 @@
         <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <label for="options${options.id}${optionItemList.index}">
-                    <sly data-sly-test="${options.type == 'CHECKBOX'}">
-                        <input
-                            class="form-check-input form-field"
-                            aria-required="${text.required ? 'true': 'false'}"
-                            type="checkbox"
-                            name="${options.name}${optionItemList.index}"
-                            id="options${options.id}${optionItemList.index}"
-                            disabled="${optionItem.disabled}"
-                            data-parsley-error-message="${options.constraintMessage}"
-                            required="${options.required}"
-                            value="${optionItem.value}"
-                            checked="${optionItem.selected}"/>
-                    </sly>
-                    <sly data-sly-test="${options.type == 'RADIO'}">
-                        <input
-                            class="form-check-input form-field"
-                            aria-required="${text.required ? 'true': 'false'}"
-                            type="radio"
-                            name="${options.name}"
-                            id="options${options.id}${optionItemList.index}"
-                            disabled="${optionItem.disabled}"
-                            data-parsley-error-message="${options.constraintMessage}"
-                            required="${options.required}"
-                            value="${optionItem.value}"
-                            checked="${optionItem.selected}"/>
-                    </sly>
+                    <sly data-sly-set.optionName="${options.type == 'RADIO'? options.name : optionItem.value}"></sly>
+                    <input
+                        class="form-check-input form-field"
+                        aria-required="${text.required ? 'true': 'false'}"
+                        type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}"
+                        name="${optionName}"
+                        id="options${options.id}${optionItemList.index}"
+                        disabled="${optionItem.disabled}"
+                        data-parsley-error-message="${options.constraintMessage}"
+                        required="${options.required}"
+                        value="${optionItem.value}"
+                        checked="${optionItem.selected}"/>
                     <span class="form-check-label">${optionItem.text}</span>
                 </label>
             </div>
