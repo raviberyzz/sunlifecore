@@ -89,30 +89,7 @@ public class CNWNewsModel {
     private String noNewsMessage;
 
     /** Pagination Tab **/
-    /**
-     * Previous Text
-     **/
-    @ValueMapValue
-    private String previousText;
-
-    /**
-     * Next Text
-     **/
-    @ValueMapValue
-    private String nextText;
-
-    /**
-     * Page Text
-     **/
-    @ValueMapValue
-    private String pageText;
-
-    /**
-     * of Text
-     **/
-    @ValueMapValue
-    private String ofText;
-
+    
     /**
      * page Size
      **/
@@ -306,7 +283,7 @@ public class CNWNewsModel {
 
         activeYear = year;
 
-        final String[] selectors = request.getRequestPathInfo().getSelectors();
+       final String[] selectors = request.getRequestPathInfo().getSelectors();        
         if (selectors.length > 0) {
             strYear = selectors[0]; // Year - Selector
             if (selectors.length > 1) {
