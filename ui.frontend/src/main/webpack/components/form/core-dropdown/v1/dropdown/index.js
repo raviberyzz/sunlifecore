@@ -312,19 +312,6 @@
     }
 
     /**
-    * Check if a dropdown component exists.
-    * @function
-    * @memberof sunCore.comp.formDropdown
-    * @returns {Boolean} `true` if a form dropdown exists.
-    */
-    function doesDropdownExist() {
-      if ($(CONSTANT.SELECTOR.slDropdown).length <= 0) {
-        return false;
-      }
-      return true;
-    }
-
-    /**
     * Switch the chevron direction in the dropdown.
     * @function
     * @memberof sunCore.comp.formDropdown
@@ -346,10 +333,8 @@
     * @private
     */
     function init() {
-      if (doesDropdownExist()) {
-        bindEvent();
-        selectDefaultOption();
-      }
+      bindEvent();
+      selectDefaultOption();      
     }
 
     return {
