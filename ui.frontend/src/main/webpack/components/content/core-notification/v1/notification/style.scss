@@ -9,6 +9,13 @@
     margin-right: calc(var(--viewportWidth) / -2);
     margin-left: calc(var(--viewportWidth) / -2);
 
+    @include media-breakpoint-up(md){
+        a.sl-btn.btn {
+            display: flex;
+            width: max-content;
+        }
+    }
+
     @include media-breakpoint-up(lg) {
         .container {
             padding-left: 2.75rem;
