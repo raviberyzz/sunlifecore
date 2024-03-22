@@ -71,7 +71,7 @@
                     <sly data-sly-test.paginationObj="${newsModel.news.pagination}" />    
                     <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />                
                     <sly data-sly-test="${isPaginationrequired}" data-sly-use.tpl="sunlife/core/components/templates/v1/pagination.html"
-                        data-sly-call="${tpl.pagination @ paginationObj = paginationObj, pageUrl = newsModel.newsArticleShortenedUrl}" />                    
+                        data-sly-call="${tpl.pagination @ paginationObj = paginationObj, pageUrl = newsModel.requestURL}" />                    
                 </div>                
             </div>
         </div>
