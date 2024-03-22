@@ -96,19 +96,13 @@
     }
 }
 
-// TODO: Helios-bugfix - Need to remove once helios fix it
+// MP-2317 Ensure Vertical Cards in MD/SM Span Full Width. 
 .sl-cards {
     &.vertical {
       .card {
         &.multi-v {
-            flex-basis: inherit;
-            
-            @include media-breakpoint-only(md) {
-                flex-basis: inherit;
-            }
-
-            @include media-breakpoint-only(sm) {
-                width: width-by-cols(sm, 6);
+            @include media-breakpoint-down(md) {
+                flex-basis: 100%;
             }
         }
       }
