@@ -141,6 +141,14 @@
                                                     </options>
                                                 </items>
                                             </fromLocal>
+											 <customActionGenerationRequired
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldLabel="Is Custom Action Generation Required"
+												fieldDescription="Custom action is required to add dynamic action to the form based on the value selected in dropdown."
+                                                name="./customActionGenerationRequired"
+                                                text="Is Custom Action Generation Required"
+                                                value="yes"/>
                                         </items>
                                     </column>
                                 </items>

@@ -23,7 +23,7 @@
             </div>
             <div id="hint-text-a${options.id}" class="sl-helper-text hint-text combo-msg">${options.helpMessage}</div>
 
-            <select name="${options.name}" id="select-a${options.id}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" hidden> 
+            <select name="${options.name}" id="select-a${options.id}" required="${options.required}" data-parsley-error-message="${options.constraintMessage}" data-attribute-onchange-required="${options.customActionGenerationRequired}" hidden>
                 <option value="defaultNoneSelected" selected disabled>defaultNoneSelected</option>
                 <sly data-sly-list.items="${options.items}" data-sly-unwrap>
                     <option value="${items.value}">${items.text}</option>

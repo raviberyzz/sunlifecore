@@ -75,4 +75,7 @@ public interface FormDropdownModel {
 	@ValueMapValue
 	String getLabel();
 
+	@ValueMapValue
+	String customActionGenerationRequired();
+
 }
