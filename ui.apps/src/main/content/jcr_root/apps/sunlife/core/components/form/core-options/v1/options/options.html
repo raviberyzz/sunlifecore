@@ -1,6 +1,6 @@
 <div data-sly-use.options="ca.sunlife.web.cms.core.models.v1.FormOptionsModel" 
       data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
-	  data-section="${options.analyticsId}" 
+	  data-section="${options.dataSection}" 
 	  class="sl-options ${options.spacing}">
     <sly data-sly-test.isConfigured="${(wcmmode.edit) && (options.name)}" />
     <sly data-sly-test="${(options.type == 'CHECKBOX' || options.type == 'RADIO') && (options.name)}">
@@ -8,12 +8,11 @@
         <div class="field-group-container formValidate">
             <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
                 <label for="options${options.id}${optionItemList.index}">
-                    <sly data-sly-set.optionName="${options.type == 'RADIO'? options.name : optionItem.value}"></sly>
                     <input
                         class="form-check-input form-field"
                         aria-required="${text.required ? 'true': 'false'}"
                         type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}"
-                        name="${optionName}"
+                        name="${options.name}"
                         id="options${options.id}${optionItemList.index}"
                         disabled="${optionItem.disabled}"
                         data-parsley-error-message="${options.constraintMessage}"
