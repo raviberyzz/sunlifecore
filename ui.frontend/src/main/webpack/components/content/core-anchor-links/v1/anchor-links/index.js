@@ -20,9 +20,11 @@
 				slHeader: ".sl-header",
 				slArticleAnchorLinksInline: ".article-anchor-links-inline",
 				slAnchorLinks: ".anchor-links",
+				activeAnchor: ".active-anchor"
 			},
 			CLASS: {
 				dLgNone: "d-lg-none",
+				active: "active-anchor"
 			},
 		};
 
@@ -42,7 +44,9 @@
 		 */
 		function handleLinkInteraction(event) {
 			event.preventDefault();
+			$(event.target).closest(CONSTANT.SELECTOR.slAnchorLinkComp).find(CONSTANT.SELECTOR.activeAnchor).removeClass(CONSTANT.CLASS.active);
 			scrollToHeading(event);
+			$(event.target).parent().addClass(CONSTANT.CLASS.active);
 		}
 
 		/**
@@ -141,7 +145,7 @@
 		function loadAnchorLinks() {
 			if ($slArticle.length) {
 				filterRequiredLinksOnly($slArticle);
-				updateAnchorLinkStickyConfigs();
+				setTimeout(updateAnchorLinkStickyConfigs, 100);
 				renderAnchorLinks();
 			}
 		}
@@ -171,7 +175,7 @@
 						}
 					});
 				},
-				{ rootMargin: "0px 0px -30% 0px" }
+				{ rootMargin: "-100px 0px -35% 0px" }
 			);
 
 			// Track all h2 headings inside article-container
@@ -224,7 +228,9 @@
 			cacheSelectors();
 			bindEvent();
 			loadAnchorLinks();
-			activeLinkStateHandler();
+			if (util.matchmedia.L.matches || util.matchmedia.XL.matches) {
+				activeLinkStateHandler();
+			}
 		}
 
 		return {

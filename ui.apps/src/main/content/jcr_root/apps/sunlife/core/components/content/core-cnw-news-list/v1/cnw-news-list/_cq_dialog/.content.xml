@@ -181,30 +181,6 @@
                                 jcr:title="Pagination"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <previousText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Previous Button Label"
-                                        fieldLabel="Previous Button Label"
-                                        name="./previousText"/>
-                                    <nextText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Next Button Label"
-                                        fieldLabel="Next Button Label"
-                                        name="./nextText"/>
-                                    <pageText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Page Label"
-                                        fieldLabel="Page Label"
-                                        name="./pageText"/>
-                                    <ofText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Of Label"
-                                        fieldLabel="Of Label"
-                                        name="./ofText"/>
                                     <pageSize
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
