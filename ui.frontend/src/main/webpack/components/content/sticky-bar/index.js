@@ -85,5 +85,6 @@ $(document).ready(function () {
         $('html, body').animate({
             'scrollTop': $target.offset().top - (notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight() + $('.sticky-bar-wrapper').outerHeight())
         }, 0)
+        $('.sticky-bar #navlinks-dropdown').val('');
     });
 });
