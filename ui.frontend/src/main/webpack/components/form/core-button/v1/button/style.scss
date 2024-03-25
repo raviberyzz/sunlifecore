@@ -11,4 +11,9 @@
     .form-container-component form .layout-container .inline-button {
         margin-right: 24px;
     }
+
+    .sl-segmented-blocks.multi .card .grouped-form .sl-btn {
+        width: 100%;
+        max-width: inherit;
+    }
 }
