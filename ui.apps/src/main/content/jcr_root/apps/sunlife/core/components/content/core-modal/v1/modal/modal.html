@@ -17,11 +17,11 @@
                     <div class="modal-body" tabindex="0">
                         ${modalObj.content @context='html'}
                         <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
-                            ${modalObj.additionalText @context='html'}    
-                        </sly>
-                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
                             <div data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/form/core-container/v1/container'}" >
                             </div>
+                        </sly>
+                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+                            ${modalObj.additionalText @context='html'}    
                         </sly>
                     </div>
                     <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
