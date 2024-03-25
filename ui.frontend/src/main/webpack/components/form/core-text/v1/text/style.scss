@@ -21,6 +21,11 @@
         }
     }
 }
+.sl-text-field.form-floating.icon-after{
+    label, .form-control {
+        padding-top: 0.75rem;
+    } 
+}
 .textarea-help-text {
     position: relative;
     top: -15px;
