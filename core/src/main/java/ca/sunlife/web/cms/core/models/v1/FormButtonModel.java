@@ -45,6 +45,10 @@ public interface FormButtonModel {
 	boolean isInlineButton();
 
 	@ValueMapValue
+	@Default(booleanValues = {false})
+	boolean isFullWidth();
+
+	@ValueMapValue
 	String getId();
 
 	@ValueMapValue
