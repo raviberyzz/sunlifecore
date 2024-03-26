@@ -1,3 +1,4 @@
+import './scripts/constants.js';
 import './scripts/initialise.js';
 import './scripts/pubsub.js';
 import './scripts/customEvents.js';

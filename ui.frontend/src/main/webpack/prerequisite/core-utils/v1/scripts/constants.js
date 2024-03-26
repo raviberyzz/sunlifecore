@@ -10,11 +10,11 @@
     /**
      * constants util
      * @namespace constants
-     * @memberof Suncore.util
+     * @memberof sunCore.util
      */
     util.constants = (function() {
-        return {
-            KeyCode: {
+
+            var KeyCode = {
                 BACKSPACE: 8,
                 TAB: 9,
                 ENTER_RETURN: 13,
@@ -30,6 +30,7 @@
                 DOWN: 40,
                 DELETE: 46
             }
-        };
+
+        return KeyCode;
     })();
-})(Suncore.util);
+})(sunCore.util);
