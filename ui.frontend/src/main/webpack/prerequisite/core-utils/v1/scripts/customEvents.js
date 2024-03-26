@@ -67,6 +67,7 @@
             MOUSE_ENTER: 'mouseenter',
             MOUSE_LEAVE: 'mouseleave',
             MOUSE_DOWN: 'mousedown',
+            MOUSE_UP: 'mouseup',
             BEFORE_UNLOAD: 'beforeunload',
 
             RESIZED: 'slcore:resized',
