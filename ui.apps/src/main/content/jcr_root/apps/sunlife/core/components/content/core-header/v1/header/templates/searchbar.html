@@ -4,24 +4,25 @@
        <div class="search-bar collapse" data-section="header-search" id="headerSearchBar">
             <div class="search-box container">
                 <div class="close-div">
-                    <button type="button" data-bs-toggle="collapse" data-bs-target="#headerSearchBar" aria-expanded="true" aria-controls="headerSearchBar"> 
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#headerSearchBar" id="search-close-btn"    aria-controls="headerSearchBar" > 
                         <span class="sr-only">Close search</span> 
                         <span class="fa fa-remove collapse-x">&nbsp;</span>
-                    </button>
+                    </a>
                 </div>
-                <div class="global-search"></div>
-                <div id="search-box-desktop" 
-                    data-enable-history="true" 
-                    data-auto-trigger-query='false'>
-                        <div class="CoveoAnalytics"></div>
-                        <div class="coveo-search-section">
-                            <div class="CoveoSearchbox" data-placeholder="Search" data-enable-omnibox="true"></div>
-                            <div class="input-wrapper coveo-desktop-error-hidden">
-                                <ul role="alert" class="coveo-search-error">
-                                    <li class="error-required">${headerModel.searchButton}</li>
-                                </ul>
+                <div class="global-search">
+                    <div id="search-box-desktop" 
+                        data-enable-history="true" 
+                        data-auto-trigger-query='false'>
+                            <div class="CoveoAnalytics"></div>
+                            <div class="coveo-search-section">
+                                <div class="CoveoSearchbox" data-placeholder="Search" data-enable-omnibox="true"></div>
+                                <div class="input-wrapper coveo-desktop-error-hidden">
+                                    <ul role="alert" class="coveo-search-error">
+                                        <li class="error-required">${headerModel.searchButton}</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

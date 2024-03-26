@@ -17,10 +17,12 @@
 				searchBar: ".search-bar",
 				searchBtn: ".sl-search-btn",
 				searchInputBox: "#search-box-desktop input[type=text]",
+				searchBarSearchBtn: ".search-bar .CoveoSearchButton",
+				searchCloseBtn: "#search-close-btn"
 			},
 		};
 
-		let $slHeader, $searchBar, $searchBtn;
+		let $slHeader, $searchCloseBtn, $searchBar, $searchBtn, searchBtnTabbed = false;
 
 		/**
 		 * Event handler for search-bar showing and hiding on top
@@ -56,9 +58,25 @@
 			$searchBtn.attr("aria-expanded", !hide);
 			if (hide) {
 				$searchBar.removeClass("show");
+				$searchBar.attr('aria-expanded', 'false');
 			} else {
 				$searchBar.addClass("show");
+				$searchBar.attr('aria-expanded', 'true');
 			}
+		}
+
+		/**
+		 * handle tabbing of search button
+		 * @function searchTabHandler
+		 * @memberof sunCore.comp.search
+		 * @private
+		 */
+		function searchTabHandler () {
+			if(searchBtnTabbed) {
+				searchBtnTabbed = false
+				$searchCloseBtn.focus();
+			}
+			searchBtnTabbed = true;
 		}
 
 		/**
@@ -68,15 +86,19 @@
 		 * @private
 		 */
 		function bindEvent() {
-			$(document).on("mouseup", searchBarHandler);
+			$(document).on(util.customEvents.MOUSE_UP, searchBarHandler);
 			/* focus handling when search-bar got hide */
 			$searchBar.on("hidden.bs.collapse", function () {
+				$searchBar.attr('aria-expanded', 'false');
 				$searchBtn.focus();
 			});
 			/* focus handling when search-bar get visible */
 			$searchBar.on("shown.bs.collapse", function () {
+				$searchBar.attr('aria-expanded', 'true');
 				$(CONSTANT.SELECTOR.searchInputBox).focus();
 			});
+
+			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchBarSearchBtn, searchTabHandler);
 		}
 
 		/**
@@ -88,6 +110,8 @@
 		function cacheSelectors() {
 			$searchBar = $(CONSTANT.SELECTOR.searchBar);
 			$searchBtn = $(CONSTANT.SELECTOR.searchBtn);
+			$searchCloseBtn = $(CONSTANT.SELECTOR.searchCloseBtn);
+			
 		}
 
 		/**
