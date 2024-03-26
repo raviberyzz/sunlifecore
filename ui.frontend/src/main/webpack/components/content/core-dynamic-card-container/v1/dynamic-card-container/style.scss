@@ -1,0 +1,10 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+
+@include media-breakpoint-up(md) {
+    .sl-segmented-blocks.multi .card .grouped-form .sl-btn {
+        width: 100%;
+        max-width: inherit;
+    }
+}
