@@ -108,10 +108,6 @@
       let redirectURL = $(this).find("a").attr("href");
       window.location.href = redirectURL;
     }
-    //Ensure Tab moves to Panel for Keyboard Access
-    else if($keyName === "Tab") {
-      $(this).closest('.stack-tab-container').next('.tab-content').find('.cmp-tabs__tabpanel--active').focus();
-    }
     if($currentItem && $currentItem.index() >= 0){
       const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1);        
       const activeTabsWidth = $navTabs.width();

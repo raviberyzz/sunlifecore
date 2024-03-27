@@ -197,8 +197,9 @@ $(document).ready(function() {
      * @returns {} It will not return anything, this method just update DOM
   */
   function init() {
-    const $tabContainer = $(".sl-tabs");    
-    if($tabContainer.length > 0){
+    const $tabContainer = $(".sl-tabs");   
+    const $cnwNewsList = $tabContainer.parents(".cnw-news-list")
+    if($tabContainer.length > 0 && $cnwNewsList.length === 0){
         const $navTab = $(".sl-tabs .nav-tabs");
         const $navButton =  $('.sl-tabs .arrow-btn');
         $navTab.attr('data-activeTab', 0);
