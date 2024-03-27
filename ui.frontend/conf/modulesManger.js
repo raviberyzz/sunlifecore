@@ -19,7 +19,7 @@ const explicitModulesPaths = [
     'src/main/webpack/components/form/text/index_module.js',
     'src/main/webpack/components/content/text/index_module.js',
     'src/main/webpack/prerequisite/base/index_module.js',
-    'src/main/webpack/prerequisite/core-utils/v1/index_module.js',
+    'src/main/webpack/prerequisite/core-vendor/v1/index_module.js',
     'src/main/webpack/prerequisite/core-vendor.jquery/v1/index_module.js'
 ];
 
