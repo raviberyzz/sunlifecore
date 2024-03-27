@@ -13,8 +13,9 @@
      * @memberof sunCore.util
      */
     util.constants = (function() {
-
-            var KeyCode = {
+        
+        const returnObject = {
+            KeyCode: {
                 BACKSPACE: 8,
                 TAB: 9,
                 ENTER_RETURN: 13,
@@ -30,7 +31,8 @@
                 DOWN: 40,
                 DELETE: 46
             }
+        };
 
-        return KeyCode;
+        return returnObject;
     })();
 })(sunCore.util);

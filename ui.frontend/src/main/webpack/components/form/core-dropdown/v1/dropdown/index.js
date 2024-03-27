@@ -143,11 +143,11 @@
       let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
       let currentOptionSelected = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
 
-      if (e.keyCode == util.constants.DOWN) {
+      if (e.keyCode == util.constants.KeyCode.DOWN) {
         handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.next());
-      } else if (e.keyCode == util.constants.UP) {
+      } else if (e.keyCode == util.constants.KeyCode.UP) {
         handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.prev());
-      } else if (e.keyCode == util.constants.ENTER_RETURN || e.keyCode == util.constants.SPACE) {
+      } else if (e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
         let currOpt = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
         currOpt.mousedown();
       } else if (e.type == util.customEvents.MOUSE_DOWN) {
