@@ -14,7 +14,7 @@ import java.util.List;
 public interface SearchResultsModel {
 
     @ValueMapValue
-    String getFilterHeading();
+    String getResultsFilterHeading();
 
     @ValueMapValue
     String getSearchResults();
