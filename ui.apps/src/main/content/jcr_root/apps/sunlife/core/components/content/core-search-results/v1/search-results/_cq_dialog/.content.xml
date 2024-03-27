@@ -63,7 +63,7 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                 emptyText="Leave this field empty to use the default text in English"
-                                                                fieldLabel="Filter Heading"
+                                                                fieldLabel="Filter your results"
                                                                 name="./filterHeading"/>
                                                             <filterOptions
                                                                 jcr:primaryType="nt:unstructured"
@@ -91,7 +91,7 @@
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                     fieldDescription="Please create the Filter Title based on the 'data-id' for the respective language being authored."
                                                                                     fieldLabel="Filter Title"
-                                                                                    name="./dataCaption"
+                                                                                    name="./filterTitle"
                                                                                     required="{Boolean}true"/>
                                                                             </items>
                                                                         </column>

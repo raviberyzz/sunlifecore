@@ -29,7 +29,7 @@ public interface SearchResultsModel {
         String getDataID();
 
         @ValueMapValue
-        String getDataCaption();
+        String getFilterTitle();
     }
 }
  
