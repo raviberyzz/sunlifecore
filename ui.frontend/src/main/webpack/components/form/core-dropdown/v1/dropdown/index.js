@@ -32,7 +32,7 @@
         optionSelected: "option-selected",
         raised: "raised",
         open: "open",
-        filled: "filled",        
+        filled: "filled",
         inputError: "sl-input-error"
       },
     };
@@ -54,6 +54,34 @@
     }
 
     /**
+    * Set the html attribute of an element.
+    * @function
+    * @param {HTMLElement} element - The dropdown element.
+    * @param {String} attribute - The html attribute name.
+    * @param {String} value - The attribute value.
+    * @return void
+    */
+    function updateElementAttribute(element, attribute, value) {
+      $(element).attr(attribute, value);
+    }
+
+    /**
+    * Toggle the dropdown chevron direction and raise or lower the label.
+    * @function
+    * @param {HTMLElement} comboInput - The dropdown element.
+    * @param {String} direction - The direction where the chevron is to be pointing.
+    * @return void
+    */
+    function toggleChevron(comboInput, direction) {
+      switchChevron(comboInput, direction);
+      if (direction == "up") {
+        raiseLabel(comboInput);
+      } else if (direction == "down") {
+        lowerLabel(comboInput);
+      }
+    }
+
+    /**
     * Blur event on dropdown. Close the dropdown when user clicks Tab key or clicks out.
     * @function
     * @memberof sunCore.comp.formDropdown
@@ -62,13 +90,42 @@
     */
     function dropDownOnBlur(e) {
       e.preventDefault();
-      let currentComboInput = e.currentTarget;
-      let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
+      let currentElement = e.currentTarget;
+      let $combo = $(currentElement).closest(CONSTANT.SELECTOR.combo);
+      let comboInput = $combo.find(".combo-input");
       $combo.removeClass(CONSTANT.CLASS.open);
-      switchChevron($combo, "down");
-      lowerLabel(currentComboInput);
-      currentComboInput.setAttribute("aria-expanded", "false");
+      toggleChevron(comboInput, "down");
+      updateElementAttribute(comboInput, "aria-expanded", "false");
       $combo.find("label").removeClass(CONSTANT.CLASS.active);
+    }
+
+    /**
+    * Handle the down or up keypress on a dropdown option.
+    * @function
+    * @param {HTMLElement} combo - The combobox on which the key was pressed.
+    * @param {HTMLElement} currentOptionSelected - The current selected combo option.
+    * @param {Integer} subsequentOption - The subsequent dropdown option to navigate.
+    * @return void
+    */
+    function handleUpDownKeyPress($combo, currentOptionSelected, subsequentDropdownOption) {
+      let currentComboInput = $combo.find(CONSTANT.SELECTOR.comboInput);
+
+      if ($($combo).hasClass(CONSTANT.CLASS.open)) { // not first down press
+        if (currentOptionSelected.length == 0) { // first dropdown option focuses on the first option
+          $(currentComboInput).next().children(":first").toggleClass(CONSTANT.CLASS.optionCurrent);
+          let selectedOptionID = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0].getAttribute("id");
+          updateElementAttribute(currentComboInput, "aria-activedescendant", selectedOptionID);
+        } else if (subsequentDropdownOption.length) { // not last option
+          $(currentOptionSelected).toggleClass(CONSTANT.CLASS.optionCurrent);
+          subsequentDropdownOption.toggleClass(CONSTANT.CLASS.optionCurrent);
+          let selectedOptionID = subsequentDropdownOption[0].getAttribute("id");
+          updateElementAttribute(currentComboInput, "aria-activedescendant", selectedOptionID);
+        }
+      } else { // first down press keeps focus on the dropdown
+        $($combo).addClass(CONSTANT.CLASS.open);
+        toggleChevron(currentComboInput, "up");
+        updateElementAttribute(currentComboInput, "aria-expanded", "true");
+      }
     }
 
     /**
@@ -85,61 +142,23 @@
       let currentComboInput = e.currentTarget;
       let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
       let currentOptionSelected = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
-      let comboInput = $combo.find(CONSTANT.SELECTOR.comboInput)[0];
 
-      if (e.keyCode == "40") { // down arrow
-        if ($($combo).hasClass(CONSTANT.CLASS.open)) { // not first down press
-          if (currentOptionSelected.length == 0) { // first dropdown option focuses on the first option
-            $(currentComboInput).next().children(":first").toggleClass(CONSTANT.CLASS.optionCurrent);
-            let selectedOptionID = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0].getAttribute("id");
-            comboInput.setAttribute("aria-activedescendant", selectedOptionID);
-          } else if (currentOptionSelected.next().length) { // not last option
-            $(currentOptionSelected).toggleClass(CONSTANT.CLASS.optionCurrent);
-            $(currentOptionSelected).next().toggleClass(CONSTANT.CLASS.optionCurrent);
-            let selectedOptionID = $(currentOptionSelected).next()[0].getAttribute("id");
-            comboInput.setAttribute("aria-activedescendant", selectedOptionID);
-          }
-        } else { // first down press keeps focus on the dropdown
-          $($combo).addClass(CONSTANT.CLASS.open);
-          switchChevron($combo, "up");
-          currentComboInput.setAttribute("aria-expanded", "true");
-          raiseLabel(currentComboInput);
-        }
-      } else if (e.keyCode == "38") { // up arrow
-        if ($($combo).hasClass(CONSTANT.CLASS.open)) { // not first down press
-          if (currentOptionSelected.length == 0) { // first dropdown option
-            $(currentComboInput).next().children(":first").toggleClass(CONSTANT.CLASS.optionCurrent);
-            let selectedOptionID = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0].getAttribute("id");
-            comboInput.setAttribute("aria-activedescendant", selectedOptionID);
-          } else if (currentOptionSelected.prev().length) { // not last option
-            $(currentOptionSelected).toggleClass(CONSTANT.CLASS.optionCurrent);
-            $(currentOptionSelected).prev().toggleClass(CONSTANT.CLASS.optionCurrent);
-            let selectedOptionID = $(currentOptionSelected).prev()[0].getAttribute("id");
-            comboInput.setAttribute("aria-activedescendant", selectedOptionID);
-          }
-        } else { // first down press
-          $($combo).addClass(CONSTANT.CLASS.open);
-          switchChevron($combo, "up");
-          currentComboInput.setAttribute("aria-expanded", "true");
-          raiseLabel(currentComboInput);
-        }
-      } else if (e.keyCode == "13" || e.keyCode == "32") { // enter or space key selects an option
+      if (e.keyCode == util.constants.KeyCode.DOWN) {
+        handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.next());
+      } else if (e.keyCode == util.constants.KeyCode.UP) {
+        handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.prev());
+      } else if (e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
         let currOpt = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
         currOpt.mousedown();
       } else if (e.type == util.customEvents.MOUSE_DOWN) {
         $($combo).toggleClass(CONSTANT.CLASS.open);
-        let ariaExpanded = "";
         if ($($combo).hasClass(CONSTANT.CLASS.open)) {
-          ariaExpanded = "true";
-          raiseLabel(currentComboInput);
-          switchChevron($combo, "up");
+          toggleChevron(currentComboInput, "up");
         } else {
-          ariaExpanded = "false";
           $($combo).find("label").removeClass(CONSTANT.CLASS.active);
-          lowerLabel(currentComboInput);
-          switchChevron($combo, "down");
+          toggleChevron(currentComboInput, "down");
         }
-        currentComboInput.setAttribute("aria-expanded", ariaExpanded);
+        updateElementAttribute(currentComboInput, "aria-expanded", $($combo).hasClass(CONSTANT.CLASS.open));
       }
     }
 
@@ -160,7 +179,7 @@
 
       appendSelectedText($currentDropdownElement, $linkText);
       selectOption($currentDropdownElement);
-      $comboInput.setAttribute("aria-expanded", "false");
+      updateElementAttribute($comboInput, "aria-expanded", "false");
       $comboInput.removeAttribute("aria-activedescendant");
       raiseLabel($currentDropdownElement.parent().parent().find(CONSTANT.SELECTOR.comboInput));
       dropDownOnBlur(e);
@@ -181,21 +200,21 @@
     * Raises the dropdown input label.
     * @function
     * @memberof sunCore.comp.formDropdown
-    * @param {HTMLElement} dropDown - The dropdown element.
+    * @param {HTMLElement} comboInput - The dropdown element.
     * @return void
     */
-    function raiseLabel(dropDown) {
-      let $combo = $(dropDown).closest(CONSTANT.SELECTOR.combo);
+    function raiseLabel(comboInput) {
+      let $combo = $(comboInput).closest(CONSTANT.SELECTOR.combo);
       if ($combo.find(CONSTANT.SELECTOR.comboInputSelected)[0].innerText != "") {
         if (!($combo.find("label")[0].matches(CONSTANT.SELECTOR.raised))) {
-          $(dropDown).find("label").addClass(CONSTANT.CLASS.raised);
-          $(dropDown).find(CONSTANT.SELECTOR.comboInputSelected).removeClass(CONSTANT.CLASS.displayNone);
+          $(comboInput).find("label").addClass(CONSTANT.CLASS.raised);
+          $(comboInput).find(CONSTANT.SELECTOR.comboInputSelected).removeClass(CONSTANT.CLASS.displayNone);
         }
       }
       if ($combo.hasClass(CONSTANT.CLASS.open)) {
-        $(dropDown).find("label").addClass(CONSTANT.CLASS.active);
+        $(comboInput).find("label").addClass(CONSTANT.CLASS.active);
       } else {
-        $(dropDown).find("label").removeClass(CONSTANT.CLASS.active);
+        $(comboInput).find("label").removeClass(CONSTANT.CLASS.active);
         $combo.find(CONSTANT.SELECTOR.comboInput)[0].removeAttribute("aria-activedescendant");
       }
     }
@@ -204,17 +223,17 @@
     * Lowers the dropdown input label. Hides the select text.
     * @function
     * @memberof sunCore.comp.formDropdown
-    * @param {HTMLElement} dropDown - The dropdown element.
+    * @param {HTMLElement} comboInput - The dropdown element.
     * @return void
     */
-    function lowerLabel(dropDown) {
-      let $optionSelected = $(dropDown).next().find(CONSTANT.SELECTOR.optionSelected).length;
+    function lowerLabel(comboInput) {
+      let $optionSelected = $(comboInput).next().find(CONSTANT.SELECTOR.optionSelected).length;
       if (!$optionSelected) {
-        $(dropDown).find(CONSTANT.SELECTOR.comboInputSelected).addClass(CONSTANT.CLASS.displayNone);
-        $(dropDown).find("label").removeClass(CONSTANT.CLASS.raised + " " + CONSTANT.CLASS.active);
+        $(comboInput).find(CONSTANT.SELECTOR.comboInputSelected).addClass(CONSTANT.CLASS.displayNone);
+        $(comboInput).find("label").removeClass(CONSTANT.CLASS.raised + " " + CONSTANT.CLASS.active);
       }
-      $(dropDown).next().find(CONSTANT.SELECTOR.optionCurrent).removeClass(CONSTANT.CLASS.optionCurrent);
-      $(dropDown)[0].removeAttribute("aria-activedescendant");
+      $(comboInput).next().find(CONSTANT.SELECTOR.optionCurrent).removeClass(CONSTANT.CLASS.optionCurrent);
+      $(comboInput)[0].removeAttribute("aria-activedescendant");
     }
 
     /**
@@ -244,21 +263,22 @@
       let $selectId = "#select-" + dropdownId;
 
       if ($comboMenu.find(CONSTANT.SELECTOR.optionSelected).length != 0) {
-        $comboMenu.find(CONSTANT.SELECTOR.optionSelected)[0].setAttribute("aria-selected", "false");
+        updateElementAttribute($comboMenu.find(CONSTANT.SELECTOR.optionSelected)[0], "aria-selected", "false");
+
         $comboMenu.find(CONSTANT.SELECTOR.optionSelected).removeClass(CONSTANT.CLASS.optionSelected);
         const $select = document.querySelector($selectId);
         $select.value = "defaultNoneSelected";
       }
       $(optionElem).addClass(CONSTANT.CLASS.optionSelected);
-      $comboMenu.find(CONSTANT.SELECTOR.optionSelected)[0].setAttribute("aria-selected", "true");
+      updateElementAttribute($comboMenu.find(CONSTANT.SELECTOR.optionSelected)[0], "aria-selected", "true");
       const $select = document.querySelector($selectId);
       $select.value = $(optionElem)[0].getAttribute("value");
       handleCustomActionGeneration($select);
 
       let $comboInput = $($(optionElem).closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput);
       $comboInput.removeClass(CONSTANT.CLASS.inputError);
-      $comboInput[0].setAttribute("aria-describedby", "");
-      $comboInput[0].setAttribute("aria-invalid", "false");
+      updateElementAttribute($comboInput[0], "aria-describedby", "");
+      updateElementAttribute($comboInput[0], "aria-invalid", "false");
 
       let $parsleyError = $($(optionElem).closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.errorText)[0];
       if ($parsleyError != undefined) {
@@ -291,24 +311,16 @@
     * @return void
     */
     function selectDefaultOption() {
-      const dropdowns = document.getElementsByClassName(CONSTANT.CLASS.comboMenu);
-      for (let index = 0; index < dropdowns.length; index++) {
-        let options = dropdowns[index].getElementsByClassName(CONSTANT.CLASS.comboOption);
-        let currentElement = null;
-        let selectedOption = null;
-        for (let i = 0; i < options.length; i++) {
-          currentElement = options[i];
-          if ((currentElement).getAttribute("aria-selected") != null) {
-            selectedOption = currentElement;
-          }
-        }
+      const dropdowns = $(CONSTANT.SELECTOR.comboMenu);
+      dropdowns.each(function (index, dropdown) {
+        let selectedOption = $(dropdown).find(".combo-option[aria-selected]")[0];
         if (selectedOption != null) {
           let $linkText = $(selectedOption).text();
           appendSelectedText($(selectedOption), $linkText);
           selectOption($(selectedOption));
           raiseLabel($(selectedOption).parent().parent().find(CONSTANT.SELECTOR.comboInput));
         }
-      }
+      });
     }
 
     /**
@@ -321,8 +333,8 @@
     */
     function switchChevron(dropDown, direction) {
       let directionOpposite = { "down": "up", "up": "down" };
-      dropDown.find("#chevron-" + directionOpposite[direction]).removeClass(CONSTANT.CLASS.displayNone).addClass(CONSTANT.CLASS.displayNone);
-      dropDown.find("#chevron-" + direction).removeClass(CONSTANT.CLASS.displayNone);
+      $(dropDown).find("#chevron-" + directionOpposite[direction]).removeClass(CONSTANT.CLASS.displayNone).addClass(CONSTANT.CLASS.displayNone);
+      $(dropDown).find("#chevron-" + direction).removeClass(CONSTANT.CLASS.displayNone);
     }
 
     /**
@@ -334,7 +346,7 @@
     */
     function init() {
       bindEvent();
-      selectDefaultOption();      
+      selectDefaultOption();
     }
 
     return {
