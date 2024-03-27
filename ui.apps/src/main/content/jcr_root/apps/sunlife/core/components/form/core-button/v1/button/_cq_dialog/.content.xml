@@ -58,6 +58,14 @@
                                                 text="Display Buttons Inline"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
+                                            <fullWidth
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check this option to display the button as full width"
+                                                name="./fullWidth"
+                                                text="Display Buttons Full Width"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
