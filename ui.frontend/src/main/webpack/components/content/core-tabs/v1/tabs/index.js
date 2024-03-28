@@ -198,7 +198,7 @@ $(document).ready(function() {
   */
   function init() {
     const $tabContainer = $(".sl-tabs");   
-    const $cnwNewsList = $tabContainer.parents(".cnw-news-list")
+    const $cnwNewsList = $tabContainer.closest(".cnw-news-list")
     if($tabContainer.length > 0 && $cnwNewsList.length === 0){
         const $navTab = $(".sl-tabs .nav-tabs");
         const $navButton =  $('.sl-tabs .arrow-btn');
