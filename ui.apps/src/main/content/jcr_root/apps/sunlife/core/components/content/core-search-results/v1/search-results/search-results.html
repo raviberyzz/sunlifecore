@@ -1,7 +1,7 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
-<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
-<sly data-sly-test.rawtitle="${['$','{raw.title}'] @ join=''}"> </sly>
-<sly data-sly-test.rawtruncateduri="${['$','{raw.truncateduri}'] @ join=''}" />
+<sly data-sly-use.searchResults="ca.sunlife.web.cms.core.models.v1.SearchResultsModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+	 data-sly-test.rawtitle="${['$','{raw.title}'] @ join=''}"
+	 data-sly-test.rawtruncateduri="${['$','{raw.truncateduri}'] @ join=''}"/>
 
 <!-- 20220622 -->
 <div id="coveo-search-body" class="CoveoSearchInterface" data-enable-history="true"
@@ -17,24 +17,19 @@
 
         <!-- **** Below check only include if withFilter option is selected ****-->
 
-        <sly data-sly-test="${properties.searchResults== 'withFilter'}">
+        <sly data-sly-test="${searchResults.searchResults== 'withFilter' && searchResults.filterOptions}">
             <div id="search-result-filters">
-                <div class="CoveoTextBlock" data-content="Filter your results:" data-constantly-visible="false"
+            	<div class="CoveoTextBlock" data-content="${searchResults.resultsFilterHeading ? searchResults.resultsFilterHeading : 'Filter your results:'}" data-constantly-visible="false"
                      data-as="h4"
                      data-content-type="sr-only-xs" data-override-aria-hidden="true">
                 </div>
                 <div class="P1Ycoe"></div>
                 <div class="coveo-tab-section">
-                    <a class="CoveoTab" data-enable-responsive-mode='false' data-id="All" data-caption="All"
-                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;All&quot;"></a>
-                    <a class="CoveoTab" data-id="Articles" data-caption="Articles"
-                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Articles&quot;"></a>
-                    <a class="CoveoTab" data-id="Products" data-caption="Products"
-                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Products&quot;"></a>
-                    <a class="CoveoTab" data-id="Tools" data-caption="Tools"
-                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Tools&quot;"></a>
-                    <a class="CoveoTab" data-id="Videos" data-caption="Videos"
-                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;Videos&quot;"></a>
+					<sly data-sly-list.filterList="${searchResults.filterOptions}">
+                    <a class="CoveoTab" data-enable-responsive-mode='false' data-id="${filterList.dataID}" data-caption="${filterList.filterTitle}"
+                       data-expression="NOT @slfpagetype=&quot;listing&quot; AND @commontabs=&quot;${filterList.dataID}&quot;"></a> 
+					  </sly>
+			
                     <div class="CoveoCountedTabs" data-field="@commontabs" data-hide-when-empty="true"
                          data-count-template="" data-hide-count="true" data-sanitize-query="true"></div>
                 </div>
@@ -155,3 +150,4 @@
         </div>
     </div>
 </div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !searchResults.searchResults}"></sly>
