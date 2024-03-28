@@ -16,3 +16,19 @@
         margin-right: 24px;
     }
 }
+
+form .layout-container .sl-btn.btn {
+    margin-top: 0 !important;
+}
+
+.sl-banner-content-block .sl-btn.btn {
+    @include media-breakpoint-only(sm) {
+        width: fit-content;
+    }
+}
+
+.sl-segmented-blocks .sl-btn.btn, .sl-banner-content-block .sl-btn.btn{
+    @include media-breakpoint-only(sm) {
+        width: fit-content;
+    }
+}
