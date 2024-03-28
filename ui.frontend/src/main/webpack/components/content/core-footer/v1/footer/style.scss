@@ -6,13 +6,32 @@
 
 .sl-footer {
 
+      .container {
+        @include media-breakpoint-down(lg) {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+
       ul.footer-menu-list {
         position: inherit !important;
         inset: inherit !important;
         transform: none !important;
       }
 
-      .footer-menus-container .footer-menu.footer-menus-dropdown .footer-menu-header {
+      .footer-menus-container .footer-menu.footer-menus-dropdown {
+
+        ul {
+          margin-bottom: 1.5rem !important;
+          position: unset !important;
+          inset: unset !important;
+          transform: none !important;
+          border: none;
+          padding: 0;
+        }
+      
+      
+      .footer-menu-header {
             &[aria-expanded='true'] .fa-chevron-down {
                 transform: rotate(180deg);
             }
@@ -21,55 +40,10 @@
                 vertical-align: middle;
             }
       }
+    }
+
       
-      ul {
-        margin-bottom: 1.5rem !important;
-        position: unset !important;
-        inset: unset !important;
-        transform: none !important;
-        border: none;
-        padding: 0;
-      }
-      
-      .footer-content-container .footer-content {
-      
-        /*
-        * Heading and Padding coexistance rules as per Helio's DS 
-        * https://www.figma.com/file/M1mZZos42Mmiuo2KhlGFJ2/1.0-Helios-Web-Foundations?type=design&node-id=5323-9222&mode=design&t=igK17wNBQb2Y2uAP-4
-        * https://intranet.sunnet.ca.sunlife:444/helios/docs/design/padding#padding-rules
-        */
-        // heading + heading
-        h1 + h2, p:has(.h1) + p:has(.h2), h1 + p:has(.h2), p:has(.h1) + h2 {
-            margin-top: var(--L);
-        }
-
-        h2 + h3, h3 + h4, h4 + h5, p:has(.h2,.h3,.h4) + p:has(.h3, .h4, .h5) {
-            margin-top: var(--M);
-        }
-        
-        // heading + para
-        h1 + p, p:has(.h1) + p {
-            margin-top: var(--M);
-        }
-
-        h2 + p, h3 + p, h4 + p, h5 + p, p:has(.h2, .h3, .h4, .h5) + p {
-            margin-top: var(--S); 
-        }
-
-        // para + heading
-        p + h2, p + p:has(.h2) {
-            margin-top: var(--2XL);
-        }
-
-        p + h3,p + p:has(.h3) {
-            margin-top: var(--XL);
-        }
-
-        p + h4, p + h5, p + p:has(.h4,.h5) {
-            margin-top: var(--L);
-        }
-  
-      
+      .footer-content-container .footer-content {      
         .footer-copy {
           color: var(--grey-600)
         }
@@ -93,6 +67,9 @@
 
         .footer-menu-items,
         .footer-icons-container .sl-social-media {
+          ul {
+            margin-bottom: 0px;
+          }
           a {
             color: var(--black);
           }
