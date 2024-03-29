@@ -145,7 +145,7 @@
               &.dropdown-item {
                 --bs-dropdown-link-active-bg: transparent; // $dropdown-link-active-bg
                 @include sl-body-small;
-                white-space: break-spaces;
+                white-space: nowrap;
                 padding: 0;
                 margin-top: 0.75rem;
                 color: var(--grey-600);
