@@ -37,7 +37,7 @@
       },
     };
 
-    let $mouseDownKeyUpEvents = util.customEvents.MOUSE_DOWN + " " + util.customEvents.KEYUP;
+    let $mouseDownKeyDownEvents = util.customEvents.MOUSE_DOWN + " " + util.customEvents.KEYDOWN;
 
     /**
     * Bind events on module, for keyboard accessibility. 
@@ -47,9 +47,9 @@
     */
     function bindEvent() {
       let $dropdown = $(CONSTANT.SELECTOR.slDropdown);
-      $dropdown.on($mouseDownKeyUpEvents, CONSTANT.SELECTOR.comboInput, dropdownComboHandler);
-      $dropdown.on($mouseDownKeyUpEvents, CONSTANT.SELECTOR.comboOption, dropDownOptionHandler);
-      $dropdown.on($mouseDownKeyUpEvents, CONSTANT.SELECTOR.comboMenu, dropDownMenuHandler);
+      $dropdown.on($mouseDownKeyDownEvents, CONSTANT.SELECTOR.comboInput, dropdownComboHandler);
+      $dropdown.on($mouseDownKeyDownEvents, CONSTANT.SELECTOR.comboOption, dropDownOptionHandler);
+      $dropdown.on($mouseDownKeyDownEvents, CONSTANT.SELECTOR.comboMenu, dropDownMenuHandler);
       $dropdown.on(util.customEvents.BLUR, CONSTANT.SELECTOR.comboInput, dropDownOnBlur);
     }
 
@@ -113,11 +113,14 @@
       if ($($combo).hasClass(CONSTANT.CLASS.open)) { // not first down press
         if (currentOptionSelected.length == 0) { // first dropdown option focuses on the first option
           $(currentComboInput).next().children(":first").toggleClass(CONSTANT.CLASS.optionCurrent);
-          let selectedOptionID = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0].getAttribute("id");
+          let selectedOption = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0];
+          selectedOption.scrollIntoView({ block: "nearest" }); 
+          let selectedOptionID = selectedOption.getAttribute("id");
           updateElementAttribute(currentComboInput, "aria-activedescendant", selectedOptionID);
         } else if (subsequentDropdownOption.length) { // not last option
           $(currentOptionSelected).toggleClass(CONSTANT.CLASS.optionCurrent);
           subsequentDropdownOption.toggleClass(CONSTANT.CLASS.optionCurrent);
+          subsequentDropdownOption[0].scrollIntoView({ block: "nearest" });       
           let selectedOptionID = subsequentDropdownOption[0].getAttribute("id");
           updateElementAttribute(currentComboInput, "aria-activedescendant", selectedOptionID);
         }
@@ -137,7 +140,9 @@
     */
     function dropdownComboHandler(e) {
       $(this).focus();
-      e.preventDefault();
+      if (e.keyCode != 9) {
+        e.preventDefault();
+      }      
 
       let currentComboInput = e.currentTarget;
       let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
