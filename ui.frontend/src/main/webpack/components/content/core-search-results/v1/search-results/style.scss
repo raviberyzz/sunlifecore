@@ -73,6 +73,10 @@
         box-shadow: 0px 4px 8px 3px #00000014;
     }
 
+    .CoveoSearchbox .magic-box {
+        border-width: 0;
+    }
+
     .CoveoSearchbox .magic-box .magic-box-clear-svg {
         height: 16px;
         width: 16px;
@@ -105,10 +109,14 @@
         @include sl-body-medium;
     }
 
-    .CoveoResultLink.printed-url {
+    .CoveoResultLink.printed-url, .coveo-query-summary-cancel-last {
         color: var(--brand-tertiary-800, #00588B) !important;
 
         @include sl-link-small;
+    }
+
+    .coveo-query-summary-cancel-last {
+        margin: var(--M) 0;
     }
 
 

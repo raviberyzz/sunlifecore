@@ -155,8 +155,16 @@
     }
   }
 
+  .sl-cards.vertical .card.multi-v {
+    flex-basis: auto;
+    @include media-breakpoint-only(md) {
+      flex-basis: auto;
+    }
+  }
+
   // CDT-2404
   // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/0d974332be0fed01902af2d135ee7f1d3cbef1cd */
+  // mediaBlock.scss
 
   .sl-media-block.card {
     width: width-by-cols(xs, 12);
