@@ -172,7 +172,7 @@ public class LeftNavigationModal implements Navigation {
 			navigationRootPage = page.getPath();
 			structureStart = 0;
 		}
-		updatedList = leftNavigationItemProcessor.processNavigationList(getItems(), configService, page, request,
+		updatedList = leftNavigationItemProcessor.processNavigationList(getItems(), configService, currentPage, request,
 				linkManager, component, resourceResolver, items);
 
 	}

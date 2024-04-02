@@ -34,6 +34,21 @@
         display: flex;
         margin: 0;
     }
+
+    .sl-btn.btn {
+        @include media-breakpoint-only(sm) {
+            width: fit-content;
+        }
+    }
+}
+
+/* Style for segmented content block */
+.sl-segmented-blocks {
+    @include media-breakpoint-only(sm) {
+        .sl-btn.btn {
+            width: fit-content;
+        }
+    }
 }
 
 /* Style for avatar content block */ 
@@ -107,4 +122,8 @@
         }
       }
     }
+}
+
+.sl-banner-content-block .grouped-form form {
+    width: 100%;
 }

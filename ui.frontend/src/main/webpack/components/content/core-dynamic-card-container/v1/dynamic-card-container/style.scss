@@ -1,8 +1,0 @@
-@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
-
-@include media-breakpoint-up(md) {
-    .sl-segmented-blocks.multi .card .grouped-form .sl-btn {
-        width: 100%;
-        max-width: inherit;
-    }
-}
