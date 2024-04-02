@@ -1,5 +1,4 @@
-@import '@sunlife/ui-styles/base/variables';
-@import 'bootstrap/scss/mixins';
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 
 .sl-anchor-links {
     @include media-breakpoint-up(xl) { 
