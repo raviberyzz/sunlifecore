@@ -2,13 +2,31 @@
  * Tab component event handling
  * Tab component scrolling enable and disabled
  */
-$(document).ready(function() {
+(function (core) {
+	"use strict";
+
+	/**
+	 * Text component
+	 * @namespace coreTabs
+	 * @memberof sunCore.comp
+	 */
+  core.comp.coreTabs = (function ($, util) {
+  const CONSTANT = {
+    SELECTOR: {
+      tabNavItem: '.sl-tabs .nav-item',
+      tabNavButton: '.sl-tabs .arrow-btn',
+      navTab: '.sl-tabs .nav-tabs',
+      tabContainer: '.sl-tabs'
+    }
+  };
+
   /**
-     * Function used to handle the tab click and key press event
-     * @function
-     * @param {object} scope - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle the tab click and key press event
+   * @function tabItemEventHandler
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   * @param {object} scope - event object
+   */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
     const $tabContainer = $currentTab.parents(".nav-tabs").parents(".stack-tab-container").parents(".sl-tabs")
@@ -21,19 +39,21 @@ $(document).ready(function() {
     $("#default-tab-tabpane-"+$id).addClass("active show")
   }
   /**
-     * Function used to handle the tab item click event
-     * @function
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle the tab item click event
+   * @function tabItemClickEventHandler
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   */
   function tabItemClickEventHandler(){
     tabItemEventHandler(this);
   }
   /**
-     * Function is used to navigate the tab on arrow key
-     * @function
-     * @param {object} thisScope - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+    * Method to to navigate the tab on arrow key
+    * @function navigateTabOnArrowKey
+    * @memberof sunCore.comp.coreTabs
+    * @private
+    * @param {object} $thisScope - event object
+    */
   function navigateTabOnArrowKey($thisScope) {  
     const $navTab = $thisScope.parents(".nav-tabs");   
     $navTab.find(".nav-item .nav-link").attr("tabindex", "-1").attr("aria-selected", "false");
@@ -43,11 +63,12 @@ $(document).ready(function() {
     tabItemEventHandler($thisScope);
   }
   /**
-     * Function used to handle the tab keypress for left arrow, right arrow, and enter
-     * @function
-     * @param {object} e - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle the tab keypress for left arrow, right arrow, and enter
+   * @function tabItemKeyEventHandler
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   * @param {object} e - event Object
+   */
   function tabItemKeyEventHandler(e) {
     const $thisKey = $(this);
     const $keyName = e.key;    
@@ -95,11 +116,12 @@ $(document).ready(function() {
     }
   }
   /**
-     * Function used to get the scroll width for all visible tablist
-     * @function
-     * @param {object} e - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to get the scroll width for all visible tablist
+   * @function getActiveScrollWidth
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   * @param {object} $currentNav - scope for selected element
+   */
   function getActiveScrollWidth($currentNav) {
     const $navItem = $currentNav.parents(".stack-tab-container").find(".nav-item:not(.hide)");
     let navWidth = 0;
@@ -109,10 +131,11 @@ $(document).ready(function() {
     return navWidth;
   }
   /**
-     * Function used to handle the enable scrolling feature for tab on click of next and previous arrow button
-     * @function
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle the enable scrolling feature for tab on click of next and previous arrow button
+   * @function slideTabEventHandler
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   */
   function slideTabEventHandler() {
     const $currentNav = $(this);
     const $navTab = $currentNav.siblings(".nav-tabs");
@@ -158,11 +181,12 @@ $(document).ready(function() {
     }
   }
   /**
-     * Function used to handle mobile enable scrolling
-     * @function
-     * @param {object} navButton - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+   * Method to handle mobile enable scrolling.
+   * @function mobileEnableScrolling
+   * @memberof sunCore.comp.coreTabs
+   * @private
+   * @param {object} $navButton - Current selected navigation button (prev/next)
+   */
   function mobileEnableScrolling ($navButton) {
     const $navTab = $navButton.siblings(".nav-tabs");
     const navWidth = $navTab.width();
@@ -171,12 +195,13 @@ $(document).ready(function() {
       $navButton.removeClass('hide');
     }
   }
-  /**
-     * Function used to disabled scrolling
-     * @function
-     * @param {object} tabContainer - scope of the selected element
-     * @returns {} It will not return anything, this method just update DOM
-  */
+ /**
+   * Function used to disabled scrolling
+   * @function mobileEnableScrolling
+   * @memberof sunCore.comp.coTabs
+   * @private
+   * @param {object} $tabContainer - scope of the selected element
+   */
   function disabledScrolling($tabContainer) {
     $tabContainer.each(function() {
       const $navTabs = $(this).find(".nav-tabs");
@@ -191,26 +216,47 @@ $(document).ready(function() {
       }
     })
   }
-  /**
-     * Function used to intialize the events
-     * @function
-     * @returns {} It will not return anything, this method just update DOM
-  */
-  function init() {
-    const $tabContainer = $(".sl-tabs");   
-    const $cnwNewsList = $tabContainer.closest(".cnw-news-list")
-    if($tabContainer.length > 0 && $cnwNewsList.length === 0){
-        const $navTab = $(".sl-tabs .nav-tabs");
-        const $navButton =  $('.sl-tabs .arrow-btn');
-        $navTab.attr('data-activeTab', 0);
-        const $document = $(document);
-        $document.on("keydown", ".sl-tabs .nav-item", tabItemKeyEventHandler);
-        $document.on("click", ".sl-tabs .nav-item", tabItemClickEventHandler);
-        $document.on("click", ".sl-tabs .arrow-btn", slideTabEventHandler);
-        mobileEnableScrolling($navButton);
-        disabledScrolling($tabContainer);
-      }
+  
+  function bindEvent() {
+    $(document).on(
+      util.customEvents.KEYDOWN,
+      CONSTANT.SELECTOR.tabNavItem,
+      tabItemKeyEventHandler
+    );
+    $(document).on(
+      util.customEvents.INTERACTION,
+      CONSTANT.SELECTOR.tabNavItem,
+      tabItemClickEventHandler
+    );
+    $(document).on(
+      util.customEvents.INTERACTION,
+      CONSTANT.SELECTOR.tabNavButton,
+      slideTabEventHandler
+    );
   }
-  init();
+  /**
+		 * Method used to initilize the module
+		 * @function
+		 */
+  function init() {
+    const $navButton = $(CONSTANT.SELECTOR.navTab)
+    $navButton.attr('data-activeTab', 0);
+    const $tabContainer = $(CONSTANT.SELECTOR.tabContainer)
+    const $cnwNewsList = $tabContainer.closest(".cnw-news-list")
+    if($cnwNewsList.length === 0){
+      bindEvent();
+    }
+    mobileEnableScrolling($(CONSTANT.SELECTOR.tabNavButton));    
+    disabledScrolling($tabContainer);
+  }   
+   
+  return {
+    init: init,
+};
+})(core.$, core.util);
 
-});
+/**
+* Initialise coreTabs module if given selector is in DOM
+*/
+core.util.initialise(core.comp, "coreTabs", ".sl-tabs");
+})(sunCore);
