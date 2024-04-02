@@ -9,11 +9,9 @@
     border-style: hidden;
 }
 .sl-table {
-    @include media-breakpoint-down(md) {             
-        overflow: auto;
-        td, th {
-            white-space: nowrap;
-        }
+    overflow: auto;
+    td, th {
+        white-space: nowrap;
     }
     table {
         border: none;
