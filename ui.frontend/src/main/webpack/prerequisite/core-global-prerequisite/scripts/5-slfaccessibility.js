@@ -179,6 +179,21 @@ addMegaMenuAriaLabels();
           $(this).closest('.navigation').removeClass("open");
         }
       });
+
+      // Mega menu accessibility close on ESC key press 
+      $(document).on('keydown', function(e) {
+        $('ul.sl-main-nav').children('li').each(function(){
+          if(e.keyCode == ESC){
+            e.preventDefault();
+            e.stopPropagation();
+            var btnElement = $(this).find("#sl-mega-menu-toggle-dashboard");
+            var headerMegamenu = new bootstrap.Dropdown(btnElement);
+            headerMegamenu.hide();
+            headerMegamenu.dispose();
+          }
+        })
+      });
+
       $('.desktop-primary-navigation .cmp-dynamic-megamenu-grey .text a').on('keydown', function (e) {
         if (e.keyCode == DOWN) {
           // console.log("down3");
