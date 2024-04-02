@@ -113,9 +113,9 @@
       if ($($combo).hasClass(CONSTANT.CLASS.open)) { // not first down press
         if (currentOptionSelected.length == 0) { // first dropdown option focuses on the first option
           $(currentComboInput).next().children(":first").toggleClass(CONSTANT.CLASS.optionCurrent);
-          let selectedOption = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0];
-          selectedOption.scrollIntoView({ block: "nearest" }); 
-          let selectedOptionID = selectedOption.getAttribute("id");
+          let $selectedOption = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent)[0];
+          $selectedOption.scrollIntoView({ block: "nearest" }); 
+          let selectedOptionID = $selectedOption.getAttribute("id");
           updateElementAttribute(currentComboInput, "aria-activedescendant", selectedOptionID);
         } else if (subsequentDropdownOption.length) { // not last option
           $(currentOptionSelected).toggleClass(CONSTANT.CLASS.optionCurrent);
@@ -146,15 +146,15 @@
 
       let currentComboInput = e.currentTarget;
       let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
-      let currentOptionSelected = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
+      let $currentOptionSelected = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
 
       if (e.keyCode == util.constants.KeyCode.DOWN) {
-        handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.next());
+        handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.next());
       } else if (e.keyCode == util.constants.KeyCode.UP) {
-        handleUpDownKeyPress($combo, currentOptionSelected, currentOptionSelected.prev());
+        handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.prev());
       } else if (e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
-        let currOpt = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
-        currOpt.mousedown();
+        let $currOpt = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
+        $currOpt.mousedown();
       } else if (e.type == util.customEvents.MOUSE_DOWN) {
         $($combo).toggleClass(CONSTANT.CLASS.open);
         if ($($combo).hasClass(CONSTANT.CLASS.open)) {
