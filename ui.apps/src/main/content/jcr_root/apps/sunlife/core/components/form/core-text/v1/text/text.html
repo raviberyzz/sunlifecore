@@ -33,7 +33,7 @@
                 data-cmp-hook-form-text="input"
                 type="${text.type}"
                 id="${text.id}"
-                placeholder="${text.placeholder || text.helpMessage}"
+                placeholder="${text.placeholder || text.helpMessage || text.title}"
                 data-parsley-error-message="${customText.requiredMessage}"
                 data-parsley-required-message="${customText.requiredMessage}"
                 data-parsley-pattern="${customText.validation}"
