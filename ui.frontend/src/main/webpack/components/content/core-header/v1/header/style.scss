@@ -214,6 +214,10 @@
     display: block;
   }
 }
+#sl-dropdown-language-utility .dropdown-menu .dropdown-menu-title,
+#sl-dropdown-language-utility .dropdown-menu .dropdown-item {
+    white-space: nowrap;
+}
 .sl-divider{
 .hr {
   border-top: .063rem solid;
