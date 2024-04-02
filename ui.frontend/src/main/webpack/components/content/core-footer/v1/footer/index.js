@@ -26,73 +26,70 @@
             $footerMenuHeader, 
             $footerMenuList, 
             $footerMenuHeaderIsDropdown = false,
+			renderDesktop = false,
+			renderMobile = false,
             listeners = [];
 
 		/**
-		 * Handler to render Footer Based on Screensize
-		 * @function renderFooterAccordion
+		 * Handler to check to render Footer Based on Screensize
+		 * @function checkToRenderFooter
 		 * @memberof sunCore.comp.footer
 		 * @private
 		 */
-        function renderFooterAccordion() {
+        function checkToRenderFooter() {
             $footerMenuHeader = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuHeader);
             $footerMenuHeaderIsDropdown = $footerMenuHeader[0].classList.contains(CONSTANT.SELECTOR.footerMenuHeaderBtnClass) ? true : false;
             let isDesktop = util.matchmedia.L.matches || util.matchmedia.XL.matches;
+			renderDesktop = isDesktop && $footerMenuHeaderIsDropdown;
+			renderMobile = !isDesktop && !$footerMenuHeaderIsDropdown;
 
-            if ( isDesktop && $footerMenuHeaderIsDropdown) {
-                renderDesktopFooter();
-            } else if ( !isDesktop && !$footerMenuHeaderIsDropdown ) {
-                renderMobileFooter();
+            if ( renderDesktop || renderMobile) {
+                renderFooterLayout();
             }
        }
 
         /**
 		 * Handler to render footer in Desktop
-		 * @function renderDesktopFooter
+		 * @function renderFooterLayout
 		 * @memberof sunCore.comp.footer
 		 * @private
 		 */
-		function renderDesktopFooter() {
-            for (const menuRow of $footerMenuRow) {
-                menuRow.classList.remove(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
-                menuRow.classList.add("col");
-            }
-            for (const menuHeader of $footerMenuHeader) {
-                let desktopFooterMenuHeader = document.createElement('div');
-                desktopFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass);
-                desktopFooterMenuHeader.innerHTML = menuHeader.innerHTML;
-                menuHeader.insertAdjacentElement("beforebegin", desktopFooterMenuHeader);
-                menuHeader.remove();
-            }
-            for (const menuList of $footerMenuList) {
-                menuList.classList.remove("show", "dropdown-menu");
-            }
-		}
+		function renderFooterLayout() {
 
-        /**
-		 * Handler to render footer in Mobile
-		 * @function renderMobileFooter
-		 * @memberof sunCore.comp.footer
-		 * @private
-		 */
-		function renderMobileFooter() {
             for (const menuRow of $footerMenuRow) {
-                menuRow.classList.remove("col");
-                menuRow.classList.add(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
+				if (renderDesktop) {
+					menuRow.classList.remove(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
+					menuRow.classList.add("col");
+				} else if (renderMobile) {
+					menuRow.classList.remove("col");
+					menuRow.classList.add(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
+				}
             }
+
             for (const menuHeader of $footerMenuHeader) {
-                let mobileFooterMenuHeader = document.createElement('button');
-                mobileFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass, CONSTANT.SELECTOR.footerMenuHeaderBtnClass);
-                mobileFooterMenuHeader.setAttribute("aria-expanded", "false");
-                mobileFooterMenuHeader.setAttribute("data-bs-toggle", "dropdown");
-                mobileFooterMenuHeader.innerHTML = menuHeader.innerHTML;
-                menuHeader.insertAdjacentElement("beforebegin", mobileFooterMenuHeader);
-                menuHeader.remove();
+				let layoutFooterMenuHeader = document.createElement( renderDesktop ? "div" : "button");
+				layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass);
+				
+				if (renderMobile) {
+					layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderBtnClass);
+					layoutFooterMenuHeader.setAttribute("aria-expanded", "false");
+					layoutFooterMenuHeader.setAttribute("data-bs-toggle", "dropdown");
+				}
+				
+				layoutFooterMenuHeader.innerHTML = menuHeader.innerHTML;
+				menuHeader.insertAdjacentElement("beforebegin", layoutFooterMenuHeader);
+				menuHeader.remove();
             }
-            
+
             for (const menuList of $footerMenuList) {
-                menuList.classList.remove("show");
-                menuList.classList.add("dropdown-menu");
+				menuList.classList.remove("show");
+				
+				if (renderDesktop) {
+					menuList.classList.remove("dropdown-menu");
+				} else if (renderMobile) {
+					menuList.classList.add("dropdown-menu");
+				}
+
             }
 		}
 
@@ -104,7 +101,7 @@
          */
 		function bindEvent() {
 			listeners.push(
-				$.subscribe(util.customEvents.RESIZED, renderFooterAccordion)
+				$.subscribe(util.customEvents.RESIZED, checkToRenderFooter)
 			);
 		}
 
@@ -129,7 +126,7 @@
 		function init() {
 			cacheSelectors();
             bindEvent();
-			renderFooterAccordion();
+			checkToRenderFooter();
 		}
 
 		return {
