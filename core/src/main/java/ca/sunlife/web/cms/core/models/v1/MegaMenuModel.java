@@ -25,6 +25,14 @@ public interface MegaMenuModel {
     String getHeading();
 
     /**
+     * Gets the Heading URL
+     *
+     * @return the headingURL
+     */
+    @ValueMapValue
+    String getHeadingLinkURL();
+
+    /**
      * Gets the List of Menu Sections
      *
      * @return the list of Menu Sections
