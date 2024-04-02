@@ -1,2 +1,14 @@
 @import 'bootstrap/scss/mixins';
 @import '@sunlife/ui-styles/base/variables.scss';
+
+.sl-banner-content-block .sl-btn.btn {
+    @include media-breakpoint-only(sm) {
+        width: fit-content;
+    }
+}
+
+.sl-segmented-blocks .sl-btn.btn, .sl-banner-content-block .sl-btn.btn{
+    @include media-breakpoint-only(sm) {
+        width: fit-content;
+    }
+}
