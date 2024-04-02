@@ -2,7 +2,7 @@
 <sly data-sly-use.data = "${'experiencefragment.js' @ path=fragmentText.modifiedFragmentPath}" data-sly-unwrap>
     <sly data-sly-test="${!data.fragmentPath}">
         <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
-             class="cq-dd-experiencefragment cq-placeholder "
+             class="${fragmentText.spacing} cq-dd-experiencefragment cq-placeholder "
              data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
         </div>
     </sly>
