@@ -38,6 +38,20 @@
         margin: 0;
     }
 
+    .grouped-form {
+        form {
+            width: 100%;
+        }
+    }
+
+    form {
+        .layout-container {
+            .form-floating {
+                margin: 0;
+            }
+        }
+    }
+
     .sl-btn.btn {
         @include media-breakpoint-only(sm) {
             width: fit-content;
@@ -47,6 +61,30 @@
 
 /* Style for segmented content block */
 .sl-segmented-blocks {
+
+    .card {
+        form {
+            .sl-dropdown {
+                margin-top: 0;
+                .sl-helper-text {
+                    display: unset;
+                }
+            }
+        }
+    }
+
+    form {
+        .form-floating {
+            margin: 0;
+        }
+
+        .layout-container {
+            .form-floating {
+                margin: 0;
+            }
+        }
+    }
+
     @include media-breakpoint-only(sm) {
         .sl-btn.btn {
             width: fit-content;
@@ -122,8 +160,4 @@
         }
       }
     }
-}
-
-.sl-banner-content-block .grouped-form form {
-    width: 100%;
 }
