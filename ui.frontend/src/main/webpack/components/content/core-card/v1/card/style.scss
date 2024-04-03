@@ -44,14 +44,6 @@
         }
     }
 
-    form {
-        .layout-container {
-            .form-floating {
-                margin: 0;
-            }
-        }
-    }
-
     .sl-btn.btn {
         @include media-breakpoint-only(sm) {
             width: fit-content;
@@ -69,18 +61,6 @@
                 .sl-helper-text {
                     display: unset;
                 }
-            }
-        }
-    }
-
-    form {
-        .form-floating {
-            margin: 0;
-        }
-
-        .layout-container {
-            .form-floating {
-                margin: 0;
             }
         }
     }
