@@ -54,7 +54,7 @@
             this.objToEdit.attributes["data-bs-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
-            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal;
+            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal === 'sl-link-internal-no-icon' ?  '' : dataClassIcnVal;
         },
 
         updateRTELinkValues: function(element, value) {
@@ -148,7 +148,10 @@
                 <div class='rte-dialog-column'>
                     <coral-select name="classtypeicon" data-type='data-class-icon' placeholder="Choose Link Type">
                         <coral-select-item value="sl-link-internal">
-                            Internal Link 
+                            Internal Link with Icon
+                        </coral-select-item>
+                        <coral-select-item value="sl-link-internal-no-icon">
+                            Internal Link
                         </coral-select-item>
                         <coral-select-item value="sl-link-external">
                             External Link 
