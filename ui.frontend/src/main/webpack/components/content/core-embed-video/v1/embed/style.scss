@@ -4,7 +4,7 @@
 @import 'bootstrap/scss/mixins';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-#vidyard-overlay{
+#vidyard-overlay, #vidyard-overlay-wrapper{
   z-index: $zindex-modal-backdrop !important;
 }
 .vidyard-close-container,#vidyard-content-fixed{
