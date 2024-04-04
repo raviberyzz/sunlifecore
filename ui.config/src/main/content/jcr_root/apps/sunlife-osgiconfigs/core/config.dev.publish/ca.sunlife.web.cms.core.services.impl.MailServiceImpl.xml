@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
     getApiKey="Ng1vE%^Uvdk$aP@E7SepA1N06#lQ!*kLs4siHSFq"
-	getApiUrl="https://sit-www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json"
+	getApiUrl="https://stage-www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json"
     getTemplatePath="/content/dam/sunlife/external/"
     getTemplatePathSuffix="/content-fragments/email-templates/"
 	getValidationsPath="/content/dam/sunlife/global/shared-assets/json/sl-email-config.json"
