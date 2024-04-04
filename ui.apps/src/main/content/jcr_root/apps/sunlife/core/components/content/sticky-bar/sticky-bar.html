@@ -17,14 +17,30 @@
         data-title="${links.dataTitle}">${links.linkName @ context='html'}</a>
     </li>
   </ul>
-  <div class="sticky-bar-button-wrapper">
-    <sly data-sly-test="${stickyBarText.additionalButton == 'true'}">
-      <div class="stickyBarButtons" id="secButton"> <a href="${stickyBarText.secButtonLink @ extention = 'html'}"
-          target="${stickyBarText.secButtonTarget}"><span
-            class="button-class secondary-button-rte">${stickyBarText.secButtonLabel @ context='html'}</span></a></div>
+  <div class="links-button-wrapper">
+    <sly data-sly-test="${stickyBarText.hideNavLinksDropdown == 'true'}">
+      <div class="nav-links-dropdown">
+        <fieldset class="cmp-form-options cmp-form-options--drop-down">
+          <select class="cmp-form-options__field cmp-form-options__field--drop-down" name="navlinks-dropdown"
+            id="navlinks-dropdown">
+            <option selected disabled value=''>${stickyBarText.navLinksDropdownTitle}</option>
+            <sly data-sly-list.itemGroup="${stickyBarText.links @ begin = 0, end = maxLinks}">
+              <option value="${itemGroup.linkUrl @ extention = 'html'}">${itemGroup.linkName @ context='html'}</option>
+            </sly>
+          </select>
+        </fieldset>
+      </div>
     </sly>
-    <div class="stickyBarButtons" id="priButton"> <a href="${stickyBarText.buttonLink @ extention = 'html'}"
-        target="${stickyBarText.buttonTarget}"><span
-          class="button-class primary-blue-button-rte">${stickyBarText.ButtonLabel @ context='html'}</span></a></div>
+    <div class="sticky-bar-button-wrapper">
+      <sly data-sly-test="${stickyBarText.additionalButton == 'true'}">
+        <div class="stickyBarButtons" id="secButton"> <a href="${stickyBarText.secButtonLink @ extention = 'html'}"
+            target="${stickyBarText.secButtonTarget}"><span
+              class="button-class secondary-button-rte">${stickyBarText.secButtonLabel @ context='html'}</span></a>
+        </div>
+      </sly>
+      <div class="stickyBarButtons" id="priButton"> <a href="${stickyBarText.buttonLink @ extention = 'html'}"
+          target="${stickyBarText.buttonTarget}"><span
+            class="button-class primary-blue-button-rte">${stickyBarText.ButtonLabel @ context='html'}</span></a></div>
+    </div>
   </div>
 </div>
