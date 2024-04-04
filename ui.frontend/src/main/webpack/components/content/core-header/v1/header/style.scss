@@ -145,7 +145,7 @@
               &.dropdown-item {
                 --bs-dropdown-link-active-bg: transparent; // $dropdown-link-active-bg
                 @include sl-body-small;
-                white-space: nowrap;
+                white-space: normal;
                 padding: 0;
                 margin-top: 0.75rem;
                 color: var(--grey-600);
@@ -216,7 +216,7 @@
 }
 #sl-dropdown-language-utility .dropdown-menu .dropdown-menu-title,
 #sl-dropdown-language-utility .dropdown-menu .dropdown-item {
-    white-space: nowrap;
+    white-space: normal;
 }
 .sl-divider{
 .hr {
