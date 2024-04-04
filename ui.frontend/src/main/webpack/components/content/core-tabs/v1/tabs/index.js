@@ -6,7 +6,7 @@
 	"use strict";
 
 	/**
-	 * Text component
+	 * Tab component
 	 * @namespace coreTabs
 	 * @memberof sunCore.comp
 	 */
@@ -16,7 +16,8 @@
       tabNavItem: '.sl-tabs .nav-item',
       tabNavButton: '.sl-tabs .arrow-btn',
       navTab: '.sl-tabs .nav-tabs',
-      tabContainer: '.sl-tabs'
+      tabContainer: '.sl-tabs',
+      slLinks: '.sl-link'
     }
   };
 
@@ -216,6 +217,20 @@
       }
     })
   }
+  /**
+   * Function used to scroll to anchor link
+   * @function scrollToAnchorLink
+   * @memberof sunCore.comp.coTabs
+   * @private
+   */
+  function scrollToAnchorLink() {
+    const id = $(this).attr("href");
+    if($(id).length > 0){
+      const anchorTop = $(id).offset().top;
+      const headerHeight = $(".sl-header").height()+20;
+      $("html, body").animate({ scrollTop: anchorTop-headerHeight }, 500);
+    }
+  }
   
   function bindEvent() {
     $(document).on(
@@ -233,6 +248,11 @@
       CONSTANT.SELECTOR.tabNavButton,
       slideTabEventHandler
     );
+    $(document).on(
+      util.customEvents.INTERACTION,
+      CONSTANT.SELECTOR.slLinks,
+      scrollToAnchorLink
+    );    
   }
   /**
 		 * Method used to initilize the module

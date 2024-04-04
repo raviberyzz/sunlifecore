@@ -4,14 +4,14 @@
 	"use strict";
 
 	/**
-	 * Text component
+	 * Table component
 	 * @namespace coreTable
 	 * @memberof sunCore.comp
 	 */
     core.comp.coreTable = (function ($, util) {
     const CONSTANT = {
         SELECTOR: {
-        table: '.sl-table table"',
+            table: '.sl-table table',
         }
     };
     function init() {
