@@ -312,8 +312,12 @@ public class CNWNewsModel {
         relativeURL = configService.getPageRelativeUrl(relativeURL);
         requestURL = configService.getPageRelativeUrl(requestURL);
         logger.debug("requestURL - after clean up: {}", requestURL);
-        news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize,
-                newsCategories);
+        try {
+            news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize,
+                    newsCategories);
+        } catch (Exception e) {
+            logger.error("Error :: CNWNewsModel :: processReleasesData :: error trace: {}", e);
+        }
         if (logger.isDebugEnabled()) {
             logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
         }
