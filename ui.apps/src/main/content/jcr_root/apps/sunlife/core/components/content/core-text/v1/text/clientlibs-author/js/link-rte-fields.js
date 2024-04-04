@@ -54,7 +54,7 @@
             this.objToEdit.attributes["data-bs-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
-            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal === 'sl-link-internal-no-icon' ?  '' : dataClassIcnVal;
+            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal === '' ?  '' : dataClassIcnVal;
         },
 
         updateRTELinkValues: function(element, value) {
@@ -101,6 +101,13 @@
             dataTargetSelect.value = dataTargetValue ? dataTargetValue : '';
             dataToggleSelect.value = dataToggleValue ? dataToggleValue : '';
             dataDeepLinkSelect.value = dataDeepLinkValue ? dataDeepLinkValue : '';
+        
+            // Ensure the "Select the link type" option is selected by default if no value is set
+            if (!classIcnValue) {
+                $(classIcnSelect).find('coral-select-item[value=""]').prop('selected', true);
+            } else {
+                this.updateRTELinkValues(classIcnSelect, classIcnValue);
+            }
         }
     });
 
@@ -147,10 +154,10 @@
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
                     <coral-select name="classtypeicon" data-type='data-class-icon' placeholder="Choose Link Type">
-                        <coral-select-item value="sl-link-internal">
-                            Internal Link with Icon
+                        <coral-select-item value="">
+                            Select Link Type
                         </coral-select-item>
-                        <coral-select-item value="sl-link-internal-no-icon">
+                        <coral-select-item value="sl-link-internal">
                             Internal Link
                         </coral-select-item>
                         <coral-select-item value="sl-link-external">
