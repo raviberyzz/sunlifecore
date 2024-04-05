@@ -263,11 +263,12 @@ public class CNWNewsModel {
                 "Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}",
                 latestYear, numberOfTabs, locale, newsCategories, pageSize);
         int year;
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int totalNoYears;
         String strYear = null;
         String pageNum = null;
         if (null == latestYear) {
-            year = Calendar.getInstance().get(Calendar.YEAR);
+            year = currentYear;
         } else {
             year = Integer.parseInt(latestYear);
         }
@@ -312,7 +313,7 @@ public class CNWNewsModel {
         relativeURL = configService.getPageRelativeUrl(relativeURL);
         requestURL = configService.getPageRelativeUrl(requestURL);
         logger.debug("requestURL - after clean up: {}", requestURL);
-        if(activeYear <= Calendar.getInstance().get(Calendar.YEAR))
+        if(activeYear <= currentYear)
             news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize,
                     newsCategories);
         if (logger.isDebugEnabled()) {
