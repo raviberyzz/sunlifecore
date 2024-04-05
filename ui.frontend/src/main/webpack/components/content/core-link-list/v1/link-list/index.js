@@ -26,7 +26,7 @@
 			},
 			CLASS: {
 				optionSelected :"option-selected",
-				raised: "raised"	
+				raised: "raised"
 			},
 			ATTR: {
 				href: "href",
@@ -175,6 +175,23 @@
 		}
 
 		/**
+		 * Handler to show navigation active state
+		 * @function activeSelector
+		 * @memberof sunCore.comp.linkList
+		 * @private
+		 */
+		function activeSelector() {
+			var pathName= window.location.pathname;
+			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
+				pathName = pathName.replace(/#.*$/, '').replace(/\?.*$/, '').replace(/\.[^/.]+$/, "");
+				var strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				if(pathName === strLink){
+					$(this).addClass(CONSTANT.CLASS.optionSelected);
+				}
+			});
+	    }
+
+		/**
 		 * Handler called at linkList initialsation
 		 * @function cacheSelectors
 		 * @memberof sunCore.comp.linkList
@@ -183,7 +200,9 @@
 		function init() {
 			cacheSelectors();
 			bindEvent();
+			activeSelector();
 		}
+
 
 		return {
 			init: init,
