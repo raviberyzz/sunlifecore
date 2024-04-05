@@ -10,48 +10,85 @@
      * @memberof sunCore.comp
      */
     core.comp.header = (function ($, util) {
+        const HEADERSELECTOR = {};
+
         const CONSTANT = {
             SELECTOR: {
-                header: ".header"
+                header: ".header",
+                offCanvasEl: ".header #sl-header-offcanvas",
+                slNavNode: ".header #sl-nav",
+                bodyNode: ".header #offcanvas-body",
+                navNode: ".header #nav-header",
+                additionalLinks: ".header .menu-container",
+                additionalLinksParent: ".header .content-container",
+                menuOpen: ".header .menuOpen",
+                menuClose: ".header .menuClose",
+                slUtilityBar: ".sl-utility-bar",
+                slUtilityBarOffCanvas: ".sl-utility-bar-offcanvas",
+                navHeader: "#nav-header",
+                navBar: ".navbar",
+                mainContent: "#main-content"
             },
             CLASS: {
                 slUtilityBar: "sl-utility-bar",
                 slUtilityBarOffCanvas: "sl-utility-bar-offcanvas",
                 show: "show",
                 hiding: "hiding",
-                fixedTop: "fixed-top"
+                offCanvasBackdrop: "offcanvas-backdrop",
+                fixedTop: "fixed-top",
+                breadcrumb: "breadcrumb"
             },
+            ID: {
+                mainContent: "main-content"
+            },
+            ROLE: {
+                main: "main"
+            }
         };
 
-        let $comp = $(CONSTANT.SELECTOR.header);
+        let $comp,
+            $offCanvasEl,
+            $slNavNode,
+            $bodyNode,
+            $navNode,
+            $additionalLinks,
+            $additionalLinksParent,
+            $menuOpen,
+            $menuClose,
+            $navHeader,
+            $navBar,
+            $mainContent,
+            listeners = [];
 
         /**
-        * Handles the desktop and mobile view.
-        * @function
+        * Method to handle the desktop and mobile view
+        * @function offCanvas
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function offCanvas() {
             if (window.innerWidth <= 1239) {
-                CONSTANT.SELECTOR.utilityLists.removeClass(CONSTANT.CLASS.slUtilityBar);
-                CONSTANT.SELECTOR.utilityLists.addClass(CONSTANT.CLASS.slUtilityBarOffCanvas);
-                CONSTANT.SELECTOR.bodyNode.append(CONSTANT.SELECTOR.utilityLists);
+                HEADERSELECTOR.$utilityLists.removeClass(CONSTANT.CLASS.slUtilityBar);
+                HEADERSELECTOR.$utilityLists.addClass(CONSTANT.CLASS.slUtilityBarOffCanvas);
+                $bodyNode.append(HEADERSELECTOR.$utilityLists);
                 /* Handles utility additional links view in mobile */
-                CONSTANT.SELECTOR.additionalLinks.remove();
-                CONSTANT.SELECTOR.additionalLinksParent.append(CONSTANT.SELECTOR.additionalLinks);
+                $additionalLinks.remove();
+                $additionalLinksParent.append($additionalLinks);
             }
             else {
-                CONSTANT.SELECTOR.utilityListsOffCanvas.removeClass(CONSTANT.CLASS.slUtilityBarOffCanvas);
-                CONSTANT.SELECTOR.utilityListsOffCanvas.addClass(CONSTANT.CLASS.slUtilityBar);
-                CONSTANT.SELECTOR.utilityListsOffCanvas.insertBefore(CONSTANT.SELECTOR.navNode);
+                HEADERSELECTOR.$utilityListsOffCanvas.removeClass(CONSTANT.CLASS.slUtilityBarOffCanvas);
+                HEADERSELECTOR.$utilityListsOffCanvas.addClass(CONSTANT.CLASS.slUtilityBar);
+                HEADERSELECTOR.$utilityListsOffCanvas.insertBefore($navNode);
                 /* Handles utility additional links view in desktop */
-                CONSTANT.SELECTOR.additionalLinks.remove();
-                CONSTANT.SELECTOR.additionalLinksParent.prepend(CONSTANT.SELECTOR.additionalLinks);
+                $additionalLinks.remove();
+                $additionalLinksParent.prepend($additionalLinks);
                 /* Handles hamburger menu open on desktop view */
-                if (CONSTANT.SELECTOR.offcanvasEl.hasClass(CONSTANT.CLASS.show) && !CONSTANT.SELECTOR.offcanvasEl.hasClass(CONSTANT.CLASS.hiding)) {
-                    let offCanvas = new bootstrap.Offcanvas(CONSTANT.SELECTOR.offcanvasEl);
+                if ($offCanvasEl.hasClass(CONSTANT.CLASS.show) && !$offCanvasEl.hasClass(CONSTANT.CLASS.hiding)) {
+                    let offCanvas = new bootstrap.Offcanvas($offCanvasEl);
                     offCanvas.hide();
-                    CONSTANT.SELECTOR.offcanvasEl.removeClass(CONSTANT.CLASS.show);
-                    let offcanvasBackdrop = document.getElementsByClassName("offcanvas-backdrop")[0];
+                    $offCanvasEl.removeClass(CONSTANT.CLASS.show);
+                    let offcanvasBackdrop = document.getElementsByClassName(CONSTANT.CLASS.offCanvasBackdrop)[0];
                     offcanvasBackdrop.remove();
                     callMenuClose();
                 }
@@ -59,91 +96,136 @@
         }
 
         /**
-        * Handles hamburger menu open click.
-        * @function
+        * Method to handle the hamburger menu open click
+        * @function callMenuOpen
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function callMenuOpen() {
-            $comp.append(CONSTANT.SELECTOR.offcanvasEl)
+            $comp.append($offCanvasEl)
         }
 
         /**
-        * Handles hamburger menu close click.
-        * @function
+        * Method to handle the hamburger menu close click
+        * @function callMenuClose
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function callMenuClose() {
-            CONSTANT.SELECTOR.slnavNode.append(CONSTANT.SELECTOR.offcanvasEl);
+            $slNavNode.append($offCanvasEl);
         }
 
         /**
-        * Adds the 'main-content' ID to the main content Layout Container.
-        * @function
+        * Method to add the 'main-content' ID to the main content Layout Container
+        * @function setMainContentLandmark
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function setMainContentLandmark() {
-            if ($(CONSTANT.SELECTOR.header).length > 0 && $('#main-content').length < 1) {
-                var layoutContainer = $(CONSTANT.SELECTOR.header).next();
-                if (layoutContainer.hasClass('breadcrumb')) {
-                    layoutContainer.next().attr('id', 'main-content');
-                    layoutContainer.next().attr('role', 'main');
+            if ($comp.length > 0 && $mainContent.length < 1) {
+                var layoutContainer = $comp.next();
+                if (layoutContainer.hasClass(CONSTANT.CLASS.breadcrumb)) {
+                    layoutContainer.next().attr("id", CONSTANT.ID.mainContent);
+                    layoutContainer.next().attr("role", CONSTANT.ROLE.main);
                 } else {
-                    layoutContainer.attr('id', 'main-content');
-                    layoutContainer.attr('role', 'main');
+                    layoutContainer.attr("id", CONSTANT.ID.mainContent);
+                    layoutContainer.attr("role", CONSTANT.ROLE.main);
                 }
             }
         }
 
         /**
-        * Initialize the header selectors.
-        * @function
+        * Method to initialize the header selectors. They change depending on the desktop/mobile breakpoints
+        * @function initializeSelector
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function initializeSelector() {
-            CONSTANT.SELECTOR.utilityLists = $(".header .sl-utility-bar");
-            CONSTANT.SELECTOR.utilityListsOffCanvas = $(".header .sl-utility-bar-offcanvas");
-            CONSTANT.SELECTOR.offcanvasEl = $(".header #sl-header-offcanvas");
-            CONSTANT.SELECTOR.slnavNode = $(".header #sl-nav");
-            CONSTANT.SELECTOR.bodyNode = $(".header #offcanvas-body");
-            CONSTANT.SELECTOR.navNode = $(".header #nav-header");
-            CONSTANT.SELECTOR.additionalLinks = $(".header .menu-container");
-            CONSTANT.SELECTOR.additionalLinksParent = $(".header .content-container");
-            CONSTANT.SELECTOR.menuOpen = $(".header .menuOpen");
-            CONSTANT.SELECTOR.menuClose = $(".header .menuClose");
+            HEADERSELECTOR.$utilityLists = $comp.find(CONSTANT.SELECTOR.slUtilityBar);
+            HEADERSELECTOR.$utilityListsOffCanvas = $comp.find(CONSTANT.SELECTOR.slUtilityBarOffCanvas);
         }
 
         /**
-        * Bind events for module.
-        * @function
+        * Method to bind events for module
+        * @function bindEvent
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function bindEvent() {
-            window.addEventListener("resize", function () {
-                initializeSelector();
-                offCanvas();
-            });
-            CONSTANT.SELECTOR.menuOpen.click(callMenuOpen);
-            CONSTANT.SELECTOR.menuClose.click(callMenuClose);
 
-            window.addEventListener('scroll', function () {
+            listeners.push(
+            	$.subscribe(util.customEvents.RESIZED, function () {
+                    initializeSelector();
+                    offCanvas();
+                })
+            );
+
+            $menuOpen.click(callMenuOpen);
+            $menuClose.click(callMenuClose);
+
+            window.addEventListener("scroll", function () {
                 if (window.scrollY > 70) {
-                    document.getElementById('nav-header').classList.add(CONSTANT.CLASS.fixedTop);
-                    let navbar_height = document.querySelector('.navbar').offsetHeight;
+                    $navHeader.addClass(CONSTANT.CLASS.fixedTop);
+                    let navbar_height = $navBar[0].offsetHeight;
                     document.body.style.paddingTop = navbar_height + 'px';
                 } else {
-                    document.getElementById('nav-header').classList.remove(CONSTANT.CLASS.fixedTop);
+                    $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
                     document.body.style.paddingTop = '0';
                 }
             });
+            // listeners.push(
+            //     $.subscribe('util.customEvents.SCROLLED', function () {
+            //         if (window.scrollY > 70) {
+            //             console.log("scrolled");
+            //             $navHeader.addClass(CONSTANT.CLASS.fixedTop);
+            //             let navbar_height = $navBar[0].offsetHeight;
+            //             document.body.style.paddingTop = navbar_height + 'px';
+            //         } else {
+            //             console.log("scrolled-else");
+            //             $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
+            //             document.body.style.paddingTop = '0';
+            //         }
+            //     })
+            // );
+        }
+
+        /**
+         * Handler to cache dom selector on module load
+         * @function cacheSelectors
+         * @memberof sunCore.comp.header
+         * @private
+         * @return void
+         */
+        function cacheSelectors() {
+
+            $comp = $(CONSTANT.SELECTOR.header);
+            $offCanvasEl = $(CONSTANT.SELECTOR.offCanvasEl);
+            $slNavNode = $(CONSTANT.SELECTOR.slNavNode);
+            $bodyNode = $(CONSTANT.SELECTOR.bodyNode);
+            $navNode = $(CONSTANT.SELECTOR.navNode);
+            $additionalLinks = $(CONSTANT.SELECTOR.additionalLinks);
+            $additionalLinksParent = $(CONSTANT.SELECTOR.additionalLinksParent);
+            $menuOpen = $(CONSTANT.SELECTOR.menuOpen);
+            $menuClose = $(CONSTANT.SELECTOR.menuClose);
+            $navHeader = $(CONSTANT.SELECTOR.navHeader);
+            $navBar = $(CONSTANT.SELECTOR.navBar);
+            $mainContent = $(CONSTANT.SELECTOR.mainContent);
         }
 
         /**
         * Initialize the module.
-        * @function
-        * @memberof sunCore.comp.formDropdown
+        * @function init
+        * @memberof sunCore.comp.header
+        * @private
         * @return void
         */
         function init() {
+            cacheSelectors();
             initializeSelector();
             bindEvent();
             offCanvas();
