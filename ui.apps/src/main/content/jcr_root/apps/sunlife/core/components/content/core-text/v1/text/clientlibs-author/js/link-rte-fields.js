@@ -54,7 +54,7 @@
             this.objToEdit.attributes["data-bs-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
-            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal === '' ?  '' : dataClassIcnVal;
+            this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal;
         },
 
         updateRTELinkValues: function(element, value) {
