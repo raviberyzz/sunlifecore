@@ -1,58 +1,99 @@
 /**
-* Site Notification Component specific JS 
-*/
-(function () {
+ * notification.js
+ * Site Notification related functionality.
+ */
+(function (core) {
+	"use strict";
 
-  /**
-  * Bind event on module
-  */
-  function bindEvent(){
-      const buttons = [].slice.call(document.querySelectorAll('.notification .sl-notification'));
-      buttons.forEach(button => {
-        button.addEventListener('close.bs.alert', e => siteNotificationCloseHandler(e))
-      })
-  }
+	/**
+	 * Notification component
+	 * @namespace notification
+	 * @memberof sunCore.comp
+	 */
+	core.comp.notification = (function ($, util) {
+		const CONSTANT = {
+			SELECTOR: {
+				slNotification: ".sl-notification",
+        		tabbableElements: "select, input, textarea, button, a"
+			},
+			CLASS: {
+        		ButtonClose: "btn-close",
+				multilineActionButton :"multiline-action-button",
+        		notificationslNotification: ".notification .sl-notification"
+			},
+			ATTR: {
+				dataBsDismiss: "data-bs-dismiss",
+				target : "target"
+			}
+		};
 
-  /**
-   * Handles site notification dropdown close event to move keyboard focus to next tabbable element.
-   * @param {Event} e - The event object.
-   */
-  function siteNotificationCloseHandler(e) {
-    let selectableElements = [].slice.call(document.querySelectorAll('select, input, textarea, button, a'));
-    let nextFocusableElementIndex = 0;
-    let skipMultiLineButtonIndex = $(e.target).closest('.sl-notification').find('.multiline-action-button').length ? '2' : '1';
-    
-    selectableElements.find((value, index) => {
-        if(value.getAttribute("data-bs-dismiss") === 'alert' && value.classList.contains("btn-close")){
-          nextFocusableElementIndex = index;
-          return index;
-        }
-    });
+		let $notifications, 
+			$selectableElements, 
+			nextFocusableElementIndex = 0,
+			skipMultiLineButtonIndex = 1,
+			nextElementIndex = 0;
 
-    let nextElementIndex = parseInt(nextFocusableElementIndex) + parseInt(skipMultiLineButtonIndex);
-    selectableElements[nextElementIndex].focus();
-  }
 
-   /**
-    * Check if Notification Exists
-   */
-   function isModuleExist() {
-    if($('.notification .sl-notification').length > 0) {
-        return true;
+    /**
+     * Handles site notification dropdown close event to move keyboard focus to next tabbable element.
+     * @param {Event} e - The event object.
+     */
+    function siteNotificationCloseHandler(e) {
+      selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
+      nextFocusableElementIndex = 0;
+      skipMultiLineButtonIndex = $(e.target).closest(CONSTANT.SELECTOR.slNotification).find(CONSTANT.CLASS.multilineActionButton).length ? 2 : 1;
+
+      selectableElements.find((value, index) => {
+          if(value.getAttribute(CONSTANT.ATTR.dataBsDismiss) === 'alert' && value.classList.contains(CONSTANT.CLASS.ButtonClose)){
+            nextFocusableElementIndex = index;
+            return index;
+          }
+      });
+
+      nextElementIndex = parseInt(nextFocusableElementIndex) + parseInt(skipMultiLineButtonIndex);
+      selectableElements[nextElementIndex].focus();
     }
-    return false;
-  }
 
-  /**
-  * Initialize the module.
-  */
-  function init() {
-      if(isModuleExist()) {
-          bindEvent();
-      }
-  }
+		/**
+		 * Handler to bind event specific for notification
+		 * @function bindEvent
+		 * @memberof sunCore.comp.notification
+		 * @private
+		 */
+		function bindEvent() {
+			$notifications.forEach(alert => {
+				alert.addEventListener(util.customEvents.CLOSE_BS_ALERT, e => siteNotificationCloseHandler(e))
+			});
+		}
 
-  init();
-   
+		/**
+		 * Handler to cache dom selector on module load
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.notification
+		 * @private
+		 */
+		function cacheSelectors() {
+			$notifications = [].slice.call(document.querySelectorAll(CONSTANT.CLASS.notificationslNotification));
+		}
 
-})()
+		/**
+		 * Handler called at notification initialsation
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.notification
+		 * @private
+		 */
+		function init() {
+			cacheSelectors();
+			bindEvent();
+		}
+
+		return {
+			init: init,
+		};
+	})(core.$, core.util);
+
+	/**
+	 * Initialise notification module if given selector is in DOM
+	 */
+	core.util.initialise(core.comp, "notification", ".notification .sl-notification");
+})(sunCore);
