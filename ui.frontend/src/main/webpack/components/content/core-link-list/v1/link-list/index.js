@@ -183,10 +183,10 @@
 		 * @private
 		 */
 		function activeSelector() {
-			var url = PATHNAME;
+			let url = PATHNAME;
 			$linkedListItems.find('li').each(function(){
 				pathName = url.substring(0, url.lastIndexOf("."));
-				var strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				let strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
 				if(pathName === strLink){
 					$(this).addClass(CONSTANT.CLASS.optionSelected);
 				}
