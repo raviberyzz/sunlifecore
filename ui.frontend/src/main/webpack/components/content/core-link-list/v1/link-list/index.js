@@ -31,7 +31,8 @@
 			ATTR: {
 				href: "href",
 				target : "target"
-			}
+			},
+			PATHNAME: window.location.pathname
 		};
 
 		let $slDropdown;
@@ -120,7 +121,7 @@
 		 * @param {HTMLElement} $dropDownElm - The dropdown element.
 		 */
 		function raiseLabel($dropDownElm) {
-			$dropDownElm.find(CONSTANT.SELECTOR,dropdownInputLabel).addClass(CONSTANT.CLASS.raised);
+			$dropDownElm.find(CONSTANT.SELECTOR.dropdownInputLabel).addClass(CONSTANT.CLASS.raised);
 		}
 
 		/**
@@ -172,6 +173,7 @@
 		 */
 		function cacheSelectors() {
 			$slDropdown = $(CONSTANT.SELECTOR.slDropdown);
+			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu)
 		}
 
 		/**
@@ -181,9 +183,9 @@
 		 * @private
 		 */
 		function activeSelector() {
-			var pathName= window.location.pathname;
-			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
-				pathName = pathName.replace(/#.*$/, '').replace(/\?.*$/, '').replace(/\.[^/.]+$/, "");
+			var url = PATHNAME;
+			$linkedListItems.find('li').each(function(){
+				pathName = url.substring(0, url.lastIndexOf("."));
 				var strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
 				if(pathName === strLink){
 					$(this).addClass(CONSTANT.CLASS.optionSelected);
