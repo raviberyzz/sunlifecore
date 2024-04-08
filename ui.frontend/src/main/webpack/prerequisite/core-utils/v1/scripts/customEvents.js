@@ -77,7 +77,10 @@
             IO_IN: 'slcore:in:viewport',
             IO_OUT: 'slcore:out:viewport',
             IO_ELEM_IN: 'slcore:element:in:viewport',
-            IO_ELEM_OUT: 'slcore:element:out:viewport'
+            IO_ELEM_OUT: 'slcore:element:out:viewport',
+
+            //Bootstrap Alert related
+            CLOSE_BS_ALERT: 'close.bs.alert',
         };
 
         return events;
