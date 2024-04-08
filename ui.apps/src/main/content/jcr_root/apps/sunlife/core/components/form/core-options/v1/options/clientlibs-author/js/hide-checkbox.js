@@ -3,21 +3,23 @@
     $(document).on('dialog-ready', function() {
          checkToDisableCheckbox();
          /* Calling method to disable/enable checkbox on dialog load */
-         $('.list-option-listfrom-showhide-target').on('click', '.coral3-Checkbox-input[name*="./selected"]', checkToDisableCheckbox);
-         $('.list-option-listfrom-showhide-target').on('click', 'button[coral-multifield-add]', processOnAddingToMultifield);
-         $(document).on('click', "button[class*='coral3-Multifield-remove']", checkToDisableCheckbox);
+         let $showhideTarget = $('.list-option-listfrom-showhide-target');
+         $showhideTarget.on('click', '.coral3-Checkbox-input[name*="./selected"]', checkToHideCheckbox);
+         $showhideTarget.on('click', 'button[coral-multifield-add]', delayHideCheckbox);
+         $(document).on('click', "button[class*='coral3-Multifield-remove']", checkToHideCheckbox);
     });
-    function processOnAddingToMultifield() {
+    function delayHideCheckbox() {
         // Adding small delay to function to prevent function running before new field is added
          setTimeout(
             function() {
-                checkToDisableCheckbox();
+                checkToHideCheckbox();
             }, 5);
     }
-    function checkToDisableCheckbox() {
+    // This function will pick the appropriate checkboxes to hide and show when any change is made in the multifield like add, remove, check, uncheck
+    function checkToHideCheckbox() {
         if($('.coral3-Select[name*="./type"]').val() == "radio"){
             // Using flag to see if any checkbox is checked
-			var flag = 0;
+			let flag = 0;
 			$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
 	 
 				// This line will run diable script after dialog is fully loaded, prevents, script from running before dialog opens
@@ -26,10 +28,10 @@
 					flag = 1;
 					$(this).parent('coral-checkbox').removeClass("hide");
 					// 
-					var currentFieldName = $(this).is(':checked');
+					let currentFieldName = $(this).is(':checked');
 					$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
-						var otherFieldName = $(this).is(':checked');
-						if (currentFieldName === otherFieldName) {} else {
+						let otherFieldName = $(this).is(':checked');
+						if (currentFieldName != otherFieldName){
 							$(this).parent('coral-checkbox').addClass("hide");
 						}
 					});
