@@ -19,17 +19,29 @@
         };
 
         let $table;
-
+        /**
+		 * Handler to cache dom selector on module load
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.coreTable
+		 * @private
+		 */
         function cacheSelector() {
             $table = $(CONSTANT.SELECTOR.table);
         }
-
+        /**
+		 * Handler to add table class on module load
+		 * @function addTableClass
+		 * @memberof sunCore.comp.coreTable
+		 * @private
+		 */
         function addTableClass() {
             $table?.addClass(CONSTANT.CLASS.table)
         }
         /**
          * Method used to initilize the module
          * @function
+         * @memberof sunCore.comp.coreTable
+		 * @private
          */
         function init() {
             cacheSelector();

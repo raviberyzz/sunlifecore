@@ -1,7 +1,11 @@
 /**
+ * tabs.js
+ * tabs related functionality.
  * This module used to handle the tab click and key scroll event.
- * Tab component scrolling enable and disabled.
+ * Handle scrolling enable and disabled for tab component.
  * Anchor link scrolling on click on anchor link to tab component.
+ * Handler for enable mobile scrolling.
+ * Handler for navigating tabs on left and right arrow key.
  */
 (function (core) {
 	"use strict";
@@ -83,7 +87,7 @@
     * @function navigateTabOnArrowKey
     * @memberof sunCore.comp.coreTabs
     * @private
-    * @param {object} $thisScope - event object
+    * @param {object} $thisScope - scope of the selected element
     */
   function navigateTabOnArrowKey($thisScope) {  
     const $navTab = $thisScope.parents(CONSTANT.SELECTOR.navTab);   
@@ -229,7 +233,7 @@
  /**
    * Function used to disabled scrolling
    * @function mobileEnableScrolling
-   * @memberof sunCore.comp.coTabs
+   * @memberof sunCore.comp.coreTabs
    * @private
    * @param {object} $tabContainer - scope of the selected element
    */
@@ -250,7 +254,7 @@
   /**
    * Function used to scroll to anchor link
    * @function scrollToAnchorLink
-   * @memberof sunCore.comp.coTabs
+   * @memberof sunCore.comp.coreTabs
    * @private
    */
   function scrollToAnchorLink() {
@@ -285,9 +289,11 @@
     );    
   }
   /**
-		 * Method used to initilize the module
-		 * @function
-		 */
+    * Method used to initilize the module
+    * @function
+    * @memberof sunCore.comp.coreTabs
+    * @private
+  */
   function init() {
     const $navButton = $(CONSTANT.SELECTOR.navTab)
     $navButton.attr(CONSTANT.ATTR.activeTab, 0);
