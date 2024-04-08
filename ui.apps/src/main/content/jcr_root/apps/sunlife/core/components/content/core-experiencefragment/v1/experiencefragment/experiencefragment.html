@@ -6,8 +6,10 @@
              data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
         </div>
     </sly>
+    <div class="${fragmentText.spacing}">
     <sly data-sly-test=${data.fragmentPath}
          data-sly-resource="${@path=data.fragmentPath, selectors='content', wcmmode='disabled'}"></sly>
+    </div>
 </sly>
 
 <sly data-sly-template.icon="${@ icon}">

@@ -1,7 +1,4 @@
-@import '@sunlife/ui-styles/base/variables';
-@import 'bootstrap/scss/mixins';
-@import '@sunlife/ui-styles/base/container';
-@import '@sunlife/ui-styles/base/functions';
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
 /* Style overirde for font-awesome icon fixes */ 
@@ -36,6 +33,39 @@
         @include sl-body-small;
         display: flex;
         margin: 0;
+    }
+
+    .grouped-form {
+        form {
+            width: 100%;
+        }
+    }
+
+    .sl-btn.btn {
+        @include media-breakpoint-only(sm) {
+            width: fit-content;
+        }
+    }
+}
+
+/* Style for segmented content block */
+.sl-segmented-blocks {
+
+    .card {
+        form {
+            .sl-dropdown {
+                margin-top: 0;
+                .sl-helper-text {
+                    display: unset;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-only(sm) {
+        .sl-btn.btn {
+            width: fit-content;
+        }
     }
 }
 
@@ -79,6 +109,10 @@
             margin-bottom: 0;
             margin-top: 0.5rem;
           }
+
+          a {
+            display: inline;
+          }
         }
       }
 
@@ -87,7 +121,6 @@
       }
     }
 }
-  
 
 // TODO: Helios-bugfix - Need to remove once helios fix it
 .sl-cards.horizontal .card picture {

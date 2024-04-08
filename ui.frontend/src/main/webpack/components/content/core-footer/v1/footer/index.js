@@ -1,74 +1,155 @@
-(function(){
-    //Change Footer at MD Breakpoint. Mobile transofrms into Accordion, Desktop transforms into Column List
-    function footerAccordion() {
-        const $footerMenuRow = document.querySelectorAll(".sl-footer .footer-menus .footer-menu");
-        const $footerMenuHeader = document.querySelectorAll(".sl-footer .footer-menus .footer-menu-header");
-        const $footerMenuList = document.querySelectorAll(".sl-footer .footer-menus ul.footer-menu-list");
-        const $footerMenuHeaderIsDropdown = $footerMenuHeader[0].classList.contains('footer-menu-header-button') ? true : false;
-        
-        if (window.innerWidth <= 1239 && !$footerMenuHeaderIsDropdown) { 
-            //Transform Elements to Mobile Accordion
-            for (const menuRow of $footerMenuRow) {
-                menuRow.classList.remove("col");
-                menuRow.classList.add("footer-menus-dropdown");
-                menuRow.classList.add("dropdown");
+ /**
+ * index.js
+ * footer related functionality.
+ */
+ (function (core) {
+	"use strict";
+
+	/**
+	 * footer component
+	 * @namespace footer
+	 * @memberof sunCore.comp
+	 */
+	core.comp.footer = (function ($, util) {
+		const CONSTANT = {
+			SELECTOR: {
+				footerMenuRow: ".sl-footer .footer-menus .footer-menu",
+				footerMenuHeader: ".sl-footer .footer-menus .footer-menu-header",
+                footerMenuList: ".sl-footer .footer-menus ul.footer-menu-list",
+				footerMenuHeaderBtnClass: "footer-menu-header-button",
+                footerMenuHeaderClass: "footer-menu-header",
+                footerMenuDropdownClass: "footer-menus-dropdown"
+			},
+			CLASS: {
+				button: "button",
+				dropdown: "dropdown",
+				dropdownMenu: "dropdown-menu",
+				col: "col",
+				h2: "h2",
+				show: "show"
+			},
+			ATTR: {
+				beforeBegin: "beforebegin",
+				ariaExpanded: "aria-expanded",
+				dataBsToggle: "data-bs-toggle"
+			}
+		};
+
+		let $footerMenuRow, 
+            $footerMenuHeader, 
+            $footerMenuList, 
+            $footerMenuHeaderIsDropdown = false,
+			renderDesktop = false,
+			renderMobile = false,
+            listeners = [];
+
+		/**
+		 * Handler to check to render Footer Based on Screensize
+		 * @function checkToRenderFooter
+		 * @memberof sunCore.comp.footer
+		 * @private
+		 */
+        function checkToRenderFooter() {
+            $footerMenuHeader = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuHeader);
+            $footerMenuHeaderIsDropdown = $footerMenuHeader[0].classList.contains(CONSTANT.SELECTOR.footerMenuHeaderBtnClass) ? true : false;
+            let isDesktop = util.matchmedia.L.matches || util.matchmedia.XL.matches;
+			renderDesktop = isDesktop && $footerMenuHeaderIsDropdown;
+			renderMobile = !isDesktop && !$footerMenuHeaderIsDropdown;
+
+            if ( renderDesktop || renderMobile) {
+                renderFooterLayout();
             }
-            
+       }
+
+        /**
+		 * Handler to render footer in Desktop
+		 * @function renderFooterLayout
+		 * @memberof sunCore.comp.footer
+		 * @private
+		 */
+		function renderFooterLayout() {
+
+            for (const menuRow of $footerMenuRow) {
+				if (renderDesktop) {
+					menuRow.classList.remove(CONSTANT.SELECTOR.footerMenuDropdownClass, CONSTANT.CLASS.dropdown);
+					menuRow.classList.add(CONSTANT.CLASS.col);
+				} else if (renderMobile) {
+					menuRow.classList.remove(CONSTANT.CLASS.col);
+					menuRow.classList.add(CONSTANT.SELECTOR.footerMenuDropdownClass, CONSTANT.CLASS.dropdown);
+				}
+            }
+
             for (const menuHeader of $footerMenuHeader) {
-                let mobileFooterMenuHeader = document.createElement('button');
-                mobileFooterMenuHeader.classList.add("footer-menu-header");
-                mobileFooterMenuHeader.classList.add("footer-menu-header-button");
-                mobileFooterMenuHeader.setAttribute("aria-expanded", "false");
-                mobileFooterMenuHeader.setAttribute("data-bs-toggle", "dropdown");
-                mobileFooterMenuHeader.innerHTML = menuHeader.innerHTML;
-                menuHeader.insertAdjacentElement("beforebegin", mobileFooterMenuHeader);
-                menuHeader.remove();
+				let layoutFooterMenuHeader = document.createElement( renderDesktop ? CONSTANT.CLASS.h2 : CONSTANT.CLASS.button);
+				layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass);
+				
+				if (renderMobile) {
+					layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderBtnClass);
+					layoutFooterMenuHeader.setAttribute(CONSTANT.ATTR.ariaExpanded, "false");
+					layoutFooterMenuHeader.setAttribute(CONSTANT.ATTR.dataBsToggle, CONSTANT.CLASS.dropdown);
+				}
+				
+				layoutFooterMenuHeader.innerHTML = menuHeader.innerHTML;
+				menuHeader.insertAdjacentElement(CONSTANT.ATTR.beforeBegin, layoutFooterMenuHeader);
+				menuHeader.remove();
             }
 
             for (const menuList of $footerMenuList) {
-                menuList.classList.remove("show");
-                menuList.classList.add("dropdown-menu");
-                
-            }
-
-        } else if (window.innerWidth >= 1240 && $footerMenuHeaderIsDropdown) {
-            //Transform Elements to Desktop Heading and List
-            for (const menuRow of $footerMenuRow) {
-                menuRow.classList.remove("footer-menus-dropdown");
-                menuRow.classList.remove("dropdown");
-                menuRow.classList.add("col");
-            }
-
-            for (const menuHeader of $footerMenuHeader) {
-                let desktopFooterMenuHeader = document.createElement('div');
-                desktopFooterMenuHeader.classList.add("footer-menu-header");
-                desktopFooterMenuHeader.innerHTML = menuHeader.innerHTML;
-                menuHeader.insertAdjacentElement("beforebegin", desktopFooterMenuHeader);
-                menuHeader.remove();
-            }
-            
-            for (const menuList of $footerMenuList) {
-                menuList.classList.remove("show");
-                menuList.classList.remove("dropdown-menu");
+				menuList.classList.remove(CONSTANT.CLASS.show);
+				
+				if (renderDesktop) {
+					menuList.classList.remove(CONSTANT.CLASS.dropdownMenu);
+				} else if (renderMobile) {
+					menuList.classList.add(CONSTANT.CLASS.dropdownMenu);
+				}
 
             }
+		}
 
-        }
-    }
+        /**
+         * Handler to bind event specific for footer
+         * @function bindEvent
+         * @memberof sunCore.comp.footer
+         * @private
+         */
+		function bindEvent() {
+			listeners.push(
+				$.subscribe(util.customEvents.RESIZED, checkToRenderFooter)
+			);
+		}
 
-    function isModuleExist() {
-        if($('.sl-footer .footer-menus').length <= 0) {
-            return false;
-        }
-        return true;
-    }
- 
-    function init() {
-        if(isModuleExist()) {
-            footerAccordion();
-        }
-    }
- 
-    window.addEventListener("DOMContentLoaded", init);
-    window.addEventListener("resize", init);
-})()
+		 /**
+		 * Handler to cache dom selector on module load
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.footer
+		 * @private
+		 */
+		function cacheSelectors() {
+            $footerMenuRow = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuRow);
+            $footerMenuList = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuList);
+            $footerMenuHeader = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuHeader);
+		}
+
+		/**
+		 * Handler called at footer initialsation
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.footer
+		 * @private
+		 */
+		function init() {
+			cacheSelectors();
+            bindEvent();
+			checkToRenderFooter();
+		}
+
+		return {
+			init: init,
+		};
+	})(core.$, core.util);
+
+	/**
+	 * Initialise left-nav module if given selector is in DOM
+	 */
+	core.util.initialise(core.comp, "footer", '.sl-footer .footer-menus .footer-menu-header');
+})(sunCore);
+

@@ -29,9 +29,6 @@ data-sly-call="${search.search @ headerModel=headerModel}"></sly>
                     <sly data-sly-test="${!isLogoHidden}" data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
                     </sly>
                </sly>
-               <!-- mobile search icon -->
-               <sly data-sly-use.search="templates/search-mobile.html"
-               data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
                <div id="sl-header-offcanvas" class="sl-header-offcanvas offcanvas offcanvas-start"
                     aria-labelledby="offcanvas-label">

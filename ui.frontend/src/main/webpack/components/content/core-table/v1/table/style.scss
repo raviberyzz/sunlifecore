@@ -1,5 +1,5 @@
-@import '@sunlife/ui-styles/design-system';
-@import "../../../../../prerequisite/base/styles/core.scss";
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
 @mixin table-column {
     font-size: 1rem;
     background: var(--brand-secondary-100);
@@ -9,7 +9,7 @@
     border-style: hidden;
 }
 .sl-table {
-    @include media-breakpoint-down(md) {             
+    @include media-breakpoint-down(sm) {             
         overflow: auto;
         td, th {
             white-space: nowrap;

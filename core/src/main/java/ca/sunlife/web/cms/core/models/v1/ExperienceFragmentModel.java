@@ -18,13 +18,7 @@
  
  import ca.sunlife.web.cms.core.services.SiteConfigService;
  import lombok.Getter;
- 
- /**
-  * The Class ExperienceFragmentModel.
-  *
-  * @author TCS
-  * @version 1.0
-  */
+
 
  @Getter
  @ Model (adaptables = { SlingHttpServletRequest.class,
@@ -49,8 +43,11 @@
    /** The current page. */
    @ScriptVariable
    private Page currentPage;
- 
-   /**
+
+   @ValueMapValue
+   private String spacing;
+
+     /**
     * Gets the fragment path.
     *
     * @return the fragment path
