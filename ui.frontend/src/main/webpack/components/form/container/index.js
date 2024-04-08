@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	 $(".cmp-form-button").click(function(){
-       	$("#cmp-alertnate-phone-number").removeAttr('required');
-    	$("#cmp-alertnate-email").removeAttr('required');
+       	$("#cmp-alertnate-form-phone-number").removeAttr('required');
+    	$("#cmp-alertnate-form-email").removeAttr('required');
 	});
 
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');

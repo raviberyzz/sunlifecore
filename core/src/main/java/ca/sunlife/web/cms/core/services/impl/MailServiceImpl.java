@@ -133,9 +133,11 @@ public class MailServiceImpl implements MailService {
                 resourceResolver.close();
 
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
+                LOG.debug("successResponse----- :: {}", successResponse);
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
+                LOG.debug("------------------------------------------------------------------------------------------------------------ ::");
+                LOG.debug("errorResponse----- :: {}", errorResponse);
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
-                     LOG.debug("isClient......"+isClient);
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -326,7 +328,8 @@ public class MailServiceImpl implements MailService {
                 }
             }
         } catch (RepositoryException | JSONException | IOException e) {
-            LOG.error("Exception occurred in reading file :: Exception {}", e.getMessage(), e);
+            LOG.error("Exception occurred in reading file :: filePath {}",  filePath);
+            LOG.error("Exception occurred in reading file :: Exception {}", e.getMessage(), e, filePath);
         }
         return jsonObj;
     }
@@ -522,9 +525,11 @@ public class MailServiceImpl implements MailService {
     }
 
     private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
-        final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-phone-number");
-        final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-email");
-        LOG.debug("HONEYPOT FIELDS--------->>>>>> ",null == honeyPotFieldPhone && null == honeyPotFieldEmail);
-        return (null == honeyPotFieldPhone && null == honeyPotFieldEmail);
+        final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-form-phone-number");
+        final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-form-email");
+        if((null == honeyPotFieldPhone && null == honeyPotFieldEmail) || (honeyPotFieldPhone.length() < 1 && honeyPotFieldEmail.length() < 1) ){
+            return true;
+        }
+        return false;
     }
 }
