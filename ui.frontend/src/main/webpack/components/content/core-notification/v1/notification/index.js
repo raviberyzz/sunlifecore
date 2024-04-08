@@ -39,11 +39,11 @@
      * @param {Event} e - The event object.
      */
     function siteNotificationCloseHandler(e) {
-      selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
+      $selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
       nextFocusableElementIndex = 0;
       skipMultiLineButtonIndex = $(e.target).closest(CONSTANT.SELECTOR.slNotification).find(CONSTANT.CLASS.multilineActionButton).length ? 2 : 1;
 
-      selectableElements.find((value, index) => {
+      $selectableElements.find((value, index) => {
           if(value.getAttribute(CONSTANT.ATTR.dataBsDismiss) === 'alert' && value.classList.contains(CONSTANT.CLASS.ButtonClose)){
             nextFocusableElementIndex = index;
             return index;
@@ -51,7 +51,7 @@
       });
 
       nextElementIndex = parseInt(nextFocusableElementIndex) + parseInt(skipMultiLineButtonIndex);
-      selectableElements[nextElementIndex].focus();
+      $selectableElements[nextElementIndex].focus();
     }
 
 		/**

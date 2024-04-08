@@ -6,3 +6,4 @@ import './scripts/throttle.js';
 import './scripts/matchmedia.js';
 import './scripts/resized.js';
 import './scripts/scrollTo.js';
+import './scripts/externals/vidyard.js';
