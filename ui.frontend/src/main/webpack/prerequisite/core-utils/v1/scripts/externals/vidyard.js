@@ -2,10 +2,16 @@
 
 /**
  * externals/vidyard.js
- * @fileOverview utility for legacy vidyard Anayltics functionality
+ * @fileOverview Provides utility for legacy vidyard Anayltics functionality
  */
 (function ($, util) {
+  'use strict';
 
+    /**
+     * Vidyard Legacy Function to check to run Embed Component Anayltics
+     * @function vidyardRunAnalytics
+     * @memberof sunCore.util
+     */
        util.vidyardRunAnalytics = function () {
             if (
                 navigator.userAgent.indexOf("MSIE") !== -1 ||
@@ -31,8 +37,10 @@
         };
 
     /**
-     * Vidyard Embed Functionality
-     * @function
+     * Vidyard Legacy Function to run Embed Component Anayltics Tracking
+     * @memberof sunCore.util
+     * @function vidyardEmbedAnalytics
+     * @param {vidYardAPI} $vyApi Vidyard Api
      */
     util.vidyardEmbedAnalytics = function (vyApi) {
             !(function (t) {

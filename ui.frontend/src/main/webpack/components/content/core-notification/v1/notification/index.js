@@ -34,10 +34,13 @@
 			nextElementIndex = 0;
 
 
-    /**
-     * Handles site notification dropdown close event to move keyboard focus to next tabbable element.
-     * @param {Event} e - The event object.
-     */
+	/**
+	 * Handles site notification dropdown close event to move keyboard focus to next tabbable element.
+	 * @function linkListInteractionHandler
+	 * @memberof sunCore.comp.notification
+	 * @private
+	 * @param {Event} e - The event object.
+	 */
     function siteNotificationCloseHandler(e) {
       $selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
       nextFocusableElementIndex = 0;
