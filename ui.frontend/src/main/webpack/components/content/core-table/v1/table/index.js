@@ -41,7 +41,7 @@
          * Method used to initilize the module
          * @function
          * @memberof sunCore.comp.coreTable
-		 * @private
+		 * @public
          */
         function init() {
             cacheSelector();

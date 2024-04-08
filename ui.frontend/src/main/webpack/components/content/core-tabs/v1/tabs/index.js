@@ -252,6 +252,16 @@
     })
   }
   /**
+		 * It returns the height of the header on the top
+		 * @function 
+		 * @memberof sunCore.comp.coreTabs
+		 * @private
+		 * @return {number} height of the sticky header on top
+    */
+  function getHeaderOffset() {
+    return $(CONSTANT.SELECTOR.header).height();
+  }
+  /**
    * Function used to scroll to anchor link
    * @function scrollToAnchorLink
    * @memberof sunCore.comp.coreTabs
@@ -259,10 +269,14 @@
    */
   function scrollToAnchorLink() {
     const id = $(this).attr("href");
-    if($(id).length > 0){
-      const anchorTop = $(id).offset().top;
-      const headerHeight = $(CONSTANT.SELECTOR.header).height()+20;
-      $("html, body").scrollTo(0, anchorTop-headerHeight);
+    const $currentHrefElem = $(id);
+    if($currentHrefElem.length > 0){
+      let offsetTop = getHeaderOffset() + 20;
+			core.util.scrollTo.element(
+				$currentHrefElem,
+				{ duration: 100 },
+				offsetTop
+			);
     }
   }
   
@@ -292,7 +306,7 @@
     * Method used to initilize the module
     * @function
     * @memberof sunCore.comp.coreTabs
-    * @private
+    * @public
   */
   function init() {
     const $navButton = $(CONSTANT.SELECTOR.navTab)
