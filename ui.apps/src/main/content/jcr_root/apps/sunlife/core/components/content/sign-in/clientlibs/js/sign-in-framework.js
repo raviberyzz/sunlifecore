@@ -157,7 +157,8 @@ $(document).ready(function () {
         if (action == undefined || action == "") {
           console.log("transmit");
           //mfaModalTrigger();
-          onSignInClick();
+          //onSignInClick();
+          new mfaSignIn.SignIn();
           event.preventDefault();
         } else {
           console.log("siteminder");
