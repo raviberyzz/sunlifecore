@@ -26,12 +26,13 @@
 			},
 			CLASS: {
 				optionSelected :"option-selected",
-				raised: "raised"	
+				raised: "raised"
 			},
 			ATTR: {
 				href: "href",
 				target : "target"
-			}
+			},
+			PATHNAME: window.location.pathname
 		};
 
 		let $slDropdown;
@@ -120,7 +121,7 @@
 		 * @param {HTMLElement} $dropDownElm - The dropdown element.
 		 */
 		function raiseLabel($dropDownElm) {
-			$dropDownElm.find(CONSTANT.SELECTOR,dropdownInputLabel).addClass(CONSTANT.CLASS.raised);
+			$dropDownElm.find(CONSTANT.SELECTOR.dropdownInputLabel).addClass(CONSTANT.CLASS.raised);
 		}
 
 		/**
@@ -172,7 +173,25 @@
 		 */
 		function cacheSelectors() {
 			$slDropdown = $(CONSTANT.SELECTOR.slDropdown);
+			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu)
 		}
+
+		/**
+		 * Handler to show navigation active state
+		 * @function activeSelector
+		 * @memberof sunCore.comp.linkList
+		 * @private
+		 */
+		function activeSelector() {
+			let url = PATHNAME;
+			$linkedListItems.find('li').each(function(){
+				pathName = url.substring(0, url.lastIndexOf("."));
+				let strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				if(pathName === strLink){
+					$(this).addClass(CONSTANT.CLASS.optionSelected);
+				}
+			});
+	    }
 
 		/**
 		 * Handler called at linkList initialsation
@@ -183,7 +202,9 @@
 		function init() {
 			cacheSelectors();
 			bindEvent();
+			activeSelector();
 		}
+
 
 		return {
 			init: init,
