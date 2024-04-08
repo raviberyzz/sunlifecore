@@ -160,6 +160,7 @@
 
             listeners.push(
             	$.subscribe(util.customEvents.RESIZED, function () {
+                    console.log("resized");
                     initializeSelector();
                     offCanvas();
                 })
@@ -168,30 +169,30 @@
             $menuOpen.click(callMenuOpen);
             $menuClose.click(callMenuClose);
 
-            window.addEventListener("scroll", function () {
-                if (window.scrollY > 70) {
-                    $navHeader.addClass(CONSTANT.CLASS.fixedTop);
-                    let navbar_height = $navBar[0].offsetHeight;
-                    document.body.style.paddingTop = navbar_height + 'px';
-                } else {
-                    $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
-                    document.body.style.paddingTop = '0';
-                }
-            });
-            // listeners.push(
-            //     $.subscribe('util.customEvents.SCROLLED', function () {
-            //         if (window.scrollY > 70) {
-            //             console.log("scrolled");
-            //             $navHeader.addClass(CONSTANT.CLASS.fixedTop);
-            //             let navbar_height = $navBar[0].offsetHeight;
-            //             document.body.style.paddingTop = navbar_height + 'px';
-            //         } else {
-            //             console.log("scrolled-else");
-            //             $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
-            //             document.body.style.paddingTop = '0';
-            //         }
-            //     })
-            // );
+            // window.addEventListener("scroll", function () {
+            //     if (window.scrollY > 70) {
+            //         $navHeader.addClass(CONSTANT.CLASS.fixedTop);
+            //         let navbar_height = $navBar[0].offsetHeight;
+            //         document.body.style.paddingTop = navbar_height + 'px';
+            //     } else {
+            //         $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
+            //         document.body.style.paddingTop = '0';
+            //     }
+            // });
+            listeners.push(
+                $.subscribe(util.customEvents.SCROLLED, function () {
+                    if (window.scrollY > 70) {
+                        console.log("scrolled");
+                        $navHeader.addClass(CONSTANT.CLASS.fixedTop);
+                        let navbar_height = $navBar[0].offsetHeight;
+                        document.body.style.paddingTop = navbar_height + 'px';
+                    } else {
+                        console.log("scrolled-else");
+                        $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
+                        document.body.style.paddingTop = '0';
+                    }
+                })
+            );
         }
 
         /**
