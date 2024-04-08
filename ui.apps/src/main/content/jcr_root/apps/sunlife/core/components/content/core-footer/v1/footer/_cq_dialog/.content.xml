@@ -37,6 +37,39 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-dialog-column-checkbox-showhide-target=".togglecolumnfield "/>
                                     </displayTopSection>
+                                    <topHeadingElement
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:orderBefore="text"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Heading Element"
+                                        name="./topHeadingElement"
+                                        forceIgnoreFreshness="{Boolean}true"
+                                        value="h2"												
+                                        defaultValue="h2">
+                                        <items jcr:primaryType="nt:unstructured">
+                                                <h2
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="H2"
+                                                value="h2"/>
+                                                <h3
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H3"
+                                                value="h3"/>
+                                                <h4
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H4"
+                                                value="h4"/>
+                                                <h5
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H5"
+                                                value="h5"/>	
+                                                <h6
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H6"
+                                                value="h6"/>
+                                        </items>
+                                    </topHeadingElement>	
                                     <topLinks
                                             granite:class="togglecolumnfield hide "
                                             jcr:primaryType="nt:unstructured"
@@ -143,6 +176,39 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Title"
                                             name="./title"/>
+                                <middleHeadingElement
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:orderBefore="text"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Heading Element"
+                                        name="./middleHeadingElement"
+                                        forceIgnoreFreshness="{Boolean}true"
+                                        value="h3"												
+                                        defaultValue="h3">
+                                        <items jcr:primaryType="nt:unstructured">
+                                                <h2
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H2"
+                                                value="h2"/>
+                                                <h3
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="H3"
+                                                value="h3"/>
+                                                <h4
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H4"
+                                                value="h4"/>
+                                                <h5
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H5"
+                                                value="h5"/>	
+                                                <h6
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H6"
+                                                value="h6"/>
+                                        </items>
+                                    </middleHeadingElement>
                                     <richText
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="cq/gui/components/authoring/dialog/richtext"

@@ -26,4 +26,8 @@ public interface Footer {
     List<HashMap<String, Object>> getBottomLinks();
 
     List<HashMap<String, Object>> getSocialMedia();
+
+    String getTopHeadingElement();
+    
+    String getMiddleHeadingElement();
 }
