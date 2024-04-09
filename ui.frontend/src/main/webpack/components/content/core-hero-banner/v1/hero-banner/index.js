@@ -45,7 +45,7 @@
 		 * Handler to be called for heroBanner initialsation
 		 * @function init
 		 * @memberof sunCore.comp.heroBanner
-		 * @private
+		 * @public
 		 */
 		function init() {
 			//set scrollbar width in custom property
