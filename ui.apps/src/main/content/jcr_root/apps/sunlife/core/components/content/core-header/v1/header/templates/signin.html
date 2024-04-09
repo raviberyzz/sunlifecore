@@ -4,7 +4,7 @@
             <li class="nav-item" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=signinLinks.getLinkURL}" data-section="header-sign-in">
                 <a id="signinbutton" href="${utilityListParsing.navPath}" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}">
                     <div class="label-container">              
-                        <span class="fak ${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
+                        <span class="fak fa-${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
                         <span
                             class="dropdown-label d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${signinLinks.getDesktopLinkTitle}
                         </span> 
