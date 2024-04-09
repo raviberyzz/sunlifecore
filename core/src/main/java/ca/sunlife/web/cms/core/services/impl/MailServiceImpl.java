@@ -131,12 +131,8 @@ public class MailServiceImpl implements MailService {
                     errorPageUrl = getMapValue(mailContent, "error-page-url");
                 }
                 resourceResolver.close();
-
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
-                LOG.debug("successResponse----- :: {}", successResponse);
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-                LOG.debug("------------------------------------------------------------------------------------------------------------ ::");
-                LOG.debug("errorResponse----- :: {}", errorResponse);
                 if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
