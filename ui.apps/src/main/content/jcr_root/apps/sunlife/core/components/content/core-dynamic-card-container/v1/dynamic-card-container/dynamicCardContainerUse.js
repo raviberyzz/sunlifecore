@@ -2,7 +2,7 @@
 use(function () {
     var containerModel = this.containerModel;
     var cardType = this.cardType;
-    var containerClasses = [];
+    var containerClasses = ['sl-dynamic-card-container'];
 
     /* Update dynamic wrapper class depending upon current card type and selected card specific options */
     switch (cardType) {
