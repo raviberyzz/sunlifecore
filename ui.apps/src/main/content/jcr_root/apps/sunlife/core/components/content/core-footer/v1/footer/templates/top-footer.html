@@ -2,8 +2,8 @@
     <div class="footer-menus-container">
         <hr class="sl-divider hr" aria-hidden="true" />
         <div class="footer-menus row" data-sly-list="${topFooter.topLinks}">
-            <div class="footer-menu col">
-                <h2 class="footer-menu-header">
+            <div class="footer-menu col" data-heading="${topFooter.topHeadingElement}">
+                <h2 data-sly-element="${topFooter.topHeadingElement}"  class="footer-menu-header">
                     <span class="menu-content">${item.heading}</span>
                     <span class="sl-icon fal fa-chevron-down d-lg-none"></span>
                 </h2>

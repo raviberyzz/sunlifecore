@@ -31,13 +31,15 @@
 			ATTR: {
 				beforeBegin: "beforebegin",
 				ariaExpanded: "aria-expanded",
-				dataBsToggle: "data-bs-toggle"
+				dataBsToggle: "data-bs-toggle",
+                dataHeading: "data-heading"
 			}
 		};
 
 		let $footerMenuRow, 
             $footerMenuHeader, 
-            $footerMenuList, 
+            $footerMenuList,
+			$footerMenuHeadingElement, 
             $footerMenuHeaderIsDropdown = false,
 			renderDesktop = false,
 			renderMobile = false,
@@ -80,7 +82,7 @@
             }
 
             for (const menuHeader of $footerMenuHeader) {
-				let layoutFooterMenuHeader = document.createElement( renderDesktop ? CONSTANT.CLASS.h2 : CONSTANT.CLASS.button);
+				let layoutFooterMenuHeader = document.createElement( renderDesktop ? $footerMenuHeadingElement : CONSTANT.CLASS.button);
 				layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass);
 				
 				if (renderMobile) {
@@ -128,6 +130,7 @@
             $footerMenuRow = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuRow);
             $footerMenuList = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuList);
             $footerMenuHeader = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuHeader);
+            $footerMenuHeadingElement = $(CONSTANT.SELECTOR.footerMenuRow).attr(CONSTANT.ATTR.dataHeading) ? $(CONSTANT.SELECTOR.footerMenuRow).attr(CONSTANT.ATTR.dataHeading) : CONSTANT.CLASS.h2;
 		}
 
 		/**
