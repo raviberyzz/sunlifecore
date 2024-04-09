@@ -10,10 +10,10 @@
 
 	/**
     * Accordion component
-    * @namespace coreAccordion
+    * @namespace accordion
     * @memberof sunCore.comp
 	 */
-  core.comp.coreAccordion = (function ($, util) {
+  core.comp.accordion = (function ($, util) {
   const CONSTANT = {
     SELECTOR: {
       accordionContainer: '.sl-accordion',
@@ -45,10 +45,10 @@
   /**
    * Method to handle the chevron icon toggle functionality
    * @function chevronHandler
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
-   * @param {object} $elem - event object
-   * @param {boolean} status - boolean status value to check if up and down triggered
+   * @param {object} $elem - scope of selected element
+   * @param {boolean} status - boolean status value to check if up and down is true or false
   */
   function chevronHandler($elem, status) {
     let $chevronUP = $elem.find(CONSTANT.SELECTOR.upArrow),
@@ -64,7 +64,7 @@
   /**
    * Method to handle the escape key event to close the accordion on escape
    * @function accordionHeaderKeyEventHandler
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
    * @param {object} e - event object
   */
@@ -76,9 +76,9 @@
   /**
    * Method to update the height of accordion item to apply smooth csss animation. 
    * @function updateAccordionItemHeight
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
-   * @param {object} $accordionContentElement - get accordion content element
+   * @param {object} $accordionContentElement - scope each accordion content element
   */
   function updateAccordionItemHeight($accordionContentElement){
     setTimeout(function(){
@@ -88,9 +88,9 @@
   /**
    * Function used to reset the accordion if the single Selection is true in authoring
    * @function resetAccordionForSingleSelection
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
-   * @param {object} $accordionItemHeader - get accordion header element
+   * @param {object} $accordionItemHeader - scope of accordion header element
    */
   function resetAccordionForSingleSelection($accordionItemHeader) {
     const $singleExpansion = $accordionItemHeader.attr(CONSTANT.ATTR.dataSingleExpansion);
@@ -105,11 +105,10 @@
   /**
    * Function used to handle the click event of accordion.
    * @function accordionHeaderClickEventHandler
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
-   * @param {object} e - Event object
    */
-  function accordionHeaderClickEventHandler(e) {
+  function accordionHeaderClickEventHandler() {
     const $accordionItemHeader = $(this);
     const $accordionContentElement = $accordionItemHeader.siblings(CONSTANT.SELECTOR.accordionCollapse)
     if ($accordionContentElement.hasClass(CONSTANT.CLASS.expanded)) {
@@ -126,9 +125,9 @@
   /**
    * Function used to handle the collapse accordion functionality
    * @function toggleAccordionCollapse
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
-   * @param {object} $accordionHeader - get accordion header element
+   * @param {object} $accordionHeader - scope of accordion header element
    */
   function toggleAccordionCollapse($accordionHeader) {
     $accordionHeader.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.hide).removeClass(CONSTANT.CLASS.show);
@@ -139,7 +138,7 @@
   /**
    * Functions used to select/toggle the default selected accordion items in authoring.
    * @function accordionDefaultSelection
-   * @memberof sunCore.comp.coreAccordion
+   * @memberof sunCore.comp.accordion
    * @private
    */
   function accordionDefaultSelection() {    
@@ -153,9 +152,9 @@
     })
   }  
   /**
-		 * Handler to bind event specific for coreAccordion
+		 * Handler to bind event specific for accordion
 		 * @function bindEvent
-		 * @memberof sunCore.comp.coreAccordion
+		 * @memberof sunCore.comp.accordion
 		 * @private
   */
   function bindEvent() {
@@ -172,8 +171,8 @@
   }
   /**
     * Method used to initilize the module
-    * @function
-    * @memberof sunCore.comp.coreAccordion
+    * @function init
+    * @memberof sunCore.comp.accordion
     * @public
   */
   function init() {
@@ -186,7 +185,7 @@
 })(core.$, core.util);
 
 /**
-* Initialise coreAccordion module if given selector is in DOM
+* Initialise accordion module if given selector is in DOM
 */
-core.util.initialise(core.comp, "coreAccordion", ".sl-accordion .accordion-header");
+core.util.initialise(core.comp, "accordion", ".sl-accordion .accordion-header");
 })(sunCore);
