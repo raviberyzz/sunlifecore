@@ -145,7 +145,7 @@
               &.dropdown-item {
                 --bs-dropdown-link-active-bg: transparent; // $dropdown-link-active-bg
                 @include sl-body-small;
-                white-space: break-spaces;
+                white-space: normal;
                 padding: 0;
                 margin-top: 0.75rem;
                 color: var(--grey-600);
@@ -213,6 +213,10 @@
     margin: -0.125rem 0 0 0;
     display: block;
   }
+}
+#sl-dropdown-language-utility .dropdown-menu .dropdown-menu-title,
+#sl-dropdown-language-utility .dropdown-menu .dropdown-item {
+    white-space: normal;
 }
 .sl-divider{
 .hr {

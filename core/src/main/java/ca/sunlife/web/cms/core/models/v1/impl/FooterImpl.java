@@ -52,6 +52,12 @@ public class FooterImpl implements Footer {
     @ValueMapValue
     private String spacing;
 
+    @ValueMapValue
+    private String topHeadingElement;
+
+    @ValueMapValue
+    private String middleHeadingElement;
+
     @ChildResource
     private Resource topLinks;
 
@@ -101,6 +107,16 @@ public class FooterImpl implements Footer {
     @Override
     public String getSpacing() {
         return spacing;
+    }
+
+    @Override
+    public String getTopHeadingElement() {
+        return topHeadingElement;
+    }
+
+    @Override
+    public String getMiddleHeadingElement() {
+        return middleHeadingElement;
     }
 
     @Override
