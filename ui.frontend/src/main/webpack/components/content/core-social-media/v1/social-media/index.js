@@ -5,11 +5,11 @@
 (function (core) {
 	"use strict";
 
-	/**
-	 * socialMedia component
-	 * @namespace socialMedia
-	 * @memberof sunCore.comp
-	 */
+  /**
+  * socialMedia component
+  * @namespace socialMedia
+  * @memberof sunCore.comp
+  */
   core.comp.socialMedia = (function ($, util) {
     const CONSTANT = {
       SELECTOR: {
@@ -41,22 +41,22 @@
       EVTYPE: 'other',
       EVACTION: 'clk'
     };    
-  /**
-   * Method to to handle the share option on click of share link
-   * @function handleShareOptions
-   * @memberof sunCore.comp.socialMedia
-   * @private
-   */
+    /**
+    * Method to to handle the share option on click of share link
+    * @function handleShareOptions
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function handleShareOptions() {
       const platform = $(this).data(CONSTANT.ATTR.platform);
       shareOptionEvent(platform);
     }
-  /**
-   * Method to to handle the share option for linkedin
-   * @function shareOptionLinkedIn
-   * @memberof sunCore.comp.socialMedia
-   * @private
-   */
+    /**
+    * Method to to handle the share option for linkedin
+    * @function shareOptionLinkedIn
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function shareOptionLinkedIn() {
       var d = document,
         l = d.location,
@@ -82,13 +82,13 @@
         a();
         utag.link({ev_type: CONSTANT.EVTYPE, ev_action: CONSTANT.EVACTION, ev_title: CONSTANT.EVTITLE.shareLinkedin });
       }	
-  }
-  /**
-   * Method to to handle the share option for facebook
-   * @function shareOptionFB
-   * @memberof sunCore.comp.socialMedia
-   * @private
-   */
+    }
+    /**
+    * Method to to handle the share option for facebook
+    * @function shareOptionFB
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function shareOptionFB() {
       var d = document,
         f = CONSTANT.URL.facebook,
@@ -121,12 +121,12 @@
       }
       return true;
     }
-  /**
-   * Method to to handle the share option for twitter
-   * @function shareOptionTwitter
-   * @memberof sunCore.comp.socialMedia
-   * @private
-   */
+    /**
+    * Method to to handle the share option for twitter
+    * @function shareOptionTwitter
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function shareOptionTwitter() {
       window.twttr = window.twttr || {};
       var D = 550,
@@ -159,12 +159,12 @@
       );
       utag.link({ev_type: CONSTANT.EVTYPE, ev_action: CONSTANT.EVACTION, ev_title: CONSTANT.EVTITLE.shareTwitter });
     }
-  /**
-   * Method to to handle the share option event for all the social media links
-   * @function shareOptionEvent
-   * @memberof sunCore.comp.socialMedia
-   * @private
-   */
+    /**
+    * Method to to handle the share option event for all the social media links
+    * @function shareOptionEvent
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function shareOptionEvent(option) {
       switch (option) {
         case CONSTANT.TYPE.facebook:
@@ -181,11 +181,11 @@
       }
     }
     /**
-		 * Handler to bind event specific for socialMedia
-		 * @function bindEvent
-		 * @memberof sunCore.comp.socialMedia
-		 * @private
-		 */
+    * Handler to bind event specific for socialMedia
+    * @function bindEvent
+    * @memberof sunCore.comp.socialMedia
+    * @private
+    */
     function bindEvent() {
       $(document).on(
         util.customEvents.INTERACTION,
@@ -194,10 +194,10 @@
       );
     }
     /**
-       * Handler called at social media component initialsation
-       * @function init
-       * @memberof sunCore.comp.socialMedia
-       * @public
+    * Handler called at social media component initialsation
+    * @function init
+    * @memberof sunCore.comp.socialMedia
+    * @public
     */
     function init() {
       bindEvent();
@@ -208,7 +208,7 @@
   };
 })(core.$, core.util);
 
-/**
+/** 
 * Initialise socialMedia module if given selector is in DOM
 */
 core.util.initialise(core.comp, "socialMedia", ".share-listitem_link");
