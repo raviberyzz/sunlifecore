@@ -149,6 +149,25 @@
             HEADERSELECTOR.$utilityListsOffCanvas = $comp.find(CONSTANT.SELECTOR.slUtilityBarOffCanvas);
         }
 
+        
+        /**
+         * Handle the sticky header style on scroll event.
+         * @function handleScrollStyles
+         * @memberof sunCore.comp.header
+         * @private
+         * @return void
+         */
+        function handleScrollStyles() {
+            if (window.scrollY > 70) {
+                $navHeader.addClass(CONSTANT.CLASS.fixedTop);
+                let navbar_height = $navBar[0].offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            } else {
+                $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
+                document.body.style.paddingTop = '0';
+            }
+        }
+
         /**
         * Method to bind events for module
         * @function bindEvent
@@ -159,7 +178,7 @@
         function bindEvent() {
 
             listeners.push(
-            	$.subscribe(util.customEvents.RESIZED, function () {
+                $.subscribe(util.customEvents.RESIZED, function () {
                     initializeSelector();
                     offCanvas();
                 })
@@ -168,18 +187,16 @@
             $menuOpen.click(callMenuOpen);
             $menuClose.click(callMenuClose);
 
+            util.throttle(() => {
+                handleScroll();
+            }, 250)()
+
             listeners.push(
-                $.subscribe(util.customEvents.SCROLL, function () {
-                    if (window.scrollY > 70) {
-                        $navHeader.addClass(CONSTANT.CLASS.fixedTop);
-                        let navbar_height = $navBar[0].offsetHeight;
-                        document.body.style.paddingTop = navbar_height + 'px';
-                    } else {
-                        $navHeader.removeClass(CONSTANT.CLASS.fixedTop);
-                        document.body.style.paddingTop = '0';
-                    }
-                })
+                $.subscribe(util.customEvents.SCROLL, util.throttle(() => {
+                    handleScrollStyles();
+                }, 500)())
             );
+
         }
 
         /**

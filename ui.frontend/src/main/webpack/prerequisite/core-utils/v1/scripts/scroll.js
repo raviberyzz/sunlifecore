@@ -8,6 +8,7 @@
     core.util.scroll = (function($, util) {
         
         function scrollEventHandler() {
+            console.log("SCROLL");
             $.publish(util.customEvents.SCROLL);
         }; 
 
