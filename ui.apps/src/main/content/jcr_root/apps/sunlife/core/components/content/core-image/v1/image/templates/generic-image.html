@@ -4,8 +4,9 @@ Template to render Generic Image.
 <template data-sly-template.details="${ @ image, imageRef, mobileImageRef, altText, imgClass, isLazyLoaded }">
     <a 
         data-sly-unwrap="${!properties.linkURL}"
+		data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=properties.linkURL}"
         class="cmp-image__link image__link" 
-        href="${properties.linkURL}" 
+        href="${linkURL.navPath}" 
         data-title="${image.dataTitle || image.alt}"
         alt="${image.title || 'image link alternative text'}"
         data-cmp-hook-image="link">
