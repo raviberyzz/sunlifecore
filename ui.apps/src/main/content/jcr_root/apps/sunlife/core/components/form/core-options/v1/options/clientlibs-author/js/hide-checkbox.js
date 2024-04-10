@@ -1,7 +1,7 @@
 (function($, $document) {
     "use strict"
     $(document).on('dialog-ready', function() {
-         checkToDisableCheckbox();
+         checkToHideCheckbox();
          /* Calling method to disable/enable checkbox on dialog load */
          let $showhideTarget = $('.list-option-listfrom-showhide-target');
          $showhideTarget.on('click', '.coral3-Checkbox-input[name*="./selected"]', checkToHideCheckbox);
@@ -19,27 +19,28 @@
     function checkToHideCheckbox() {
         if($('.coral3-Select[name*="./type"]').val() == "radio"){
             // Using flag to see if any checkbox is checked
-			let flag = 0;
+			let flag = false;
+			let checkBox = 'coral-checkbox';
 			$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
 	 
 				// This line will run diable script after dialog is fully loaded, prevents, script from running before dialog opens
 				Coral.commons.ready(this, () => {
 									if ($(this).is(':checked')) {
-					flag = 1;
-					$(this).parent('coral-checkbox').removeClass("hide");
+					flag = true;
+					$(this).parent(checkBox).removeClass("hide");
 					// 
 					let currentFieldName = $(this).is(':checked');
 					$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
 						let otherFieldName = $(this).is(':checked');
-						if (currentFieldName != otherFieldName){
-							$(this).parent('coral-checkbox').addClass("hide");
+						if (currentFieldName !== otherFieldName){
+							$(this).parent(checkBox).addClass("hide");
 						}
 					});
 				}
 				if (!$(this).is(':checked')) {
-					if (flag === 0) {
+					if (flag === false) {
 						$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
-							$(this).parent('coral-checkbox').removeClass("hide");
+							$(this).parent(checkBox).removeClass("hide");
 						});
 					}
 				}
