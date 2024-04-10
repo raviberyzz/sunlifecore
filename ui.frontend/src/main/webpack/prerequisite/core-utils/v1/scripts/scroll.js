@@ -6,17 +6,12 @@
     'use strict';
 
     core.util.scroll = (function($, util) {
-        var scrollEvent = 'scroll.core-scroll',
+        
+        function scrollEventHandler() {
+            $.publish(util.customEvents.SCROLL);
+        }; 
 
-            onScrollEvent = function() {
-
-                console.log("onscrollevent");
-
-                $.publish(util.customEvents.SCROLLED);
-
-            };
-
-        $(w).on(scrollEvent, onScrollEvent);
+        $(w).on(util.customEvents.SCROLL, scrollEventHandler); 
     })(core.$, core.util);
 })(window, window.sunCore);
 

@@ -1,23 +1,34 @@
-/*!
- * Update core namespace in the global environment
+/**
+ * throttle.js
+ * @fileOverview Provides a utility to throttle a function.
  */
-
 (function ($, util) {
+  'use strict';
+
   /**
-   * Set up throttler.
-   * @function
-   * @param {function} fn - The function to throttle.
-   * @param {number} delay - The function will run once per given amount of milliseconds.
+   * Throttle calls to "callback" routine and ensure that it
+   * is not invoked any more often than "delay" milliseconds.
+   * @param  {Function} callback  the callback to be executed
+   * @param  {number}   delay     delay in miliseconds
+   * @return {Function} function that fires callback
    */
-  util.throttle = function (fn, delay) {
-    let time = Date.now();
-    return () => {
-      if (time + delay - Date.now() <= 0) {
-        fn();
-        time = Date.now();
+  util.throttle = function (callback, delay) {
+    let ticker;
+    const fn = delay ? 'setTimeout' : 'requestAnimationFrame';
+    return function () {
+      const context = this;
+      // eslint-disable-next-line prefer-rest-params
+      const args = arguments;
+      if (!ticker) {
+        // note that requestAnimationFrame is
+        // polyfilled in requestanimationframe.js
+        // also delay 2nd arg will just be ignored by requestAnimationFrame
+        ticker = window[fn](() => {
+          callback.apply(context, args);
+          ticker = null;
+        }, delay);
       }
     };
   };
-
-  return util;
 })(sunCore.$, sunCore.util);
+
