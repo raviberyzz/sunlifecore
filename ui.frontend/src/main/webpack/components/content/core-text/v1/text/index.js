@@ -1,116 +1,58 @@
-const CONST = {
-	SELECTOR: {
-		externalLink: '.sl-link-external[data-class-icon]',
-		internalLink: '.sl-link-internal[data-class-icon]',
-		pdfLink: '.sl-link-pdf[data-class-icon]'
-	}
-}
-const TextComp = {
-	init: function () {
-		TextComp.onDOMready();
+/**
+ * text/index.js
+ * Text Component specific JS Module .
+ */
+(function (core) {
+    "use strict";
 
-		var popoverTriggerList = [].slice.call(document.querySelectorAll('.cmp-text [data-bs-toggle="popover"'))
-		var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-			return new bootstrap.Popover(popoverTriggerEl)
-		})
-		TextComp.initPopover();
-	},
-	onDOMready: function () {
-		$(CONST.SELECTOR.externalLink).append('<i class="far fa-external-link"></i>');
-		$(CONST.SELECTOR.internalLink).append('<i class="far fa-arrow-circle-right"></i>');
+    /**
+     * Text component
+     * @namespace text
+     * @memberof sunCore.comp
+     */
+    core.comp.text = (function ($, util) {
+        const CONSTANT = {
+            SELECTOR: {
+                popoverBtn: '.cmp-text .popover-button',
+                externalLink: '.sl-link-external[data-class-icon]',
+                internalLink: '.sl-link-internal[data-class-icon]',
+                pdfLink: '.sl-link-pdf[data-class-icon]'
+            },
+            TEMPLATE: {
+                infoIcon: '<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle popover-icon" role="presentation"></i>'
+            }
+        };
 
-		$(CONST.SELECTOR.pdfLink).prepend('<i class="far fa-file-pdf"></i>');
+        /**
+		 * Method to append icons on the required selected links created in text comp.
+		 * @function appendRequiredIconsHandler
+         * @memberof sunCore.comp.text
+		 * @private
+		 */
+		function appendRequiredIconsHandler(){
+            $(CONSTANT.SELECTOR.externalLink).append(util.constants.templateString.externalLinkIcon);
+            $(CONSTANT.SELECTOR.internalLink).append(util.constants.templateString.internalLinkIcon);
+            $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon);
+            $(CONSTANT.SELECTOR.popoverBtn).html(CONSTANT.TEMPLATE.infoIcon);
+        }
+        
+        /**
+         * Handler called at text initialsation
+         * @function init
+         * @memberof sunCore.comp.text
+         * @public
+         */
+        function init() {
+            appendRequiredIconsHandler();
+        }
 
-		$('.cmp-text .popover-button').html('<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle popover-icon" role="presentation"></i>');
+        return {
+            init: init,
+        };
+    })(core.$, core.util);
 
-		// function used to get the popover element and id
-		function getPopoverId(element) {
-			let popoverElem = $(element).closest(".popover");
-			let id = popoverElem.attr('id');
-			return [popoverElem, id];
-		}
-		
-		$(document).on("click", ".popover .btn-close-popover", function () {
-			let [popoverElem, id] = getPopoverId($(this));
-			popoverElem.hide();
-			$('[aria-describedby=' + id + ']').click().focus();
-		});
-		//handle keyboard accessibility in the popover close button
-		$(document).on("keydown", '.popover .btn-close-popover', function (event) {
-			if (event.key === 'Escape') {
-				event.preventDefault();
-				let [popoverElem, id] = getPopoverId($(this));
-				popoverElem.hide();
-				$('[aria-describedby=' + id + ']').click().focus();
-			}
-			else if (event.key === 'Tab' && event.shiftKey) {
-				event.preventDefault();
-				let [popoverElem, id] = getPopoverId($(this));
-				$('[aria-describedby=' + id + ']').focus();
-			}
-			else if (event.key === 'Tab') {
-				let [popoverElem, id] = getPopoverId($(this));
-				let selectableElements = [].slice.call(document.querySelectorAll('select, input, textarea, button, a'));
-				selectableElements.find((value, index) => {
-					if(value.getAttribute("aria-describedby") === id){
-						event.preventDefault();
-						selectableElements[index + 1].focus();
-					}
-				})
-			}
-		});
-		//handle keyboard accessibility in the popover info button
-		$(document).on("keydown", '.popover-button', function (event) {
-			let popOverId = $(this).attr('aria-describedby');
-			if (event.key === 'Escape') {
-				event.preventDefault();
-				$(this).click().focus();
-			}
-			else if (event.key === 'Tab' && popOverId !== undefined && !event.shiftKey) {
-				event.preventDefault();
-				let popoverCloseButton = `#${popOverId} .btn-close-popover`;
-				$(popoverCloseButton).focus();
-			}
-		});
-	},
-	initPopover: function(){
-		const closeBtnHtml = `<span class="popover-close-container"><button type="button" class="btn-close-popover btn-close"><span class="visually-hidden">close</span><i role="presentation" class="fal fa-times"></i></button></span>`;
-
-		var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-
-		var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-			let customConfig = getPopoverConfig(popoverTriggerEl)
-			return new bootstrap.Popover(popoverTriggerEl, customConfig)
-		});
-
-		function getCustomClass(popoverTriggerElem){
-			return getDataAttrContent(popoverTriggerElem, 'bs-title') ? 'sl-popover' : 'sl-popover sl-popover-headless'
-		}
-
-		function getPopoverConfig(popoverTriggerEl){
-			return {
-				html: true,
-				sanitize: false,
-				title: generatePopoverHeader(popoverTriggerEl),
-				content: getDataAttrContent(popoverTriggerEl, 'bs-content'),
-				customClass: getCustomClass(popoverTriggerEl)
-			}
-		}
-
-		function generatePopoverHeader(popoverTriggerElem) {
-			let headerText = getDataAttrContent(popoverTriggerElem, 'bs-title');
-			if(headerText) {
-				return `${headerText} ${closeBtnHtml}`;
-			}
-			return `${closeBtnHtml}`;
-		}
-
-		function getDataAttrContent(element, dataAttribute) {
-			return $(element).data(dataAttribute);
-		}
-	}
-
-};
-$(function () {
-	TextComp.init();
-});
+    /**
+     * Initialise text module if given selector is in DOM
+     */
+    core.util.initialise(core.comp, "text");
+})(sunCore);
