@@ -149,7 +149,6 @@
             HEADERSELECTOR.$utilityListsOffCanvas = $comp.find(CONSTANT.SELECTOR.slUtilityBarOffCanvas);
         }
 
-        
         /**
          * Handle the sticky header style on scroll event.
          * @function handleScrollStyles
@@ -187,16 +186,9 @@
             $menuOpen.click(callMenuOpen);
             $menuClose.click(callMenuClose);
 
-            util.throttle(() => {
-                handleScroll();
-            }, 250)()
-
             listeners.push(
-                $.subscribe(util.customEvents.SCROLL, util.throttle(() => {
-                    handleScrollStyles();
-                }, 500)())
+                $.subscribe(util.customEvents.SCROLLED, handleScrollStyles)
             );
-
         }
 
         /**
