@@ -30,6 +30,18 @@
                 RIGHT: 39,
                 DOWN: 40,
                 DELETE: 46
+            },
+            key: {
+                ESC:'Escape',
+                TAB: 'Tab',
+                ENTER_RETURN: 'Enter',
+                SHIFT:'Shift'
+
+            },
+            templateString: {
+                externalLinkIcon: '<i class="far fa-external-link"></i>',
+                internalLinkIcon: '<i class="far fa-arrow-circle-right"></i>',
+                pdfLinkIcon: '<i class="far fa-file-pdf"></i>'
             }
         };
 

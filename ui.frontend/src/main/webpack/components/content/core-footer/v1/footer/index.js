@@ -20,11 +20,26 @@
                 footerMenuHeaderClass: "footer-menu-header",
                 footerMenuDropdownClass: "footer-menus-dropdown"
 			},
+			CLASS: {
+				button: "button",
+				dropdown: "dropdown",
+				dropdownMenu: "dropdown-menu",
+				col: "col",
+				h2: "h2",
+				show: "show"
+			},
+			ATTR: {
+				beforeBegin: "beforebegin",
+				ariaExpanded: "aria-expanded",
+				dataBsToggle: "data-bs-toggle",
+                dataHeading: "data-heading"
+			}
 		};
 
 		let $footerMenuRow, 
             $footerMenuHeader, 
-            $footerMenuList, 
+            $footerMenuList,
+			$footerMenuHeadingElement, 
             $footerMenuHeaderIsDropdown = false,
 			renderDesktop = false,
 			renderMobile = false,
@@ -58,36 +73,36 @@
 
             for (const menuRow of $footerMenuRow) {
 				if (renderDesktop) {
-					menuRow.classList.remove(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
-					menuRow.classList.add("col");
+					menuRow.classList.remove(CONSTANT.SELECTOR.footerMenuDropdownClass, CONSTANT.CLASS.dropdown);
+					menuRow.classList.add(CONSTANT.CLASS.col);
 				} else if (renderMobile) {
-					menuRow.classList.remove("col");
-					menuRow.classList.add(CONSTANT.SELECTOR.footerMenuDropdownClass, "dropdown");
+					menuRow.classList.remove(CONSTANT.CLASS.col);
+					menuRow.classList.add(CONSTANT.SELECTOR.footerMenuDropdownClass, CONSTANT.CLASS.dropdown);
 				}
             }
 
             for (const menuHeader of $footerMenuHeader) {
-				let layoutFooterMenuHeader = document.createElement( renderDesktop ? "div" : "button");
+				let layoutFooterMenuHeader = document.createElement( renderDesktop ? $footerMenuHeadingElement : CONSTANT.CLASS.button);
 				layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderClass);
 				
 				if (renderMobile) {
 					layoutFooterMenuHeader.classList.add(CONSTANT.SELECTOR.footerMenuHeaderBtnClass);
-					layoutFooterMenuHeader.setAttribute("aria-expanded", "false");
-					layoutFooterMenuHeader.setAttribute("data-bs-toggle", "dropdown");
+					layoutFooterMenuHeader.setAttribute(CONSTANT.ATTR.ariaExpanded, "false");
+					layoutFooterMenuHeader.setAttribute(CONSTANT.ATTR.dataBsToggle, CONSTANT.CLASS.dropdown);
 				}
 				
 				layoutFooterMenuHeader.innerHTML = menuHeader.innerHTML;
-				menuHeader.insertAdjacentElement("beforebegin", layoutFooterMenuHeader);
+				menuHeader.insertAdjacentElement(CONSTANT.ATTR.beforeBegin, layoutFooterMenuHeader);
 				menuHeader.remove();
             }
 
             for (const menuList of $footerMenuList) {
-				menuList.classList.remove("show");
+				menuList.classList.remove(CONSTANT.CLASS.show);
 				
 				if (renderDesktop) {
-					menuList.classList.remove("dropdown-menu");
+					menuList.classList.remove(CONSTANT.CLASS.dropdownMenu);
 				} else if (renderMobile) {
-					menuList.classList.add("dropdown-menu");
+					menuList.classList.add(CONSTANT.CLASS.dropdownMenu);
 				}
 
             }
@@ -115,6 +130,7 @@
             $footerMenuRow = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuRow);
             $footerMenuList = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuList);
             $footerMenuHeader = document.querySelectorAll(CONSTANT.SELECTOR.footerMenuHeader);
+            $footerMenuHeadingElement = $(CONSTANT.SELECTOR.footerMenuRow).attr(CONSTANT.ATTR.dataHeading) ? $(CONSTANT.SELECTOR.footerMenuRow).attr(CONSTANT.ATTR.dataHeading) : CONSTANT.CLASS.h2;
 		}
 
 		/**

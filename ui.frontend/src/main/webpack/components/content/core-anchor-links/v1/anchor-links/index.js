@@ -222,7 +222,8 @@
 
 		/**
 		 * Method used to initilize the module
-		 * @function
+		 * @function init
+		 * @public
 		 */
 		function init() {
 			cacheSelectors();

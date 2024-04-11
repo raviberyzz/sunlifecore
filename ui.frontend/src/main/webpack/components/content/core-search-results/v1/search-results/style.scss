@@ -28,11 +28,15 @@
         }
     }
 
+    .magic-box .magic-box-input {
+        background: transparent;
+    }
     /* Coveo */
     .magic-box .magic-box-input .magic-box-underlay,
     .magic-box .magic-box-input>input {
         padding: 12px 50px 12px 16px;
         border: 1px solid #5B6062;
+        background: var(--white);
     }
 
     .CoveoSearchButton.coveo-accessible-button {

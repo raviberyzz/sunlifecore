@@ -31,10 +31,9 @@
 
     .caption-container p {
         @include sl-body-small;
-        display: flex;
         margin: 0;
     }
-
+    
     .grouped-form {
         form {
             width: 100%;
