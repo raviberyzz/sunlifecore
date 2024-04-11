@@ -36,6 +36,7 @@
 		};
 
 		let $slDropdown;
+		let $linkedListItems;
 
 		
 
@@ -173,7 +174,7 @@
 		 */
 		function cacheSelectors() {
 			$slDropdown = $(CONSTANT.SELECTOR.slDropdown);
-			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu)
+			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu);
 		}
 
 		/**
@@ -183,9 +184,9 @@
 		 * @private
 		 */
 		function activeSelector() {
-			let url = PATHNAME;
+			let url = CONSTANT.PATHNAME;
 			$linkedListItems.find('li').each(function(){
-				pathName = url.substring(0, url.lastIndexOf("."));
+				let pathName = url.substring(0, url.lastIndexOf("."));
 				let strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
 				if(pathName === strLink){
 					$(this).addClass(CONSTANT.CLASS.optionSelected);
