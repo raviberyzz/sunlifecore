@@ -1,9 +1,20 @@
-// @import 'bootstrap/scss/mixins';
-// @import '@sunlife/ui-styles/design-system.scss';
-// @import '@sunlife/ui-styles/base/variables.scss';
-// @import '@sunlife/ui-styles/components/header';
+@import '@sunlife/ui-styles/base/variables.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
+
+@mixin focus-visible($type: header) {
+  &:focus-visible {
+    outline: 0.125rem solid var(--brand-tertiary-500);
+    @if $type != offcanvas {
+      outline-offset: -0.125rem;
+    }
+    box-shadow: none;
+  }
+}
 
 @mixin padding-utility-bar-region-menu {
   padding: 0.5rem 1rem 0.5rem 3rem;
