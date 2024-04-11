@@ -1,6 +1,7 @@
 #base=js
 link-rte-fields.js
 fontAwesome.js
+fontAwesomeEventHandling.js
 link-type.js
 popover.js
 language.js
