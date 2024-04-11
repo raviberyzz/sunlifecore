@@ -23,8 +23,8 @@ Reference Figma - https://www.figma.com/file/56aGlOv0OtmNCkVH8seIya/AEM-Componen
                 </div>
                 <ul class="dropdown-menu" data-sly-list.links="${listModel.links}">
                     <li class="dropdown-option">
-                        <sly data-sly-use.linkListParsing="${'linklist-parsing.js' @ path=links.linkURL}">
-                            <a class="dropdown-menu-link" lang="${links.langCode}" target="${links.linkTarget}" data-title="${links.dataTitle}" href="${links.linkURL}">${links.linkTitle @ context='html'}</a>
+                        <sly data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=links.linkURL}">
+                            <a class="dropdown-menu-link" lang="${links.langCode}" target="${links.linkTarget}" data-title="${links.dataTitle}" href="${linkURL.navPath}">${links.linkTitle @ context='html'}</a>
                         </sly>
                     </li>
                 </ul>
