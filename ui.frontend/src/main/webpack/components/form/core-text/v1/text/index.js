@@ -12,7 +12,13 @@
     core.comp.formText = (function ($, util) {
 		const CONSTANT = {
 			SELECTOR: {
-				textAreaField: '.sl-text-area .form-control'
+				textAreaField: '.sl-text-area .form-control',
+				formFloating: '.form-floating',
+				CharCount: '.character-count .count',
+				hiddenCharCount: '.visually-hidden .count'		
+			},
+			Class: {
+				slTextArea: 'sl-text-area'
 			}
 		};
         /**
@@ -23,10 +29,10 @@
 		 */
         function fieldValidationKeyPressEventHandler() {
             const $field = $(this);
-            const $fieldContainer = $field.parents(".form-floating");
-            if($fieldContainer.hasClass('sl-text-area')){
-                $fieldContainer.find(".character-count .count").html($field.val().length+1);
-                $fieldContainer.find(".visually-hidden .count").html($field.val().length+1);            
+            const $fieldContainer = $field.parents(CONSTANT.SELECTOR.formFloating);
+            if($fieldContainer.hasClass(CONSTANT.CLASS.slTextArea)){
+                $fieldContainer.find(CONSTANT.SELECTOR.CharCount).html($field.val().length+1);
+                $fieldContainer.find(CONSTANT.SELECTOR.hiddenCharCount).html($field.val().length+1);            
             }
         }
         /**
@@ -43,9 +49,11 @@
 			);
 		}
         /**
-		 * Method used to initilize the module
-		 * @function
-		 */
+		* Method used to initilize the module
+		* @function init
+		* @memberof sunCore.comp.formText
+		* @public
+		*/
         function init() {
             bindEvent();
         }        

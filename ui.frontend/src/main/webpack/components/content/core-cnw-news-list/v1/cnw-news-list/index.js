@@ -1,20 +1,58 @@
 /**
- * Update the tabs for news list component on key and click event
+ * cnw-news-list/index.js
+ * news list component tab related functionality.
+ * This module used to handle the news list component tab click and key scroll event.
+ * Handle scrolling enable and disabled for news list component component.
+ * Anchor link scrolling on click on anchor link to news list component tab component.
+ * Handler for enable mobile scrolling.
+ * Handler for navigating news list component tabs on left and right arrow key.
  */
 (function (core) {
 	"use strict";
 
 	/**
-	 * Text component
+	 * cnw news list component
 	 * @namespace cnwNewsList
 	 * @memberof sunCore.comp
 	 */
   core.comp.cnwNewsList = (function ($, util) {
   const CONSTANT = {
     SELECTOR: {
-      tabNavItem: '.sl-tabs .nav-item',
-      tabNavButton: '.sl-tabs .arrow-btn',
-      navTab: '.sl-tabs .nav-tabs'
+      tabNavItem: '.nav-item',
+      tabNavButton: '.arrow-btn',
+      navTab: '.nav-tabs',
+      navTabLink: '.nav-item .nav-link',
+      navLink: '.nav-link',
+      tabContainer: '.sl-tabs',
+      slLinks: '.sl-link',
+      header: '.sl-header',
+      stackTabContainer: '.stack-tab-container',
+      tabPanel: '.tab-pane',
+      arrowButtonLeft: '.arrow-btn.left',
+      arrowButtonRight: '.arrow-btn.right',
+      visibleNavItem: '.nav-item:not(.hide)',
+      activeNavItem: '.nav-item.active',
+      activeNavLink: '.nav-item.active .nav-link',
+      cnwNewsList: '.cnw-news-list',
+      lastNavItem: '.nav-item:last-child'
+    },
+    ID: {
+      tabPanelContainer: '#default-tab-tabpane-'
+    },
+    CLASS: {
+      activeFocus: 'active focused',
+      activeShow: 'active show',
+      active: 'active',    
+      focused: 'focused',
+      disabled: 'disabled',
+      show: 'show',
+      hide: 'hide'  
+    },
+    ATTR: {
+      tabindex: 'tabindex',
+      ariaSelected: 'aria-selected',
+      activeTab: 'data-activeTab',
+      href: 'href'
     }
   };
   /**
@@ -22,19 +60,18 @@
    * @function tabItemEventHandler
    * @memberof sunCore.comp.cnwNewsList
    * @private
-   * @param {object} scope - event object
+   * @param {object} scope - scope of the selected element
    */
   function tabItemEventHandler(scope){
     const $currentTab = $(scope);
+    const $tabContainer = $currentTab.parents(CONSTANT.SELECTOR.navTab).parents(CONSTANT.SELECTOR.stackTabContainer).parents(CONSTANT.SELECTOR.tabContainer)
     const $id = $currentTab.attr('id');
-    const $navItem = $currentTab.closest(".nav-item");
-    const $allTabsLink = $navItem.find(".nav-link");
-    const $selectedNavLink = $currentTab.find(".nav-link");
-    $navItem.removeClass("active focused cmp-tabs__tab--active")
-    $allTabsLink.removeClass("active focused cmp-tabs__tab--active").attr("tabindex","-1").attr("aria-selected", "false");
-    $currentTab.addClass("active focused");
-    $selectedNavLink.addClass("active").attr("tabindex","0").attr("aria-selected", "true");
-    $("#default-tab-tabpane-"+$id).addClass("active show")
+    $tabContainer.find(CONSTANT.SELECTOR.tabNavItem).removeClass(CONSTANT.CLASS.activeFocus)
+    $tabContainer.find(CONSTANT.SELECTOR.navTabLink).removeClass(CONSTANT.CLASS.activeFocus).attr(CONSTANT.ATTR.tabindex,"-1").attr(CONSTANT.ATTR.ariaSelected, "false");
+    $currentTab.addClass(CONSTANT.CLASS.activeFocus);
+    $currentTab.find(CONSTANT.SELECTOR.navLink).addClass(CONSTANT.CLASS.active).attr(CONSTANT.ATTR.tabindex,"0").attr(CONSTANT.ATTR.ariaSelected, "true");
+    $tabContainer.find(CONSTANT.SELECTOR.tabPanel).removeClass(CONSTANT.CLASS.activeShow)
+    $(CONSTANT.ID.tabPanelContainer+$id).addClass(CONSTANT.CLASS.activeShow)
   }
   /**
    * Method to handle the tab item click event
@@ -50,14 +87,14 @@
    * @function navigateTabOnArrowKey
    * @memberof sunCore.comp.cnwNewsList
    * @private
-   * @param {object} $thisScope - event object
+   * @param {object} $thisScope - scope of the selected element
    */
   function navigateTabOnArrowKey($thisScope) {  
-    const $navTab = $thisScope.parents(".nav-tabs");   
-    $navTab.find(".nav-item .nav-link").attr("tabindex", "-1").attr("aria-selected", "false");
-    $navTab.find(".nav-item").removeClass("focused active");    
-    $thisScope.find(".nav-link").attr("tabindex", "0").focus().attr("aria-selected", "true");
-    $thisScope.addClass("focused active");
+    const $navTab = $thisScope.parents(CONSTANT.SELECTOR.navTab);   
+    $navTab.find(CONSTANT.SELECTOR.navTabLink).attr(CONSTANT.ATTR.tabindex, "-1").attr(CONSTANT.ATTR.ariaSelected, "false");
+    $navTab.find(CONSTANT.SELECTOR.tabNavItem).removeClass(CONSTANT.CLASS.focused);    
+    $thisScope.find(CONSTANT.SELECTOR.navLink).attr(CONSTANT.ATTR.tabindex, "0").focus().attr(CONSTANT.ATTR.ariaSelected, "true");
+    $thisScope.addClass(CONSTANT.CLASS.focused);
     tabItemEventHandler($thisScope);
   }
   /**
@@ -80,52 +117,50 @@
    */
   function tabItemKeyEventHandler(e) {
     const $thisKey = $(this);
-    const $keyName = e.key;    
-    const $navTabs = $thisKey.parents(".nav-tabs");
-    const $navItem = $navTabs.find('.nav-item');   
-    const $leftNavScroll = $navTabs.siblings(".arrow-btn.left");      
-    const $rightNavScroll = $navTabs.siblings(".arrow-btn.right");
+    const $keyCode = e.keyCode;    
+    const $navTabs = $thisKey.parents(CONSTANT.SELECTOR.navTab);
+    const $navItem = $navTabs.find(CONSTANT.SELECTOR.tabNavItem);   
+    const $leftNavScroll = $navTabs.siblings(CONSTANT.SELECTOR.arrowButtonLeft);      
+    const $rightNavScroll = $navTabs.siblings(CONSTANT.SELECTOR.arrowButtonRight);
     let $currentItem;
     //condition for right arrow focus on key event
-    if($keyName === "ArrowRight"){
-      $currentItem = $thisKey.next('.nav-item');
-      $firstItem = $navItem.first();
-      $currentItem = getCurrentItem($firstItem, $currentItem);
+    if($keyCode === util.constants.KeyCode.RIGHT){
+      $currentItem = $thisKey.next(CONSTANT.SELECTOR.tabNavItem);
+      $currentItem = $currentItem.index() < 0 ? $navItem.first() :$currentItem;
       if($currentItem.index() === 0) {
         $navItem.show();
       }
       navigateTabOnArrowKey($currentItem);
     }
     //condition for left arrow focus on key event
-    else if($keyName === "ArrowLeft"){
-      $currentItem = $thisKey.prev('.nav-item');      
-      $lastItem = $navItem.first(); 
-      $currentItem = getCurrentItem($lastItem, $currentItem);    
+    else if($keyCode === util.constants.KeyCode.LEFT){
+      $currentItem = $thisKey.prev(CONSTANT.SELECTOR.tabNavItem);    
+      $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
       navigateTabOnArrowKey($currentItem);
     }
     //Redirect for Tab Links
-    else if($keyName === "Enter") {
-      let redirectURL = $(this).find("a").attr("href");
+    else if($keyCode === util.constants.KeyCode.ENTER_RETURN) {
+      let redirectURL = $(this).find("a").attr(CONSTANT.ATTR.href);
       window.location.href = redirectURL;
     }
     if($currentItem && $currentItem.index() >= 0){
       const scrollWidth = parseInt($thisKey.width()) * ($currentItem.index() + 1);        
       const activeTabsWidth = $navTabs.width();
       if(activeTabsWidth < scrollWidth && $currentItem.index() > 0){
-        $leftNavScroll.removeClass("disabled").addClass("active");
-        $rightNavScroll.addClass("disabled").removeClass("active");
+        $leftNavScroll.removeClass(CONSTANT.CLASS.disabled).addClass(CONSTANT.CLASS.active);
+        $rightNavScroll.addClass(CONSTANT.CLASS.disabled).removeClass(CONSTANT.CLASS.active);
       }
       else if(activeTabsWidth >= scrollWidth || $currentItem.index() < 0) {
-        $leftNavScroll.removeClass("active").addClass("disabled")
-        $rightNavScroll.addClass("active").removeClass("disabled");
+        $leftNavScroll.removeClass(CONSTANT.CLASS.active).addClass(CONSTANT.CLASS.disabled)
+        $rightNavScroll.addClass(CONSTANT.CLASS.active).removeClass(CONSTANT.CLASS.disabled);
       }
     }
     else {
-      const $activeNavItem = $navTabs.find(".nav-item.active");
-      $navItem.removeClass("focused active");
-      $navItem.find(".nav-link").attr("tabindex", "-1").removeClass("active");
-      $activeNavItem.addClass("focused active");
-      $activeNavItem.find(".nav-link").attr("tabindex", "0").addClass("active");
+      const $activeNavItem = $navTabs.find(CONSTANT.SELECTOR.activeNavItem);
+      $navItem.removeClass(CONSTANT.CLASS.activeFocus);
+      $navItem.find(CONSTANT.SELECTOR.navLink).attr(CONSTANT.ATTR.tabindex, "-1").removeClass(CONSTANT.CLASS.active);
+      $activeNavItem.addClass(CONSTANT.CLASS.activeFocus);
+      $activeNavItem.find(CONSTANT.SELECTOR.navLink).attr(CONSTANT.ATTR.tabindex, "0").addClass(CONSTANT.CLASS.active);
     }
   }
   /**
@@ -136,7 +171,7 @@
    * @param {object} $currentNav - scope for selected element
    */
   function getActiveScrollWidth($currentNav) {
-    const $navItem = $currentNav.parents(".stack-tab-container").find(".nav-item:not(.hide)");
+    const $navItem = $currentNav.parents(CONSTANT.SELECTOR.stackTabContainer).find(CONSTANT.SELECTOR.visibleNavItem);
     let navWidth = 0;
     $navItem.each(function(){
       navWidth = navWidth + parseInt($(this).width());
@@ -151,45 +186,45 @@
    */
   function slideTabEventHandler() {
     const $currentNav = $(this);
-    const $navTab = $currentNav.siblings(".nav-tabs");
+    const $navTab = $currentNav.siblings(CONSTANT.SELECTOR.navTab);
     const navWidth = $navTab.width();
     const scrollWidth = getActiveScrollWidth($currentNav);
-    const $navItem = $navTab.find(".nav-item");     
-    const $leftNavScroll = $navTab.siblings(".arrow-btn.left");      
-    const $rightNavScroll = $navTab.siblings(".arrow-btn.right");
-    let activeScrollTab = parseInt($navTab.attr('data-activeTab'));
+    const $navItem = $navTab.find(CONSTANT.SELECTOR.tabNavItem);     
+    const $leftNavScroll = $navTab.siblings(CONSTANT.SELECTOR.arrowButtonLeft);      
+    const $rightNavScroll = $navTab.siblings(CONSTANT.SELECTOR.arrowButtonRight);
+    let activeScrollTab = parseInt($navTab.attr(CONSTANT.ATTR.activeTab));
     /*condition for right arrow scrolling */
     if($currentNav.hasClass("right")){  
       if(navWidth < scrollWidth){       
         activeScrollTab = activeScrollTab + 1; 
-        $navTab.attr('data-activeTab', activeScrollTab);
-        $leftNavScroll.removeClass("disabled").addClass("active")
+        $navTab.attr(CONSTANT.ATTR.activeTab, activeScrollTab);
+        $leftNavScroll.removeClass(CONSTANT.CLASS.disabled).addClass(CONSTANT.CLASS.active)
         for(let i = 0; i < activeScrollTab; i++) {
-          $navItem.eq(i).addClass("hide").removeClass("show");
+          $navItem.eq(i).addClass(CONSTANT.CLASS.hide).removeClass(CONSTANT.CLASS.show);
         }
         /*Condition to disabled the right arrow when scroll reach to last tab item */
-        if(navWidth >= (scrollWidth - $navTab.find(".nav-item:last-child").width())){
-          $rightNavScroll.removeClass("active").addClass("disabled");
+        if(navWidth >= (scrollWidth - $navTab.find(CONSTANT.SELECTOR.lastNavItem).width())){
+          $rightNavScroll.removeClass(CONSTANT.CLASS.active).addClass(CONSTANT.CLASS.disabled);
         }
       }
       /*condition to disabled the right arrow */
       else{
-        $rightNavScroll.removeClass("active").addClass("disabled");
+        $rightNavScroll.removeClass(CONSTANT.CLASS.active).addClass(CONSTANT.CLASS.disabled);
       }
     }
     /*condition for left arrow scrolling */
     else{        
-      $rightNavScroll.removeClass("disabled").addClass("active")
+      $rightNavScroll.removeClass(CONSTANT.CLASS.disabled).addClass(CONSTANT.CLASS.active);
       if(activeScrollTab > 0){          
         activeScrollTab = activeScrollTab - 1;
-        $navTab.attr('data-activeTab', activeScrollTab);
-        $navItem.eq(activeScrollTab).addClass("show").removeClass("hide");
+        $navTab.attr(CONSTANT.ATTR.activeTab, activeScrollTab);
+        $navItem.eq(activeScrollTab).addClass(CONSTANT.CLASS.show).removeClass(CONSTANT.CLASS.hide);
         if(activeScrollTab < 1) {
-          $leftNavScroll.removeClass("active").addClass("disabled")
+          $leftNavScroll.removeClass(CONSTANT.CLASS.active).addClass(CONSTANT.CLASS.disabled)
         }
       }
       else {
-        $leftNavScroll.removeClass("active").addClass("disabled")
+        $leftNavScroll.removeClass(CONSTANT.CLASS.active).addClass(CONSTANT.CLASS.disabled)
       }
     }
   }
@@ -201,11 +236,11 @@
    * @param {object} $navButton - Current selected navigation button (prev/next)
    */
   function mobileEnableScrolling ($navButton) {
-    const $navTab = $navButton.siblings(".nav-tabs");
+    const $navTab = $navButton.siblings(CONSTANT.SELECTOR.navTab);
     const navWidth = $navTab.width();
     const scrollWidth = getActiveScrollWidth($navButton);
-    if($(window).width() < 767 && navWidth < (scrollWidth + 15)) {
-      $navButton.removeClass('hide');
+    if(util.matchmedia.XS.matches && navWidth < (scrollWidth + 15)) {
+      $navButton.removeClass(CONSTANT.SELECTOR.hide);
     }
   }
   
@@ -233,12 +268,14 @@
     );
   }
   /**
-		 * Method used to initilize the module
-		 * @function
-		 */
+    * Method used to initilize the module
+    * @function init
+    * @memberof sunCore.comp.cnwNewsList
+    * @public
+  */
   function init() {
     const $navButton = $(CONSTANT.SELECTOR.navTab)
-    $navButton.attr('data-activeTab', 0);
+    $navButton.attr(CONSTANT.ATTR.activeTab, 0);
     bindEvent();
     mobileEnableScrolling($(CONSTANT.SELECTOR.tabNavButton));
   }   
