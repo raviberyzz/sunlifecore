@@ -217,3 +217,18 @@
       flex: 0 51%;
     }
   }
+
+
+  // CDT-2371
+  // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/d9166d7a25b24a9c7274dd01adf9019c36283062#src/styles/components/_segmentedBlocks.scss
+  // segmentedBlocks.scss
+  // cards.scss
+  .sl-segmented-blocks.multi .card:nth-child(n+5){
+    @include media-breakpoint-up(md) {
+      flex-grow: 0;
+    }
+  }
+
+  .sl-cards.vertical{
+    max-width: width-by-cols(md, 12);
+  }
