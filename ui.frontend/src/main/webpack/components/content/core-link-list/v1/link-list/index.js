@@ -36,6 +36,7 @@
 		};
 
 		let $slDropdown;
+		let $linkedListItems;
 
 		
 
@@ -173,20 +174,20 @@
 		 */
 		function cacheSelectors() {
 			$slDropdown = $(CONSTANT.SELECTOR.slDropdown);
-			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu)
+			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu);
 		}
 
 		/**
-		 * Handler to show navigation active state
+		 * Handles the navigation's active state by adding css class to the corresponding navigation item based on the current URL path.
 		 * @function activeSelector
 		 * @memberof sunCore.comp.linkList
 		 * @private
 		 */
 		function activeSelector() {
-			let url = PATHNAME;
+			let url = CONSTANT.PATHNAME;
 			$linkedListItems.find('li').each(function(){
-				pathName = url.substring(0, url.lastIndexOf("."));
-				let strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				const pathName = url.substring(0, url.lastIndexOf("."));
+				const strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
 				if(pathName === strLink){
 					$(this).addClass(CONSTANT.CLASS.optionSelected);
 				}
