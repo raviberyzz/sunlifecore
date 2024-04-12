@@ -3,10 +3,7 @@
         <sly data-sly-list="${items}">
             <sly data-sly-test="${item.level==0}">
                 <sly data-sly-test="${item.getChildren.size>0 }">
-                    <h5 class="h5">${item.title}</h1>
-                </sly>
-                <sly data-sly-test="${item.getChildren.size==0}">
-                    <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" class="cmp-navigation__item-link nav-link ${item.active ? ' cmp-navigation__item--active active' : ''} text-break">${item.title}</a>
+                    <h5 class="h5 mb-sl24" data-sly-element="${properties.leftNavTopHeader}">${item.title}</h5>
                 </sly>
             </sly>
         </sly>
