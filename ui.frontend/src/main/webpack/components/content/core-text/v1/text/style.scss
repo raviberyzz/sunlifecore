@@ -1,3 +1,5 @@
+@import '../../../../../prerequisite/core-utils/v1/styles/common/style.scss';
+
 .cmp-text {
     table {
         width: 100%;
@@ -77,23 +79,10 @@
         }
     }
 
-    .svg-inline--fa {
-        margin: 0 4px;
-    } 
-    .icn-hover-show {
-        display: none;
-    }
-
-    &:hover {
-        .icn-hover-hidden {
-            display: none;
-        }
-
-        .icn-hover-show {
-            display: inline-block;
-        }
-    }
-    
+    @include hide-far-default-icon;
+   
+    @include show-fas-soild-icon-on-hover;
+   
 }
 
 .popover-button {
