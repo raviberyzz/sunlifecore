@@ -126,7 +126,7 @@
         */
         function setMainContentLandmark() {
             if ($comp.length > 0 && $mainContent.length < 1) {
-                var layoutContainer = $comp.next();
+                const layoutContainer = $comp.next();
                 if (layoutContainer.hasClass(CONSTANT.CLASS.breadcrumb)) {
                     layoutContainer.next().attr("id", CONSTANT.ID.mainContent);
                     layoutContainer.next().attr("role", CONSTANT.ROLE.main);

@@ -6,11 +6,12 @@
     'use strict';
 
     /**
-    * A method to debounce
+    * A debounce method to limit the execution frequency of the 
+    * provided function by executing every given delay in milliseconds.
     * @memberof sunCore.util
     * @param {Function} func The callback function for the debounce method
-    * @param {Integer} delay The delay for the debounce method
-    * @return void
+    * @param {Number} delay The delay in milliseconds for the debounce method
+    * @return {Object} 
     */
     util.debounce = function (func, delay) {
         let timeoutId;

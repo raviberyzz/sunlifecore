@@ -2,7 +2,7 @@
  * scroll.js
  * @fileOverview Provides a utility to look for page scroll event.
  */
-(function (w, core) {
+(function (window, core) {
 
     /**
      * Scroll method that is debounced
@@ -15,7 +15,7 @@
             $.publish(util.customEvents.SCROLLED);
         }, 200);
 
-        $(w).on(util.customEvents.SCROLL, debouncedScroll);
+        $(window).on(util.customEvents.SCROLL, debouncedScroll);
 
     })(core.$, core.util);
 })(window, window.sunCore);
