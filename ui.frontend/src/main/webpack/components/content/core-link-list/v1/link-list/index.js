@@ -167,7 +167,7 @@
 		}
 
 		/**
-		 * Handler to show navigation active state
+		 * Handles the navigation's active state by adding css class to the corresponding navigation item based on the current URL path.
 		 * @function activeSelector
 		 * @memberof sunCore.comp.linkList
 		 * @private
