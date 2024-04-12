@@ -52,30 +52,48 @@
 	.fa-file-pdf {
 	    margin-right: 4px;
 	    margin-left: 0px;
-  }
+    }
 
-  &.sl-link-sm {
-    .fa-external-link,
-    .fa-arrow-circle-right,
-	.fa-file-pdf {
-      height: 14px;
-      width: 14px;
+    &.sl-link-sm {
+        .fa-external-link,
+        .fa-arrow-circle-right,
+        .fa-file-pdf {
+        height: 14px;
+        width: 14px;
+        }
     }
-  }
   
-  &.sl-link-xs {
-    font-size: 0.75rem;
-    line-height: 16px;
-  }
-  
-  &.sl-link-xs {
-    .fa-external-link,
-    .fa-arrow-circle-right, 
-	.fa-file-pdf {
-      height: 12px;
-      width: 12px;
+    &.sl-link-xs {
+        font-size: 0.75rem;
+        line-height: 16px;
     }
-  }
+  
+    &.sl-link-xs {
+        .fa-external-link,
+        .fa-arrow-circle-right, 
+        .fa-file-pdf {
+        height: 12px;
+        width: 12px;
+        }
+    }
+
+    .svg-inline--fa {
+        margin: 0 4px;
+    } 
+    .icn-hover-show {
+        display: none;
+    }
+
+    &:hover {
+        .icn-hover-hidden {
+            display: none;
+        }
+
+        .icn-hover-show {
+            display: inline-block;
+        }
+    }
+    
 }
 
 .popover-button {
