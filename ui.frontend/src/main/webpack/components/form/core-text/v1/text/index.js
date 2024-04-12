@@ -14,7 +14,7 @@
 			SELECTOR: {
 				textAreaField: '.sl-text-area .form-control',
 				formFloating: '.form-floating',
-				CharCount: '.character-count .count',
+				charCount: '.character-count .count',
 				hiddenCharCount: '.visually-hidden .count'		
 			},
 			CLASS: {
@@ -31,7 +31,7 @@
             const $field = $(this);
             const $fieldContainer = $field.parents(CONSTANT.SELECTOR.formFloating);
             if($fieldContainer.hasClass(CONSTANT.CLASS.slTextArea)){
-                $fieldContainer.find(CONSTANT.SELECTOR.CharCount).html($field.val().length+1);
+                $fieldContainer.find(CONSTANT.SELECTOR.charCount).html($field.val().length+1);
                 $fieldContainer.find(CONSTANT.SELECTOR.hiddenCharCount).html($field.val().length+1);            
             }
         }
