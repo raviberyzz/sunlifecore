@@ -17,7 +17,7 @@
 				CharCount: '.character-count .count',
 				hiddenCharCount: '.visually-hidden .count'		
 			},
-			Class: {
+			CLASS: {
 				slTextArea: 'sl-text-area'
 			}
 		};
