@@ -1,5 +1,5 @@
 /**
- * fontAwesomeEventHandler.js
+ * fontAwesomeEventHandling.js
  * @fileOverview Handles focus and blur events on the RTE editor. Inserts a '&nbsp;' character after a fontAwesome icon on focus event 
  * and removes it on the blur event to allow for font selection.
  */
