@@ -66,11 +66,15 @@
     const $currentTab = $(scope);
     const $tabContainer = $currentTab.parents(CONSTANT.SELECTOR.navTab).parents(CONSTANT.SELECTOR.stackTabContainer).parents(CONSTANT.SELECTOR.tabContainer)
     const $id = $currentTab.attr('id');
-    $tabContainer.find(CONSTANT.SELECTOR.tabNavItem).removeClass(CONSTANT.CLASS.activeFocus)
-    $tabContainer.find(CONSTANT.SELECTOR.navTabLink).removeClass(CONSTANT.CLASS.activeFocus).attr(CONSTANT.ATTR.tabindex,"-1").attr(CONSTANT.ATTR.ariaSelected, "false");
+    const $selectedNavItem = $tabContainer.find(CONSTANT.SELECTOR.tabNavItem);
+    const $selectedNavLink = $tabContainer.find(CONSTANT.SELECTOR.navTabLink);
+    const $currentNavLink = $currentTab.find(CONSTANT.SELECTOR.navLink);
+    const $selectedTabPanel = $tabContainer.find(CONSTANT.SELECTOR.tabPanel);
+    $selectedNavItem.removeClass(CONSTANT.CLASS.activeFocus)
+    $selectedNavLink.removeClass(CONSTANT.CLASS.activeFocus).attr(CONSTANT.ATTR.tabindex,"-1").attr(CONSTANT.ATTR.ariaSelected, "false");
     $currentTab.addClass(CONSTANT.CLASS.activeFocus);
-    $currentTab.find(CONSTANT.SELECTOR.navLink).addClass(CONSTANT.CLASS.active).attr(CONSTANT.ATTR.tabindex,"0").attr(CONSTANT.ATTR.ariaSelected, "true");
-    $tabContainer.find(CONSTANT.SELECTOR.tabPanel).removeClass(CONSTANT.CLASS.activeShow)
+    $currentNavLink.addClass(CONSTANT.CLASS.active).attr(CONSTANT.ATTR.tabindex,"0").attr(CONSTANT.ATTR.ariaSelected, "true");
+    $selectedTabPanel.removeClass(CONSTANT.CLASS.activeShow)
     $(CONSTANT.ID.tabPanelContainer+$id).addClass(CONSTANT.CLASS.activeShow)
   }
   /**
@@ -90,23 +94,28 @@
    * @param {object} $thisScope - scope of the selected element
    */
   function navigateTabOnArrowKey($thisScope) {  
-    const $navTab = $thisScope.parents(CONSTANT.SELECTOR.navTab);   
-    $navTab.find(CONSTANT.SELECTOR.navTabLink).attr(CONSTANT.ATTR.tabindex, "-1").attr(CONSTANT.ATTR.ariaSelected, "false");
-    $navTab.find(CONSTANT.SELECTOR.tabNavItem).removeClass(CONSTANT.CLASS.focused);    
-    $thisScope.find(CONSTANT.SELECTOR.navLink).attr(CONSTANT.ATTR.tabindex, "0").focus().attr(CONSTANT.ATTR.ariaSelected, "true");
+    const $navTab = $thisScope.parents(CONSTANT.SELECTOR.navTab); 
+    const $currentNavTabLink = $navTab.find(CONSTANT.SELECTOR.navTabLink);
+    const $currentNavItem = $navTab.find(CONSTANT.SELECTOR.tabNavItem);
+    const $currentNavLink = $thisScope.find(CONSTANT.SELECTOR.navLink);
+    $currentNavTabLink.attr(CONSTANT.ATTR.tabindex, "-1").attr(CONSTANT.ATTR.ariaSelected, "false");
+    $currentNavItem.removeClass(CONSTANT.CLASS.focused);    
+    $currentNavLink.attr(CONSTANT.ATTR.tabindex, "0").focus().attr(CONSTANT.ATTR.ariaSelected, "true");
     $thisScope.addClass(CONSTANT.CLASS.focused);
     tabItemEventHandler($thisScope);
   }
   /**
-   * Method to handle the tab keypress for left arrow, right arrow, and enter
-   * @function getCurrentItem
+   * Method to handle the tab keypress for left arrow, right arrow
+   * @function handleKeyDownEvent
    * @memberof sunCore.comp.cnwNewsList
    * @private
-   * @param {object} navItem - pass the first/last element of nav item
-   * @param {object} sccurrentItemope - pass the current element of nav item
+   * @param {object} $navItem - pass the first/last element of nav item
+   * @param {object} $currentItem - scope of current element
    */
-  function getCurrentItem($navItem, $currentItem) {
-    return $currentItem.index() < 0 ? $navItem : $currentItem
+  function handleKeyDownEvent($navItem, $currentItem) {
+    $currentItem = $currentItem.index() < 0 ? $navItem :$currentItem;
+    navigateTabOnArrowKey($currentItem);
+    return $currentItem;
   }
   /**
    * Method to handle the tab keypress for left arrow, right arrow, and enter
@@ -125,18 +134,14 @@
     let $currentItem;
     //condition for right arrow focus on key event
     if($keyCode === util.constants.KeyCode.RIGHT){
-      $currentItem = $thisKey.next(CONSTANT.SELECTOR.tabNavItem);
-      $currentItem = $currentItem.index() < 0 ? $navItem.first() :$currentItem;
+      $currentItem = handleKeyDownEvent($navItem.first(), $scope.next(CONSTANT.SELECTOR.tabNavItem));      
       if($currentItem.index() === 0) {
         $navItem.show();
       }
-      navigateTabOnArrowKey($currentItem);
     }
     //condition for left arrow focus on key event
     else if($keyCode === util.constants.KeyCode.LEFT){
-      $currentItem = $thisKey.prev(CONSTANT.SELECTOR.tabNavItem);    
-      $currentItem = $currentItem.index() < 0 ? $navItem.last() :$currentItem;    
-      navigateTabOnArrowKey($currentItem);
+      $currentItem = handleKeyDownEvent($navItem.last(), $scope.next(CONSTANT.SELECTOR.tabNavItem));
     }
     //Redirect for Tab Links
     else if($keyCode === util.constants.KeyCode.ENTER_RETURN) {
