@@ -167,6 +167,22 @@
 		}
 
 		/**
+		 * Handles the navigation's active state by adding css class to the corresponding navigation item based on the current URL path.
+		 * @function activeSelector
+		 * @memberof sunCore.comp.linkList
+		 * @private
+		 */
+		function activeSelector() {
+			const pathName = CONSTANT.PATHNAME;
+			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
+				const linkHref =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				(pathName === linkHref) 
+				? $(this).addClass(CONSTANT.CLASS.optionSelected) 
+				: $(this).removeClass(CONSTANT.CLASS.optionSelected);
+			});
+	    }
+
+		/**
 		 * Handler to cache dom selector on module load
 		 * @function cacheSelectors
 		 * @memberof sunCore.comp.linkList
@@ -176,23 +192,6 @@
 			$slDropdown = $(CONSTANT.SELECTOR.slDropdown);
 			$linkedListItems = $(CONSTANT.SELECTOR.dropdownMenu);
 		}
-
-		/**
-		 * Handles the navigation's active state by adding css class to the corresponding navigation item based on the current URL path.
-		 * @function activeSelector
-		 * @memberof sunCore.comp.linkList
-		 * @private
-		 */
-		function activeSelector() {
-			let url = CONSTANT.PATHNAME;
-			$linkedListItems.find('li').each(function(){
-				const pathName = url.substring(0, url.lastIndexOf("."));
-				const strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
-				if(pathName === strLink){
-					$(this).addClass(CONSTANT.CLASS.optionSelected);
-				}
-			});
-	    }
 
 		/**
 		 * Handler called at linkList initialsation
