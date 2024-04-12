@@ -173,10 +173,10 @@
 		 * @private
 		 */
 		function activeSelector() {
-			let pathName = CONSTANT.PATHNAME;
+			const pathName = CONSTANT.PATHNAME;
 			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
-				let strLink =  $(this).find('a').attr(CONSTANT.ATTR.href);
-				(pathName === strLink) 
+				const linkHref =  $(this).find('a').attr(CONSTANT.ATTR.href);
+				(pathName === linkHref) 
 				? $(this).addClass(CONSTANT.CLASS.optionSelected) 
 				: $(this).removeClass(CONSTANT.CLASS.optionSelected);
 			});
