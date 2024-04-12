@@ -5,7 +5,7 @@
 (function (window, core) {
 
     /**
-     * Scroll method that is debounced
+     * Scroll util to bind scroll event and publish debounced scrolled event when scroll is triggered.
      * @memberof sunCore.util
      * @return void
      */
