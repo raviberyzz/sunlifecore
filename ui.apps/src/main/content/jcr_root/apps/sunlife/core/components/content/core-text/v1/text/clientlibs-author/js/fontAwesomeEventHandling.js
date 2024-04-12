@@ -1,5 +1,5 @@
 /**
- * fontAwesomeEventHandler.js
+ * fontAwesomeEventHandling.js
  * @fileOverview Handles focus event on the RTE editor. Inserts a '&nbsp;' character after  
  * the last fontAwesome icon on focus event to allow for font selection.
  */
