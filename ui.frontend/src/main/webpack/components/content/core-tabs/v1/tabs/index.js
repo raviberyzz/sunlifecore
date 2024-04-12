@@ -113,8 +113,8 @@
     const $rightNavScroll = $navTabs.siblings(CONSTANT.SELECTOR.arrowButtonRight);
     let $currentItem;           
     const activeTabsWidth = $navTabs.width();
-    const tabListWidth = getActiveScrollWidth($navItem.eq(0))
-    if(tabListWidth <= activeTabsWidth){
+    const tabListWidth = getActiveScrollWidth($navItem.eq(0)); 
+    if(tabListWidth <= activeTabsWidth && $keyCode !== util.constants.KeyCode.TAB){
       return false;
     }
     //condition for right arrow focus on key event
