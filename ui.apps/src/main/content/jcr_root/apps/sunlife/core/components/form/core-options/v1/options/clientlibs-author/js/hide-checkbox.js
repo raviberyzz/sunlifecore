@@ -1,51 +1,41 @@
 (function($, $document) {
     "use strict"
-    $(document).on('dialog-ready', function() {
+    $(document).on('foundation-contentloaded', function(event) {
          checkToHideCheckbox();
          /* Calling method to disable/enable checkbox on dialog load */
          let $showhideTarget = $('.list-option-listfrom-showhide-target');
-         $showhideTarget.on('click', '.coral3-Checkbox-input[name*="./selected"]', checkToHideCheckbox);
+         $showhideTarget.on('click', '.coral3-Checkbox-input[name*="./selected"]', delayHideCheckbox);
          $showhideTarget.on('click', 'button[coral-multifield-add]', delayHideCheckbox);
-         $(document).on('click', "button[class*='coral3-Multifield-remove']", checkToHideCheckbox);
+         $(document).on('click', "button[class*='coral3-Multifield-remove']", delayHideCheckbox);
     });
     function delayHideCheckbox() {
         // Adding small delay to function to prevent function running before new field is added
          setTimeout(
             function() {
                 checkToHideCheckbox();
-            }, 5);
+            }, 10);
     }
     // This function will pick the appropriate checkboxes to hide and show when any change is made in the multifield like add, remove, check, uncheck
-    function checkToHideCheckbox() {
+    function checkToHideCheckbox(event) {
+
         if($('.coral3-Select[name*="./type"]').val() == "radio"){
-            // Using flag to see if any checkbox is checked
-			let flag = false;
-			let checkBox = 'coral-checkbox';
-			$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
-	 
-				// This line will run diable script after dialog is fully loaded, prevents, script from running before dialog opens
-				Coral.commons.ready(this, () => {
-									if ($(this).is(':checked')) {
-					flag = true;
-					$(this).parent(checkBox).removeClass("hide");
-					// 
-					let currentFieldName = $(this).is(':checked');
-					$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
-						let otherFieldName = $(this).is(':checked');
-						if (currentFieldName !== otherFieldName){
-							$(this).parent(checkBox).addClass("hide");
-						}
-					});
-				}
-				if (!$(this).is(':checked')) {
-					if (flag === false) {
-						$('.coral3-Checkbox-input[name*="./selected"]').each(function() {
-							$(this).parent(checkBox).removeClass("hide");
-						});
-					}
-				}
-				});
-			});
+			var $selectCheckboxes = $('.coral3-Checkbox-input[name*="./selected"]');
+			var $selectedCheckbox = $('.coral3-Checkbox[checked]');
+
+
+            $selectCheckboxes.each(function() {
+					$(this).parent().removeClass("hide");
+            });
+
+            if($selectedCheckbox.length){
+
+                 $selectCheckboxes.each(function() {
+					$(this).parent().addClass("hide");
+            	});
+
+				$selectedCheckbox.removeClass("hide");
+            }
+
     	}
     }
 })($, $(document));
