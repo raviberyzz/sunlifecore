@@ -107,21 +107,9 @@
      * @private
      */
     function bindEvent() {
-      $(document).on(
-        $(window.Parsley(on)),
-        CONSTANT.SELECTOR.fieldError,
-        formFieldError
-      );
-      $(document).on(
-        $(window.Parsley(on)),
-        CONSTANT.SELECTOR.fieldSuccess,
-        formFieldSuccess
-      );
-      $(document).on(
-        $(window.Parsley(on)),
-        CONSTANT.SELECTOR.formError,
-        formValidationError
-      );
+      window.Parsley.on(CONSTANT.SELECTOR.fieldError,formFieldError);
+      window.Parsley.on(CONSTANT.SELECTOR.fieldSuccess,formFieldSuccess);
+      window.Parsley.on(CONSTANT.SELECTOR.formError,formValidationError);
     }
         /**
     * Method used to initilize the module
