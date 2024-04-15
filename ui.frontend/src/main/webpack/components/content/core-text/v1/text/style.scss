@@ -1,3 +1,5 @@
+@import '../../../../../prerequisite/core-utils/v1/styles/common/style.scss';
+
 .cmp-text {
     table {
         width: 100%;
@@ -52,30 +54,35 @@
 	.fa-file-pdf {
 	    margin-right: 4px;
 	    margin-left: 0px;
-  }
+    }
 
-  &.sl-link-sm {
-    .fa-external-link,
-    .fa-arrow-circle-right,
-	.fa-file-pdf {
-      height: 14px;
-      width: 14px;
+    &.sl-link-sm {
+        .fa-external-link,
+        .fa-arrow-circle-right,
+        .fa-file-pdf {
+        height: 14px;
+        width: 14px;
+        }
     }
-  }
   
-  &.sl-link-xs {
-    font-size: 0.75rem;
-    line-height: 16px;
-  }
-  
-  &.sl-link-xs {
-    .fa-external-link,
-    .fa-arrow-circle-right, 
-	.fa-file-pdf {
-      height: 12px;
-      width: 12px;
+    &.sl-link-xs {
+        font-size: 0.75rem;
+        line-height: 16px;
     }
-  }
+  
+    &.sl-link-xs {
+        .fa-external-link,
+        .fa-arrow-circle-right, 
+        .fa-file-pdf {
+        height: 12px;
+        width: 12px;
+        }
+    }
+
+    @include hide-far-default-icon;
+   
+    @include show-fas-soild-icon-on-hover;
+   
 }
 
 .popover-button {

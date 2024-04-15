@@ -30,8 +30,8 @@
 		 * @private
 		 */
 		function appendRequiredIconsHandler(){
-            $(CONSTANT.SELECTOR.externalLink).append(util.constants.templateString.externalLinkIcon);
-            $(CONSTANT.SELECTOR.internalLink).append(util.constants.templateString.internalLinkIcon);
+            $(CONSTANT.SELECTOR.externalLink).append(util.constants.templateString.externalLinkIcon, util.constants.templateString.externalLinkIconSolid);
+            $(CONSTANT.SELECTOR.internalLink).append(util.constants.templateString.internalLinkIcon, util.constants.templateString.internalLinkIconSolid);
             $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon);
             $(CONSTANT.SELECTOR.popoverBtn).html(CONSTANT.TEMPLATE.infoIcon);
         }
