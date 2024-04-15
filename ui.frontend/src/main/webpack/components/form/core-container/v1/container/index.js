@@ -10,7 +10,7 @@
    * @namespace formContainer
    * @memberof sunCore.comp
    */
-    core.comp.formContainer = (function ($, util) {
+  core.comp.formContainer = (function ($, util) {
     const CONSTANT = {
       SELECTOR: {
         form: 'form',
@@ -124,9 +124,9 @@
     return {
         init: init,
     };
-})(core.$, core.util);
-/**
- * Initialise formContainer module if given selector is in DOM
- */
-core.util.initialise(core.comp, "formContainer", ".formValidate");
-})(window, window.sunCore);
+  })(core.$, core.util);
+  /**
+   * Initialise formContainer module if given selector is in DOM
+   */
+  core.util.initialise(core.comp, "formContainer", ".formValidate");
+})(sunCore);
