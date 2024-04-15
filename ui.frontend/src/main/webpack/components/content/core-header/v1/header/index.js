@@ -183,8 +183,8 @@
                 })
             );
 
-            $menuOpen.click(callMenuOpen);
-            $menuClose.click(callMenuClose);
+            $comp.on("click", CONSTANT.SELECTOR.menuOpen, callMenuOpen);
+            $comp.on("click", CONSTANT.SELECTOR.menuClose, callMenuClose);
 
             listeners.push(
                 $.subscribe(util.customEvents.SCROLLED, handleScrollStyles)
