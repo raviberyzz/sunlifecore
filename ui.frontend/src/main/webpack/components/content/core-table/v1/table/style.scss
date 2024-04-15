@@ -8,9 +8,9 @@
     line-height: 1.5rem;
     border-style: hidden;
 }
-.sl-table {
-    @include media-breakpoint-down(sm) {             
-        overflow: auto;
+.sl-table {              
+    overflow: auto;
+    @include media-breakpoint-down(sm) {   
         td, th {
             white-space: nowrap;
         }
