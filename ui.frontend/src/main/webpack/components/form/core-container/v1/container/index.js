@@ -15,7 +15,7 @@
       SELECTOR: {
         form: 'form',
         fieldError: 'field:error',
-        fieldSuccess: 'field:error',
+        fieldSuccess: 'field:success',
         formError: 'form:error',
         formValidate: '.formValidate',
         parsleyCustomErrorMessage: '.parsley-custom-error-message',
