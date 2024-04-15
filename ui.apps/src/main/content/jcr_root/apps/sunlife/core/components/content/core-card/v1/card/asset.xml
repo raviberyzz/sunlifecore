@@ -46,6 +46,7 @@
                             fileReferenceParameter="./cardImageFileReference"
                             mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                             multiple="{Boolean}false"
+							allowUpload="{Boolean}false"
                             name="./cardImageFile"
                             title="Upload Image Asset"
                             uploadUrl="${suffix.path}"
