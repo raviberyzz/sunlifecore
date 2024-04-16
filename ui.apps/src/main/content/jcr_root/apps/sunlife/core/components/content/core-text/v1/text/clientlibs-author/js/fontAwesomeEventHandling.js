@@ -1,5 +1,5 @@
 /**
- * fontAwesomeEventHandling.js
+ * fontAwesomeEventHandler.js
  * @fileOverview Handles focus event on the RTE editor. Inserts a '&nbsp;' character after  
  * the last fontAwesome icon on focus event to allow for font selection.
  */
@@ -11,13 +11,13 @@
      */
     $(document).on('focus','.cq-RichText-editable', function(){
         setTimeout(function() { 
-            let svgElement = $('.cq-RichText-editable').find('svg:last');
-            if($(svgElement).parent().get(0)){
-                modifySpaceAfterElement(svgElement,"</svg>","<\\/svg>");
+            const $svgElement = $('.cq-RichText-editable').find('svg:last');
+            if($($svgElement).parent().get(0)){
+                modifySpaceAfterElement($svgElement,"</svg>","<\\/svg>");
             }
-            let spanElement = $('.cq-RichText-editable').find('span:last');
-            if(spanElement.hasClass('font-awesome-icon')){
-                modifySpaceAfterElement(spanElement,"</span>", "<\\/span>");
+            const $spanElement = $('.cq-RichText-editable').find('span:last');
+            if($spanElement.hasClass('font-awesome-icon')){
+                modifySpaceAfterElement($spanElement,"</span>", "<\\/span>");
             }
         }, 500);
     });
@@ -29,16 +29,15 @@
     * @param {String} expression Regex expression
     * @return void
     */
+
     function modifySpaceAfterElement(element, endTag, expression){
-       let elementParent =  $(element).parent().get(0);
-       if(elementParent.innerHTML){
-           let elementParentInnerHTML = elementParent.innerHTML;
- 		   let suffix = "&nbsp;";
-           if(elementParentInnerHTML.indexOf(endTag+suffix) === -1){
-               if(elementParentInnerHTML.indexOf(endTag) > -1 ){
-                   let regex = new RegExp(expression, 'g');
-                   $(elementParent).html(elementParentInnerHTML.replace(regex, endTag+suffix));
-               }
+       const $elementParent =  $(element).parent().get(0);
+       if($elementParent.innerHTML){
+           const $elementParentInnerHTML = $elementParent.innerHTML;
+ 		   const suffix = "&nbsp;";
+           if($elementParentInnerHTML.indexOf(endTag+suffix) === -1  && $elementParentInnerHTML.indexOf(endTag) > -1){
+                const regex = new RegExp(expression, 'g');
+                $($elementParent).html($elementParentInnerHTML.replace(regex, endTag+suffix));
            }
        }
     }
