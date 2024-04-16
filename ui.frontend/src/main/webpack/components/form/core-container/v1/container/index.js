@@ -13,10 +13,6 @@
   core.comp.formContainer = (function ($, util) {
     const CONSTANT = {
       SELECTOR: {
-        form: 'form',
-        fieldError: 'field:error',
-        fieldSuccess: 'field:success',
-        formError: 'form:error',
         formValidate: '.formValidate',
         parsleyCustomErrorMessage: '.parsley-custom-error-message',
         formField: '.form-field',
@@ -36,7 +32,16 @@
       },
       ELEMENT:{
         errorMsg: '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>',
-        span: '<span></span>'
+        span: '<span></span>',
+        form: 'form'
+      },
+      PARSLEY: {
+        EVENT: {
+          fieldError: 'field:error',
+          fieldSuccess: 'field:success',
+          formError: 'form:error',
+          formValidate: 'form:validate'
+        }
       }
     };
     /**
@@ -54,8 +59,8 @@
         }, errorsWrapper: errorsWrapperHtml,
         errorTemplate: errorTemplateHtml
       };
-      if ($(CONSTANT.SELECTOR.form).length > 0) {
-        $(CONSTANT.SELECTOR.form).parsley(parsleyConfig);
+      if ($(CONSTANT.ELEMENT.form).length > 0) {
+        $(CONSTANT.ELEMENT.form).parsley(parsleyConfig);
       }
     }
     /**
@@ -107,10 +112,14 @@
      * @private
      */
     function bindEvent() {
-      window.Parsley.on(CONSTANT.SELECTOR.fieldError,formFieldError);
-      window.Parsley.on(CONSTANT.SELECTOR.fieldSuccess,formFieldSuccess);
-      window.Parsley.on(CONSTANT.SELECTOR.formError,formValidationError);
-    }
+      window.Parsley.on(CONSTANT.PARSLEY.EVENT.fieldError,formFieldError);
+      window.Parsley.on(CONSTANT.PARSLEY.EVENT.fieldSuccess,formFieldSuccess);
+      window.Parsley.on(CONSTANT.PARSLEY.EVENT.formValidate, function (formInstance) {
+      }).on(CONSTANT.PARSLEY.EVENT.formError, function () {
+        formValidationError();
+      });
+    } 
+ 
         /**
     * Method used to initilize the module
     * @function init
