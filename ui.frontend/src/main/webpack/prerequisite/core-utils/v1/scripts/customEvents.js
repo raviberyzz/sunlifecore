@@ -81,6 +81,12 @@
 
             //Bootstrap Alert related
             CLOSE_BS_ALERT: 'close.bs.alert',
+
+            // Parsley Events
+            fieldError: 'field:error',
+            fieldSuccess: 'field:success',
+            formError: 'form:error',
+            formValidate: 'form:validate'
         };
 
         return events;

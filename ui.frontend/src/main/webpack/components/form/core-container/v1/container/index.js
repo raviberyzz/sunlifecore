@@ -34,16 +34,11 @@
         errorMsg: '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>',
         span: '<span></span>',
         form: 'form'
-      },
-      PARSLEY: {
-        EVENT: {
-          fieldError: 'field:error',
-          fieldSuccess: 'field:success',
-          formError: 'form:error',
-          formValidate: 'form:validate'
-        }
       }
     };
+
+    let $formValidate;
+
     /**
      * Method to defined form config
      * @function formConfig
@@ -70,17 +65,17 @@
      * @private
     */
     function formFieldError() {
-      let $input = $(this.$element[0].closest(CONSTANT.SELECTOR.formValidate)).find(CONSTANT.SELECTOR.formField);
+      let $input = $formValidate.find(CONSTANT.SELECTOR.formField);
       $input.addClass(CONSTANT.CLASS.slInputError);
       this.$element.each(function(){
         $(this).closest(CONSTANT.SELECTOR.formValidate).addClass(CONSTANT.CLASS.slInputError);
       })
-      let $errorTextId = $(this.$element[0].closest(CONSTANT.SELECTOR.formValidate)).find(CONSTANT.SELECTOR.errorField)[0].getAttribute("id");
+      let $errorTextId = $formValidate.find(CONSTANT.SELECTOR.errorField)[0].getAttribute("id");
       $input[0].setAttribute(CONSTANT.ATTR.ariaDescribedby, $errorTextId);
       $input[0].setAttribute(CONSTANT.ATTR.ariaInvalid, "true");
       if(this.$element[0]?.type === "text" && this.$element[0]?.value !== ""){
         const patternError = $(this.$element[0]).attr(CONSTANT.ATTR.dataParsleyPatternMessage);
-        $(this.$element[0].closest(CONSTANT.SELECTOR.formValidate)).find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
+        $formValidate.find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
       }    
     }
     /**
@@ -106,16 +101,25 @@
       $($firstErrorText.closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput).focus();
     }
     /**
+		 * Handler to cache dom selector on module load
+		 * @function cacheSelectors
+		 * @memberof sunCore.comp.formContainer
+		 * @private
+		 */
+    function cacheSelectors() {
+      $formValidate = $(CONSTANT.SELECTOR.formValidate);
+    }
+    /**
      * Handler to bind event specific for formContainer
      * @function bindEvent
      * @memberof sunCore.comp.formContainer
      * @private
      */
     function bindEvent() {
-      window.Parsley.on(CONSTANT.PARSLEY.EVENT.fieldError,formFieldError);
-      window.Parsley.on(CONSTANT.PARSLEY.EVENT.fieldSuccess,formFieldSuccess);
-      window.Parsley.on(CONSTANT.PARSLEY.EVENT.formValidate, function (formInstance) {
-      }).on(CONSTANT.PARSLEY.EVENT.formError, function () {
+      window.Parsley.on(util.customEvents.fieldError,formFieldError);
+      window.Parsley.on(util.customEvents.fieldSuccess,formFieldSuccess);
+      window.Parsley.on(util.customEvents.formValidate, function (formInstance) {
+      }).on(util.customEvents.formError, function () {
         formValidationError();
       });
     } 
@@ -128,6 +132,7 @@
     */
     function init() {
       formConfig();
+      cacheSelectors();
       bindEvent();
     }        
     return {
