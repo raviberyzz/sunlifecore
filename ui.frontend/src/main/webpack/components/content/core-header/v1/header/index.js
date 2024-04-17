@@ -21,8 +21,8 @@
                 navNode: ".header #nav-header",
                 additionalLinks: ".header .menu-container",
                 additionalLinksParent: ".header .content-container",
-                menuOpen: ".header .menuOpen",
-                menuClose: ".header .menuClose",
+                menuOpen: ".menuOpen",
+                menuClose: ".menuClose",
                 slUtilityBar: ".sl-utility-bar",
                 slUtilityBarOffCanvas: ".sl-utility-bar-offcanvas",
                 navHeader: "#nav-header",
@@ -183,8 +183,8 @@
                 })
             );
 
-            $comp.on("click", CONSTANT.SELECTOR.menuOpen, callMenuOpen);
-            $comp.on("click", CONSTANT.SELECTOR.menuClose, callMenuClose);
+            $comp.on(util.customEvents.INTERACTION, CONSTANT.SELECTOR.menuOpen, callMenuOpen);
+            $comp.on(util.customEvents.INTERACTION, CONSTANT.SELECTOR.menuClose, callMenuClose);
 
             listeners.push(
                 $.subscribe(util.customEvents.SCROLLED, handleScrollStyles)

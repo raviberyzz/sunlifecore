@@ -11,7 +11,7 @@
     * @memberof sunCore.util
     * @param {Function} func The callback function for the debounce method
     * @param {Number} delay The delay in milliseconds for the debounce method
-    * @return {Object} 
+    * @return {Function} 
     */
     util.debounce = function (func, delay) {
         let timeoutId;
