@@ -1,5 +1,6 @@
 <sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification"
-     data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}">
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
+     data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}">
     <div role="alert"
          class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}">
         <div class="container">
@@ -23,7 +24,7 @@
                     <button class="sl-btn multiline-action-button btn btn-secondary-small"
                             data-sly-attribute.loadButton="${notificationButton}"
                             data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
-                            type="${notification.buttonURL}" href="${notification.buttonURL}"
+                            type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                             data-sly-attribute.target="${notification.buttonTarget}"
                             aria-label="${notification.buttonAccessibilityLabel}"> ${notification.buttonTitle}
                     </button>
@@ -46,7 +47,7 @@
                                 <button class="sl-btn oneline-action-button btn btn-secondary-small"
                                     data-sly-attribute.loadButton="${notificationButton}"
                                     data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
-                                    type="${notification.buttonURL}" href="${notification.buttonURL}"
+                                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                                     data-sly-attribute.target="${notification.buttonTarget}"
                                     aria-label="${notification.buttonAccessibilityLabel}">
                                  ${notification.buttonTitle}
@@ -61,7 +62,7 @@
                 <button data-sly-test=${notification.multiline} class="sl-btn multiline-action-button btn btn-secondary-small"
                     data-sly-attribute.loadButton="${notificationButton}"
                     data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
-                    type="${notification.buttonURL}" href="${notification.buttonURL}"
+                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                     data-sly-attribute.target="${notification.buttonTarget}"
                     aria-label="${notification.buttonAccessibilityLabel}">
                         ${notification.buttonTitle}
