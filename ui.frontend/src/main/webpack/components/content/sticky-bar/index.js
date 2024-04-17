@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+    $("#stickyBarLinks li a").click(function (e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        var $target = $(target)
+        $('html, body').animate({
+            scrollTop: $target.offset().top - $('.sticky-bar-wrapper').outerHeight()
+        }, 0);
+    });
+
     $('#priButton a').click(function () {
         if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
             $('#leadgen-o2o').modal('show');
@@ -63,7 +73,7 @@ $(document).ready(function () {
             $('#stickyBarLinks a').each(function () {
                 var currLink = $(this);
                 var refElement = $(currLink.attr("href"));
-                if (refElement.offset().top - $('.sticky-bar-wrapper').outerHeight() <= scrollPos && refElement.offset().top + refElement.height() > scrollPos) {
+                if (refElement.offset().top - $('.sticky-bar-wrapper').outerHeight() - 5 <= scrollPos && refElement.offset().top + refElement.height() > scrollPos) {
                     $('#stickyBarLinks a').removeClass("active");
                     currLink.addClass("active");
                 }
