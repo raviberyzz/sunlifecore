@@ -9,9 +9,9 @@
         $(document).on('click', "button[class*='coral3-Multifield-remove']", delayHideCheckbox);
     });
 
-    /** 
-     * @function A small delay function to allow time for dialogue to load completely
-     * before running script
+    /**
+	 * Function to add a small delay function to allow time for dialogue to load completely before running script 
+	 * @function delayHideCheckbox	 
      */
     function delayHideCheckbox() {
         setTimeout(
@@ -19,10 +19,11 @@
                 checkToHideCheckbox();
             }, 10);
     }
-
-    /** 
-     * @function This function will pick the appropriate checkboxes to hide and show when any
+	
+	/**
+	 * Function will pick the appropriate checkboxes to hide and show when any
      * change is made in the multifield like add, remove, check or uncheck
+	 * @function checkToHideCheckbox	 
      */
     function checkToHideCheckbox() {
 
