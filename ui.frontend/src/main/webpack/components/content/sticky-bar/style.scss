@@ -34,9 +34,13 @@
         column-gap: 10px;
     }
 
-    .stickyBarButtons a span {
-        min-width: 160px;
-        border-radius: 4px;
+    .stickyBarButtons a {
+        font-size: 14px;
+
+        span {
+            min-width: 160px;
+            border-radius: 4px;
+        }
     }
 
     #stickyBarLinks {
@@ -52,6 +56,7 @@
                 font-weight: 700;
                 line-height: 24px;
                 text-decoration: none;
+                font-size: 14px;
             }
 
             a:hover {
