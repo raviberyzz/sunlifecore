@@ -23,13 +23,12 @@
     });
 
     /**
-    * Function to add a space after an <svg> or <span> tag.   
+    * Function to add a space after an <svg> or <span> tag. 
+	* @function modifySpaceAfterElement	
     * @param {String} element Target element
     * @param {String} endTag The end tag to modify
-    * @param {String} expression Regex expression
-    * @return void
-    */
-
+    * @param {String} expression Regex expression    
+    */	
     function modifySpaceAfterElement(element, endTag, expression){
        const $elementParent =  $(element).parent().get(0);
        if($elementParent.innerHTML){
