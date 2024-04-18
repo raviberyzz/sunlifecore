@@ -13,6 +13,7 @@
   core.comp.formContainer = (function ($, util) {
     const CONSTANT = {
       SELECTOR: {
+        form: 'form',
         formValidate: '.formValidate',
         parsleyCustomErrorMessage: '.parsley-custom-error-message',
         formField: '.form-field',
@@ -28,16 +29,17 @@
         ariaDescribedby: 'aria-describedby',
         ariaInvalid: 'aria-invalid',
         role: 'role',
-        dataParsleyPatternMessage: 'data-parsley-pattern-message'
+        dataParsleyPatternMessage: 'data-parsley-pattern-message',
+        id: 'id',
+        true: 'true',
+        alert: 'alert'
       },
-      ELEMENT:{
+      TEMPLATE:{
         errorMsg: '<div id="error-helper-text" class="sl-helper-text error-text combo-msg"><span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive"></span></div>',
-        span: '<span></span>',
-        form: 'form'
+        span: '<span></span>'
       }
     };
 
-    let $formValidate;
 
     /**
      * Method to defined form config
@@ -46,69 +48,71 @@
      * @private
      */
     function formConfig() {
-      const errorsWrapperHtml = CONSTANT.ELEMENT.errorMsg;
-      const errorTemplateHtml = CONSTANT.ELEMENT.span;
+      const errorsWrapperHtml = CONSTANT.TEMPLATE.errorMsg;
+      const errorTemplateHtml = CONSTANT.TEMPLATE.span;
       const parsleyConfig = {
         errorsContainer: function (elem) {
           return elem.$element.next(CONSTANT.SELECTOR.errorText);
         }, errorsWrapper: errorsWrapperHtml,
         errorTemplate: errorTemplateHtml
       };
-      if ($(CONSTANT.ELEMENT.form).length > 0) {
-        $(CONSTANT.ELEMENT.form).parsley(parsleyConfig);
+      if ($(CONSTANT.SELECTOR.form).length > 0) {
+        $(CONSTANT.SELECTOR.form).parsley(parsleyConfig);
       }
     }
+
     /**
-     * Handler to add input error styles to text, options and dropdowns.
+     * Handler to add input error styles to text field, options and dropdowns.
      * @function formFieldSuccess
      * @memberof sunCore.comp.formContainer
      * @private
-    */
+     */
     function formFieldError() {
-      let $input = $formValidate.find(CONSTANT.SELECTOR.formField);
-      $input.addClass(CONSTANT.CLASS.slInputError);
-      this.$element.each(function(){
-        $(this).closest(CONSTANT.SELECTOR.formValidate).addClass(CONSTANT.CLASS.slInputError);
-      })
-      let $errorTextId = $formValidate.find(CONSTANT.SELECTOR.errorField)[0].getAttribute("id");
-      $input[0].setAttribute(CONSTANT.ATTR.ariaDescribedby, $errorTextId);
-      $input[0].setAttribute(CONSTANT.ATTR.ariaInvalid, "true");
-      if(this.$element[0]?.type === "text" && this.$element[0]?.value !== ""){
-        const patternError = $(this.$element[0]).attr(CONSTANT.ATTR.dataParsleyPatternMessage);
-        $formValidate.find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
-      }    
+      window.Parsley.on(util.customEvents.PARSLEY_FIELD_ERROR, function() {
+        let $formValidate = $(this.$element[0].closest(CONSTANT.SELECTOR.formValidate));
+        let $input = $formValidate.find(CONSTANT.SELECTOR.formField);
+        $input.addClass(CONSTANT.CLASS.slInputError);
+        this.$element.each(function(){
+          $(this).closest(CONSTANT.SELECTOR.formValidate).addClass(CONSTANT.CLASS.slInputError);
+        })
+        let $errorTextId = $formValidate.find(CONSTANT.SELECTOR.errorField)[0].getAttribute(CONSTANT.ATTR.id);
+        $input[0].setAttribute(CONSTANT.ATTR.ariaDescribedby, $errorTextId);
+        $input[0].setAttribute(CONSTANT.ATTR.ariaInvalid, CONSTANT.ATTR.true);
+        if(this.$element[0]?.type === "text" && this.$element[0]?.value !== ""){
+          const patternError = $(this.$element[0]).attr(CONSTANT.SELECTOR.dataParsleyPatternMessage);
+          $formValidate.find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
+        } 
+      }).on(util.customEvents.PARSLEY_FIELD_SUCCESS, function() {
+        this.$element.each(function(){
+          $(this).closest(CONSTANT.SELECTOR.formValidate).removeClass(CONSTANT.CLASS.slInputError);
+        })
+      }); 
     }
+
     /**
-     * Handler to input success styles to text, options and dropdowns.
+     * Hander to add error styles to form on form error event.
+     * @function formError
+     * @memberof sunCore.comp.formContainer
+     * @private
+     */
+    function formError(){
+      window.Parsley.on(util.customEvents.PARSLEY_FORM_ERROR, function() {
+        let $firstErrorText = $(this.$element[0]).find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).first()[0];
+        $firstErrorText.setAttribute(CONSTANT.ATTR.role, CONSTANT.ATTR.alert);
+        $($firstErrorText.closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput).focus();
+      });
+    }
+
+    /**
+     * Handler to add success styles to form on form success event to text field, options and dropdowns.
      * @function formFieldSuccess
      * @memberof sunCore.comp.formContainer
      * @private
-    */
+     */
     function formFieldSuccess() {
-      this.$element.each(function(){
-        $(this).closest(CONSTANT.SELECTOR.formValidate).removeClass(CONSTANT.CLASS.slInputError);
-      })
-    }    
-    /**
-     * Handler to Focus on the first dropdown with an error after form submission.
-     * @function formValidationError
-     * @memberof sunCore.comp.formContainer
-     * @private
-    */    
-    function formValidationError() {
-      let $firstErrorText = $(this.$element[0]).find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).first()[0];
-      $firstErrorText.setAttribute(CONSTANT.ATTR.role, "alert");
-      $($firstErrorText.closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput).focus();
+      window.Parsley.on(util.customEvents.PARSLEY_FORM_VALIDATE, formError);
     }
-    /**
-		 * Handler to cache dom selector on module load
-		 * @function cacheSelectors
-		 * @memberof sunCore.comp.formContainer
-		 * @private
-		 */
-    function cacheSelectors() {
-      $formValidate = $(CONSTANT.SELECTOR.formValidate);
-    }
+
     /**
      * Handler to bind event specific for formContainer
      * @function bindEvent
@@ -116,15 +120,11 @@
      * @private
      */
     function bindEvent() {
-      window.Parsley.on(util.customEvents.fieldError,formFieldError);
-      window.Parsley.on(util.customEvents.fieldSuccess,formFieldSuccess);
-      window.Parsley.on(util.customEvents.formValidate, function (formInstance) {
-      }).on(util.customEvents.formError, function () {
-        formValidationError();
-      });
+      formFieldError();
+      formFieldSuccess();
     } 
  
-        /**
+    /**
     * Method used to initilize the module
     * @function init
     * @memberof sunCore.comp.formContainer
@@ -132,7 +132,6 @@
     */
     function init() {
       formConfig();
-      cacheSelectors();
       bindEvent();
     }        
     return {

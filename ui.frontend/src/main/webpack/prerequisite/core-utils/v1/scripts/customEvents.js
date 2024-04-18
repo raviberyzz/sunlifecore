@@ -79,14 +79,14 @@
             IO_ELEM_IN: 'slcore:element:in:viewport',
             IO_ELEM_OUT: 'slcore:element:out:viewport',
 
-            //Bootstrap Alert related
+            // Bootstrap Alert related
             CLOSE_BS_ALERT: 'close.bs.alert',
 
-            // Parsley Events
-            fieldError: 'field:error',
-            fieldSuccess: 'field:success',
-            formError: 'form:error',
-            formValidate: 'form:validate'
+            // Parsley Events for form validation
+            PARSLEY_FIELD_ERROR: 'field:error',
+            PARSLEY_FIELD_SUCCESS: 'field:success',
+            PARSLEY_FORM_ERROR: 'form:error',
+            PARSLEY_FORM_VALIDATE: 'form:validate'
         };
 
         return events;
