@@ -33,12 +33,12 @@
         function triggerModal() {
             var modalId = $modalTriggerOnScroll.getAttribute('id');
             if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2) {
-                if (getCookie(modalId) === "") {
+                if (util.cookie.events.getCookie(modalId) === "") {
                     $("#" + modalId).modal("show");
                     if (navigator.userAgent.indexOf("MSIE") > 0) {
-                        createCookie(modalId, CONSTANT.ID.displayed, 1, false);
+                        util.cookie.events.createCookie(modalId, CONSTANT.ID.displayed, 1, false);
                     } else {
-                        createCookie(modalId, CONSTANT.ID.displayed, -1, true);
+                        util.cookie.events.createCookie(modalId, CONSTANT.ID.displayed, -1, true);
                     }
                 }
             }
