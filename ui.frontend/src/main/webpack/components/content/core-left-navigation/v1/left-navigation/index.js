@@ -2,7 +2,7 @@
  * index.js
  * LeftNavigation related functionality.
  */
- (function (core) {
+(function (core) {
 	"use strict";
 
 	/**
@@ -30,7 +30,8 @@
 			ATTR: {
 				href: "href",
 				ariaControls: "aria-controls",
-				id: "id"
+				id: "id",
+				true: "true"
 			}
 		};
 
@@ -65,14 +66,14 @@
             level2Nav.classList.remove(CONSTANT.CLASS.slLeftNav, CONSTANT.CLASS.navBarNav);
 
             if($leftNavMainList.childElementCount == 1 && i ==0){
-               dropdown.ariaExpanded = "true";
+               dropdown.ariaExpanded = CONSTANT.ATTR.true;
                dropdown.remove();
                level2Nav.classList.add(CONSTANT.CLASS.show);
            }
             //Add class for active dropdown
             const activeLevel2Nav = level2Nav.querySelector(CONSTANT.SELECTOR.leftNavCmpNav);
             if(activeLevel2Nav){
-                dropdown.ariaExpanded = "true";
+                dropdown.ariaExpanded = CONSTANT.ATTR.true;
                 level2Nav.classList.add(CONSTANT.CLASS.show);
             }
         }
