@@ -17,7 +17,7 @@
                 }
 
                 timer = w.setTimeout(function() {
-                    //adding this checkas on some mobiles when scrolling it things that we resized screen
+                    //adding this checks on some mobiles when scrolling it things that we resized screen
                     if ($(w).width() !== wWidth || $(w).height() !== wHeight) {
                         wWidth = $(w).width();
                         wHeight = $(w).height();
