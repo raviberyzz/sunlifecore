@@ -21,17 +21,17 @@
          * sunCore.util.cookie.getCookies('cookieName');
         */           
         function getCookie(cname) {
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie);
-            var ca = decodedCookie.split(';');
-            for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                    }
-                    if (c.indexOf(name) == 0) {
-                            return c.substring(name.length, c.length);
-                    }
+            const name = cname + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
             }
             return "";
         }
@@ -47,18 +47,24 @@
          * sunCore.util.cookie.createCookie('cookieName', 'cookieValue', 1, false);
          */         
         function createCookie(name,value,days, isSession) {
+            let date;
+            let expires;
             if (days) {
-                var date = new Date();
+                date = new Date();
                 date.setTime(date.getTime()+(days*24*60*60*1000));
-                var expires = "; expires="+date.toGMTString();
+                expires = `; expires=${date.toGMTString()}`;
             }
-            else expires = "";
+            else {
+                expires = "";
+            }
+            const cookieWithoutExpire = `${name}=${value}; path=/;`;
+            const cookieWithExpire = `${name}=${value}${expires}; path=/;`;
             if(isSession){
-                    document.cookie = name+"="+value+"; path=/;";
+                document.cookie = cookieWithoutExpire;
             } else {
-                    document.cookie = name+"="+value+expires+"; path=/;";
-            }
-            }  
+                document.cookie = cookieWithExpire;
+            } 
+        }
         return {
             getCookie: getCookie,
             createCookie: createCookie
