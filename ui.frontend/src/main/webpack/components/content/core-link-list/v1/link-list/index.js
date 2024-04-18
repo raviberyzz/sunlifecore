@@ -87,7 +87,7 @@
 				target = "_self",
 				$currentDropdownBtn = $(elem)
 					.closest(CONSTANT.SELECTOR.slDropdown)
-					.find(ONSTANT.SELECTOR.slDropdownBtn);
+					.find(CONSTANT.SELECTOR.slDropdownBtn);
 			if ($(elem).length && $(elem).find(CONSTANT.SELECTOR.dropdownMenuLink).length) {
 				let $clickedLink = $(elem).find(CONSTANT.SELECTOR.dropdownMenuLink);
 				selectedLinkUrl = $clickedLink.attr(CONSTANT.ATTR.href);
