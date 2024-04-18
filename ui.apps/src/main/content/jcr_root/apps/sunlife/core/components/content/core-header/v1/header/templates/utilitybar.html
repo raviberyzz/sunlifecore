@@ -53,16 +53,16 @@
                                             <span class="fak fa-chevron-down sl-icon_size_md sl-icon custom-icon d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none" role="presentation"></span>
                                     </div>
                                 </button>
-                                <ul aria-labelledby="sl-dropdown-toggle-language-utility"
+                                <div aria-labelledby="sl-dropdown-toggle-language-utility"
                                     class="dropdown-menu dropdown-menu-end">
                                     <div class="dropdown-menu-title dropdown-header d-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block" role="heading">${headerModel.desktopMenuTitle}</div>
                                     <ul data-sly-list.languageList="${headerModel.languageLinks}">
-                                        <li aria-current="true" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=languageList.linkURL}">
+                                        <li aria-current="${languageList.linkHighlight && 'true'}" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=languageList.linkURL}">
                                             <a href="${utilityListParsing.navPath}" lang="" data-sly-attribute.lang="${languageList.linkLanguageCode}" class="${languageList.linkHighlight ? 'active' : ''} dropdown-item">
                                                 <div class="d-inline"><span>${languageList.linkName}</span></div>
                                             </a></li>
                                     </ul>
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
