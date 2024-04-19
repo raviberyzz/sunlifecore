@@ -120,6 +120,11 @@ public class LeftNavigationModal implements Navigation {
 	@Nullable
 	protected Component component;
 
+	/** The top header label. */
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	@Getter
+	private String leftNavTopHeader;
+
 	private LeftNavigationItemProcessor leftNavigationItemProcessor = new LeftNavigationItemProcessor();
 
 	/**
