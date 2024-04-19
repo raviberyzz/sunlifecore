@@ -102,11 +102,9 @@
      * @private
      */
     function formError(){
-      window.Parsley.on(util.customEvents.PARSLEY_FORM_ERROR, function() {
-        let $firstErrorText = $(this.$element[0]).find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).first()[0];
-        $firstErrorText.setAttribute(CONSTANT.ATTR.role, CONSTANT.ATTR.alert);
-        $($firstErrorText.closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput).focus();
-      });
+      let $firstErrorText = $(this.$element[0]).find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).first()[0];
+      $firstErrorText.setAttribute(CONSTANT.ATTR.role, CONSTANT.ATTR.alert);
+      $($firstErrorText.closest(CONSTANT.SELECTOR.slDropdown)).find(CONSTANT.SELECTOR.comboInput).focus();
     }
 
     /**
@@ -118,7 +116,8 @@
     function bindEvent() {
       window.Parsley.on(util.customEvents.PARSLEY_FIELD_ERROR, formFieldError)
       .on(util.customEvents.PARSLEY_FIELD_SUCCESS, formFieldSuccess);
-      window.Parsley.on(util.customEvents.PARSLEY_FORM_VALIDATE, formError);
+      window.Parsley.on(util.customEvents.PARSLEY_FORM_VALIDATE,() => {})
+      .on(util.customEvents.PARSLEY_FORM_ERROR, formError);
     } 
  
     /**
