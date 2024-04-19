@@ -1,7 +1,6 @@
 @import '@sunlife/ui-styles/base/variables.scss';
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/variables-dark';
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
@@ -33,18 +32,11 @@
     vertical-align: -7px !important;
   }
 }
-@include media-breakpoint-up(lg) {
-  .sl-header, .sl-utility-bar {
-    --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
-    left: 50%;
-    margin-left: calc(var(--viewportWidth) / -2);
-    width: var(--viewportWidth);
-  }
-}
 .sl-utility-bar, .sl-header{
-  width: 100vw;
+  --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+  width: var(--viewportWidth);
   left: 50%;
-  margin-left: calc(100vw/-2);
+  margin-left: calc(var(--viewportWidth) / -2);
 }
 .sl-utility-bar {
   position: relative;
