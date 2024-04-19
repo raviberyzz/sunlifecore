@@ -1,6 +1,6 @@
 /**
-   * Handle Parsley custom error element container for dropdowns.
-*/
+ * Handle Parsley custom error element container for dropdowns.
+ */
  
 (function (core) {
   "use strict";
@@ -68,7 +68,6 @@
      * @private
      */
     function formFieldError() {
-      window.Parsley.on(util.customEvents.PARSLEY_FIELD_ERROR, function() {
         let $formValidate = $(this.$element[0].closest(CONSTANT.SELECTOR.formValidate));
         let $input = $formValidate.find(CONSTANT.SELECTOR.formField);
         $input.addClass(CONSTANT.CLASS.slInputError);
@@ -82,15 +81,22 @@
           const patternError = $(this.$element[0]).attr(CONSTANT.SELECTOR.dataParsleyPatternMessage);
           $formValidate.find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
         } 
-      }).on(util.customEvents.PARSLEY_FIELD_SUCCESS, function() {
-        this.$element.each(function(){
-          $(this).closest(CONSTANT.SELECTOR.formValidate).removeClass(CONSTANT.CLASS.slInputError);
-        })
-      }); 
     }
 
     /**
-     * Hander to add error styles to form on form error event.
+     * Handler to remove input error styles to text field, options and dropdowns on form field success.
+     * @function formFieldSuccess
+     * @memberof sunCore.comp.formContainer
+     * @private
+     */
+    function formFieldSuccess() {
+      this.$element.each(function(){
+        $(this).closest(CONSTANT.SELECTOR.formValidate).removeClass(CONSTANT.CLASS.slInputError);
+      })
+    }
+
+    /**
+     * Hander to add error styles to form fields on form error event.
      * @function formError
      * @memberof sunCore.comp.formContainer
      * @private
@@ -104,32 +110,23 @@
     }
 
     /**
-     * Handler to add success styles to form on form success event to text field, options and dropdowns.
-     * @function formFieldSuccess
-     * @memberof sunCore.comp.formContainer
-     * @private
-     */
-    function formFieldSuccess() {
-      window.Parsley.on(util.customEvents.PARSLEY_FORM_VALIDATE, formError);
-    }
-
-    /**
      * Handler to bind event specific for formContainer
      * @function bindEvent
      * @memberof sunCore.comp.formContainer
      * @private
      */
     function bindEvent() {
-      formFieldError();
-      formFieldSuccess();
+      window.Parsley.on(util.customEvents.PARSLEY_FIELD_ERROR, formFieldError)
+      .on(util.customEvents.PARSLEY_FIELD_SUCCESS, formFieldSuccess);
+      window.Parsley.on(util.customEvents.PARSLEY_FORM_VALIDATE, formError);
     } 
  
     /**
-    * Method used to initilize the module
-    * @function init
-    * @memberof sunCore.comp.formContainer
-    * @public
-    */
+     * Method used to initilize the module
+     * @function init
+     * @memberof sunCore.comp.formContainer
+     * @public
+     */
     function init() {
       formConfig();
       bindEvent();
