@@ -1,10 +1,8 @@
 <template data-sly-template.group="${@ items='The navigation items for the current level', nav}" data-sly-use.itemTemplate="item.html">
     <sly data-sly-test="${items.size>0 }">
         <sly data-sly-list="${items}">
-            <sly data-sly-test="${item.level==0}">
-                <sly data-sly-test="${item.getChildren.size>0 }">
-                    <h5 class="h5 mb-sl24" data-sly-element="${nav.leftNavTopHeader}">${item.title}</h5>
-                </sly>
+            <sly data-sly-test="${itemList.first && item.level==0 }">
+                <h2 class="h4 mb-sl24" data-sly-element="${nav.leftNavTopHeader}">${item.title}</h2>
             </sly>
         </sly>
         <ul id="sl-left-nav-main-list" class="cmp-navigation__group sl-left-nav navbar-nav flex-column" data-sly-list="${items}">
