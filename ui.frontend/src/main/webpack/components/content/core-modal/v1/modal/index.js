@@ -1,47 +1,72 @@
 /**
- * Bind a throttled scroll window event if there is a modal on the page which gets triggered on page scroll. 
+ * Modal Component specific JS. 
+ * Bind a debounced scroll window event if there is a modal on the page which gets triggered on page scroll. 
  * Manage the display of the modal only once per browser session, by writing and reading a cookie.
  */
-$(document).ready(function () {
 
+(function (core) {
+    "use strict";
+    
     /**
-     * Set up throttler.
-     * @function
-     * @param {function} fn - The function to throttle.
-     * @param {number} delay - The function will run once per given amount of milliseconds.
+     * Modal component
+     * @namespace modal
+     * @memberof sunCore.comp
      */
-    const throttle = (fn, delay) => {
-        let time = Date.now();
-        return () => {
-            if ((time + delay - Date.now()) <= 0) {
-                fn();
-                time = Date.now();
+    core.comp.modal = (function ($, util) {
+
+        const CONSTANT = {
+            ID: {
+                displayed: "displayed"
             }
-        }
-    }
+        };
 
-    /**
-     * Trigger the modal to display. Display the modal only once per browser session, managed by reading a cookie.
-     * @function
-     */
-    function triggerModal() {
-        var modalId = modalTriggerOnScroll.getAttribute('id');
-        if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2) {
-            if (getCookie(modalId) === "") {
-                $("#" + modalId).modal("show");
-                if (navigator.userAgent.indexOf("MSIE") > 0) {
-                    createCookie(modalId, 'displayed', 1, false);
-                } else {
-                    createCookie(modalId, 'displayed', -1, true);
+        let $modalTriggerOnScroll,
+            listeners = [];
+
+        /**
+         * Trigger the modal to display. Display the modal only once per browser session, managed by reading a cookie.
+         * @function triggerModal
+         * @memberof sunCore.comp.modal
+         * @private
+         * @return void
+         */
+        function triggerModal() {
+            const modalId = $modalTriggerOnScroll.getAttribute('id');
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2) {
+                if (util.cookie.getCookie(modalId) === "") {
+                    $("#" + modalId).modal("show");
+                    if (navigator.userAgent.indexOf("MSIE") > 0) {
+                        util.cookie.createCookie(modalId, CONSTANT.ID.displayed, 1, false);
+                    } else {
+                        util.cookie.createCookie(modalId, CONSTANT.ID.displayed, -1, true);
+                    }
                 }
-            } else {
-                window.removeEventListener('scroll', throttle(triggerModal, 300));
             }
         }
-    }
 
-    const modalTriggerOnScroll = document.querySelectorAll('[data-triggerOnScroll]')[0];
-    if (modalTriggerOnScroll) {
-        window.addEventListener('scroll', throttle(triggerModal, 300));
-    }
-});
+        /**
+        * Initialize the module.
+        * @function init
+        * @memberof sunCore.comp.header
+        * @private
+        * @return void
+        */
+        function init() {
+            $modalTriggerOnScroll = document.querySelectorAll('[data-triggerOnScroll]')[0];
+            if ($modalTriggerOnScroll) {
+                listeners.push(
+                    $.subscribe(util.customEvents.SCROLLED, triggerModal)
+                );                
+            }
+        }
+
+        return {
+            init: init,
+        };
+    })(core.$, core.util);
+
+    /**
+     * Initialise modal module if given selector is in DOM
+     */
+    core.util.initialise(core.comp, "modal", ".modal");
+})(sunCore);
