@@ -92,11 +92,11 @@ $(document).ready(function () {
         if ((window.location.host.indexOf('www.sunlife.ca') > -1 || window.location.host.indexOf('www.ca.sunlife') > -1) && !window.location.pathname.startsWith('/sl/')) {
 			$('a[href*="/signin/mysunlife/home.wca"], a[href*="/signin/masunlife/home.wca"]').click(function() {
 				var dataValue;
-				if ($(this).parents('.slf-header-wrapper').length) {
+				if ($(this).closest('.header').length) {
 					dataValue = 'header';
-				} else if ($(this).parents('#main-content').length) {
+				} else if ($(this).closest('.helioscontainer').length) {
 					dataValue = 'body-content';
-				} else if ($(this).parents('#mainfooter').length) {
+				} else if ($(this).closest('.footer').length) {
 					dataValue = 'footer';
 				}
 				if (dataValue !== undefined) {
