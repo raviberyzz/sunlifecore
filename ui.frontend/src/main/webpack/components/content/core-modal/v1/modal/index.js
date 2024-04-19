@@ -31,7 +31,7 @@
          * @return void
          */
         function triggerModal() {
-            var modalId = $modalTriggerOnScroll.getAttribute('id');
+            const modalId = $modalTriggerOnScroll.getAttribute('id');
             if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2) {
                 if (util.cookie.getCookie(modalId) === "") {
                     $("#" + modalId).modal("show");

@@ -24,8 +24,9 @@
             const name = cname + "=";
             const decodedCookie = decodeURIComponent(document.cookie);
             const ca = decodedCookie.split(';');
+            let c;
             for(let i = 0; i <ca.length; i++) {
-                let c = ca[i];
+                c = ca[i];
                 while (c.charAt(0) == ' ') {
                     c = c.substring(1);
                 }
@@ -49,6 +50,8 @@
         function createCookie(name,value,days, isSession) {
             let date;
             let expires;
+            let cookieWithExpire;
+            const cookieWithoutExpire = `${name}=${value}; path=/;`;
             if (days) {
                 date = new Date();
                 date.setTime(date.getTime()+(days*24*60*60*1000));
@@ -57,8 +60,7 @@
             else {
                 expires = "";
             }
-            const cookieWithoutExpire = `${name}=${value}; path=/;`;
-            const cookieWithExpire = `${name}=${value}${expires}; path=/;`;
+            cookieWithExpire = `${name}=${value}${expires}; path=/;`;
             if(isSession){
                 document.cookie = cookieWithoutExpire;
             } else {
