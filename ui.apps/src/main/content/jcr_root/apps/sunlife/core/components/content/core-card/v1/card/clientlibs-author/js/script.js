@@ -69,6 +69,8 @@
             case 'banner-image':
                 disableAssetOption('icon');
                 disableCtaOption(['cardlink']);
+                disableAssetOption('noAsset');
+                selectOption('./assetType', 'image');
                 break;
             case 'media':
                 disableAssetOption('icon');
@@ -79,8 +81,9 @@
                 } else {
                     disableCtaOption(['cardlink']);
                     $('.card-type-dialog-container').find('[name="./mediaWatchTime"]').parent().hide();
+                    disableAssetOption('noAsset');
+                    selectOption('./assetType', 'image');
                 }
-                
                 break;
             case 'segmented':
                 disableAssetOption('image');
@@ -95,6 +98,11 @@
                 break;
         }
 
+        /* Select passed options of dropdown */
+        function selectOption(selector, options) {
+            $('coral-select[name="' + selector + '"]').find('coral-select-item[value="' + options + '"]').attr("selected", true);
+            
+        }
 
         /* Disable passed options of CTA dropdown */
         function disableCtaOption(options) {
