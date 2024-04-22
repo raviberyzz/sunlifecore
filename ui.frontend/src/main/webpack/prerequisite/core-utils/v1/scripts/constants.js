@@ -39,9 +39,12 @@
 
             },
             templateString: {
-                externalLinkIcon: '<i class="far fa-external-link"></i>',
-                internalLinkIcon: '<i class="far fa-arrow-circle-right"></i>',
-                pdfLinkIcon: '<i class="far fa-file-pdf"></i>'
+                externalLinkIcon: '<i class="far fa-external-link icn-hover-hidden"></i>',
+                internalLinkIcon: '<i class="far fa-arrow-circle-right icn-hover-hidden"></i>',
+                pdfLinkIcon: '<i class="far fa-file-pdf icn-hover-hidden"></i>',
+                externalLinkIconSolid: '<i class="fas fa-external-link icn-hover-show"></i>',
+                internalLinkIconSolid: '<i class="fas fa-arrow-circle-right icn-hover-show"></i>',
+                pdfLinkIconSolid: '<i class="fas fa-file-pdf icn-hover-show"></i>'
             }
         };
 

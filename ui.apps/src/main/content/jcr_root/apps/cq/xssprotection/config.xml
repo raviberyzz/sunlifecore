@@ -574,6 +574,46 @@ http://www.w3.org/TR/html401/struct/global.html
 	
 		<!-- You can mess with this stuff if you know what you're doing -->
 		
+		<tag name="svg" action="validate">
+			<attribute name="focusable">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>		 
+			</attribute>
+			<attribute name="role">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>		 
+			</attribute>            
+			<attribute name="xmlns">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>		 
+			</attribute>	
+			<attribute name="viewBox">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>		 
+			</attribute>            
+			<attribute name="data-fa-i2svg">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>		 
+			 </attribute>
+        </tag>    
+	    <tag name="path" action="validate">            
+            <attribute name="fill">
+                <regexp-list>
+                    <regexp name="anything"/>
+                </regexp-list>		 
+            </attribute>            
+            <attribute name="d">
+                <regexp-list>
+                    <regexp name="anything"/>
+                </regexp-list>		 
+            </attribute>
+        </tag> 
+		
 		<tag name="html" action="validate"/>
 		
 		<tag name="body" action="validate">
