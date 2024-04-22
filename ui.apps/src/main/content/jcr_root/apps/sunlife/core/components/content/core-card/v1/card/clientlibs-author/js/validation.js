@@ -7,31 +7,56 @@
     /* Binding event and callback on dialog-ready */
     $(document).on("foundation-contentloaded", function (dialogEvent) {
 
+        const CONSTANTS = {
+            SELECTOR: {
+                cardHeading: '[name="./cardHeading"]',
+                name: '[name="./name"]',
+                jobTitle: '[name="./jobTitle"]',
+                assetType: '.coral3-Select[name="./assetType"]',
+                bannerHeading: '[name="./bannerHeading"]',
+                bannerDescription: '.cq-RichText-editable[name="./bannerDescription"]',
+                bannerImageHeading: '[name="./bannerImageHeading"]',
+                bannerImageDescription: '.cq-RichText-editable[name="./bannerImageDescription"]',
+                mediaHeading: '[name="./mediaHeading"]',
+                mediaDescription: '.cq-RichText-editable[name="./mediaDescription"]',
+                segmentDescription: '.cq-RichText-editable[name="./segmentDescription"]',
+                ctaType: '.coral3-Select[name="./ctaType"]',
+                cardLinkLabel: '[name="./cardLinkLabel"]',
+                cardLinkURL: '[name="./cardLinkURL"]',
+                cardBtnLabel: '[name="./cardBtnLabel"]',
+                cardBtnURL: '[name="./cardBtnURL"]',
+                cardClickableLinkURL: '[name="./cardClickableLinkURL"]',
+                cardTypeTabs: '.card-type-tabs',
+                cardImageFile: '.coral3-FileUpload[name="./cardImageFile"]'
+
+            }
+        }
+
         const currentComponentPath = Granite.author.DialogFrame.currentDialog.editable.path;
         const parentPath = currentComponentPath.substr(0, currentComponentPath.lastIndexOf("/"));
         const cardType = CQ.shared.HTTP.get(parentPath + '/cardType').responseText;
         const mediaType = CQ.shared.HTTP.get(parentPath + '/mediaType').responseText;
-        const $dialogContainer = $('.card-type-tabs');
+        const $dialogContainer = $(CONSTANTS.SELECTOR.cardTypeTabs);
         const tabs = $dialogContainer.find("coral-tab");
 
          /* selector required for card validations */
-        const $cardHeading = $dialogContainer.find('[name="./cardHeading"]');
-        const $name = $dialogContainer.find('[name="./name"]');
-        const $jobTitle = $dialogContainer.find('[name="./jobTitle"]');
-        const $assetType = $dialogContainer.find('.coral3-Select[name="./assetType"]');
-        const $bannerHeading = $dialogContainer.find('[name="./bannerHeading"]');
-        const $bannerDescription = $dialogContainer.find('.cq-RichText-editable[name="./bannerDescription"]');
-        const $bannerImageHeading = $dialogContainer.find('[name="./bannerImageHeading"]');
-        const $bannerImageDescription = $dialogContainer.find('.cq-RichText-editable[name="./bannerImageDescription"]');
-        const $mediaHeading = $dialogContainer.find('[name="./mediaHeading"]');
-        const $mediaDescription = $dialogContainer.find('.cq-RichText-editable[name="./mediaDescription"]');
-        const $segmentDescription = $dialogContainer.find('.cq-RichText-editable[name="./segmentDescription"]');
-        const $ctaType = $dialogContainer.find('.coral3-Select[name="./ctaType"]');
-        const $cardLinkLabel = $dialogContainer.find('[name="./cardLinkLabel"]');
-        const $cardLinkURL = $dialogContainer.find('[name="./cardLinkURL"]');
-        const $cardBtnLabel = $dialogContainer.find('[name="./cardBtnLabel"]');
-        const $cardBtnURL = $dialogContainer.find('[name="./cardBtnURL"]');
-        const $cardClickableLinkURL = $dialogContainer.find('[name="./cardClickableLinkURL"]');
+        const $cardHeading = $dialogContainer.find(CONSTANTS.SELECTOR.cardHeading);
+        const $name = $dialogContainer.find(CONSTANTS.SELECTOR.name);
+        const $jobTitle = $dialogContainer.find(CONSTANTS.SELECTOR.jobTitle);
+        const $assetType = $dialogContainer.find(CONSTANTS.SELECTOR.assetType);
+        const $bannerHeading = $dialogContainer.find(CONSTANTS.SELECTOR.bannerHeading);
+        const $bannerDescription = $dialogContainer.find(CONSTANTS.SELECTOR.bannerDescription);
+        const $bannerImageHeading = $dialogContainer.find(CONSTANTS.SELECTOR.bannerImageHeading);
+        const $bannerImageDescription = $dialogContainer.find(CONSTANTS.SELECTOR.bannerImageDescription);
+        const $mediaHeading = $dialogContainer.find(CONSTANTS.SELECTOR.mediaHeading);
+        const $mediaDescription = $dialogContainer.find(CONSTANTS.SELECTOR.mediaDescription);
+        const $segmentDescription = $dialogContainer.find(CONSTANTS.SELECTOR.segmentDescription);
+        const $ctaType = $dialogContainer.find(CONSTANTS.SELECTOR.ctaType);
+        const $cardLinkLabel = $dialogContainer.find(CONSTANTS.SELECTOR.cardLinkLabel);
+        const $cardLinkURL = $dialogContainer.find(CONSTANTS.SELECTOR.cardLinkURL);
+        const $cardBtnLabel = $dialogContainer.find(CONSTANTS.SELECTOR.cardBtnLabel);
+        const $cardBtnURL = $dialogContainer.find(CONSTANTS.SELECTOR.cardBtnURL);
+        const $cardClickableLinkURL = $dialogContainer.find(CONSTANTS.SELECTOR.cardClickableLinkURL);
 
         let $assetTab = null;
         let $ctaTab = null;
@@ -48,6 +73,17 @@
         });
 
         /**
+		 * Method to update text on required field label
+		 * @function updateRequiredLabel
+         * @param {HTMLElement} $element - jquery dom selector of element
+		 * @private
+		 */
+        function updateRequiredLabel($element) {
+            let labelText = $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text().replaceAll("*", "");
+            $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text(labelText+'*');
+        }
+
+        /**
 		 * Method to add attributes for marking required fields for validation
 		 * @function markRequiredFields
          * @param {HTMLElement} $element - jquery dom selector of element
@@ -56,8 +92,7 @@
 		 */
         function markRequiredFields($element, requiredOnly) {
             $element.attr(requiredOnly ? "required":"aria-required", true);
-            let labelText = $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text().replaceAll("*", "");
-            $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text(labelText+'*');
+            updateRequiredLabel($element);
         }
 
      
@@ -69,8 +104,7 @@
 		 * @private
 		 */
         function selectRequired($element, type) {
-            let elementLabelText = $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text().replaceAll("*", "");
-            $element.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text(elementLabelText+'*');
+            updateRequiredLabel($element);
             $element.attr("required", true);
             $element.attr("aria-required", true);
             if(type=='cta') {
@@ -96,7 +130,7 @@
             }
             
             if($assetType.val() =='image') {
-                let $imageAsset = $dialogContainer.find('.coral3-FileUpload[name="./cardImageFile"]');
+                let $imageAsset = $dialogContainer.find(CONSTANTS.SELECTOR.cardImageFile);
                 $imageAsset.attr("data-cq-fileupload-required", true);
                 $imageAsset.closest('.coral-Form-fieldwrapper').find(".coral-Form-fieldlabel").text('Card Image*');
                 $imageAsset.attr("required", true);
