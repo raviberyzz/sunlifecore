@@ -35,7 +35,8 @@
 			PATHNAME: window.location.pathname
 		};
 
-		let $slDropdown;
+		let $slDropdown,
+		$linkedListItems;
 
 		
 
