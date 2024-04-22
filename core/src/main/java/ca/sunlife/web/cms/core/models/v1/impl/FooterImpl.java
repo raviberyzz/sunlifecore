@@ -195,6 +195,7 @@ public class FooterImpl implements Footer {
                 socialMediaMap.put("icon", socialMediaItem.getValueMap().get("icon", String.class));
                 socialMediaMap.put("link", socialMediaItem.getValueMap().get("link", String.class));
                 socialMediaMap.put("dataTitle", socialMediaItem.getValueMap().get("dataTitle", String.class));
+                socialMediaMap.put("screenReaderTextSocialMedia", socialMediaItem.getValueMap().get("screenReaderTextSocialMedia", String.class));
 
                 socialMediaList.add(socialMediaMap);
             }
