@@ -443,6 +443,13 @@
                                                                                             value="_blank"/>
                                                                                     </items>
                                                                                 </linktarget>
+                                                                                <analytics
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                    emptyText="Please configure the data-section for Analytics."
+                                                                                    fieldDescription="Please configure the data-section for Analytics tracking."
+                                                                                    fieldLabel="Data section"
+                                                                                    name="./signinAnalyticsId"/>
                                                                             </items>
                                                                         </column>
                                                                     </items>

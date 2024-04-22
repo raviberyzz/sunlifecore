@@ -45,4 +45,7 @@ public interface SigninLinks {
     @ValueMapValue
     String getLinkTarget();
 
+    @ValueMapValue
+    String signinAnalyticsId();
+
 }
