@@ -2,7 +2,7 @@
     <sly data-sly-test="${items.size>0 }">
         <sly data-sly-list="${items}">
             <sly data-sly-test="${itemList.first && item.level==0 }">
-                <h2 class="h4 mb-sl24" data-sly-element="${nav.leftNavTopHeader}">${item.title}</h2>
+                <h2 class="h4 mb-sl24" data-sly-element="${nav.rootPageHeadingLevel}">${item.title}</h2>
             </sly>
         </sly>
         <ul id="sl-left-nav-main-list" class="cmp-navigation__group sl-left-nav navbar-nav flex-column" data-sly-list="${items}">
