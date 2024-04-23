@@ -45,6 +45,11 @@ public interface SigninLinks {
     @ValueMapValue
     String getLinkTarget();
 
+    /**
+     * Retrieves the data section authored in dialouge.
+     * @return The data section as a string. Will return empty string when not authored.
+     */
+
     @ValueMapValue
     String signinAnalyticsId();
 
