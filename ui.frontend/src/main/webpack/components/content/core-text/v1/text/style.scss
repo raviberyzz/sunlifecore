@@ -44,7 +44,6 @@
 }
 
 .sl-link {
-    display: block;
     .fa-external-link,
     .fa-arrow-circle-right,
     .fa-file-pdf  {
@@ -84,6 +83,12 @@
    
     @include show-fas-soild-icon-on-hover;
    
+}
+
+.sl-link-internal,
+.sl-link-external, 
+.sl-link-pdf{
+    display:block;
 }
 
 .popover-button {
