@@ -7,8 +7,8 @@
  import org.apache.sling.api.resource.Resource;
  import org.apache.sling.models.annotations.DefaultInjectionStrategy;
  import org.apache.sling.models.annotations.Model;
- 
- import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
  import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  import org.slf4j.Logger;
  import org.slf4j.LoggerFactory;
@@ -33,7 +33,7 @@
    private String fragmentPath;
  
    /** The config service. */
-   @ScriptVariable
+   @OSGiService
    private SiteConfigService configService;
  
    /** The modified fragment path. */
