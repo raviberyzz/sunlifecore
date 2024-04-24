@@ -122,9 +122,9 @@
           width: 13.5rem;
           .country-header {
             & h2 {
-              font-size: 16px;
-              color: #202223;
-              line-height: 24px;
+              font-size: 1rem;
+              color: var(--grey-900, #202223);
+              line-height: 1.5rem;
             }
             @include sl-body-medium;
             color: var(--grey-900);
