@@ -83,7 +83,6 @@ public class LeftNavigationModal implements Navigation {
 	private LiveRelationshipManager relationshipManager;
 
 	/** The accessibility label. */
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	@Getter
 	private String accessibilityLabel;
 
@@ -119,6 +118,12 @@ public class LeftNavigationModal implements Navigation {
 	@ScriptVariable
 	@Nullable
 	protected Component component;
+
+	/** Retrieves the root page heading style. If not configured, this method defaults to "h5".
+	 * @return The heading style level as a string
+	 */
+	@Getter
+	private String rootPageHeadingLevel;
 
 	private LeftNavigationItemProcessor leftNavigationItemProcessor = new LeftNavigationItemProcessor();
 
