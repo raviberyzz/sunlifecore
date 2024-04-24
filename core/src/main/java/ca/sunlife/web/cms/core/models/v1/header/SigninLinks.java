@@ -45,4 +45,12 @@ public interface SigninLinks {
     @ValueMapValue
     String getLinkTarget();
 
+    /**
+     * Retrieves the data title authored in dialouge.
+     * @return The data title as a string. Will return empty string when not authored.
+     */
+
+    @ValueMapValue
+    String dataTitle();
+
 }
