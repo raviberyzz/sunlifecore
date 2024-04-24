@@ -119,9 +119,8 @@ public class LeftNavigationModal implements Navigation {
 	@Nullable
 	protected Component component;
 
-	/** The root page heading style
-	 * @return string value for the heading style
-	 * Defaults to h5 as configured in HTL
+	/** Retrieves the root page heading style. If not configured, this method defaults to "h5".
+	 * @return The heading style level as a string
 	 */
 	@Getter
 	private String rootPageHeadingLevel;
