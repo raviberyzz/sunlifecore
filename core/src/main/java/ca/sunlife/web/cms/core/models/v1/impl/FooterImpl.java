@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
@@ -23,6 +24,10 @@ import com.day.cq.wcm.api.Page;
         FooterImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterImpl implements Footer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/footer/v1/footer";
+    private final String SOCIAL_ICON = "icon";
+    private final String SOCIAL_LINK = "link";
+    private final String SOCIAL_DATATITLE = "dataTitle";
+    private final String SOCIAL_SCREENREADER = "screenReaderTextSocialMedia";
 
     @Self
     private SlingHttpServletRequest request;
@@ -172,7 +177,7 @@ public class FooterImpl implements Footer {
                 bottomLinkMap.put("linkName", bottomLinkItem.getValueMap().get("linkName", String.class));
                 bottomLinkMap.put("linkURL", bottomLinkItem.getValueMap().get("linkURL", String.class));
                 bottomLinkMap.put("langAttribute", bottomLinkItem.getValueMap().get("langAttribute", String.class));
-                bottomLinkMap.put("dataTitle", bottomLinkItem.getValueMap().get("dataTitle", String.class));
+                bottomLinkMap.put(SOCIAL_DATATITLE, bottomLinkItem.getValueMap().get(SOCIAL_DATATITLE, String.class));
                 bottomLinkMap.put("linkTarget", bottomLinkItem.getValueMap().get("linkTarget", String.class));
 
                 bottomLinksList.add(bottomLinkMap);
@@ -190,13 +195,12 @@ public class FooterImpl implements Footer {
             HashMap<String, Object> socialMediaMap = null;
             while (socialMediaIterator.hasNext()) {
                 Resource socialMediaItem = socialMediaIterator.next();
+                ValueMap itemValueMap = socialMediaItem.getValueMap();
                 socialMediaMap = new HashMap<>();
-
-                socialMediaMap.put("icon", socialMediaItem.getValueMap().get("icon", String.class));
-                socialMediaMap.put("link", socialMediaItem.getValueMap().get("link", String.class));
-                socialMediaMap.put("dataTitle", socialMediaItem.getValueMap().get("dataTitle", String.class));
-                socialMediaMap.put("screenReaderTextSocialMedia", socialMediaItem.getValueMap().get("screenReaderTextSocialMedia", String.class));
-
+                socialMediaMap.put(SOCIAL_ICON, itemValueMap.get(SOCIAL_ICON, String.class));
+                socialMediaMap.put(SOCIAL_LINK, itemValueMap.get(SOCIAL_LINK, String.class));
+                socialMediaMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
+                socialMediaMap.put(SOCIAL_SCREENREADER, itemValueMap.get(SOCIAL_SCREENREADER, String.class));
                 socialMediaList.add(socialMediaMap);
             }
         }
