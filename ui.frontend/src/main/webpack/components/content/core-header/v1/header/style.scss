@@ -120,11 +120,13 @@
         height: 365px;
         .region-content {
           width: 13.5rem;
+          margin: -4px 0 -4px 0;
           .country-header {
             & h2 {
               font-size: 1rem;
               color: var(--grey-900, #202223);
               line-height: 1.5rem;
+              margin-bottom: 0;
             }
             @include sl-body-medium;
             color: var(--grey-900);
@@ -148,6 +150,7 @@
             list-style: none;
             padding: 0;
             margin: 1rem 0 0 0;
+            margin-top:12px;
             a,
             button {
               &.dropdown-item {
