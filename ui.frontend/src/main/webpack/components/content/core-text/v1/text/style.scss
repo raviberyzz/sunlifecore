@@ -85,6 +85,13 @@
    
 }
 
+p:last-of-type:has(
+.sl-link-internal, 
+.sl-link-external, 
+.sl-link-pdf) a{
+    display:block;
+}
+
 .popover-button {
     border: none;
     background: none;
