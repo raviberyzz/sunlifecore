@@ -2,7 +2,7 @@
     "use strict"
     $(document).on('foundation-contentloaded', function(event) {
       	// Calling method to disable/enable checkbox on dialog load
-        checkToHideCheckbox();
+        delayHideCheckbox();
         let $showhideTarget = $('.list-option-listfrom-showhide-target');
         $showhideTarget.on('click', '.coral3-Checkbox-input[name*="./selected"]', delayHideCheckbox);
         $showhideTarget.on('click', 'button[coral-multifield-add]', delayHideCheckbox);
