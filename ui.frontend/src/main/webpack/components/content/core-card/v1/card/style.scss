@@ -73,6 +73,10 @@
     .card {
         .card-body {
             flex: 1 1 !important;
+
+            .card-title {
+                font-size: 1.25rem;
+            }
         }
         .body-quote {
             width: 100%;
@@ -101,7 +105,20 @@
     &.banner-image-block-left,
     &.banner-image-block-right {
       .card-body {
+
+        .sl-link {
+            .svg-inline--fa {
+                width: 24px !important;
+                height: 24px !important;
+                margin-bottom: -4px;
+            }
+        }
         .card-text {
+            &:has(.caption-text) {
+                p {
+                    margin-bottom: 0;
+                }
+            }
           .caption-text p {
             @include sl-body-small;
             color: var(--grey-700);
@@ -131,6 +148,24 @@
 // MP-2317 Ensure Vertical Cards in MD/SM Span Full Width. 
 .sl-cards {
     &.vertical {
+        &:not(.auto){
+            .card {
+                .card-body {
+                    display: flex;
+                    flex-direction: column;
+
+                    .cta-container {
+                        margin-top: auto;
+                    }
+
+                    .content-container {
+                        .caption {
+                            margin-bottom: 1rem;
+                        }
+                    }
+                }
+            }
+        }
       .card {
         &.multi-v {
             @include media-breakpoint-down(md) {
@@ -138,5 +173,15 @@
             }
         }
       }
+    }
+}
+
+.sl-statistic-blocks {
+    .card {
+        .card-body {
+            .card-text {
+                color: var(--grey-700);
+            }
+        }
     }
 }
