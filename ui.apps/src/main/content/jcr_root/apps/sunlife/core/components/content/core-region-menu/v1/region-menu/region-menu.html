@@ -7,7 +7,7 @@
       <sly data-sly-list.region="${regionModel.regions}">
          <div class="region-content">
             <div class="country-header" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=region.regionURL}">
-               <span data-sly-test="${region.items}" data-title="${region.dataTitle}"> ${region.regionName}</span>
+               <h2 data-sly-test="${region.items}" data-title="${region.dataTitle}"> ${region.regionName}</h2>
                <a data-sly-test="${!region.items}" class="${(region.linkHighlight =='yes') ? 'active' : ''}"data-title="${region.dataTitle}" href="${utilityListParsing.navPath}" target="${region.regionTarget}">${region.regionName}</a>
             </div>
             <ul data-sly-list.item="${region.items}">
