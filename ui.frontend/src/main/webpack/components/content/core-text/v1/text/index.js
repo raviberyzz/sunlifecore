@@ -35,7 +35,6 @@
             $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon, util.constants.templateString.pdfLinkIconSolid);
             $(CONSTANT.SELECTOR.popoverBtn).html(CONSTANT.TEMPLATE.infoIcon);
         }
-        
         /**
          * Handler called at text initialsation
          * @function init
