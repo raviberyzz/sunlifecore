@@ -13,7 +13,7 @@ video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Compone
   <sly data-sly-test="${haveSomthing}">
     <picture data-sly-test="${containerConfigs.mediaType =='left' && model.cardImageFileReference}">
       <source srcset="${model.cardImageFileReference}">
-      <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
+      <img src="${model.cardImageFileReference}" alt="${model.altText || true}" class="card-img">
     </picture>
 
   <div data-sly-test="${containerConfigs.mediaType =='video'}" class="video-container">

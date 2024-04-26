@@ -59,7 +59,7 @@
   .sl-banner.default .card-img-overlay .bright {
     background-color: rgba(255, 248, 224, 0.92);
   }
-  
+
 // ====================== ISSUE LIST 2 ======================================
 
 //   CDT-2251 (Related bug: CDT-2324)
@@ -218,6 +218,9 @@
     }
   }
 
+  .sl-media-block.card.media-block-right picture {
+    right: 0;
+  }
 
   // CDT-2371
   // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/d9166d7a25b24a9c7274dd01adf9019c36283062#src/styles/components/_segmentedBlocks.scss

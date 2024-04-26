@@ -14,7 +14,7 @@ Figma design reference -  https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-
         data-sly-set.imgURL="${model.cardImageFileReference || '/etc.clientlibs/sunlife/core/components/content/core-card/v1/card/clientlibs/resources/avatar-default.png'}">
           <img 
             src="${imgURL}" 
-            alt="${model.altText}" 
+            alt="${model.altText || true}" 
             class="${containerConfigs.isLarge ? 'large' : 'medium'} " />
       </div>
       <div class="card-body">
