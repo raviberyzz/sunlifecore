@@ -16,9 +16,9 @@
                 <div class="sl-social-media">
                     <ul data-sly-list="${bottomFooter.socialMedia}">
                         <li data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=item.link}">  
-                            <a href="${utilityListParsing.navPath}" data-title="${item.dataTitle}" aria-label="${item.title}">
-                                <span class="visually-hidden">${bottomFooter.screenReaderText}</span>
-                                <span class="sl-icon sl-icon_size_lg fab fa-${item.icon}"></span>
+                            <a href="${utilityListParsing.navPath}" data-title="${item.dataTitle}" aria-label="${item.socialMediaScreenText || item.icon}">
+                                <span class="visually-hidden">${item.socialMediaScreenText}</span>
+                                <span class="sl-icon sl-icon_size_lg fab fa-${item.icon}" title="${item.socialMediaScreenText || item.icon}"></span>
                             </a>
                         </li>
                     </ul>

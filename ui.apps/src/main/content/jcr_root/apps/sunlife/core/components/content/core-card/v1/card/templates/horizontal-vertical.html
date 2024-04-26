@@ -6,7 +6,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
 
   <sly 
     data-sly-set.image="${model.cardImageFileReference || cardImage }"
-    data-sly-set.altText="${model.altText || imageAlt }"
+    data-sly-set.altText="${model.altText || imageAlt}"
     data-sly-set.cardIcon="${model.cardIcon || icon }"
     data-sly-set.cardCategory="${model.cardCategory || category }"
     data-sly-set.cardBadgeText="${model.cardBadgeText || badgeText }"
@@ -37,7 +37,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
       <picture data-sly-test="${ cardImage || (!containerConfigs.isIcon && isImageCard) }">
         <img data-sly-test="${image}" 
           src="${image}" 
-          alt="${altText}"
+          alt="${altText || true}"
           class="img-container" />
       </picture>
       <div class="card-body">
