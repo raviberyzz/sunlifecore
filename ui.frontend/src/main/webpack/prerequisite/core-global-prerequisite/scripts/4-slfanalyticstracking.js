@@ -65,7 +65,7 @@
                 dataValue = 'footer';
             }
             if (dataValue !== undefined && !isButton) {
-                let utagObj = {
+                const utagObj = {
                     "ev_type": "other",
                     "ev_action": "clk",
                     "ev_title": "sign in cta",
@@ -147,7 +147,7 @@
          * @private
          */
         function languageInteractionTrackingHandler() {
-            let utagObj = {
+            const utagObj = {
                 "ev_type": "other",
                 "ev_action": "onpage_impr",
                 "ev_title": "language bar",
@@ -164,7 +164,7 @@
          * @private
          */
         function regionInteractionTrackingHandler() {
-            let utagObj = {
+            const utagObj = {
                 "ev_type": "other",
                 "ev_action": "onpage_impr",
                 "ev_title": "region bar",
@@ -181,7 +181,7 @@
          * @private
          */
         function searchInteractionTrackingHandler() {
-            let utagObj = {
+            const utagObj = {
                 "ev_type": "other",
                 "ev_action": "clk",
                 "ev_title": "search module expansion"
@@ -228,7 +228,7 @@
         function init() {
             cacheSelectors();
             initialiseAnalyticPrerequisites();
-            if (typeof ContextHub == "undefined") {
+            if (typeof ContextHub === "undefined") {
                 bindAnalyticsEvent();
             } else {
                 setTimeout(bindAnalyticsEvent, 3000);
