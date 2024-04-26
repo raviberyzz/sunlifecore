@@ -546,7 +546,7 @@
 .sl-header {
   .sl-utility-nav {
     .utility-nav-item-container.nav-link{
-      border-bottom: .125rem solid #fff;
+      border-bottom: .125rem solid var(--white);
       &:hover{
         border-bottom: .125rem solid var(--grey-800);
         text-decoration: none;
