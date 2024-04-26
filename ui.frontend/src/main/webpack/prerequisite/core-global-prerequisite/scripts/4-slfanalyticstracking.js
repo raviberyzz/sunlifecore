@@ -3,8 +3,12 @@
  * @fileOverview Provides a common functionality for analytics tracking.
  */
 (function(core) {
+
+    /**
+	 * @memberof sunCore.common
+	 */
     'use strict';
-    let slfAnalytics = (function($, util) {
+     core.common.slfAnalytics = (function($, util) {
         const CONSTANT = {
             SELECTOR: {
                 signInLink: 'a[href*="/signin/mysunlife/home.wca"], a[href*="/signin/masunlife/home.wca"]',
@@ -27,17 +31,15 @@
             }
         };
 
+        let $slfHeader;
         let _locationBreadcrumb = utag_data.page_breadcrumb,
             _pageLanguage = ' ',
-            _pageCannonicalURL = ' ',
-            _searchPageInputTerm = '',
-            _searchFilterItem = '',
-            _searchFilterItemResult = '',
-            _windowLoaction = $(location).attr('pathname');
+            _pageCannonicalURL = ' ';
 
         /**
          * Method to check for slf domain
          * @function isSLFDomain
+         * @memberof sunCore.common
          * @private
          * @return {Boolean} true if domain is SLF else false
          */
@@ -48,6 +50,7 @@
         /**
          * method to handle sign in interaction tracking
          * @function signInInteractionTrackingHandler
+         * @memberof sunCore.common
          * @private
          * @param {object} event - event object
          * @param {Boolean} isButton - true if datavalue is defined and domain is slf else false
@@ -82,6 +85,7 @@
         /**
          * method to generate utag link
          * @function generateUtaglink
+         * @memberof sunCore.common
          * @private
          * @param {object} Object - key value pair object
          */
@@ -92,12 +96,13 @@
         /**
          * Handler to bind event for analytics tracking
          * @function bindAnalyticsEvent
+         * @memberof sunCore.common
          * @private
          */
         function bindAnalyticsEvent() {
             // Sign in link tracking
             if (isSLFDomain()) {
-                $(document).on(
+                $slfHeader.on(
                     util.customEvents.INTERACTION,
                     CONSTANT.SELECTOR.signInLink,
                     function(event) {
@@ -105,7 +110,7 @@
                     }
                 );
             } else {
-                $(document).on(
+                $slfHeader.on(
                     util.customEvents.INTERACTION,
                     CONSTANT.SELECTOR.signInButton,
                     function(event) {
@@ -114,21 +119,21 @@
                 );
             }
             // language dropdown analytics tracking
-            $(document).on(
+            $slfHeader.on(
                 util.customEvents.INTERACTION,
                 CONSTANT.SELECTOR.languageDropdown,
                 languageInteractionTrackingHandler
             );
 
             // region dropdown analytics tracking
-            $(document).on(
+            $slfHeader.on(
                 util.customEvents.INTERACTION,
                 CONSTANT.SELECTOR.regionDropdown,
                 regionInteractionTrackingHandler
             );
 
             // search button(coveo) analytics tracking
-            $(document).on(
+            $slfHeader.on(
                 util.customEvents.INTERACTION,
                 CONSTANT.SELECTOR.searchUtilityNav,
                 searchInteractionTrackingHandler
@@ -138,6 +143,7 @@
         /**
          * method to handle language interaction tracking
          * @function languageInteractionTrackingHandler
+         * @memberof sunCore.common
          * @private
          */
         function languageInteractionTrackingHandler() {
@@ -154,6 +160,7 @@
         /**
          * method to handle region interaction tracking
          * @function regionInteractionTrackingHandler
+         * @memberof sunCore.common
          * @private
          */
         function regionInteractionTrackingHandler() {
@@ -170,6 +177,7 @@
         /**
          * method to handle search interaction tracking
          * @function searchInteractionTrackingHandler
+         * @memberof sunCore.common
          * @private
          */
         function searchInteractionTrackingHandler() {
@@ -184,6 +192,7 @@
         /**
          * Handler to initialise analytic prerequisites
          * @function initialiseAnalyticPrerequisites
+         * @memberof sunCore.common
          * @private
          */
         function initialiseAnalyticPrerequisites() {
@@ -201,11 +210,23 @@
         }
 
         /**
+         * Handler to cache dom selector on module load
+         * @function cacheSelectors
+         * @memberof sunCore.common
+         * @private
+         */
+        function cacheSelectors() {
+            $slfHeader = $(CONSTANT.SELECTOR.header);
+        }
+
+        /**
          * Method used to initilize the module
          * @function init
+         * @memberof sunCore.common
          * @public
          */
         function init() {
+            cacheSelectors();
             initialiseAnalyticPrerequisites();
             if (typeof ContextHub == "undefined") {
                 bindAnalyticsEvent();
@@ -215,7 +236,8 @@
         }
         return {
             init: init,
+            generateUtaglink: generateUtaglink
         };
     })(core.$, core.util);
-    slfAnalytics.init();
+    core.common.slfAnalytics.init();
 })(sunCore);
