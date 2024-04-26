@@ -57,11 +57,11 @@
          */
         function signInInteractionTrackingHandler(event, isButton) {
             let dataValue;
-            if ($(event.target).parents(CONSTANT.SELECTOR.header).length) {
+            if ($(event.target).closest(CONSTANT.SELECTOR.header).length) {
                 dataValue = 'header';
-            } else if ($(event.target).parents(CONSTANT.SELECTOR.heliosContainer).length) {
+            } else if ($(event.target).closest(CONSTANT.SELECTOR.heliosContainer).length) {
                 dataValue = 'body-content';
-            } else if ($(event.target).parents(CONSTANT.SELECTOR.footer).length) {
+            } else if ($(event.target).closest(CONSTANT.SELECTOR.footer).length) {
                 dataValue = 'footer';
             }
             if (dataValue !== undefined && !isButton) {
