@@ -199,7 +199,7 @@
             if (utag_data.page_language) {
                 _pageLanguage = utag_data.page_language;
             }
-            if (utag_data.page_breadcrumb && (_locationBreadcrumb == "/Home" || _locationBreadcrumb == "/Home/Welcome to Sun Life Financial")) {
+            if (utag_data.page_breadcrumb && _locationBreadcrumb == "/Home") {
                 let utmSource = "slfca-hp";
             } else {
                 let utmSource = "slfca";
