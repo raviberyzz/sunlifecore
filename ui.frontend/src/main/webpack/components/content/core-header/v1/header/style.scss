@@ -304,7 +304,7 @@
         }
         .sl-icon{
           @include media-breakpoint-down(lg) {
-            margin-left:auto;
+            margin-left:0;
             margin-right: 0.5rem;
           }
         }
@@ -381,7 +381,7 @@
               }
               .sl-icon{
                 @include media-breakpoint-down(lg) {
-                margin-left:auto;
+                margin-left:0;
                 }
               }
             }
@@ -547,4 +547,18 @@
 
 #nav-header .mobile-logo a img {
   max-height: -webkit-fill-available;
+}
+.navbar-nav .label-container {
+  display: flex;
+}
+.sl-header {
+  .sl-utility-nav {
+    .utility-nav-item-container.nav-link{
+      border-bottom: .125rem solid var(--white);
+      &:hover{
+        border-bottom: .125rem solid var(--grey-800);
+        text-decoration: none;
+      }
+    }
+  }
 }
