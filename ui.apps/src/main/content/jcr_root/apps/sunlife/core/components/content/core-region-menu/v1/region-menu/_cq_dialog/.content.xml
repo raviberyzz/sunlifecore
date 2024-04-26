@@ -49,7 +49,6 @@
                                                             fieldDescription="Enter the URL for the link. Use a full URL for external links (e.g., 'https://www.example.com'), a relative path for internal links (e.g., '/content/page'), or an anchor name prefixed with '#' for in-page navigation (e.g., '#section1'). Ensure the correct format is used for the link to function properly."
                                                             fieldLabel="Region URL"
                                                             name="regionURL"
-                                                            required="{Boolean}true"
                                                             suffix=".html"/>
                                                         <regionTarget
                                                             jcr:primaryType="nt:unstructured"
