@@ -24,6 +24,10 @@ import com.day.cq.wcm.api.Page;
         FooterImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterImpl implements Footer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/footer/v1/footer";
+    private final String SOCIAL_LINKNAME = "linkName";
+    private final String SOCIAL_LINKURL = "linkURL";
+    private final String SOCIAL_LANGATT = "langAttribute";
+    private final String SOCIAL_LINKTAG = "linkTarget";
     private final String SOCIAL_ICON = "icon";
     private final String SOCIAL_LINK = "link";
     private final String SOCIAL_DATATITLE = "dataTitle";
@@ -144,13 +148,14 @@ public class FooterImpl implements Footer {
                     HashMap<String, Object> linkMap = null;
                     while (linksIterator.hasNext()) {
                         Resource linkItem = linksIterator.next();
+                        ValueMap itemValueMap = linkItem.getValueMap();
                         linkMap = new HashMap<>();
 
-                        linkMap.put("linkName", linkItem.getValueMap().get("linkName", String.class));
-                        linkMap.put("linkURL", linkItem.getValueMap().get("linkURL", String.class));
-                        linkMap.put("langAttribute", linkItem.getValueMap().get("langAttribute", String.class));
-                        linkMap.put("dataTitle", linkItem.getValueMap().get("dataTitle", String.class));
-                        linkMap.put("linkTarget", linkItem.getValueMap().get("linkTarget", String.class));
+                        linkMap.put(SOCIAL_LINKNAME, itemValueMap.get(SOCIAL_LINKNAME, String.class));
+                        linkMap.put(SOCIAL_LINKURL, itemValueMap.get(SOCIAL_LINKURL, String.class));
+                        linkMap.put(SOCIAL_LANGATT, itemValueMap.get(SOCIAL_LANGATT, String.class));
+                        linkMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
+                        linkMap.put(SOCIAL_LINKTAG, itemValueMap.get(SOCIAL_LINKTAG, String.class));
 
                         linksList.add(linkMap);
                     }
@@ -172,13 +177,14 @@ public class FooterImpl implements Footer {
             HashMap<String, Object> bottomLinkMap = null;
             while (bottomLinksIterator.hasNext()) {
                 Resource bottomLinkItem = bottomLinksIterator.next();
+                ValueMap itemValueMap = bottomLinkItem.getValueMap();
                 bottomLinkMap = new HashMap<>();
 
-                bottomLinkMap.put("linkName", bottomLinkItem.getValueMap().get("linkName", String.class));
-                bottomLinkMap.put("linkURL", bottomLinkItem.getValueMap().get("linkURL", String.class));
-                bottomLinkMap.put("langAttribute", bottomLinkItem.getValueMap().get("langAttribute", String.class));
-                bottomLinkMap.put(SOCIAL_DATATITLE, bottomLinkItem.getValueMap().get(SOCIAL_DATATITLE, String.class));
-                bottomLinkMap.put("linkTarget", bottomLinkItem.getValueMap().get("linkTarget", String.class));
+                bottomLinkMap.put(SOCIAL_LINKNAME, itemValueMap.get(SOCIAL_LINKNAME, String.class));
+                bottomLinkMap.put(SOCIAL_LINKURL, itemValueMap.get(SOCIAL_LINKURL, String.class));
+                bottomLinkMap.put(SOCIAL_LANGATT, itemValueMap.get(SOCIAL_LANGATT, String.class));
+                bottomLinkMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
+                bottomLinkMap.put(SOCIAL_LINKTAG, itemValueMap.get(SOCIAL_LINKTAG, String.class));
 
                 bottomLinksList.add(bottomLinkMap);
             }
