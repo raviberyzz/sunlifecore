@@ -22,7 +22,6 @@
         <button
           data-cmp-hook-accordion="button"
           aria-label="${item.title}"
-          aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
           class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
           data-bs-toggle="collapse"
           type="button"
@@ -37,8 +36,7 @@
         </button>
       </div>
       <div
-        class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"          
-        aria-hidden="${item.name in accordion.expandedItems ? 'false' : 'true'}"
+        class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
       >
         <div
           class="accordion-body"
