@@ -39,12 +39,12 @@
 
             },
             templateString: {
-                externalLinkIcon: '<i class="far fa-external-link icn-hover-hidden"></i>',
-                internalLinkIcon: '<i class="far fa-arrow-circle-right icn-hover-hidden"></i>',
-                pdfLinkIcon: '<i class="far fa-file-pdf icn-hover-hidden"></i>',
-                externalLinkIconSolid: '<i class="fas fa-external-link icn-hover-show"></i>',
-                internalLinkIconSolid: '<i class="fas fa-arrow-circle-right icn-hover-show"></i>',
-                pdfLinkIconSolid: '<i class="fas fa-file-pdf icn-hover-show"></i>'
+                externalLinkIcon: '<i class="far fa-external-link icn-hover-hidden"  title="opens a external link" aria-hidden="false"></i>',
+                internalLinkIcon: '<i class="far fa-arrow-circle-right icn-hover-hidden" title="opens a internal link" aria-hidden="false"></i>',
+                pdfLinkIcon: '<i class="far fa-file-pdf icn-hover-hidden" title="opens a pdf file" aria-hidden="false"></i>',
+                externalLinkIconSolid: '<i class="fas fa-external-link icn-hover-show" title="opens a external link" aria-hidden="false"></i>',
+                internalLinkIconSolid: '<i class="fas fa-arrow-circle-right icn-hover-show" title="opens a internal link" aria-hidden="false"></i>',
+                pdfLinkIconSolid: '<i class="fas fa-file-pdf icn-hover-show" title="opens a pdf file" aria-hidden="false"></i>'
             }
         };
 
