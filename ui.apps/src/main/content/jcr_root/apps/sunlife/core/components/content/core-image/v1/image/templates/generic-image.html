@@ -8,7 +8,6 @@ Template to render Generic Image.
         class="cmp-image__link image__link" 
         href="${linkURL.navPath}" 
         data-title="${image.dataTitle || image.alt}"
-        alt="${image.title || 'image link alternative text'}"
         data-cmp-hook-image="link">
             <noscript data-sly-unwrap="${!image.lazyEnabled}" data-cmp-hook-image="noscript">
                 <picture>
@@ -17,7 +16,7 @@ Template to render Generic Image.
                     <img 
                         data-sly-set.imgLazyLoaded="${properties.isLazyLoaded || isLazyLoaded ? 'lazy' : ''}"
                         src="${ image.fileReference || image.fileReferenceMobile || imageRef || mobileImageRef}" 
-                        alt="${image.alt || altText|| true}" 
+                        alt="${image.alt || altText || true}" 
                         class="img ${properties.hideImageMobile ? 'd-none d-sm-block' : '' } ${imgClass}"
                         title="${image.displayPopupTitle && image.title}"
                         data-cmp-hook-image="image"

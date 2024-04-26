@@ -816,6 +816,11 @@
                                                 fieldLabel="Skip to footer label"
                                                 name="./skipToFooterLabel"
                                                 required="true"/>
+                                            <utilityNavLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Utility nav label"
+                                                name="./utilityNavLabel"/>
                                         </items>
                                     </column>
                                 </items>

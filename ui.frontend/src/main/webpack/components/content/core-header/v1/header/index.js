@@ -27,7 +27,8 @@
                 slUtilityBarOffCanvas: ".sl-utility-bar-offcanvas",
                 navHeader: "#nav-header",
                 navBar: ".navbar",
-                mainContent: "#main-content"
+                mainContent: "#main-content",
+                experiencefragment : '.experiencefragment '
             },
             CLASS: {
                 slUtilityBar: "sl-utility-bar",
@@ -119,6 +120,7 @@
 
         /**
         * Method to add the 'main-content' ID to the main content Layout Container
+        * Also add main landmark on the page
         * @function setMainContentLandmark
         * @memberof sunCore.comp.header
         * @private
@@ -126,14 +128,9 @@
         */
         function setMainContentLandmark() {
             if ($comp.length > 0 && $mainContent.length < 1) {
-                const layoutContainer = $comp.next();
-                if (layoutContainer.hasClass(CONSTANT.CLASS.breadcrumb)) {
-                    layoutContainer.next().attr("id", CONSTANT.ID.mainContent);
-                    layoutContainer.next().attr("role", CONSTANT.ROLE.main);
-                } else {
-                    layoutContainer.attr("id", CONSTANT.ID.mainContent);
-                    layoutContainer.attr("role", CONSTANT.ROLE.main);
-                }
+                const layoutContainer = $comp.closest(CONSTANT.SELECTOR.experiencefragment).next();
+                layoutContainer.attr("id", CONSTANT.ID.mainContent);
+                layoutContainer.attr("role", CONSTANT.ROLE.main);
             }
         }
 
