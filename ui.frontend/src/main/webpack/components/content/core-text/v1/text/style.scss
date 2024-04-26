@@ -92,6 +92,13 @@ p:last-of-type:has(
     display:block;
 }
 
+a.sl-link {
+    &:focus-visible{
+        margin:0;
+        padding: 0 .2rem;
+    }
+}
+
 .popover-button {
     border: none;
     background: none;
