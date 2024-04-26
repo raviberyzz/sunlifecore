@@ -19,9 +19,19 @@
                 pdfLink: '.sl-link-pdf[data-class-icon]'
             },
             TEMPLATE: {
-                infoIcon: '<span class="visually-hidden">Informational Popup</span><i class="fal fa-info-circle popover-icon" role="presentation"></i>'
+                infoIcon: '<span class="visually-hidden">%POPUP_TITLE%</span><i class="fal fa-info-circle popover-icon" role="presentation"></i>'
             }
         };
+
+        /**
+         * Method to replace template string with accessible text to provide content to screen readers what the popover content contains
+         * @function replaceTemplateStringWithAccessibleText
+         * @memberof sunCore.comp.text
+         * @private
+         */
+        function replaceTemplateStringWithAccessibleText(){
+            return CONSTANT.TEMPLATE.infoIcon.replace('%POPUP_TITLE%', $(CONSTANT.SELECTOR.popoverBtn).attr('data-bs-title'));
+        }
 
         /**
 		 * Method to append icons on the required selected links created in text comp.
@@ -33,7 +43,7 @@
             $(CONSTANT.SELECTOR.externalLink).append(util.constants.templateString.externalLinkIcon, util.constants.templateString.externalLinkIconSolid);
             $(CONSTANT.SELECTOR.internalLink).append(util.constants.templateString.internalLinkIcon, util.constants.templateString.internalLinkIconSolid);
             $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon, util.constants.templateString.pdfLinkIconSolid);
-            $(CONSTANT.SELECTOR.popoverBtn).html(CONSTANT.TEMPLATE.infoIcon);
+            $(CONSTANT.SELECTOR.popoverBtn).html(replaceTemplateStringWithAccessibleText());
         }
         /**
          * Handler called at text initialsation
