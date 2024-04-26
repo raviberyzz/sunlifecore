@@ -257,6 +257,14 @@ public interface HeaderModel {
     @ValueMapValue
     String getSkipToFooterLabel();
 
+    /**
+     * Gets the utility nav label
+     * 
+     * @return utility nav label
+     */
+    @ValueMapValue
+    String getUtilityNavLabel();
+
     /** Spacing Variables */
     /**
      * Gets the spacing
