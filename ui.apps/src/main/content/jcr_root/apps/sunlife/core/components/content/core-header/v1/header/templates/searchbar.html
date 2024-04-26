@@ -1,7 +1,7 @@
 <template data-sly-template.search="${ @ headerModel }">
     <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
 	<!-- Below initial code for Coveo class search bar -->
-       <div class="search-bar collapse" data-section="header-search" id="headerSearchBar">
+       <div class="search-bar collapse" data-section="header-search" id="headerSearchBar" role="dialog">
             <div class="search-box container">
                 <div class="close-div">
                     <button type="button" data-bs-toggle="collapse" data-bs-target="#headerSearchBar" id="search-close-btn"    aria-controls="headerSearchBar" > 
