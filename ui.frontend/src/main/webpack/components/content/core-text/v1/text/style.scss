@@ -82,20 +82,19 @@
     @include hide-far-default-icon;
    
     @include show-fas-soild-icon-on-hover;
-   
-}
 
-p:last-of-type:has(
-.sl-link-internal, 
-.sl-link-external, 
-.sl-link-pdf) a{
-    display:block;
+    &:focus-visible{
+        border:none;
+    }
+   
 }
 
 a.sl-link {
     &:focus-visible{
         margin:0;
         padding: 0 .2rem;
+        outline: auto;
+        outline-color: var(--brand-tertiary-500);
     }
     &:not([data-class-icon]) {
         text-decoration: underline;

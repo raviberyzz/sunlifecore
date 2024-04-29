@@ -22,7 +22,7 @@
 			},
 		};
 
-		let $slHeader, $searchCloseBtn, $searchBar, $searchBtn, searchBtnTabbed = false;
+		let $slHeader, $searchCloseBtn, $searchBar, $searchBtn, searchBtnTabbed = false, searchBarCollapse;
 
 		/**
 		 * Event handler for search-bar showing and hiding on top
@@ -80,6 +80,19 @@
 		}
 
 		/**
+		 * Method to handle the escape key event to close the desktop search bar on escape
+		 * @function searchBarEscHandler
+		 * @memberof sunCore.comp.search
+		 * @private
+		 * @param {object} e - event object
+		 */
+		function searchBarEscHandler (e) {
+			if (e.keyCode === util.constants.KeyCode.ESC) {
+				searchBarCollapse.hide();
+			}
+		}
+
+		/**
 		 * Handler to bind event specific for search
 		 * @function bindEvent
 		 * @memberof sunCore.comp.search
@@ -99,6 +112,7 @@
 			});
 
 			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchBarSearchBtn, searchTabHandler);
+			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchBar, searchBarEscHandler);
 		}
 
 		/**
@@ -111,6 +125,9 @@
 			$searchBar = $(CONSTANT.SELECTOR.searchBar);
 			$searchBtn = $(CONSTANT.SELECTOR.searchBtn);
 			$searchCloseBtn = $(CONSTANT.SELECTOR.searchCloseBtn);
+			searchBarCollapse = new bootstrap.Collapse($searchBar, {
+				toggle: false
+			  });
 			
 		}
 
