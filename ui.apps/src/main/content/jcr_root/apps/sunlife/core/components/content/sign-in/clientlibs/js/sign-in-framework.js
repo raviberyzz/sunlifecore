@@ -157,6 +157,7 @@ $(document).ready(function () {
         if (action == undefined || action == "") {
           console.log("transmit");
           //Pointing to new mfa signin method
+          console.log("mfa signin");
           new mfaSignIn.SignIn();
           event.preventDefault();
         } else {
