@@ -37,8 +37,6 @@
     },
     ATTR: {
       dataSingleExpansion: 'data-single-expansion',
-      ariaExpanded: 'aria-expanded',
-      ariaHidden: 'aria-hidden',
       height: 'height'
     }
   };
@@ -62,6 +60,39 @@
     }
   }
   /**
+   * Method to handle the arrow key event to focus the accordion item and content
+   * @function tabArrowKeyFocusOnContent
+   * @memberof sunCore.comp.accordion
+   * @private
+   * @param {object} event - event object
+   * @param {object} $scope - scope of selected element
+  */
+  function tabArrowKeyFocusOnContent(event, $scope) {
+    const accordionContent = $scope.siblings(".accordion-collapse");
+    const accordionItemHeader = $scope.siblings(".accordion-header").find("button");
+    if(event.keyCode === util.constants.KeyCode.DOWN){
+      accordionContent.attr('tabindex', "0");
+      accordionContent.focus();
+    }
+    if(event.keyCode === util.constants.KeyCode.UP){
+      $scope.removeAttr('tabindex');
+      accordionItemHeader.focus();
+    }
+  }
+  /**
+   * Method to handle the arrow key event to focus the accordion item
+   * @function tabArrowKeyFocusOnItem
+   * @memberof sunCore.comp.accordion
+   * @private
+   * @param {object} e - event object
+  */
+  function tabArrowKeyFocusOnItem(e) {
+    const $scope = $(this);
+    if ($(this).hasClass(CONSTANT.CLASS.expanded)) {
+      tabArrowKeyFocusOnContent(e, $scope);
+    }
+  }
+  /**
    * Method to handle the escape key event to close the accordion on escape
    * @function accordionHeaderKeyEventHandler
    * @memberof sunCore.comp.accordion
@@ -69,8 +100,12 @@
    * @param {object} e - event object
   */
   function accordionHeaderKeyEventHandler(e) {
+    const $scope = $(this);
     if (e.keyCode === util.constants.KeyCode.ESC && $(this).siblings(CONSTANT.SELECTOR.accordionCollapse).hasClass(CONSTANT.CLASS.expanded)) {
       toggleAccordionCollapse($(this));
+    }
+    if ($(this).siblings(CONSTANT.SELECTOR.accordionCollapse).hasClass(CONSTANT.CLASS.expanded)) {
+      tabArrowKeyFocusOnContent(e, $scope);
     }
   }
   /**
@@ -97,7 +132,7 @@
     if ($singleExpansion == "true") {
       const $accordionItem = $accordionItemHeader.parents(CONSTANT.SELECTOR.accordionItem).parents(CONSTANT.SELECTOR.accordion);
       $accordionItem.find(CONSTANT.SELECTOR.accordionCollapse).removeClass(CONSTANT.CLASS.showExpanded).css(CONSTANT.ATTR.height, "").attr("aria-hidden", true);
-      $accordionItem.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaExpanded, false).addClass(CONSTANT.CLASS.collapsed);
+      $accordionItem.find(CONSTANT.SELECTOR.accordionButton).addClass(CONSTANT.CLASS.collapsed);
       $accordionItem.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.show).removeClass(CONSTANT.CLASS.hide);
       chevronHandler($accordionItem, true);
     }
@@ -116,8 +151,8 @@
     } else {
       resetAccordionForSingleSelection($accordionItemHeader);
       $accordionItemHeader.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.hide).removeClass(CONSTANT.SELECTOR.show);
-      $accordionContentElement.addClass(CONSTANT.CLASS.showExpanded).attr(CONSTANT.ATTR.ariaExpanded, false);
-      $accordionItemHeader.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaExpanded, true).removeClass(CONSTANT.CLASS.collapsed);
+      $accordionContentElement.addClass(CONSTANT.CLASS.showExpanded);
+      $accordionItemHeader.find(CONSTANT.SELECTOR.accordionButton).removeClass(CONSTANT.CLASS.collapsed);
       chevronHandler($accordionItemHeader, false);
       updateAccordionItemHeight($accordionContentElement);
     }
@@ -131,8 +166,8 @@
    */
   function toggleAccordionCollapse($accordionHeader) {
     $accordionHeader.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.hide).removeClass(CONSTANT.CLASS.show);
-    $accordionHeader.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaExpanded, false).addClass(CONSTANT.CLASS.collapsed);
-    $accordionHeader.siblings(CONSTANT.SELECTOR.accordionCollapse).removeClass(CONSTANT.CLASS.expanded).css(CONSTANT.ATTR.height, "").attr(CONSTANT.ATTR.ariaHidden, true);
+    $accordionHeader.find(CONSTANT.SELECTOR.accordionButton).addClass(CONSTANT.CLASS.collapsed);
+    $accordionHeader.siblings(CONSTANT.SELECTOR.accordionCollapse).removeClass(CONSTANT.CLASS.expanded).css(CONSTANT.ATTR.height, "");
     chevronHandler($accordionHeader, true);
   }
   /**
@@ -162,6 +197,11 @@
       util.customEvents.KEYDOWN,
       CONSTANT.SELECTOR.accordionHeaderElem,
       accordionHeaderKeyEventHandler
+    );
+    $(document).on(
+      util.customEvents.KEYDOWN,
+      CONSTANT.SELECTOR.accordionCollapse,
+      tabArrowKeyFocusOnItem
     );
     $(document).on(
       util.customEvents.INTERACTION,

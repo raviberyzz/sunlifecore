@@ -97,6 +97,12 @@ a.sl-link {
         margin:0;
         padding: 0 .2rem;
     }
+    &:not([data-class-icon]) {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 
 .popover-button {

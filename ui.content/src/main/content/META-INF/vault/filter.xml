@@ -9,7 +9,7 @@
         <exclude pattern="/conf/sunlife/settings/wcm/policies(/.*)" />
     </filter>
     <filter root="/conf/sunlife/settings/wcm/templates/sunlife-config" mode="merge"/>
-    <filter root="/conf/sunlife-apac" mode="merge">
+    <filter root="/conf/sunlife-apac" mode="update">
         <exclude pattern="/conf/sunlife-apac/settings/wcm/segments(/.*)" />
         <exclude pattern="/conf/sunlife-apac/settings/wcm/templates(/.*)" />
         <exclude pattern="/conf/sunlife-apac/settings/wcm/policies(/.*)" />

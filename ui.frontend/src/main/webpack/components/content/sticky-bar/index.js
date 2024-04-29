@@ -1,7 +1,12 @@
 $(document).ready(function () {
-    $("#stickyBarLinks li a").click(function () {
-        $("#stickyBarLinks li a").removeClass("active");
-        $(this).addClass("active");
+
+    $("#stickyBarLinks li a").click(function (e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        var $target = $(target)
+        $('html, body').animate({
+            scrollTop: $target.offset().top - $('.sticky-bar-wrapper').outerHeight()
+        }, 0);
     });
 
     $('#priButton a').click(function () {
@@ -23,21 +28,26 @@ $(document).ready(function () {
 
     $('.site-level-notification .close-div').click(function () {
         if ($(window).width() <= 1024) {
-            var headerTop = $('.slf-header-wrapper .slf-mobile-header-wrapper').position().top;
-            var notificationHeight = $(this).closest(".site-level-notification").outerHeight();
-            $('.sticky-bar-wrapper').css('top', headerTop - notificationHeight + $('.slf-mobile-header-wrapper').outerHeight());
+            $('.sticky-bar-wrapper').css('top', $('.slf-mobile-header-wrapper').outerHeight());
+            setTimeout(function () {
+                $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": $('.sticky-bar-wrapper').outerHeight() });
+            }, 200);
         }
     });
 
     if ($(window).width() <= 1024) {
         var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
         $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight })
+        setTimeout(function () {
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() })
+        }, 200);
     }
 
     $(window).resize(function () {
         if ($(window).width() <= 1024) {
             var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
             $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight })
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() });
         }
         else {
             $(".sticky-bar-wrapper").css({ 'position': 'sticky', 'top': '0px' })
@@ -53,12 +63,38 @@ $(document).ready(function () {
             var isPositionFixed = ($el.css('position') == 'sticky');
             if ($(this).scrollTop() > desktopHeaderHeight && !isPositionFixed) {
                 $el.css({ 'position': 'sticky', 'top': '0px', 'display': 'flex' });
-                // $('.sticky-bar-wrapper').removeClass('hide-bar')
             }
             if ($(this).scrollTop() < desktopHeaderHeight && isPositionFixed) {
                 $el.css({ 'position': 'static', 'top': '0px', 'display': 'none' });
-                // $('.sticky-bar-wrapper').addClass('hide-bar')
             }
         }
+        else if (!$(".sticky-bar-wrapper").hasClass('hide-bar')) {
+            var scrollPos = $(document).scrollTop();
+            $('#stickyBarLinks a').each(function () {
+                var currLink = $(this);
+                var refElement = $(currLink.attr("href"));
+                if (refElement.offset().top - $('.sticky-bar-wrapper').outerHeight() - 5 <= scrollPos && refElement.offset().top + refElement.height() > scrollPos) {
+                    $('#stickyBarLinks a').removeClass("active");
+                    currLink.addClass("active");
+                }
+            });
+        }
+        if ($(window).width() < 768) {
+            if (this.oldScroll > this.scrollY)
+                $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'inline-table' })
+            else
+                $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'none' })
+            this.oldScroll = this.scrollY;
+        }
+    });
+
+    $(".sticky-bar #navlinks-dropdown").change(function (e) {
+        e.preventDefault();
+        var target = $(this).val();
+        var $target = $(target)
+        $('html, body').animate({
+            'scrollTop': $target.offset().top - (notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight() + $('.sticky-bar-wrapper').outerHeight())
+        }, 0)
+        $('.sticky-bar #navlinks-dropdown').val('');
     });
 });

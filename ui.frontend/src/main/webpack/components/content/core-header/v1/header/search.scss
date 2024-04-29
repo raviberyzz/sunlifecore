@@ -7,6 +7,11 @@
 }
 
 @include media-breakpoint-down(lg) {
+
+    .sl-body-helios .magic-box .magic-box-clear {
+        height: 100%;
+    }
+
     .search-bar-mobile {
         display: flex;
         background: var(--grey-50, #F9FAFA);
@@ -66,4 +71,8 @@
     .search-icon {
         left: 20px;
     }
+}
+
+#search-box-mobile .magic-box-clear.coveo-accessible-button {
+    margin-top: 1px;
 }

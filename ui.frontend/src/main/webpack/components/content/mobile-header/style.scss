@@ -48,8 +48,8 @@
         box-shadow: 0 8px 6px -6px $black-shade;
         .pull-left{
             display:block;
-            padding: 0;
-            margin: 15px;
+            padding: 8px;
+            margin: 8px;
         }
         .navbar-toggle{
             background-color: transparent;
@@ -163,7 +163,7 @@
             font-size:1rem;
             line-height:26px;
             cursor:pointer;
-            padding:8px 0;
+            padding:8px;
         }
         button#close-hamburger {
             background: none;

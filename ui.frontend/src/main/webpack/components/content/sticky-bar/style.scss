@@ -34,24 +34,25 @@
         column-gap: 10px;
     }
 
-    .stickyBarButtons a span {
-        min-width: 160px;
-        border-radius: 4px;
+    .stickyBarButtons a {
+        font-size: 14px;
+
+        span {
+            min-width: 160px;
+            border-radius: 4px;
+        }
     }
 
     #stickyBarLinks {
         /* width: 100%; */
 
         li {
-            display: inline-flex;
-            padding-right: 30px;
-            align-items: center;
-
             a {
                 color: $brand-secondary-800;
                 font-weight: 700;
                 line-height: 24px;
                 text-decoration: none;
+                font-size: 14px;
             }
 
             a:hover {
@@ -67,6 +68,10 @@
                 border-bottom: 2px solid $brand-primary-400;
             }
         }
+    }
+
+    .nav-links-dropdown {
+        display: none;
     }
 }
 
@@ -100,6 +105,14 @@ html {
     }
 }
 
+@media (min-width: 768px) {
+    .sticky-bar #stickyBarLinks {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+}
+
 @media (max-width: 767px) {
     .sticky-bar {
         /* position: fixed; */
@@ -112,5 +125,26 @@ html {
         .sticky-bar-button-wrapper {
             width: 100%;
         }
+
+            .sticky-bar-wrapper {
+                height: auto;
+                border-top: 1px solid #dcdedf;
+                padding: 10px 15px;
+            }
+
+            .nav-links-dropdown {
+                display: block;
+
+                .cmp-form-options--drop-down {
+                    width: 100%;
+                }
+            }
+
+            .links-button-wrapper {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                width: 100%;
+            }
     }
 }
