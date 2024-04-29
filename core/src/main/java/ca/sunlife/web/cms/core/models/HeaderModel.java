@@ -79,6 +79,13 @@ public interface HeaderModel {
   String getSigninIcon();
 
   /**
+   * Gets the mobile signin icon.
+   *
+   * @return the mobile signin icon
+   */
+  @ Inject
+  String getMobileSigninIcon();
+  /**
    * Gets the text.
    *
    * @return the text
@@ -266,6 +273,14 @@ public interface HeaderModel {
   Resource getMobilenavlinks();
 
   /**
+   * Gets the icon position.
+   *
+   * @return the icon position
+   */
+  @ Inject
+  String getIconPosition();
+
+  /**
    * The Interface Links.
    *
    * @author TCS
@@ -392,5 +407,73 @@ public interface HeaderModel {
     @ Inject
     String getDataTitle();
   }
+  /**
+     * Gets the dropdown sections.
+     *
+     * @return the dropdown sections
+     */
+    @ Inject
+    List <DropdownSections> getDropdownSections();
+
+    /**
+     * The Interface DropdownSections.
+     * 
+     */
+
+    @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    interface DropdownSections {
+
+      /**
+       * Gets the section title.
+       * @return the section title
+       */
+      @ Inject
+      String getSectionTitle();
+
+      /**
+       * Gets the section links.
+       * @return the section links
+       */
+      @ Inject
+      List <SectionLinks> getSectionLinks();
+
+      /**
+       * The Interface SectionLinks.
+       * @return the section links
+       */
+      @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+      interface SectionLinks {
+        /**
+         * Gets the dropdown link name.
+         * @return the dropdown link name
+         */
+        @ Inject
+        String getDropdownLinkName();
+
+        /**
+         * Gets the dropdown link url.
+         * @return the dropdown link url
+         */
+        @ Inject
+        String getDropdownLinkUrl();
+
+        /**
+         * Gets the dropdown link target.
+         * @return the dropdown link target
+         */
+        @ Inject
+        String getDropdownLinkTarget();
+
+        /**
+         * Gets the dropdown link icon.
+         * @return the dropdown link icon
+         */
+        @ Inject
+        String getDropdownLinkIcon();
+
+      }
+
+    }
+
 
 }
