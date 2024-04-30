@@ -38,14 +38,26 @@
                 SHIFT:'Shift'
 
             },
+            i18:{
+                en: { // english language
+                    opens_a_external_link: "opens a external link",
+                    opens_a_internal_link: "opens a internal link",
+                    opens_a_pdf_file: "opens a pdf file"
+                },
+                fr: { // french language
+                    opens_a_external_link: "ouvre un lien externe",
+                    opens_a_internal_link: "ouvre un lien interne",
+                    opens_a_pdf_file: "ouvre un fichier pdf"
+                }
+            },
             templateString: {
-                externalLinkIcon: '<i class="far fa-external-link icn-hover-hidden"  title="opens a external link" aria-hidden="false"></i>',
-                internalLinkIcon: '<i class="far fa-arrow-circle-right icn-hover-hidden" title="opens a internal link" aria-hidden="false"></i>',
-                pdfLinkIcon: '<i class="far fa-file-pdf icn-hover-hidden" title="opens a pdf file" aria-hidden="false"></i>',
-                externalLinkIconSolid: '<i class="fas fa-external-link icn-hover-show" title="opens a external link" aria-hidden="false"></i>',
-                internalLinkIconSolid: '<i class="fas fa-arrow-circle-right icn-hover-show" title="opens a internal link" aria-hidden="false"></i>',
-                pdfLinkIconSolid: '<i class="fas fa-file-pdf icn-hover-show" title="opens a pdf file" aria-hidden="false"></i>'
-            }
+                externalLinkIcon: `<i class="far fa-external-link icn-hover-hidden" aria-hidden="false"></i>`,
+                internalLinkIcon: `<i class="far fa-arrow-circle-right icn-hover-hidden" aria-hidden="false"></i>`,
+                pdfLinkIcon: `<i class="far fa-file-pdf icn-hover-hidden" aria-hidden="false"></i>`,
+                externalLinkIconSolid: `<i class="fas fa-external-link icn-hover-show" aria-hidden="false"></i>`,
+                internalLinkIconSolid: `<i class="fas fa-arrow-circle-right icn-hover-show" aria-hidden="false"></i>`,
+                pdfLinkIconSolid: `<i class="fas fa-file-pdf icn-hover-show" aria-hidden="false"></i>`
+            },
         };
 
         return returnObject;

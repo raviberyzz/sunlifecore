@@ -47,6 +47,12 @@
             return 'onclick' in window ? true : false;
         }
 
+        // Method to detech html dom language attribute and return the language code in lowercase format (en, fr, es, etc.) 
+        function getLanguage() {
+            return document.documentElement.lang.toLowerCase();
+        }
+
+
         var events = {
             // generic events
             INTERACTION: isClickSupported() ? 'click' : 'touchend',
@@ -72,6 +78,9 @@
 
             RESIZED: 'slcore:resized',
             SCROLLED: 'slcore:scrolled',
+
+            // custom Method
+            GET_LANGUAGE: getLanguage(),
 
             // intersection observer related
             IO_IN: 'slcore:in:viewport',
