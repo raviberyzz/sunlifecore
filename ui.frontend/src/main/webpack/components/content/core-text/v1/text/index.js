@@ -20,7 +20,8 @@
                 slLink: '.sl-link',
                 faExternalLink:'.fa-external-link',
                 faInternalLink:'.fa-arrow-circle-right',
-                faPdfFile:'.fa-file-pdf'
+                faPdfFile:'.fa-file-pdf',
+                html:'html'
             },
             ATTR:{
                 title:'title'
@@ -47,23 +48,12 @@
          * @private
          */
         function addTitleAttributeToIcons() {
-            const lang = util.customMethods.GET_LANGUAGE;
-            let i18n;
-            switch (lang) {
-                case 'fr':
-                    i18n = util.constants.i18.fr;
-                    break;
-                case 'en':
-                    i18n = util.constants.i18.en;
-                    break;
-                default:
-                    i18n = util.constants.i18.en;
-                    break;
-            };
+            const lang = $(CONSTANT.SELECTOR.html)[0].lang || 'en';
+            let i18n = util.constants.i18[lang];
             $(CONSTANT.SELECTOR.slLink).each(function() {
-                $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n.opensExternalLink);
-                $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n.opensInternalLink);
-                $(this).find(CONSTANT.SELECTOR.faPdfFile).attr(CONSTANT.ATTR.title, i18n.opensPdfFile);
+            $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n.opensExternalLink);
+            $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n.opensInternalLink);
+            $(this).find(CONSTANT.SELECTOR.faPdfFile).attr(CONSTANT.ATTR.title, i18n.opensPdfFile);
             });
         }
 
