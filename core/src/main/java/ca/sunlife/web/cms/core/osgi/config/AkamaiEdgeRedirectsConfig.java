@@ -23,7 +23,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the host
    */
   @ AttributeDefinition (name = "host", description = "Akamai Host")
-  String getHost () default "akab-v7jr6pxagknzk3cq-bxnesmo7jwpebmrd.luna.akamaiapis.net";
+  String getHost ();
   
   /**
    * Gets the environment.
@@ -46,7 +46,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the access key
    */
   @ AttributeDefinition (name = "accessKey", description = "Access Key")
-  String getAccessKey () default "akab-o7f4jgrrf6jtl7mg-ay7aqph6telhmzqm";
+  String getAccessKey ();
 
   /**
    * Gets the client secret.
@@ -54,7 +54,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the client secret
    */
   @ AttributeDefinition (name = "clientSecret", description = "Client Secret")
-  String getClientSecret () default "uZIDq9QHLYY88GXQ8ZijRpnVNYk1lfrDLKczZkViXZE=";
+  String getClientSecret ();
 
   /**
    * Gets the client token.
@@ -62,7 +62,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the client token
    */
   @ AttributeDefinition (name = "clientToken", description = "Client Token")
-  String getClientToken () default "akab-riiprq6w6gs4jehm-7b5yjbp6qjm7bvbv";
+  String getClientToken ();
   
   /**
    * Gets the socket timeout.
@@ -70,7 +70,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the socket timeout
    */
   @ AttributeDefinition (name = "socketTimeout", description = "Socket Timeout")
-  int getSocketTimeout () default 250000;
+  int getSocketTimeout () default 300000;
 
   /**
    * Gets the connection timeout.
@@ -78,5 +78,5 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the connection timeout
    */
   @ AttributeDefinition (name = "connectionTimeout", description = "Connection Timeout")
-  int getConnectionTimeout () default 250000;
+  int getConnectionTimeout () default 300000;
 }
