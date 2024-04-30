@@ -47,16 +47,6 @@
             return 'onclick' in window ? true : false;
         }
 
-        /**
-         * Returns the language of the document in lowercase format (en/fr) as per the HTML lang attribute value set in the document. Default is 'en'. 
-         * @function getLanguage
-         * @memberof sunCore.util.customEvents
-         * @private
-         * @returns {string} - The language of the document in lowercase format (en/fr)
-         */
-        function getLanguage() {
-            return document.documentElement.lang.toLowerCase();
-        }
 
 
         var events = {
@@ -85,8 +75,6 @@
             RESIZED: 'slcore:resized',
             SCROLLED: 'slcore:scrolled',
 
-            // custom Method
-            GET_LANGUAGE: getLanguage(),
 
             // intersection observer related
             IO_IN: 'slcore:in:viewport',

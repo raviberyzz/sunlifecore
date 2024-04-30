@@ -47,7 +47,7 @@
          * @private
          */
         function addTitleAttributeToIcons() {
-            const lang = util.customEvents.GET_LANGUAGE;
+            const lang = util.customMethods.GET_LANGUAGE;
             let i18n;
             switch (lang) {
                 case 'fr':
@@ -61,9 +61,9 @@
                     break;
             };
             $(CONSTANT.SELECTOR.slLink).each(function() {
-                $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n.opens_a_external_link);
-                $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n.opens_a_internal_link);
-                $(this).find(CONSTANT.SELECTOR.faPdfFile).attr(CONSTANT.ATTR.title, i18n.opens_a_pdf_file);
+                $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n.opensExternalLink);
+                $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n.opensInternalLink);
+                $(this).find(CONSTANT.SELECTOR.faPdfFile).attr(CONSTANT.ATTR.title, i18n.opensPdfFile);
             });
         }
 

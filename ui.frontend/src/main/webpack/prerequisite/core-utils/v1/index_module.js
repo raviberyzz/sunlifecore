@@ -3,6 +3,7 @@ import './scripts/cookie.js';
 import './scripts/initialise.js';
 import './scripts/pubsub.js';
 import './scripts/customEvents.js';
+import './scripts/customMethods.js';
 import './scripts/debounce.js';
 import './scripts/matchmedia.js';
 import './scripts/resized.js';

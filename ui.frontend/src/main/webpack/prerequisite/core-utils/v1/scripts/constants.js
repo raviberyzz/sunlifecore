@@ -40,14 +40,14 @@
             },
             i18:{
                 en: { // english language
-                    opens_a_external_link: "opens a external link",
-                    opens_a_internal_link: "opens a internal link",
-                    opens_a_pdf_file: "opens a pdf file"
+                    opensExternalLink: "opens a external link",
+                    opensInternalLink: "opens a internal link",
+                    opensPdfFile: "opens a pdf file"
                 },
                 fr: { // french language
-                    opens_a_external_link: "ouvre un lien externe",
-                    opens_a_internal_link: "ouvre un lien interne",
-                    opens_a_pdf_file: "ouvre un fichier pdf"
+                    opensExternalLink: "ouvre un lien externe",
+                    opensInternalLink: "ouvre un lien interne",
+                    opensPdfFile: "ouvre un fichier pdf"
                 }
             },
             templateString: {
