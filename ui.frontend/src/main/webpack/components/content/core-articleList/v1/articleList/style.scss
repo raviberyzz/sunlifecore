@@ -1,0 +1,18 @@
+.sl-article-list-wrapper {
+    
+    .sl-pagination {
+        .sl-basic-pagination {
+            display: flex;
+            margin-top: var(--L);
+        }
+        
+        .ellipsis {
+            list-style: none !important;
+        }
+    }
+
+    .sl-cards a.card {
+        text-decoration: none;
+    }
+    
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Spacing"
+    sling:resourceType="granite/ui/components/foundation/container">
+    <layout
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+    <items jcr:primaryType="nt:unstructured">
+        <columns
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <spacing
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/select"
+                    defaultValue="none"
+                    fieldDescription="Choose the spacing to be added at bottom."
+                    fieldLabel="Spacing from bottom"
+                    name="./spacing">
+                    <items jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            selected="true"
+                            text="Select Bottom Spacing"
+                            value=""/>
+                        <margin-3xs
+                            jcr:primaryType="nt:unstructured"
+                            text="3XS - 4"
+                            value="mb-sl4"/>
+                        <margin-2xs
+                            jcr:primaryType="nt:unstructured"
+                            text="2XS - 8"
+                            value="mb-sl8"/>
+                        <margin-xs
+                            jcr:primaryType="nt:unstructured"
+                            text="XS -12"
+                            value="mb-sl12"/>
+                        <margin-s
+                            jcr:primaryType="nt:unstructured"
+                            text="S - 16"
+                            value="mb-sl16"/>
+                        <margin-m
+                            jcr:primaryType="nt:unstructured"
+                            text="M - 24"
+                            value="mb-sl24"/>
+                        <margin-l
+                            jcr:primaryType="nt:unstructured"
+                            text="L - 40/40/32"
+                            value="mb-sm-sl40 mb-sl32"/>
+                        <margin-xl
+                            jcr:primaryType="nt:unstructured"
+                            text="XL - 56/48/48"
+                            value="mb-lg-sl56 mb-sl48"/>
+                        <margin-2xl
+                            jcr:primaryType="nt:unstructured"
+                            text="2XL - 72/64/56"
+                            value="mb-lg-sl72 mb-sm-sl64 mb-sl56"/>
+                        <margin-3xl
+                            jcr:primaryType="nt:unstructured"
+                            text="3XL - 96/88/80"
+                            value="mb-lg-sl96 mb-sm-sl88 mb-sl80"/>
+                    </items>
+                </spacing>
+            </items>
+        </columns>
+    </items>
+</jcr:root>

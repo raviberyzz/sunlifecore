@@ -1,0 +1,28 @@
+<sly data-sly-use.socialMedia="ca.sunlife.web.cms.core.models.v1.SocialMediaModel"/>
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-test.empty="${!socialMedia.type}"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
+<div class="sl-social-media ${socialMedia.spacing}" data-title="${socialMedia.dataTitle}">
+    <sly data-sly-test="${socialMedia.type == 'sociallinks'}">
+        <ul data-sly-test="${!empty}" data-sly-list.socialLinks="${socialMedia.socialLinks}">
+            <li>
+                <a href="${socialLinks.iconLink}" aria-label="${socialLinks.screenReaderText}" data-title="${socialMedia.dataTitle}" target="${socialLinks.target}">
+                    <i class="social-icon fab fa-lg fa-${socialLinks.iconName}" title="${socialLinks.iconName}"></i>
+                    <span class="visually-hidden">${socialLinks.iconName}</span>
+                </a>
+            </li>
+        </ul>
+    </sly>
+    <sly data-sly-test="${socialMedia.type == 'shareoptions'}">
+        <span class="share-heading">${socialMedia.shareText}</span> 
+        <ul class="share-list" data-sly-test="${!empty}" data-sly-list.socialOptions="${socialMedia.socialOptions}">
+            <li class="share-listitem">
+                <a class="share-listitem_link" aria-label="${socialOptions.screenReaderText}" href="javascript:void(0);" data-title="${socialOptions.dataTitle}" data-platform='${socialOptions.platforms}'>
+                    <i class="social-icon fab fa-lg fa-${socialOptions.platforms}" title="${socialOptions.platforms}"></i>
+                    <span class="visually-hidden">${socialOptions.platforms}</span>
+                </a>
+            </li>
+        </ul>
+    </sly>
+</div>
+

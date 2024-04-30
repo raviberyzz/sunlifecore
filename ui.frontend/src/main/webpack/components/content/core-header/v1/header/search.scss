@@ -1,0 +1,78 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+@include media-breakpoint-up(lg) {
+    .search-bar-mobile {
+        display: none;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+
+    .sl-body-helios .magic-box .magic-box-clear {
+        height: 100%;
+    }
+
+    .search-bar-mobile {
+        display: flex;
+        background: var(--grey-50, #F9FAFA);
+        padding: 24px 0;
+        
+        #search-box-mobile .CoveoSearchbox .magic-box .magic-box-input>input {
+            padding: inherit;
+            height: 100% !important;
+            width: 100%;
+            border-width: 0 !important;
+            padding-bottom: 8px !important;
+            margin-left: 28px !important; 
+        }
+
+        .CoveoSearchbox[data-add-search-button="false"] .magic-box-input:before {
+            content: none !important;
+        }
+    }
+    .sl-body-helios .search-bar-mobile .magic-box {
+
+        .magic-box-input .magic-box-underlay, 
+        .magic-box-input>input {
+            border-width: 0 !important;
+            border-bottom: 1px solid #d7d7d7 !important;
+            padding: 0 !important;
+        }
+    }
+
+    .search-icon {
+        position: absolute;
+        top: 30px;
+        left: 60px;
+    }
+    
+    #search-box-mobile .magic-box .magic-box-input {
+        border-bottom: 1px solid #dcdedf;
+        padding-bottom: 8px;
+    }
+}
+
+@media(max-width:1024px) {
+    .search-icon {
+        top: 21px;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .search-icon {
+        left: 32px;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    #search-box-mobile .CoveoSearchbox .magic-box .magic-box-input>input {
+        margin-left: 32px !important; 
+    }
+    .search-icon {
+        left: 20px;
+    }
+}
+
+#search-box-mobile .magic-box-clear.coveo-accessible-button {
+    margin-top: 1px;
+}

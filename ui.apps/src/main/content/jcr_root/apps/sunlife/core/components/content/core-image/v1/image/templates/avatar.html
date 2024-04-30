@@ -1,0 +1,16 @@
+<!--/*  
+Template to render normal view of avatar.
+Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=14466-130031&mode=design&t=ot8gItbAMURKrFBJ-4
+*/-->
+
+<template data-sly-template.details="${ @ image }">
+    <div class="sl-avatar"
+        data-sly-set.imgURL="${image.fileReference || '/etc.clientlibs/sunlife/core/components/content/core-image/v1/image/clientlibs/resources/avatar-default.png'}"
+        data-sly-set.imgLazyLoaded="${properties.isLazyLoaded ? 'lazy' : ''}">
+        <img 
+            src="${ imgURL}" 
+            alt="${image.alt}" 
+            class="${image.avatarSize || 'medium'}"
+            data-sly-attribute.loading="${imgLazyLoaded}">
+    </div>
+</template>

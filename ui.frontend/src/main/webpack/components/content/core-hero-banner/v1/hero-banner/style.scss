@@ -1,0 +1,65 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+@import '../../../../../prerequisite/core-utils/v1/styles/common//style.scss';
+
+
+.sl-banner {
+--viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    
+    &.card {
+        border: none;
+    }
+
+    .picture-container {
+        left: 50%;
+        margin-right: calc(var(--viewportWidth) / -2);
+        margin-left: calc(var(--viewportWidth) / -2);
+        position: relative;
+    }
+
+    .card-text * {
+        color: inherit;
+    }
+
+    &.default .card-img-overlay {
+        @include media-breakpoint-between(md, lg) {
+            padding: 0;
+        }
+
+        .dark a {
+            color: var(--brand-tertiary-900);
+
+            &.sl-link-secondary {
+                color: var(--brand-primary-400);
+            }
+        }
+        .sl-btn.btn {
+            width: fit-content;
+            @include media-breakpoint-only(xs) {
+                width: auto;
+            }
+        }
+        .card-content-overlay {
+            max-width: 312px;
+        }
+        p {
+            margin: 0;
+        }
+
+        a {
+            @include hide-far-default-icon;
+        
+            @include show-fas-soild-icon-on-hover;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .card-content-overlay {
+            width: 100vw;
+            left: 50%;
+            margin-left: -50vw;
+            position: relative !important;
+        }
+    }
+    
+   
+}

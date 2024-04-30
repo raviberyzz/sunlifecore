@@ -1,0 +1,247 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+.sl-body-helios {
+
+    .search-bar {
+        --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: var(--viewportWidth);
+        background: #F9FAFA;
+        padding: 32px 0;
+        position: relative;
+        z-index: 1031;
+    }
+
+    .search-box {
+        .close-div {
+            text-align: right;
+
+            button {
+                border: 0;
+                text-decoration: none;
+                padding: 4px;
+                color: var(--grey-900, #202223);
+                background: transparent;
+                padding: 0 7px;
+            }
+        }
+    }
+
+    .magic-box .magic-box-input {
+        background: transparent;
+    }
+    /* Coveo */
+    .magic-box .magic-box-input .magic-box-underlay,
+    .magic-box .magic-box-input>input {
+        padding: 12px 50px 12px 16px;
+        border: 1px solid #5B6062;
+        background: var(--white);
+    }
+
+    .CoveoSearchButton.coveo-accessible-button {
+        background-color: #FFCB05;
+        color: #004570;
+        border-radius: 0;
+    }
+
+    .CoveoOmnibox.magic-box .magic-box-suggestions {
+        padding: 0 1px;
+        margin-top: 0;
+    }
+
+    .CoveoSearchbox .magic-box .magic-box-input {
+        border-radius: 0px;
+    }
+
+    .magic-box .magic-box-clear {
+        margin-top: 1px;
+        margin-right: 2px;
+        height: calc(100% - 4px);
+        font-size: 20px;
+        display: flex;
+    }
+
+    .magic-box .magic-box-clear .magic-box-icon {
+        height: 24px;
+        width: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-magicbox-suggestions,
+    .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-suggestion-container {
+        border-width: 0;
+        box-shadow: 0px 4px 8px 3px #00000014;
+    }
+
+    .CoveoSearchbox .magic-box {
+        border-width: 0;
+    }
+
+    .CoveoSearchbox .magic-box .magic-box-clear-svg {
+        height: 16px;
+        width: 16px;
+        fill: var(--grey-700, #5B6062);
+
+    }
+
+    /* listing style */
+    .coveo-list-layout.CoveoResult {
+        border-bottom: 1px solid var(--grey-300);
+    }
+
+    .coveo-list-layout .coveo-result-frame {
+        padding: 40px 0 !important;
+    }
+
+    .coveo-result-cell .coveo-result-row:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .CoveoResultLink {
+        color: var(--brand-tertiary-800, #00588B) !important;
+
+        @include sl-h5;
+    }
+
+    .CoveoSearchInterface {
+        color: var(--grey-900, #202223);
+
+        @include sl-body-medium;
+    }
+
+    .CoveoResultLink.printed-url, .coveo-query-summary-cancel-last {
+        color: var(--brand-tertiary-800, #00588B) !important;
+
+        @include sl-link-small;
+    }
+
+    .coveo-query-summary-cancel-last {
+        margin: var(--M) 0;
+    }
+
+
+    .coveo-pager-list-item.coveo-active,
+    .coveo-results-per-page-list-item.coveo-active {
+        background: var(--brand-tertiary-800, #00588B) !important;
+        border-radius: 0 !important;
+
+    }
+
+    .coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        color: #fff !important;
+        border-radius: 0 !important;
+    }
+
+    .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor {
+        color: var(--grey-900, #202223);
+        text-align: center;
+
+        @include sl-body-medium;
+    }
+
+    #coveo-search-body .coveo-search-section {
+        margin: 0 0 24px;
+        padding: 0;
+    }
+
+    #search-result-filters {
+        margin: 0;
+    }
+
+    #search-result-filters .CoveoTextBlock .text-block {
+        margin-bottom: 16px;
+
+        color: var(--grey-900, #202223);
+        @include sl-h5;
+    }
+
+    .CoveoSearchInterface .coveo-results-column {
+        margin: 24px 0;
+        padding: 0;
+    }
+
+    .CoveoTab.coveo-accessible-button.coveo-selected {
+        border: 1px solid var(--grey-300, #DCDEDF) !important;
+        background: var(--grey-50, #F9FAFA) !important;
+    }
+
+
+    .CoveoTab.coveo-accessible-button.coveo-selected p {
+        color: var(--grey-900, #202223) !important;
+        text-align: center;
+
+        @include sl-body-medium-bold;
+    }
+
+    .CoveoTab.coveo-accessible-button,
+    .CoveoTab.coveo-accessible-button p {
+        border-color: var(--grey-300, #DCDEDF) !important;
+        color: var(--grey-900, #202223) !important;
+        text-align: center;
+
+        @include sl-body-medium;
+    }
+
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        color: var(--brand-tertiary-800, #00588B) !important;
+    }
+
+    .coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-item-text {
+        color: #fff !important;
+        border-radius: 0 !important;
+    }
+    .coveo-pager-list-item .coveo-pager-list-item-text {
+        padding: 4px 10px !important;
+    }
+    .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+        padding: 4px 8px !important;
+    }
+
+    .coveo-result-cell .pdf-link {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTguNSAxNFYxMkMxMC41IDEyIDExIDEyIDExIDEzQzExIDE0IDEwLjUgMTQgOC41IDE0Wk04LjUgMTRWMTYuNU0yMCAxMkgxNy41VjE0TTE3LjUgMTRWMTYuNU0xNy41IDE0SDIwTTIwIDkuNUwxOS45OTk5IDguNUwxNy41IDZIOFY5LjVNMjAgOS41SDhNMjAgOS41SDIyVjE4LjVIMjBNOCA5LjVINlYxOC41SDhNOCAxOC41VjIySDIwTDIwIDE4LjVNOCAxOC41SDIwTTEzIDEyQzE1IDEyIDE1LjUgMTIuNjY2NyAxNS41IDE0QzE1LjUgMTUuMzMzMyAxNSAxNiAxMyAxNlYxMloiIHN0cm9rZT0iIzIwMjIyMyIvPgo8L3N2Zz4K");
+        height: 28px;
+        width: 28px;
+        display: inline-block;
+
+        &::before {
+            content: none;
+        }
+    }
+
+    .CoveoPager {
+        margin-left: 0px !important;
+    }
+
+    .CoveoSearchButton.coveo-accessible-button:hover {
+        background-color: var(--brand-primary-500) !important;
+        border-color: var(--brand-primary-500);
+        color: var(--brand-tertiary-900);
+    }
+
+    .search-result-num-results {
+        color: var(--grey-700, #5B6062);
+        @include sl-body-small;
+    }
+
+    .coveo-results-header {
+        box-shadow: none !important;
+        margin-bottom: 32px;
+    }
+
+    .error-required:before {
+        content: " "!important;
+        left: 0 !important;
+        font: inherit;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNNTY5LjUgNDQwQzU4OCA0NzIgNTY0LjggNTEyIDUyNy45IDUxMkg0OC4xYy0zNi45IDAtNjAtNDAuMS00MS42LTcyTDI0Ni40IDI0YzE4LjUtMzIgNjQuNy0zMiA4My4yIDBsMjM5LjkgNDE2ek0yODggMzU0Yy0yNS40IDAtNDYgMjAuNi00NiA0NnMyMC42IDQ2IDQ2IDQ2IDQ2LTIwLjYgNDYtNDYtMjAuNi00Ni00Ni00NnptLTQzLjctMTY1LjNsNy40IDEzNmMuMyA2LjQgNS42IDExLjMgMTIgMTEuM2g0OC41YzYuNCAwIDExLjYtNSAxMi0xMS4zbDcuNC0xMzZjLjQtNi45LTUuMS0xMi43LTEyLTEyLjdoLTYzLjRjLTYuOSAwLTEyLjQgNS44LTEyIDEyLjd6Ii8+PC9zdmc+");
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        top: 5px;
+    }
+    
+}

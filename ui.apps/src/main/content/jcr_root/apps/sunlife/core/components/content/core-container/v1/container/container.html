@@ -1,0 +1,5 @@
+<!-- Overlying Container.html and simple.html to set the default view as simple.html -->
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
+	<sly data-sly-use.simpleTemplate="simple.html"
+		 data-sly-call="${simpleTemplate.simple @ container=container}"></sly>
+</sly>

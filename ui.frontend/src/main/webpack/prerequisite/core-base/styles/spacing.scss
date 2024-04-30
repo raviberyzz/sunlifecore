@@ -1,0 +1,31 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+:root {
+    --3XS: 4px;
+    --2XS: 8px;
+    --XS: 12px;
+    --S: 16px;
+    --M: 24px;
+    --L: 32px;
+    --XL: 48px;
+    --2XL: 56px;
+    --3XL: 80px;
+}
+
+@include media-breakpoint-up(sm) {
+    :root {
+        --L: 40px;
+        --2XL: 64px;
+        --3XL: 88px;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    :root {
+        --XL: 56px;
+        --2XL: 72px;
+        --3XL: 96px;
+    }
+}
+  

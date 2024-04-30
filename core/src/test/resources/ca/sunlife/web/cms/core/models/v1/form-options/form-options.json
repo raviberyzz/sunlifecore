@@ -1,0 +1,12 @@
+{
+  "options": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/ca/components/form/ca-options/v1/options",
+    "id": "test-id",
+    "constraintMessage": "test-constraintMessage",
+    "required": "test-required",
+    "dataSection": "test-dataSection",
+	"spacing": "mb-s18",
+	"layout": "inline"	  
+  }
+}

@@ -1,0 +1,91 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+.sl-left-nav {
+    .collapsing {
+            transition: height, visibility .10s ease-in;
+    } 
+
+    button + ul.sub-menu li {
+        padding-left: 1.5rem;
+
+        &:first-child {
+            margin-top: 1rem; 
+        }
+    }
+
+     ul, .sub-menu.show {
+        display: flex;
+        gap: 1rem;
+    }
+
+     .nav-item {
+        width: 100%;
+
+        .nav-link {
+            color: var(--grey-700);
+            font-family: "Sun Life New Text Regular", "Helvetica Neue", "Calibri", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            text-decoration: none;
+            padding: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+            
+            &:focus-visible {
+                outline: none;
+                box-shadow: 0 0 0 0.125rem var(--brand-tertiary-500);
+            }
+
+            &.active{
+                color: var(--grey-900);
+                font-family: "Sun Life New Text Bold",Helvetica Neue,Calibri,sans-serif;
+                font-weight: 700;
+                text-decoration: none;
+            }
+                    
+            svg.sl-icon {
+                margin-left: 1rem;
+                vertical-align: middle;
+            }
+            
+            &[aria-expanded='true'] .sl-icon.fa-chevron-down {
+                transform: rotate(180deg);
+            }
+            
+            &.nav-dropdown {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: start;
+                width: 100%;
+            }
+        }
+
+        &.nav-content{
+            flex: 1;
+        }
+
+        .sub-menu li:first-child {
+            width: 100%
+        }
+        
+        .sub-menu .nav-link {
+            display: flex;
+            justify-content: flex-start;
+            &.nav-dropdown {
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+        }
+    }
+
+
+
+    @include media-breakpoint-down(lg) {
+        display: none;
+    }
+}

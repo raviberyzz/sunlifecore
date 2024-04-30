@@ -1,0 +1,76 @@
+<sly data-sly-use.headerModel="ca.sunlife.web.cms.core.models.v1.header.HeaderModel" />
+
+<div class="container">
+     <a href="#signinbutton" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToSignInLabel}</a>
+     <a href="#main-content"
+          class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToMainContentLabel}</a>
+     <a href="#mainfooter" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
+</div>
+
+<!-- /* Including Search */ -->
+<sly data-sly-use.search="templates/searchbar.html"
+data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+
+<!--/* Including Utility Bar */-->
+<sly data-sly-use.utilitybar="templates/utilitybar.html"
+     data-sly-call="${utilitybar.navList @ headerModel=headerModel}"></sly>
+<!--/* End Utility Bar */-->
+
+<div id="nav-header" class="sl-header ${headerModel.spacing}">
+     <div class="nav-bar container">
+          <div id="sl-nav" class="sl-nav navbar navbar-expand-lg navbar-light">
+               <button id="menuOpen" aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu"
+                    class="navbar-toggler collapsed menuOpen" data-bs-toggle="offcanvas" data-bs-target="#sl-header-offcanvas">
+                    <span class="fak fa-bars sl-icon_size_xl sl-icon"></span>
+               </button>
+
+               <!-- logo desktop and mobile -->
+               <sly data-sly-set.isLogoHidden="${headerModel.hideLogo == 'no' ? false : true}">
+                    <sly data-sly-test="${!isLogoHidden}" data-sly-use.logo="templates/logo.html" data-sly-call="${logo.logo @ headerModel=headerModel}">
+                    </sly>
+               </sly>
+
+               <div id="sl-header-offcanvas" class="sl-header-offcanvas offcanvas offcanvas-start"
+                    aria-labelledby="offcanvas-label">
+
+                    <!-- mobile -->
+                    <div class="offcanvas-header">
+                          <!-- close icon -->
+                         <button id="menuClose" class="canvas-close menuClose" aria-label="Close menu" data-bs-dismiss="offcanvas">
+                              <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
+                         </button>
+                         <!-- mobile logo in expanded hamburger menu -->
+                         <sly data-sly-test="${!isLogoHidden}" data-sly-use.logo="templates/logo-mobile.html"
+                              data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
+                    </div>
+
+                    <div id="offcanvas-body" class="offcanvas-body">
+
+                        <!-- /* Including Search */ -->
+                         <sly data-sly-use.search="templates/searchbar-mobile.html"
+                         data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+
+                         <!-- megamenu.html -->
+                         <ul class="sl-main-nav flex-grow-1 navbar-nav">
+                              <sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
+                                   <sly data-sly-use.megaMenu="templates/megamenu.html"
+                                        data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>
+                              </sly>
+                         </ul>
+
+                         <!-- links.html -->
+                         <ul class="sl-utility-nav justify-content-end flex-grow-1 navbar-nav">
+
+                              <!-- /* Including Search */ -->
+                              <sly data-sly-use.search="templates/search.html"
+                                   data-sly-call="${search.search @ headerModel=headerModel}"></sly>
+
+                              <!-- /* Including Signin */ -->
+                              <sly data-sly-use.signin="templates/signin.html"
+                                   data-sly-call="${signin.signin @ headerModel=headerModel}"></sly>
+                         </ul>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

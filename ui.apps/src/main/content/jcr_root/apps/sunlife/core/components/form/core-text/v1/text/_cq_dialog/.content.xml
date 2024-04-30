@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    extraClientlibs="[core.wcm.components.form.text.v2.editor,sunlife.core-author.form-text]">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <fieldType jcr:primaryType="nt:unstructured">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <date
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:hideResource="{Boolean}true"/>
+                                                    <time
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:hideResource="{Boolean}true"/>
+                                                    <number
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:hideResource="{Boolean}true"/>
+                                                </items>
+                                            </fieldType>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please enter the id for this textfield"
+                                                fieldDescription="Please enter the id for this textfield"
+                                                fieldLabel="Element Id"
+                                                name="./id"/>
+                                            <texticon
+                                                granite:class="showhide-icon"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="name"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <icon
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Icon identifier for displaying an icon."
+                                                        fieldLabel="Icon"
+                                                        name="./icon"/>
+                                                    <iconPosition
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this option to place an icon after the button text. If this option is not selected, the icon will appear to the left of the button text."
+                                                        name="./iconPosition"
+                                                        text="Trailing Icon Position"
+                                                        uncheckedValue="false"
+                                                        value="{Boolean}true"/>
+                                                </items>
+                                            </texticon>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                    <about jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <usePlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </about>
+                    <constraints jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <requiredMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Message displayed as tooltip when submitting the form if the value is left empty"
+                                                fieldLabel="Required Error Message"
+                                                name="./requiredMessage"
+                                                wrapperClass="cmp-form-text__requiredmessage"/>
+                                            <validation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="Enter validation function if required."
+                                                fieldDescription="Function used for validation"
+                                                fieldLabel="Validation  Regex"
+                                                name="./validation"/>
+                                            <validationErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Error Message"
+                                                fieldLabel="Validation Error Message"
+                                                name="./validationError"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </constraints>
+                    <spacing
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/sunlife/core/components/common/editor/dialog/spacing"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

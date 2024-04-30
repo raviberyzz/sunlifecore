@@ -19,7 +19,7 @@
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>web-cms-aem-core</artifactId>
-        <version>1.220.0-SNAPSHOT</version>
+        <version>1.266.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>web-cms-aem-core.core</artifactId>
@@ -45,7 +45,7 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
-Import-Package: javax.annotation;version=0.0.0,com.adobe.cq.wcm.core.components.commons.link,com.adobe.cq.wcm.core.components.models;version="[12.0,13)",com.adobe.cq.wcm.core.components.models.datalayer,*
+Import-Package: javax.annotation;version=0.0.0,javax.annotation.meta;resolution:=optional,com.adobe.cq.wcm.core.components.commons.link,com.adobe.cq.wcm.core.components.models;version="[12.0,13)",com.adobe.cq.wcm.core.components.models.datalayer,*
 Export-Package: ca.sunlife.web.cms.core.*
 -conditionalpackage: com.github.mustachejava.*,org.jsoup.*, com.akamai.edgegrid.signer.*
 Private-Package:!com.adobe.cq.wcm.core.components.models.datalayer,com.adobe.cq.wcm.core.components.internal.*
@@ -159,7 +159,15 @@ Bundle-SymbolicName: sunlife.core
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.models.api</artifactId>
         </dependency>
-
+		<!-- Groovy dependencies -->
+		<dependency>
+			<groupId>com.icfolson.aem.groovy.console</groupId>
+			<artifactId>aem-groovy-console</artifactId>			
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>			
+		</dependency>	
 
         <!-- Testing -->
         <dependency>
@@ -222,7 +230,7 @@ Bundle-SymbolicName: sunlife.core
         <dependency>
 	      <groupId>org.jsoup</groupId>
 	      <artifactId>jsoup</artifactId>
-	      <version>1.13.1</version>
+	      <version>1.15.3</version>
 	    </dependency>
 	    <dependency>
 	      <groupId>org.apache.poi</groupId>
@@ -286,5 +294,10 @@ Bundle-SymbolicName: sunlife.core
 	      <version>3.9</version>
 	      <scope>provided</scope>
 	    </dependency>
+		<!-- project lombok include -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
     </dependencies>
 </project>

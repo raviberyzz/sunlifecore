@@ -1,0 +1,44 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+@mixin table-column {
+    font-size: 1rem;
+    background: var(--brand-secondary-100);
+    color: var(--grey-900);
+    font-weight: 400;
+    line-height: 1.5rem;
+    border-style: hidden;
+}
+.sl-table {              
+    overflow: auto;
+    @include media-breakpoint-down(sm) {   
+        td, th {
+            white-space: nowrap;
+        }
+    }
+    table {
+        border: none;
+        caption-side: top;
+        caption {
+            color: var(--grey-900);
+            font-size: 1.5rem;
+            font-family: "Sun Life New Text Regular";
+            font-weight: 400;
+            line-height: 2rem;
+        }
+    }
+    ul {
+        list-style-type: disc;
+    }
+    tr{
+        border-color: var(--bs-border-color);
+        &:first-child td, th {
+            @include table-column;
+        }
+        td {
+            border-color: var(--bs-border-color);
+        }
+        td, th {
+            font-family: "Sun Life New Text Regular";
+        }
+    }
+}
