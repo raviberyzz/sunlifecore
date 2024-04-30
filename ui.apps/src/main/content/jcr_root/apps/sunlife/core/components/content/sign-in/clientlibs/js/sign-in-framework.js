@@ -156,8 +156,8 @@ $(document).ready(function () {
         var action = $(".mySlfSignIn #form_signon").attr("action").trim();
         if (action == undefined || action == "") {
           console.log("transmit");
-          //mfaModalTrigger();
-          //onSignInClick();
+          //Pointing to new mfa signin method
+          console.log("mfa signin");
           new mfaSignIn.SignIn();
           event.preventDefault();
         } else {
