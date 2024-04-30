@@ -1,6 +1,6 @@
 import './index.js';
 import './search.js';
-import './headerAnalytics';
+import './headerAnalytics.js';
 
 import './style.scss';
 import './search.scss';
