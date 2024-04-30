@@ -17,7 +17,7 @@
         /**
          * Returns the language of the document in lowercase format (en/fr) as per the HTML lang attribute value set in the document. Default is 'en'. 
          * @function getLanguage
-         * @memberof sunCore.util.customEvents
+         * @memberof sunCore.util.customMethods
          * @private
          * @returns {string} - The language of the document in lowercase format (en/fr)
          */
