@@ -1,3 +1,7 @@
+/* start placeholder content
+   end placeholder content
+ */
+
 function CustomUIHandler() {
     xmui.XmUIHandler.call(this);
 }
