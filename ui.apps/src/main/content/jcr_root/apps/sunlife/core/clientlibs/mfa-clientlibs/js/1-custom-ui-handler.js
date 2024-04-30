@@ -1,6 +1,6 @@
-/* start placeholder content
-   end placeholder content
- */
+function newName() {
+    console.log("newName");
+}
 
 function CustomUIHandler() {
     xmui.XmUIHandler.call(this);
