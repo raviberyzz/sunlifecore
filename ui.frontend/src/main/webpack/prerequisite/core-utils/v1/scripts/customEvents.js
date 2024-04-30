@@ -47,7 +47,13 @@
             return 'onclick' in window ? true : false;
         }
 
-        // Method to detech html dom language attribute and return the language code in lowercase format (en, fr, es, etc.) 
+        /**
+         * Returns the language of the document in lowercase format (en/fr) as per the HTML lang attribute value set in the document. Default is 'en'. 
+         * @function getLanguage
+         * @memberof sunCore.util.customEvents
+         * @private
+         * @returns {string} - The language of the document in lowercase format (en/fr)
+         */
         function getLanguage() {
             return document.documentElement.lang.toLowerCase();
         }
