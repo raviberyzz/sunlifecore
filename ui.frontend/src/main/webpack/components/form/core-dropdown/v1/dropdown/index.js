@@ -66,6 +66,7 @@
     }
 
     /**
+     * Handles the toggling of the dropdown visibility for various events that trigger opening and closing of the dropdown.
      * @function
      * @param {HTMLElement} $combo - The dropdown element.
      * @param {*} currentComboInput - The current input the event was fired on
