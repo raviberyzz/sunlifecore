@@ -2,7 +2,7 @@
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
      data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}">
     <div role="alert"
-         class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}">
+         class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}" data-section="site-level-notification">
         <div class="container">
             <sly data-sly-test.displayNotificationHeading="${notification.notificationHeading} ">
                 <div class="notification-component" aria-label="${notification.accessibilityLabel}"
