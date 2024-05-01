@@ -489,11 +489,6 @@
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                 fieldLabel="Link"
                                                                 name="./link"/>
-                                                        <socialMediaScreenText
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Screen Reader Text"
-                                                                name="./socialMediaScreenText"/>
                                                         <dataTitle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

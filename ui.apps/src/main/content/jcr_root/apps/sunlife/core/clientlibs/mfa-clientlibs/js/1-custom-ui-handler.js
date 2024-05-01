@@ -1,3 +1,7 @@
+function newName() {
+    console.log("newName");
+}
+
 function CustomUIHandler() {
     xmui.XmUIHandler.call(this);
 }

@@ -20,3 +20,8 @@ sunCore.$ = window.$ || sunCore.jQuery;
  * Appending util properties for associating all util module 
  */
 sunCore.util = sunCore.util || {};
+
+/*!
+ * Appending common properties for associating all common module
+ */
+sunCore.common = sunCore.common || {};

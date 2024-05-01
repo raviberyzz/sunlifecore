@@ -38,14 +38,26 @@
                 SHIFT:'Shift'
 
             },
+            i18:{
+                en: { // english language
+                    opensExternalLink: "opens a external link",
+                    opensInternalLink: "opens a internal link",
+                    opensPdfFile: "opens a pdf file"
+                },
+                fr: { // french language
+                    opensExternalLink: "ouvre un lien externe",
+                    opensInternalLink: "ouvre un lien interne",
+                    opensPdfFile: "ouvre un fichier pdf"
+                }
+            },
             templateString: {
-                externalLinkIcon: '<i class="far fa-external-link icn-hover-hidden"></i>',
-                internalLinkIcon: '<i class="far fa-arrow-circle-right icn-hover-hidden"></i>',
-                pdfLinkIcon: '<i class="far fa-file-pdf icn-hover-hidden"></i>',
-                externalLinkIconSolid: '<i class="fas fa-external-link icn-hover-show"></i>',
-                internalLinkIconSolid: '<i class="fas fa-arrow-circle-right icn-hover-show"></i>',
-                pdfLinkIconSolid: '<i class="fas fa-file-pdf icn-hover-show"></i>'
-            }
+                externalLinkIcon: `<i class="far fa-external-link icn-hover-hidden" aria-hidden="false"></i>`,
+                internalLinkIcon: `<i class="far fa-arrow-circle-right icn-hover-hidden" aria-hidden="false"></i>`,
+                pdfLinkIcon: `<i class="far fa-file-pdf icn-hover-hidden" aria-hidden="false"></i>`,
+                externalLinkIconSolid: `<i class="fas fa-external-link icn-hover-show" aria-hidden="false"></i>`,
+                internalLinkIconSolid: `<i class="fas fa-arrow-circle-right icn-hover-show" aria-hidden="false"></i>`,
+                pdfLinkIconSolid: `<i class="fas fa-file-pdf icn-hover-show" aria-hidden="false"></i>`
+            },
         };
 
         return returnObject;

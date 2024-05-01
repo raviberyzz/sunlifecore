@@ -47,6 +47,8 @@
             return 'onclick' in window ? true : false;
         }
 
+
+
         var events = {
             // generic events
             INTERACTION: isClickSupported() ? 'click' : 'touchend',
@@ -72,6 +74,7 @@
 
             RESIZED: 'slcore:resized',
             SCROLLED: 'slcore:scrolled',
+
 
             // intersection observer related
             IO_IN: 'slcore:in:viewport',
