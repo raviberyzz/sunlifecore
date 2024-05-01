@@ -38,7 +38,7 @@
                 </sly>
                 <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
                     <li class="next ${nextCss} sl-pagination-item">
-                        <a x-cq-linkchecker="skip" tabindex="${nextCss && '-1'}" disabled="${nextCss}" href="${pageUrl}${paginationObj.nextPageNo}/" aria-label="Next">
+                        <a x-cq-linkchecker="skip" tabindex="${nextCss && '-1'}" disabled="${nextCss}" href="${pageUrl}${paginationObj.nextPageNo}/" aria-label="${'Next' @ i18n}">
                             <span class="fal fa-chevron-right sl-icon sl-icon_size_sm"></span>
                         </a>
                     </li>
