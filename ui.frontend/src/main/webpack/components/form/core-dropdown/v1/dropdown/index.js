@@ -66,6 +66,24 @@
     }
 
     /**
+     * Handles the toggling of the dropdown visibility for various events that trigger opening and closing of the dropdown.
+     * @function
+     * @param {HTMLElement} $combo - The dropdown element.
+     * @param {*} currentComboInput - The current input the event was fired on
+     * @return void
+     */
+    function handleDropdownVisibility($combo, currentComboInput) {
+      $($combo).toggleClass(CONSTANT.CLASS.open);
+      if ($($combo).hasClass(CONSTANT.CLASS.open)) {
+        toggleChevron(currentComboInput, "up");
+      } else {
+        $($combo).find("label").removeClass(CONSTANT.CLASS.active);
+        toggleChevron(currentComboInput, "down");
+      }
+      updateElementAttribute(currentComboInput, "aria-expanded", $($combo).hasClass(CONSTANT.CLASS.open));
+    }
+
+    /**
     * Toggle the dropdown chevron direction and raise or lower the label.
     * @function
     * @param {HTMLElement} comboInput - The dropdown element.
@@ -148,22 +166,19 @@
       let $combo = $(currentComboInput).closest(CONSTANT.SELECTOR.combo);
       let $currentOptionSelected = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
 
+      if(e.keyCode == util.constants.KeyCode.ESC && $($combo).hasClass(CONSTANT.CLASS.open)){
+        handleDropdownVisibility($combo, currentComboInput);
+      }
+
       if (e.keyCode == util.constants.KeyCode.DOWN) {
         handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.next());
       } else if (e.keyCode == util.constants.KeyCode.UP) {
         handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.prev());
-      } else if (e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
+      } else if ((e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) && $($combo).hasClass(CONSTANT.CLASS.open)) {
         let $currOpt = $(currentComboInput).next().find(CONSTANT.SELECTOR.optionCurrent);
         $currOpt.mousedown();
-      } else if (e.type == util.customEvents.MOUSE_DOWN) {
-        $($combo).toggleClass(CONSTANT.CLASS.open);
-        if ($($combo).hasClass(CONSTANT.CLASS.open)) {
-          toggleChevron(currentComboInput, "up");
-        } else {
-          $($combo).find("label").removeClass(CONSTANT.CLASS.active);
-          toggleChevron(currentComboInput, "down");
-        }
-        updateElementAttribute(currentComboInput, "aria-expanded", $($combo).hasClass(CONSTANT.CLASS.open));
+      } else if (e.type == util.customEvents.MOUSE_DOWN || e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
+        handleDropdownVisibility($combo, currentComboInput);
       }
     }
 
