@@ -2,17 +2,27 @@
     <div class="sl-utility-bar">
         <div class="container">
             <ul class="content-container">  
-                    <li class="menu-container" data-section="header-utility-nav" data-sly-test="${headerModel.listFromNav == 'true'}" aria-label="${headerModel.utilityNavLabel || 'Helpful links'}">
+                    <li class="menu-container" data-section="header-utility-bar" data-sly-test="${headerModel.listFromNav == 'true'}" aria-label="${headerModel.utilityNavLabel || 'Helpful links'}">
                         <div>
-                            <ul class="menu-list">
-                                <sly data-sly-list.links="${headerModel.navlinks}">
-                                <li class="nav-item menu-item" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=links.linkURL}">
+                            <sly data-sly-set.totalItems="${0}"></sly>
+                            <sly data-sly-list.links="${headerModel.navlinks}">
+                                <sly data-sly-test.totalItems="${ linksList.count }"></sly>
+                            </sly>
+                            <ul class="menu-list"
+                                data-sly-element="${totalItems == 1 ? 'div' : 'ul'}" 
+                                data-sly-list.links="${headerModel.navlinks}" >
+                                <li class="nav-item menu-item"
+                                    data-sly-element="${totalItems == 1 ? 'div' : 'li'}" 
+                                    data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=links.linkURL}">
                                     <a class="menu-content nav-link" href="${utilityListParsing.navPath}" target="${links.linkTarget}"
-                                    data-title="${links.dataTitle}">${links.linkName}</a></li>
-                                </sly>
+                                        data-title="${links.dataTitle}">
+                                        ${links.linkName}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
+
                     <li data-sly-test="${headerModel.listFromRegion == 'regiontrue'}">
                     <div class="sl-region-menu">
                         <div id="sl-region-dd" class="region-menu-container dropdown">
@@ -34,6 +44,7 @@
                         </div>
                     </div>
                     </li>
+                    
                     <li data-sly-test="${headerModel.language == 'languagetrue'}">
                     <div>
                         <div class="sl-menu-dropdown">
@@ -60,7 +71,8 @@
                                         <li aria-current="${languageList.linkHighlight ? 'true': ''}" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=languageList.linkURL}">
                                             <a href="${utilityListParsing.navPath}" lang="" data-sly-attribute.lang="${languageList.linkLanguageCode}" class="${languageList.linkHighlight ? 'active' : ''} dropdown-item">
                                                 <div class="d-inline"><span>${languageList.linkName}</span></div>
-                                            </a></li>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
