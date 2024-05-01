@@ -1,5 +1,18 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
 .sl-breadcrumbs {
     padding-left: 0;
     padding-right: 0;
     margin: 0;
+
+    .sl-link[aria-current="page"],
+    .sl-link[aria-current="page"]:visited {
+        @include sl-body-small;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.25rem;
+        margin-top: 0.25rem;
+        text-decoration: none;
+    }
 }
