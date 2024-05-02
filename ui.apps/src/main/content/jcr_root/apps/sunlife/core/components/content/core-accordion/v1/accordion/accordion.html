@@ -15,8 +15,7 @@
     >
       <div
         data-sly-element="${accordion.headingElement @ context='elementName'}"
-        class="${accordion.headingElement} accordion-header"
-        data-toggle="collapse"          
+        class="${accordion.headingElement} accordion-header" 
         data-single-expansion="${accordion.singleExpansion}"
       >
         <button
@@ -24,6 +23,8 @@
           aria-label="${item.title}"
           class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
           data-bs-toggle="collapse"
+          data-bs-target="#accordion${item.name}"
+          aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
           type="button"
         >
           <span
@@ -37,6 +38,7 @@
       </div>
       <div
         class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
+        id="accordion${item.name}"
       >
         <div
           class="accordion-body"
