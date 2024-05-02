@@ -10,6 +10,7 @@ Template for rendering link and button component
   <sly
     data-sly-set.isBtn="${ctaType == 'button' ? true : false }"
     data-sly-set.iconType="${isBtn ? cardBtnIconType : cardLinkIconType }"
+    data-sly-set.isExternal="${iconType == 'external-link' ? true : false }"
     data-sly-set.cardBtnVarient="${cardBtnType ? cardBtnType : 'primary'}"
     data-sly-set.cardLinkVarient="${cardLinkType=='secondary' ? 'sl-link sl-link-secondary' : 'sl-link'}"
     data-sly-set.cardBtnTypeClass="${['btn',cardBtnVarient] @ join='-'}"
@@ -26,8 +27,8 @@ Template for rendering link and button component
         </sly>
         ${isBtn ? cardBtnLabel : cardLinkLabel }
         <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn' && iconType}">
-          <i title="link" class="fak fa-${iconType} icn-hover-hidden" aria-hidden="true"></i>
-          <i title="link" class="fak fa-${iconType}-hover icn-hover-show" aria-hidden="true"></i>
+          <i title="${isExternal ? 'external link' : 'internal link'}" class="fak fa-${iconType} icn-hover-hidden" aria-hidden="true"></i>
+          <i title="${isExternal ? 'external link' : 'internal link'}" class="fak fa-${iconType}-hover icn-hover-show" aria-hidden="true"></i>
         </sly>
       </a>
   </sly>
