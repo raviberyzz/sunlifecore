@@ -40,8 +40,8 @@
             },
             i18:{
                 en: { // english language
-                    opensExternalLink: "opens a external link",
-                    opensInternalLink: "opens a internal link",
+                    opensExternalLink: "opens an external link",
+                    opensInternalLink: "opens an internal link",
                     opensPdfFile: "opens a pdf file"
                 },
                 fr: { // french language
