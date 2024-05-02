@@ -26,11 +26,11 @@
                     </li>
                 </sly>
                 <li class="sl-pagination-item ${firstPageHighlight}">
-                    <a x-cq-linkchecker="skip" href="${pageUrl}1/" aria-label="Page 1" aria-current="${paginationObj.curPage == 1 ? 'page' : ''}">1<span class="visually-hidden">Page 1</span></a>
+                    <a x-cq-linkchecker="skip" href="${pageUrl}1/" aria-label="Page 1" aria-current="${paginationObj.curPage == 1 ? 'page' : false}">1<span class="visually-hidden">Page 1</span></a>
                 </li>
                 <sly data-sly-list.pageItems="${paginationObj.pageItems}">
                     <li data-sly-test = "${!paginationObj.ellipsis && pageItems.index != 0}" class="sl-pagination-item ${paginationObj.curPage == pageItems.index ? 'selected-item' : ''}">
-                        <a x-cq-linkchecker="skip" href="${pageItems.href}/" aria-current="${paginationObj.curPage == pageItems.index ? 'page' : ''}">
+                        <a x-cq-linkchecker="skip" href="${pageItems.href}/" aria-current="${paginationObj.curPage == pageItems.index ? 'page' : false}">
                             <span>${pageItems.index}</span>
                         </a>
                     </li>
