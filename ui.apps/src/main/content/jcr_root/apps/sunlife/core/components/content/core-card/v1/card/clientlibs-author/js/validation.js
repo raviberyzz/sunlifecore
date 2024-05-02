@@ -57,6 +57,7 @@
         const $cardBtnLabel = $dialogContainer.find(CONSTANTS.SELECTOR.cardBtnLabel);
         const $cardBtnURL = $dialogContainer.find(CONSTANTS.SELECTOR.cardBtnURL);
         const $cardClickableLinkURL = $dialogContainer.find(CONSTANTS.SELECTOR.cardClickableLinkURL);
+        const $cardImageFile = $dialogContainer.find(CONSTANTS.SELECTOR.$cardImageFile);
 
         let $assetTab = null;
         let $ctaTab = null;
@@ -188,8 +189,8 @@
             'banner-image': function () {
                 markRequiredFields($bannerImageHeading);
                 markRequiredFields($bannerImageDescription);
-                markRequiredFields($assetType, true);
-                selectRequired($assetType, 'asset');
+                markRequiredFields($cardImageFile, true);
+                selectRequired($cardImageFile, 'asset');
             },
             'media': function () {
                 markRequiredFields($mediaHeading);
@@ -201,7 +202,9 @@
             },
             'segmented': function () {
                 markRequiredFields($segmentDescription);
-            }   
+            },
+            'statistic': function () {
+            }
         };
 
         
