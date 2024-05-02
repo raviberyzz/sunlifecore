@@ -59,7 +59,7 @@
     }
   }
   /**
-   * Method to handle the escape key event to close the accordion on escape
+   * Method to close accordion item on ESC Key
    * @function accordionHeaderKeyEventHandler
    * @memberof sunCore.comp.accordion
    * @private
@@ -103,19 +103,8 @@
       resetAccordionForSingleSelection($accordionItemHeader);
       chevronHandler($accordionItemHeader, false);
     } else {
-      toggleAccordionCollapse($accordionItemHeader);
       chevronHandler($accordionItemHeader, true);
     }
-  }
-  /**
-   * Function used to handle the collapse accordion functionality
-   * @function toggleAccordionCollapse
-   * @memberof sunCore.comp.accordion
-   * @private
-   * @param {object} $accordionHeader - scope of accordion header element
-   */
-  function toggleAccordionCollapse($accordionHeader) {
-    $accordionHeader.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.hide).removeClass(CONSTANT.CLASS.show);
   }
   /**
      * Handler to bind event specific for accordion
