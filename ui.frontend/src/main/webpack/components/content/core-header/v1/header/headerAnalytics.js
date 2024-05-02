@@ -1,5 +1,5 @@
 /**
- * slfanalyticstracking.js
+ * headerAnalytics.js
  * @fileOverview Provides a common functionality for analytics tracking.
  */
 (function(core) {
@@ -102,7 +102,7 @@
         function bindAnalyticsEvent() {
             // Sign in link tracking
             if (isSLFDomain()) {
-                $slfHeader.on(
+                $(document).on(
                     util.customEvents.INTERACTION,
                     CONSTANT.SELECTOR.signInLink,
                     function(event) {
@@ -110,7 +110,7 @@
                     }
                 );
             } else {
-                $slfHeader.on(
+                $(document).on(
                     util.customEvents.INTERACTION,
                     CONSTANT.SELECTOR.signInButton,
                     function(event) {
