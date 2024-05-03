@@ -140,6 +140,14 @@ public class BasePageModel {
     private String pageIndexing;
 
     /**
+     * Disable pseudo element icon rendering.
+     */
+    @Getter
+    @ValueMapValue
+    @Via("resource")
+    private String disablePseudoElementIcon;
+
+    /**
      * The social media title.
      */
     private String socialMediaTitle;
