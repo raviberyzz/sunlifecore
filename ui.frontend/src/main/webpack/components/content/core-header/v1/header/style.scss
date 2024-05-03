@@ -251,14 +251,9 @@
   position: relative;
   top: auto;
   &.fixed-top {
-    left: 50%;
-    top: 0px;
+    top: 0;
     position: fixed;
     z-index: 1030;
-    @include media-breakpoint-down(lg) {
-        left: 0;
-        width: 100%;
-     }
   }
 }
 .sl-header-offcanvas {
