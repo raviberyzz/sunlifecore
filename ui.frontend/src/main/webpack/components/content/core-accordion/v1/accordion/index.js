@@ -67,9 +67,10 @@
   */
   function accordionHeaderKeyEventHandler(e) {
     const $scope = $(this);
-    if (e.keyCode === util.constants.KeyCode.ESC && $scope.siblings(CONSTANT.SELECTOR.accordionCollapse).hasClass(CONSTANT.CLASS.show)) {
-      const accordionCollapse = new bootstrap.Collapse($scope.siblings(CONSTANT.SELECTOR.accordionCollapse));
-      accordionCollapse.toggle();
+    const $accordionCollapse = $scope.siblings(CONSTANT.SELECTOR.accordionCollapse);
+    if (e.keyCode === util.constants.KeyCode.ESC && $accordionCollapse.hasClass(CONSTANT.CLASS.show)) {
+      const accordionBootstrapCollapse = new bootstrap.Collapse($accordionCollapse);
+      accordionBootstrapCollapse.toggle();
       chevronHandler($scope, true);
     }    
   }
@@ -83,11 +84,14 @@
   function resetAccordionForSingleSelection($accordionItemHeader) {
     const $singleExpansion = $accordionItemHeader.attr(CONSTANT.ATTR.dataSingleExpansion);
     if ($singleExpansion == "true") {
+      const $accordionItem = $accordionItemHeader.closest(CONSTANT.SELECTOR.accordion);
+      const $accordionItemCollapse = $accordionItem.find(CONSTANT.SELECTOR.accordionCollapse);
+      const $accordionItemButton = $accordionItem.find(CONSTANT.SELECTOR.accordionButton);
+      const $accordionItemSlIcon = $accordionItem.find(CONSTANT.SELECTOR.slIcon);
+      $accordionItemCollapse.removeClass(CONSTANT.CLASS.showExpanded).css(CONSTANT.ATTR.height, "");
+      $accordionItemButton.addClass(CONSTANT.CLASS.collapsed).attr(CONSTANT.ATTR.ariaexpanded, "false");
+      $accordionItemSlIcon.removeClass(CONSTANT.CLASS.show).removeClass(CONSTANT.CLASS.hide);
       $accordionItemHeader.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaexpanded, "true");
-      const $accordionItem = $accordionItemHeader.parents(CONSTANT.SELECTOR.accordionItem).parents(CONSTANT.SELECTOR.accordion);
-      $accordionItem.find(CONSTANT.SELECTOR.accordionCollapse).removeClass(CONSTANT.CLASS.showExpanded).css(CONSTANT.ATTR.height, "")
-      $accordionItem.find(CONSTANT.SELECTOR.accordionButton).addClass(CONSTANT.CLASS.collapsed);
-      $accordionItem.find(CONSTANT.SELECTOR.slIcon).removeClass(CONSTANT.CLASS.show).removeClass(CONSTANT.CLASS.hide);
       chevronHandler($accordionItem, true);
     }
   }
@@ -99,7 +103,8 @@
    */
   function accordionHeaderClickEventHandler() {
     const $accordionItemHeader = $(this);
-    if ($accordionItemHeader.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaexpanded) == "true") {
+    const accordionAriaExpanded = $accordionItemHeader.find(CONSTANT.SELECTOR.accordionButton).attr(CONSTANT.ATTR.ariaexpanded);
+    if ( accordionAriaExpanded == "true") {
       resetAccordionForSingleSelection($accordionItemHeader);
       chevronHandler($accordionItemHeader, false);
     } else {
