@@ -19,15 +19,6 @@
   .collapse:not(.show) {
     display: none;
   }
-  .accordion-collapse {
-    overflow: hidden;
-    transition: height 0.35s ease;
-    height: 0;
-    visibility: hidden;
-    &.expanded {
-      visibility: visible;
-    }
-  }
   .accordion-item {
     .accordion-button {
       background: transparent;
