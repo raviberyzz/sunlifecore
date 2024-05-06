@@ -5,10 +5,10 @@
 (function(core) {
     /**
      * @namespace header
-	 * @memberof sunCore.common
+	 * @memberof sunCore.comp
 	 */
     'use strict';
-     core.common.slfHeaderAnalytics = (function($, util) {
+     core.comp.header.analytics = (function($, util) {
         const CONSTANT = {
             SELECTOR: {
                 header: '.header',
@@ -23,7 +23,7 @@
         /**
          * method to generate utag link
          * @function generateUtaglink
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          * @param {object} Object - key value pair object
          */
@@ -34,7 +34,7 @@
         /**
          * Handler to bind event for analytics tracking
          * @function bindAnalyticsEvent
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          */
         function bindAnalyticsEvent() {
@@ -63,7 +63,7 @@
         /**
          * method to handle language interaction tracking
          * @function languageInteractionTrackingHandler
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          */
         function languageInteractionTrackingHandler() {
@@ -80,7 +80,7 @@
         /**
          * method to handle region interaction tracking
          * @function regionInteractionTrackingHandler
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          */
         function regionInteractionTrackingHandler() {
@@ -97,7 +97,7 @@
         /**
          * method to handle search interaction tracking
          * @function searchInteractionTrackingHandler
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          */
         function searchInteractionTrackingHandler() {
@@ -112,7 +112,7 @@
         /**
          * Handler to cache dom selector on module load
          * @function cacheSelectors
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @private
          */
         function cacheSelectors() {
@@ -122,7 +122,7 @@
         /**
          * Method used to initilize the module
          * @function init
-         * @memberof sunCore.common
+         * @memberof sunCore.comp
          * @public
          */
         function init() {
@@ -142,5 +142,5 @@
      /**
      * Initialise header module if given selector is in DOM
      */
-     core.common.slfHeaderAnalytics.init();
+     core.comp.header.analytics.init();
 })(sunCore);
