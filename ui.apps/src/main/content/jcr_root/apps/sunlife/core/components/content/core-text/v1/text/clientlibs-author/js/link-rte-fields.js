@@ -50,8 +50,8 @@
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
             this.objToEdit.attributes["data-title"] = dataTitleVal;
-            this.objToEdit.attributes["data-bs-target"] = dataTargetVal;
-            this.objToEdit.attributes["data-bs-toggle"] = dataToggleVal;
+            this.objToEdit.attributes["data-target"] = dataTargetVal;
+            this.objToEdit.attributes["data-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
             this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal;
