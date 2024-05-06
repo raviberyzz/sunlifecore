@@ -15,7 +15,6 @@
 				popoverCloseBtn: ".popover .btn-close-popover",
 				tabSelectors: "select, input, textarea, button, a",
 				popoverButton: ".popover-button",
-				popoverCloseBtn: '.btn-close-popover'
 			},
 			ATTRIBUTE: {
 				bsTitle: "bs-title",
@@ -250,7 +249,6 @@
 			cacheSelectors();
 			bindEvent();
 			initializeAllPopover();
-			updatePopoverBehavior();
 		}
 
 		init();
