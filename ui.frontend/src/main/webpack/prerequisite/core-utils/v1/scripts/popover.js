@@ -158,6 +158,7 @@
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();
+				popoverElem.hide();
 			} else if (event.key === util.constants.key.TAB) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
@@ -172,6 +173,7 @@
 						selectableElements[index + 1].focus();
 					}
 				});
+				popoverElem.hide();
 			}
 		}
 
@@ -237,24 +239,6 @@
 				document.querySelectorAll(CONSTANTS.SELECTOR.popover)
 			);
 		}
-
-		/**
-         * Method to close popover on tab press in text comp.
-         * @function updatePopoverBehavior
-         * @memberof sunCore.util.popover
-         * @private
-         */
-        function updatePopoverBehavior(){
-            const popoverTriggerList = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.popoverBtn))
-                popoverTriggerList.map(function(popoverTriggerEl) {
-                popoverTriggerEl.addEventListener('shown.bs.popover', function() {
-                  const popover = bootstrap.Popover.getInstance(popoverTriggerEl);
-                  document.querySelector(CONSTANT.SELECTOR.popoverCloseBtn).addEventListener(util.customEvents.KEYDOWN, function(event) {
-                  popover.hide();
-                            })
-                        })
-                 })
-         }
 
 		/**
 		 * Method used to initilize the popover module
