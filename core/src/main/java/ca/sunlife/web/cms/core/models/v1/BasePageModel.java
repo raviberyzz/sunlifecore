@@ -140,11 +140,11 @@ public class BasePageModel {
     private String pageIndexing;
 
     /**
-     * Disable pseudo element icon rendering.
+     * A private field that represents the state of the pseudo-element icon data attribute in FA.
+     * This string value can be used to enable or disable the pseudo-element icon rendering in the UI.
      */
     @Getter
     @ValueMapValue
-    @Via("resource")
     private String disablePseudoElementIcon;
 
     /**
