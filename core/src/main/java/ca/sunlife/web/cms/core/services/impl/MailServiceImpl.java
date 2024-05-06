@@ -149,7 +149,7 @@ public class MailServiceImpl implements MailService {
                         LOG.debug("Mail sent to marketing team..");
                         return successResponse;
                     } else {
-                    LOG.error("Error in sending mail to marketing team.. {} ",mailResponse);
+                        LOG.error("Error in sending mail to marketing team.. {} ",mailResponse);
                         return errorResponse;
                     }
                 }
