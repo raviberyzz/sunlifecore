@@ -14,7 +14,6 @@
         const CONSTANT = {
             SELECTOR: {
                 popoverBtn: '.cmp-text .popover-button',
-                popoverCloseBtn: '.btn-close-popover',
                 externalLink: '.sl-link-external[data-class-icon]',
                 internalLink: '.sl-link-internal[data-class-icon]',
                 pdfLink: '.sl-link-pdf[data-class-icon]',
@@ -70,26 +69,6 @@
             $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon, util.constants.templateString.pdfLinkIconSolid);
             $(CONSTANT.SELECTOR.popoverBtn).html(replaceTemplateStringWithAccessibleText());
         }
-
-        /**
-		 * Method to close popover on tab press in text comp.
-		 * @function updatePopoverBehavior
-         * @memberof sunCore.comp.text
-		 * @private
-		 */
-		function updatePopoverBehavior(){
-            var popoverTriggerList = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.popoverBtn))
-            popoverTriggerList.map(function(popoverTriggerEl) {
-                popoverTriggerEl.addEventListener('shown.bs.popover', function() {
-                    var popover = bootstrap.Popover.getInstance(popoverTriggerEl);
-                    document.querySelector(CONSTANT.SELECTOR.popoverCloseBtn).addEventListener('keydown', function(event) {
-                        popover.hide();
-
-                    })
-                })
-            })
-        }
-
         /**
          * Handler called at text initialsation
          * @function init
@@ -99,7 +78,6 @@
         function init() {
             appendRequiredIconsHandler();
             addTitleAttributeToIcons();
-            updatePopoverBehavior();
         }
 
         return {

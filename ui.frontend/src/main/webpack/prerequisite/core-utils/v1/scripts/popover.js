@@ -15,6 +15,7 @@
 				popoverCloseBtn: ".popover .btn-close-popover",
 				tabSelectors: "select, input, textarea, button, a",
 				popoverButton: ".popover-button",
+				popoverCloseBtn: '.btn-close-popover'
 			},
 			ATTRIBUTE: {
 				bsTitle: "bs-title",
@@ -238,6 +239,24 @@
 		}
 
 		/**
+         * Method to close popover on tab press in text comp.
+         * @function updatePopoverBehavior
+         * @memberof sunCore.util.popover
+         * @private
+         */
+        function updatePopoverBehavior(){
+            const popoverTriggerList = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.popoverBtn))
+                popoverTriggerList.map(function(popoverTriggerEl) {
+                popoverTriggerEl.addEventListener('shown.bs.popover', function() {
+                  const popover = bootstrap.Popover.getInstance(popoverTriggerEl);
+                  document.querySelector(CONSTANT.SELECTOR.popoverCloseBtn).addEventListener(util.customEvents.KEYDOWN, function(event) {
+                  popover.hide();
+                            })
+                        })
+                 })
+         }
+
+		/**
 		 * Method used to initilize the popover module
 		 * @function init
 		 * @memberof sunCore.util.popover
@@ -247,6 +266,7 @@
 			cacheSelectors();
 			bindEvent();
 			initializeAllPopover();
+			updatePopoverBehavior();
 		}
 
 		init();
