@@ -133,7 +133,7 @@ public class MailServiceImpl implements MailService {
                 resourceResolver.close();
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-                if (isRequestValid && ishoneyPotFieldEmpty(requestParameters)) {
+                if (isRequestValid && ishoneyPotFieldsEmpty(requestParameters)) {
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -520,13 +520,14 @@ public class MailServiceImpl implements MailService {
         return null != value && !value.trim().isEmpty();
     }
 
-    private static boolean ishoneyPotFieldEmpty(HashMap<String, String> requestParameters) {
+    private static boolean ishoneyPotFieldsEmpty(HashMap<String, String> requestParameters) {
         final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-form-phone-number");
         final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-form-email");
         boolean success = true;
-        if((null != honeyPotFieldPhone && honeyPotFieldPhone.length() > 1) || (null != honeyPotFieldEmail && honeyPotFieldEmail.length() > 1 )){
+        if(StringUtils.isNotEmpty(honeyPotFieldEmail) || StringUtils.isNotEmpty(honeyPotFieldPhone)){
             success = false;
         }
+        
         return success;              
     }
 }
