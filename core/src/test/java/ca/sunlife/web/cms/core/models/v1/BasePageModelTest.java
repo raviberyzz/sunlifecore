@@ -172,6 +172,7 @@ public class BasePageModelTest {
         assertEquals("com", basePageModel.getFavIcon(), "/content/dam/favIcon.png");
         assertEquals("This is social media description", basePageModel.getSocialMediaDescripton());
         assertEquals("true", basePageModel.getPageIndexing());
+        assertEquals("true", basePageModel.getDisablePseudoElementIcon());
         assertEquals("Sun Life Financial", basePageModel.getSeoPageTitle());
         assertEquals("https://www.sunlife.ca", basePageModel.getSeoCanonicalUrl());
         assertEquals("www.sunlife.ca/mfa/", basePageModel.getMfaDomainPath());
