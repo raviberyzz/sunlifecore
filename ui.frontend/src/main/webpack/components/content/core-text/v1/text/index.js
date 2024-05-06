@@ -13,7 +13,7 @@
     core.comp.text = (function ($, util) {
         const CONSTANT = {
             SELECTOR: {
-                popoverBtn: '.cmp-text .popover-button, .sl-dynamic-card-container .popover-button',
+                popoverBtn: '.popover-button',
                 externalLink: '.sl-link-external[data-class-icon]',
                 internalLink: '.sl-link-internal[data-class-icon]',
                 pdfLink: '.sl-link-pdf[data-class-icon]',
