@@ -1,0 +1,17 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+@import '../../../../../prerequisite/core-utils/v1/styles/common//style.scss';
+
+
+.dynamic-card-container{
+    & > .sl-banner-content-block .card .card-body .grouped-form {
+        @include media-breakpoint-only(xs) {
+            height: 111px;
+         }
+    }
+   //show full width card in small devices
+    & > .sl-cards.vertical {
+        @include media-breakpoint-only(xs) {
+            max-width: fit-content;
+        }
+   }
+}

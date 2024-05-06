@@ -36,12 +36,22 @@
               .sl-icon {
                   vertical-align: middle;
               }
+
+              & > .svg-inline--fa {
+                font-size: 24px;
+              }
         }
       }
 
       .footer-content-container .footer-content {      
         .footer-copy {
           color: var(--grey-600)
+        }
+        & span.footer-body:has(p){
+          margin-bottom: 8px;
+          &:last-child {
+            margin-bottom: 8px;
+          }
         }
       }
     
