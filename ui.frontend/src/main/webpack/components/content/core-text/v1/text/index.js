@@ -13,7 +13,7 @@
     core.comp.text = (function ($, util) {
         const CONSTANT = {
             SELECTOR: {
-                popoverBtn: '.cmp-text .popover-button',
+                popoverBtn: '.popover-button',
                 externalLink: '.sl-link-external[data-class-icon]',
                 internalLink: '.sl-link-internal[data-class-icon]',
                 pdfLink: '.sl-link-pdf[data-class-icon]',
@@ -37,8 +37,8 @@
          * @memberof sunCore.comp.text
          * @private
          */
-        function replaceTemplateStringWithAccessibleText(){
-            return CONSTANT.TEMPLATE.infoIcon.replace('%POPUP_TITLE%', $(CONSTANT.SELECTOR.popoverBtn).attr('data-bs-title'));
+        function replaceTemplateStringWithAccessibleText(element){
+            return CONSTANT.TEMPLATE.infoIcon.replace('%POPUP_TITLE%', element.attr('data-bs-title'));
         }
 
         /**
@@ -67,7 +67,9 @@
             $(CONSTANT.SELECTOR.externalLink).append(util.constants.templateString.externalLinkIcon, util.constants.templateString.externalLinkIconSolid);
             $(CONSTANT.SELECTOR.internalLink).append(util.constants.templateString.internalLinkIcon, util.constants.templateString.internalLinkIconSolid);
             $(CONSTANT.SELECTOR.pdfLink).prepend(util.constants.templateString.pdfLinkIcon, util.constants.templateString.pdfLinkIconSolid);
-            $(CONSTANT.SELECTOR.popoverBtn).html(replaceTemplateStringWithAccessibleText());
+            $(CONSTANT.SELECTOR.popoverBtn).each(function() {
+                $(this).html(replaceTemplateStringWithAccessibleText($(this)));
+            });
         }
         /**
          * Handler called at text initialsation
