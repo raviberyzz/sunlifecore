@@ -1,5 +1,11 @@
-<script data-search-pseudo-elements defer src="https://kit.fontawesome.com/2c22fa76d7.js" crossorigin="anonymous"></script>
-
+<sly 
+    data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel"
+    data-sly-set.enablePseudoElement="${baseModel.disablePseudoElementIcon == 'true' ? false : true }" />
+<script 
+    data-sly-attribute.data-search-pseudo-elements="${enablePseudoElement}"
+    defer 
+    src="https://kit.fontawesome.com/2c22fa76d7.js" 
+    crossorigin="anonymous"></script>
 
 <style>
 .blue-chevron-arrow:after, .view-all-category:after, .utility-nav-wrapper .utility-nav-links .srch-btn:after, .utility-nav-wrapper .utility-nav-links .lang-btn:after, .desktop-primary-navigation .navbar-new .nav-item>a:after {

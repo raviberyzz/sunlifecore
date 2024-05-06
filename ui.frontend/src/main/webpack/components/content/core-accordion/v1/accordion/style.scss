@@ -19,28 +19,15 @@
   .collapse:not(.show) {
     display: none;
   }
-  .accordion-collapse {
-    overflow: hidden;
-    transition: height 0.35s ease;
-    height: 0;
-    visibility: hidden;
-    &.expanded {
-      visibility: visible;
-    }
-  }
   .accordion-item {
     .accordion-button {
       background: transparent;
-    }
-    .accordion-body {
-      margin-left: 3.5rem;
     }
   }
 
   .accordion-header {
     .accordion-button {
       .accordion-item-heading {
-        margin-left: 1rem;
         margin-bottom: 0;
       }
     }

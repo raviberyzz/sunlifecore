@@ -163,6 +163,22 @@
                                                 value="{Boolean}true"/>
                                         </items>
                                     </page-indexing>
+                                    <font-awesome
+                                        cq:showOnCreate="{Boolean}false"
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Font Awesome"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                             <disablePseudoElementIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check to disable Pseudo-elements to render icons using CSS"
+                                                name="./disablePseudoElementIcon"
+                                                text="Disable Pseudo-elements Icons"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                        </items>
+                                    </font-awesome>
 									<alternate-url
                                         cq:showOnCreate="{Boolean}false"
                                         jcr:primaryType="nt:unstructured"

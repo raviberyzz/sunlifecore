@@ -46,3 +46,6 @@
         }
     }
 }
+.form-check-input:checked[type=checkbox] {
+  --bs-form-check-bg-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxnIGlkPSJjaGVjayI+CjxwYXRoIGlkPSJpY29uIiBkPSJNNSAxMy4wMDAxTDkgMTcuMDAwMUwxOSA3LjAwMDA2IiBzdHJva2U9IndoaXRlIi8+CjwvZz4KPC9zdmc+");
+}
