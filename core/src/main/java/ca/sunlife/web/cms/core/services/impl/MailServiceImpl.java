@@ -133,7 +133,7 @@ public class MailServiceImpl implements MailService {
                 resourceResolver.close();
                 successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
                 errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-                if (isRequestValid && ishoneyPotFieldsEmpty(requestParameters)) {
+                if (isRequestValid && areHoneyPotFieldsEmpty(requestParameters)) {
                     if ("true".equalsIgnoreCase(isClient)) {
                         mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -322,8 +322,7 @@ public class MailServiceImpl implements MailService {
                 }
             }
         } catch (RepositoryException | JSONException | IOException e) {
-            LOG.error("Exception occurred in reading file :: filePath {}",  filePath);
-            LOG.error("Exception occurred in reading file :: Exception {}", e.getMessage(), e, filePath);
+            LOG.error("Exception occurred in reading file :: Exception {} {}", e.getMessage(), filePath);
         }
         return jsonObj;
     }
@@ -518,7 +517,7 @@ public class MailServiceImpl implements MailService {
         return null != value && !value.trim().isEmpty();
     }
 
-    private static boolean ishoneyPotFieldsEmpty(HashMap<String, String> requestParameters) {
+    private static boolean areHoneyPotFieldsEmpty(HashMap<String, String> requestParameters) {
         final String honeyPotFieldPhone = requestParameters.get("cmp-alertnate-form-phone-number");
         final String honeyPotFieldEmail = requestParameters.get("cmp-alertnate-form-email");
         boolean success = true;
