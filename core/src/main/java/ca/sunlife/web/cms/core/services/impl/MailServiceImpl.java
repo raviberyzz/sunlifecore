@@ -145,13 +145,11 @@ public class MailServiceImpl implements MailService {
                     }
                     mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);
                     LOG.debug("mailResponse------..   {}",mailResponse);
-                    if (null!= mailResponse )  {
-                        if(null != mailResponse.getStatusLine() && mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK){
-                            LOG.debug("Mail sent to marketing team..");
-                            return successResponse;
-                        }
+                    if(null!= mailResponse && null != mailResponse.getStatusLine() && mailResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK){
+                        LOG.debug("Mail sent to marketing team..");
+                        return successResponse;
                     } else {
-                        LOG.error("Error in sending mail to marketing team.. {} {}",mailResponse);
+                    LOG.error("Error in sending mail to marketing team.. {} ",mailResponse);
                         return errorResponse;
                     }
                 }
