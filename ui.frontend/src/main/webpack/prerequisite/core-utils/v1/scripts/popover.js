@@ -157,6 +157,7 @@
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();
+				popoverElem.hide();
 			} else if (event.key === util.constants.key.TAB) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
@@ -171,6 +172,7 @@
 						selectableElements[index + 1].focus();
 					}
 				});
+				popoverElem.hide();
 			}
 		}
 
