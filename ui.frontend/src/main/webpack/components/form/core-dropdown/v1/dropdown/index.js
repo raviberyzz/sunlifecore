@@ -170,6 +170,26 @@
         handleDropdownVisibility($combo, currentComboInput);
       }
 
+      if (e.keyCode >= 65 && e.keyCode <= 90) {
+        let letter = String.fromCharCode(e.keyCode);
+        let $comboOptions = $(currentComboInput).next().find(CONSTANT.SELECTOR.comboOption);
+        let $options = $comboOptions.filter(function() {
+          return $(this).text().toLowerCase().startsWith(letter.toLowerCase());
+        });
+        if($options.length){
+          if(!$($combo).hasClass(CONSTANT.CLASS.open)){
+            handleDropdownVisibility($combo, currentComboInput);
+          }
+          let nextOptionIndex = $options.index($currentOptionSelected) + 1;
+          if (nextOptionIndex >= $options.length) {
+            nextOptionIndex = 0;
+          }
+          let nextOption = $options[nextOptionIndex];
+          $currentOptionSelected.toggleClass(CONSTANT.CLASS.optionCurrent);
+          $(nextOption).toggleClass(CONSTANT.CLASS.optionCurrent);
+        }
+      }
+
       if (e.keyCode == util.constants.KeyCode.DOWN) {
         handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.next());
       } else if (e.keyCode == util.constants.KeyCode.UP) {
@@ -179,7 +199,7 @@
         $currOpt.mousedown();
       } else if (e.type == util.customEvents.MOUSE_DOWN || e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
         handleDropdownVisibility($combo, currentComboInput);
-      }
+      } 
     }
 
     /**
