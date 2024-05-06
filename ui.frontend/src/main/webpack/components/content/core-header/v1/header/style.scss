@@ -251,7 +251,9 @@
   position: relative;
   top: auto;
   &.fixed-top {
-    left: 50%;
+    top: 0;
+    position: fixed;
+    z-index: 1030;
   }
 }
 .sl-header-offcanvas {
