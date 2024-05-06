@@ -526,8 +526,6 @@ public class MailServiceImpl implements MailService {
         boolean success = true;
         if((null != honeyPotFieldPhone && honeyPotFieldPhone.length() > 1) || (null != honeyPotFieldEmail && honeyPotFieldEmail.length() > 1 )){
             success = false;
-        }else{
-            success = true;
         }
         return success;              
     }
