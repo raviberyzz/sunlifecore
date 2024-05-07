@@ -39,6 +39,9 @@
   margin-left: calc(var(--viewportWidth) / -2);
 }
 .sl-utility-bar {
+  .nav-item{
+    margin-right: 8px;
+  }
   position: relative;
   z-index: $zindex-fixed;
   @include media-breakpoint-down(lg) {
@@ -339,7 +342,6 @@
           inset: unset !important;
         }
         .sl-region-menu {
-          margin-right: 0.5rem;
           .region-menu-container {
             .label-container {
               border-top: 0.063rem solid var(--grey-300);

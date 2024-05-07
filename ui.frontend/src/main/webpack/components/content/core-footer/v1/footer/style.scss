@@ -47,11 +47,8 @@
         .footer-copy {
           color: var(--grey-600)
         }
-        & span.footer-body:has(p){
+        & > p {
           margin-bottom: 8px;
-          &:last-child {
-            margin-bottom: 8px;
-          }
         }
       }
     
