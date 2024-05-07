@@ -3,12 +3,13 @@
 
 
 .dynamic-card-container{
+    // fixed text overflow issue on button in small devices
     & > .sl-banner-content-block .card .card-body .grouped-form {
         @include media-breakpoint-only(xs) {
             height: 111px;
          }
     }
-   //show full width card in small devices
+   // fixed width for vertical cards in small devices
     & > .sl-cards.vertical {
         @include media-breakpoint-only(xs) {
             max-width: fit-content;
