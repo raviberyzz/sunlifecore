@@ -42,8 +42,7 @@
 			$footerMenuHeadingElement, 
             $footerMenuHeaderIsDropdown = false,
 			renderDesktop = false,
-			renderMobile = false,
-            listeners = [];
+			renderMobile = false;
 
 		/**
 		 * Handler to check to render Footer Based on Screensize
@@ -115,7 +114,7 @@
          * @private
          */
 		function bindEvent() {
-			window.addEventListener("resize", checkToRenderFooter);
+			window.addEventListener(util.customEvents.RESIZE, checkToRenderFooter);
 		}
 
 		 /**
