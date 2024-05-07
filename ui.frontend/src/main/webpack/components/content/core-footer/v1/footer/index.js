@@ -115,9 +115,7 @@
          * @private
          */
 		function bindEvent() {
-			listeners.push(
-				$.subscribe(util.customEvents.RESIZED, checkToRenderFooter)
-			);
+			window.addEventListener("resize", checkToRenderFooter);
 		}
 
 		 /**
