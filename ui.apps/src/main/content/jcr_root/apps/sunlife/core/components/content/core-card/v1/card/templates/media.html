@@ -36,7 +36,7 @@ video - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Compone
 
     <picture data-sly-test="${containerConfigs.mediaType =='right' && model.cardImageFileReference}">
       <source srcset="${model.cardImageFileReference}">
-      <img src="${model.cardImageFileReference}" alt="${model.altText}" class="card-img">
+      <img src="${model.cardImageFileReference}" alt="${model.altText || true}" class="card-img">
     </picture>
 </sly>
 </template>
