@@ -24,7 +24,7 @@
                 +'<div class=" rte-dialog-columnContainer">'   
                 +'<div class=" rte-dialog-column">'
                 +'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Header Text : </label>'
-                +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter heading text" name="infoHead" value="" labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0" required>'
+                +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter heading text" name="infoHead" value="" labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0">'
                 +'</div>'
                 +'<div class=" rte-dialog-column">'
                 +'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Popover Content : </label>'
@@ -54,24 +54,18 @@
             var dialog = this.$dialog;
 
             this.$saveBtn.on('click',function(e){
-              var infoHead = dialog.find('[name="infoHead"]').val();
-              var infoDetail = dialog.find('[name="infoDetail"]').val(); 
-              if (!infoHead.trim() == '') {
+                var infoHead = dialog.find('[name="infoHead"]').val();
+                var infoDetail = dialog.find('[name="infoDetail"]').val(); 
                 config.parameters.saveData(infoHead, infoDetail);
                 dialog.hide();
                 e.preventDefault();
-              } else {
-                return;
-              }
-              
-              
             });
 
             this.$closeBtn.on('click',function() {
-              dialog.find('[name="infoHead"]').val('');
-              dialog.find('[name="infoDetail"]').val(''); 
-              dialog.hide();
-              e.preventDefault();
+                dialog.find('[name="infoHead"]').val('');
+                dialog.find('[name="infoDetail"]').val(''); 
+                dialog.hide();
+                e.preventDefault();
             });
             
         },
