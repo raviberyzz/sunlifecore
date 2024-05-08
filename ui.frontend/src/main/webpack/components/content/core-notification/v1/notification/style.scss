@@ -49,7 +49,7 @@
      .btn-close {
         height: 1.5rem;
         padding: 0;
-        color: var(--bs-emphasis-color);
+        --bs-btn-close-opacity : 1;
         .sl-icon {
             vertical-align: middle;
           }

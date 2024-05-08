@@ -1,6 +1,6 @@
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-.news-article{
+.news-article {
     margin-bottom: 40px;
     .content{
         text-decoration: none;
@@ -10,11 +10,12 @@
             color: var(--grey-600);
             margin-bottom: 0.75rem;
     }
-    .h5{
+    .h5 {
             color: var(--brand-tertiary-800);
             margin-bottom: 0.75rem;
             font-size: 1.375rem;
             display: block;
+            margin-top: 0;
     }
     .summary{
             @include sl-body-medium;

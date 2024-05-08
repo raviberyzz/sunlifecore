@@ -1,14 +1,14 @@
 <sly data-sly-use.breadcrumb="ca.sunlife.web.cms.core.models.v1.CustomBreadcrumb"></sly>
 <nav class="vertical-middle-align no-gutter clearfix ${wcmmode.edit ? 'breadcrumb-author' : ''}" aria-label="${'Breadcrumb' @ i18n}" 
 	data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.hasItems="${breadcrumb.items.size > 0}" data-section="nav-breadcrumb">
-    <div class="sl-breadcrumbs ${breadcrumb.spacing}" data-sly-list.navItem="${breadcrumb.items}">
-        <div lang="${navitemList.index > 0 ? breadcrumb.langcode : ''}" class="breadcrumb-item Default-${navItemList.index} ${navItem.active ? 'active current-item' : ''}" >
-            <a href="${navItem.URL}" class="sl-link sl-link-sm" data-sly-unwrap="${navItem.active}">
+    <ol class="sl-breadcrumbs ${breadcrumb.spacing}" data-sly-list.navItem="${breadcrumb.items}">
+        <li lang="${navitemList.index > 0 ? breadcrumb.langcode : ''}" class="breadcrumb-item Default-${navItemList.index} ${navItem.active ? 'active current-item' : ''}" >
+            <a href="${navItem.active ? true : navItem.URL}" class="sl-link sl-link-sm" aria-current="${navItem.active ? 'page' : false}">
                 ${navItem.title @context = 'html'}
             </a>
-            <p class="breadcrumb-separator" data-sly-test="${!navItem.active}">/</p>
-        </div>
-    </div>
+            <p aria-hidden=true class="breadcrumb-separator" data-sly-test="${!navItem.active}">/</p>
+        </li>
+    </ol>
     <div data-sly-test="${breadcrumb.socialShareReqd}" class="right-area">
 		<div class="social-link-icon-wrapper" data-sly-resource="${'socialIcons' @ resourceType='sunlife/core/components/content/icon-text', selectors='breadcrumb' }"></div>
     </div>

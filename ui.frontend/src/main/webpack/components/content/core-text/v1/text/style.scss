@@ -85,17 +85,15 @@
 
     &:focus-visible{
         border:none;
+        outline-offset: 2.2px;
+        outline: auto;
+        padding: 0;
+        margin: 0;
+        outline: solid .125rem var(--brand-tertiary-500);
     }
-   
 }
 
-a.sl-link {
-    &:focus-visible{
-        margin:0;
-        padding: 0 .2rem;
-        outline: auto;
-        outline-color: var(--brand-tertiary-500);
-    }
+p > a.sl-link {
     &:not([data-class-icon]) {
         text-decoration: underline;
         &:hover {
