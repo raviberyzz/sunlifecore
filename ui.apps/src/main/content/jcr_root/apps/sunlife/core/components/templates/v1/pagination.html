@@ -20,7 +20,7 @@
 
                 <sly data-sly-test = "${paginationObj.pageItems.size > 0}">
                     <li class="link-to-first ${firstPageCss} sl-pagination-item">
-                        <a x-cq-linkchecker="skip" tabindex="${firstPageCss && '-1'}" ${firstPageCss} href="${pageUrl}${paginationObj.prevPage}/" aria-label="${'Previous' @ i18n}">
+                        <a x-cq-linkchecker="skip" tabindex="${firstPageCss && '-1'}" data-sly-test="${firstPageCss}" href="${pageUrl}${paginationObj.prevPage}/" aria-label="${'Previous' @ i18n}">
                             <span class="fal fa-chevron-left sl-icon sl-icon_size_sm"></span>
                         </a>
                     </li>
@@ -37,7 +37,7 @@
                     <li data-sly-test = "${paginationObj.ellipsis || pageItems.index == 0}" class="ellipsis"><a><span>...</span></a></li>
                 </sly>
                     <li class="next ${nextCss} sl-pagination-item">
-                        <a x-cq-linkchecker="skip" tabindex="${nextCss && '-1'}" ${nextCss} href="${pageUrl}${paginationObj.nextPageNo}/" aria-label="${'Next' @ i18n}">
+                        <a x-cq-linkchecker="skip" tabindex="${nextCss && '-1'}" data-sly-test="${nextCss}" href="${pageUrl}${paginationObj.nextPageNo}/" aria-label="${'Next' @ i18n}">
                             <span class="fal fa-chevron-right sl-icon sl-icon_size_sm"></span>
                         </a>
                     </li>
