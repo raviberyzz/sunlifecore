@@ -20,9 +20,15 @@
 				searchBarSearchBtn: ".search-bar .CoveoSearchButton",
 				searchCloseBtn: "#search-close-btn"
 			},
+			ATTR: {
+				ariaExpanded: "aria-expanded"
+			},
+			CLASS: {
+				show: "show"
+			}
 		};
 
-		let $slHeader, $searchCloseBtn, $searchBar, $searchBtn, searchBtnTabbed = false, searchBarCollapse;
+		let $searchCloseBtn, $searchBar, $searchBtn, searchBarShowing = false, searchBarCollapse;
 
 		/**
 		 * Event handler for search-bar showing and hiding on top
@@ -32,7 +38,7 @@
 		 * @param {object} event - event object
 		 */
 		function searchBarHandler(event) {
-			if ($searchBar.hasClass("show")) {
+			if ($searchBar.hasClass(CONSTANT.CLASS.show)) {
 				if (event.which === 1) {
 					if (
 						!$searchBar.is(event.target) &&
@@ -55,28 +61,52 @@
 		 * @param {boolean} hide - boolean status to toggle search-bar
 		 */
 		function toggleSearchBar(hide) {
-			$searchBtn.attr("aria-expanded", !hide);
+			$searchBtn.attr(CONSTANT.ATTR.ariaExpanded, !hide);
 			if (hide) {
-				$searchBar.removeClass("show");
-				$searchBar.attr('aria-expanded', 'false');
+				$searchBar.removeClass(CONSTANT.CLASS.show);
+				$searchBar.attr(CONSTANT.ATTR.ariaExpanded, 'false');
 			} else {
-				$searchBar.addClass("show");
-				$searchBar.attr('aria-expanded', 'true');
+				$searchBar.addClass(CONSTANT.CLASS.show);
+				$searchBar.attr(CONSTANT.ATTR.ariaExpanded, 'true');
 			}
 		}
 
 		/**
-		 * handle tabbing of search button
+		 * Handle tabbing inside search bar ensuring focus stays within controls when open
 		 * @function searchTabHandler
 		 * @memberof sunCore.comp.search
+		 * @param {object} event - event object
 		 * @private
 		 */
-		function searchTabHandler () {
-			if(searchBtnTabbed) {
-				searchBtnTabbed = false
-				$searchCloseBtn.focus();
+		function searchTabHandler (event) {
+			let searchBarSearchBtn = document.querySelector(CONSTANT.SELECTOR.searchBarSearchBtn);
+			let searchBarCloseBtn = document.querySelector(CONSTANT.SELECTOR.searchCloseBtn);
+			searchBarShowing = $searchBar.hasClass(CONSTANT.CLASS.show);
+
+			if (
+				event.keyCode === util.constants.KeyCode.TAB && 
+				event.shiftKey && 
+				searchBarShowing
+			) {
+				event.preventDefault()
+				if ( searchBarSearchBtn == event.target) {
+					//Shift + Tab on SearchBtn Move to SearchInput
+					$(CONSTANT.SELECTOR.searchInputBox).focus();
+				} else if (searchBarCloseBtn == event.target) {
+					//Shift + Tab on CloseBtn Move to SearchBtn
+					searchBarSearchBtn.focus({ focusVisible: true });
+				}
+
 			}
-			searchBtnTabbed = true;
+			else if (
+				event.keyCode === util.constants.KeyCode.TAB &&
+				searchBarShowing
+			) {
+				if ( searchBarSearchBtn == event.target) {
+					//Tab on SearchBtn Move to CloseBtn
+					$searchCloseBtn.focus();
+				}
+			}
 		}
 
 		/**
@@ -84,10 +114,12 @@
 		 * @function searchBarEscHandler
 		 * @memberof sunCore.comp.search
 		 * @private
-		 * @param {object} e - event object
+		 * @param {object} event - event object
 		 */
-		function searchBarEscHandler (e) {
-			if (e.keyCode === util.constants.KeyCode.ESC) {
+		function searchBarEscHandler (event) {
+			if (event.keyCode === util.constants.KeyCode.ESC && 
+				$searchBar.hasClass(CONSTANT.CLASS.show)
+			) {
 				searchBarCollapse.hide();
 			}
 		}
@@ -102,17 +134,18 @@
 			$(document).on(util.customEvents.MOUSE_UP, searchBarHandler);
 			/* focus handling when search-bar got hide */
 			$searchBar.on("hidden.bs.collapse", function () {
-				$searchBar.attr('aria-expanded', 'false');
+				$searchBar.attr(CONSTANT.ATTR.ariaExpanded, 'false');
 				$searchBtn.focus();
 			});
 			/* focus handling when search-bar get visible */
 			$searchBar.on("shown.bs.collapse", function () {
-				$searchBar.attr('aria-expanded', 'true');
+				$searchBar.attr(CONSTANT.ATTR.ariaExpanded, 'true');
 				$(CONSTANT.SELECTOR.searchInputBox).focus();
 			});
 
 			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchBarSearchBtn, searchTabHandler);
-			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchBar, searchBarEscHandler);
+			$(document).on(util.customEvents.KEYDOWN, CONSTANT.SELECTOR.searchCloseBtn, searchTabHandler);
+			$(document).on(util.customEvents.KEYDOWN, searchBarEscHandler);
 		}
 
 		/**
