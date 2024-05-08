@@ -29,9 +29,7 @@
                 UP: 38,
                 RIGHT: 39,
                 DOWN: 40,
-                DELETE: 46,
-                A: 65,
-                Z: 90
+                DELETE: 46
             },
             key: {
                 ESC:'Escape',
