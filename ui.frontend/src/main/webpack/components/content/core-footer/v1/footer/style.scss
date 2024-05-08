@@ -38,7 +38,9 @@
               }
 
               & > .svg-inline--fa {
-                font-size: 24px;
+                  height: 24px;
+                  width: 24px;
+                  padding: 4px;
               }
         }
       }
