@@ -79,8 +79,8 @@
 		 * @private
 		 */
 		function searchTabHandler (event) {
-			let $searchBarSearchBtn = document.querySelector(CONSTANT.SELECTOR.searchBarSearchBtn);
-			let $searchBarCloseBtn = document.querySelector(CONSTANT.SELECTOR.searchCloseBtn);
+			let $searchBarSearchBtn = $(CONSTANT.SELECTOR.searchBarSearchBtn)[0];
+			let $searchBarCloseBtn = $(CONSTANT.SELECTOR.searchCloseBtn)[0];
 			searchBarShowing = $searchBar.hasClass(CONSTANT.CLASS.show);
 
 			if (
