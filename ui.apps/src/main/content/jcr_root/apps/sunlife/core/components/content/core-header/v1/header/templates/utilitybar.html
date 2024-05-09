@@ -2,7 +2,7 @@
     <div class="sl-utility-bar">
         <div class="container">
             <ul class="content-container">  
-                    <li class="menu-container" data-section="header-utility-bar" data-sly-test="${headerModel.listFromNav == 'true'}" aria-label="${headerModel.utilityNavLabel || 'Helpful links'}">
+                    <li class="menu-container" data-section="header-utility-bar" data-sly-test="${headerModel.listFromNav == 'true'}" role="navigation" aria-label="${headerModel.utilityNavLabel || 'Helpful links'}">
                         <div>
                             <sly data-sly-set.totalItems="${0}"></sly>
                             <sly data-sly-list.links="${headerModel.navlinks}">
@@ -24,8 +24,8 @@
                     </li>
 
                     <li data-sly-test="${headerModel.listFromRegion == 'regiontrue'}">
-                    <div class="sl-region-menu">
-                        <div id="sl-region-dd" class="region-menu-container dropdown nav-item">
+                    <div class="sl-region-menu" role="navigation" aria-label="Region Selection">
+                        <div id="sl-region-dd" class="region-menu-container dropdown">
                            <button type="button" id="sl-region-menu-dd" aria-expanded="false"
                                  data-bs-toggle="dropdown" class="nav-link dropdown-toggle btn btn-primary">
                                  <div class="label-container">                       
@@ -46,7 +46,7 @@
                     </li>
                     
                     <li data-sly-test="${headerModel.language == 'languagetrue'}">
-                    <div>
+                    <div role="navigation" aria-label="Language Selection">
                         <div class="sl-menu-dropdown">
                             <div id="sl-dropdown-language-utility" data-testid="test-menu-dropdown" class="dropdown">
                                 <button type="button" id="sl-dropdown-toggle-language-utility" aria-expanded="false"
