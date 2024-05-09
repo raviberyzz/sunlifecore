@@ -13,7 +13,7 @@
 
         const debouncedScroll = util.debounce(function () {
             $.publish(util.customEvents.SCROLLED);
-        }, 200);
+        }, 1);
 
         $(window).on(util.customEvents.SCROLL, debouncedScroll);
 
