@@ -79,8 +79,8 @@
 		 * @private
 		 */
 		function searchTabHandler (event) {
-			let searchBarSearchBtn = document.querySelector(CONSTANT.SELECTOR.searchBarSearchBtn);
-			let searchBarCloseBtn = document.querySelector(CONSTANT.SELECTOR.searchCloseBtn);
+			let $searchBarSearchBtn = document.querySelector(CONSTANT.SELECTOR.searchBarSearchBtn);
+			let $searchBarCloseBtn = document.querySelector(CONSTANT.SELECTOR.searchCloseBtn);
 			searchBarShowing = $searchBar.hasClass(CONSTANT.CLASS.show);
 
 			if (
@@ -89,12 +89,12 @@
 				searchBarShowing
 			) {
 				event.preventDefault()
-				if ( searchBarSearchBtn == event.target) {
+				if ( $searchBarSearchBtn == event.target) {
 					//Shift + Tab on SearchBtn Move to SearchInput
 					$(CONSTANT.SELECTOR.searchInputBox).focus();
-				} else if (searchBarCloseBtn == event.target) {
+				} else if ($searchBarCloseBtn == event.target) {
 					//Shift + Tab on CloseBtn Move to SearchBtn
-					searchBarSearchBtn.focus({ focusVisible: true });
+					$searchBarSearchBtn.focus({ focusVisible: true });
 				}
 
 			}
@@ -102,7 +102,7 @@
 				event.keyCode === util.constants.KeyCode.TAB &&
 				searchBarShowing
 			) {
-				if ( searchBarSearchBtn == event.target) {
+				if ( $searchBarSearchBtn == event.target) {
 					//Tab on SearchBtn Move to CloseBtn
 					$searchCloseBtn.focus();
 				}
