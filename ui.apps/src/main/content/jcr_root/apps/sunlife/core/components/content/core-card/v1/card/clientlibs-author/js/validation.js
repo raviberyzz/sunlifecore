@@ -315,7 +315,7 @@
 		 */
         function bindEvent() {
             if($(dialogEvent.target).find('.card-type-tabs').length) {  
-                $(document).on("click", ".cq-dialog-submit", dialogSubmitHandler);
+                $(".cq-dialog-submit").on("click", dialogSubmitHandler);
                 $(document).on('change', '[aria-required="true"]', requiredFieldOnChangeHandler);
                 $(document).on('change', '.coral3-Select[name="./ctaType"]', updateCtaRequiredFields);
             }

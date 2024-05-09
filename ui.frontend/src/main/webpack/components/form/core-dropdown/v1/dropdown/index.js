@@ -150,6 +150,36 @@
     }
 
     /**
+     * Handles the filtering of the combo box select options by letter, allowing keyboard assisted users to quickly select items.
+     * @function
+     * @memberof sunCore.comp.formDropdown
+     * @param {Event} event - the event element
+     * @param {HTMLElement} currentComboInput - The current input the event was fired on
+     * @param {HTMLElement} $currentOptionSelected - The current selected option
+     * @param {HTMLElement} $combo - The dropdown element
+     * @return void
+     */
+    function filterByLetter(event, currentComboInput, $currentOptionSelected, $combo) {
+      let letter = String.fromCharCode(event.keyCode);
+      let $comboOptions = $(currentComboInput).next().find(CONSTANT.SELECTOR.comboOption);
+      let $options = $comboOptions.filter(function() {
+        return $(this).text().toLowerCase().startsWith(letter.toLowerCase());
+      });
+      if($options.length){
+        if(!$($combo).hasClass(CONSTANT.CLASS.open)){
+          handleDropdownVisibility($(currentComboInput).closest(CONSTANT.SELECTOR.combo), currentComboInput);
+        }
+        let nextOptionIndex = $options.index($currentOptionSelected) + 1;
+        if (nextOptionIndex >= $options.length) {
+          nextOptionIndex = 0;
+        }
+        let nextOption = $options[nextOptionIndex];
+        $currentOptionSelected.toggleClass(CONSTANT.CLASS.optionCurrent);
+        $(nextOption).toggleClass(CONSTANT.CLASS.optionCurrent);
+      }
+    }
+
+    /**
     * Handles dropdown combo clicks. Ensures keyboard accessibility for down, up, Enter, Space keys and mousedown event.
     * @function
     * @memberof sunCore.comp.formDropdown
@@ -170,6 +200,10 @@
         handleDropdownVisibility($combo, currentComboInput);
       }
 
+      if (e.keyCode >= util.constants.KeyCode.A && e.keyCode <= util.constants.KeyCode.Z) {
+        filterByLetter(e, currentComboInput, $currentOptionSelected, $combo);
+      }
+
       if (e.keyCode == util.constants.KeyCode.DOWN) {
         handleUpDownKeyPress($combo, $currentOptionSelected, $currentOptionSelected.next());
       } else if (e.keyCode == util.constants.KeyCode.UP) {
@@ -179,7 +213,7 @@
         $currOpt.mousedown();
       } else if (e.type == util.customEvents.MOUSE_DOWN || e.keyCode == util.constants.KeyCode.ENTER_RETURN || e.keyCode == util.constants.KeyCode.SPACE) {
         handleDropdownVisibility($combo, currentComboInput);
-      }
+      } 
     }
 
     /**
