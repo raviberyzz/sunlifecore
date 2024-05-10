@@ -1,8 +1,8 @@
- /**
+/**
  * index.js
  * footer related functionality.
  */
- (function (core) {
+(function (core) {
 	"use strict";
 
 	/**
@@ -116,7 +116,7 @@
          */
 		function bindEvent() {
 			listeners.push(
-				$.subscribe(util.customEvents.RESIZED, checkToRenderFooter)
+				$.subscribe(util.customEvents.INSTANTRESIZED, checkToRenderFooter)
 			);
 		}
 
@@ -155,4 +155,3 @@
 	 */
 	core.util.initialise(core.comp, "footer", '.sl-footer .footer-menus .footer-menu-header');
 })(sunCore);
-
