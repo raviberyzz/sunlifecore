@@ -1,8 +1,8 @@
- /**
+/**
  * index.js
  * footer related functionality.
  */
- (function (core) {
+(function (core) {
 	"use strict";
 
 	/**
@@ -42,7 +42,8 @@
 			$footerMenuHeadingElement, 
             $footerMenuHeaderIsDropdown = false,
 			renderDesktop = false,
-			renderMobile = false;
+			renderMobile = false,
+            listeners = [];
 
 		/**
 		 * Handler to check to render Footer Based on Screensize
@@ -114,7 +115,9 @@
          * @private
          */
 		function bindEvent() {
-			window.addEventListener(util.customEvents.RESIZE, checkToRenderFooter);
+			listeners.push(
+				$.subscribe(util.customEvents.RESIZE, checkToRenderFooter)
+			);
 		}
 
 		 /**
@@ -152,4 +155,3 @@
 	 */
 	core.util.initialise(core.comp, "footer", '.sl-footer .footer-menus .footer-menu-header');
 })(sunCore);
-
