@@ -74,6 +74,7 @@
 
             RESIZED: 'slcore:resized',
             SCROLLED: 'slcore:scrolled',
+            INSTANTSCROLLED: 'slcore:instantScroll',
 
 
             // intersection observer related
