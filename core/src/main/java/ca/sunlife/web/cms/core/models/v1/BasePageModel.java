@@ -140,6 +140,19 @@ public class BasePageModel {
     private String pageIndexing;
 
     /**
+    * Flag to disable the pseudo-element icon, fetched from the component's underlying resource.
+    * The property is directly mapped from the JCR via the resource's ValueMap.
+    *
+    * This is managed through the use of the {@link ValueMapValue} to fetch the value and
+    * {@link Via} to specify the accessor
+    *
+    * {@link Getter} from Lombok generates the getter method automatically.
+    */
+    @Getter
+    @ValueMapValue
+    private String disablePseudoElementIcon;
+
+    /**
      * The social media title.
      */
     private String socialMediaTitle;

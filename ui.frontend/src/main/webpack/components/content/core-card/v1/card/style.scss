@@ -5,9 +5,9 @@
 .card {
     .sl-link {
         .svg-inline--fa {
-            width: 20px !important;
-            height: 20px !important;
-            margin-bottom: -2px;
+            width: 24px !important;
+            height: 24px !important;
+            margin-bottom: -5px;
         }
     }
     .content-container {
@@ -37,6 +37,10 @@
     .grouped-form {
         form {
             width: 100%;
+            height: 48px;
+            @include media-breakpoint-only(xs) {
+                height: auto;
+            }
         }
     }
 
@@ -56,6 +60,14 @@
                 margin-top: 0;
                 .sl-helper-text {
                     display: unset;
+                }
+            }
+        }
+
+        & > .card-body {
+            & > .icon-container {
+                & > .svg-inline--fa {
+                    vertical-align: top;
                 }
             }
         }
@@ -148,6 +160,9 @@
 // MP-2317 Ensure Vertical Cards in MD/SM Span Full Width. 
 .sl-cards {
     &.vertical {
+            @include media-breakpoint-only(xs) {
+                max-width: fit-content !important;
+            }
         &:not(.auto){
             .card {
                 .card-body {

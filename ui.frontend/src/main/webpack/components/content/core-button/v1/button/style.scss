@@ -2,7 +2,6 @@
  
 .sl-btn.btn {
     min-height: 3rem;
-    height: auto;
 }
 
 @include media-breakpoint-up(md) {
@@ -10,7 +9,6 @@
     .sl-btn.btn {
         max-width: 340px;
         min-width: 100px;
-        height: auto;
     }
 
     a.sl-btn.btn {

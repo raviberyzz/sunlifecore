@@ -39,6 +39,9 @@
   margin-left: calc(var(--viewportWidth) / -2);
 }
 .sl-utility-bar {
+  .nav-item {
+    margin-right: 8px;
+  }
   position: relative;
   z-index: $zindex-fixed;
   @include media-breakpoint-down(lg) {
@@ -251,7 +254,9 @@
   position: relative;
   top: auto;
   &.fixed-top {
-    left: 50%;
+    top: 0;
+    position: fixed;
+    z-index: 1030;
   }
 }
 .sl-header-offcanvas {

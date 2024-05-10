@@ -27,12 +27,14 @@
           aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
           type="button"
         >
-          <span
-            class="sl-icon fal fa-chevron-up ${item.name in accordion.expandedItems ? 'show' : 'hide'}"
-          ></span>
-          <span
-            class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
-          ></span>
+          <span class="accordion-icon-container">
+            <span
+              class="sl-icon fal fa-chevron-up ${item.name in accordion.expandedItems ? 'show' : 'hide'}"
+            ></span>
+            <span
+              class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
+            ></span>
+          </span>
           <span class="accordion-item-heading ${accordion.headingElement}">${item.title}</span>
         </button>
       </div>

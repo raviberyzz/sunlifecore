@@ -38,12 +38,6 @@
                 width: auto;
             }
         }
-        .card-content-overlay {
-            max-width: 312px;
-        }
-        p {
-            margin: 0;
-        }
 
         a {
             @include hide-far-default-icon;
