@@ -133,7 +133,8 @@
 		 */
 		function closePopoverHandler() {
 			let [popoverElem, id] = getPopoverId($(this));
-			popoverElem.hide();
+			popoverElem.remove();
+			$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			$("[aria-describedby=" + id + "]")
 				.click()
 				.focus();
@@ -150,14 +151,16 @@
 			let [popoverElem, id] = getPopoverId($(this));
 			if (event.key === util.constants.key.ESC) {
 				event.preventDefault();
-				popoverElem.hide();
+				popoverElem.remove();
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 				$("[aria-describedby=" + id + "]")
 					.click()
 					.focus();
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();
-				popoverElem.hide();
+				popoverElem.remove();
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			} else if (event.key === util.constants.key.TAB) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
@@ -172,7 +175,8 @@
 						selectableElements[index + 1].focus();
 					}
 				});
-				popoverElem.hide();
+				popoverElem.remove();
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			}
 		}
 
