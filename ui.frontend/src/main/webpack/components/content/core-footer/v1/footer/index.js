@@ -116,7 +116,7 @@
          */
 		function bindEvent() {
 			listeners.push(
-				$.subscribe(util.customEvents.RESIZE, checkToRenderFooter)
+				$.subscribe(util.customEvents.INSTANTRESIZED, checkToRenderFooter)
 			);
 		}
 

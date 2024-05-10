@@ -4,37 +4,45 @@
  */
 (function(w, core) {
     'use strict';
-
+    /**
+     * Handler to resize event
+     * @function core.util.resize
+     */
     core.util.resize = (function($, util) {
-        var resizeEvent = 'resize.core-resize orientationchange.core-resize',
+        let resizeEvent = 'resize.core-resize orientationchange.core-resize',
             delayTimer = 250,
-            timer,
             wWidth = $(w).width(),
             wHeight = $(w).height(),
-            onResizeEventWithDelay = function() {
-                if (timer !== undefined) {
-                    w.clearTimeout(timer);
-                }
-
-                timer = w.setTimeout(function() {
-                    //adding this checks on some mobiles when scrolling it things that we resized screen
-                    if ($(w).width() !== wWidth || $(w).height() !== wHeight) {
-                        wWidth = $(w).width();
-                        wHeight = $(w).height();
-
-                        $.publish(util.customEvents.RESIZED);
-                    }
-                }, delayTimer);
-            },
-            onResizeEvent = function() {
+        /**
+         * Handler to resize event with delay
+         * @function onResizeEventWithDelay
+         * @memberof core.util.resize
+         * @public
+         */
+        onResizeEventWithDelay = function() {
+            return util.debounce(function () {                    
                 //adding this checks on some mobiles when scrolling it things that we resized screen
                 if ($(w).width() !== wWidth || $(w).height() !== wHeight) {
                     wWidth = $(w).width();
                     wHeight = $(w).height();
-
-                    $.publish(util.customEvents.RESIZE);
+                    $.publish(util.customEvents.RESIZED);
                 }
-            };
+            }, delayTimer);                
+        },
+        /**
+         * Handler to resize event 
+         * @function onResizeEvent
+         * @memberof core.util.resize
+         * @public
+         */
+        onResizeEvent = function() {
+            //adding this checks on some mobiles when scrolling it things that we resized screen
+            if ($(w).width() !== wWidth || $(w).height() !== wHeight) {
+                wWidth = $(w).width();
+                wHeight = $(w).height();
+                $.publish(util.customEvents.INSTANTRESIZED);
+            }
+        };
         $(w).on(resizeEvent, function(){
             onResizeEventWithDelay();
             onResizeEvent();
