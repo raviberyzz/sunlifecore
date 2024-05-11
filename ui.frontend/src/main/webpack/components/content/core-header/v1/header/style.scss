@@ -39,13 +39,17 @@
   margin-left: calc(var(--viewportWidth) / -2);
 }
 .sl-utility-bar {
-  .nav-item {
-    margin-right: 8px;
-  }
   position: relative;
   z-index: $zindex-fixed;
   @include media-breakpoint-down(lg) {
     display: none;
+  }
+  @include media-breakpoint-up(xl){
+    .sl-region-menu {
+      .region-menu-container {
+        margin-right: 8px;
+      }
+    }
   }
   .content-container {
     list-style: none;
@@ -85,7 +89,6 @@
       box-shadow: $box-shadow;
       margin-top: 0.125rem !important;
       transform: translate3d(0.5px, 38px, 0px) !important;
-      width: max-content;
     }
     .dropdown-toggle, .menu-content {
       padding: 0.5rem 0.5rem;
@@ -108,21 +111,22 @@
         &:hover{
           text-decoration: underline;
         }
-      }
+              }
     }
     .region-menu {
+      width: 1104px;
+      height: 28.125rem;
+      padding: 1.5rem;
       .region-content-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         row-gap: 1.5rem;
         column-gap: 4rem;
-        min-height: 388px;
-        min-width: 51.5rem;
-        max-width: 1104px;
-        padding:24px;
+        padding-bottom: 1.5rem;
+        height: 365px;
         .region-content {
-          flex-basis: 216px;
+          width: 13.5rem;
           margin: -4px 0 -4px 0;
           .country-header {
             & h2 {
@@ -186,7 +190,7 @@
         margin: 0 0 1rem 0;
       }
       .world-wide-content {
-        padding: 0 24px 24px 24px;
+        padding: 0;
         text-decoration: none;
         @include sl-body-small;
         color: var(--grey-600);
@@ -263,6 +267,7 @@
   @include media-breakpoint-between(md, lg){
     .sl-region-menu {
       .region-menu-container {
+        margin-right:0;
         .label-container {  
           margin: 0 3.75rem !important;
         }
@@ -273,10 +278,24 @@
     .offcanvas-header{
       padding: 1rem 3.75rem;
     }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0 2.75rem;
+        }
+      }
+    }
   }
   @include media-breakpoint-down(md){
     .offcanvas-header{
       padding: 1rem 2rem;
+    }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0 1rem;
+        }
+      }
     }
   }
   @include media-breakpoint-down(sm){
@@ -285,8 +304,16 @@
     }
     .sl-region-menu {
       .region-menu-container {
+        margin-right:0;
         .label-container {  
           margin: 0 1rem !important;
+        }
+      }
+    }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0;
         }
       }
     }
@@ -425,9 +452,6 @@
                       line-height: 1.5rem;
                       margin-bottom: 0;
                       padding: .5rem 1rem .5rem 3rem;
-                      @include media-breakpoint-only(md) {
-                        margin: 0 2.75rem;
-                      }
                     }
                     @include sl-body-medium;
                     color: var(--grey-800);
