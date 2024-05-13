@@ -10,12 +10,23 @@
      * @return void
      */
     core.util.scrolled = (function ($, util) {
+        const delays = {
+            quick: 10,
+            longer: 100
+        }
 
         const debouncedScroll = util.debounce(function () {
             $.publish(util.customEvents.SCROLLED);
-        }, 200);
+        }, delays.longer);
 
-        $(window).on(util.customEvents.SCROLL, debouncedScroll);
+        const quickScroll = util.debounce(function () {
+            $.publish(util.customEvents.INSTANTSCROLLED);
+        }, delays.quick);
+
+        $(window).on(util.customEvents.SCROLL, function(){
+            quickScroll();
+            debouncedScroll();
+        });
 
     })(core.$, core.util);
 })(window, window.sunCore);

@@ -187,7 +187,7 @@
             $comp.on(util.customEvents.INTERACTION, CONSTANT.SELECTOR.menuClose, callMenuClose);
 
             listeners.push(
-                $.subscribe(util.customEvents.SCROLLED, handleScrollStyles)
+                $.subscribe(util.customEvents.INSTANTSCROLLED, handleScrollStyles)
             );
         }
 
