@@ -49,7 +49,7 @@
          */
         function addTitleAttributeToIcons() {
             const lang = $(CONSTANT.SELECTOR.html)[0].lang || 'en';
-            let i18n = util.constants.i18[lang];
+            let i18n = util.constants.i18[lang] || 'en';
             $(CONSTANT.SELECTOR.slLink).each(function() {
             $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n?.opensExternalLink);
             $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n?.opensInternalLink);
