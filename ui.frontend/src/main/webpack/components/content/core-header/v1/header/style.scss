@@ -207,7 +207,7 @@
           padding: 1.5rem 0;
           width: 16.875rem;
         }
-      }
+    }
     .sl-menu-dropdown {
       .utility-nav-item-container {
         padding: 0.5rem 0.5rem !important;
@@ -270,6 +270,16 @@
         margin-right:0;
         .label-container {  
           margin: 0 3.75rem !important;
+          .dropdown-label {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+    .sl-menu-dropdown {
+      .utility-nav-item-container {
+        .dropdown-label {
+          margin-right: auto !important;
         }
       }
     }
@@ -282,6 +292,22 @@
       .country-header {
         & > h2 { 
           margin: 0 2.75rem;
+        }
+      }
+    }
+    .sl-region-menu {
+      .region-menu-container {
+        .label-container {  
+          .dropdown-label {
+            margin-right: auto;
+          }
+        }
+      }
+    }
+    .sl-menu-dropdown {
+      .utility-nav-item-container {
+        .dropdown-label {
+          margin-right: auto !important;
         }
       }
     }
