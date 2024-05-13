@@ -68,6 +68,10 @@
         justify-content: center;
         align-items: center;
         margin: auto;
+
+        @media (max-width: 1024px) {   
+            margin: 0;
+        }
     }
 
     .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-magicbox-suggestions,
