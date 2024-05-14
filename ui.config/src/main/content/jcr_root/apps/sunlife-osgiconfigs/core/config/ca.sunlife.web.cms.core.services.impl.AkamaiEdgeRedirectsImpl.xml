@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OsgiConfig"
+    getHost="akab-v7jr6pxagknzk3cq-bxnesmo7jwpebmrd.luna.akamaiapis.net"
+    getEnvironment="production"
+    getAccessKey="akab-o7f4jgrrf6jtl7mg-ay7aqph6telhmzqm"
+    getClientSecret="QkuqsP6WJR5Rkpg/f23Flj3fzprdM5xLZ/Lx+qe3Pl8="
+    getClientToken="akab-vv2vcatubplun5as-vbet6wdu2xt6ikiw"
+    getConnectionTimeout="300000"
+    getSocketTimeout="300000" />

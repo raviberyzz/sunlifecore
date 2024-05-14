@@ -44,6 +44,13 @@
   @include media-breakpoint-down(lg) {
     display: none;
   }
+  @include media-breakpoint-up(xl){
+    .sl-region-menu {
+      .region-menu-container {
+        margin-right: 8px;
+      }
+    }
+  }
   .content-container {
     list-style: none;
     padding: 0;
@@ -107,7 +114,7 @@
               }
     }
     .region-menu {
-      min-width: 51.5rem;
+      width: 1104px;
       height: 28.125rem;
       padding: 1.5rem;
       .region-content-container {
@@ -156,7 +163,7 @@
               &.dropdown-item {
                 --bs-dropdown-link-active-bg: transparent; // $dropdown-link-active-bg
                 @include sl-body-small;
-                white-space: normal;
+                white-space: normal !important;
                 padding: 0;
                 margin-top: 0.75rem;
                 color: var(--grey-600);
@@ -200,7 +207,7 @@
           padding: 1.5rem 0;
           width: 16.875rem;
         }
-      }
+    }
     .sl-menu-dropdown {
       .utility-nav-item-container {
         padding: 0.5rem 0.5rem !important;
@@ -257,19 +264,84 @@
   }
 }
 .sl-header-offcanvas {
+  @include media-breakpoint-between(md, lg){
+    .sl-region-menu {
+      .region-menu-container {
+        margin-right:0;
+        .label-container {  
+          margin: 0 3.75rem !important;
+          .dropdown-label {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+    .sl-menu-dropdown {
+      .utility-nav-item-container {
+        .dropdown-label {
+          margin-right: auto !important;
+        }
+      }
+    }
+  }
   @include media-breakpoint-down(lg){
     .offcanvas-header{
       padding: 1rem 3.75rem;
+    }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0 2.75rem;
+        }
+      }
+    }
+    .sl-region-menu {
+      .region-menu-container {
+        .label-container {  
+          .dropdown-label {
+            margin-right: auto;
+          }
+        }
+      }
+    }
+    .sl-menu-dropdown {
+      .utility-nav-item-container {
+        .dropdown-label {
+          margin-right: auto !important;
+        }
+      }
     }
   }
   @include media-breakpoint-down(md){
     .offcanvas-header{
       padding: 1rem 2rem;
     }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0 1rem;
+        }
+      }
+    }
   }
   @include media-breakpoint-down(sm){
     .offcanvas-header{
       padding: 1rem;
+    }
+    .sl-region-menu {
+      .region-menu-container {
+        margin-right:0;
+        .label-container {  
+          margin: 0 1rem !important;
+        }
+      }
+    }
+    .region-content {
+      .country-header {
+        & > h2 { 
+          margin: 0;
+        }
+      }
     }
   }
   .offcanvas-header {
@@ -343,7 +415,7 @@
             .label-container {
               border-top: 0.063rem solid var(--grey-300);
               padding: 1rem 0;
-              margin: 0 1rem;
+              margin: 0 1.90rem;
               display: flex;
               justify-content: flex-start;
               align-items: center;
@@ -400,6 +472,13 @@
                 .region-content {
                   margin-bottom: 0.5rem;
                   .country-header {
+                    & > h2 {
+                      font-size: 1rem;
+                      color: var(--grey-900, #202223);
+                      line-height: 1.5rem;
+                      margin-bottom: 0;
+                      padding: .5rem 1rem .5rem 3rem;
+                    }
                     @include sl-body-medium;
                     color: var(--grey-800);
                     a {
@@ -432,6 +511,7 @@
                   a,
                   button {
                     &.dropdown-item {
+                      white-space: normal;
                       --bs-dropdown-link-active-bg: transparent; // $dropdown-link-active-bg
                       @include padding-utility-bar-region-menu;
                       @include sl-body-small;
@@ -512,6 +592,9 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
+              @include media-breakpoint-down(xl) {
+                justify-content: flex-start !important;
+              }
               width: 100%;
               border-top: 0.063rem solid var(--grey-300);
             }

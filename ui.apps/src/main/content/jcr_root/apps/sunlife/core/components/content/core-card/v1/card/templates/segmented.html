@@ -10,7 +10,9 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
   <sly data-sly-test="${haveSomthing}">
 
     <div class="card-body">
-      <i data-sly-test="${model.assetType =='icon' && model.cardIcon}" class="mb-4 sl-card-icon fak fa-${model.cardIcon}" role="presentation"></i>
+      <div class="icon-container card-title">
+        <i data-sly-test="${model.assetType =='icon' && model.cardIcon}" class="sl-card-icon fak fa-${model.cardIcon}" role="presentation"></i>
+      </div>
       <h4 class="h4 card-title" data-sly-element="${model.segmentHeadingType || 'h4'}">${model.segmentHeading}</h4>
       <div class="card-text">${model.segmentDescription @ context ='html'}</div>
 

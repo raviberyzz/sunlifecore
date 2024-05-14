@@ -128,7 +128,10 @@
         */
         function setMainContentLandmark() {
             if ($comp.length > 0 && $mainContent.length < 1) {
-                const layoutContainer = $comp.closest(CONSTANT.SELECTOR.experiencefragment).next();
+                let layoutContainer = $comp.closest(CONSTANT.SELECTOR.experiencefragment).next();
+                if(layoutContainer.hasClass(CONSTANT.CLASS.breadcrumb)) {
+                    layoutContainer = layoutContainer.next();
+                }
                 layoutContainer.attr("id", CONSTANT.ID.mainContent);
                 layoutContainer.attr("role", CONSTANT.ROLE.main);
             }
@@ -184,7 +187,7 @@
             $comp.on(util.customEvents.INTERACTION, CONSTANT.SELECTOR.menuClose, callMenuClose);
 
             listeners.push(
-                $.subscribe(util.customEvents.SCROLLED, handleScrollStyles)
+                $.subscribe(util.customEvents.INSTANTSCROLLED, handleScrollStyles)
             );
         }
 

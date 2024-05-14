@@ -4,7 +4,7 @@
      <a href="#signinbutton" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToSignInLabel}</a>
      <a href="#main-content"
           class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToMainContentLabel}</a>
-     <a href="#mainfooter" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
+     <a href="#footer" class="sl-link sl-link-sm visually-hidden-focusable">${headerModel.skipToFooterLabel}</a>
 </div>
 
 <!-- /* Including Search */ -->
@@ -51,7 +51,7 @@ data-sly-call="${search.search @ headerModel=headerModel}"></sly>
                          data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
                          <!-- megamenu.html -->
-                         <ul class="sl-main-nav flex-grow-1 navbar-nav">
+                         <ul class="sl-main-nav flex-grow-1 navbar-nav" role="navigation" aria-label="main navigation" data-section="header-main-nav">
                               <sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
                                    <sly data-sly-use.megaMenu="templates/megamenu.html"
                                         data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>

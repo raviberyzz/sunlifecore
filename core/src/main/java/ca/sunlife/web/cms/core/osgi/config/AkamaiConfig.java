@@ -1,7 +1,3 @@
-/*
- *
- */
-
 package ca.sunlife.web.cms.core.osgi.config;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
@@ -9,59 +5,61 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.osgi.service.metatype.annotations.Option;
 
 /**
- * The Interface AkamaiConfig.
+ * Defines the configuration parameters for Akamai CDN integration.
+ * This interface is used to manage settings such as host, environment, and security credentials
+ * necessary for connecting to Akamai's APIs within the Sun Life application context.
  *
  * @author TCS
  * @version 1.0
  */
-@ ObjectClassDefinition (name = "Sun Life - Akamai Configuration", description = "Sun Life Akamai Configuration")
+@ObjectClassDefinition(name = "Sun Life - Akamai Configuration", description = "Configuration parameters for Akamai CDN.")
 public @interface AkamaiConfig {
 
-  /**
-   * Gets the host.
-   *
-   * @return the host
-   */
-  @ AttributeDefinition (name = "host", description = "Akamai Host")
-  String getHost () default "akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net";
-  
-  /**
-   * Gets the environment.
-   *
-   * @return the environment
-   */
-  @AttributeDefinition(
-      name = "Environment",
-      description = "Select akamai environment",
-      options = {
-          @Option(label = "PRODUCTION", value = "production"),
-          @Option(label = "STAGING", value = "staging")
-      }
-  )
-  String getEnvironment() default "production";
+    /**
+     * Retrieves the Akamai host URL.
+     * 
+     * @return the host URL used for Akamai requests
+     */
+    @AttributeDefinition(name = "host", description = "Akamai Host")
+    String getHost();
 
-  /**
-   * Gets the access key.
-   *
-   * @return the access key
-   */
-  @ AttributeDefinition (name = "accessKey", description = "Access Key")
-  String getAccessKey () default "akab-coaxo5i7uyh25rdl-ukgkilqkilqhekri";
+    /**
+     * Retrieves the configured environment for Akamai.
+     * Allows administrators to select between production and staging environments.
+     *
+     * @return the current environment setting ('production' or 'staging')
+     */
+    @AttributeDefinition(
+        name = "Environment",
+        description = "Select akamai environment",
+        options = {
+            @Option(label = "PRODUCTION", value = "production"),
+            @Option(label = "STAGING", value = "staging")
+        }
+    )
+    String getEnvironment() default "production";
 
-  /**
-   * Gets the client secret.
-   *
-   * @return the client secret
-   */
-  @ AttributeDefinition (name = "clientSecret", description = "Client Secret")
-  String getClientSecret () default "5nBJ+6AZyG6e2+tkxZWhrilX2Ys2UObM7fKB8ld0rvY=";
+    /**
+     * Retrieves the access key used for authenticating with Akamai APIs.
+     *
+     * @return the access key
+     */
+    @AttributeDefinition(name = "accessKey", description = "Access Key")
+    String getAccessKey();
 
-  /**
-   * Gets the client token.
-   *
-   * @return the client token
-   */
-  @ AttributeDefinition (name = "clientToken", description = "Client Token")
-  String getClientToken () default "akab-7ilhfrrlqf3ak4w2-awgfokfuslr7th2u";
+    /**
+     * Retrieves the client secret associated with the Akamai API credentials.
+     *
+     * @return the client secret
+     */
+    @AttributeDefinition(name = "clientSecret", description = "Client Secret")
+    String getClientSecret();
 
+    /**
+     * Retrieves the client token used in Akamai API requests.
+     *
+     * @return the client token
+     */
+    @AttributeDefinition(name = "clientToken", description = "Client Token")
+    String getClientToken();
 }
