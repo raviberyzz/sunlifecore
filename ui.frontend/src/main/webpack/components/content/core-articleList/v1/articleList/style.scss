@@ -16,3 +16,17 @@
     }
     
 }
+
+.sl-pagination .sl-basic-pagination .sl-pagination-item {
+    &.focus-item {
+        &:focus-visible {
+            outline: 0.125rem solid var(--brand-tertiary-500);
+            outline-offset: 1px;
+        }
+    }
+}
+
+.icon-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
