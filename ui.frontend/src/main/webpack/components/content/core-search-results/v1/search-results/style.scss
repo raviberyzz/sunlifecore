@@ -1,4 +1,5 @@
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 
 .sl-body-helios {
 
@@ -242,6 +243,21 @@
         width: 20px;
         display: inline-block;
         top: 5px;
+    }
+
+    .coveo-results-column {
+        .CoveoResultsPerPage {
+            @include media-breakpoint-down(sm) {
+                display: flex;
+                flex-direction: column;
+                float: unset;
+                margin: unset;
+
+                .coveo-results-per-page-list-item:first-of-type {
+                    margin-left: 0;
+                }
+            }
+        }
     }
     
 }
