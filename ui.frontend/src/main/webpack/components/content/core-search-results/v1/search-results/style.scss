@@ -231,7 +231,6 @@
 
     .coveo-results-header {
         box-shadow: none !important;
-        margin-bottom: 32px;
     }
 
     .error-required:before {
@@ -258,6 +257,10 @@
                 }
             }
         }
+    }
+
+    #search-result-filters .coveo-tab-section {
+        min-height: unset;
     }
     
 }
