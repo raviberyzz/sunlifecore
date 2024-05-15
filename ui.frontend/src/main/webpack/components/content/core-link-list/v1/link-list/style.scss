@@ -173,6 +173,14 @@
     .link-list-item {
         padding-bottom: var(--M);
     }
+
+    .sl-link-list .dropdown-menu {
+      .dropdown-menu-link {
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    } 
 }
 
 @include media-breakpoint-up(sm) {
