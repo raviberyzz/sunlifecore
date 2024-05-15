@@ -6,8 +6,8 @@
         CUI = window.CUI,
         ARIA_LABEL_FIELD = "aria-label",
         DATA_TITLE_FIELD = "data-title",
-        DATA_TARGET_FIELD = "data-target",
-        DATA_TOGGLE_FIELD = "data-toggle",
+        DATA_TARGET_FIELD = "data-bs-target",
+        DATA_TOGGLE_FIELD = "data-bs-toggle",
         DATA_DEEPLINK_FIELD = "data-deeplink",
         DATA_CLASS_FIELD = "data-class",
         DATA_CLASS_ICN_FIELD = "data-class-icon",
@@ -50,8 +50,8 @@
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
             this.objToEdit.attributes["data-title"] = dataTitleVal;
-            this.objToEdit.attributes["data-target"] = dataTargetVal;
-            this.objToEdit.attributes["data-toggle"] = dataToggleVal;
+            this.objToEdit.attributes["data-bs-target"] = dataTargetVal;
+            this.objToEdit.attributes["data-bs-toggle"] = dataToggleVal;
             this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
             this.objToEdit.attributes["data-class"] = dataClassVal;
             this.objToEdit.attributes["data-class-icon"] = dataClassIcnVal;
@@ -77,16 +77,16 @@
 
             var ariaValue = this.objToEdit.attributes['aria-label'];
             var dataValue = this.objToEdit.attributes['data-title'];
-            var dataTargetValue = this.objToEdit.attributes['data-target'];
-            var dataToggleValue = this.objToEdit.attributes['data-toggle'];
+            var dataTargetValue = this.objToEdit.attributes['data-bs-target'];
+            var dataToggleValue = this.objToEdit.attributes['data-bs-toggle'];
             var dataDeepLinkValue = this.objToEdit.attributes['data-deeplink'];
             var classValue = this.objToEdit.attributes['data-class'];
             var classIcnValue = this.objToEdit.attributes['data-class-icon'];
 
             var ariaSelect = this.$rteDialog.find("[data-type='aria-label']")[0];
             var dataSelect = this.$rteDialog.find("[data-type='data-title']")[0];
-            var dataTargetSelect = this.$rteDialog.find("[data-type='data-target']")[0];
-            var dataToggleSelect = this.$rteDialog.find("[data-type='data-toggle']")[0];
+            var dataTargetSelect = this.$rteDialog.find("[data-type='data-bs-target']")[0];
+            var dataToggleSelect = this.$rteDialog.find("[data-type='data-bs-toggle']")[0];
             var dataDeepLinkSelect = this.$rteDialog.find("[data-type='data-deeplink']")[0];
             var classSelect = this.$rteDialog.find("[data-type='data-class']")[0];
             var classIcnSelect = this.$rteDialog.find("[data-type='data-class-icon']")[0];
@@ -182,12 +182,12 @@
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
                     <label> 
-                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''>
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-bs-target' placeholder='data target (eg - #ID)' data-bs-target-invalid='false' value=''>
                     </label> </div></div>
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>
                     <label> 
-                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''>
+                        <input is='coral-textfield' class='coral3-Textfield' data-type='data-bs-toggle' placeholder='data toggle (eg - modal)' data-bs-toggle-invalid='false' value=''>
                     </label></div></div>
             <div class='rte-dialog-columnContainer'>
                 <div class='rte-dialog-column'>

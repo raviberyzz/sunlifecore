@@ -31,7 +31,7 @@
     }
     tr{
         border-color: var(--bs-border-color);
-        &:first-child td, th {
+        th {
             @include table-column;
         }
         td {

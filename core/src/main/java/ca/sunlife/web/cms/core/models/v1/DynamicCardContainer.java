@@ -39,4 +39,6 @@ public interface DynamicCardContainer {
     public Boolean getStatisticsMultipleCard();
     
     public Boolean getWithLink();
+
+    public String getId();
 }

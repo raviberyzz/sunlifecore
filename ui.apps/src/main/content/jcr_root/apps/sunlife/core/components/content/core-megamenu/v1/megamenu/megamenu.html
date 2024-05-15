@@ -15,18 +15,17 @@
                 </h3>
             </div>
             <div class="sub-menu-container" data-sly-list.menuSections="${megaMenu.menuSections}">
-                <div class="extensive-sub-menu"> 
-                    <h4 class="sub-header-container">
-                        <a href="${menuSections.subheadingLinkURL @extension = 'html'}"
-                            data-title="${menuSections.subheadingDataTitle}"
-                            data-sly-attribute.target="${menuSections.subheadingTarget == 'newTab' ? '_blank' : ''}">${menuSections.subheadingLinkName}</a>
+                <div class="extensive-sub-menu">
+                    <h4 class="sub-header-container" data-title="${menuSections.subheadingDataTitle}">
+                        ${menuSections.subheadingLinkName}
                     </h4>
                     <ul data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}"
-                        data-sly-list.menuItems="${menuSections.menuItems}" class="d-none d-lg-inline d-xl-inline d-xxl-inline">
+                        data-sly-list.menuItems="${menuSections.menuItems}"
+                        class="d-none d-lg-inline d-xl-inline d-xxl-inline">
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
-                                class="dropdown-item text-wrap" data-title="${menuItems.menuItemDataTitle}"
-                                data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
+                               class="dropdown-item text-wrap" data-title="${menuItems.menuItemDataTitle}"
+                               data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
                                 <div class="d-inline">
                                     <span>${menuItems.menuItemLinkName}</span>
                                 </div>

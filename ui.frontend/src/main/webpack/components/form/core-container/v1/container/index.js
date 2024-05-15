@@ -78,7 +78,7 @@
         $input[0].setAttribute(CONSTANT.ATTR.ariaDescribedby, $errorTextId);
         $input[0].setAttribute(CONSTANT.ATTR.ariaInvalid, CONSTANT.ATTR.true);
         if(this.$element[0]?.type === "text" && this.$element[0]?.value !== ""){
-          const patternError = $(this.$element[0]).attr(CONSTANT.SELECTOR.dataParsleyPatternMessage);
+          const patternError = $(this.$element[0]).attr(CONSTANT.ATTR.dataParsleyPatternMessage);
           $formValidate.find(CONSTANT.SELECTOR.parsleyCustomErrorMessage).html(patternError);      
         } 
     }

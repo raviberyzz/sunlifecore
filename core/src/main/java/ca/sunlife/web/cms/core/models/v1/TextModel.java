@@ -25,6 +25,9 @@ public interface TextModel {
     @ValueMapValue
     String getText();
 
+    @ValueMapValue
+    String getId();
+
     @ValueMapValue(name = "textIsRich")
     @Default(booleanValues = {false})
     boolean getIsRichText();
