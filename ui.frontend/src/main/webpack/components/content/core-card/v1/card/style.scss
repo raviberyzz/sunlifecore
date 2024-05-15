@@ -200,3 +200,13 @@
         }
     }
 }
+
+// Lego issue of 1.1.2 version, need to remove once updated to version 2.0.0 or above
+.sl-cards {
+    .clickable {
+        box-shadow: none;
+        &:hover {
+            box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, .1);
+        }
+    }
+}
