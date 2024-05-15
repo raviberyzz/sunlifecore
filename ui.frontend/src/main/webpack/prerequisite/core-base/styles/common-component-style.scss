@@ -68,3 +68,10 @@
         }
     }
 }
+
+.cmp-text,
+.dynamic-card-container,
+.cmp-title {
+    scroll-margin-top: var(--3XL);
+    scroll-snap-margin-top: var(--3XL); /* iOS 11 and older */
+}

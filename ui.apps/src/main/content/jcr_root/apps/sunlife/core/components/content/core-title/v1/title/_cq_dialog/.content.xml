@@ -65,7 +65,6 @@
                                                 sling:hideResource="{Boolean}true"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:hideResource="{Boolean}true"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="HTML ID attribute to apply to the component."
                                                 fieldLabel="ID"
