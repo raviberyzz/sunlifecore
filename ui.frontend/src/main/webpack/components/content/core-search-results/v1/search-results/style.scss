@@ -1,4 +1,5 @@
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 
 .sl-body-helios {
 
@@ -36,7 +37,11 @@
     .magic-box .magic-box-input>input {
         padding: 12px 50px 12px 16px;
         border: 1px solid #5B6062;
-        background: var(--white);
+
+        @include media-breakpoint-up(lg) {
+            background: var(--white);
+          }
+
     }
 
     .CoveoSearchButton.coveo-accessible-button {
@@ -69,6 +74,10 @@
         justify-content: center;
         align-items: center;
         margin: auto;
+
+        @media (max-width: 1024px) {   
+            margin: 0;
+        }
     }
 
     .magic-box.magic-box-hasFocus .magic-box-suggestions.magic-box-hasSuggestion .coveo-magicbox-suggestions,
