@@ -161,7 +161,7 @@
 				$("[aria-describedby=" + id + "]").focus();
 				popoverElem.remove();
 				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			} else if (event.key === util.constants.key.TAB) {
+			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == util.constants.KeyCode.SPACE) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
 				);
