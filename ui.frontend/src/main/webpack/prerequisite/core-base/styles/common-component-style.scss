@@ -70,8 +70,30 @@
 }
 
 .cmp-text,
-.dynamic-card-container,
+.sl-dynamic-card-container,
 .cmp-title {
     scroll-margin-top: var(--3XL);
     scroll-snap-margin-top: var(--3XL); /* iOS 11 and older */
+}
+
+// Qualtics feedback button A11y fix
+@media screen and (min-resolution: 120dpi) {
+    .QSISlider {
+        transform: scale(0.833);
+        transform-origin: 46px center;
+    }
+}
+
+@media screen and (min-resolution: 144dpi) { 
+    .QSISlider {
+        transform: scale(0.594);
+        transform-origin: 46px center;
+    }
+}
+
+@media screen and (min-resolution: 168dpi) {
+    .QSISlider {
+        transform: scale(0.395);
+        transform-origin: 46px center;
+    }
 }
