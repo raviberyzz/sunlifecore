@@ -400,7 +400,7 @@
                                                             <internal
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Internal"
-                                                                value="arrow-circle-right"/>
+                                                                value="chevron-circle-right"/>
                                                             <external
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="External"
