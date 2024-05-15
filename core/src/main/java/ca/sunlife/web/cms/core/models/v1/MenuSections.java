@@ -20,14 +20,6 @@ public interface MenuSections {
     String getSubheadingLinkName();
 
     /**
-     * Gets the Subheading Link URL
-     *
-     * @return the subheading link URL
-     */
-    @ValueMapValue
-    String getSubheadingLinkURL();
-
-    /**
      * Gets the Subheading Data Title
      *
      * @return the subheading data title
