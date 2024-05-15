@@ -53,12 +53,12 @@
                 }
             },
             templateString: {
-                externalLinkIcon: `<i class="far fa-external-link icn-hover-hidden" aria-hidden="false"></i>`,
-                internalLinkIcon: `<i class="far fa-chevron-circle-right icn-hover-hidden" aria-hidden="false"></i>`,
-                pdfLinkIcon: `<i class="far fa-file-pdf icn-hover-hidden" aria-hidden="false"></i>`,
-                externalLinkIconSolid: `<i class="fas fa-external-link icn-hover-show" aria-hidden="false"></i>`,
-                internalLinkIconSolid: `<i class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="false"></i>`,
-                pdfLinkIconSolid: `<i class="fas fa-file-pdf icn-hover-show" aria-hidden="false"></i>`
+                externalLinkIcon: `<i class="far fa-external-link icn-hover-hidden" aria-hidden="true"></i>`,
+                internalLinkIcon: `<i class="far fa-chevron-circle-right icn-hover-hidden" aria-hidden="true"></i>`,
+                pdfLinkIcon: `<i class="far fa-file-pdf icn-hover-hidden" aria-hidden="true"></i>`,
+                externalLinkIconSolid: `<i class="fas fa-external-link icn-hover-show" aria-hidden="true"></i>`,
+                internalLinkIconSolid: `<i class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true"></i>`,
+                pdfLinkIconSolid: `<i class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i>`
             },
         };
 
