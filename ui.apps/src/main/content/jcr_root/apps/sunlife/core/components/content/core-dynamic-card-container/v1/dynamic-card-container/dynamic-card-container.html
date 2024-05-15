@@ -13,6 +13,7 @@ Card Container Component
   data-sly-set.segmentedCardConfig="{ multiple:${dynamicCardContainer.segmentedMultipleCard},segmentedformContainer:${dynamicCardContainer.segmentedformContainer}}"
   data-sly-set.statisticsCardConfig="{ multiple:${dynamicCardContainer.statisticsMultipleCard}}"
   data-sly-use.container="${'dynamicCardContainerUse.js' @ containerModel=dynamicCardContainer, cardType=dynamicCardContainer.cardType}"
+  id="${dynamicCardContainer.id}"
   class="${container.wrapperClass} ${dynamicCardContainer.spacing} ${wcmmode.edit ? 'pb-3 pt-3': ''}">
     <!--/*  Render list of added child card Component */-->
     <sly data-sly-list.item="${ resource.listChildren }">
