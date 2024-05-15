@@ -239,7 +239,6 @@
 
     .coveo-results-header {
         box-shadow: none !important;
-        margin-bottom: 32px;
     }
 
     .error-required:before {
@@ -251,6 +250,37 @@
         width: 20px;
         display: inline-block;
         top: 5px;
+    }
+
+    .coveo-results-column {
+        .CoveoResultsPerPage {
+            @include media-breakpoint-down(sm) {
+                display: flex;
+                flex-direction: column;
+                float: unset;
+                margin: unset;
+
+                .coveo-results-per-page-list-item:first-of-type {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    #search-result-filters .coveo-tab-section {
+        min-height: unset;
+    }
+
+    #coveo-search-body .coveo-main-section .coveo-results-column .coveo-results-header .coveo-summary-section {
+        margin-bottom: unset !important;
+    }
+
+    .CoveoTriggers .sl-dynamic-card-container {
+        margin-top: 40px;
+    }
+
+    .coveo-results-column .CoveoResultList {
+        margin-top: 0;
     }
     
 }

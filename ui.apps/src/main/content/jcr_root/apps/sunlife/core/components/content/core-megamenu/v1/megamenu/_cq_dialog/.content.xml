@@ -70,12 +70,6 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldLabel="Subheading Link Title"
                                                                                 name="./subheadingLinkName"/>
-                                                                        <subheadingLinkURL
-                                                                                jcr:primaryType="nt:unstructured"
-                                                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                                                fieldLabel="Subheading Link URL"
-                                                                                name="./subheadingLinkURL"
-                                                                                rootPath="/content"/>
                                                                         <subheadingDataTitle
                                                                             jcr:primaryType="nt:unstructured"
                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
