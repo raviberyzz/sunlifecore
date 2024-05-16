@@ -134,7 +134,7 @@
 		function closePopoverHandler() {
 			let [popoverElem, id] = getPopoverId($(this));
 			popoverElem.remove();
-			$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
+			$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			$("[aria-describedby=" + id + "]")
 				.click()
 				.focus();
@@ -152,16 +152,16 @@
 			if (event.key === util.constants.key.ESC) {
 				event.preventDefault();
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 				$("[aria-describedby=" + id + "]")
 					.click()
 					.focus();
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == util.constants.KeyCode.SPACE) {
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
+			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == 32) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
 				);
@@ -176,7 +176,7 @@
 					}
 				});
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
+				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
 			}
 		}
 
