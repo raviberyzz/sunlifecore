@@ -72,6 +72,9 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
     @ValueMapValue
 	private Boolean statisticsMultipleCard;
 
+	@ValueMapValue
+	private String id;
+
 	@Override
 	public String getCardType() {
 		return cardType;
@@ -164,5 +167,10 @@ public class DynamicCardContainerImpl implements DynamicCardContainer {
 	@Override
 	public Boolean getWithLink() {
 			return withLink;
+	}
+
+	@Override
+	public String getId() {
+		return id;
 	}
 }

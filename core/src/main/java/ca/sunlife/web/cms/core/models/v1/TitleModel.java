@@ -34,6 +34,9 @@ public class TitleModel implements Title {
 	private String type;
 
 	@ValueMapValue
+	private String id;
+
+	@ValueMapValue
 	private String spacing;
 
 	@ScriptVariable
