@@ -112,6 +112,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="h5"
                                                                 text="Heading 5"/>
+                                                            <text-phone-numbers
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="phone-numbers"
+                                                                text="Phone Numbers"/>
                                                         </styles>
                                                     </styles>
                                                     <format

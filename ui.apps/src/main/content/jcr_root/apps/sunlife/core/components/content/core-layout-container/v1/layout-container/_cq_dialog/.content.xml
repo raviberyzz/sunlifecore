@@ -130,7 +130,7 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                             fieldLabel="Container 1"
-                                                            fieldDescription="Add the column and offset config for Containers 1. Offset are empty columns on the left of associated container." />
+                                                            fieldDescription="Add the column and offset config for Containers 1. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                         <custom-col
                                                             granite:class="cmp-layout-container__editor-action"
                                                             jcr:primaryType="nt:unstructured"
@@ -224,7 +224,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                         fieldLabel="Container 2"
-                                                        fieldDescription="Add the column and offset config for Containers 2. Offset are empty columns on the left of associated container." />
+                                                        fieldDescription="Add the column and offset config for Containers 2. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -318,7 +318,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                         fieldLabel="Container 3"
-                                                        fieldDescription="Add the column and offset config for Containers 3. Offset are empty columns on the left of associated container." />
+                                                        fieldDescription="Add the column and offset config for Containers 3. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -410,7 +410,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                         fieldLabel="Container 4"
-                                                        fieldDescription="Add the column and offset config for Containers 4. Offset are empty columns on the left of associated container." />
+                                                        fieldDescription="Add the column and offset config for Containers 4. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -502,7 +502,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                         fieldLabel="Container 5"
-                                                        fieldDescription="Add the column and offset config for Containers 5. Offset are empty columns on the left of associated container." />
+                                                        fieldDescription="Add the column and offset config for Containers 5. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -594,7 +594,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/field"
                                                         fieldLabel="Container 6"
-                                                        fieldDescription="Add the column and offset config for Containers 6. Offset are empty columns on the left of associated container." />
+                                                        fieldDescription="Add the column and offset config for Containers 6. Offset are empty columns on the left of associated container. Column numbers should add up to 12 across all breakpoints." />
                                                     <custom-col
                                                         granite:class="cmp-layout-container__editor-action"
                                                         jcr:primaryType="nt:unstructured"
@@ -722,7 +722,7 @@
                                             <centerAlign
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Align container horizontally center."
+                                                fieldDescription="Align container horizontally center.Check to horizontally center align container. Applies only to custom single column containers using less than 12 columns from the grid."
                                                 name="./centerAlign"
                                                 text="Center container"
                                                 uncheckedValue="false"

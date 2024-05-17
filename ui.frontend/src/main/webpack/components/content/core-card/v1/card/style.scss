@@ -38,7 +38,7 @@
         form {
             width: 100%;
             height: 48px;
-            @include media-breakpoint-only(xs) {
+            @include media-breakpoint-down(md) {
                 height: auto;
             }
         }
@@ -146,6 +146,9 @@
 
       .btn {
         width: fit-content;
+        @include media-breakpoint-down(sm) {
+            width: auto !important;
+        }
       }
     }
 }
@@ -160,7 +163,7 @@
 // MP-2317 Ensure Vertical Cards in MD/SM Span Full Width. 
 .sl-cards {
     &.vertical {
-            @include media-breakpoint-only(xs) {
+            @include media-breakpoint-down(md) {
                 max-width: fit-content !important;
             }
         &:not(.auto){
