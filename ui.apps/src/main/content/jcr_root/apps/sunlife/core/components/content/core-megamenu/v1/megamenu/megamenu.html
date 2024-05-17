@@ -32,21 +32,25 @@
                             </a>
                         </li>
                     </ul>
-                    <sly data-sly-test="${menuSections.menuItems && menuSections.menuItems.size !=0}" data-sly-list.menuItems="${menuSections.menuItems}">
-                        <ul data-sly-test.menuItemLinkName="${menuItems.hideInMobile ? menuItems.menuItemLinkName : menuItems.mobileMenuItemLinkName}"
-                            class="d-inline d-md-inline d-lg-none d-xl-none d-xxl-none">
-                            <li>
-                                <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
-                                   class="dropdown-item text-wrap"
-                                   data-title="${menuItems.menuItemDataTitle}"
-                                   data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
-                                    <div class="d-inline">
-                                        <span>${menuItemLinkName}</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </sly>
+                    <ul 
+                      data-sly-test="${menuSections.menuItems && menuSections.menuItems.size != 0}" 
+                      data-sly-list.menuItems="${menuSections.menuItems}"
+                      class="d-inline d-md-inline d-lg-none d-xl-none d-xxl-none sl-mega-menu-subheading-items">
+                      <li
+                           data-sly-test="${!menuItems.hideInMobile}"
+                            data-sly-set.menuItemLinkName="${menuItems.mobileMenuItemLinkName ?  menuItems.mobileMenuItemLinkName : menuItems.menuItemLinkName}"
+                        >
+                            <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
+                                class="dropdown-item text-wrap"
+                                data-title="${menuItems.menuItemDataTitle}"
+                                data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
+                                <div class="d-inline">
+                                    <span>${menuItemLinkName}</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>
