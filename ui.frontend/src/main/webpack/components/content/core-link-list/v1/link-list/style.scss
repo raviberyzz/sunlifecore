@@ -177,6 +177,8 @@
     .sl-link-list .dropdown-menu {
       .dropdown-menu-link {
         &:hover{
+          font-family: "Sun Life New Text Regular", "Helvetica Neue", Calibri, sans-serif !important;
+          color: var(--grey-700, #5B6062) !important;
           text-decoration: underline;
         }
       }
@@ -214,7 +216,7 @@
           border:none;
         }
         
-        &.option-selected, &:hover {
+        &.option-selected {
           .dropdown-menu-link {
               @include sl-body-small-bold;
             color: var(--grey-900, #202223);
