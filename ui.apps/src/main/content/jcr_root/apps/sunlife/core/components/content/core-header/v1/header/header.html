@@ -19,7 +19,13 @@ data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 <div id="nav-header" class="sl-header ${headerModel.spacing}">
      <div class="nav-bar container">
           <div id="sl-nav" class="sl-nav navbar navbar-expand-lg navbar-light">
-               <button id="menuOpen" aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu"
+               <sly data-sly-set.isDisplayMegaMenu="${headerModel.displayMegaMenu == 'true' ? true : false}"></sly>
+               <sly data-sly-set.isDisplaySignIn="${headerModel.listFromSignin == 'signintrue' ? true : false}"></sly>
+               <sly data-sly-set.isDisplaySearch="${headerModel.listFromSearch == 'searchtrue' ? true : false}"></sly>
+               <sly data-sly-set.isDisplayUtilityNav="${headerModel.listFromNav == 'true' ? true : false}"></sly>
+               <sly data-sly-set.isDisplayRegion="${headerModel.listFromRegion == 'regiontrue' ? true : false}"></sly>
+               <sly data-sly-set.isDisplayLanguage="${headerModel.language == 'languagetrue' ? true : false}"></sly>
+               <button data-sly-test="${isDisplayMegaMenu || isDisplaySignIn || isDisplaySearch || isDisplayUtilityNav || isDisplayRegion || isDisplayLanguage}" id="menuOpen" aria-controls="sl-header-offcanvas" type="button" aria-label="Open menu"
                     class="navbar-toggler collapsed menuOpen" data-bs-toggle="offcanvas" data-bs-target="#sl-header-offcanvas">
                     <span class="fak fa-bars sl-icon_size_xl sl-icon"></span>
                </button>
