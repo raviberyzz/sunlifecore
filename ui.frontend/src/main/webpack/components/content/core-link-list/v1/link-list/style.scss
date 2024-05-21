@@ -177,7 +177,7 @@
     .sl-link-list .dropdown-menu {
       .dropdown-menu-link {
         &:hover{
-          font-family: "Sun Life New Text Regular", "Helvetica Neue", Calibri, sans-serif !important;
+          @include sl-body-small;
           color: var(--grey-700, #5B6062) !important;
           text-decoration: underline;
         }
