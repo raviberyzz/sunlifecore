@@ -155,13 +155,13 @@
 				$("[aria-describedby=" + id + "]")
 					.click()
 					.focus();
-				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
+				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
-			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == 32) {
+				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
+			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == util.constants.KeyCode.SPACE) {
 				let selectableElements = [].slice.call(
 					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
 				);
@@ -176,7 +176,7 @@
 					}
 				});
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
+				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 			}
 		}
 
