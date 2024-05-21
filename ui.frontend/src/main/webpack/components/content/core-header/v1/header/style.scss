@@ -384,6 +384,7 @@
         }
       }
       .sl-utility-nav {
+        margin-top: var(--2XL);
         .nav-link {
           margin: 1rem 0;
         }
@@ -625,6 +626,12 @@
             }
           }
         }
+
+        .region-divider {
+          @include media-breakpoint-down(xl){ 
+            display: none;
+          }
+        }
       }
     }
   }
@@ -645,5 +652,11 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+#menuClose {
+  .svg-inline--fa {
+    vertical-align: middle;
   }
 }
