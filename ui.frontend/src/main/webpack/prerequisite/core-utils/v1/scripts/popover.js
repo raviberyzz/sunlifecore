@@ -134,7 +134,7 @@
 		function closePopoverHandler() {
 			let [popoverElem, id] = getPopoverId($(this));
 			popoverElem.remove();
-			$(CONSTANTS.SELECTOR.popover).removeAttr("aria-describedby");
+			$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 			$("[aria-describedby=" + id + "]")
 				.click()
 				.focus();
