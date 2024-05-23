@@ -267,6 +267,16 @@
         }
     }
 
+    .coveo-pager-list:not(:has(.coveo-pager-previous)) {
+        .coveo-pager-list-item:first-of-type {
+            margin-left: 0;
+        }
+    }
+
+    .coveo-pager-previous {
+        margin-left: 0;
+    }
+
     #search-result-filters .coveo-tab-section {
         min-height: unset;
     }
