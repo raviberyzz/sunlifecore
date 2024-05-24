@@ -18,7 +18,7 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
                   <sly data-sly-resource="${ 'form-container' @ resourceType='sunlife/core/components/form/core-container/v1/container'}"/>
               </div>
             <!-- caption -->
-            <div class="caption-container">
+            <div data-sly-test="${model.bannerCaption}" class="caption-container">
               ${model.bannerCaption @ context ='html'}
             </div>
             <!-- link -->

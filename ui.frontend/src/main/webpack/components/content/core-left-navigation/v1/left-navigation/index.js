@@ -62,7 +62,7 @@
 		function handle2ndLevelNav(dropdown, i) {
             const level2Nav = dropdown.nextElementSibling;
             level2Nav.setAttribute(CONSTANT.ATTR.id, `${CONSTANT.CLASS.leftNavDropdown}${i}`);
-            level2Nav.classList.add(CONSTANT.CLASS.subMenu, CONSTANT.CLASS.collapse, CONSTANT.CLASS.nav, CONSTANT.CLASS.collapse, CONSTANT.CLASS.nav, CONSTANT.CLASS.ms1);
+            level2Nav.classList.add(CONSTANT.CLASS.subMenu, CONSTANT.CLASS.collapse, CONSTANT.CLASS.nav, CONSTANT.CLASS.collapse, CONSTANT.CLASS.nav);
             level2Nav.classList.remove(CONSTANT.CLASS.slLeftNav, CONSTANT.CLASS.navBarNav);
 
             if($leftNavMainList.childElementCount == 1 && i ==0){
