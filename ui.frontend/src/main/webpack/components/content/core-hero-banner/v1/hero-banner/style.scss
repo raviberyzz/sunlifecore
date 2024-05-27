@@ -22,11 +22,10 @@
 
     &.default .card-img-overlay {
         .neutral a, .bright a, .dark a {
-            display: flex;
-            align-items: flex-end;
             & > .svg-inline--fa {
             margin: 0;
             padding: 3.95px;
+            margin-bottom: -5px !important;
             }
         }
 
