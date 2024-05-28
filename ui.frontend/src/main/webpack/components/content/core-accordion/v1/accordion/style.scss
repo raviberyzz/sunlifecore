@@ -1,0 +1,39 @@
+.aem-AuthorLayer-Edit {
+  .sl-accordion .accordion-collapse {
+    display: block !important;
+    height: auto;
+    visibility: visible;
+  }
+}
+.sl-accordion {
+  .sl-icon {
+    height: 2rem;
+    &.hide {
+      display: none;
+    }
+    &.show {
+      display: block;
+    }
+  }
+
+  .collapse:not(.show) {
+    display: none;
+  }
+  .accordion-item {
+    .accordion-button {
+      background: transparent;
+    }
+  }
+
+  .accordion-header {
+    .accordion-button {
+      .accordion-item-heading {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .accordion-header {
+    margin-bottom: 0;
+  }
+}

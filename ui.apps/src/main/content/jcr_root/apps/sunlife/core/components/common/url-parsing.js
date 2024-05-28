@@ -1,24 +1,19 @@
 "use strict";
-use(function () {
-       var navPath = this.path;
-    if (navPath == null || navPath.equals("")) {
+const HTML_EXTENSION = ".html";
+use(function() {
+    var navPath = this.path;
+    if (navPath == null || navPath === "") {
         return {
-            navPath : navPath
+            navPath: navPath
         };
     }
-
-    if(navPath.indexOf("/content/sunlife") != -1){
-        if(navPath.indexOf("/?") != -1){
-			var splitUrl=navPath.split("/?");
-            navPath=splitUrl[0]+".html?"+splitUrl[1];
-        }
-        else{
-            navPath = navPath + ".html";
+    if (navPath.includes("/content/sunlife")) {
+        navPath = navPath.replace(/([\/#?])$/, HTML_EXTENSION + "$1");
+        if (!navPath.includes(HTML_EXTENSION)) {
+            navPath += HTML_EXTENSION;
         }
     }
-
     return {
-           navPath : navPath
-        }
-
-    });
+        navPath: navPath
+    }
+});

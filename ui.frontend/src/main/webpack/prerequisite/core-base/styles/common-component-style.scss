@@ -1,0 +1,99 @@
+/*
+* Styles shared across different components 
+*/
+.cmp-text, 
+.news-details-container,
+.article-container,
+.sl-media-block,
+.sl-banner-image-block,
+.footer-content-container .footer-content {
+    // Responsive image in text component
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /*
+    * Heading and Padding coexistance rules as per Helio's DS 
+    * https://www.figma.com/file/M1mZZos42Mmiuo2KhlGFJ2/1.0-Helios-Web-Foundations?type=design&node-id=5323-9222&mode=design&t=igK17wNBQb2Y2uAP-4
+    * https://intranet.sunnet.ca.sunlife:444/helios/docs/design/padding#padding-rules
+    */
+    // heading + heading
+    h1 + h2, p:has(.h1) + p:has(.h2), h1 + p:has(.h2), p:has(.h1) + h2 {
+        margin-top: var(--L);
+    }
+
+    h2 + h3, h3 + h4, h4 + h5, p:has(.h2,.h3,.h4) + p:has(.h3, .h4, .h5) {
+        margin-top: var(--M);
+    }
+    
+    // heading + para
+    h1 + p, p:has(.h1) + p {
+        margin-top: var(--M);
+    }
+
+    h2 + p, h3 + p, h4 + p, h5 + p, p:has(.h2, .h3, .h4, .h5) + p {
+        margin-top: var(--S); 
+    }
+
+    // para + heading
+    p + h2, p + p:has(.h2) {
+        margin-top: var(--2XL);
+    }
+
+    p + h3,p + p:has(.h3) {
+        margin-top: var(--XL);
+    }
+
+    p + h4, p + h5, p + p:has(.h4,.h5) {
+        margin-top: var(--L);
+    }
+}
+
+.hover-icn-cta {
+    .svg-inline--fa {
+        margin: 0 4px;
+    } 
+    .icn-hover-show {
+        display: none;
+    }
+
+    &:hover {
+        .icn-hover-hidden {
+            display: none;
+        }
+
+        .icn-hover-show {
+            display: inline-block;
+        }
+    }
+}
+
+.cmp-text,
+.sl-dynamic-card-container,
+.cmp-title {
+    scroll-margin-top: var(--3XL);
+    scroll-snap-margin-top: var(--3XL); /* iOS 11 and older */
+}
+
+// Qualtics feedback button A11y fix
+@media screen and (min-resolution: 120dpi) {
+    .QSISlider {
+        transform: scale(0.833);
+        transform-origin: 46px center;
+    }
+}
+
+@media screen and (min-resolution: 144dpi) { 
+    .QSISlider {
+        transform: scale(0.594);
+        transform-origin: 46px center;
+    }
+}
+
+@media screen and (min-resolution: 168dpi) {
+    .QSISlider {
+        transform: scale(0.395);
+        transform-origin: 46px center;
+    }
+}

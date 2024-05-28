@@ -1,0 +1,60 @@
+@import '@sunlife/ui-styles/base/variables';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+#vidyard-overlay, #vidyard-overlay-wrapper{
+  z-index: $zindex-modal-backdrop !important;
+}
+.vidyard-close-container,#vidyard-content-fixed{
+  z-index: $zindex-modal !important;
+}
+.sl-article-video-container {
+  .sl-article-video-component {
+    @include media-breakpoint-only(lg) {
+      max-width: 768px;
+      width: 100%;
+    }
+
+    @include media-breakpoint-only(xl) {
+      max-width: 768px;
+      width: 100%;
+    }
+
+    .sl-article-video-block {
+      .article-video-block-lightbox {
+        @include media-breakpoint-up(md) {
+          align-items: flex-start;
+        }
+        .video-container {
+          @include media-breakpoint-only(md) {
+            flex: 0 40%;
+          }
+          @include media-breakpoint-up(lg) {
+            flex: 0 36%;
+            height: 9.5rem;
+          }
+          iframe {
+            @include media-breakpoint-up(lg) {
+              height: 9.5rem;
+            }
+          }
+        }
+        .card-body {
+          @include media-breakpoint-only(md) {
+            flex: 0 60%;
+          }
+          @include media-breakpoint-up(lg) {
+            flex: 0 64%;
+          }
+        }
+      }
+    }
+
+    .sl-article-video-caption {
+      @include sl-body-small();
+      margin-top: 0.25rem;
+    }
+  }
+}

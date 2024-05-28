@@ -1,0 +1,12 @@
+<template data-sly-template.group="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html"
+      data-sly-use.itemContentTemplate="itemContent.html">
+    <div data-sly-list="${items}">
+     <div class="content">
+    <div class="heading" data-sly-test.itemCheck = "${item.level == 0}">
+        <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
+    </div>
+    <sly data-sly-test="${item.children.size > 0}" data-sly-call="${itemTemplate.item @ items = item.children, level= item.level}"></sly>
+    <hr class="sl-divider hr">
+    </div>
+    </div>
+</template>

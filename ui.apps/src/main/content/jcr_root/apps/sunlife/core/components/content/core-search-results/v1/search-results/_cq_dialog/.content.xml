@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Search Results"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <search
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search Results"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <searchResults
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Display Search Result Filter"
+                                                name="./searchResults">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".list-option-listFromSearch-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <withoutFilter
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Without Filter"
+                                                        value="withoutFilter"/>
+                                                    <withFilter
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="With Filter"
+                                                        value="withFilter"/>
+                                                </items>
+                                            </searchResults>
+                                            <withFilter
+                                                granite:class="hide list-option-listFromSearch-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="withFilter"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <resultsFilterHeading
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                emptyText="Leave this field empty to use the default text in English"
+                                                                fieldLabel="Filter your results"
+                                                                name="./resultsFilterHeading"/>
+                                                            <filterOptions
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                composite="{Boolean}true"
+                                                                fieldLabel="Filter Option Multifield">
+                                                                <field
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                    name="./filterOptions">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <dataID
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                    fieldDescription="Please configure the Filter 'data-id' from the predefine values. This will be same for all language authoring,availabe options such as 'All','Articles','Products','Tools','Videos'"
+                                                                                    fieldLabel="Data ID"
+                                                                                    name="./dataID"
+                                                                                    required="{Boolean}true"/>
+                                                                                <dataCaption
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                    fieldDescription="Please create the Filter Title based on the 'data-id' for the respective language being authored."
+                                                                                    fieldLabel="Filter Title"
+                                                                                    name="./filterTitle"
+                                                                                    required="{Boolean}true"/>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </field>
+                                                            </filterOptions>
+                                                        </items>
+                                                    </column>
+                                                </items>
+                                            </withFilter>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </search>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,38 @@
+.aem-AuthorLayer-Edit {
+    .tab-content>.tab-pane {
+        display: block;
+    }
+}
+.sl-tabs {
+    .stack-tab-container {
+        .nav-tabs.tabs-cluster {
+            flex: 1;
+            justify-content: space-between;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
+    }
+    .arrow-btn {
+        border: none;
+        background: none;
+        &.hide{
+            display: none;
+        }
+    }
+}
+.nav-item {
+    &.show {
+        display: block;
+    }
+    &.hide {
+        display: none;
+    }
+}
+.cmp-tabs__tab { 
+	box-sizing: inherit;
+    border-bottom: 0; 
+    padding: 0; 
+    cursor: pointer;
+}

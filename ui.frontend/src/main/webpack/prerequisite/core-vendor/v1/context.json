@@ -1,0 +1,6 @@
+{
+    "name": "core-vendor",
+    "categories": "sunlife.core-vendor.v1",
+    "isExplicitModule": true,
+    "isGlobalModule": true
+}

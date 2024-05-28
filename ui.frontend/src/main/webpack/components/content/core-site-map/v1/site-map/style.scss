@@ -1,0 +1,77 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+.content {
+    margin-top: 2.5rem;
+    .heading {
+        margin: 0 0 1.5rem 0;
+        .title {
+            @include sl-h5;
+            color: var(--grey-900);
+            text-decoration: none;
+            &:hover {
+                text-decoration-line: underline;
+            }
+            &:focus-visible {
+                outline: solid 0.125rem var(--brand-tertiary-500);
+            }
+        }
+    }
+    .container {
+        padding: 0;
+        .row {
+            margin: 0 0 2.5rem 0;
+            .container-content{
+                margin: 0 0 0 1rem;
+                .list-unstyled{
+                    margin: 0 !important;
+                    a{
+                        margin: 0 0 0 2rem !important;
+                    }
+                }
+            }
+            .list {
+                margin: 0 0 1.5rem 0;
+                padding: 0;
+                .title {
+                    @include sl-body-medium;
+                    color: var(--grey-900);
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration-line: underline;
+                    }
+                    &:focus-visible {
+                        outline: solid 0.125rem var(--brand-tertiary-500);
+                    }
+                }
+                .list-unstyled {
+                    margin: 0.75rem 0 0 0;
+                    .menu-item {
+                        @include sl-body-small;
+                        color: var(--grey-600);
+                        text-decoration: none;
+                        margin: 0 0 0.75rem 0;
+                        &:hover {
+                            text-decoration-line: underline;
+                            color: var(--grey-900);
+                        }
+                        &:focus-visible {
+                            outline: solid 0.125rem var(--brand-tertiary-500);
+                        }
+                    }
+                    .title {
+                        @include sl-body-small;
+                        color: var(--grey-600);
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration-line: underline;
+                            color: var(--grey-900);
+                        }
+                        &:focus-visible {
+                            outline: solid 0.125rem var(--brand-tertiary-500);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

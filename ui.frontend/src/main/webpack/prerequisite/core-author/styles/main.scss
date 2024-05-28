@@ -1,0 +1,29 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+.popover-button {
+    display: inline-block;
+}
+.link-list {
+    min-height: 47px;
+}
+.coral-Well {
+    background: #d7d7d7;
+}
+.aem-AuthorLayer-Edit {
+
+    .sl-notification.fade {
+          opacity: 1;
+    }
+}
+.cq-cmp-modal .modal {
+    display: block;
+    opacity: 1;
+    position: relative;
+    .modal-dialog {
+        transform: none;
+        .modal-content {
+            max-height: none !important;
+        }
+    }
+}

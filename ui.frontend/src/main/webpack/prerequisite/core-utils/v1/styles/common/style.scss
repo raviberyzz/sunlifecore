@@ -1,0 +1,23 @@
+
+// By default hide the internal & external far default icon
+@mixin hide-far-default-icon{
+    .svg-inline--fa {
+        margin: 0 4px;
+    } 
+    .icn-hover-show {
+        display: none;
+    }
+}
+
+// On mouse hover show the internal & external fas solid icon
+@mixin show-fas-soild-icon-on-hover{
+    &:hover {
+        .icn-hover-hidden {
+            display: none;
+        }
+
+        .icn-hover-show {
+            display: inline-block;
+        }
+    }
+}

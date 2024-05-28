@@ -1,0 +1,14 @@
+{
+    "notification": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "sunlife/ca/components/content/ca-notification/v1/notification",
+      "notificationType": "warning",
+      "notificationHeading": "Sample notification heading",
+      "buttonTitle": "Sample button title",
+      "buttonURL": "/content/sunlife/external/ca/en/explore-products/insurance",
+      "accessibilityLabel": "Sample accessibility label",
+      "dataTitle": "Sample data title",
+      "spacing": "mb-sl12"
+    }
+  }
+

@@ -1,0 +1,30 @@
+.sl-article-list-wrapper {
+    
+    .sl-pagination {
+        .sl-basic-pagination {
+            display: flex;
+            margin-top: var(--L);
+        }
+        
+        .ellipsis {
+            list-style: none !important;
+        }
+    }
+
+    .sl-cards a.card {
+        text-decoration: none;
+    }
+    
+}
+
+
+// disabling previous and next icons on pagination
+.icon-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+// Overriding team lego styles to fix focus state on page one link in pagination
+.sl-pagination .sl-basic-pagination .sl-pagination-item:not(.ellipsis).selected-item a:focus {
+    border-color: var(--brand-tertiary-500);
+}

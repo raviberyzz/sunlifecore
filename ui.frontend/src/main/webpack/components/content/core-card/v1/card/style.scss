@@ -1,0 +1,215 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+/* Style overirde for font-awesome icon fixes */ 
+.card {
+    .sl-link {
+        .svg-inline--fa {
+            width: 24px !important;
+            height: 24px !important;
+            margin-bottom: -5px;
+        }
+    }
+    .content-container {
+        .sl-cards & {
+            width: 100%;
+        }
+    }
+}
+
+.sl-card-icon {
+    height: 4rem !important;
+    width: 4rem !important;
+}
+
+/* Style for banner content block */ 
+.sl-banner-content-block  {
+    --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: var(--viewportWidth);
+
+    .caption-container p {
+        @include sl-body-small;
+        margin: 0;
+    }
+    
+    .grouped-form {
+        form {
+            width: 100%;
+            height: 48px;
+            @include media-breakpoint-down(md) {
+                height: auto;
+            }
+        }
+    }
+
+    .sl-btn.btn {
+        @include media-breakpoint-only(sm) {
+            width: fit-content;
+        }
+    }
+}
+
+/* Style for segmented content block */
+.sl-segmented-blocks {
+
+    .card {
+        form {
+            .sl-dropdown {
+                margin-top: 0;
+                .sl-helper-text {
+                    display: unset;
+                }
+            }
+        }
+
+        & > .card-body {
+            & > .icon-container {
+                & > .svg-inline--fa {
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-only(sm) {
+        .sl-btn.btn {
+            width: fit-content;
+        }
+    }
+}
+
+/* Style for avatar content block */ 
+.sl-avatar-blocks {
+    .card {
+        .card-body {
+            flex: 1 1 !important;
+
+            .card-title {
+                font-size: 1.25rem;
+            }
+        }
+        .body-quote {
+            width: 100%;
+        }
+    }
+}
+
+/* Style for media content block */ 
+.sl-media-block {
+    .sl-article-video iframe {
+        width: 100% !important;
+    }
+    .card-text{
+        padding-bottom: 0 !important;
+    }
+}
+
+.sl-media-block, 
+.sl-banner-content-block {
+    .card-text p:last-child {
+        margin-bottom: 0;
+    }
+}
+/* Style for banner-image content block */ 
+.sl-banner-image-block {
+    &.banner-image-block-left,
+    &.banner-image-block-right {
+      .card-body {
+
+        .sl-link {
+            .svg-inline--fa {
+                width: 24px !important;
+                height: 24px !important;
+                margin-bottom: -4px;
+            }
+        }
+        .card-text {
+            &:has(.caption-text) {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+          .caption-text p {
+            @include sl-body-small;
+            color: var(--grey-700);
+            margin-bottom: 0;
+            margin-top: 0.5rem;
+          }
+
+          a {
+            display: inline;
+          }
+        }
+      }
+
+      .btn {
+        width: fit-content;
+        @include media-breakpoint-down(sm) {
+            width: auto !important;
+        }
+      }
+    }
+}
+
+// TODO: Helios-bugfix - Need to remove once helios fix it
+.sl-cards.horizontal .card picture {
+    @include media-breakpoint-up(md) {
+        width: 50%;
+    }
+}
+
+// MP-2317 Ensure Vertical Cards in MD/SM Span Full Width. 
+.sl-cards {
+    &.vertical {
+            @include media-breakpoint-down(md) {
+                max-width: fit-content !important;
+            }
+        &:not(.auto){
+            .card {
+                .card-body {
+                    display: flex;
+                    flex-direction: column;
+
+                    .cta-container {
+                        margin-top: auto;
+                    }
+
+                    .content-container {
+                        .caption {
+                            margin-bottom: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+      .card {
+        &.multi-v {
+            @include media-breakpoint-down(md) {
+                flex-basis: 100%;
+            }
+        }
+      }
+    }
+}
+
+.sl-statistic-blocks {
+    .card {
+        .card-body {
+            .card-text {
+                color: var(--grey-700);
+            }
+        }
+    }
+}
+
+// Lego issue of 1.1.2 version, need to remove once updated to version 2.0.0 or above
+.sl-cards {
+    .clickable {
+        box-shadow: none;
+        &:hover {
+            box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, .1);
+        }
+    }
+}

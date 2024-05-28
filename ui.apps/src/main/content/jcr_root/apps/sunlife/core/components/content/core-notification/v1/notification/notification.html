@@ -1,0 +1,75 @@
+<sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
+     data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}">
+    <div role="alert"
+         class="fade sl-notification alert alert-${notification.notificationType} show ${notification.spacing}" data-section="site-level-notification">
+        <div class="container">
+            <sly data-sly-test.displayNotificationHeading="${notification.notificationHeading} ">
+                <div class="notification-component" aria-label="${notification.accessibilityLabel}"
+                     data-title="${notification.dataTitle}">
+                    <div class="notification-icon">
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'info'}"> <span class="sl-icon fak fa-info sl-icon_color_information sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'success'}"> <span class="sl-icon fak fa-check-circle-yes sl-icon_color_success sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'warning'}"> <span class="sl-icon fak fa-exclamation-circle sl-icon_color_warning sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'danger'}"> <span class="fak fa-exclamation-triangle sl-icon_size_md sl-icon_color_error"></span> </sly>
+                    </div>
+                    <div class="h4 notification-heading">${notification.notificationHeading}</div>
+                    <div class="notification-buttons">
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span
+                                class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></button>
+                        </span> </div>
+                </div>
+                <div class="multiline-notification-text">${notification.text @context ='html'}</div>
+                <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}">
+                    <button class="sl-btn multiline-action-button btn btn-secondary-small"
+                            data-sly-attribute.loadButton="${notificationButton}"
+                            data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
+                            type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
+                            data-sly-attribute.target="${notification.buttonTarget}"
+                            aria-label="${notification.buttonAccessibilityLabel}"> ${notification.buttonTitle}
+                    </button>
+                </sly>
+            </sly>
+
+            <sly data-sly-test.displayNotificationHeading="${!notification.notificationHeading} ">
+                <div class="notification-component" aria-label="${notification.accessibilityLabel}"
+                     data-title="${notification.dataTitle}">
+                       <div class="notification-icon">
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'info'}"> <span class="sl-icon fak fa-info sl-icon_color_information sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'success'}"> <span class="sl-icon fak fa-check-circle-yes sl-icon_color_success sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'warning'}"> <span class="sl-icon fak fa-exclamation-circle sl-icon_color_warning sl-icon_size_md"></span> </sly>
+                        <sly data-sly-test.slIcon="${notification.notificationType == 'danger'}"> <span class="fak fa-exclamation-triangle sl-icon_size_md sl-icon_color_error"></span> </sly>
+                    </div>
+                    <div class="notification-text">${notification.text @context ='html'}</div>
+                    <div class="notification-buttons">
+                        <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}">
+                            <sly data-sly-test="${!notification.multiline}">
+                                <button class="sl-btn oneline-action-button btn btn-secondary-small"
+                                    data-sly-attribute.loadButton="${notificationButton}"
+                                    data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
+                                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
+                                    data-sly-attribute.target="${notification.buttonTarget}"
+                                    aria-label="${notification.buttonAccessibilityLabel}">
+                                 ${notification.buttonTitle}
+                                </button>
+                            </sly>
+                        </sly>
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span
+                                class="sl-icon fak fa-close sl-icon_non-interactive sl-icon_size_md"></span>
+                        </button>
+                    </div>
+                </div>
+                <button data-sly-test=${notification.multiline} class="sl-btn multiline-action-button btn btn-secondary-small"
+                    data-sly-attribute.loadButton="${notificationButton}"
+                    data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
+                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
+                    data-sly-attribute.target="${notification.buttonTarget}"
+                    aria-label="${notification.buttonAccessibilityLabel}">
+                        ${notification.buttonTitle}
+                </button>
+            </sly>
+        </div>
+        </div>
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>

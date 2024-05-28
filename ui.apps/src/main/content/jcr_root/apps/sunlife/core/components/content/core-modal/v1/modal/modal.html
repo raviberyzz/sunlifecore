@@ -1,0 +1,42 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+    data-sly-use.modalObj="ca.sunlife.web.cms.core.models.v1.Modal">
+
+    <sly data-sly-test="${modalObj.modalTypes == 'standardModal' || modalObj.modalTypes == 'formModal'}"> 
+        <div class="modal fade sl-modal" id="${modalObj.modalID}" tabindex="-1" data-triggerOnScroll="${modalObj.trigger}" aria-labelledby="modalTitle-${modalObj.modalID}"
+            data-section="${modalObj.dataSection}">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <span id="two-button-modal-start-sr" class="visually-hidden">Start of dialog
+                        window</span>
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="modalTitle-${modalObj.modalID}">${modalObj.heading}</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span class="fak fa-close sl-icon_size_xl sl-icon"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body" tabindex="0">
+                        ${modalObj.content @context='html'}
+                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+                            <div data-sly-resource="${ 'modal-grid' @ resourceType='sunlife/core/components/form/core-container/v1/container'}" >
+                            </div>
+                        </sly>
+                        <sly data-sly-test="${modalObj.modalTypes == 'formModal'}">
+                            ${modalObj.additionalText @context='html'}    
+                        </sly>
+                    </div>
+                    <sly data-sly-test="${modalObj.modalTypes == 'standardModal'}">
+                        <div class="justify-content-start modal-footer" data-sly-list.buttonList="${modalObj.buttons}">
+                            <a data-sly-use.buttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=buttonList.linkURL}" href="${buttonURL.navPath}" class="sl-btn btn ${buttonList.buttonType}"
+                                target="${buttonList.linkTarget}"  data-title="${buttonList.dataTitle}" >${buttonList.buttonText}</a>
+                        </div>
+                    </sly>
+                    <span id="two-button-modal-end-sr" class="visually-hidden">End of dialog window</span>
+                </div>
+            </div>
+        </div>
+    </sly>
+</sly>
+
+<sly data-sly-test="${!modalObj.modalID}">
+    <sly data-sly-call="${templates.placeholder @ isEmpty = !modalID, classAppend=''}"></sly>
+</sly>

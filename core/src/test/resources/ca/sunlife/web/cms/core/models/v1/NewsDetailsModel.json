@@ -1,0 +1,9 @@
+{
+  "newsdetails": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/core/components/content/core-news-details/v1/core-news-details",
+    "accessibilityLabel": "Sample accessibility label",
+    "spacing": "mb-sl12"
+
+  }
+}

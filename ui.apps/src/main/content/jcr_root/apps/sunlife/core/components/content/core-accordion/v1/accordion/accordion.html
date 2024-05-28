@@ -1,0 +1,57 @@
+<div
+  data-sly-use.accordion="ca.sunlife.web.cms.core.models.v1.CustomAccordion"
+  class="sl-accordion ${accordion.spacing}"
+  data-sl-component="accordion"
+  aria-label="${accordion.accessibilityLabel}"
+  data-title="${accordion.dataTitle}"
+>
+  <div class="accordion">
+    <div
+      data-sly-test="${accordion.items.size > 0}"
+      data-sly-repeat.item="${accordion.items}"
+      class="accordion-item ${item.name in accordion.expandedItems ? 'expand-collapse' : ''}"
+      data-cmp-hook-accordion="item"
+      data-cmp-expanded="${item.name in accordion.expandedItems}"
+    >
+      <div
+        data-sly-element="${accordion.headingElement @ context='elementName'}"
+        class="${accordion.headingElement} accordion-header" 
+        data-single-expansion="${accordion.singleExpansion}"
+      >
+        <button
+          data-cmp-hook-accordion="button"
+          aria-label="${item.title}"
+          class="accordion-button ${item.name in accordion.expandedItems ? '' : 'collapsed'}"
+          data-bs-toggle="collapse"
+          data-bs-target="#accordion${item.name}"
+          aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}"
+          type="button"
+        >
+          <span class="accordion-icon-container">
+            <span
+              class="sl-icon fal fa-chevron-up ${item.name in accordion.expandedItems ? 'show' : 'hide'}"
+            ></span>
+            <span
+              class="sl-icon fal fa-chevron-down ${item.name in accordion.expandedItems ? 'hide' : 'show'}"
+            ></span>
+          </span>
+          <span class="accordion-item-heading ${accordion.headingElement}">${item.title}</span>
+        </button>
+      </div>
+      <div
+        class="accordion-collapse collapse ${item.name in accordion.expandedItems && 'show expanded'}"
+        id="accordion${item.name}"
+      >
+        <div
+          class="accordion-body"
+          data-sly-resource="${item.name @ decorationTagName='div'}"
+          data-cmp-hook-accordion="panel"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <sly
+    data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/responsivegrid', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+    data-sly-test="${(wcmmode.edit || wcmmode.preview) && accordion.items.size < 1}"
+  ></sly>
+</div>

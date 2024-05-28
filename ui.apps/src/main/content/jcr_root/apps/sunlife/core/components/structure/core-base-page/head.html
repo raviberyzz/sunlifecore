@@ -1,0 +1,59 @@
+<template data-sly-template.head="${ @ page, baseModel }"
+    data-sly-use.headlibRenderer="headlibs.html"
+    data-sly-use.headResources="head.resources.html">
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>${baseModel.seoPageTitle @context = 'html'}</title>
+    <meta data-sly-test.description="${baseModel.seoDescription @context = 'html'}" name="description" content="${description @context = 'unsafe'}"/>
+    <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}"/>
+    <meta data-sly-test="${!baseModel.nonResponsive}" name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="${baseModel.pageIndexing == 'true' ? 'noindex' : 'index'}">    
+    
+    <sly data-sly-test="${baseModel.favIcon}">
+        <link rel="icon" href="${baseModel.favIcon}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="${baseModel.favIcon}" type="image/x-icon"/>
+    </sly>
+    
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
+        <sly data-sly-call="${clientLib.css @ categories='sunlife.core.contexthub'}"></sly>
+    </sly>
+
+    <sly data-sly-include="customheaderlibs.html"></sly>
+
+    <sly data-sly-call="${headlibRenderer.headlibs @
+                                designPath                = page.designPath,
+                                staticDesignPath          = page.staticDesignPath,
+                                clientLibCategories       = page.clientLibCategories,
+                                clientLibCategoriesJsHead = page.clientLibCategoriesJsHead,
+                                hasCloudconfigSupport     = page.hasCloudconfigSupport}"></sly>
+
+    <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
+    
+    <!-- Include Context Hub -->
+	<sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
+		<sly data-sly-test="${wcmmode.edit}">
+			<sly data-sly-call="${clientLib.js @ categories='granite.utils'}"/>
+			<sly data-sly-call="${clientLib.all @ categories='cq.widgets'}"></sly>
+        </sly> 
+        <sly data-sly-call="${clientLib.js @ categories='sunlife.core.contexthub'}"></sly>
+		<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
+	</sly>
+    
+    <!-- Include Author specific clientlib -->
+    <sly data-sly-test="${wcmmode.edit}" 
+        data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+        data-sly-call="${clientlib.all @ categories=['sunlife.core-author']}"/>
+
+
+	<!-- Include Extra Clientlibs -->
+	<sly data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
+        <sly data-sly-call="${clientLib.css @ categories=extraClientlibs}"></sly>
+    </sly>
+    <sly data-sly-include="head.socialmedia.html"></sly>
+	<!-- Include MFA Domain Path -->
+    <sly data-sly-test="${baseModel.mfaDomainPath}">
+		<script>var serverUrl = '${baseModel.mfaDomainPath @ context="scriptString"}';</script>
+		<script>var tsCryptoMode = '${baseModel.mfaEncryption @ context="scriptString"}';</script>
+	</sly>
+</template>

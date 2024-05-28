@@ -1,0 +1,67 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+
+.sl-notification {
+    --viewportWidth: calc(100vw - var(--scrollbarWidth, 17px));
+    width: var(--viewportWidth);
+    left: 50%;
+    margin-right: calc(var(--viewportWidth) / -2);
+    margin-left: calc(var(--viewportWidth) / -2);
+
+    @include media-breakpoint-up(md){
+        a.sl-btn.btn {
+            display: flex;
+            width: max-content;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .container {
+            padding-left: 2.75rem;
+            padding-right: 2.75rem;
+        }
+    }
+   
+    .sl-icon_color_information {
+        color: var(--brand-secondary-800);
+    }
+    
+     .sl-icon_color_success {
+        color: var(--green-800);
+    }
+    
+     .sl-icon_color_warning {
+        color: var(--brand-primary-800);
+    }
+    
+     .sl-icon_color_error {
+        color: var(--red-800);
+    }
+    
+     .notification-icon svg {
+        vertical-align: bottom;
+    }
+
+    .notification-text p {
+        margin-bottom: 0;
+    }
+    
+     .btn-close {
+        height: 1.5rem;
+        padding: 0;
+        --bs-btn-close-opacity : 1;
+        .sl-icon {
+            vertical-align: middle;
+          }
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &:focus-visible{
+            outline: none;
+            box-shadow: 0 0 0 0.125rem var(--brand-tertiary-500);
+        }
+    }
+  
+}

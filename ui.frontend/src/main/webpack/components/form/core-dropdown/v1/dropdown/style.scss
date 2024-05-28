@@ -1,0 +1,33 @@
+.sl-dropdown .combo-input {
+    padding-right: 16px;
+    justify-content: right;
+}
+
+.sl-helper-text.hint-text:has(~ .sl-helper-text.error-text.combo-msg.filled) {
+    display: none;
+}
+
+.fa-exclamation-triangle.sl-icon:not(:has(+ .parsley-custom-error-message)) {
+    display: none;
+}
+
+.sl-helper-text.error-text.combo-msg.filled .sl-icon {
+    margin: 0;
+    margin-right: 8px;
+    height: 0.75rem;
+    width: 0.75rem !important;
+}
+
+.options .sl-dropdown {
+    .error-text {
+        display: inline-flex !important;
+        align-items: center;
+    }
+    
+}
+
+.sl-dropdown {
+    .combo-option {
+        cursor: default;
+    }
+}

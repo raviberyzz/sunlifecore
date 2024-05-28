@@ -1,0 +1,37 @@
+<div data-sly-use.options="ca.sunlife.web.cms.core.models.v1.FormOptionsModel" 
+      data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
+	  data-section="${options.dataSection}" 
+	  class="sl-options ${options.spacing}">
+    <sly data-sly-test.isConfigured="${(wcmmode.edit) && (options.name)}" />
+    <sly data-sly-test="${(options.type == 'CHECKBOX' || options.type == 'RADIO') && (options.name)}">
+        <label class="cmp-form-options__label">${options.title}</label>
+        <div class="field-group-container formValidate">
+            <div class="sl-${options.type == 'CHECKBOX'? 'checkbox': 'radio'} form-check ${options.layout == 'inline' ? 'form-check-inline': ''}" data-sly-repeat.optionItem="${options.items}">
+                <label for="options${options.id}${optionItemList.index}">
+                    <input
+                        class="form-check-input form-field"
+                        type="${options.type == 'CHECKBOX'? 'checkbox': 'radio'}"
+                        name="${options.name}"
+                        id="options${options.id}${optionItemList.index}"
+                        disabled="${optionItem.disabled}"
+                        data-parsley-error-message="${options.constraintMessage}"
+                        required="${options.required}"
+                        value="${optionItem.value}"
+                        checked="${optionItem.selected}"/>
+                    <span class="form-check-label">${optionItem.text}</span>
+                </label>
+            </div>
+            <div data-sly-test="${options.required}" class="sl-helper-text error-text sl-textfield-helper-text">
+                <span class="fak fa-exclamation-triangle sl-icon_size_sm sl-icon_color_error sl-icon_non-interactive" role="presentation"></span>
+                <sly data-sly-test="${options.constraintMessage}">
+                    ${options.constraintMessage}
+                </sly>
+                <sly data-sly-test="${!options.constraintMessage}">
+                    The value is required
+                </sly>
+            </div>
+            <div data-sly-test="${options.helpMessage}" class="help-message">${options.helpMessage}</div>
+        </div>
+    </sly>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isConfigured, classAppend='cmp-form-options'}"></sly>

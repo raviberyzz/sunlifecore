@@ -19,7 +19,7 @@
     <groupId>ca.sunlife.web.cms</groupId>
     <artifactId>web-cms-aem-core</artifactId>
     <packaging>pom</packaging>
-    <version>1.273.0-SNAPSHOT</version>
+    <version>1.283.0-SNAPSHOT</version>
     <name>CMS AEM core application project</name>
     <description>CMS AEM core application project</description>
 
@@ -876,7 +876,20 @@ Bundle-DocURL:
                 <artifactId>jcr</artifactId>
                 <version>2.0</version>
                 <scope>provided</scope>
+            </dependency>			
+			<!-- Groovy dependencies -->
+			<dependency>
+                <groupId>com.icfolson.aem.groovy.console</groupId>
+                <artifactId>aem-groovy-console</artifactId>
+                <version>14.0.0</version>
+                <scope>provided</scope>
             </dependency>
+			<dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>2.4.15</version>
+                <scope>provided</scope>
+            </dependency>				
             <!-- Taglibs -->
             <dependency>
                 <groupId>com.day.cq.wcm</groupId>
@@ -989,7 +1002,14 @@ Bundle-DocURL:
          <type>zip</type>
        </dependency>
        <!-- Email Core component -->
-        </dependencies>
+       <!-- project lombok include -->
+       <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.20</version>
+        <scope>provided</scope>
+     </dependency>
+    </dependencies>
     </dependencyManagement>
     
     <scm>
