@@ -152,10 +152,10 @@
 			if (event.key === util.constants.key.ESC) {
 				event.preventDefault();
 				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 				$("[aria-describedby=" + id + "]")
 					.click()
 					.focus();
+				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
 			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
 				event.preventDefault();
 				$("[aria-describedby=" + id + "]").focus();

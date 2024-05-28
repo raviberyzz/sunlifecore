@@ -28,7 +28,8 @@
                 navHeader: "#nav-header",
                 navBar: ".navbar",
                 mainContent: "#main-content",
-                experiencefragment : '.experiencefragment '
+                experiencefragment : '.experiencefragment ',
+                slider: '.QSISlider'
             },
             CLASS: {
                 slUtilityBar: "sl-utility-bar",
@@ -104,6 +105,9 @@
         * @return void
         */
         function callMenuOpen() {
+            if($(CONSTANT.SELECTOR.slider).length) {
+                $(CONSTANT.SELECTOR.slider).hide();
+            }
             $comp.append($offCanvasEl)
         }
 
@@ -115,6 +119,9 @@
         * @return void
         */
         function callMenuClose() {
+            if($(CONSTANT.SELECTOR.slider).length) {
+                $(CONSTANT.SELECTOR.slider).show();
+            }
             $slNavNode.append($offCanvasEl);
         }
 
