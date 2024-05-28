@@ -1,0 +1,28 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+
+.news-details-container {
+    ul {
+        padding: 0;
+        list-style: none;
+        vertical-align: middle;
+        }
+    ul > li {
+        font-size: 16px;
+        background-image: none;
+        background-repeat: no-repeat;
+    }
+
+    .news-release-date {
+        @include sl-body-small;
+    }
+
+    .news-release-date, 
+    .h1 {
+        margin-bottom: var(--S);
+    }
+
+    p {
+        @include sl-body-medium;
+    }
+}

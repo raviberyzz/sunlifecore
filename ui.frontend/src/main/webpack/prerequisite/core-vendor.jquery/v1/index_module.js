@@ -1,0 +1,1 @@
+import './scripts/jquery-3.6.0.js';

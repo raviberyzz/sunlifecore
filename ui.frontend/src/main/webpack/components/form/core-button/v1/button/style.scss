@@ -1,0 +1,22 @@
+@import 'bootstrap/scss/mixins';
+@import '@sunlife/ui-styles/base/variables.scss';
+
+.sl-btn.btn.full-width {
+    max-width: none;
+    width: 100%;
+}
+
+@include media-breakpoint-up(md) {
+ 
+    .form-container-component form .layout-container .button:has(.inline-button) {
+        display: inline-block;
+    }
+    
+    .form-container-component form .layout-container .inline-button {
+        margin-right: 24px;
+    }
+}
+
+form .layout-container .sl-btn.btn {
+    margin-top: 0 !important;
+}

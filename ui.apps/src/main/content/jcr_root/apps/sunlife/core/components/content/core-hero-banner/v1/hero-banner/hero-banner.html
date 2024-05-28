@@ -1,0 +1,30 @@
+<!--/*  
+Hero Banner Component
+
+Hero banner is a type of component that helps identify/advertise a particular page of the website. The banner component should always come on the top of the page as a main component below the main navigation. Hero banners are only required on the home pages. On secondary pages the hero banner is optional.
+
+Hero Banner component has 2 variations - Login and Default.
+- Image (required)
+- Content block colour background (required)
+- Heading (required)
+- Body (optional)
+- Button or link (optional)
+- For Login variation
+   - Login content block: for more information about login please check login template specification (required)
+
+Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=2158-7258&mode=design&t=oKgv6HCyIh2ZJ7pj-4
+*/-->
+<div 
+   data-sly-use.heroBanner="ca.sunlife.web.cms.core.models.v1.HeroBannerModel"
+   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+   data-sly-test.hasContent="${heroBanner.imgDesktopFileReference}">
+
+   <!--/* Include Default hero banner component variation  */-->
+   <sly 
+   data-sly-test="${!image.avatar}"
+   data-sly-use.defaultTpl="templates/default.html"
+   data-sly-call="${defaultTpl.details @ heroBanner=heroBanner}"></sly>
+
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent, classAppend='cmp-hero-banner'}"></sly>
+

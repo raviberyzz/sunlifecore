@@ -1,0 +1,14 @@
+<template data-sly-template.logo="${ @ headerModel }">
+    <!-- Single Logo Changes -->
+<sly>
+    <div data-sly-test="${headerModel.listFrom == 'yes'}" class="offcanvas-logo-container offcanvas-title h5" id="offcanvas-label" data-section="header-logo">
+        <sly data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=headerModel.linkURL}">
+            <a href="${utilityListParsing.navPath @ extension = 'html'}" target="${headerModel.target}" class="sl-logo utility-nav-item-container">
+                <img alt="${headerModel.altText}" src="${headerModel.mobileLogoImage}">
+            </a>
+        </sly>
+   </div>
+</sly>
+</template>
+
+

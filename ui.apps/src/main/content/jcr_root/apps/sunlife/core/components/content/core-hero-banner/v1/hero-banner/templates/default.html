@@ -1,0 +1,70 @@
+<!--/*  
+Hero Banner Default Component Variation
+
+Hero banner is a type of component that helps identify/advertise a particular page of the website.
+This is default banner component variation template.
+
+Hero Banner component default variation.
+- Image (required)
+- Content block colour background (required)
+- Heading (required)
+- Body (optional)
+- Button or link (optional)
+
+Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-Web-Components?type=design&node-id=2275-6726&mode=design&t=oKgv6HCyIh2ZJ7pj-4
+*/-->
+
+<template data-sly-template.details="${ @ heroBanner }">
+    <div
+	  data-sly-use.btnURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.btnURL}"
+	  data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.linkURL}"	  
+      class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
+      data-section="${heroBanner.dataSection}"
+      role="banner">
+      <picture class="picture-container" style="width:var(--viewportWidth);">
+         <source srcset="${heroBanner.imgDesktopFileReference}" media="(min-width: 1240px)">
+         <source srcset="${heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(min-width: 905px)">
+         <source srcset="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(min-width: 600px)">
+         <img
+             src="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" 
+             alt="${heroBanner.altText || true}" 
+             class="card-img"
+             itemprop="contentUrl" 
+             style="width: 100%;"/> 
+     </picture>
+      <div class="card-img-overlay container">
+         <div class="h-100 ${heroBanner.contentAlignment} lg row">
+            <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+               <div 
+                  class="${heroBanner.backgroundStyle} card-content-overlay"
+                  data-sly-set.isBtn="${heroBanner.ctaType == 'button' ? true : false }">
+                  <h1 
+                     class="h1 card-title">
+                     ${heroBanner.heading}
+                  </h1>
+                  <div class="card-text">${heroBanner.description @ context = 'html'}</div>
+                  <a 
+                     data-sly-test="${heroBanner.ctaType != 'noCTA'}"
+                     target="${ isBtn ? heroBanner.ctaTarget : heroBanner.target }" 
+                     href="${isBtn ? btnURL.navPath : linkURL.navPath}"
+                     data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
+                     class="${isBtn ? 'sl-btn btn btn-primary' : linkStyle }"
+                     data-title="${heroBanner.dataTitle}"
+                     data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType }">
+                        <sly data-sly-test="${iconType =='file-pdf'}">
+                           <i class="far fa-${iconType}" aria-hidden="true"></i>
+                        </sly>
+                        ${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }
+                        <sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}">
+                           <i class="far fa-${iconType} ${iconType == 'chevron-circle-right' ? 'icn-hover-hidden' : ''}" aria-hidden="true"></i>
+                           <sly data-sly-test="${iconType == 'chevron-circle-right'}">
+                              <i class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true"></i>
+                           </sly>
+                        </sly>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</template>

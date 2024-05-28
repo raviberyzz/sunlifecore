@@ -1,0 +1,25 @@
+
+<div data-sly-use.image="ca.sunlife.web.cms.core.models.v1.ImageModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-test="${image.fileReference || image.fileReferenceMobile || image.avatar}"
+     data-cmp-is="image"
+     data-cmp-lazy="${image.lazyEnabled}"
+     data-asset="${image.fileReference}"
+     data-asset-id="${image.uuid}"
+     data-section="${image.dataSection}"
+     class="cmp-image image-container ${image.spacing} ${image.imageAlignment} ${!wcmmode.disabled ? ' cq-dd-image' : ''}"
+     itemscope itemtype="http://schema.org/ImageObject">
+
+        <!--/* Include generic image view if isAvatar is unchecked  */-->
+        <sly 
+            data-sly-test="${!image.avatar}"
+            data-sly-use.genericImageTpl="templates/generic-image.html"
+            data-sly-call="${genericImageTpl.details @ image=image}"></sly>
+
+        <!--/* Include avatar view if isAvatar is selected */-->
+        <sly 
+            data-sly-test="${image.avatar}"
+            data-sly-use.avatarTpl="templates/avatar.html"
+            data-sly-call="${avatarTpl.details @ image=image}"></sly>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !image.fileReference, classAppend = 'cmp-image cq-dd-image'}"></sly>

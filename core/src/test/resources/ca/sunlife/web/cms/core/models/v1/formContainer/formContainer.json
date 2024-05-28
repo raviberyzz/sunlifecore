@@ -1,0 +1,12 @@
+{
+  "formContainer": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "sunlife/ca/components/form/ca-container/v1/container",
+    "formAction": "submit",
+    "validation": "required",
+    "dataSection": "test-dataSection",
+    "formTarget": "newTab",
+    "spacing": "mb-s18",
+    "actionType": "input"
+  }
+}

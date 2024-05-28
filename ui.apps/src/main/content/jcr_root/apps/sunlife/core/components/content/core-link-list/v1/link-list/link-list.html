@@ -1,0 +1,20 @@
+<!--/*  
+Link-list Component Wrapper View
+*/-->
+<sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.v1.LinklistModel" />
+<sly data-sly-test.empty="${!(listModel.title || listModel.links)}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<sly data-sly-test.isEditorial="${listModel.isEditorial}" />
+
+<!--/* Include Editorial Link-list view if isEditorial is selected */-->
+<sly 
+    data-sly-test="${isEditorial}"
+    data-sly-use.editorialTpl="templates/editorial-link-list.html"
+    data-sly-call="${editorialTpl.details @ listModel=listModel}"></sly>
+
+<!--/* Include Normal Link-list view if isEditorial is unchecked */-->
+<sly 
+    data-sly-test="${!isEditorial}"
+    data-sly-use.listLinksTpl="templates/list-links.html"
+    data-sly-call="${listLinksTpl.details @ listModel=listModel}"></sly>
+

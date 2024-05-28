@@ -1,0 +1,237 @@
+// ====================== ISSUE LIST 1 ======================================
+
+// CDT-2242 Issue 2 and 3
+  /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/270781f431b0aae7420c800e74789c0c4d9df48e */
+  /* header.scss */
+  /* tab */
+  @include media-breakpoint-down(lg) {
+    .sl-header .sl-nav .utility-nav-item-container {
+      height: 4.5rem;
+    }
+    .sl-header .sl-nav .sl-logo img {
+      min-width: 8rem;
+      min-height: 2rem;
+    }
+  }
+  /* mob */
+  @include media-breakpoint-down(sm) {
+    .sl-header .sl-nav .utility-nav-item-container {
+      height: 3.5rem;
+    }
+    .sl-header .sl-nav .sl-logo img {
+      min-width: 7rem;
+      min-height: 1.75rem;
+    }
+  }
+
+  // CDT-2242 Issue 5 and 6
+  /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/6d862327d1a0b47a35f7eeb10666523ae7e87936 */
+  /* megaMenu.scss */
+  @include media-breakpoint-down(lg) {
+    .sl-mega-menu .dropdown .main-nav-item-container {
+      align-items: center;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .sl-mega-menu
+      .dropdown
+      .dropdown-menu
+      .extensive-menu
+      .menu-header-container {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+
+//   CDT-2250
+  /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/1d14cfd05df7e251b8b4b63f5df2df48111e8c07 */
+  /* banner.scss */
+  .sl-banner.login .login-form {
+    background-color: rgba(249, 250, 250, 0.95);
+  }
+  .sl-banner.default .card-img-overlay .dark {
+    background-color: rgba(0, 57, 70, 0.92);
+  }
+  .sl-banner.default .card-img-overlay .neutral {
+    background-color: rgba(255, 255, 255, 0.92);
+  }
+  .sl-banner.default .card-img-overlay .bright {
+    background-color: rgba(255, 248, 224, 0.92);
+  }
+
+// ====================== ISSUE LIST 2 ======================================
+
+//   CDT-2251 (Related bug: CDT-2324)
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/fcea1820e9c51ee7063bb9cfb443ccb1d0a18486 */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/ec3dfaddb43d6f16e8288457488da266f25bb6a4 */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/cd266ea10f197bfb54d432700cc86de521e33244 */
+// /* cards.scss */
+.sl-cards.horizontal .card .card-body {
+    flex-shrink: 0;
+  }
+
+  .sl-cards.vertical img {
+    height: 11.5rem;
+    object-fit: cover;
+    @include media-breakpoint-only(sm) {
+      height: 18.875rem;
+    }
+    @include media-breakpoint-only(md) {
+      height: 13.375rem;
+    }
+    @include media-breakpoint-up(lg) {
+      height: 12.9375rem;
+    }
+  }
+
+  .sl-cards.horizontal .card picture {
+    @include media-breakpoint-only(sm) {
+      height: 18.875rem;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 11.5rem;
+    }
+  }
+
+
+//   CDT-2346
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/17ef89769ec28ddadce8a68dc8dd4673ebd7fe8d */
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/8c14b52348adc0c1dc6b5a718c444a9e7933b13b */
+// /* avatarBlocks.scss */
+.sl-avatar-blocks .card {
+  flex-wrap: nowrap;
+
+  width: width-by-cols(xs, 12);
+  @include media-breakpoint-up(lg) {
+    max-width: width-by-cols(lg, 6);
+  }
+  @include media-breakpoint-only(md) {
+    width: width-by-cols(md, 12);
+  }
+  @include media-breakpoint-only(sm) {
+    width: width-by-cols(sm, 12);
+  }
+}
+
+  .sl-avatar-blocks .card.avatar-body {
+    flex-wrap: wrap;
+      width: width-by-cols(xs, 12);
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 8);
+        max-width: width-by-cols(lg, 8);
+      }
+      @include media-breakpoint-only(md) {
+        width: width-by-cols(md, 12);
+      }
+      @include media-breakpoint-only(sm) {
+        width: width-by-cols(sm, 12);
+      }
+  }
+
+  .sl-avatar-blocks .card.avatar-body .body-quote {
+    @include sl-body-medium-italic;
+    margin-top: 1rem;
+    flex-basis: 100%;
+  }
+
+  .sl-avatar-blocks .card .card-body {
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(sm) {
+      width: 70%;
+    }
+  }
+
+// CDT-2345
+// /* COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/06ac8b15a73ce0c56d2576102b1fd0cfb28edd1e */
+  .sl-cards.horizontal .card.icon .card-body .content-container {
+    width: 100%;
+  }
+
+  .sl-cards.vertical{
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
+  }
+
+  .sl-cards.vertical .card.multi-v {
+    flex-basis: auto;
+    @include media-breakpoint-only(md) {
+      flex-basis: auto;
+    }
+  }
+
+  // CDT-2404
+  // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/0d974332be0fed01902af2d135ee7f1d3cbef1cd */
+  // mediaBlock.scss
+
+  .sl-media-block.card {
+    width: width-by-cols(xs, 12);
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 12);
+        min-height: 19.875rem; //UX spec - Desktop and Laptop (min height)
+      }
+      @include media-breakpoint-only(md) {
+        width: width-by-cols(md, 12);
+        min-height: 13.375rem; //UX spec - Tablet landscape (min height)
+      }
+      @include media-breakpoint-only(sm) {
+        width: width-by-cols(sm, 12);
+      }
+      @include media-breakpoint-up(md) {
+        height: 100%;
+      }
+  }
+
+  .sl-media-block.card picture {
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      height: 100%;
+      width: width-by-cols(md, 6);
+    }
+    @include media-breakpoint-up(lg) {
+      width: width-by-cols(lg, 6);
+    }
+    @include media-breakpoint-only(md) {
+      min-height: inherit; //UX spec - Tablet landscape (min height)
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: inherit; //UX spec - Desktop and Laptop (min height)
+    }
+    @include media-breakpoint-up(sm) {
+      height: 100%;
+    }
+  }
+
+  .sl-media-block.card.media-block-left .card-body {
+    @include media-breakpoint-up(md) {
+      position: relative;
+      margin-left: auto;
+      @include media-breakpoint-up(lg) {
+        width: width-by-cols(lg, 6);
+      }
+    }
+    
+    @include media-breakpoint-up(md) {
+      flex: 0 51%;
+    }
+  }
+
+  .sl-media-block.card.media-block-right picture {
+    right: 0;
+  }
+
+  // CDT-2371
+  // /*COMMIT: https://bitbucket.sunlifecorp.com/projects/DESIGN_SYS/repos/ui-components-react/commits/d9166d7a25b24a9c7274dd01adf9019c36283062#src/styles/components/_segmentedBlocks.scss
+  // segmentedBlocks.scss
+  // cards.scss
+  .sl-segmented-blocks.multi .card:nth-child(n+5){
+    @include media-breakpoint-up(md) {
+      flex-grow: 0;
+    }
+  }
+
+  .sl-cards.vertical{
+    max-width: width-by-cols(md, 12);
+  }

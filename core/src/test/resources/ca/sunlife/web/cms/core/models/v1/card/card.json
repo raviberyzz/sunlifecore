@@ -1,0 +1,12 @@
+{
+  "card" : {
+    "jcr:primaryType":"nt:unstructured",
+    "sling:resourceType":"sunlife/ca/components/content/ca-card/v1/card",
+    "comboList" : {
+      "item0" : {
+        "jcr:primaryType":"nt:unstructured",
+        "title":"title"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
+
+.image-container {
+    overflow: hidden;
+    padding: 1px;
+
+    picture {
+        display: inline-block;
+    }
+
+    .img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .image-caption {
+        @include sl-body-small;
+        margin-top: 0.25rem;
+    }
+
+    &.img__cover {
+        .img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &.img__horizontal-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .img {
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+
+    
+}

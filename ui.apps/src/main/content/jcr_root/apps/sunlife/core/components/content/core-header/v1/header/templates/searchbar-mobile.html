@@ -1,0 +1,26 @@
+<template data-sly-template.search="${ @ headerModel }">
+    <sly data-sly-test="${headerModel.listFromSearch == 'searchtrue'}">
+	<!-- Below initial code for Coveo class search bar -->
+       <div class="search-bar-mobile" data-section="header-search" id="headerSearchBarMobile">
+            <div class="search-box container">
+                <div class="search-icon">
+                    <span class="fak fa-search sl-icon_size_md sl-icon custom-icon"
+                    role="presentation"></span>
+                </div>
+                <div id="search-box-mobile" data-enable-history="true" data-auto-trigger-query='false'>
+                    <div class="CoveoAnalytics"></div>
+                        <div class="coveo-search-section">
+                        <div class="CoveoSearchbox" data-placeholder="Search" data-add-search-button="false" data-enable-omnibox="true"></div>
+                    </div>
+                    <div class="input-wrapper coveo-mobile-error-hidden">
+                        <ul role="alert" class="coveo-search-error">
+                            <li class="error-required">${headerModel.searchButton}</li>
+                        </ul>
+                    </div>
+                </div>	
+            </div>
+        </div>
+		<!-- END of search bar -->
+    </sly>
+</template>
+

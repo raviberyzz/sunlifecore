@@ -1,0 +1,29 @@
+<!--/*
+Card component 
+*/-->
+<sly
+  data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+  data-sly-use.model="ca.sunlife.web.cms.core.models.v1.Card"
+  data-sly-set.cardType="${model.cardContainer.cardType}"
+  data-sly-set.containerConfigs="${model.cardContainer}"
+  data-sly-set.horizontalCardConfig="heightControl:${model.cardContainer.horizontalHeightControl}, multiple:${model.cardContainer.horizontalMultipleCard},clickable:${model.cardContainer.horizontalClickable},icon:${model.cardContainer.horizontalIconCard}"
+  data-sly-set.verticalCardConfig="heightControl:${model.cardContainer.verticalHeightControl}, multiple:${model.cardContainer.verticalMultipleCard},clickable:${model.cardContainer.verticalClickable},icon:${model.cardContainer.verticalIconCard}"
+  data-sly-set.avatarCardConfig="{ multiple:${model.cardContainer.avatarMultipleCard},largeSize:${model.cardContainer.largeAvatarSize},withBody:${model.cardContainer.avatarWithBody}}"
+  data-sly-set.bannerCardConfig="{ withLink:${model.cardContainer.withLink}}"
+  data-sly-set.bannerImageCardConfig="{ imagePosition:${model.cardContainer.bannerImagePosition}}"
+  data-sly-set.mediaCardConfig="{ mediaType:${model.cardContainer.mediaType}}"
+  data-sly-set.segmentedCardConfig="{ multiple:${model.cardContainer.segmentedMultipleCard},segmentedformContainer:${model.cardContainer.segmentedformContainer}}"
+  data-sly-set.statisticsCardConfig="{ multiple:${model.cardContainer.statisticsMultipleCard}}"
+  data-sly-use.card="${'sunlife/core/components/common/useJs/cardConfigUse.js' @  cardType=cardType, horizontalCardConfig=horizontalCardConfig, verticalCardConfig=verticalCardConfig, avatarCardConfig=avatarCardConfig,bannerCardConfig=bannerCardConfig, bannerImageCardConfig=bannerImageCardConfig, mediaCardConfig=mediaCardConfig,segmentedCardConfig=segmentedCardConfig,statisticsCardConfig=statisticsCardConfig}"
+ >  
+        <!--/* Calling required card template depending upon authored card type */-->
+        <sly 
+          data-sly-test="${cardType}"
+          data-sly-set.cardContainerConf="${card.containerConfigObj @ context='unsafe'}"
+          data-sly-use.template ="${card.cardTemplateRef}"
+          data-sly-call="${template.details @ model = model, cardType = cardType, containerConfigs = cardContainerConf}">
+      </sly>
+
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !cardType, classAppend='cmp-card'}"></sly>
+

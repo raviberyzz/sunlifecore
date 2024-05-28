@@ -1,0 +1,18 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+.sl-anchor-links {
+    @include media-breakpoint-up(xl) { 
+        position: sticky;
+    }
+    ul {
+        @include media-breakpoint-down(xl) {        
+            margin-bottom: 30px;
+        }
+    }
+    &.no-sticky {
+        position: inherit;
+    }
+}
+.aem-AuthorLayer-Edit .sl-anchor-links {
+    position: inherit;
+}

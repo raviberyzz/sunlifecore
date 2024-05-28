@@ -1,0 +1,20 @@
+@import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
+
+.article-container {
+    
+    .caption-text {
+        color: var(--grey-700);
+    }
+
+    .sl-social-media {
+        margin-top: 16px;
+    }
+
+    @include media-breakpoint-up(sm) {
+        .sl-social-media {
+            justify-content: end;
+            margin-top: 0;
+        }
+    }
+    
+}

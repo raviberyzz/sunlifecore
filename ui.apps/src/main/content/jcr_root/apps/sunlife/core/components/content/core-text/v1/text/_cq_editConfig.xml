@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:EditConfig">
+	<cq:listeners
+	jcr:primaryType="cq:EditListenersConfig"
+	afteredit="REFRESH_SELF"/>
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        configPath="inplaceEditingConfig"
+        editorType="text">	
+        <inplaceEditingConfig jcr:primaryType="nt:unstructured">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+			    <htmlRules jcr:primaryType="nt:unstructured">
+                    <docType jcr:primaryType="nt:unstructured">
+                        <typeConfig jcr:primaryType="nt:unstructured"
+                                useSemanticMarkup="{Boolean}true">
+                            <semanticMarkupMap jcr:primaryType="nt:unstructured"
+                                    b="strong"
+                                    i="em"/>
+                        </typeConfig>
+                    </docType>
+                </htmlRules>
+				<tracklinks
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+				<styles
+					jcr:primaryType="nt:unstructured"
+					features="*">
+					<styles jcr:primaryType="nt:unstructured">
+						<body-medium
+							jcr:primaryType="nt:unstructured"
+							cssName="body-medium"
+							text="Body Medium"/>
+						<body-small
+							jcr:primaryType="nt:unstructured"
+							cssName="body-small"
+							text="Body Small"/>
+						<body-xs
+							jcr:primaryType="nt:unstructured"
+							cssName="body-xs"
+							text="Body XS"/>
+						<body-medium-bold
+							jcr:primaryType="nt:unstructured"
+							cssName="body-medium-bold"
+							text="Body Medium Bold"/>
+						<body-small-bold
+							jcr:primaryType="nt:unstructured"
+							cssName="body-small-bold"
+							text="Body Small Bold"/>
+						<body-xs-bold
+							jcr:primaryType="nt:unstructured"
+							cssName="body-xs-bold"
+							text="Body XS Bold"/>
+						<body-medium-italic
+							jcr:primaryType="nt:unstructured"
+							cssName="body-medium-italic"
+							text="Body Medium Italic"/>
+						<label-small
+							jcr:primaryType="nt:unstructured"
+							cssName="label-small"
+							text="Label Small"/>
+						<body-navigation
+							jcr:primaryType="nt:unstructured"
+							cssName="body-navigation"
+							text="Navigation"/>
+						<text-accessibility
+							jcr:primaryType="nt:unstructured"
+							cssName="visually-hidden"
+							text="Screen Reader Only Text"/>
+						<heading-1
+							jcr:primaryType="nt:unstructured"
+							cssName="h1"
+							text="Heading 1"/>
+						<heading-2
+							jcr:primaryType="nt:unstructured"
+							cssName="h2"
+							text="Heading 2"/>
+						<heading-3
+							jcr:primaryType="nt:unstructured"
+							cssName="h3"
+							text="Heading 3"/>
+						<heading-4
+							jcr:primaryType="nt:unstructured"
+							cssName="h4"
+							text="Heading 4"/>
+						<heading-5
+							jcr:primaryType="nt:unstructured"
+							cssName="h5"
+							text="Heading 5"/>
+					</styles>
+				</styles>
+				<format
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<image
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<spellcheck
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<edit
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<misctools
+					jcr:primaryType="nt:unstructured"
+					features="specialchars">
+					<specialCharsConfig jcr:primaryType="nt:unstructured">
+					  <chars
+						 jcr:primaryType="nt:unstructured"
+						 override="true">
+						 <item0
+							jcr:primaryType="nt:unstructured"
+							entity="&amp;#160;"
+							name="nbsp"/> 
+					   </chars> 
+					 </specialCharsConfig> 
+				 </misctools>   
+				<undo
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<subsuperscript
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<paraformat
+					jcr:primaryType="nt:unstructured"
+					features="*">
+					<formats jcr:primaryType="nt:unstructured">
+						<default_p
+							jcr:primaryType="nt:unstructured"
+							description="Paragraph"
+							tag="p"/>
+						<default_h1
+							jcr:primaryType="nt:unstructured"
+							description="Heading 1"
+							tag="h1"/>
+						<default_h2
+							jcr:primaryType="nt:unstructured"
+							description="Heading 2"
+							tag="h2"/>
+						<default_h3
+							jcr:primaryType="nt:unstructured"
+							description="Heading 3"
+							tag="h3"/>
+						<default_h4
+							jcr:primaryType="nt:unstructured"
+							description="Heading 4"
+							tag="h4"/>
+						<default_h5
+							jcr:primaryType="nt:unstructured"
+							description="Heading 5"
+							tag="h5"/>                                                           
+					</formats>
+				</paraformat>
+				<keys
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<links jcr:primaryType="nt:unstructured">
+					<linkDialogConfig
+						jcr:primaryType="nt:unstructured"
+						height="{Long}316">
+						<linkAttributes jcr:primaryType="cq:WidgetCollection"/>
+					</linkDialogConfig>
+				</links>
+				<findreplace
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<table
+					jcr:primaryType="nt:unstructured"
+					features="*" />
+				<justify
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<sunlife
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<info
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+				<sun
+					jcr:primaryType="nt:unstructured"
+					features="*"/>
+			</rtePlugins>
+        </inplaceEditingConfig>		
+    </cq:inplaceEditing>	
+</jcr:root>

@@ -1,0 +1,30 @@
+<template data-sly-template.megaMenu="${ @ headerModel }">
+    <sly data-sly-list.links="${headerModel.megaMenuLinks}">
+        <li class="nav-item" >
+
+            <div data-sly-test="${!links.megaMenuFragmentPath}">
+                <a href="${links.megaMenuLinkURL @ extension = 'html'}" aria-current="false" class="main-nav-item-container  nav-link" data-section="header-main-nav">${links.megaMenuLinkName}</a>
+            </div>
+
+            <div data-sly-test="${links.megaMenuFragmentPath}" class=" sl-mega-menu">
+                <div id="sl-mega-menu-dashboard" class="dropdown">
+                    <button type="button"
+                            id="sl-mega-menu-toggle-dashboard" aria-expanded="false" data-bs-toggle="dropdown"
+                            class="main-nav-item-container nav-link dropdown-toggle show btn btn-primary"><span>${links.megaMenuLinkName}</span>
+                        <span class="fak fa-chevron-down sl-icon_size_sm sl-dropdown-icon d-none d-lg-inline-block d-xl-inline-block d-xxl-inline-block"></span>
+                        <span class="fak fa-chevron-down sl-icon_size_md sl-dropdown-icon d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none"></span>
+                    </button>
+                    <div data-sly-test="${links.megaMenuFragmentPath}" role="menu"
+                    class="dropdown-menu menu-content">
+                        <div class="mega-menu-wrapper-desk">
+                            <sly data-sly-resource="${@path=links.megaMenuFragmentPath, selectors='content', wcmmode='disabled'}">
+                            </sly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </sly>
+</template>
+

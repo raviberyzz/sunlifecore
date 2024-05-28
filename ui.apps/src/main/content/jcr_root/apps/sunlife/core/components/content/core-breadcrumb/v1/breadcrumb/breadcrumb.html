@@ -1,0 +1,36 @@
+<sly data-sly-use.breadcrumb="ca.sunlife.web.cms.core.models.v1.CustomBreadcrumb"></sly>
+<nav class="vertical-middle-align no-gutter clearfix ${wcmmode.edit ? 'breadcrumb-author' : ''}" aria-label="${'Breadcrumb' @ i18n}" 
+	data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.hasItems="${breadcrumb.items.size > 0}" data-section="nav-breadcrumb">
+    <ol class="sl-breadcrumbs ${breadcrumb.spacing}" data-sly-list.navItem="${breadcrumb.items}">
+        <li lang="${navitemList.index > 0 ? breadcrumb.langcode : ''}" class="breadcrumb-item Default-${navItemList.index} ${navItem.active ? 'active current-item' : ''}" >
+            <a href="${navItem.active ? true : navItem.URL}" class="sl-link sl-link-sm" aria-current="${navItem.active ? 'page' : false}">
+                ${navItem.title @context = 'html'}
+            </a>
+            <p aria-hidden=true class="breadcrumb-separator" data-sly-test="${!navItem.active}">/</p>
+        </li>
+    </ol>
+    <div data-sly-test="${breadcrumb.socialShareReqd}" class="right-area">
+		<div class="social-link-icon-wrapper" data-sly-resource="${'socialIcons' @ resourceType='sunlife/core/components/content/icon-text', selectors='breadcrumb' }"></div>
+    </div>
+</nav>
+<div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
+{
+ "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement":[
+   	 <sly data-sly-list.navItem="${breadcrumb.items}">
+     <sly data-sly-use.breadcrumbParsing = "${'breadcrumb-parsing.js' @ path=navItem.URL}">
+	 {
+        "@type": "ListItem",
+		"position": ${navItemList.count},
+		"name": "${navItem.title}",
+		 "item": "${breadcrumbParsing.completeURL}"
+     }
+        </sly>
+		<sly data-sly-test="${navItemList.count < breadcrumb.items.size}">,</sly>
+        </sly>
+	]
+}
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=breadcrumb.items.size == 0, classAppend='cmp-breadcrumb'}"></sly>

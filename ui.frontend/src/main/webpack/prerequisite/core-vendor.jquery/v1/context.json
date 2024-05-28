@@ -1,0 +1,6 @@
+{
+    "categories": "sunlife.core-vendor.jquery.v1",
+    "name": "core-vendor.jquery.v1",
+    "isExplicitModule": true,
+    "isGlobalModule": true
+}
