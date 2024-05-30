@@ -4,7 +4,7 @@
 
   <sly data-sly-test="${stickyBarText.needLogo == 'yes'}">
     <div class="desktop-sunlife-logo" data-section="header-logo">
-      <a href="${stickyBarText.logoLink}" target="${stickyBarText.logoTarget}">
+      <a href="${stickyBarText.logoLink @ extension = 'html'}" target="${stickyBarText.logoTarget}">
         <img alt="${stickyBarText.altText}" src="${stickyBarText.logoImage}">
       </a>
     </div>
@@ -13,7 +13,7 @@
   <ul class="list-unstyled" id="stickyBarLinks"
     data-sly-list.links="${stickyBarText.links @ begin = 0, end = maxLinks}">
     <li>
-      <a href="${links.linkUrl @ extention = 'html'}" target="${links.linkTarget}"
+      <a href="${links.linkUrl @ extension = 'html'}" target="${links.linkTarget}"
         data-title="${links.dataTitle}">${links.linkName @ context='html'}</a>
     </li>
   </ul>
@@ -25,7 +25,7 @@
             id="navlinks-dropdown">
             <option selected disabled value=''>${stickyBarText.navLinksDropdownTitle}</option>
             <sly data-sly-list.itemGroup="${stickyBarText.links @ begin = 0, end = maxLinks}">
-              <option value="${itemGroup.linkUrl @ extention = 'html'}">${itemGroup.linkName @ context='html'}</option>
+              <option value="${itemGroup.linkUrl @ extension = 'html'}">${itemGroup.linkName @ context='html'}</option>
             </sly>
           </select>
         </fieldset>
