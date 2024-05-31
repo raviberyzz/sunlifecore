@@ -84,8 +84,20 @@ html {
     .sticky-bar {
         justify-content: center;
 
+        #stickyBarLinks {
+            display: none;
+            width: auto;
+        }
+
         .sticky-bar-wrapper.hide-bar {
             display: flex;
+        }
+
+        .sticky-bar-wrapper {
+            height: auto;
+            min-height: 5pc;
+            border-top: 1px solid #dcdedf;
+            padding: 10px 15px;
         }
 
         .desktop-sunlife-logo {
@@ -96,55 +108,34 @@ html {
             width: 100%
         }
 
+        .stickyBarButtons a {
+            font-size: 14px;
+
+            span {
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+
         .sticky-bar-button-wrapper {
             display: flex;
             justify-content: center;
-            width: auto;
-        }
-
-    }
-}
-
-@media (min-width: 768px) {
-    .sticky-bar #stickyBarLinks {
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 767px) {
-    .sticky-bar {
-        /* position: fixed; */
-
-        #stickyBarLinks {
-            display: none;
-            width: auto;
-        }
-
-        .sticky-bar-button-wrapper {
             width: 100%;
         }
 
-            .sticky-bar-wrapper {
-                height: auto;
-                border-top: 1px solid #dcdedf;
-                padding: 10px 15px;
-            }
+        .nav-links-dropdown {
+            display: block;
 
-            .nav-links-dropdown {
-                display: block;
-
-                .cmp-form-options--drop-down {
-                    width: 100%;
-                }
-            }
-
-            .links-button-wrapper {
-                display: flex;
-                gap: 10px;
-                flex-direction: column;
+            .cmp-form-options--drop-down {
                 width: 100%;
             }
+        }
+
+        .links-button-wrapper {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            width: 100%;
+        }
     }
 }

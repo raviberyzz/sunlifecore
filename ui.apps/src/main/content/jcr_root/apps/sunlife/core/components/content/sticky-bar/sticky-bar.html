@@ -1,9 +1,9 @@
 <sly data-sly-use.stickyBarText="ca.sunlife.web.cms.core.models.StickyBarModel"></sly>
 <sly data-sly-test.maxLinks="${stickyBarText.additionalButton == 'true' ? 3 : 4}" />
-<div class="sticky-bar-wrapper ${stickyBarText.hideStickyBar == 'yes' ? 'hide-bar' : ''}">
+<div class="sticky-bar-wrapper ${stickyBarText.hideStickyBar == 'yes' ? 'hide-bar' : ''}" data-section="header-sticky-bar">
 
   <sly data-sly-test="${stickyBarText.needLogo == 'yes'}">
-    <div class="desktop-sunlife-logo" data-section="header-logo">
+    <div class="desktop-sunlife-logo">
       <a href="${stickyBarText.logoLink @ extension = 'html'}" target="${stickyBarText.logoTarget}">
         <img alt="${stickyBarText.altText}" src="${stickyBarText.logoImage}">
       </a>
@@ -33,12 +33,12 @@
     </sly>
     <div class="sticky-bar-button-wrapper">
       <sly data-sly-test="${stickyBarText.additionalButton == 'true'}">
-        <div class="stickyBarButtons" id="secButton"> <a href="${stickyBarText.secButtonLink @ extention = 'html'}"
+        <div class="stickyBarButtons" id="secButton"> <a href="${stickyBarText.secButtonLink @ extension = 'html'}"
             target="${stickyBarText.secButtonTarget}"><span
               class="button-class secondary-button-rte">${stickyBarText.secButtonLabel @ context='html'}</span></a>
         </div>
       </sly>
-      <div class="stickyBarButtons" id="priButton"> <a href="${stickyBarText.buttonLink @ extention = 'html'}"
+      <div class="stickyBarButtons" id="priButton"> <a href="${stickyBarText.buttonLink @ extension = 'html'}"
           target="${stickyBarText.buttonTarget}"><span
             class="button-class primary-blue-button-rte">${stickyBarText.ButtonLabel @ context='html'}</span></a></div>
     </div>
