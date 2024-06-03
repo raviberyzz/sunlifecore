@@ -40,6 +40,11 @@
             @include media-breakpoint-down(md) {
                 height: auto;
             }
+            @include media-breakpoint-up(lg) {
+                .form-floating{
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 
