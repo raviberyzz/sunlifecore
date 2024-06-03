@@ -60,6 +60,7 @@
 
     .card {
         form {
+            width: 100%;
             .sl-dropdown {
                 margin-top: 0;
                 .sl-helper-text {
@@ -67,7 +68,23 @@
                 }
             }
         }
-
+        &.single-form {
+            .grouped-form{
+                form {
+                    .layout-container {
+                        .dropdown {
+                            width: 100%;
+                        }
+                    }
+                    .dropdown { 
+                        .sl-dropdown {
+                            width: 100%;
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
         & > .card-body {
             & > .icon-container {
                 & > .svg-inline--fa {
