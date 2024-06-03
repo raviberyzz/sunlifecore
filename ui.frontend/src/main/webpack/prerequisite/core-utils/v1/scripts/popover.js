@@ -107,7 +107,7 @@
 		 */
 		function initializeAllPopover() {
 			$popoverTriggerList.map(function (popoverTriggerEl) {
-				var popover = new bootstrap.Popover(popoverTriggerEl, getPopoverConfig(popoverTriggerEl));
+				const popover = new bootstrap.Popover(popoverTriggerEl, getPopoverConfig(popoverTriggerEl));
 
 				$(popoverTriggerEl).on(CONSTANTS.SELECTOR.popoverShown, function () {
 					document.querySelector(CONSTANTS.SELECTOR.popoverCloseBtn).addEventListener('click', function(event) {
