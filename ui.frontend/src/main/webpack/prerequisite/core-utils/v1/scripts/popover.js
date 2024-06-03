@@ -15,6 +15,7 @@
 				popoverCloseBtn: ".popover .btn-close-popover",
 				tabSelectors: "select, input, textarea, button, a",
 				popoverButton: ".popover-button",
+				popoverShown: "shown.bs.popover",
 			},
 			ATTRIBUTE: {
 				bsTitle: "bs-title",
@@ -106,78 +107,37 @@
 		 */
 		function initializeAllPopover() {
 			$popoverTriggerList.map(function (popoverTriggerEl) {
-				let customConfig = getPopoverConfig(popoverTriggerEl);
-				return new bootstrap.Popover(popoverTriggerEl, customConfig);
-			});
-		}
+				var popover = new bootstrap.Popover(popoverTriggerEl, getPopoverConfig(popoverTriggerEl));
 
-		/**
-		 * Method to return array containing popover element and its id of closest element passed.
-		 * @function getPopoverId
-		 * @memberof sunCore.util.popover
-		 * @param {Object} element - DOM element
-		 * @returns {Array} - an array containing popover element and its id
-		 * @private
-		 */
-		function getPopoverId(element) {
-			let popoverElem = $(element).closest(CONSTANTS.SELECTOR.popoverCls);
-			let id = popoverElem.attr("id");
-			return [popoverElem, id];
-		}
-
-		/**
-		 * Popover close button click handler to hide/close popover
-		 * @function closePopoverHandler
-		 * @memberof sunCore.util.popover
-		 * @private
-		 */
-		function closePopoverHandler() {
-			let [popoverElem, id] = getPopoverId($(this));
-			popoverElem.remove();
-			$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			$("[aria-describedby=" + id + "]")
-				.click()
-				.focus();
-		}
-
-		/**
-		 * Popover close button key handler to hide/close popover
-		 * @function closePopoverA11yHandler
-		 * @memberof sunCore.util.popover
-		 * @param {Object} event - keyboard key down event object
-		 * @private
-		 */
-		function closePopoverA11yHandler(event) {
-			let [popoverElem, id] = getPopoverId($(this));
-			if (event.key === util.constants.key.ESC) {
-				event.preventDefault();
-				popoverElem.remove();
-				$("[aria-describedby=" + id + "]")
-					.click()
-					.focus();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			} else if (event.key === util.constants.key.TAB && event.shiftKey) {
-				event.preventDefault();
-				$("[aria-describedby=" + id + "]").focus();
-				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			} else if (event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN || event.keyCode == util.constants.KeyCode.SPACE) {
-				let selectableElements = [].slice.call(
-					document.querySelectorAll(CONSTANTS.SELECTOR.tabSelectors)
-				);
-				selectableElements.find((value, index) => {
-					if (
-						value.getAttribute(
-							CONSTANTS.ATTRIBUTE.ariaDescribedby
-						) === id
-					) {
+				$(popoverTriggerEl).on(CONSTANTS.SELECTOR.popoverShown, function () {
+					document.querySelector(CONSTANTS.SELECTOR.popoverCloseBtn).addEventListener('click', function(event) {
 						event.preventDefault();
-						selectableElements[index + 1].focus();
-					}
+						const elements = $(CONSTANTS.SELECTOR.tabSelectors).filter(':visible');
+						const currentIndex = elements.index(popoverTriggerEl);
+						const nextIndex = (currentIndex + 1) % elements.length;
+						elements.eq(nextIndex).focus();
+
+						popover.hide();
+					});
+					document.querySelector(CONSTANTS.SELECTOR.popoverCloseBtn).addEventListener(util.customEvents.KEYDOWN, function(event) {
+						if (event.key === util.constants.key.ESC || event.key === util.constants.key.TAB || event.key === util.constants.key.ENTER_RETURN ||  event.keyCode == 32) {
+							event.preventDefault();
+							const elements = $(CONSTANTS.SELECTOR.tabSelectors).filter(':visible');
+							const currentIndex = elements.index(popoverTriggerEl);
+							const nextIndex = (currentIndex + 1) % elements.length;
+							elements.eq(nextIndex).focus();
+						} else if (event.key === util.constants.key.TAB && event.shiftKey) {
+							event.preventDefault();
+							const elements = $(CONSTANTS.SELECTOR.tabSelectors).filter(':visible');
+							const currentIndex = elements.index(popoverTriggerEl);
+							elements.eq(currentIndex).focus();
+						}
+						popover.hide();
+					});
+
 				});
-				popoverElem.remove();
-				$(CONSTANTS.SELECTOR.popover).removeAttr(CONSTANTS.ATTRIBUTE.ariaDescribedby);
-			}
+				return popover;
+			});
 		}
 
 		/**
@@ -210,19 +170,6 @@
 		 * @private
 		 */
 		function bindEvent() {
-			$(document).on(
-				util.customEvents.INTERACTION,
-				CONSTANTS.SELECTOR.popoverCloseBtn,
-				closePopoverHandler
-			);
-
-			//handle keyboard accessibility in the popover close button
-			$(document).on(
-				util.customEvents.KEYDOWN,
-				CONSTANTS.SELECTOR.popoverCloseBtn,
-				closePopoverA11yHandler
-			);
-
 			//handle keyboard accessibility in the popover info button
 			$(document).on(
 				util.customEvents.KEYDOWN,
