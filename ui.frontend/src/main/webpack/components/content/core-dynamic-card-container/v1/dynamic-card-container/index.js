@@ -33,8 +33,13 @@
 				CONSTANT.SELECTOR.clickableCards
 			);
 			const redirectURL = $card.data("href");
+			const targetType = $card.data("target");
 			if (redirectURL) {
-				window.location.href = redirectURL;
+				if(targetType ==='_blank') {
+					window.open(redirectURL, '_blank');
+				} else {
+					window.location.href = redirectURL;
+				}
 			}
 		}
 

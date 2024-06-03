@@ -22,6 +22,7 @@ Card Container Component
             class="${ cardContainer.cardClass }"
             data-sly-attribute.data-clickable="${dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable}"
             data-sly-attribute.data-href="${(dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable) && cardContainer.cardClickable.url}"
+            data-sly-attribute.data-target="${(dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable) && cardContainer.cardClickable.target}"
             data-sly-resource="${ item.path @ resourceType=item.resourceType }">
                 ${ item.path }
         </div>
