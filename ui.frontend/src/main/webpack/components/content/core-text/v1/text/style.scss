@@ -44,13 +44,26 @@
 }
 
 .sl-link {
-    .fa-external-link,
-    .fa-chevron-circle-right,
-    .fa-file-pdf  {
-        margin-left: 4px;
-        height: 16px;
-        width: 16px;
+    &.sl-link-md {
+        .fa-external-link,
+        .fa-chevron-circle-right,
+        .fa-file-pdf  {
+            margin-left: 4px;
+            height: 24px;
+            width: 24px;
+            vertical-align: -7px;
+        }
+        .fa-chevron-circle-right {
+           padding: 3.7px;
+        }
+        .fa-file-pdf {
+           padding: 4px;
+        }
+        .fa-external-link {
+           padding: 6px;
+        }
     }
+
 	.fa-file-pdf {
 	    margin-right: 4px;
 	    margin-left: 0px;
@@ -60,8 +73,18 @@
         .fa-external-link,
         .fa-chevron-circle-right,
         .fa-file-pdf {
-        height: 14px;
-        width: 14px;
+            height: 20px;
+            width: 20px;
+            vertical-align: -6px;
+        }
+        .fa-chevron-circle-right {
+            padding: 2.75px;
+        }
+        .fa-file-pdf {
+            padding: 3px;
+        }
+        .fa-external-link {
+           padding: 5px;
         }
     }
   
@@ -74,9 +97,14 @@
         .fa-external-link,
         .fa-chevron-circle-right, 
         .fa-file-pdf {
-        height: 12px;
-        width: 12px;
+            height: 12px;
+            width: 12px;
+            vertical-align: -2px;
         }
+        .fa-external-link,
+        .fa-file-pdf {
+            padding: 1px;
+         }
     }
 
     @include hide-far-default-icon;
