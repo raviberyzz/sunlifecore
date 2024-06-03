@@ -103,6 +103,14 @@
     .card-text{
         padding-bottom: 0 !important;
     }
+
+    @include media-breakpoint-only(sm) {
+        .media-cta-container{
+            .sl-btn.btn {
+                width: fit-content;
+            }
+        }
+    }
 }
 
 .sl-media-block, 
