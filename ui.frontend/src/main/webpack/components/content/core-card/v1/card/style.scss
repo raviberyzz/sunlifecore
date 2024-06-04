@@ -3,6 +3,12 @@
 
 /* Style overirde for font-awesome icon fixes */ 
 .card {
+    .sl-btn.btn {
+        height: auto;
+        min-height: 3rem;
+        max-height: 6rem;
+        line-height: 24px;
+     }
     .sl-link {
         .svg-inline--fa {
             width: 24px !important;
