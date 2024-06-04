@@ -660,3 +660,17 @@
     vertical-align: middle;
   }
 }
+.sl-header{
+  .sl-nav {
+    .sl-logo {
+      img {
+        @include media-breakpoint-down(md){ 
+          max-width: 8rem;
+        }
+        @include media-breakpoint-down(sm){ 
+          max-width: 7rem;
+        }
+      }
+    }
+  }
+}

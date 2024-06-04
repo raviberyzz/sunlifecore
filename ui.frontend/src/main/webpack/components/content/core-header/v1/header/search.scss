@@ -78,5 +78,7 @@
 }
 
 .magic-box.magic-box-notEmpty .magic-box-clear {
-  height: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
 }
