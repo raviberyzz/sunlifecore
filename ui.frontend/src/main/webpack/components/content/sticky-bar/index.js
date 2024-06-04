@@ -1,12 +1,14 @@
 $(document).ready(function () {
 
     $("#stickyBarLinks li a").click(function (e) {
-        e.preventDefault();
-        var target = $(this).attr('href');
-        var $target = $(target)
-        $('html, body').animate({
-            scrollTop: $target.offset().top - $('.sticky-bar-wrapper').outerHeight()
-        }, 0);
+        if (!$(".sticky-bar-wrapper").hasClass("hide-bar")) {
+            e.preventDefault();
+            var target = $(this).attr('href');
+            var $target = $(target)
+            $('html, body').animate({
+                scrollTop: $target.offset().top - $('.sticky-bar-wrapper').outerHeight()
+            }, 0);
+        }
     });
 
     $('#priButton a').click(function () {

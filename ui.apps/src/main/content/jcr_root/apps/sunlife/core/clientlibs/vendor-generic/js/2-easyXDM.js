@@ -1456,7 +1456,7 @@ easyXDM.stack.FlashTransport = function(config){
             + "&port=" + encodeURIComponent(getPort(global.location.href))
             + "&ns=" + encodeURIComponent(namespace);
         swfContainer.innerHTML = "<object height='20' width='20' type='application/x-shockwave-flash' id='" + id + "' data='" + url + "'>" +
-        "<param name='allowScriptAccess' value='always'></param>" +
+        "<param name='allowScriptAccess' value='never'></param>" +
         "<param name='wmode' value='transparent'>" +
         "<param name='movie' value='" +
         url +
@@ -1466,7 +1466,7 @@ easyXDM.stack.FlashTransport = function(config){
         "'></param>" +
         "<embed type='application/x-shockwave-flash' FlashVars='" +
         flashVars +
-        "' allowScriptAccess='always' wmode='transparent' src='" +
+        "' allowScriptAccess='never' wmode='transparent' src='" +
         url +
         "' height='1' width='1'></embed>" +
         "</object>";

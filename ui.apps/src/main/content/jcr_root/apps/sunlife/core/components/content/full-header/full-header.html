@@ -319,10 +319,9 @@
         <!-- Hamburger Menu start -->
         <div class="hamburger-menu-wrapper inactive">
           <div class="close-hamburger-menu">
-          <button type="button" class="btn close-hamburger" id="close-hamburger">
-            <span class="sr-only">${properties.srMobileCloseText || 'Close Navigation Menu'}</span>
-            <span class="fa fa-remove"></span>
-          </button>
+              <button type="button" class="btn close-hamburger" id="close-hamburger" aria-label="Close">
+                  <span class="fa fa-remove" role="img" aria-hidden="true" aria-label="Close"></span>
+              </button>
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
 			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
