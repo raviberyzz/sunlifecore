@@ -176,7 +176,7 @@
 			const pathName = CONSTANT.PATHNAME;
 			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
 				const linkHref =  $(this).find('a').attr(CONSTANT.ATTR.href);
-				(pathName.indexOf(linkHref) > -1) 
+				(pathName === linkHref) 
 				? $(this).addClass(CONSTANT.CLASS.optionSelected) 
 				: $(this).removeClass(CONSTANT.CLASS.optionSelected);
 			});
