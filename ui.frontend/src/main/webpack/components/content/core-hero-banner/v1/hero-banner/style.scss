@@ -33,7 +33,10 @@
 
         .neutral a.sl-btn, .bright a.sl-btn, .dark a.sl-btn {
             & > .svg-inline--fa {
-               vertical-align: -4px;
+                vertical-align: -6px;
+                height: 24px;
+                width: 24px;
+                padding: 3.7px;
             }
         }
 
