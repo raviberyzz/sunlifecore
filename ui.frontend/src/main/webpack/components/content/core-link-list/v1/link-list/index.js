@@ -22,7 +22,8 @@
 				dropdownInputSelected: ".dropdown-input-selected",
 				dropdownInputLabel:".dropdown-input-label",
 				dropdownMenuLink: ".dropdown-menu-link",
-				slDropdownBtn: ".sl-dropdown-btn"
+				slDropdownBtn: ".sl-dropdown-btn",
+				slLinkedListDropdownMenu: ".sl-link-list .dropdown-menu li"
 			},
 			CLASS: {
 				optionSelected :"option-selected",
@@ -174,9 +175,17 @@
 		 */
 		function activeSelector() {
 			const pathName = CONSTANT.PATHNAME;
-			$(CONSTANT.SELECTOR.dropdownMenu).find('li').each(function(){
+			let matchedPathName = pathName;
+
+			//Check for ending pagination in URL (ex. /2/), remove pagination segment and rejoin
+			if (pathName.match(/\/(\d+)\/$/)) {
+				const splitPathname = pathName.split("/");
+				matchedPathName = splitPathname.slice(0, splitPathname.length - 2).join("/").concat("/");
+			}
+
+			$(CONSTANT.SELECTOR.slLinkedListDropdownMenu).each(function(){
 				const linkHref =  $(this).find('a').attr(CONSTANT.ATTR.href);
-				(pathName === linkHref) 
+				(matchedPathName === linkHref) 
 				? $(this).addClass(CONSTANT.CLASS.optionSelected) 
 				: $(this).removeClass(CONSTANT.CLASS.optionSelected);
 			});
