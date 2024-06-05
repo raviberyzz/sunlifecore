@@ -86,5 +86,5 @@
 	/**
 	 * Initialise embed module if given selector is in DOM
 	 */
-	core.util.initialise(core.comp, "embed", '.sl-article-video-container');
+	core.util.initialise(core.comp, "embed", '.sl-article-video-container, .cmp-text');
 })(sunCore);
