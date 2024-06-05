@@ -7,8 +7,15 @@
         height: auto;
         min-height: 3rem;
         max-height: 6rem;
-        line-height: 24px;
+        @include media-breakpoint-up(sm) {
+            width: fit-content;
+        }
      }
+
+     .btn-secondary {
+        padding: 10px 32px;
+     }
+
     .sl-link {
         .svg-inline--fa {
             width: 24px !important;
@@ -16,6 +23,7 @@
             margin-bottom: -5px;
         }
     }
+
     .content-container {
         .sl-cards & {
             width: 100%;
@@ -130,14 +138,6 @@
     }
     .card-text{
         padding-bottom: 0 !important;
-    }
-
-    @include media-breakpoint-only(sm) {
-        .media-cta-container{
-            .sl-btn.btn {
-                width: fit-content;
-            }
-        }
     }
 }
 
