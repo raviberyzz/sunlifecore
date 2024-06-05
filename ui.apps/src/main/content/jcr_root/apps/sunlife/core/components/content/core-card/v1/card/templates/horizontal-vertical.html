@@ -38,7 +38,8 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
         <img data-sly-test="${image}" 
           src="${image}" 
           alt="${altText || true}"
-          class="img-container" />
+          class="img-container"
+          loading="lazy" />
       </picture>
       <div class="card-body">
         <div data-sly-test="${icon || (containerConfigs.isIcon && isIconCard)}" class="icon-container card-text">
