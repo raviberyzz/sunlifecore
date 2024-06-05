@@ -15,7 +15,8 @@ Figma design reference -  https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-
           <img 
             src="${imgURL}" 
             alt="${model.altText || true}" 
-            class="${containerConfigs.isLarge ? 'large' : 'medium'} " />
+            class="${containerConfigs.isLarge ? 'large' : 'medium'} "
+            loading="lazy" />
       </div>
       <div class="card-body">
         <h2 class="h2 card-title" data-sly-element="${model.avatarHeadingType || 'h2'}">
