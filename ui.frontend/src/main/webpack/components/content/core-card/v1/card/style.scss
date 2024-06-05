@@ -144,6 +144,14 @@
     &.banner-image-block-left,
     &.banner-image-block-right {
       .card-body {
+        
+        .sl-link {
+            .svg-inline--fa {
+                width: 24px !important;
+                height: 24px !important;
+                margin-bottom: -4px;
+            }
+        }
         .card-text {
             &:has(.caption-text) {
                 p {
