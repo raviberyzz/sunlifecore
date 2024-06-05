@@ -21,7 +21,9 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
       class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
       data-section="${heroBanner.dataSection}"
       role="banner">
-      <picture class="picture-container" style="width:var(--viewportWidth);">
+      <picture class="picture-container" 
+         style="width:var(--viewportWidth);"
+         data-sly-set.imgLazyLoaded="${heroBanner.lazyLoaded ? 'lazy' : ''}">
          <source srcset="${heroBanner.imgDesktopFileReference}" media="(min-width: 1240px)">
          <source srcset="${heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(min-width: 905px)">
          <source srcset="${heroBanner.imgMobileFileReference || heroBanner.imgTabletFileReference || heroBanner.imgDesktopFileReference}" media="(min-width: 600px)">
@@ -30,7 +32,8 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
              alt="${heroBanner.altText || true}" 
              class="card-img"
              itemprop="contentUrl" 
-             style="width: 100%;"/> 
+             style="width: 100%;"
+             data-sly-attribute.loading="${imgLazyLoaded}" /> 
      </picture>
       <div class="card-img-overlay container">
          <div class="h-100 ${heroBanner.contentAlignment} lg row">
