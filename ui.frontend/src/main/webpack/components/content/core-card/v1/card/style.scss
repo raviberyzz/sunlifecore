@@ -3,19 +3,13 @@
 
 /* Style overirde for font-awesome icon fixes */ 
 .card {
-    .avatar-link,
-    .cta-container,
-    .link-container {
+    .sl-link {
         .svg-inline--fa {
             width: 24px !important;
             height: 24px !important;
             margin-bottom: -5px;
         }
-        .fa-file-pdf {
-            padding: 3.75px;
-        }
     }
-
     .content-container {
         .sl-cards & {
             width: 100%;
