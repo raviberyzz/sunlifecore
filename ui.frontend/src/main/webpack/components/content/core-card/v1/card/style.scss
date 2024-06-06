@@ -3,6 +3,20 @@
 
 /* Style overirde for font-awesome icon fixes */ 
 .card {
+    .sl-btn.btn {
+        width: fit-content;
+        height: auto;
+        min-height: 3rem;
+        max-height: 6rem;
+        @include media-breakpoint-only(xs) {
+            width: auto;
+        }
+    }
+    
+    .btn-secondary {
+        padding: 10px 32px;
+     }
+     
     .sl-link {
         .svg-inline--fa {
             width: 24px !important;
