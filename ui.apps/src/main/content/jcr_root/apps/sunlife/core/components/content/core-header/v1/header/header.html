@@ -50,14 +50,14 @@ data-sly-call="${search.search @ headerModel=headerModel}"></sly>
                               data-sly-call="${logo.logo @ headerModel=headerModel}"></sly>
                     </div>
 
-                    <div id="offcanvas-body" class="offcanvas-body">
+                    <div id="offcanvas-body" class="offcanvas-body" role="navigation" aria-label="main navigation">
 
                         <!-- /* Including Search */ -->
                          <sly data-sly-use.search="templates/searchbar-mobile.html"
                          data-sly-call="${search.search @ headerModel=headerModel}"></sly>
 
                          <!-- megamenu.html -->
-                         <ul class="sl-main-nav flex-grow-1 navbar-nav" role="navigation" aria-label="main navigation" data-section="header-main-nav">
+                         <ul class="sl-main-nav flex-grow-1 navbar-nav"  data-section="header-main-nav">
                               <sly data-sly-test="${headerModel.displayMegaMenu == 'true'}">
                                    <sly data-sly-use.megaMenu="templates/megamenu.html"
                                         data-sly-call="${megaMenu.megaMenu @ headerModel=headerModel}"></sly>
