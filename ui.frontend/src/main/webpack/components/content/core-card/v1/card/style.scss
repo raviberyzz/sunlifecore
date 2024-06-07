@@ -103,10 +103,9 @@
             }
         }
 
-        .sl-link {
+        .sl-link, .sl-btn {
             .fa-external-link-alt {
                 margin: 0 0 0 8px;
-                vertical-align: -3px;
             }
             .fa-chevron-circle-right {
                 margin: 0 0 0 8px;
@@ -137,7 +136,7 @@
 
             .avatar-link{
                 .sl-link{
-                    .fa-external-link-alt {
+                    .fa-external-link {
                         margin: 0 0 0 8px;
                         vertical-align: -3px;
                     }
@@ -165,7 +164,7 @@
     .card-text{
         padding-bottom: 0 !important;
     }
-    .sl-link {
+    .sl-link , .sl-btn {
         .fa-external-link-alt {
             margin: 0 0 0 8px;
             vertical-align: -3px;
@@ -173,20 +172,6 @@
         .fa-chevron-circle-right {
             margin: 0 0 0 8px;
             vertical-align: -2.7px;
-        }
-        .fa-file-pdf  {
-            margin: 0 8px 0 0;
-        }
-    }
-}
-
-.sl-media-block{
-    .sl-link, .sl-btn {
-        .fa-external-link {
-            margin: 0 0 0 8px;
-        }
-        .fa-chevron-circle-right {
-            margin: 0 0 0 8px;
         }
         .fa-file-pdf  {
             margin: 0 8px 0 0;
