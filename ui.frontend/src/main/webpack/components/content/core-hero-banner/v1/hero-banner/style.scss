@@ -21,23 +21,25 @@
     }
 
     &.default .card-img-overlay {
-        .neutral a.sl-link, .bright a.sl-link, .dark a.sl-link {
-            & > .svg-inline--fa {
-                height: 24px;
-                width: 24px;
-                padding: 3.7px;
-                vertical-align: -7px;
-                margin: 0 0 0 4px;
-            }
-        }
-
+        .neutral a.sl-link, .bright a.sl-link, .dark a.sl-link, 
         .neutral a.sl-btn, .bright a.sl-btn, .dark a.sl-btn {
-            & > .svg-inline--fa {
-                vertical-align: -6px;
-                height: 24px;
-                width: 24px;
-                padding: 3.7px;
-            }
+            & > .fa-external-link-alt {
+                    margin: 0 0 0 8px;
+                    vertical-align: -2px;
+                    height: 16px;
+                    width: 16px;
+                }
+            & > .fa-chevron-circle-right {
+                    margin: 0 0 0 8px;
+                    vertical-align: -2.7px;
+                    height: 16px;
+                    width: 16px;
+                }
+            & > .fa-file-pdf  {
+                    margin: 0 8px 0 0;
+                    height: 16px;
+                }
+            
         }
 
         @include media-breakpoint-between(md, lg) {

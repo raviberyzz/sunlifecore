@@ -13,7 +13,15 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
             <li class="link-list-item">
                 <sly data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=links.linkURL}">
                     <a class="sl-link ${links.linkSize}" lang="${links.langCode}" target="${links.linkTarget}" data-title="${links.dataTitle}" href="${linkURL.navPath}">
-                        <sly data-sly-test="${links.linkType == 'sl-link-pdf'}"><i class="far fa-file-pdf" aria-hidden="true" role="presentation" title="Open PDF ${links.linkTitle}"></i></sly>${links.linkTitle}<sly data-sly-test="${links.linkType == 'sl-link-external'}"><i class="far fa-external-link" aria-hidden="true" role="presentation" title="Visit External Page ${links.linkTitle}"></i></sly>
+                       <sly data-sly-test="${links.linkType == 'sl-link-pdf'}"><i class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true" role="presentation" title="Open PDF ${links.linkTitle}"></i><i class="fas fa-file-pdf icn-hover-show" aria-hidden="true" role="presentation" title="Open PDF ${links.linkTitle}"></i></sly>${links.linkTitle}
+                       <sly data-sly-test="${links.linkType == 'sl-link-external'}">
+                            <i class="fal fa-external-link-alt icn-hover-hidden" aria-hidden="true" role="presentation" title="Visit External Page ${links.linkTitle}"></i>
+                            <i class="fas fa-external-link-alt icn-hover-show" aria-hidden="true" role="presentation" title="Visit External Page ${links.linkTitle}"></i>
+                        </sly>
+                        <sly data-sly-test="${links.linkType == 'sl-link-internal'}">
+                            <i class="fal fa-chevron-circle-right icn-hover-hidden" aria-hidden="true" role="presentation" title="Visit Internal Page ${links.linkTitle}"></i>
+                            <i class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true" role="presentation" title="Visit Internal Page ${links.linkTitle}"></i>
+                        </sly>
                     </a>
                 </sly>
             </li>
