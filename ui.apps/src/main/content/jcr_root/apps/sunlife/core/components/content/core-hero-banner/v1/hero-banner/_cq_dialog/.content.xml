@@ -347,11 +347,11 @@
                                                             <internal
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Internal"
-                                                                value="arrow-circle-right"/>
+                                                                value="chevron-circle-right"/>
                                                             <external
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="External"
-                                                                value="external-link"/>
+                                                                value="external-link-alt"/>
                                                             <pdf
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="PDF"
@@ -413,7 +413,7 @@
                                                             <external
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="External"
-                                                                value="external-link"/>
+                                                                value="external-link-alt"/>
                                                             <pdf
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="PDF"
