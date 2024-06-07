@@ -10,7 +10,7 @@
     }
 }
 
-/* Style for horizontal card icon alignment */
+/* Style for horizontal and vertical card icon alignment */
 .sl-cards.horizontal, .sl-cards.vertical {
     .sl-link, .sl-btn {
         .fa-external-link {
@@ -104,7 +104,8 @@
         }
 
         .sl-link, .sl-btn {
-            .fa-external-link-alt {
+            .fa-external-link-alt,
+            .fa-external-link {
                 margin: 0 0 0 8px;
             }
             .fa-chevron-circle-right {
@@ -164,6 +165,9 @@
     .card-text{
         padding-bottom: 0 !important;
     }
+    .sl-btn {
+        display: inline-flex !important;
+    }
     .sl-link , .sl-btn {
         .fa-external-link-alt {
             margin: 0 0 0 8px;
@@ -209,6 +213,10 @@
     &.banner-image-block-left,
     &.banner-image-block-right {
       .card-body {
+
+        .sl.btn{
+            display: inline-flex !important;
+        }
         
         .sl-link, .sl-btn {
             .fa-external-link-alt {

@@ -51,6 +51,7 @@
         }
         .fa-chevron-circle-right {
             margin: 0 0 0 8px;
+            vertical-align: -3px;
         }
         .fa-file-pdf  {
             margin: 0 8px 0 0;
@@ -63,14 +64,18 @@
 
     &.sl-link-sm {
         .fa-external-link-alt {
-            height: 12px;
-            width: 12px;
+            height: 10px;
+            width: 10px;
             margin: 0 0 0 7px;
+            vertical-align: middle;
         }
         .fa-chevron-circle-right {
+            height: 14px;
+            width: 14px;
             margin: 0 0 0 7px;
         }
         .fa-file-pdf  {
+            height: 12px;
             margin: 0 7px 0 0;
         }
     }
@@ -81,11 +86,17 @@
     }
   
     &.sl-link-xs {
-        .fa-external-link-alt,
+        .fa-external-link-alt{
+            height: 10px;
+            width: 10px;
+            margin-left: 4px;
+            vertical-align: -2px;
+        }
         .fa-chevron-circle-right {
             height: 12px;
             width: 12px;
             margin-left: 4px;
+            vertical-align: -2px;
         }
         .fa-file-pdf  {
             margin-right: 4px;
