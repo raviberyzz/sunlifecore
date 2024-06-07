@@ -10,6 +10,15 @@
 .vidyard-close-container,#vidyard-content-fixed{
   z-index: $zindex-modal !important;
 }
+
+.vidyard_tmask {
+  z-index: 1200 !important;
+}
+
+.vidyard_tbox {
+  z-index: 1300 !important;
+}
+
 .sl-article-video-container {
   .sl-article-video-component {
     @include media-breakpoint-only(lg) {

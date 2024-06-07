@@ -21,12 +21,25 @@
     }
 
     &.default .card-img-overlay {
-        .neutral a, .bright a, .dark a {
-            & > .svg-inline--fa {
-            padding: 3.95px;
-            margin-bottom: -5px !important;
-            margin: 0 0 0 4px;
-            }
+        .neutral a.sl-link, .bright a.sl-link, .dark a.sl-link, 
+        .neutral a.sl-btn, .bright a.sl-btn, .dark a.sl-btn {
+            & > .fa-external-link-alt {
+                    margin: 0 0 0 8px;
+                    vertical-align: -2px;
+                    height: 16px;
+                    width: 16px;
+                }
+            & > .fa-chevron-circle-right {
+                    margin: 0 0 0 8px;
+                    vertical-align: -2.7px;
+                    height: 16px;
+                    width: 16px;
+                }
+            & > .fa-file-pdf  {
+                    margin: 0 8px 0 0;
+                    height: 16px;
+                }
+            
         }
 
         @include media-breakpoint-between(md, lg) {
@@ -44,7 +57,7 @@
             width: fit-content;
             height: auto;
             min-height: 3rem;
-            max-height: 4.5rem;
+            max-height: 6rem;
             @include media-breakpoint-only(xs) {
                 width: auto;
             }
@@ -68,3 +81,30 @@
     
    
 }
+// Lego issue of 1.1.2 version, need to remove once updated to version 2.0.0 or above
+.sl-banner {
+    &.default{
+        .card-img-overlay{
+            .neutral, .bright, .dark {
+                @include media-breakpoint-up(md) {
+                    opacity: 1;
+                }
+            }
+            .neutral {
+                background-color: hsla(15, 10%, 92%, 0.92);
+                
+            }
+        }
+    }
+  //For overiding the background color opacity of the banner and apply opacity 1 for login form
+    &.login {
+        .login-form {
+            @include media-breakpoint-up(md) {
+                opacity: 1;
+            }
+        }
+        .login-form {
+            background-color: RGBa(249, 250, 250, 0.95);
+        }
+    }
+  }

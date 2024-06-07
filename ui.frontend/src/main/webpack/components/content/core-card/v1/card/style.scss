@@ -1,8 +1,22 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-/* Style overirde for font-awesome icon fixes */ 
+/* Style sl-cards width */ 
 .card {
+    .sl-btn.btn {
+        width: fit-content;
+        height: auto;
+        min-height: 3rem;
+        max-height: 6rem;
+        @include media-breakpoint-only(xs) {
+            width: auto;
+        }
+    }
+    
+    .btn-secondary {
+        padding: 10px 32px;
+     }
+     
     .sl-link {
         .svg-inline--fa {
             width: 24px !important;
@@ -13,6 +27,23 @@
     .content-container {
         .sl-cards & {
             width: 100%;
+        }
+    }
+}
+
+/* Style for horizontal and vertical card icon alignment */
+.sl-cards.horizontal, .sl-cards.vertical {
+    .sl-link, .sl-btn {
+        .fa-external-link {
+            margin: 0 0 0 8px;
+            vertical-align: -3px;
+        }
+        .fa-chevron-circle-right {
+            margin: 0 0 0 8px;
+            vertical-align: -2.7px;
+        }
+        .fa-file-pdf  {
+            margin: 0 8px 0 0;
         }
     }
 }
@@ -92,6 +123,20 @@
                 }
             }
         }
+
+        .sl-link, .sl-btn {
+            .fa-external-link-alt,
+            .fa-external-link {
+                margin: 0 0 0 8px;
+            }
+            .fa-chevron-circle-right {
+                margin: 0 0 0 8px;
+                vertical-align: -2.7px;
+            }
+            .fa-file-pdf  {
+                margin: 0 8px 0 0;
+            }
+        }
     }
 
     @include media-breakpoint-only(sm) {
@@ -110,6 +155,22 @@
             .card-title {
                 font-size: 1.25rem;
             }
+
+            .avatar-link{
+                .sl-link{
+                    .fa-external-link {
+                        margin: 0 0 0 8px;
+                        vertical-align: -3px;
+                    }
+                    .fa-chevron-circle-right {
+                        margin: 0 0 0 8px;
+                        vertical-align: -2.7px;
+                    }
+                    .fa-file-pdf  {
+                        margin: 0 8px 0 0;
+                    }
+                }
+            }
         }
         .body-quote {
             width: 100%;
@@ -125,6 +186,22 @@
     .card-text{
         padding-bottom: 0 !important;
     }
+    .sl-btn {
+        display: inline-flex !important;
+    }
+    .sl-link , .sl-btn {
+        .fa-external-link-alt {
+            margin: 0 0 0 8px;
+            vertical-align: -3px;
+        }
+        .fa-chevron-circle-right {
+            margin: 0 0 0 8px;
+            vertical-align: -2.7px;
+        }
+        .fa-file-pdf  {
+            margin: 0 8px 0 0;
+        }
+    }
 }
 
 .sl-media-block, 
@@ -133,17 +210,46 @@
         margin-bottom: 0;
     }
 }
+
+.sl-banner-content-block {
+    .caption-container {
+        .sl-link {
+            .fa-external-link-alt {
+                margin: 0 0 0 4px;
+                vertical-align: -3px;
+            }
+            .fa-chevron-circle-right {
+                margin: 0 0 0 8px;
+                vertical-align: -2.7px;
+            }
+            .fa-file-pdf  {
+                margin: 0 8px 0 0;
+            }
+        }
+    }
+}
+
 /* Style for banner-image content block */ 
 .sl-banner-image-block {
     &.banner-image-block-left,
     &.banner-image-block-right {
       .card-body {
 
-        .sl-link {
-            .svg-inline--fa {
-                width: 24px !important;
-                height: 24px !important;
-                margin-bottom: -4px;
+        .sl.btn{
+            display: inline-flex !important;
+        }
+        
+        .sl-link, .sl-btn {
+            .fa-external-link-alt {
+                margin: 0 0 0 8px;
+                vertical-align: -3px;
+            }
+            .fa-chevron-circle-right {
+                margin: 0 0 0 8px;
+                vertical-align: -2.7px;
+            }
+            .fa-file-pdf  {
+                margin: 0 8px 0 0;
             }
         }
         .card-text {

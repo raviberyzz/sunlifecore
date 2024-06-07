@@ -3,47 +3,12 @@
         data-sly-set.enablePseudoElement="${baseModel.disablePseudoElementIcon == 'true' ? false : true }"
         data-sly-set.publishMode = "${enablePseudoElement && wcmmode.disabled}"/>
 
+        <link rel="preload" as="font" href="https://cdn.sunlife.com/content/dam/sunlife/global/fonts/SunLifeNewDisplay-Regular.woff2" type="font/woff2" crossorigin="anonymous" >
+        <link rel="preload" as="font" href="https://cdn.sunlife.com/content/dam/sunlife/global/fonts/SunLifeNewText-Bold.woff2" type="font/woff2" crossorigin="anonymous" >
+        <link rel="preload" as="font" href="https://cdn.sunlife.com/content/dam/sunlife/global/fonts/SunLifeNewText-Regular.woff2" type="font/woff2" crossorigin="anonymous" >
+
 <script
         data-sly-attribute.data-search-pseudo-elements="${publishMode}"
         defer
         src="https://kit.fontawesome.com/2c22fa76d7.js"
         crossorigin="anonymous"></script>
-
-<style>
-.blue-chevron-arrow:after, .view-all-category:after, .utility-nav-wrapper .utility-nav-links .srch-btn:after, .utility-nav-wrapper .utility-nav-links .lang-btn:after, .desktop-primary-navigation .navbar-new .nav-item>a:after {
-font-family: 'Font Awesome 5 Pro';
-font-weight: 400;
-display: none;
-content: '\f138' !important;
-}
-
-
-.desktop-primary-navigation .navbar-new .nav-item>a:after {
-content: '\f107' !important;
-}
-
-.svg-inline--fa.sl-icon_size_sm {
-    height: 1.25rem;
-    width: 1.25rem !important;
-}
-
-.svg-inline--fa.sl-icon_size_md {
-    height: 1.5rem;
-    width: 1.5rem !important;
-}
-
-.svg-inline--fa.sl-icon_size_lg {
-    height: 1.75rem;
-    width: 1.75rem !important;
-}
-
-.svg-inline--fa.sl-icon_size_xl {
-    height: 2rem;
-    width: 2rem !important;
-}
-
-.sl-icon_brand {
-    height: 4rem;
-    width: 4rem !important;
-}
-</style>
