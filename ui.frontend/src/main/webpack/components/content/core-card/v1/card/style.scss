@@ -340,22 +340,3 @@
         }
     }
 }
-// Lego issue of 1.1.2 version, need to remove once updated to version 2.0.0 or above
-.sl-banner {
-    &.default{
-        .card-img-overlay{
-            .neutral, .bright, .dark {
-                @include media-breakpoint-up(md) {
-                    opacity: 1;
-                }
-            }
-        }
-    }
-    &.login {
-        .login-form {
-            @include media-breakpoint-up(md) {
-                opacity: 1;
-            }
-        }
-    }
-}

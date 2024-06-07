@@ -81,3 +81,30 @@
     
    
 }
+// Lego issue of 1.1.2 version, need to remove once updated to version 2.0.0 or above
+.sl-banner {
+    &.default{
+        .card-img-overlay{
+            .neutral, .bright, .dark {
+                @include media-breakpoint-up(md) {
+                    opacity: 1;
+                }
+            }
+            .neutral {
+                background-color: hsla(15, 10%, 92%, 0.92);
+                
+            }
+        }
+    }
+  //For overiding the background color opacity of the banner and apply opacity 1 for login form
+    &.login {
+        .login-form {
+            @include media-breakpoint-up(md) {
+                opacity: 1;
+            }
+        }
+        .login-form {
+            background-color: RGBa(249, 250, 250, 0.95);
+        }
+    }
+  }
