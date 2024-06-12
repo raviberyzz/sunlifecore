@@ -9,9 +9,8 @@ use(function () {
         if(count < 3){
             item.elements.forEach(element => {
                 if (element.name == 'articlePageLink') {
-                    
                     let link = element.value.split('.html').join('');
-                    if(link != page){
+                    if(link !== page){
                         newItems.push(item);
                         count++;
                     }
