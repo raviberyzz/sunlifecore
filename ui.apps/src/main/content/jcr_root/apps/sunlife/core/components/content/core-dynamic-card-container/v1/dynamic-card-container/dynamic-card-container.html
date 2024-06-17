@@ -21,8 +21,6 @@ Card Container Component
             data-sly-use.cardContainer="${'sunlife/core/components/common/useJs/cardConfigUse.js' @  cardType=dynamicCardContainer.cardType, cardPath=item.path,horizontalCardConfig=horizontalCardConfig, verticalCardConfig=verticalCardConfig, avatarCardConfig=avatarCardConfig, bannerCardConfig=bannerCardConfig, bannerImageCardConfig=bannerImageCardConfig, mediaCardConfig=mediaCardConfig,segmentedCardConfig=segmentedCardConfig,statisticsCardConfig=statisticsCardConfig}"
             class="${ cardContainer.cardClass }"
             data-sly-attribute.data-clickable="${dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable}"
-            data-sly-attribute.data-href="${(dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable) && cardContainer.cardClickable.url}"
-            data-sly-attribute.data-target="${(dynamicCardContainer.horizontalClickable || dynamicCardContainer.verticalClickable) && cardContainer.cardClickable.target}"
             data-sly-resource="${ item.path @ resourceType=item.resourceType }">
                 ${ item.path }
         </div>
