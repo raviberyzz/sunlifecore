@@ -24,15 +24,17 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
     data-sly-set.cardLinkURL="${model.cardLinkURL || linkURL }"
     data-sly-set.cardLinkIconType="${model.cardLinkIconType || linkIconType }"
     data-sly-set.cardLinkLabel="${model.cardLinkLabel || linkLabel }"
+    data-sly-set.cardClickableLinkTarget="${model.cardClickableLinkTarget || linkTarget }"
+    data-sly-set.cardClickableLinkURL="${model.cardClickableLinkURL || linkURL }"
     data-sly-set.dataTitle="${model.dataTitle || ctaDataTitle }"
     data-sly-set.isAsset="${model.assetType =='noAsset'? false : true }"
     data-sly-set.isImageCard="${isAsset && model.assetType =='image' ? true : false }"
     data-sly-set.isIconCard="${isAsset && model.assetType =='icon' ? true : false }"
-    data-sly-set.haveSomthing="${image || cardIcon || cardCategory || cardBadgeText || cardHeading || cardDescription || cardCaption}">
+    data-sly-set.haveSomthing="${image || cardIcon || cardCategory || cardBadgeText || cardHeading || cardDescription || cardCaption}"
+    data-sly-use.cardClickableURL="${'sunlife/core/components/common/url-parsing.js' @ path=cardClickableLinkURL}">
     
     <!--/* Empty Placeholder */-->
     <div data-sly-test="${!haveSomthing}" class="cq-placeholder" data-emptytext="${cardType =='horizontal' ? 'Horizontal Card' : 'Vertical Card'}"></div>
-
     <sly data-sly-test="${haveSomthing}">
       <picture data-sly-test="${ cardImage || (!containerConfigs.isIcon && isImageCard) }">
         <img data-sly-test="${image}" 
@@ -57,12 +59,20 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
             </div>
           </div>
 
-          <h4 class="h4 card-title" data-sly-element="${cardHeadingType}">${cardHeading}</h4>
+          <h4 
+            class="h4 card-title" 
+            data-sly-element="${containerConfigs.isClickable ? 'a' : cardHeadingType}"
+            data-sly-attribute.href="${cardClickableURL.navPath}"
+            data-sly-attribute.target="${cardClickableLinkTarget}">
+            ${cardHeading}
+          </h4>
+
           <div class="body-text card-text">
             ${cardDescription @ context ='html'}
           </div>
           <div class="caption card-text">${cardCaption}</div>
-          <div data-sly-test="${cardType == 'horizontal'}" class="cta-container">
+        
+          <div data-sly-test="${cardType == 'horizontal' && !containerConfigs.isClickable}" class="cta-container">
             <sly 
                 data-sly-test="${ctaType || cardBtnURL || cardLinkURL }"
                 data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
@@ -70,7 +80,8 @@ Figma design reference - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-H
             </sly>
           </div>
         </div>
-        <div data-sly-test="${cardType == 'vertical'}" class="cta-container">
+        
+        <div data-sly-test="${cardType == 'vertical' && !containerConfigs.isClickable}" class="cta-container">
           <sly 
               data-sly-test="${ctaType || cardBtnURL || cardLinkURL }"
               data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"

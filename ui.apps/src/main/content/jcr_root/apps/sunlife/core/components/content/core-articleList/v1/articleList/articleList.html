@@ -2,8 +2,9 @@
      data-sly-test="${list.listItems.size>0}">
 
 <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+<sly data-sly-use.validator="${'url-validator.js' @ items=list.listItems}"></sly>
+
 <div class="sl-article-list-wrapper ${list.spacing}">
-<!--/* relatedArticleList */-->
 
     <sly data-sly-test="${list.displayType=='relatedArticleList' || list.displayType=='overviewHighlight'}">
         <sly data-sly-test="list.title">
@@ -12,7 +13,7 @@
             </div>
         </sly>
         <div class="sl-cards vertical" aria-label="${list.accessibilityLabel}">
-            <sly data-sly-list="${list.listItems}">
+            <sly data-sly-list="${list.displayType=='relatedArticleList' ? validator.newItems : list.listItems}">
                 <sly data-sly-list.element="${item.elements}">
                     <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
                     <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
