@@ -19,7 +19,7 @@
 			CLASS: {
         		ButtonClose: "btn-close",
 				multilineActionButton :"multiline-action-button",
-        		notificationslNotification: ".notification .sl-notification",
+        		notificationslNotification: ".notification .sl-notification",				
 				hideNotification: "hide-notification"
 			},
 			ATTR: {
@@ -43,7 +43,7 @@
 	 * @param {Event} e - The event object.
 	 */
     function siteNotificationCloseHandler(e) {
-	  createCookie("notificationCookie","true",1,false);	
+	  createCookie("notificationCookie","true",1,false);
       $selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
       nextFocusableElementIndex = 0;
       skipMultiLineButtonIndex = $(e.target).closest(CONSTANT.SELECTOR.slNotification).find(CONSTANT.CLASS.multilineActionButton).length ? 2 : 1;
@@ -90,8 +90,9 @@
 		function init() {
 			cacheSelectors();
 			if(!getCookie("notificationCookie")){
-			$(CONSTANT.SELECTOR.slNotification).removeClass(CONSTANT.CLASS.hideNotification);	
-			bindEvent();
+				$(CONSTANT.SELECTOR.slNotification).removeClass(CONSTANT.CLASS.hideNotification);
+				bindEvent();
+			}
 		}
 
 		return {
