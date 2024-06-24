@@ -32,6 +32,14 @@
                                                 fieldDescription="Please enter the id for this textfield"
                                                 fieldLabel="Element Id"
                                                 name="./id"/>
+                                            <characterlimit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="label"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Character Limit"
+                                                min="{Long}1"
+                                                name="./characterlimit"
+                                                value="500"/>
                                             <texticon
                                                 granite:class="showhide-icon"
                                                 jcr:primaryType="nt:unstructured"

@@ -19,4 +19,6 @@ public interface FormTextModel extends Text {
 
 	boolean isIconPosition();
 
+	int getCharacterlimit();
+
 }
