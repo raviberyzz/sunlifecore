@@ -25,6 +25,9 @@
 			ATTR: {
 				dataBsDismiss: "data-bs-dismiss",
 				target : "target"
+			},
+			COOKIE_NAME: {
+				notificationCookie: "notificationCookie"
 			}
 		};
 
@@ -33,8 +36,6 @@
 			nextFocusableElementIndex = 0,
 			skipMultiLineButtonIndex = 1,
 			nextElementIndex = 0;
-
-
 	/**
 	 * Handles site notification dropdown close event to move keyboard focus to next tabbable element.
 	 * @function linkListInteractionHandler
@@ -43,7 +44,7 @@
 	 * @param {Event} e - The event object.
 	 */
     function siteNotificationCloseHandler(e) {
-	  util.cookie.createCookie("notificationCookie","true",1,false);
+	  util.cookie.createCookie(CONSTANT.COOKIE_NAME.notificationCookie,"true",1,false);
       $selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
       nextFocusableElementIndex = 0;
       skipMultiLineButtonIndex = $(e.target).closest(CONSTANT.SELECTOR.slNotification).find(CONSTANT.CLASS.multilineActionButton).length ? 2 : 1;
@@ -58,7 +59,6 @@
       nextElementIndex = parseInt(nextFocusableElementIndex) + parseInt(skipMultiLineButtonIndex);
       $selectableElements[nextElementIndex].focus();
     }
-
 		/**
 		 * Handler to bind event specific for notification
 		 * @function bindEvent
@@ -89,7 +89,7 @@
 		 */
 		function init() {
 			cacheSelectors();
-			if(!util.cookie.getCookie("notificationCookie")){
+			if(!util.cookie.getCookie(CONSTANT.COOKIE_NAME.notificationCookie)){
 				$(CONSTANT.SELECTOR.slNotification).removeClass(CONSTANT.CLASS.hideNotification);
 				bindEvent();
 			}
