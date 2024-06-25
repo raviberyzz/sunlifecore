@@ -43,7 +43,7 @@
 	 * @param {Event} e - The event object.
 	 */
     function siteNotificationCloseHandler(e) {
-	  createCookie("notificationCookie","true",1,false);
+	  util.cookie.createCookie("notificationCookie","true",1,false);
       $selectableElements = [].slice.call(document.querySelectorAll(CONSTANT.SELECTOR.tabbableElements));
       nextFocusableElementIndex = 0;
       skipMultiLineButtonIndex = $(e.target).closest(CONSTANT.SELECTOR.slNotification).find(CONSTANT.CLASS.multilineActionButton).length ? 2 : 1;
@@ -89,7 +89,7 @@
 		 */
 		function init() {
 			cacheSelectors();
-			if(!getCookie("notificationCookie")){
+			if(!util.cookie.getCookie("notificationCookie")){
 				$(CONSTANT.SELECTOR.slNotification).removeClass(CONSTANT.CLASS.hideNotification);
 				bindEvent();
 			}
