@@ -15,14 +15,14 @@
 
     function showHideHandler(el) {
         const $iconContainer = $(".showhide-icon").first();
-        const characterLimit = '.coral-Form-field[name*="./characterlimit"]'
+        const $charLimit = $(".showhide-charLimit").first();
         if(el.val() === "textarea"){
             $iconContainer.addClass("hide");
-            $(characterLimit).removeClass("hide");
+            $charLimit.removeClass("hide");
         }
         else{
             $iconContainer.removeClass("hide");
-            $(characterLimit).addClass("hide");
+            $charLimit.addClass("hide");
         }
     }
 })(document, Granite.$);
