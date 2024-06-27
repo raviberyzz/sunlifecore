@@ -42,7 +42,9 @@
         Coveo.SearchEndpoint.configureCloudV2Endpoint(searchConfig.orgId, searchConfig.token, searchConfig.restUri);
 
         //Coveo UA
-        const analyticsURL ="https://" + searchConfig.orgId + ".analytics.org.coveo.com"
+        const URLPrefix = "https://";
+        const analyticsDomain = ".analytics.org.coveo.com";
+        const analyticsURL = URLPrefix + searchConfig.orgId + analyticsDomain;
         coveoua("init", searchConfig.token, analyticsURL);
         coveoua("send", "pageview", {
             contentIdKey: "url",
