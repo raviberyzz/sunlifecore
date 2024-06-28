@@ -63,5 +63,14 @@
             box-shadow: 0 0 0 0.125rem var(--brand-tertiary-500);
         }
     }
-  
+&.hide-notification{
+    display: none;
+    }
+}
+.aem-AuthorLayer-Edit {
+    .sl-notification {
+        &.hide-notification{
+        display: flex;
+        }
+    }
 }

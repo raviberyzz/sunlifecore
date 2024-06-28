@@ -46,6 +46,9 @@ public class FormTextModelImpl extends AbstractComponentImpl implements FormText
     String spacing;
 
     @ValueMapValue
+    int characterlimit;
+
+    @ValueMapValue
     @Default(booleanValues = {false})
     boolean iconPosition;
 
@@ -67,6 +70,11 @@ public class FormTextModelImpl extends AbstractComponentImpl implements FormText
     @Override
     public String getSpacing() {
         return spacing;
+    }
+
+    @Override
+    public int getCharacterlimit() {
+        return characterlimit;
     }
 
     @Override

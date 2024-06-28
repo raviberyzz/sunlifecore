@@ -19,4 +19,16 @@
         jcr:mixinTypes="[sling:Message]"
         jcr:primaryType="nt:folder"
         sling:message="Lien vers le fichier PDF"/>
+    <internal.linkTitle
+        jcr:mixinTypes="[sling:Message]"
+        jcr:primaryType="nt:folder"
+        sling:message="Visitez la page interne"/>
+    <external.linkTitle
+        jcr:mixinTypes="[sling:Message]"
+        jcr:primaryType="nt:folder"
+        sling:message="Visitez la page externe"/>
+    <pdf.linkTitle
+        jcr:mixinTypes="[sling:Message]"
+        jcr:primaryType="nt:folder"
+        sling:message="Ouvrir le PDF"/>
 </jcr:root>
