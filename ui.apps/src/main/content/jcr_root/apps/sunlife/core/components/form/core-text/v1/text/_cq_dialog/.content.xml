@@ -54,6 +54,22 @@
                                                         value="{Boolean}true"/>
                                                 </items>
                                             </texticon>
+                                            <charLimit
+                                                granite:class="showhide-charLimit"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="label"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <characterlimit
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="label"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                        fieldLabel="Character Limit"
+                                                        min="{Long}1"
+                                                        name="./characterlimit"
+                                                        value="500"/>
+                                                </items>
+                                            </charLimit>
                                         </items>
                                     </column>
                                 </items>
