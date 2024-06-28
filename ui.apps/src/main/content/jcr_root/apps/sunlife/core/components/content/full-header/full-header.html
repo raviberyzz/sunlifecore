@@ -219,7 +219,7 @@
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}" data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=head.linkUrl}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
-                        href="${utilityListParsing.navPath}">
+                        href="${utilityListParsing.navPath}" aria-expanded="true">
                         <span
                           class="nav-item-heading ">${head.linkName}</span></a>
                       <div data-sly-test="${head.fragmentPath}" class="dropdown-menu menu-content">
