@@ -22,7 +22,7 @@
       tabNavButton: '.arrow-btn',
       navTab: '.nav-tabs',
       navTabLink: '.nav-item .nav-link',
-      navLink: '.nav-link',
+      navLink: '.news-nav-link.nav-link',
       tabContainer: '.sl-tabs',
       slLinks: '.sl-link',
       header: '.sl-header',
