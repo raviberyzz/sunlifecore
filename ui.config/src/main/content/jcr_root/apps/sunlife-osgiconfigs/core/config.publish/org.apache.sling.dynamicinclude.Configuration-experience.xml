@@ -3,7 +3,7 @@
     jcr:primaryType="sling:OsgiConfig"
     include-filter.config.resource-types="[sunlife/core/components/structure/vanilla-page]"
     include-filter.config.extension=""
-	include-filter.config.enabled="true"
+	include-filter.config.enabled="false"
 	include-filter.config.path="/content"
 	include-filter.config.required_header="Server-Agent\=Communique-Dispatcher"
 	include-filter.config.include-type="SSI"

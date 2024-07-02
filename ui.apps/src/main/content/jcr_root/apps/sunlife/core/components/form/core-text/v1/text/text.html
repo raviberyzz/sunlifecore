@@ -2,6 +2,7 @@
      data-sly-use.customText="ca.sunlife.web.cms.core.models.v1.FormTextModel"
      data-sly-use.iconTemplate="sunlife/core/components/templates/icon.html" 
      data-cmp-is="formText"
+     data-sly-test.charLimit="${text.characterlimit || 500}"
      class="${customText.spacing}"
      data-cmp-constraint-message="${text.constraintMessage}"
      data-section="${text.analyticsId}"
@@ -18,9 +19,9 @@
                 data-parsley-pattern-message="${customText.validationError}"
                 data-parsley-trigger="keyup"
                 data-parsley-minlength="1"
-                data-parsley-maxlength="500"
+                data-parsley-maxlength="${charLimit}"
                 data-parsley-id="4"
-                maxlength="500"
+                maxlength="${charLimit}"
                 name="${text.name}"
                 disabled="${text.readOnly}"
                 required="${text.required}"
@@ -44,7 +45,7 @@
                 disabled="${text.readOnly}"
                 required="${text.required}"
                 data-parsley-required="${text.required}"/>
-                <span data-sly-test="${useTextarea}" class="visually-hidden" aria-live="polite"><span class="count">0</span> out of 500 characters inputted</span>
+                <span data-sly-test="${useTextarea}" class="visually-hidden" aria-live="polite"><span class="count">0</span> out of ${charLimit} characters inputted</span>
                 <div data-sly-test="${!useTextarea && customText.icon}" class="icon-container">
                 <sly data-sly-call="${iconTemplate.view @ buttonObj=customText}" />
                 </div>
@@ -54,7 +55,7 @@
                 <div data-sly-test="${!useTextarea && text.helpMessage}" id="hint-msg-helper-text" class="sl-helper-text hint-text sl-textfield-helper-text">
                         ${text.helpMessage}
                 </div>
-                <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/500</p>     
+                <p data-sly-test="${useTextarea}" class="character-count ${text.readOnly ? 'disabled': ''}"><span class="count">0</span>/${charLimit}</p>
         </div>
         <div data-sly-test="${useTextarea && text.helpMessage}" id="hint-msg-helper-text" class="textarea-help-text sl-helper-text hint-text sl-textfield-helper-text">
                 ${text.helpMessage}
