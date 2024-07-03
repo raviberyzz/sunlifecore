@@ -56,6 +56,11 @@
     .caption-container p {
         @include sl-body-small;
         margin: 0;
+        .sl-link {
+            .fa-external-link-alt {
+                vertical-align: -1px;
+            }
+        }
     }
     
     .grouped-form {
@@ -260,6 +265,11 @@
             color: var(--grey-700);
             margin-bottom: 0;
             margin-top: 0.5rem;
+            .sl-link {
+                .fa-external-link-alt {
+                    vertical-align: -1px;
+                }
+            }
           }
 
           a {
