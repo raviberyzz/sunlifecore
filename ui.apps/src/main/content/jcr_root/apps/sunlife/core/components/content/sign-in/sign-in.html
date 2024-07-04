@@ -54,6 +54,15 @@
     </div>
 
     <!-- transmit container ends here -->
+    <!-- Hidden form for Transmit MFA -->
+    <div style="height:0px;width:0px;visibility: hidden;" >
+        <form id="smHiddenForm" action="" method="post">
+            <input id="smValue" name="smValue" type="hidden" value="abc">
+            <input id="smAuthDomain" name="smAuthDomain" type="hidden" value="">
+            <input id="overrideRedirectUrl" name="overrideRedirectUrl" type="hidden" value="">
+        </form>
+    </div>
+
 
     <div class="login-container mySlfSignIn" id="slfSignIn">
         <h2 class="h2 text-center">${signInHeadingText @context ='html'}</h2>
