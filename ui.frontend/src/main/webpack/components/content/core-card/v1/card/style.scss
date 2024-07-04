@@ -1,6 +1,22 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
+.caption-container {
+    .sl-link {
+        .fa-external-link-alt {
+            vertical-align: 0;
+        }
+    }
+}
+
+.caption-text {
+    .sl-link {
+        .fa-external-link-alt {
+            vertical-align: -1px !important;
+        }
+    }
+}
+
 /* Style sl-cards width */ 
 .card {
     .sl-btn.btn {
