@@ -31,8 +31,8 @@
             const $field = $(this);
             const $fieldContainer = $field.parents(CONSTANT.SELECTOR.formFloating);
             if($fieldContainer.hasClass(CONSTANT.CLASS.slTextArea)){
-                $fieldContainer.find(CONSTANT.SELECTOR.charCount).html($field.val().length+1);
-                $fieldContainer.find(CONSTANT.SELECTOR.hiddenCharCount).html($field.val().length+1);            
+			$fieldContainer.find(CONSTANT.SELECTOR.charCount).html($field.val().length);
+            $fieldContainer.find(CONSTANT.SELECTOR.hiddenCharCount).html($field.val().length);              
             }
         }
         /**
@@ -43,7 +43,7 @@
 		 */
 		function bindEvent() {
 			$(document).on(
-				util.customEvents.KEYPRESS,
+				util.customEvents.KEYDOWN,
 				CONSTANT.SELECTOR.textAreaField,
 				fieldValidationKeyPressEventHandler
 			);
