@@ -43,7 +43,7 @@
 		 */
 		function bindEvent() {
 			$(document).on(
-				util.customEvents.KEYUP,
+				util.customEvents.KEYDOWN,
 				CONSTANT.SELECTOR.textAreaField,
 				fieldValidationKeyPressEventHandler
 			);
