@@ -156,9 +156,9 @@ $(document).ready(function () {
         var action = $(".mySlfSignIn #form_signon").attr("action").trim();
         if (action == undefined || action == "") {
           console.log("transmit");
-          //Pointing to new mfa signin method
+          //Pointing to new mfa signin method and adding arguments
           console.log("mfa signin");
-          new mfaSignIn.SignIn();
+          new mfaSignIn.SignIn({ serverUrl : serverUrl })
           event.preventDefault();
         } else {
           console.log("siteminder");
