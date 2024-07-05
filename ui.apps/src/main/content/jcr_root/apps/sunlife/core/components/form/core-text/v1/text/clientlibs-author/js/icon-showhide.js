@@ -15,11 +15,14 @@
 
     function showHideHandler(el) {
         const $iconContainer = $(".showhide-icon").first();
+        const $charLimit = $(".showhide-charLimit").first();
         if(el.val() === "textarea"){
             $iconContainer.addClass("hide");
+            $charLimit.removeClass("hide");
         }
         else{
             $iconContainer.removeClass("hide");
+            $charLimit.addClass("hide");
         }
     }
 })(document, Granite.$);

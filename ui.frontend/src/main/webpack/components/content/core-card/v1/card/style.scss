@@ -1,6 +1,22 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
+.caption-container {
+    .sl-link {
+        .fa-external-link-alt {
+            vertical-align: 0;
+        }
+    }
+}
+
+.caption-text {
+    .sl-link {
+        .fa-external-link-alt {
+            vertical-align: -1px !important;
+        }
+    }
+}
+
 /* Style sl-cards width */ 
 .card {
     .sl-btn.btn {
@@ -27,7 +43,7 @@
 /* Style for horizontal and vertical card icon alignment */
 .sl-cards.horizontal, .sl-cards.vertical {
     .sl-link, .sl-btn {
-        .fa-external-link {
+        .fa-external-link-alt {
             margin: 0 0 0 8px;
             vertical-align: -3px;
         }
@@ -118,8 +134,7 @@
         }
 
         .sl-link, .sl-btn {
-            .fa-external-link-alt,
-            .fa-external-link {
+            .fa-external-link-alt {
                 margin: 0 0 0 8px !important;
             }
             .fa-chevron-circle-right {
@@ -151,7 +166,7 @@
 
             .avatar-link{
                 .sl-link{
-                    .fa-external-link {
+                    .fa-external-link-alt {
                         margin: 0 0 0 8px;
                         vertical-align: -3px;
                     }
@@ -206,17 +221,22 @@
 
 .sl-banner-content-block {
     .caption-container {
-        .sl-link {
-            .fa-external-link-alt {
-                margin: 0 0 0 4px;
-                vertical-align: -3px;
-            }
+        &.sl-link-md {
+            .fa-external-link-alt,
             .fa-chevron-circle-right {
                 margin: 0 0 0 8px;
-                vertical-align: -2.7px;
             }
             .fa-file-pdf  {
                 margin: 0 8px 0 0;
+            }
+        }
+        &.sl-link-sm {
+            .fa-external-link-alt,
+            .fa-chevron-circle-right {
+                margin: 0 0 0 7px;
+            }
+            .fa-file-pdf  {
+                margin: 0 7px 0 0;
             }
         }
     }
