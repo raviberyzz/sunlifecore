@@ -8,7 +8,8 @@
       "buttonURL": "/content/sunlife/external/ca/en/explore-products/insurance",
       "accessibilityLabel": "Sample accessibility label",
       "dataTitle": "Sample data title",
-      "spacing": "mb-sl12"
+      "spacing": "mb-sl12",
+      "linkType": "sl-link-pdf"
     }
   }
 

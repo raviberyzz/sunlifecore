@@ -51,6 +51,8 @@ public class NotificationImpl implements Notification {
     @ValueMapValue
     private Boolean multiline;
 
+    @ValueMapValue
+    private String linkType;
 
     @Override
     public String getNotificationType() {
@@ -105,5 +107,19 @@ public class NotificationImpl implements Notification {
     @Override
     public Boolean getMultiline(){
         return multiline;
+    }
+
+    /**
+     * Retrieves the type of link from the value map.
+     *
+     * The link type indicates whether the link is an internal link, an external link,
+     * or a link to a PDF document.
+     *
+     * @return the link type as a {@code String}.
+     *
+     */
+    @Override
+    public String getLinkType() {
+        return linkType;
     }
 }
