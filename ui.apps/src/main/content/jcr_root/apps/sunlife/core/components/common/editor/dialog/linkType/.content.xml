@@ -9,7 +9,7 @@
         <default
             jcr:primaryType="nt:unstructured"
             text="Select Link Type"
-            value="nolinktype"/>
+            value=""/>
         <internalLink
             jcr:primaryType="nt:unstructured"
             text="Internal Link"
