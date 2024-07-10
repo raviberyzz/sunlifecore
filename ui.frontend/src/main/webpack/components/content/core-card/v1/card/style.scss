@@ -1,21 +1,131 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-.caption-container {
-    .sl-link {
-        .fa-external-link-alt {
-            vertical-align: 0;
+// Icon alignments in card-text and cmp-text
+.card-text, .cmp-text {
+    p:has(> a) {
+        svg.fa-file-pdf {
+            margin: 0 2px 0 0;
+        }
+        svg.fa-chevron-circle-right,
+        svg.fa-external-link-alt  {
+            margin: 0 0 0 2px;
         }
     }
 }
 
-.caption-text {
-    .sl-link {
-        .fa-external-link-alt {
-            vertical-align: -1px !important;
+// Icon alignments in caption-container
+.caption-container {
+    > p {
+        .sl-link-md{
+            svg.fa-external-link-alt,
+            svg.fa-chevron-circle-right {
+                margin: 0 0 0 2px;
+            }
+            svg.fa-file-pdf {
+                margin: 0 2px 0 0;
+            }
+        }
+        .sl-link-sm{
+            svg.fa-external-link-alt,
+            svg.fa-chevron-circle-right {
+                margin: 0 0 0 2px;
+                vertical-align: -6px;
+            }
+            svg.fa-file-pdf {
+                margin: 0 2px 0 0;
+            }
+        }
+        .sl-link-xs {
+            svg.fa-external-link-alt,
+            svg.fa-file-pdf {
+                vertical-align: -5px;
+            }
+            svg.fa-file-pdf {
+                margin: 0 2px 0 0;
+            }
         }
     }
 }
+
+.sl-link-md, .sl-btn, .sl-link {
+    svg.fa-chevron-circle-right {
+        height: 24px;
+        width: 24px;
+        padding: 4px;
+        margin-right: 0;
+        vertical-align: bottom;
+    }
+
+    svg.fa-external-link-alt {
+        height: 24px;
+        width: 24px;
+        padding: 5.9px;
+        margin-right: 0;
+        vertical-align: bottom;
+    }
+
+    svg.fa-file-pdf  {
+        height: 24px;
+        width: 24px;
+        padding: 5px;
+        margin: 0 4px 0 0;
+        vertical-align: bottom;
+    }
+}
+
+.sl-link-sm {
+    svg.fa-chevron-circle-right {
+        height: 20px;
+        width: 20px;
+        padding: 3px;
+        margin-right: 0;
+        vertical-align: bottom;
+    }
+
+    svg.fa-external-link-alt {
+        height: 20px;
+        width: 20px;
+        padding: 5px;
+        margin-right: 0;
+        vertical-align: bottom;
+    }
+
+    svg.fa-file-pdf  {
+        height: 20px;
+        width: 20px;
+        padding: 5px;
+        margin: 0 4px 0 0;
+        vertical-align: bottom;
+    }
+}
+
+.sl-link-xs {
+    svg.fa-external-link-alt{
+        height: 16px;
+        width: 16px;
+        padding: 3px;
+        margin-right: 0;
+        vertical-align: middle;
+    }
+    svg.fa-chevron-circle-right {
+        height: 16px;
+        width: 16px;
+        padding: 2.5px;
+        margin-right: 0;
+        vertical-align: middle;
+    }
+    svg.fa-file-pdf  {
+        height: 16px;
+        width: 16px;
+        padding: 2.8px;
+        margin: 0 4px 0 0;
+        vertical-align: middle;
+    }
+}
+
+
+
 
 /* Style sl-cards width */ 
 .card {
@@ -36,23 +146,6 @@
     .content-container {
         .sl-cards & {
             width: 100%;
-        }
-    }
-}
-
-/* Style for horizontal and vertical card icon alignment */
-.sl-cards.horizontal, .sl-cards.vertical {
-    .sl-link, .sl-btn {
-        .fa-external-link-alt {
-            margin: 0 0 0 8px;
-            vertical-align: -3px;
-        }
-        .fa-chevron-circle-right {
-            margin: 0 0 0 8px;
-            vertical-align: -2.7px;
-        }
-        .fa-file-pdf  {
-            margin: 0 8px 0 0;
         }
     }
 }
@@ -132,19 +225,6 @@
                 }
             }
         }
-
-        .sl-link, .sl-btn {
-            .fa-external-link-alt {
-                margin: 0 0 0 8px !important;
-            }
-            .fa-chevron-circle-right {
-                margin: 0 0 0 8px;
-                vertical-align: -2.7px;
-            }
-            .fa-file-pdf  {
-                margin: 0 8px 0 0;
-            }
-        }
     }
 
     @include media-breakpoint-only(sm) {
@@ -162,22 +242,6 @@
 
             .card-title {
                 font-size: 1.25rem;
-            }
-
-            .avatar-link{
-                .sl-link{
-                    .fa-external-link-alt {
-                        margin: 0 0 0 8px;
-                        vertical-align: -3px;
-                    }
-                    .fa-chevron-circle-right {
-                        margin: 0 0 0 8px;
-                        vertical-align: -2.7px;
-                    }
-                    .fa-file-pdf  {
-                        margin: 0 8px 0 0;
-                    }
-                }
             }
         }
         .body-quote {
@@ -197,48 +261,12 @@
     .sl-btn {
         display: inline-flex !important;
     }
-    .sl-link , .sl-btn {
-        .fa-external-link-alt {
-            margin: 0 0 0 8px;
-            vertical-align: -3px;
-        }
-        .fa-chevron-circle-right {
-            margin: 0 0 0 8px;
-            vertical-align: -2.7px;
-        }
-        .fa-file-pdf  {
-            margin: 0 8px 0 0;
-        }
-    }
 }
 
 .sl-media-block, 
 .sl-banner-content-block {
     .card-text p:last-child {
         margin-bottom: 0;
-    }
-}
-
-.sl-banner-content-block {
-    .caption-container {
-        &.sl-link-md {
-            .fa-external-link-alt,
-            .fa-chevron-circle-right {
-                margin: 0 0 0 8px;
-            }
-            .fa-file-pdf  {
-                margin: 0 8px 0 0;
-            }
-        }
-        &.sl-link-sm {
-            .fa-external-link-alt,
-            .fa-chevron-circle-right {
-                margin: 0 0 0 7px;
-            }
-            .fa-file-pdf  {
-                margin: 0 7px 0 0;
-            }
-        }
     }
 }
 
@@ -252,19 +280,6 @@
             display: inline-flex !important;
         }
         
-        .sl-link, .sl-btn {
-            .fa-external-link-alt {
-                margin: 0 0 0 8px;
-                vertical-align: -3px;
-            }
-            .fa-chevron-circle-right {
-                margin: 0 0 0 8px;
-                vertical-align: -2.7px;
-            }
-            .fa-file-pdf  {
-                margin: 0 8px 0 0;
-            }
-        }
         .card-text {
             &:has(.caption-text) {
                 p {
