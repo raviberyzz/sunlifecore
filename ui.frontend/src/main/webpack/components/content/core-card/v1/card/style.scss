@@ -1,6 +1,30 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
+// Icon Medium Size mixin
+@mixin icon-medium-size {
+    height: 24px;
+    width: 24px;
+    vertical-align: bottom;
+}
+
+// Icon Small Size mixin
+@mixin icon-small-size {
+    height: 20px;
+    width: 20px;
+}
+
+// Icon Extra Small Size mixin
+@mixin icon-extra-small-size {
+    height: 16px;
+    width: 16px;
+}
+
+// margin-right-mixin
+@mixin margin-right-2px {
+    margin: 0 2px 0 0;
+}
+
 // Icon alignments in card-text and cmp-text
 .card-text, .cmp-text {
     p:has(> a) {
@@ -23,7 +47,7 @@
                 margin: 0 0 0 2px;
             }
             svg.fa-file-pdf {
-                margin: 0 2px 0 0;
+                @include margin-right-2px;
             }
         }
         .sl-link-sm{
@@ -33,7 +57,7 @@
                 vertical-align: -6px;
             }
             svg.fa-file-pdf {
-                margin: 0 2px 0 0;
+                @include margin-right-2px;
             }
         }
         .sl-link-xs {
@@ -42,7 +66,7 @@
                 vertical-align: -5px;
             }
             svg.fa-file-pdf {
-                margin: 0 2px 0 0;
+                @include margin-right-2px;
             }
         }
     }
@@ -51,51 +75,42 @@
 // sl-link-md, sl-btn and sl-link icon styles
 .sl-link-md, .sl-btn, .sl-link {
     svg.fa-chevron-circle-right {
-        height: 24px;
-        width: 24px;
+        @include icon-medium-size;
         padding: 4px;
         margin-right: 0;
-        vertical-align: bottom;
     }
 
     svg.fa-external-link-alt {
-        height: 24px;
-        width: 24px;
+        @include icon-medium-size;
         padding: 5.9px;
         margin-right: 0;
-        vertical-align: bottom;
     }
 
     svg.fa-file-pdf  {
-        height: 24px;
-        width: 24px;
+        @include icon-medium-size;
         padding: 5px;
         margin: 0 4px 0 0;
-        vertical-align: bottom;
     }
 }
 
 // sl-link-sm icon styles
 .sl-link-sm {
     svg.fa-chevron-circle-right {
-        height: 20px;
-        width: 20px;
+        @include icon-small-size;
         padding: 3px;
         margin-right: 0;
         vertical-align: bottom;
     }
 
     svg.fa-external-link-alt {
-        height: 20px;
-        width: 20px;
+        @include icon-small-size;
         padding: 5px;
         margin-right: 0;
         vertical-align: -6px;
     }
 
     svg.fa-file-pdf  {
-        height: 20px;
-        width: 20px;
+        @include icon-small-size;
         padding: 5px;
         margin: 0 4px 0 0;
         vertical-align: -5px;
@@ -105,22 +120,19 @@
 // sl-link-xs icon styles
 .sl-link-xs {
     svg.fa-external-link-alt{
-        height: 16px;
-        width: 16px;
+        @include icon-extra-small-size;
         padding: 3px;
         margin-right: 0;
         vertical-align: -4px;
     }
     svg.fa-chevron-circle-right {
-        height: 16px;
-        width: 16px;
+        @include icon-extra-small-size;
         padding: 2.5px;
         margin-right: 0;
         vertical-align: -4.5px;
     }
     svg.fa-file-pdf  {
-        height: 16px;
-        width: 16px;
+        @include icon-extra-small-size;
         padding: 2.8px;
         margin: 0 4px 0 0;
         vertical-align: -4px;
