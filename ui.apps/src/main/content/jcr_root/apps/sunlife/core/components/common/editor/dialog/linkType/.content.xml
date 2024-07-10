@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+    emptyText="Choose Link Type"
+    fieldLabel="Link Type "
+    name="./linkType">
+    <items jcr:primaryType="nt:unstructured">
+        <default
+            jcr:primaryType="nt:unstructured"
+            text="Select Link Type"
+            value="nolinktype"/>
+        <internalLink
+            jcr:primaryType="nt:unstructured"
+            text="Internal Link"
+            value="sl-link-internal"/>
+        <externalLink
+            jcr:primaryType="nt:unstructured"
+            text="External Link"
+            value="sl-link-external"/>
+        <pdfLink
+            jcr:primaryType="nt:unstructured"
+            text="PDF Link"
+            value="sl-link-pdf"/>
+    </items>
+</jcr:root>
