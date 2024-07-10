@@ -1,9 +1,3 @@
-<!--/*  
-Hero Banner Default Component Variation
-
-Hero banner is a type of component that helps identify/advertise a particular page of the website.
-This is default banner component variation template.
-
 Hero Banner component default variation.
 - Image (required)
 - Content block colour background (required)
@@ -16,8 +10,8 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
 
 <template data-sly-template.details="${ @ heroBanner }">
     <div
-	  data-sly-use.btnURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.btnURL}"
-	  data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.linkURL}"	  
+    data-sly-use.btnURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.btnURL}"
+    data-sly-use.linkURL="${'sunlife/core/components/common/url-parsing.js' @ path=heroBanner.linkURL}"   
       class="sl-banner default ${heroBanner.bannerSize} card ${heroBanner.spacing}"
       data-section="${heroBanner.dataSection}"
       role="banner">
@@ -46,7 +40,8 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
                      ${heroBanner.heading}
                   </h1>
                   <div class="card-text">${heroBanner.description @ context = 'html'}</div>
-                  <a 				  
+          
+                  <a 
                      data-sly-test="${heroBanner.ctaType != 'noCTA'}"
                      target="${ isBtn ? heroBanner.ctaTarget : heroBanner.target }" 
                      href="${isBtn ? btnURL.navPath : linkURL.navPath}"
@@ -54,8 +49,8 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
                      class="${isBtn ? 'sl-btn btn btn-primary' : linkStyle }"
                      data-title="${heroBanner.dataTitle}"
                      data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType }"
-					 data-sly-set.isExternal="${iconType == 'external-link-alt' ? true : false }"
-					 ><sly data-sly-test="${iconType =='file-pdf'}"><i class="fal fa-${iconType} icn-hover-hidden" aria-hidden="true"></i><i class="fas fa-${iconType} icn-hover-show" aria-hidden="true"></i></sly>${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }<sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fal fa-${iconType} icn-hover-hidden" aria-hidden="${isExternal ? 'false' : 'true'}"></i><sly data-sly-test="${iconType == 'chevron-circle-right'}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true"></i></sly></sly>
+           data-sly-set.isExternal="${iconType == 'external-link-alt' ? true : false }"
+           ><sly data-sly-test="${iconType =='file-pdf'}"><i class="fal fa-${iconType} icn-hover-hidden" aria-hidden="true"></i><i class="fas fa-${iconType} icn-hover-show" aria-hidden="true"></i></sly>${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }<sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fal fa-${iconType} icn-hover-hidden" aria-hidden="${isExternal ? 'false' : 'true'}"></i><sly data-sly-test="${iconType == 'chevron-circle-right'}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true"></i></sly></sly>
                   </a>
                </div>
             </div>

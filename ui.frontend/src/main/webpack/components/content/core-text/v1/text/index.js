@@ -19,6 +19,7 @@
                 pdfLink: '.sl-link-pdf[data-class-icon]',
                 slLink: '.sl-link',
                 faExternalLink:'.fa-external-link',
+                faExternalLinkAlt:'.fa-external-link-alt',
                 faInternalLink:'.fa-arrow-circle-right',
                 faPdfFile:'.fa-file-pdf',
                 html:'html'
@@ -52,6 +53,7 @@
             let i18n = util.constants.i18[lang] ? util.constants.i18[lang] : util.constants.i18['en'];
             $(CONSTANT.SELECTOR.slLink).each(function() {
             $(this).find(CONSTANT.SELECTOR.faExternalLink).attr(CONSTANT.ATTR.title, i18n?.opensExternalLink);
+            $(this).find(CONSTANT.SELECTOR.faExternalLinkAlt).attr(CONSTANT.ATTR.title, i18n?.opensExternalLink);
             $(this).find(CONSTANT.SELECTOR.faInternalLink).attr(CONSTANT.ATTR.title, i18n?.opensInternalLink);
             $(this).find(CONSTANT.SELECTOR.faPdfFile).attr(CONSTANT.ATTR.title, i18n?.opensPdfFile);
             });
