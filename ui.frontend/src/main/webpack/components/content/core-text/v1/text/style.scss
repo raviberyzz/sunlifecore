@@ -70,7 +70,7 @@
 
 p > a.sl-link {
     &:not([data-class-icon]) {
-        text-decoration: underline !important;
+        text-decoration: underline;
         &:hover {
             text-decoration: none;
         }
