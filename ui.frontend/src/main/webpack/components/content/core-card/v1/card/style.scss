@@ -1,93 +1,58 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-// Icon Medium Size mixin
-@mixin icon-medium-size {
-    height: 24px;
-    width: 24px;
-    vertical-align: bottom;
-}
-
-// Icon Small Size mixin
-@mixin icon-small-size {
-    height: 20px;
-    width: 20px;
-}
-
-// Icon Extra Small Size mixin
-@mixin icon-extra-small-size {
-    height: 16px;
-    width: 16px;
-}
-
-// margin-right-mixin
-@mixin margin-right-2px {
-    margin: 0 2px 0 0;
-}
-
-// Icon alignments in card-text and cmp-text
-.card-text, .cmp-text {
-    p:has(> a) {
-        svg.fa-file-pdf {
-            margin: 0 2px 0 0;
-        }
-        svg.fa-chevron-circle-right,
-        svg.fa-external-link-alt  {
-            margin: 0 0 0 2px;
-        }
+//Icon alignments 
+.card-text p:has(> a), 
+.cmp-text p:has(> a),
+.caption-container p:has(> .sl-link-md)
+.caption-container p:has(> .sl-link-sm)
+.caption-container p:has(> .sl-link-xs)  {
+    svg.fa-file-pdf {
+        margin: 0 2px 0 0;
+    }
+    svg.fa-chevron-circle-right,
+    svg.fa-external-link-alt  {
+        margin: 0 0 0 2px;
     }
 }
 
-// Icon alignments in caption-container
 .caption-container {
-    > p {
-        .sl-link-md{
-            svg.fa-external-link-alt,
-            svg.fa-chevron-circle-right {
-                margin: 0 0 0 2px;
-            }
-            svg.fa-file-pdf {
-                @include margin-right-2px;
-            }
+    p:has(> .sl-link-sm) {
+        svg.fa-external-link-alt,
+        svg.fa-chevron-circle-right {
+            vertical-align: -6px;
         }
-        .sl-link-sm{
-            svg.fa-external-link-alt,
-            svg.fa-chevron-circle-right {
-                margin: 0 0 0 2px;
-                vertical-align: -6px;
-            }
-            svg.fa-file-pdf {
-                @include margin-right-2px;
-            }
+    }
+    p:has(> .sl-link-xs) {
+        svg.fa-external-link-alt,
+        svg.fa-file-pdf {
+            margin: 0;
+            vertical-align: -5px;
         }
-        .sl-link-xs {
-            svg.fa-external-link-alt,
-            svg.fa-file-pdf {
-                vertical-align: -5px;
-            }
-            svg.fa-file-pdf {
-                @include margin-right-2px;
-            }
-        }
+        
     }
 }
 
 // sl-link-md, sl-btn and sl-link icon styles
-.sl-link-md, .sl-btn, .sl-link {
+.sl-link-md, 
+.sl-btn, 
+.sl-link {
+    svg {
+        height: 24px;
+        width: 24px !important;
+        vertical-align: bottom;
+    }
     svg.fa-chevron-circle-right {
-        @include icon-medium-size;
         padding: 4px;
         margin-right: 0;
     }
 
     svg.fa-external-link-alt {
-        @include icon-medium-size;
         padding: 5.9px;
         margin-right: 0;
     }
 
     svg.fa-file-pdf  {
-        @include icon-medium-size;
         padding: 5px;
         margin: 0 4px 0 0;
     }
@@ -95,22 +60,24 @@
 
 // sl-link-sm icon styles
 .sl-link-sm {
+    svg {
+        height: 20px;
+        width: 20px !important;
+    }
+    
     svg.fa-chevron-circle-right {
-        @include icon-small-size;
         padding: 3px;
         margin-right: 0;
         vertical-align: bottom;
     }
 
     svg.fa-external-link-alt {
-        @include icon-small-size;
         padding: 5px;
         margin-right: 0;
         vertical-align: -6px;
     }
 
     svg.fa-file-pdf  {
-        @include icon-small-size;
         padding: 5px;
         margin: 0 4px 0 0;
         vertical-align: -5px;
@@ -119,20 +86,21 @@
 
 // sl-link-xs icon styles
 .sl-link-xs {
+    svg{
+        height: 16px;
+        width: 16px !important;
+    }
     svg.fa-external-link-alt{
-        @include icon-extra-small-size;
         padding: 3px;
         margin-right: 0;
         vertical-align: -4px;
     }
     svg.fa-chevron-circle-right {
-        @include icon-extra-small-size;
         padding: 2.5px;
         margin-right: 0;
         vertical-align: -4.5px;
     }
     svg.fa-file-pdf  {
-        @include icon-extra-small-size;
         padding: 2.8px;
         margin: 0 4px 0 0;
         vertical-align: -4px;
