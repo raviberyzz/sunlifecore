@@ -48,6 +48,7 @@
     }
 }
 
+// sl-link-md, sl-btn and sl-link icon styles
 .sl-link-md, .sl-btn, .sl-link {
     svg.fa-chevron-circle-right {
         height: 24px;
@@ -74,6 +75,7 @@
     }
 }
 
+// sl-link-sm icon styles
 .sl-link-sm {
     svg.fa-chevron-circle-right {
         height: 20px;
@@ -100,6 +102,7 @@
     }
 }
 
+// sl-link-xs icon styles
 .sl-link-xs {
     svg.fa-external-link-alt{
         height: 16px;
@@ -123,9 +126,6 @@
         vertical-align: middle;
     }
 }
-
-
-
 
 /* Style sl-cards width */ 
 .card {
