@@ -27,27 +27,33 @@ $(document).ready(function () {
             $('.sticky-bar-wrapper').css('top', $('.slf-mobile-header-wrapper').outerHeight());
             setTimeout(function () {
                 $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": $('.sticky-bar-wrapper').outerHeight() });
+                $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": $('.sticky-bar-wrapper').outerHeight() });
             }, 200);
         }
     });
 
     if ($(window).width() <= 1024) {
         var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
+        var stickybarHeight = $('.sticky-bar-wrapper').outerHeight();
         $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight })
         setTimeout(function () {
-            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() })
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + stickybarHeight })
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
         }, 200);
     }
 
     $(window).resize(function () {
         if ($(window).width() <= 1024) {
             var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
+            var stickybarHeight = $('.sticky-bar-wrapper').outerHeight();
             $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight, 'display': 'flex' })
-            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() });
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
         }
         else {
             $(".sticky-bar-wrapper").css({ 'position': 'relative', 'top': '0px', 'display': 'none' });
             $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": '0px' });
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": '0px' });
         }
     });
 
