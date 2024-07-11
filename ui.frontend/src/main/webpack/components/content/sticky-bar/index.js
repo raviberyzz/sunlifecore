@@ -11,12 +11,6 @@ $(document).ready(function () {
         }
     });
 
-    $('#priButton a').click(function () {
-        if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
-            $('#leadgen-o2o').modal('show');
-        }
-    })
-
     function notificationHeight() {
         var notificationHeight = 0;
         var notificationTop = 0;
@@ -33,26 +27,33 @@ $(document).ready(function () {
             $('.sticky-bar-wrapper').css('top', $('.slf-mobile-header-wrapper').outerHeight());
             setTimeout(function () {
                 $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": $('.sticky-bar-wrapper').outerHeight() });
+                $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": $('.sticky-bar-wrapper').outerHeight() });
             }, 200);
         }
     });
 
     if ($(window).width() <= 1024) {
         var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
+        var stickybarHeight = $('.sticky-bar-wrapper').outerHeight();
         $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight })
         setTimeout(function () {
-            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() })
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + stickybarHeight })
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
         }, 200);
     }
 
     $(window).resize(function () {
         if ($(window).width() <= 1024) {
             var mobileHeaderHeight = notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight();
-            $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight })
-            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + $('.sticky-bar-wrapper').outerHeight() });
+            var stickybarHeight = $('.sticky-bar-wrapper').outerHeight();
+            $(".sticky-bar-wrapper").css({ 'position': 'fixed', 'top': mobileHeaderHeight, 'display': 'flex' })
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": notificationHeight() + stickybarHeight });
         }
         else {
-            $(".sticky-bar-wrapper").css({ 'position': 'sticky', 'top': '0px' })
+            $(".sticky-bar-wrapper").css({ 'position': 'relative', 'top': '0px', 'display': 'none' });
+            $('.root > .aem-Grid > .layout-container').css({ "position": "relative", "top": '0px' });
+            $(".root > .aem-Grid > .experiencefragment").last().css({ "position": "relative", "top": '0px' });
         }
     });
 
@@ -62,15 +63,15 @@ $(document).ready(function () {
         var $el = $('.sticky-bar-wrapper');
         if ($(window).width() > 1024 && $(".sticky-bar-wrapper").hasClass("hide-bar")) {
 
-            var isPositionFixed = ($el.css('position') == 'sticky');
+            var isPositionFixed = ($el.css('position') == 'fixed');
             if ($(this).scrollTop() > desktopHeaderHeight && !isPositionFixed) {
-                $el.css({ 'position': 'sticky', 'top': '0px', 'display': 'flex' });
+                $el.css({ 'position': 'fixed', 'top': '0px', 'display': 'flex' });
             }
             if ($(this).scrollTop() < desktopHeaderHeight && isPositionFixed) {
-                $el.css({ 'position': 'static', 'top': '0px', 'display': 'none' });
+                $el.css({ 'position': 'relative', 'top': '0px', 'display': 'none' });
             }
         }
-        else if (!$(".sticky-bar-wrapper").hasClass('hide-bar')) {
+        else if ($(window).width() > 1024 && !$(".sticky-bar-wrapper").hasClass('hide-bar')) {
             var scrollPos = $(document).scrollTop();
             $('#stickyBarLinks a').each(function () {
                 var currLink = $(this);
@@ -81,7 +82,7 @@ $(document).ready(function () {
                 }
             });
         }
-        if ($(window).width() < 768) {
+        if ($(window).width() <= 1024 && $('.sticky-bar-wrapper').find('.nav-links-dropdown').length != 0) {
             if (this.oldScroll > this.scrollY)
                 $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'inline-table' })
             else

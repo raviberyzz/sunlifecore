@@ -1,12 +1,6 @@
 @import '../../../prerequisite/base/styles/core.scss';
 
 .sticky-bar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-
     .sticky-bar-wrapper {
         display: flex;
         justify-content: space-between;
@@ -17,6 +11,8 @@
         height: 5pc;
         padding: 0 15px;
         white-space: nowrap;
+        max-width: 1064px;
+        z-index: 1030
     }
 
     .sticky-bar-wrapper.hide-bar {
@@ -44,7 +40,9 @@
     }
 
     #stickyBarLinks {
-        /* width: 100%; */
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
 
         li {
             a {
@@ -60,7 +58,6 @@
             }
 
             a.active {
-                color: $grey-900;
                 font-weight: 700;
                 color: $brand-secondary-800;
                 font-weight: 700;
@@ -79,22 +76,8 @@ html {
     scroll-behavior: smooth;
 }
 
-@media (min-width: 768px) {
-    .sticky-bar {
-        
-        #stickyBarLinks {
-            display: flex;
-            flex-direction: row;
-            gap: 30px;
-        }
-    }
-}
-
-
 @media(max-width: 1024px) {
     .sticky-bar {
-        justify-content: center;
-
         #stickyBarLinks {
             display: none;
             width: auto;
@@ -109,6 +92,8 @@ html {
             min-height: 5pc;
             border-top: 1px solid #dcdedf;
             padding: 10px 15px;
+            max-width: 100%;
+            width: 100%;
         }
 
         .desktop-sunlife-logo {
@@ -125,6 +110,7 @@ html {
             span {
                 display: flex;
                 margin: 0 auto;
+                max-width: 100%;
             }
         }
 
@@ -148,5 +134,12 @@ html {
             flex-direction: column;
             width: 100%;
         }
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .sticky-bar .sticky-bar-wrapper {
+        max-width: 1025px;
+        width: 100%;
     }
 }
