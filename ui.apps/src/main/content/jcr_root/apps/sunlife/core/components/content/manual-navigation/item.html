@@ -1,9 +1,11 @@
 <template data-sly-template.group="${@ navLinks='The navigation items for the current level'}"
                  data-sly-use.itemContentTemplate="itemcontent.html">
              <div role="menu" class="second-level-navigation" style="overflow-y: auto;" data-sly-list.navLinksOne = "${navLinks.listChildren}">
+                <sly data-sly-list.navLinksTwo = "${navLinksOne.listChildren}">
+                    <button data-sly-test = "${navLinksTwoList.index == 0}" class="go-back"><a href="#">${'Back' @ i18n}</a></button>
+                    <h2 data-sly-test = "${navLinksTwoList.index == 0}" class="navigation-title">${navLinks.linkName}</h2>
+                </sly>
                  <ul data-sly-test = "${navLinksOne.name == 'linkfirstlevel' }" data-sly-list.navLinksTwo = "${navLinksOne.listChildren}">
-                     <li data-sly-test = "${navLinksTwoList.index == 0}" class="go-back"><a href="#">${'Back' @ i18n}</a></li>
-                         <li data-sly-test = "${navLinksTwoList.index == 0}" class="navigation-title">${navLinks.linkName}</li>
                         <li class="${navLinksTwo.hasChildren == true ? 'navigation-menu' : 'subnav'}">
                            <sly data-sly-call="${itemContentTemplate.itemcontent @ navLinksRef = navLinksTwo}"></sly>
                         <div role="menu" class="third-level-navigation" data-sly-list.navLinkstwo = "${navLinksTwo.listChildren}">
