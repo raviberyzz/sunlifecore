@@ -23,7 +23,12 @@ Template for rendering link and button component
         target="${ isBtn ? cardBtnTarget : cardLinkTarget }"
         href="${isBtn ? btnURL.navPath : linkURL.navPath }"
         data-title="${dataTitle}"
-        class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta"><sly data-sly-test="${iconType =='file-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-${iconType} icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-${iconType} icn-hover-show" aria-hidden="true"></i></sly>${isBtn ? cardBtnLabel : cardLinkLabel }<sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn' && iconType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fal fa-${iconType} icn-hover-hidden" aria-hidden="true"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" class="fas fa-${iconType} icn-hover-show" aria-hidden="true"></i></sly>
+        class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta">
+        <sly 
+          data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html"
+          data-sly-set.linkLabelText="${ isBtn ? cardBtnLabel : cardLinkLabel }"
+          data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }">
+      </sly>
       </a>
   </sly>
 </template>
