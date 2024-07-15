@@ -1,0 +1,7 @@
+@function sl-font-family($font-family) {
+  @return $font-family, 'Helvetica Neue', 'Calibri', sans-serif; // Helvetica Neue - iOS, Calibri - others
+}
+
+$font-family-body: sl-font-family('Sun Life New Text Regular') !default;
+
+$sl-fonts-path: 'https://cdn.sunlife.com/content/dam/sunlife/global/fonts/' !default;
