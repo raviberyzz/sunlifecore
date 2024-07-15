@@ -35,13 +35,20 @@
         <!-- End - Include Site level CSS and scripts -->
         
         <sly>${baseModel.bodyInclude @ context = 'unsafe'}</sly>
-        
+
         <!-- Include Extra Clientlibs -->
-        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
-            data-sly-test.extraClientlibs="${baseModel.extraClientlibs}">
-            <sly data-sly-call="${clientLib.js @ categories=extraClientlibs}"></sly>
+        <sly data-sly-set.extraClientlibs="${baseModel.extraClientlibs}">
+            <sly data-sly-test="${extraClientlibs}">
+                <sly data-sly-use.clientlibs="${'com.adobe.cq.wcm.core.components.models.ClientLibraries' @ categories=extraClientlibs}">
+                    ${clientlibs.cssIncludes @ context="unsafe"}
+                </sly>
+
+                <sly data-sly-use.clientlibs="${'com.adobe.cq.wcm.core.components.models.ClientLibraries' @ categories=extraClientlibs, defer=true}">
+                    ${clientlibs.jsIncludes @ context="unsafe"}
+                </sly>
+            </sly> 
         </sly>
-        
+
         <sly data-sly-test="${baseModel.addOpeningDiv}">
             </div>
         </sly>

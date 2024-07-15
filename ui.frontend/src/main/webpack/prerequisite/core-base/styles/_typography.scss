@@ -1,0 +1,243 @@
+// Sun Life Variables
+@import '@sunlife/ui-styles/base/variables';
+
+// Bootstrap Required
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+
+@mixin sl-typography(
+  $color,
+  $font-family,
+  $font-size,
+  $font-weight,
+  $line-height
+) {
+  color: $color;
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin sl-h1 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h1-font-family),
+    $h1-font-size,
+    $h1-font-weight,
+    $h1-line-height
+  );
+}
+
+@mixin sl-h2 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h2-font-family),
+    $h2-font-size,
+    $h2-font-weight,
+    $h2-line-height
+  );
+}
+
+@mixin sl-h3 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h3-font-family),
+    $h3-font-size,
+    $h3-font-weight,
+    $h3-line-height
+  );
+}
+
+@mixin sl-h4 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h4-font-family),
+    $h4-font-size,
+    $h4-font-weight,
+    $h4-line-height
+  );
+}
+
+@mixin sl-h5 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h4-font-family),
+    $h4-font-size,
+    $h4-font-weight,
+    $h4-line-height
+  );
+}
+
+@mixin sl-h6 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($h4-font-family),
+    $h4-font-size,
+    $h4-font-weight,
+    $h4-line-height
+  );
+}
+
+@mixin sl-display-h1 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($display-h1-font-family),
+    $display-h1-font-size,
+    $display-h1-font-weight,
+    $display-h1-line-height
+  );
+}
+
+@mixin sl-display-h2 {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($display-h2-font-family),
+    $display-h2-font-size,
+    $display-h2-font-weight,
+    $display-h2-line-height
+  );
+}
+
+@mixin sl-body-medium {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-medium-font-family),
+    $body-medium-font-size,
+    $body-medium-font-weight,
+    $body-medium-line-height
+  );
+}
+
+@mixin sl-body-medium-bold {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-medium-bold-font-family),
+    $body-medium-bold-font-size,
+    $body-medium-bold-font-weight,
+    $body-medium-bold-line-height
+  );
+}
+
+@mixin sl-body-medium-italic {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-medium-italic-font-family),
+    $body-medium-italic-font-size,
+    $body-medium-italic-font-weight,
+    $body-medium-italic-line-height
+  );
+}
+
+@mixin sl-body-small {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-small-font-family),
+    $body-small-font-size,
+    $body-small-font-weight,
+    $body-small-line-height
+  );
+}
+
+@mixin sl-body-small-bold {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-small-bold-font-family),
+    $body-small-bold-font-size,
+    $body-small-bold-font-weight,
+    $body-small-bold-line-height
+  );
+}
+
+@mixin sl-body-xs {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-xs-font-family),
+    $body-xs-font-size,
+    $body-xs-font-weight,
+    $body-xs-line-height
+  );
+}
+
+@mixin sl-body-xs-bold {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-xs-bold-font-family),
+    $body-xs-bold-font-size,
+    $body-xs-bold-font-weight,
+    $body-xs-bold-line-height
+  );
+}
+
+@mixin sl-body-navigation {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($body-navigation-font-family),
+    $body-navigation-font-size,
+    $body-navigation-font-weight,
+    $body-navigation-line-height
+  );
+}
+
+@mixin sl-link-medium {
+  @include sl-typography(
+    var(--brand-tertiary-800),
+    sl-font-family($link-medium-font-family),
+    $link-medium-font-size,
+    $link-medium-font-weight,
+    $link-medium-line-height
+  );
+}
+
+@mixin sl-link-small {
+  @include sl-typography(
+    var(--brand-tertiary-800),
+    sl-font-family($link-small-font-family),
+    $link-small-font-size,
+    $link-small-font-weight,
+    $link-small-line-height
+  );
+}
+
+@mixin sl-link-xs {
+  @include sl-typography(
+    var(--brand-tertiary-800),
+    sl-font-family($link-xs-font-family),
+    $link-xs-font-size,
+    $link-xs-font-weight,
+    $link-xs-line-height
+  );
+}
+
+@mixin sl-label-small {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($label-small-font-family),
+    $label-small-font-size,
+    $label-small-font-weight,
+    $label-small-line-height
+  );
+}
+
+@mixin sl-input-label {
+  @include sl-typography(
+    var(--grey-700),
+    sl-font-family($input-label-font-family),
+    $input-label-font-size,
+    $input-label-font-weight,
+    $input-label-line-height
+  );
+}
+
+@mixin sl-input-text {
+  @include sl-typography(
+    var(--grey-900),
+    sl-font-family($input-text-font-family),
+    $input-text-font-size,
+    $input-text-font-weight,
+    $input-text-line-height
+  );
+}

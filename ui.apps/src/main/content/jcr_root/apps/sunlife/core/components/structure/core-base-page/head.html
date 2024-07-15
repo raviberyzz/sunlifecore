@@ -46,10 +46,7 @@
         data-sly-call="${clientlib.all @ categories=['sunlife.core-author']}"/>
 
 
-	<!-- Include Extra Clientlibs -->
-	<sly data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
-        <sly data-sly-call="${clientLib.css @ categories=extraClientlibs}"></sly>
-    </sly>
+	
     <sly data-sly-include="head.socialmedia.html"></sly>
 	<!-- Include MFA Domain Path -->
     <sly data-sly-test="${baseModel.mfaDomainPath}">
