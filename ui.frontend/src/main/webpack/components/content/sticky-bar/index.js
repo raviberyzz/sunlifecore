@@ -99,7 +99,10 @@ $(document).ready(function () {
     if (!dropdownClicked) {
         $(window).scroll(function (e) {
             if ($(window).width() <= 1024 && $('.sticky-bar-wrapper').find('.nav-links-dropdown').length != 0) {
-                if (this.oldScroll > this.scrollY)
+                if (this.oldScroll < 0) {
+                    $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'inline-table' })
+                }
+                else if (this.oldScroll > this.scrollY)
                     $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'inline-table' })
                 else
                     $('.nav-links-dropdown .cmp-form-options.cmp-form-options--drop-down').css({ 'display': 'none' })
@@ -116,7 +119,6 @@ $(document).ready(function () {
         $('html, body').animate({
             'scrollTop': $target.offset().top - (notificationHeight() + $('.slf-mobile-header-wrapper').outerHeight() + $('.sticky-bar-wrapper').outerHeight())
         }, 0)
-        $('.sticky-bar #navlinks-dropdown').val('');
         onScrollStop(onScrollCallback);
     });
 
