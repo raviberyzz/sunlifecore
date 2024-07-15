@@ -1,0 +1,11 @@
+<!--/*
+Template for rendering link with default icons depending upon type of link
+
+<sly 
+    data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html"
+    data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }">
+</sly>
+*/-->
+<template data-sly-template.details="${ @ linkLabel, iconType }"><sly data-sly-test="${iconType =='file-pdf'}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/icon.html" data-sly-set.iconTitle="${'pdf.link' @ i18n}" data-sly-call="${template.details @ prefix='fak', icon='pdf', hoverIcon='pdf-hover', title=iconTitle, isAriaHidden=true, isHover=true}"></sly></sly>${linkLabel}<sly data-sly-test="${iconType =='external-link-alt'}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/icon.html" data-sly-set.iconTitle="${ 'external.link' @ i18n }" data-sly-call="${template.details @ prefix='fak', icon='external-link', hoverIcon='external-link-hover', title=iconTitle, isAriaHidden=true, isHover=true}"></sly>
+    </sly><sly data-sly-test="${iconType =='chevron-circle-right'}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/icon.html" data-sly-set.iconTitle="${ 'internal.link' @ i18n }" data-sly-call="${template.details @ prefix='fak', icon='chevron-circle-right', hoverIcon='chevron-circle-right-hover', title=iconTitle, isAriaHidden=true, isHover=true}"></sly></sly>
+</template>

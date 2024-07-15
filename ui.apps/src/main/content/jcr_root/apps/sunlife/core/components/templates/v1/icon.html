@@ -1,0 +1,10 @@
+<!--/*
+Template for rendering icon and hovered icon
+
+<sly 
+    data-sly-use.template="/apps/sunlife/core/components/templates/v1/icon.html"
+    data-sly-set.pdfIconTitle="${'pdf.link' @ i18n}"
+    data-sly-call="${template.details @ prefix='fak', icon='pdf', hoverIcon='pdf-hover', title=pdfIconTitle, isAriaHidden=true, isHover=true}">
+</sly>
+*/-->
+<template data-sly-template.details="${ @  prefix, icon, prefixHover, hoverIcon, title, isAriaHidden, isHover }"><sly data-sly-set.hoveredPrefix="${prefixHover ? prefixHover : prefix}"/><i title="${title}" class="${prefix} ${['fa', icon] @ join='-'} ${isHover ? 'icn-hover-hidden': '' }" aria-hidden="${isAriaHidden ? 'true' : 'false'}"></i><i data-sly-test="${isHover}" title="${title}" class="${hoveredPrefix} ${['fa', hoverIcon] @ join='-'} icn-hover-show" aria-hidden="${isAriaHidden ? 'true' : 'false'}"></i></template>

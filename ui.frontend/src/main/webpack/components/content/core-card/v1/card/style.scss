@@ -1,37 +1,6 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
-//Icon alignments 
-.card-text p:has(> a), 
-.cmp-text p:has(> a),
-.caption-container p:has(> .sl-link-md)
-.caption-container p:has(> .sl-link-sm)
-.caption-container p:has(> .sl-link-xs)  {
-    svg.fa-file-pdf {
-        margin: 0 2px 0 0;
-    }
-    svg.fa-chevron-circle-right,
-    svg.fa-external-link-alt  {
-        margin: 0 0 0 2px;
-    }
-}
-
-.caption-container {
-    p:has(> .sl-link-sm) {
-        svg.fa-external-link-alt,
-        svg.fa-chevron-circle-right {
-            vertical-align: -6px;
-        }
-    }
-    p:has(> .sl-link-xs) {
-        svg.fa-external-link-alt,
-        svg.fa-file-pdf {
-            margin: 0;
-            vertical-align: -5px;
-        }
-        
-    }
-}
 
 // sl-link-md, sl-btn and sl-link icon styles
 .sl-link-md, 
@@ -40,21 +9,8 @@
     svg {
         height: 24px;
         width: 24px !important;
-        vertical-align: bottom;
-    }
-    svg.fa-chevron-circle-right {
-        padding: 4px;
-        margin-right: 0;
-    }
-
-    svg.fa-external-link-alt {
-        padding: 5.9px;
-        margin-right: 0;
-    }
-
-    svg.fa-file-pdf  {
-        padding: 5px;
-        margin: 0 4px 0 0;
+        margin: 0 !important;
+        vertical-align: -5.9px;
     }
 }
 
@@ -63,24 +19,8 @@
     svg {
         height: 20px;
         width: 20px !important;
-    }
-    
-    svg.fa-chevron-circle-right {
-        padding: 3px;
-        margin-right: 0;
-        vertical-align: bottom;
-    }
-
-    svg.fa-external-link-alt {
-        padding: 5px;
-        margin-right: 0;
-        vertical-align: -6px;
-    }
-
-    svg.fa-file-pdf  {
-        padding: 5px;
-        margin: 0 4px 0 0;
-        vertical-align: -5px;
+        margin: 0 !important;
+        vertical-align: -5.3px;
     }
 }
 
@@ -89,21 +29,17 @@
     svg{
         height: 16px;
         width: 16px !important;
+        margin: 0 !important;
+        vertical-align: -4.6px;
     }
-    svg.fa-external-link-alt{
-        padding: 3px;
-        margin-right: 0;
-        vertical-align: -4px;
-    }
-    svg.fa-chevron-circle-right {
-        padding: 2.5px;
-        margin-right: 0;
-        vertical-align: -4.5px;
-    }
-    svg.fa-file-pdf  {
-        padding: 2.8px;
-        margin: 0 4px 0 0;
-        vertical-align: -4px;
+}
+
+// popover-icon alignment in text component
+.card-text {
+    p:has(> .popover-button) {
+        svg.popover-icon{
+            vertical-align: middle;
+        }
     }
 }
 

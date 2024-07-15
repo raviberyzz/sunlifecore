@@ -53,12 +53,12 @@
                 }
             },
             templateString: {
-                externalLinkIcon: `<i class="fal fa-external-link-alt icn-hover-hidden"></i>`,
-                internalLinkIcon: `<i class="fal fa-chevron-circle-right icn-hover-hidden" aria-hidden="true"></i>`,
-                pdfLinkIcon: `<i class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i>`,
-                externalLinkIconSolid: `<i class="fas fa-external-link-alt icn-hover-show" aria-hidden="true"></i>`,
-                internalLinkIconSolid: `<i class="fas fa-chevron-circle-right icn-hover-show" aria-hidden="true"></i>`,
-                pdfLinkIconSolid: `<i class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i>`
+                externalLinkIcon: `<i class="fak fa-external-link icn-hover-hidden"></i>`,
+                internalLinkIcon: `<i class="fak fa-chevron-circle-right icn-hover-hidden" aria-hidden="true"></i>`,
+                pdfLinkIcon: `<i class="fak fa-pdf icn-hover-hidden" aria-hidden="true"></i>`,
+                externalLinkIconSolid: `<i class="fak fa-external-link-hover icn-hover-show" aria-hidden="true"></i>`,
+                internalLinkIconSolid: `<i class="fak fa-chevron-circle-right-hover icn-hover-show" aria-hidden="true"></i>`,
+                pdfLinkIconSolid: `<i class="fak fa-pdf-hover icn-hover-show" aria-hidden="true"></i>`
             },
         };
 
