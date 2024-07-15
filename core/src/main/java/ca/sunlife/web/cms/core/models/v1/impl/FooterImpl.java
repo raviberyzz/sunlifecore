@@ -24,14 +24,15 @@ import com.day.cq.wcm.api.Page;
         FooterImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterImpl implements Footer {
     protected static final String RESOURCE_TYPE = "sunlife/core/components/content/footer/v1/footer";
-    private final String SOCIAL_LINKNAME = "linkName";
-    private final String SOCIAL_LINKURL = "linkURL";
-    private final String SOCIAL_LANGATT = "langAttribute";
-    private final String SOCIAL_LINKTAG = "linkTarget";
-    private final String SOCIAL_ICON = "icon";
-    private final String SOCIAL_LINK = "link";
-    private final String SOCIAL_DATATITLE = "dataTitle";
-    private final String SOCIAL_SCREENREADER = "screenReaderTextSocialMedia";
+    private final String LINK_NAME = "linkName";
+    private final String LINK_URL = "linkURL";
+    private final String LANG_ATT = "langAttribute";
+    private final String LINK_TAG = "linkTarget";
+    private final String ICON = "icon";
+    private final String LINK = "link";
+    private final String DATA_TITLE = "dataTitle";
+    private final String SCREEN_READER = "screenReaderTextSocialMedia";
+    private final String LINK_TYPE = "linkType";
 
     @Self
     private SlingHttpServletRequest request;
@@ -151,12 +152,12 @@ public class FooterImpl implements Footer {
                         ValueMap itemValueMap = linkItem.getValueMap();
                         linkMap = new HashMap<>();
 
-                        linkMap.put(SOCIAL_LINKNAME, itemValueMap.get(SOCIAL_LINKNAME, String.class));
-                        linkMap.put(SOCIAL_LINKURL, itemValueMap.get(SOCIAL_LINKURL, String.class));
-                        linkMap.put(SOCIAL_LANGATT, itemValueMap.get(SOCIAL_LANGATT, String.class));
-                        linkMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
-                        linkMap.put(SOCIAL_LINKTAG, itemValueMap.get(SOCIAL_LINKTAG, String.class));
-
+                        linkMap.put(LINK_NAME, itemValueMap.get(LINK_NAME, String.class));
+                        linkMap.put(LINK_URL, itemValueMap.get(LINK_URL, String.class));
+                        linkMap.put(LANG_ATT, itemValueMap.get(LANG_ATT, String.class));
+                        linkMap.put(DATA_TITLE, itemValueMap.get(DATA_TITLE, String.class));
+                        linkMap.put(LINK_TAG, itemValueMap.get(LINK_TAG, String.class));
+                        linkMap.put(LINK_TYPE, itemValueMap.get(LINK_TYPE, String.class));
                         linksList.add(linkMap);
                     }
                     topLinkMap.put("links", linksList);
@@ -180,12 +181,12 @@ public class FooterImpl implements Footer {
                 ValueMap itemValueMap = bottomLinkItem.getValueMap();
                 bottomLinkMap = new HashMap<>();
 
-                bottomLinkMap.put(SOCIAL_LINKNAME, itemValueMap.get(SOCIAL_LINKNAME, String.class));
-                bottomLinkMap.put(SOCIAL_LINKURL, itemValueMap.get(SOCIAL_LINKURL, String.class));
-                bottomLinkMap.put(SOCIAL_LANGATT, itemValueMap.get(SOCIAL_LANGATT, String.class));
-                bottomLinkMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
-                bottomLinkMap.put(SOCIAL_LINKTAG, itemValueMap.get(SOCIAL_LINKTAG, String.class));
-
+                bottomLinkMap.put(LINK_NAME, itemValueMap.get(LINK_NAME, String.class));
+                bottomLinkMap.put(LINK_URL, itemValueMap.get(LINK_URL, String.class));
+                bottomLinkMap.put(LANG_ATT, itemValueMap.get(LANG_ATT, String.class));
+                bottomLinkMap.put(DATA_TITLE, itemValueMap.get(DATA_TITLE, String.class));
+                bottomLinkMap.put(LINK_TAG, itemValueMap.get(LINK_TAG, String.class));
+                bottomLinkMap.put(LINK_TYPE, itemValueMap.get(LINK_TYPE, String.class));
                 bottomLinksList.add(bottomLinkMap);
             }
         }
@@ -203,10 +204,10 @@ public class FooterImpl implements Footer {
                 Resource socialMediaItem = socialMediaIterator.next();
                 ValueMap itemValueMap = socialMediaItem.getValueMap();
                 socialMediaMap = new HashMap<>();
-                socialMediaMap.put(SOCIAL_ICON, itemValueMap.get(SOCIAL_ICON, String.class));
-                socialMediaMap.put(SOCIAL_LINK, itemValueMap.get(SOCIAL_LINK, String.class));
-                socialMediaMap.put(SOCIAL_DATATITLE, itemValueMap.get(SOCIAL_DATATITLE, String.class));
-                socialMediaMap.put(SOCIAL_SCREENREADER, itemValueMap.get(SOCIAL_SCREENREADER, String.class));
+                socialMediaMap.put(ICON, itemValueMap.get(ICON, String.class));
+                socialMediaMap.put(LINK, itemValueMap.get(LINK, String.class));
+                socialMediaMap.put(DATA_TITLE, itemValueMap.get(DATA_TITLE, String.class));
+                socialMediaMap.put(SCREEN_READER, itemValueMap.get(SCREEN_READER, String.class));
                 socialMediaList.add(socialMediaMap);
             }
         }

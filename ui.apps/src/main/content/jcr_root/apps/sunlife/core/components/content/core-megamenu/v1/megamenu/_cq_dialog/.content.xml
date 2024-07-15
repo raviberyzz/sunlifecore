@@ -112,6 +112,10 @@
                                                                                         fieldLabel="Menu Item Link URL"
                                                                                         name="./menuItemLinkURL"
                                                                                         rootPath="/content"/>
+																					<linkType
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                                        path="sunlife/core/components/common/editor/dialog/linkType"/>
                                                                                     <menuItemDataTitle
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

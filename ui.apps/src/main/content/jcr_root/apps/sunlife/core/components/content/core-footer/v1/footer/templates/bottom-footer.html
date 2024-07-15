@@ -3,8 +3,13 @@
         <hr class="sl-divider hr" aria-hidden="true" />
         <div class="footer-utility-menu col-gap">
             <ul class="footer-utility-submenu" data-sly-list="${bottomFooter.bottomLinks}">
-                <li data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=item.linkURL}" class="footer-menu-items">
-                    <a href="${utilityListParsing.navPath}" lang="${item.langAttribute}" data-title="${item.dataTitle}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}">${item.linkName}</a>
+                <li data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=item.linkURL}" class="footer-menu-items sl-link">
+                    <a href="${utilityListParsing.navPath}" lang="${item.langAttribute}" data-title="${item.dataTitle}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}">
+                    <sly data-sly-set.isExternal="${item.linkType == 'sl-link-external' ? true : false }">
+                        <sly data-sly-test="${item.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>${item.linkName}
+                        <sly data-sly-test="${item.linkType !='sl-link-pdf' && item.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+                    </sly>
+                    </a>
                     <div data-sly-test="${!itemList.last || itemList.last && !bottomFooter.feedback}" class="sl-divider vr" aria-hidden="true"></div>
                 </li>
                 <sly data-sly-test="${itemList.last && !bottomFooter.feedback }">
