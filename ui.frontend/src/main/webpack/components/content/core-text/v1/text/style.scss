@@ -1,5 +1,10 @@
 @import '../../../../../prerequisite/core-utils/v1/styles/common/style.scss';
-
+// Define the mixin
+@mixin svg-margin {
+    svg.svg-inline--fa {
+        margin: 0 0 0 2px;
+    }
+}
 .cmp-text {
     table {
         width: 100%;
@@ -43,64 +48,15 @@
     }
 }
 
-.sl-link {
-    &.sl-link-md {
-        .fa-external-link-alt {
-            margin: 0 0 0 8px;
-            vertical-align: -2px;
-        }
-        .fa-chevron-circle-right {
-            margin: 0 0 0 8px;
-            vertical-align: -3px;
-        }
-        .fa-file-pdf  {
-            margin: 0 8px 0 0;
-        }
-    }   
+.sl-link {  
 
-	.fa-file-pdf {
-	    margin-left: 0;
-    }
-
-    &.sl-link-sm {
-        .fa-external-link-alt {
-            height: 10px;
-            width: 10px;
-            margin: 0 0 0 7px;
-            vertical-align: middle;
-        }
-        .fa-chevron-circle-right {
-            height: 14px;
-            width: 14px;
-            margin: 0 0 0 7px;
-        }
-        .fa-file-pdf  {
-            height: 12px;
-            margin: 0 7px 0 0;
-        }
+    .fa-file-pdf {
+        margin-left: 0;
     }
   
     &.sl-link-xs {
         font-size: 0.75rem;
         line-height: 16px;
-    }
-  
-    &.sl-link-xs {
-        .fa-external-link-alt{
-            height: 10px;
-            width: 10px;
-            margin-left: 4px;
-            vertical-align: -2px;
-        }
-        .fa-chevron-circle-right {
-            height: 12px;
-            width: 12px;
-            margin-left: 4px;
-            vertical-align: -2px;
-        }
-        .fa-file-pdf  {
-            margin-right: 4px;
-        }
     }
 
     @include hide-far-default-icon;
@@ -195,7 +151,7 @@ p > a.sl-link {
 }
 .popover-button .popover-icon {
     color: var(--brand-tertiary-800);
-	}
+    }
 
 
 .sl-popover-headless .popover-header{
@@ -208,4 +164,19 @@ p > a.sl-link {
 .sl-popover-headless .popover-body{
     width: calc(100% - 24px);
     padding-right: 8px;
+}
+// Applies a left margin of 2px for all the hyperlinks in the paragraph
+
+p {
+    a.sl-link {
+        // Use the mixin for general sl-link class
+        @include svg-margin;
+
+        // Use the mixin for size-specific classes
+        &.sl-link-xs,
+        &.sl-link-sm,
+        &.sl-link-md {
+            @include svg-margin;
+        }
+    }
 }

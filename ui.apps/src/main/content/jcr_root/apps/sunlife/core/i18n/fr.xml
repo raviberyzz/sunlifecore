@@ -10,15 +10,15 @@
     <internal.link
         jcr:mixinTypes="[sling:Message]"
         jcr:primaryType="nt:folder"
-        sling:message="Lien interne"/>
+        sling:message="ouvre un lien interne"/>
     <external.link
         jcr:mixinTypes="[sling:Message]"
         jcr:primaryType="nt:folder"
-        sling:message="Lien externe"/>
+        sling:message="ouvre un lien externe"/>
     <pdf.link
         jcr:mixinTypes="[sling:Message]"
         jcr:primaryType="nt:folder"
-        sling:message="Lien vers le fichier PDF"/>
+        sling:message="ouvre un fichier pdf"/>
     <internal.linkTitle
         jcr:mixinTypes="[sling:Message]"
         jcr:primaryType="nt:folder"

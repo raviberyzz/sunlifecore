@@ -31,6 +31,7 @@ public class NotificationImplTest {
         assertEquals("/content/sunlife/external/ca/en/explore-products/insurance", notification.getButtonURL());
     	assertEquals("Sample accessibility label", notification.getAccessibilityLabel());
     	assertEquals("Sample data title", notification.getDataTitle());
-    	assertEquals("mb-sl12", notification.getSpacing());    	
+    	assertEquals("mb-sl12", notification.getSpacing());
+        assertEquals("sl-link-pdf", notification.getLinkType());
 	}
 }
