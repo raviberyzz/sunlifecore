@@ -1,6 +1,11 @@
 @import '../../../prerequisite/base/styles/core.scss';
 
 .sticky-bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+
     .sticky-bar-wrapper {
         display: flex;
         justify-content: space-between;
