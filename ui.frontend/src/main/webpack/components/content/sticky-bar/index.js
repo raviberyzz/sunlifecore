@@ -11,6 +11,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#priButton a').click(function () {
+        if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
+            $('#leadgen-o2o').modal('show');
+        }
+    })
+
     function notificationHeight() {
         var notificationHeight = 0;
         var notificationTop = 0;
