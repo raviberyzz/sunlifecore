@@ -25,4 +25,15 @@ package ca.sunlife.web.cms.core.models.v1;
 
     String getSpacing();
 
+    /**
+     * Retrieves the type of link from the value map.
+     *
+     * The link type indicates whether the link is an internal link, an external link,
+     * or a link to a PDF document.
+     *
+     * @return the link type as a {@code String}.
+     *
+     */
+    String getLinkType();
+
 }

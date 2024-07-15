@@ -1,6 +1,7 @@
 <sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
      data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}">
+	 <sly data-sly-set.isExternal="${notification.linkType == 'sl-link-external' ? true : false }"/>
     <div role="alert"
          class="fade hide-notification sl-notification alert alert-${notification.notificationType} show ${notification.spacing}" data-section="site-level-notification">
         <div class="container">
@@ -21,12 +22,15 @@
                 </div>
                 <div class="multiline-notification-text">${notification.text @context ='html'}</div>
                 <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}">
-                    <button class="sl-btn multiline-action-button btn btn-secondary-small"
+                    <button class="sl-btn multiline-action-button btn btn-secondary-small sl-link"
                             data-sly-attribute.loadButton="${notificationButton}"
                             data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
                             type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                             data-sly-attribute.target="${notification.buttonTarget}"
-                            aria-label="${notification.buttonAccessibilityLabel}"> ${notification.buttonTitle}
+                            aria-label="${notification.buttonAccessibilityLabel}">
+							<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
+							${notification.buttonTitle}
+							<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
                     </button>
                 </sly>
             </sly>
@@ -44,13 +48,15 @@
                     <div class="notification-buttons">
                         <sly data-sly-test.notificationButton="${notification.buttonTitle ? 'button' : ''}">
                             <sly data-sly-test="${!notification.multiline}">
-                                <button class="sl-btn oneline-action-button btn btn-secondary-small"
-                                    data-sly-attribute.loadButton="${notificationButton}"
-                                    data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
-                                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
-                                    data-sly-attribute.target="${notification.buttonTarget}"
-                                    aria-label="${notification.buttonAccessibilityLabel}">
-                                 ${notification.buttonTitle}
+                                <button class="sl-btn oneline-action-button btn btn-secondary-small sl-link"
+                                        data-sly-attribute.loadButton="${notificationButton}"
+                                        data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
+                                        type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
+                                        data-sly-attribute.target="${notification.buttonTarget}"
+                                        aria-label="${notification.buttonAccessibilityLabel}">
+										<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
+										${notification.buttonTitle}
+										<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
                                 </button>
                             </sly>
                         </sly>
@@ -59,13 +65,15 @@
                         </button>
                     </div>
                 </div>
-                <button data-sly-test=${notification.multiline} class="sl-btn multiline-action-button btn btn-secondary-small"
-                    data-sly-attribute.loadButton="${notificationButton}"
-                    data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
-                    type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
-                    data-sly-attribute.target="${notification.buttonTarget}"
-                    aria-label="${notification.buttonAccessibilityLabel}">
-                        ${notification.buttonTitle}
+                <button data-sly-test=${notification.multiline} class="sl-btn multiline-action-button btn btn-secondary-small sl-link"
+                        data-sly-attribute.loadButton="${notificationButton}"
+                        data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
+                        type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
+                        data-sly-attribute.target="${notification.buttonTarget}"
+                        aria-label="${notification.buttonAccessibilityLabel}">
+						<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
+						${notification.buttonTitle}
+						<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
                 </button>
             </sly>
         </div>

@@ -211,6 +211,10 @@
                                                                                     required="{Boolean}true"
                                                                                     rootPath="/content"
                                                                                     suffix=".html"/>
+																				<linkType
+																					jcr:primaryType="nt:unstructured"
+																					sling:resourceType="granite/ui/components/coral/foundation/include"
+																					path="sunlife/core/components/common/editor/dialog/linkType"/>
                                                                                 <linkTarget
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -425,6 +429,14 @@
                                                                                             jcr:primaryType="nt:unstructured"
                                                                                             text="Modal"
                                                                                             value="modal"/>
+																						<internalLink
+																							jcr:primaryType="nt:unstructured"
+																							text="Internal Link"
+																							value="sl-link-internal"/>
+																						<externalLink
+																							jcr:primaryType="nt:unstructured"
+																							text="External Link"
+																							value="sl-link-external"/>
                                                                                     </items>
                                                                                 </linkType>
                                                                                 <linktarget
@@ -541,6 +553,10 @@
                                                                                     name="./megaMenuLinkURL"
                                                                                     rootPath="/content"
                                                                                     suffix=".html"/>
+																				<linkType
+																					jcr:primaryType="nt:unstructured"
+																					sling:resourceType="granite/ui/components/coral/foundation/include"
+																					path="sunlife/core/components/common/editor/dialog/linkType"/>
                                                                                 <megaMenuFragmentPath
                                                                                     granite:id="xfPicker"
                                                                                     jcr:primaryType="nt:unstructured"

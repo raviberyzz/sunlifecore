@@ -1,16 +1,8 @@
-<!--/*
-Template for rendering link and button component
-
-<sly 
-    data-sly-use.template="/apps/sunlife/core/components/content/core-card/v1/card/templates/cta.html"
-    data-sly-call="${template.details @ ctaType='button', cardBtnTarget='_self', cardBtnURL='URL', cardBtnIconType='file-pdf', cardBtnLabel='Click Here', cardBtnType='secondary'}">
-</sly>
-*/-->
 <template data-sly-template.details="${ @ ctaType, cardBtnTarget, cardBtnURL, cardBtnIconType, cardBtnLabel, cardBtnType, cardLinkTarget, cardLinkURL, cardLinkIconType, cardLinkLabel, cardLinkType, dataTitle }"> 
   <sly
     data-sly-set.isBtn="${ctaType == 'button' ? true : false }"
     data-sly-set.iconType="${isBtn ? cardBtnIconType : cardLinkIconType }"
-    data-sly-set.isExternal="${iconType == 'external-link' ? true : false }"
+    data-sly-set.isExternal="${iconType == 'external-link-alt' ? true : false }"
     data-sly-set.cardBtnVarient="${cardBtnType ? cardBtnType : 'primary'}"
     data-sly-set.cardLinkVarient="${cardLinkType=='secondary' ? 'sl-link sl-link-secondary' : 'sl-link'}"
     data-sly-set.cardBtnTypeClass="${['btn',cardBtnVarient] @ join='-'}"
