@@ -8,7 +8,7 @@
 							<span class="fak fa-${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
 							<span
 								class="dropdown-label d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${signinLinks.getDesktopLinkTitle}
-								<sly data-sly-test="${signinLinks.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+								<sly data-sly-test="${ (signinLinks.linkType == 'sl-link-internal') ||  (signinLinks.linkType == 'sl-link-external') }"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
 							</span> 
 							<sly data-sly-test.title="${signinLinks.getMobileLinkTitle ? signinLinks.getMobileLinkTitle : signinLinks.getDesktopLinkTitle}">
 								<span class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${title}</span> 
