@@ -219,9 +219,9 @@
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}" data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=head.linkUrl}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
-                        href="${utilityListParsing.navPath}" aria-expanded="true">
+                        href="${utilityListParsing.navPath}">
                         <span
-                          class="nav-item-heading ">${head.linkName}</span></a>
+                          class="nav-item-heading" aria-haspopup="true" aria-expanded="false">${head.linkName}</span></a>
                       <div data-sly-test="${head.fragmentPath}" class="dropdown-menu menu-content">
                         <div class="mega-menu-wrapper-desk">
 
@@ -319,7 +319,7 @@
         <!-- Hamburger Menu start -->
         <div class="hamburger-menu-wrapper inactive">
           <div class="close-hamburger-menu">
-              <button type="button" class="btn close-hamburger" id="close-hamburger" aria-label="Close">
+              <button type="button" class="btn close-hamburger" id="close-hamburger">
                   <span class="fa fa-remove" role="img" aria-hidden="true" aria-label="Close"></span>
               </button>
           </div>
