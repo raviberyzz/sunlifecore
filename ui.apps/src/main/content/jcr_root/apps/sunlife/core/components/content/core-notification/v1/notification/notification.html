@@ -28,9 +28,17 @@
                             type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                             data-sly-attribute.target="${notification.buttonTarget}"
                             aria-label="${notification.buttonAccessibilityLabel}">
-							<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
+							<!--/* <sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
 							${notification.buttonTitle}
-							<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+							<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}">
+                            <i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i>
+                            <i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i>
+                            </sly> */-->
+                            <sly 
+                                data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                                data-sly-set.linkLabelText="${notification.buttonTitle}"
+                                data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                            </sly>
                     </button>
                 </sly>
             </sly>
@@ -54,9 +62,14 @@
                                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                                         data-sly-attribute.target="${notification.buttonTarget}"
                                         aria-label="${notification.buttonAccessibilityLabel}">
-										<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
+										<!--/* <sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
 										${notification.buttonTitle}
-										<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+										<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly> */-->
+                                        <sly 
+                                            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                                            data-sly-set.linkLabelText="${notification.buttonTitle}"
+                                            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                                        </sly>
                                 </button>
                             </sly>
                         </sly>
@@ -71,9 +84,11 @@
                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                         data-sly-attribute.target="${notification.buttonTarget}"
                         aria-label="${notification.buttonAccessibilityLabel}">
-						<sly data-sly-test="${notification.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-						${notification.buttonTitle}
-						<sly data-sly-test="${notification.linkType !='sl-link-pdf' && notification.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+                        <sly 
+                            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                            data-sly-set.linkLabelText="${notification.buttonTitle}"
+                            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                        </sly>
                 </button>
             </sly>
         </div>

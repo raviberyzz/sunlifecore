@@ -8,24 +8,28 @@
          <div class="region-content">
             <div class="country-header sl-link" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=region.regionURL}">
 				<sly data-sly-set.isExternal="${region.linkType == 'sl-link-external' ? true : false }">
-				   <h2 data-sly-test="${region.items}" data-title="${region.dataTitle}">                 
-						 <sly data-sly-test="${region.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-						 ${region.regionName}
-						 <sly data-sly-test="${region.linkType !='sl-link-pdf' && region.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+				   <h2 data-sly-test="${region.items}" data-title="${region.dataTitle}">
+                     <sly 
+                        data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                        data-sly-set.linkLabelText="${region.regionName}"
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=region.linkType  == 'sl-link-pdf' ? 'file-pdf' : (region.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                     </sly>
 				   </h2>
 				   <a data-sly-test="${!region.items}" class="${(region.linkHighlight =='yes') ? 'active' : ''}"data-title="${region.dataTitle}" href="${utilityListParsing.navPath}" target="${region.regionTarget}">
-						 <sly data-sly-test="${region.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-						 ${region.regionName}
-						 <sly data-sly-test="${region.linkType !='sl-link-pdf' && region.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+                     <sly 
+                        data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                        data-sly-set.linkLabelText="${region.regionName}"
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=region.linkType  == 'sl-link-pdf' ? 'file-pdf' : (region.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                     </sly>
 				   </a>
 			  </sly>
             </div>
             <ul data-sly-list.item="${region.items}">
                <li data-sly-use.itemParsing="${'sunlife/core/components/common/url-parsing.js' @ path=item.linkURL}"><a href="${itemParsing.navPath}" data-title="${item.dataTitle}" target="${item.linkTarget}" class="dropdown-item ${(region.linkHighlight =='yes' && itemList.first) ? 'active' : ''} sl-link"><div class="d-inline">
-                  <sly data-sly-set.isExternal="${item.linkType == 'sl-link-external' ? true : false }">
-                     <sly data-sly-test="${item.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-                     <span>${item.linkName}</span>
-                     <sly data-sly-test="${item.linkType !='sl-link-pdf' && item.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+                  <sly 
+                     data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                     data-sly-set.linkLabelText="${item.linkName}"
+                     data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType  == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
                   </sly>
                </div></a></li>
             </ul>
@@ -37,10 +41,10 @@
    <a href="${utilityWorldwideParsing.navPath}" target="${regionModel.worldwide.linkTarget}" data-title="${regionModel.worldwide.dataTitle}" data-rr-ui-dropdown-item=""
       class="world-wide-content  dropdown-item sl-link">
       <div class="d-inline">
-         <sly data-sly-set.isExternal="${regionModel.worldwide.linkType == 'sl-link-external' ? true : false }">
-            <sly data-sly-test="${regionModel.worldwide.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-            <span>${regionModel.worldwide.linkName}</span>
-            <sly data-sly-test="${regionModel.worldwide.linkType !='sl-link-pdf' && regionModel.worldwide.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+         <sly 
+            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+            data-sly-set.linkLabelText="${regionModel.worldwide.linkName}"
+            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=regionModel.worldwide.linkType  == 'sl-link-pdf' ? 'file-pdf' : (regionModel.worldwide.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
          </sly>
       </div>
    </a>
