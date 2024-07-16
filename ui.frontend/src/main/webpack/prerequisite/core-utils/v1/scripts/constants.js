@@ -53,7 +53,7 @@
                 }
             },
             templateString: {
-                externalLinkIcon: `<i class="fak fa-external-link icn-hover-hidden" aria-hidden="true"></i>`,
+                externalLinkIcon: `<i class="fak fa-external-link icn-hover-hidden" aria-hidden="false"></i>`,
                 internalLinkIcon: `<i class="fak fa-chevron-circle-right icn-hover-hidden" aria-hidden="true"></i>`,
                 pdfLinkIcon: `<i class="fak fa-pdf icn-hover-hidden" aria-hidden="true"></i>`,
                 externalLinkIconSolid: `<i class="fak fa-external-link-hover icn-hover-show" aria-hidden="true"></i>`,

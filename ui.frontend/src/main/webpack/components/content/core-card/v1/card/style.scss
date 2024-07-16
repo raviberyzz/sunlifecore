@@ -1,6 +1,23 @@
 @import '../../../../../prerequisite/core-base/styles/includes/bootstrap-mixins.scss';
 @import '../../../../../prerequisite/core-base/styles/includes/lego-typography.scss';
 
+.card-text,
+.cmp-text,
+.caption-container,
+.caption-text {
+        p:has(> .sl-link-md),
+        p:has(> .sl-link-sm),
+        p:has(> .sl-link-xs) {
+            svg.fa-pdf,
+            svg.fa-pdf-hover {
+                margin: 0 -2px 0 0 !important;
+            }
+            svg.fa-external-link,
+            svg.fa-external-link-hover {
+                margin: 0 0 0 -2px !important;
+            }
+    }
+}
 
 // sl-link-md, sl-btn and sl-link icon styles
 .sl-link-md, 
@@ -9,8 +26,12 @@
     svg {
         height: 24px;
         width: 24px !important;
-        margin: 0 !important;
+        margin: 0 0 0 4px !important;
         vertical-align: -5.9px;
+    }
+    svg.fa-pdf,
+    svg.fa-pdf-hover {
+        margin: 0 4px 0 0 !important;
     }
 }
 

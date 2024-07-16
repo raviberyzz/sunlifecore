@@ -15,7 +15,7 @@
         target="${ isBtn ? cardBtnTarget : cardLinkTarget }"
         href="${isBtn ? btnURL.navPath : linkURL.navPath }"
         data-title="${dataTitle}"
-        class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" data-sly-set.linkLabelText="${ isBtn ? cardBtnLabel : cardLinkLabel }" data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }"</sly>
+        class="${isBtn ? cardBtnClasses : cardLinkVarient } hover-icn-cta"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" data-sly-set.linkLabelText="${ isBtn ? cardBtnLabel : cardLinkLabel }" data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }"></sly>
       </a>
   </sly>
 </template>
