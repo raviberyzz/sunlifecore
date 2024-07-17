@@ -53,8 +53,10 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
                      data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
                      class="${isBtn ? 'sl-btn btn btn-primary' : linkStyle }"
                      data-title="${heroBanner.dataTitle}"
-                     data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType }"
-                     data-sly-set.isExternal="${iconType == 'external-link-alt' ? true : false }"><sly data-sly-test="${iconType =='file-pdf'}"><i class="far fa-${iconType}" aria-hidden="true"></i></sly>${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel }<sly data-sly-test="${iconType !='file-pdf' && iconType != 'noIcn'}"><i class="fal fa-${iconType} icn-hover-hidden" aria-hidden="${isExternal?'false':'true'}" title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}"></i><i class="fas fa-${iconType} icn-hover-show" aria-hidden="true"></i>
+                     data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                     data-sly-set.linkLabelText="${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel}" 
+                     data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }">
+                     </sly>
                   </a>
                </div>
             </div>

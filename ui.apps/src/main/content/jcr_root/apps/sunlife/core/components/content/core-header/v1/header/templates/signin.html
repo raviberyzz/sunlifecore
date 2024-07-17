@@ -2,18 +2,13 @@
     <sly data-sly-test="${headerModel.listFromSignin == 'signintrue'}">
         <sly data-sly-list.signinLinks="${headerModel.signinlinks}">
             <li class="nav-item" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=signinLinks.getLinkURL}">
-                <a id="signinbutton" href="${utilityListParsing.navPath}" class="utility-nav-item-container nav-link" target="${signinLinks.getLinkTarget}"  data-sly-attribute.data-title=${signinLinks.dataTitle}>
-                    <div class="label-container  sl-link">
-						<sly data-sly-set.isExternal="${signinLinks.linkType == 'sl-link-external' ? true : false }">
-							<span class="fak fa-${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
-							<span
-								class="dropdown-label d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${signinLinks.getDesktopLinkTitle}
-								<sly data-sly-test="${ (signinLinks.linkType == 'sl-link-internal') ||  (signinLinks.linkType == 'sl-link-external') }"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
-							</span> 
-							<sly data-sly-test.title="${signinLinks.getMobileLinkTitle ? signinLinks.getMobileLinkTitle : signinLinks.getDesktopLinkTitle}">
-								<span class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${title}</span> 
-							</sly>  
-						</sly>
+                <a id="signinbutton" href="${utilityListParsing.navPath}" class="utility-nav-item-container nav-link sl-link" target="${signinLinks.getLinkTarget}"  data-sly-attribute.data-title=${signinLinks.dataTitle}>
+                    <div class="label-container">
+                        <span class="fak fa-${signinLinks.getLinkIcon} sl-icon_size_md sl-icon custom-icon" role="presentation"></span>
+                        <span class="dropdown-label d-none d-md-none d-lg-inline d-xl-inline d-xxl-inline">${signinLinks.getDesktopLinkTitle}</span> 
+                        <sly data-sly-test.title="${signinLinks.getMobileLinkTitle ? signinLinks.getMobileLinkTitle : signinLinks.getDesktopLinkTitle}">
+                            <span class="dropdown-label d-inline-block d-md-inline-block d-lg-none d-xl-none d-xxl-none">${title}</span> 
+                        </sly>  
                     </div>
                 </a>
            </li>
