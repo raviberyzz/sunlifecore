@@ -6,13 +6,13 @@
    <div class="region-content-container">
       <sly data-sly-list.region="${regionModel.regions}">
          <div class="region-content">
-            <div class="country-header sl-link" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=region.regionURL}">
+            <div class="country-header" data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=region.regionURL}">
                <h2 data-sly-test="${region.items}" data-title="${region.dataTitle}">${region.regionName}</h2>
                <a data-sly-test="${!region.items}" class="${(region.linkHighlight =='yes') ? 'active' : ''}"data-title="${region.dataTitle}" href="${utilityListParsing.navPath}" target="${region.regionTarget}">
                      <sly 
                         data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                         data-sly-set.linkLabelText="${region.regionName}"
-                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=region.linkType  == 'sl-link-pdf' ? 'file-pdf' : (region.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=region.linkType == 'sl-link-pdf' ? 'file-pdf' : (region.linkType == 'sl-link-external' ? 'external-link-alt' : (region.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                      </sly>
                </a>
             </div>
@@ -21,7 +21,7 @@
                   <sly 
                      data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                      data-sly-set.linkLabelText="${item.linkName}"
-                     data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType  == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                     data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : (item.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                   </sly>
                </div></a></li>
             </ul>
