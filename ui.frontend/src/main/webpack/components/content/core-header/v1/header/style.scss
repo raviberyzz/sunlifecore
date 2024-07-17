@@ -656,7 +656,7 @@
   .nav-item {
     & > .sl-link {
       color: var(--grey-800);
-      font-family: 'Sun Life New Text Regular, Helvetica Neue, Calibri, sans-serif';
+      font-family: $font-family-body;
     }
   }
 }

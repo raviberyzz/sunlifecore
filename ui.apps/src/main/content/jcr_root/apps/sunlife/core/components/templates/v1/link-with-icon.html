@@ -1,4 +1,11 @@
-<!--/* Template for rendering link with default icons depending upon type of link */-->
+<!--/*
+Template for rendering link with default icons depending upon type of link
+
+<sly 
+    data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html"
+    data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }">
+</sly>
+*/-->
 
 <template data-sly-template.details="${ @ linkLabel, iconType }"> 
     <sly data-sly-test="${iconType =='file-pdf'}">

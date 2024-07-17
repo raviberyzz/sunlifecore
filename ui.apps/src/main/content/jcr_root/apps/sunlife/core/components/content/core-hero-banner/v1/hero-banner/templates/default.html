@@ -53,7 +53,10 @@ Reference Figma - https://www.figma.com/file/Yf6ZKjC4LzgkAQzvLmRF6e/1.0-Helios-W
                      data-sly-set.linkStyle="${heroBanner.backgroundStyle =='dark' ? 'sl-link sl-link-secondary sl-link-lg' : 'sl-link sl-link-lg'}" 
                      class="${isBtn ? 'sl-btn btn btn-primary' : linkStyle }"
                      data-title="${heroBanner.dataTitle}"
-                     data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" data-sly-set.linkLabelText="${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel}" data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }"></sly>
+                     data-sly-set.iconType="${isBtn ? heroBanner.ctaIconType : heroBanner.linkIconType}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                     data-sly-set.linkLabelText="${heroBanner.ctaType == 'button' ? heroBanner.btnLabel : heroBanner.ctaLabel}" 
+                     data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=iconType }">
+                     </sly>
                   </a>
                </div>
             </div>
