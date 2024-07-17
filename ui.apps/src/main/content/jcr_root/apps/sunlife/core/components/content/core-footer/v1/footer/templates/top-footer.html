@@ -13,7 +13,7 @@
                             <sly 
                                 data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                                 data-sly-set.linkLabelText="${link.linkName}"
-                                data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=link.linkType == 'sl-link-pdf' ? 'file-pdf' : (link.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                                data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=link.linkType == 'sl-link-pdf' ? 'file-pdf' : (link.linkType == 'sl-link-external' ? 'external-link-alt' : (link.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                             </sly>
 					  </a>
 				   </li>

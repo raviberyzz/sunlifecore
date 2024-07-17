@@ -8,7 +8,7 @@
                     <sly 
                         data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                         data-sly-set.linkLabelText="${item.linkName}"
-                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : (item.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                     </sly>
                     </a>
                     <div data-sly-test="${!itemList.last || itemList.last && !bottomFooter.feedback}" class="sl-divider vr" aria-hidden="true"></div>

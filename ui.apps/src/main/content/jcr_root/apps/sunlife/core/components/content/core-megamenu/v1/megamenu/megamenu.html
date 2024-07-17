@@ -24,13 +24,13 @@
                         class="d-none d-lg-inline d-xl-inline d-xxl-inline">
                         <li>
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
-                               class="dropdown-item text-wrap" data-title="${menuItems.menuItemDataTitle}"
+                               class="dropdown-item text-wrap sl-link" data-title="${menuItems.menuItemDataTitle}"
                                data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
-                                <div class="d-inline sl-link">
+                                <div class="d-inline">
                                     <sly 
                                         data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html"
                                         data-sly-set.linkLabelText="${menuItems.menuItemLinkName}"
-                                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=menuItems.linkType == 'sl-link-pdf' ? 'file-pdf' : (menuItems.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">xxx
+                                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=menuItems.linkType == 'sl-link-pdf' ? 'file-pdf' : (menuItems.linkType == 'sl-link-external' ? 'external-link-alt' : (menuItems.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                                     </sly>
 								</div>
                             </a>
@@ -45,14 +45,14 @@
                             data-sly-set.menuItemLinkName="${menuItems.mobileMenuItemLinkName ?  menuItems.mobileMenuItemLinkName : menuItems.menuItemLinkName}"
                         >
                             <a href="${menuItems.menuItemLinkURL @extension = 'html'}"
-                                class="dropdown-item text-wrap"
+                                class="dropdown-item text-wrap sl-link"
                                 data-title="${menuItems.menuItemDataTitle}"
                                 data-sly-attribute.target="${menuItems.menuItemTarget == 'newTab' ? '_blank' : ''}">
-                                <div class="d-inline  sl-link">							
+                                <div class="d-inline">							
                                     <sly 
                                         data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                                         data-sly-set.linkLabelText="${menuItemLinkName}"
-                                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=menuItems.linkType == 'sl-link-pdf' ? 'file-pdf' : (menuItems.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
+                                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=menuItems.linkType == 'sl-link-pdf' ? 'file-pdf' : (menuItems.linkType == 'sl-link-external' ? 'external-link-alt' : (menuItems.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                                     </sly>
 								</div>
                             </a>

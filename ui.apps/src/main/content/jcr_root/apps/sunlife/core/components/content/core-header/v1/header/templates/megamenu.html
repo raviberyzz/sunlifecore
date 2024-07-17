@@ -7,7 +7,7 @@
                     <sly 
                         data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
                         data-sly-set.linkLabelText="${links.megaMenuLinkName}"
-                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=links.linkType == 'sl-link-pdf' ? 'file-pdf' : (links.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">xxx
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=links.linkType == 'sl-link-pdf' ? 'file-pdf' : (links.linkType == 'sl-link-external' ? 'external-link-alt' : (links.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                     </sly>
 				</a>
             </div>
