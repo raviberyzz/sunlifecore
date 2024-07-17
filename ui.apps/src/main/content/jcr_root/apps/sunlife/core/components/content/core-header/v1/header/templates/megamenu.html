@@ -4,10 +4,10 @@
 
             <div data-sly-test="${!links.megaMenuFragmentPath}">
                 <a href="${links.megaMenuLinkURL @ extension = 'html'}" aria-current="false" class="main-nav-item-container  nav-link sl-link" data-section="header-main-nav">
-                    <sly data-sly-set.isExternal="${links.linkType == 'sl-link-external' ? true : false }">
-                        <sly data-sly-test="${links.linkType =='sl-link-pdf'}"><i title="${'pdf.link' @ i18n}" class="fal fa-file-pdf icn-hover-hidden" aria-hidden="true"></i><i title="${'pdf.link' @ i18n}" class="fas fa-file-pdf icn-hover-show" aria-hidden="true"></i></sly>
-                        ${links.megaMenuLinkName}
-                        <sly data-sly-test="${links.linkType !='sl-link-pdf' && links.linkType}"><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="${isExternal ? 'false' : 'true'}" class="fal ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-hidden"></i><i title="${(isExternal ? 'external.link' : 'internal.link') @ i18n}" aria-hidden="true" class="fas ${isExternal ? 'fa-external-link-alt' : 'fa-chevron-circle-right'} icn-hover-show"></i></sly>
+                    <sly 
+                        data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
+                        data-sly-set.linkLabelText="${links.megaMenuLinkName}"
+                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=links.linkType == 'sl-link-pdf' ? 'file-pdf' : (links.linkType == 'sl-link-external' ? 'external-link-alt' : (links.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                     </sly>
 				</a>
             </div>

@@ -653,6 +653,12 @@
       }
     }
   }
+  .nav-item {
+    & > .sl-link {
+      color: var(--grey-800);
+      font-family: $font-family-body;
+    }
+  }
 }
 
 #menuClose {
