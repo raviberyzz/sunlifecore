@@ -4,7 +4,7 @@
     "sling:resourceType": "sunlife/core/components/content/core-basePageModel/v1/basePageModel",
     "socialMediaDescripton": "This is social media description",
     "pageIndexing": "true",
-    "disablePseudoElementIcon":"true",
+    "enablePseudoElementIcon":"false",
     "canonicalUrl": "https://www.sunlife.ca",
     "pageTitle": "Sun Life Financial",
     "description": "This is page description",

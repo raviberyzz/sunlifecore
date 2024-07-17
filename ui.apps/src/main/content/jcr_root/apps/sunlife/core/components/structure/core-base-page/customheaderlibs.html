@@ -1,6 +1,6 @@
 <sly
         data-sly-use.baseModel="ca.sunlife.web.cms.core.models.v1.BasePageModel"
-        data-sly-set.enablePseudoElement="${baseModel.disablePseudoElementIcon == 'true' ? false : true }"
+        data-sly-set.enablePseudoElement="${baseModel.enablePseudoElementIcon == 'true' ? true : false }"
         data-sly-set.publishMode = "${enablePseudoElement && wcmmode.disabled}"/>
 
         <link rel="preload" as="font" href="https://cdn.sunlife.com/content/dam/sunlife/global/fonts/SunLifeNewDisplay-Regular.woff2" type="font/woff2" crossorigin="anonymous" >
