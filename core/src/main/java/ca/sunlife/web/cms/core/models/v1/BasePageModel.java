@@ -140,7 +140,7 @@ public class BasePageModel {
     private String pageIndexing;
 
     /**
-    * Flag to disable the pseudo-element icon, fetched from the component's underlying resource.
+    * Flag to enable the pseudo-element icon, fetched from the component's underlying resource.
     * The property is directly mapped from the JCR via the resource's ValueMap.
     *
     * This is managed through the use of the {@link ValueMapValue} to fetch the value and
@@ -150,7 +150,7 @@ public class BasePageModel {
     */
     @Getter
     @ValueMapValue
-    private String disablePseudoElementIcon;
+    private String enablePseudoElementIcon;
 
     /**
      * The social media title.

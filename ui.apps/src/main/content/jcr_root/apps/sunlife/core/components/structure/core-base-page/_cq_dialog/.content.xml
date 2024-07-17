@@ -169,12 +169,12 @@
                                         jcr:title="Font Awesome"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                         <items jcr:primaryType="nt:unstructured">
-                                             <disablePseudoElementIcon
+                                             <enablePseudoElementIcon
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check to disable Pseudo-elements to render icons using CSS"
-                                                name="./disablePseudoElementIcon"
-                                                text="Disable Pseudo-elements Icons"
+                                                fieldDescription="Check to enable Pseudo-elements to render icons using CSS"
+                                                name="./enablePseudoElementIcon"
+                                                text="Enable Pseudo-elements Icons"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
                                         </items>
