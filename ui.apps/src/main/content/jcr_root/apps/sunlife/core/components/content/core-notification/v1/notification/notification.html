@@ -1,6 +1,8 @@
 <sly data-sly-use.notification="ca.sunlife.web.cms.core.models.v1.Notification"
-     data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
-     data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}">
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-sly-test.text="${notification.text}"
+     data-sly-use.notificationbuttonURL="${'sunlife/core/components/common/url-parsing.js' @ path=notification.buttonURL}"
+     data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html"
+     data-sly-set.linkLabelText="${notification.buttonTitle}">
 	 <sly data-sly-set.isExternal="${notification.linkType == 'sl-link-external' ? true : false }"/>
     <div role="alert"
          class="fade hide-notification sl-notification alert alert-${notification.notificationType} show ${notification.spacing}" data-section="site-level-notification">
@@ -28,9 +30,7 @@
                             type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                             data-sly-attribute.target="${notification.buttonTarget}"
                             aria-label="${notification.buttonAccessibilityLabel}">
-                            <sly 
-                                data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
-                                data-sly-set.linkLabelText="${notification.buttonTitle}"
+                            <sly
                                 data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
                             </sly>
                     </button>
@@ -56,9 +56,7 @@
                                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                                         data-sly-attribute.target="${notification.buttonTarget}"
                                         aria-label="${notification.buttonAccessibilityLabel}">
-                                        <sly 
-                                            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
-                                            data-sly-set.linkLabelText="${notification.buttonTitle}"
+                                        <sly
                                             data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
                                         </sly>
                                 </button>
@@ -75,9 +73,7 @@
                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                         data-sly-attribute.target="${notification.buttonTarget}"
                         aria-label="${notification.buttonAccessibilityLabel}">
-                        <sly 
-                            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
-                            data-sly-set.linkLabelText="${notification.buttonTitle}"
+                        <sly
                             data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : (notification.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
                         </sly>
                 </button>
@@ -86,4 +82,4 @@
         </div>
 </sly>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty=!text}"></sly>
