@@ -29,10 +29,7 @@
                             data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
                             type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                             data-sly-attribute.target="${notification.buttonTarget}"
-                            aria-label="${notification.buttonAccessibilityLabel}">
-                            <sly
-                                data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
-                            </sly>
+                            aria-label="${notification.buttonAccessibilityLabel}"><sly data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' :  (notification.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}"></sly>
                     </button>
                 </sly>
             </sly>
@@ -55,10 +52,7 @@
                                         data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
                                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                                         data-sly-attribute.target="${notification.buttonTarget}"
-                                        aria-label="${notification.buttonAccessibilityLabel}">
-                                        <sly
-                                            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : 'chevron-circle-right')}">
-                                        </sly>
+                                        aria-label="${notification.buttonAccessibilityLabel}"><sly data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType  == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : (notification.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}"></sly>
                                 </button>
                             </sly>
                         </sly>
@@ -72,10 +66,7 @@
                         data-sly-element="${notification.buttonURL ? 'a' : 'button'}"
                         type="${notification.buttonURL}" href="${notificationbuttonURL.navPath}"
                         data-sly-attribute.target="${notification.buttonTarget}"
-                        aria-label="${notification.buttonAccessibilityLabel}">
-                        <sly
-                            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : (notification.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
-                        </sly>
+                        aria-label="${notification.buttonAccessibilityLabel}"><sly data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=notification.linkType == 'sl-link-pdf' ? 'file-pdf' : (notification.linkType == 'sl-link-external' ? 'external-link-alt' : (notification.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}"></sly>
                 </button>
             </sly>
         </div>

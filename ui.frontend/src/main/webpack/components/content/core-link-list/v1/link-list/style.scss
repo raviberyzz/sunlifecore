@@ -172,9 +172,21 @@
 
     .link-list-item {
         padding-bottom: var(--M);
-        .sl-link-sm > .fa-file-pdf {
-          vertical-align: -5px;
-      }
+        .sl-link-sm {
+          > .fa-file-pdf {
+            vertical-align: -5px;
+          }
+          > .fa-chevron-circle-right,
+            .fa-external-link  {
+            margin-left: 4px !important;
+          }
+        }
+        .sl-link-xs {
+          > .fa-chevron-circle-right,
+            .fa-external-link  {
+            margin-left: 4px !important;
+          }
+        }
     }
 
     .sl-link-list .dropdown-menu {

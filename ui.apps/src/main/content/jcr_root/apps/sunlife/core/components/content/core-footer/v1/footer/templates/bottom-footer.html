@@ -4,13 +4,7 @@
         <div class="footer-utility-menu col-gap">
             <ul class="footer-utility-submenu" data-sly-list="${bottomFooter.bottomLinks}">
                 <li data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=item.linkURL}" class="footer-menu-items sl-link">
-                    <a href="${utilityListParsing.navPath}" lang="${item.langAttribute}" data-title="${item.dataTitle}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}">
-                    <sly 
-                        data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
-                        data-sly-set.linkLabelText="${item.linkName}"
-                        data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : (item.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
-                    </sly>
-                    </a>
+                    <a href="${utilityListParsing.navPath}" lang="${item.langAttribute}" data-title="${item.dataTitle}" data-sly-attribute.target="${item.linkTarget == 'newTab' ? '_blank' : ''}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" data-sly-set.linkLabelText="${item.linkName}" data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=item.linkType == 'sl-link-pdf' ? 'file-pdf' : (item.linkType == 'sl-link-external' ? 'external-link-alt' : (item.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}"></sly></a>
                     <div data-sly-test="${!itemList.last || itemList.last && !bottomFooter.feedback}" class="sl-divider vr" aria-hidden="true"></div>
                 </li>
                 <sly data-sly-test="${itemList.last && !bottomFooter.feedback }">
