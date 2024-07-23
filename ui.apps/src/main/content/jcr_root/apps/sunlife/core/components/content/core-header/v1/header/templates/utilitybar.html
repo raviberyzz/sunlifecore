@@ -14,13 +14,7 @@
                                 <li class="nav-item menu-item"
                                     data-sly-element="${totalItems == 1 ? 'div' : 'li'}" 
                                     data-sly-use.utilityListParsing="${'sunlife/core/components/common/url-parsing.js' @ path=links.linkURL}">
-                                    <a class="menu-content nav-link sl-link" href="${utilityListParsing.navPath}" target="${links.linkTarget}" data-title="${links.dataTitle}">
-                                        <sly 
-                                            data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" 
-                                            data-sly-set.linkLabelText="${links.linkName}"
-                                            data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=links.linkType == 'sl-link-pdf' ? 'file-pdf' : (links.linkType == 'sl-link-external' ? 'external-link-alt' : (links.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}">
-                                        </sly>
-                                    </a>
+                                    <a class="menu-content nav-link sl-link" href="${utilityListParsing.navPath}" target="${links.linkTarget}" data-title="${links.dataTitle}"><sly data-sly-use.template="/apps/sunlife/core/components/templates/v1/link-with-icon.html" data-sly-set.linkLabelText="${links.linkName}" data-sly-call="${template.details @ linkLabel=linkLabelText, iconType=links.linkType == 'sl-link-pdf' ? 'file-pdf' : (links.linkType == 'sl-link-external' ? 'external-link-alt' : (links.linkType == 'sl-link-internal' ? 'chevron-circle-right' : ''))}"></sly></a>
                                 </li>
                             </ul>
                         </div>

@@ -8,8 +8,4 @@ Template for rendering icon and hovered icon
 </sly>
 */-->
 
-<template data-sly-template.details="${ @  prefix, icon, prefixHover, hoverIcon, title, isAriaHidden, isHover }">
-    <sly data-sly-set.hoveredPrefix="${prefixHover ? prefixHover : prefix}"/>
-    <i title="${title}" class="${prefix} ${['fa', icon] @ join='-'} ${isHover ? 'icn-hover-hidden': '' }" aria-hidden="${isAriaHidden ? 'true' : 'false'}"></i>
-    <i data-sly-test="${isHover}" title="${title}" class="${hoveredPrefix} ${['fa', hoverIcon] @ join='-'} icn-hover-show" aria-hidden="true"></i>
-</template>
+<template data-sly-template.details="${ @  prefix, icon, prefixHover, hoverIcon, title, isAriaHidden, isHover }"><sly data-sly-set.hoveredPrefix="${prefixHover ? prefixHover : prefix}"/><i title="${title}" class="${prefix} ${['fa', icon] @ join='-'} ${isHover ? 'icn-hover-hidden': '' }" aria-hidden="${isAriaHidden ? 'true' : 'false'}"></i><i data-sly-test="${isHover}" title="${title}" class="${hoveredPrefix} ${['fa', hoverIcon] @ join='-'} icn-hover-show" aria-hidden="true"></i></template>
