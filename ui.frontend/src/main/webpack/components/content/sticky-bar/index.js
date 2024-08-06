@@ -14,7 +14,20 @@ $(document).ready(function () {
     $('#priButton a').click(function () {
         if ($(this).attr('href').indexOf('#o2o-leadgen') != -1) {
             $('#leadgen-o2o').modal('show');
+            utag.link({
+                ev_type: "other",
+                ev_action: "clk",
+                ev_title: "sticky-bar - talk to an advisor",
+            });
         }
+    })
+
+    $('#secButton a').click(function () {
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "sticky-bar - download brochure",
+        });
     })
 
     function notificationHeight() {
